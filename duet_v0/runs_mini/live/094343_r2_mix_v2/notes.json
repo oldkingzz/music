@@ -1,0 +1,204 @@
+{
+ "system": "choir:twinkle",
+ "tonic": 0,
+ "M": 4,
+ "K": 48,
+ "bpm": 80.0,
+ "t0": 3.5,
+ "Li": 0.2132166666666667,
+ "Lo": 0.042083333333333334,
+ "monitor": 0.0,
+ "notes_answered": 0,
+ "sung": 0,
+ "detect_ms_median": null,
+ "block_ms_median": 0.3480419982224703,
+ "block_ms_max": 0.7250410271808505,
+ "events": [],
+ "mode": "choir",
+ "count_in": 4,
+ "click_all": false,
+ "kept": 0,
+ "corrected": 0,
+ "late_start": 0,
+ "plans": [
+  {
+   "q": 0.0,
+   "result": null,
+   "action": "idle",
+   "duet": -1,
+   "heard": 0,
+   "late_ms": 0.0,
+   "us": 4.2
+  },
+  {
+   "q": 0.5,
+   "result": null,
+   "action": "idle",
+   "duet": -1,
+   "heard": 0,
+   "late_ms": 0.0,
+   "us": 1.6
+  },
+  {
+   "q": 1.0,
+   "result": null,
+   "action": "idle",
+   "duet": -1,
+   "heard": 0,
+   "late_ms": 0.0,
+   "us": 1.0
+  },
+  {
+   "q": 1.5,
+   "result": null,
+   "action": "idle",
+   "duet": -1,
+   "heard": 0,
+   "late_ms": 0.0,
+   "us": 1.2
+  },
+  {
+   "q": 2.0,
+   "result": null,
+   "action": "idle",
+   "duet": -1,
+   "heard": 0,
+   "late_ms": 0.0,
+   "us": 1.7
+  },
+  {
+   "q": 2.5,
+   "result": null,
+   "action": "idle",
+   "duet": -1,
+   "heard": 0,
+   "late_ms": 0.0,
+   "us": 1.2
+  },
+  {
+   "q": 3.0,
+   "result": null,
+   "action": "idle",
+   "duet": -1,
+   "heard": 0,
+   "late_ms": 0.0,
+   "us": 0.8
+  }
+ ],
+ "decision_counts": {
+  "plan_idle": 7
+ },
+ "decisions": [
+  {
+   "kind": "plan",
+   "t": 3.475,
+   "q": 0.0,
+   "i": null,
+   "result": null,
+   "action": "idle",
+   "duet": -1,
+   "us": 4.2
+  },
+  {
+   "kind": "plan",
+   "t": 3.85,
+   "q": 0.5,
+   "i": null,
+   "result": null,
+   "action": "idle",
+   "duet": -1,
+   "us": 1.6
+  },
+  {
+   "kind": "plan",
+   "t": 4.225,
+   "q": 1.0,
+   "i": null,
+   "result": null,
+   "action": "idle",
+   "duet": -1,
+   "us": 1.0
+  },
+  {
+   "kind": "plan",
+   "t": 4.6,
+   "q": 1.5,
+   "i": null,
+   "result": null,
+   "action": "idle",
+   "duet": -1,
+   "us": 1.2
+  },
+  {
+   "kind": "plan",
+   "t": 4.975,
+   "q": 2.0,
+   "i": null,
+   "result": null,
+   "action": "idle",
+   "duet": -1,
+   "us": 1.7
+  },
+  {
+   "kind": "plan",
+   "t": 5.35,
+   "q": 2.5,
+   "i": null,
+   "result": null,
+   "action": "idle",
+   "duet": -1,
+   "us": 1.2
+  },
+  {
+   "kind": "plan",
+   "t": 5.725,
+   "q": 3.0,
+   "i": null,
+   "result": null,
+   "action": "idle",
+   "duet": -1,
+   "us": 0.8
+  }
+ ],
+ "late_decisions": 0,
+ "us_plan_mean": 1.678692309984139,
+ "us_hear_mean": null,
+ "us_mean": 1.678692309984139,
+ "us_max": 4.208995960652828,
+ "choir_song": "twinkle",
+ "choir_shift": 0,
+ "parts_written": 4,
+ "parts_total": 49,
+ "song": "twinkle",
+ "key": "C",
+ "phone_file": "futures/live_test/phone/twinkle_C_80bpm_countin.mp3",
+ "click": false,
+ "engine": "ChoirDuet",
+ "ab": false,
+ "rt_list": "live_rt_systems_v3.json",
+ "blind": false,
+ "in": "泽森的AirPods Max",
+ "out": "泽森的AirPods Max",
+ "started": "2026-11-02 09:43:43",
+ "seconds": 6.4,
+ "lat": {
+  "source": "calibrated",
+  "Li_ms": 213.2,
+  "Lo_ms": 42.1,
+  "rt_ms": 235.3,
+  "cal_when": "09:43",
+  "stream_Li_ms": 64.8,
+  "stream_Lo_ms": 42.1,
+  "margin_ms": 20.0,
+  "page": "v4"
+ },
+ "auto_pick": {
+  "auto": "r3_X_regtrkst_v1",
+  "label": "实时预判 第 3 轮（默认：低嗓音自动换八度，少“先错后改”）",
+  "why": "来回延迟 235 毫秒 < 250：用默认版",
+  "used": false,
+  "calibrated": true
+ },
+ "stream_flag_blocks": 3,
+ "page": "live_panel_v3"
+}

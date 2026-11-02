@@ -1,0 +1,76 @@
+{
+ "time": "2026-11-02 09:19:20",
+ "in": "泽森的AirPods Max",
+ "out": "泽森的AirPods Max",
+ "stream_latency_ms": [
+  62.7,
+  42.1
+ ],
+ "ok": false,
+ "why": "没听到你唱：看电平条有没有动，跟着高的嘀声每下唱一个短“哒”，再测一次。",
+ "rt_ms": null,
+ "n_used": 0,
+ "spread_ms": null,
+ "offsets_ms": [
+  null,
+  null,
+  null,
+  null,
+  null,
+  null,
+  null,
+  null
+ ],
+ "n_onsets": 0,
+ "floor_db": -74.4,
+ "bpm": 100.0,
+ "complete": true,
+ "stream_flag_blocks": 2,
+ "folder": "091911_latcal",
+ "page": "live_panel_v3",
+ "latcal": "latcal_v1",
+ "kept": false,
+ "estimate": {
+  "rt_s": null,
+  "n_used": 0,
+  "spread_s": null,
+  "ok": false,
+  "why": "没听到你唱：看电平条有没有动，跟着高的嘀声每下唱一个短“哒”，再测一次。",
+  "n_clicks": 8,
+  "offsets_ms": [
+   null,
+   null,
+   null,
+   null,
+   null,
+   null,
+   null,
+   null
+  ],
+  "n_onsets": 0,
+  "floor_db": -74.4,
+  "candidates": 0,
+  "rejected": {}
+ },
+ "schedule": {
+  "sr": 24000,
+  "bpm": 100.0,
+  "count_in": [
+   12000,
+   26400,
+   40800,
+   55200
+  ],
+  "clicks": [
+   69600,
+   84000,
+   98400,
+   112800,
+   127200,
+   141600,
+   156000,
+   170400
+  ],
+  "n_total": 201600
+ }
+}

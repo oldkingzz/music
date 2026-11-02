@@ -1,0 +1,98 @@
+{
+ "system": "r2_mix_v2",
+ "tonic": 0,
+ "M": 4,
+ "K": 48,
+ "bpm": 80.0,
+ "t0": 4.010000000000001,
+ "Li": 0.0,
+ "Lo": 0.027,
+ "monitor": 0.0,
+ "notes_answered": 4,
+ "sung": 4,
+ "detect_ms_median": 20.0,
+ "block_ms_median": 0.12954202247783542,
+ "block_ms_max": 3.0530410585924983,
+ "events": [
+  {
+   "i": 0,
+   "onset_beats": 0.0,
+   "onset_raw": 0.0,
+   "her_heard": 60,
+   "duet": 57,
+   "reactive": 57,
+   "action": "first",
+   "prev_dur": null,
+   "detect_ms": 110.0
+  },
+  {
+   "i": 1,
+   "onset_beats": 1.0,
+   "onset_raw": 1.053,
+   "her_heard": 60,
+   "duet": 57,
+   "reactive": 57,
+   "action": "kept",
+   "prev_dur": 1.0,
+   "detect_ms": 20.0
+  },
+  {
+   "i": 2,
+   "onset_beats": 2.0,
+   "onset_raw": 2.013,
+   "her_heard": 67,
+   "duet": 60,
+   "reactive": 60,
+   "action": "corrected",
+   "prev_dur": 1.0,
+   "detect_ms": 20.0
+  },
+  {
+   "i": 3,
+   "onset_beats": 3.0,
+   "onset_raw": 3.04,
+   "her_heard": 67,
+   "duet": 60,
+   "reactive": 64,
+   "action": "kept",
+   "prev_dur": 1.0,
+   "detect_ms": 20.0
+  }
+ ],
+ "mode": "predict",
+ "kept": 2,
+ "corrected": 1,
+ "late_start": 0,
+ "plans": [
+  {
+   "k": 1,
+   "h": 57,
+   "top": 0,
+   "p": 0.777,
+   "late_ms": 0.0
+  },
+  {
+   "k": 2,
+   "h": 57,
+   "top": 0,
+   "p": 0.592,
+   "late_ms": 0.0
+  },
+  {
+   "k": 3,
+   "h": 60,
+   "top": 0,
+   "p": 0.541,
+   "late_ms": 0.0
+  }
+ ],
+ "song": "twinkle",
+ "key": "C",
+ "phone_file": "futures/live_test/phone/twinkle_C_80bpm_countin.mp3",
+ "click": false,
+ "blind": false,
+ "in": "文件：twinkle_C_80bpm_countin.wav（不开麦）",
+ "out": "VG278",
+ "started": "2026-11-01 21:35:02",
+ "seconds": 7.2
+}
