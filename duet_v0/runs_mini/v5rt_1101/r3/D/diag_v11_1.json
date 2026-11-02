@@ -1,0 +1,2721 @@
+{
+ "note": "v11 real voice, no truth: proxies vs the heard notes; tuned on val",
+ "runs": [
+  {
+   "proxies": {
+    "answered": 44,
+    "sung": 37,
+    "cons_heard": 37,
+    "her_notes": 43,
+    "attacks": 24,
+    "attacks_on_her": 24,
+    "changes": 17,
+    "on_time_cons": 11,
+    "late": 4,
+    "fresh_heard": 4,
+    "fresh_heard_per100": 9.30232558139535,
+    "harsh_heard": 0.15520628683693516,
+    "blips": 0
+   },
+   "notes": [
+    {
+     "k": 0,
+     "on": 0.99,
+     "off": 1.05,
+     "m": 78,
+     "answered": null,
+     "beat": null,
+     "duet": [
+      -1
+     ],
+     "harsh_samples": 0,
+     "samples": 6,
+     "action": null
+    },
+    {
+     "k": 1,
+     "on": 2.98,
+     "off": 3.05,
+     "m": 55,
+     "answered": 55,
+     "beat": 0.0,
+     "duet": [
+      -1
+     ],
+     "harsh_samples": 0,
+     "samples": 7,
+     "action": "rest"
+    },
+    {
+     "k": 2,
+     "on": 3.05,
+     "off": 3.13,
+     "m": 56,
+     "answered": 56,
+     "beat": 0.143,
+     "duet": [
+      -1
+     ],
+     "harsh_samples": 0,
+     "samples": 8,
+     "action": "enter"
+    },
+    {
+     "k": 3,
+     "on": 3.13,
+     "off": 3.45,
+     "m": 57,
+     "answered": 57,
+     "beat": 0.25,
+     "duet": [
+      -1,
+      53,
+      54
+     ],
+     "harsh_samples": 0,
+     "samples": 32,
+     "action": "switch"
+    },
+    {
+     "k": 4,
+     "on": 3.48,
+     "off": 3.59,
+     "m": 57,
+     "answered": 57,
+     "beat": 1.0,
+     "duet": [
+      54
+     ],
+     "harsh_samples": 0,
+     "samples": 11,
+     "action": "same"
+    },
+    {
+     "k": 5,
+     "on": 3.59,
+     "off": 3.68,
+     "m": 56,
+     "answered": 56,
+     "beat": 1.25,
+     "duet": [
+      53,
+      54
+     ],
+     "harsh_samples": 9,
+     "samples": 10,
+     "action": "switch"
+    },
+    {
+     "k": 6,
+     "on": 3.68,
+     "off": 3.91,
+     "m": 57,
+     "answered": 57,
+     "beat": 1.5,
+     "duet": [
+      53,
+      54
+     ],
+     "harsh_samples": 0,
+     "samples": 22,
+     "action": "switch"
+    },
+    {
+     "k": 7,
+     "on": 3.91,
+     "off": 4.03,
+     "m": 51,
+     "answered": 55,
+     "beat": 1.898,
+     "duet": [
+      -1,
+      54
+     ],
+     "harsh_samples": 0,
+     "samples": 12,
+     "action": "silence"
+    },
+    {
+     "k": 8,
+     "on": 4.03,
+     "off": 4.45,
+     "m": 52,
+     "answered": 52,
+     "beat": 2.143,
+     "duet": [
+      -1
+     ],
+     "harsh_samples": 0,
+     "samples": 41,
+     "action": "rest"
+    },
+    {
+     "k": 9,
+     "on": 4.53,
+     "off": 4.98,
+     "m": 61,
+     "answered": 59,
+     "beat": 3.25,
+     "duet": [
+      -1,
+      56
+     ],
+     "harsh_samples": 0,
+     "samples": 45,
+     "action": "enter"
+    },
+    {
+     "k": 10,
+     "on": 5.04,
+     "off": 5.43,
+     "m": 61,
+     "answered": 61,
+     "beat": 4.25,
+     "duet": [
+      54,
+      57
+     ],
+     "harsh_samples": 0,
+     "samples": 40,
+     "action": "switch"
+    },
+    {
+     "k": 11,
+     "on": 5.43,
+     "off": 6.33,
+     "m": 57,
+     "answered": 59,
+     "beat": 5.0,
+     "duet": [
+      56,
+      57
+     ],
+     "harsh_samples": 84,
+     "samples": 89,
+     "action": "switch"
+    },
+    {
+     "k": 12,
+     "on": 6.33,
+     "off": 6.47,
+     "m": 61,
+     "answered": 60,
+     "beat": 6.75,
+     "duet": [
+      56
+     ],
+     "harsh_samples": 0,
+     "samples": 15,
+     "action": "same"
+    },
+    {
+     "k": 13,
+     "on": 6.47,
+     "off": 6.74,
+     "m": 63,
+     "answered": 59,
+     "beat": 7.123,
+     "duet": [
+      56
+     ],
+     "harsh_samples": 0,
+     "samples": 26,
+     "action": "same"
+    },
+    {
+     "k": 14,
+     "on": 6.74,
+     "off": 7.5,
+     "m": 64,
+     "answered": 64,
+     "beat": 7.75,
+     "duet": [
+      56
+     ],
+     "harsh_samples": 0,
+     "samples": 76,
+     "action": "same"
+    },
+    {
+     "k": 15,
+     "on": 7.55,
+     "off": 7.83,
+     "m": 62,
+     "answered": 62,
+     "beat": 9.25,
+     "duet": [
+      54,
+      56
+     ],
+     "harsh_samples": 5,
+     "samples": 27,
+     "action": "switch"
+    },
+    {
+     "k": 16,
+     "on": 7.83,
+     "off": 8.0,
+     "m": 61,
+     "answered": 61,
+     "beat": 9.898,
+     "duet": [
+      54,
+      57
+     ],
+     "harsh_samples": 0,
+     "samples": 17,
+     "action": "switch"
+    },
+    {
+     "k": 17,
+     "on": 8.05,
+     "off": 8.34,
+     "m": 59,
+     "answered": 58,
+     "beat": 10.25,
+     "duet": [
+      54,
+      57
+     ],
+     "harsh_samples": 5,
+     "samples": 28,
+     "action": "switch"
+    },
+    {
+     "k": 18,
+     "on": 8.34,
+     "off": 8.4,
+     "m": 58,
+     "answered": 58,
+     "beat": 11.0,
+     "duet": [
+      54
+     ],
+     "harsh_samples": 0,
+     "samples": 6,
+     "action": "same"
+    },
+    {
+     "k": 19,
+     "on": 8.4,
+     "off": 8.64,
+     "m": 59,
+     "answered": 59,
+     "beat": 11.0,
+     "duet": [
+      54,
+      56
+     ],
+     "harsh_samples": 0,
+     "samples": 24,
+     "action": "switch"
+    },
+    {
+     "k": 20,
+     "on": 9.07,
+     "off": 9.33,
+     "m": 59,
+     "answered": 59,
+     "beat": 12.5,
+     "duet": [
+      -1,
+      56
+     ],
+     "harsh_samples": 0,
+     "samples": 26,
+     "action": "enter"
+    },
+    {
+     "k": 21,
+     "on": 9.35,
+     "off": 9.46,
+     "m": 61,
+     "answered": 61,
+     "beat": 13.0,
+     "duet": [
+      56,
+      57
+     ],
+     "harsh_samples": 0,
+     "samples": 12,
+     "action": "switch"
+    },
+    {
+     "k": 22,
+     "on": 9.53,
+     "off": 9.6,
+     "m": 63,
+     "answered": 63,
+     "beat": 13.367,
+     "duet": [
+      54,
+      57
+     ],
+     "harsh_samples": 5,
+     "samples": 6,
+     "action": "switch"
+    },
+    {
+     "k": 23,
+     "on": 9.6,
+     "off": 9.8,
+     "m": 62,
+     "answered": 62,
+     "beat": 13.5,
+     "duet": [
+      54
+     ],
+     "harsh_samples": 0,
+     "samples": 21,
+     "action": "same"
+    },
+    {
+     "k": 24,
+     "on": 10.05,
+     "off": 10.46,
+     "m": 62,
+     "answered": 62,
+     "beat": 14.5,
+     "duet": [
+      54
+     ],
+     "harsh_samples": 0,
+     "samples": 41,
+     "action": "same"
+    },
+    {
+     "k": 25,
+     "on": 10.46,
+     "off": 10.75,
+     "m": 61,
+     "answered": 60,
+     "beat": 15.25,
+     "duet": [
+      54,
+      57
+     ],
+     "harsh_samples": 0,
+     "samples": 28,
+     "action": "switch"
+    },
+    {
+     "k": 26,
+     "on": 10.87,
+     "off": 11.02,
+     "m": 59,
+     "answered": 59,
+     "beat": 16.102,
+     "duet": [
+      56,
+      57
+     ],
+     "harsh_samples": 5,
+     "samples": 14,
+     "action": "switch"
+    },
+    {
+     "k": 27,
+     "on": 11.02,
+     "off": 11.43,
+     "m": 61,
+     "answered": 61,
+     "beat": 16.5,
+     "duet": [
+      56,
+      57
+     ],
+     "harsh_samples": 0,
+     "samples": 41,
+     "action": "switch"
+    },
+    {
+     "k": 28,
+     "on": 11.43,
+     "off": 11.98,
+     "m": 57,
+     "answered": 60,
+     "beat": 17.25,
+     "duet": [
+      57
+     ],
+     "harsh_samples": 0,
+     "samples": 55,
+     "action": "same"
+    },
+    {
+     "k": 29,
+     "on": 11.98,
+     "off": 12.04,
+     "m": 58,
+     "answered": 58,
+     "beat": 18.367,
+     "duet": [
+      54,
+      57
+     ],
+     "harsh_samples": 6,
+     "samples": 7,
+     "action": "switch"
+    },
+    {
+     "k": 30,
+     "on": 12.04,
+     "off": 12.25,
+     "m": 57,
+     "answered": 57,
+     "beat": 18.5,
+     "duet": [
+      54
+     ],
+     "harsh_samples": 0,
+     "samples": 20,
+     "action": "same"
+    },
+    {
+     "k": 31,
+     "on": 12.32,
+     "off": 12.41,
+     "m": 61,
+     "answered": 62,
+     "beat": 19.0,
+     "duet": [
+      54
+     ],
+     "harsh_samples": 0,
+     "samples": 9,
+     "action": "same"
+    },
+    {
+     "k": 32,
+     "on": 12.6,
+     "off": 12.95,
+     "m": 59,
+     "answered": 59,
+     "beat": 19.633,
+     "duet": [
+      56,
+      57
+     ],
+     "harsh_samples": 9,
+     "samples": 36,
+     "action": "switch"
+    },
+    {
+     "k": 33,
+     "on": 12.95,
+     "off": 13.16,
+     "m": 51,
+     "answered": 56,
+     "beat": 20.25,
+     "duet": [
+      53,
+      56
+     ],
+     "harsh_samples": 15,
+     "samples": 20,
+     "action": "switch"
+    },
+    {
+     "k": 34,
+     "on": 13.16,
+     "off": 13.29,
+     "m": 52,
+     "answered": 52,
+     "beat": 20.75,
+     "duet": [
+      -1,
+      53
+     ],
+     "harsh_samples": 9,
+     "samples": 14,
+     "action": "silence"
+    },
+    {
+     "k": 35,
+     "on": 13.29,
+     "off": 13.4,
+     "m": 51,
+     "answered": 51,
+     "beat": 21.0,
+     "duet": [
+      -1
+     ],
+     "harsh_samples": 0,
+     "samples": 10,
+     "action": "rest"
+    },
+    {
+     "k": 36,
+     "on": 13.51,
+     "off": 13.59,
+     "m": 53,
+     "answered": 53,
+     "beat": 21.5,
+     "duet": [
+      -1
+     ],
+     "harsh_samples": 0,
+     "samples": 8,
+     "action": "rest"
+    },
+    {
+     "k": 37,
+     "on": 13.59,
+     "off": 13.7,
+     "m": 55,
+     "answered": 55,
+     "beat": 21.75,
+     "duet": [
+      -1
+     ],
+     "harsh_samples": 0,
+     "samples": 12,
+     "action": "rest"
+    },
+    {
+     "k": 38,
+     "on": 13.7,
+     "off": 13.83,
+     "m": 56,
+     "answered": 56,
+     "beat": 21.878,
+     "duet": [
+      -1,
+      53
+     ],
+     "harsh_samples": 0,
+     "samples": 12,
+     "action": "enter"
+    },
+    {
+     "k": 39,
+     "on": 13.83,
+     "off": 13.96,
+     "m": 59,
+     "answered": 58,
+     "beat": 22.143,
+     "duet": [
+      53,
+      54
+     ],
+     "harsh_samples": 6,
+     "samples": 14,
+     "action": "switch"
+    },
+    {
+     "k": 40,
+     "on": 14.02,
+     "off": 14.38,
+     "m": 57,
+     "answered": 57,
+     "beat": 22.5,
+     "duet": [
+      54
+     ],
+     "harsh_samples": 0,
+     "samples": 37,
+     "action": "same"
+    },
+    {
+     "k": 41,
+     "on": 14.38,
+     "off": 14.44,
+     "m": 58,
+     "answered": 58,
+     "beat": 23.25,
+     "duet": [
+      54
+     ],
+     "harsh_samples": 0,
+     "samples": 6,
+     "action": "same"
+    },
+    {
+     "k": 42,
+     "on": 14.44,
+     "off": 14.71,
+     "m": 57,
+     "answered": 57,
+     "beat": 23.388,
+     "duet": [
+      54
+     ],
+     "harsh_samples": 0,
+     "samples": 27,
+     "action": "same"
+    }
+   ],
+   "attacks": [
+    {
+     "t": 3.12,
+     "duet": 53,
+     "her": 57,
+     "iv": 4,
+     "fresh": false,
+     "src": "hear q=None i=1 enter"
+    },
+    {
+     "t": 3.2,
+     "duet": 54,
+     "her": 57,
+     "iv": 3,
+     "fresh": false,
+     "src": "hear q=None i=2 switch"
+    },
+    {
+     "t": 3.66,
+     "duet": 53,
+     "her": 57,
+     "iv": 4,
+     "fresh": false,
+     "src": "hear q=None i=4 switch"
+    },
+    {
+     "t": 3.75,
+     "duet": 54,
+     "her": 57,
+     "iv": 3,
+     "fresh": false,
+     "src": "hear q=None i=5 switch"
+    },
+    {
+     "t": 4.57,
+     "duet": 56,
+     "her": 61,
+     "iv": 5,
+     "fresh": false,
+     "src": "hear q=None i=8 enter"
+    },
+    {
+     "t": 5.02,
+     "duet": 54,
+     "her": 61,
+     "iv": 7,
+     "fresh": false,
+     "src": "hear q=None i=9 switch"
+    },
+    {
+     "t": 5.11,
+     "duet": 57,
+     "her": 61,
+     "iv": 4,
+     "fresh": false,
+     "src": "hear q=None i=10 switch"
+    },
+    {
+     "t": 5.47,
+     "duet": 56,
+     "her": 57,
+     "iv": 1,
+     "fresh": true,
+     "src": "hear q=None i=11 switch"
+    },
+    {
+     "t": 7.59,
+     "duet": 54,
+     "her": 62,
+     "iv": 8,
+     "fresh": false,
+     "src": "hear q=None i=15 switch"
+    },
+    {
+     "t": 7.9,
+     "duet": 57,
+     "her": 61,
+     "iv": 4,
+     "fresh": false,
+     "src": "hear q=None i=16 switch"
+    },
+    {
+     "t": 8.09,
+     "duet": 54,
+     "her": 59,
+     "iv": 5,
+     "fresh": false,
+     "src": "hear q=None i=17 switch"
+    },
+    {
+     "t": 8.47,
+     "duet": 56,
+     "her": 59,
+     "iv": 3,
+     "fresh": false,
+     "src": "hear q=None i=19 switch"
+    },
+    {
+     "t": 9.11,
+     "duet": 56,
+     "her": 59,
+     "iv": 3,
+     "fresh": false,
+     "src": "hear q=None i=20 enter"
+    },
+    {
+     "t": 9.39,
+     "duet": 57,
+     "her": 61,
+     "iv": 4,
+     "fresh": false,
+     "src": "hear q=None i=21 switch"
+    },
+    {
+     "t": 9.57,
+     "duet": 54,
+     "her": 62,
+     "iv": 8,
+     "fresh": false,
+     "src": "hear q=None i=22 switch"
+    },
+    {
+     "t": 10.5,
+     "duet": 57,
+     "her": 61,
+     "iv": 4,
+     "fresh": false,
+     "src": "hear q=None i=25 switch"
+    },
+    {
+     "t": 10.91,
+     "duet": 56,
+     "her": 59,
+     "iv": 3,
+     "fresh": false,
+     "src": "hear q=None i=26 switch"
+    },
+    {
+     "t": 11.06,
+     "duet": 57,
+     "her": 61,
+     "iv": 4,
+     "fresh": false,
+     "src": "hear q=None i=27 switch"
+    },
+    {
+     "t": 12.02,
+     "duet": 54,
+     "her": 57,
+     "iv": 3,
+     "fresh": false,
+     "src": "hear q=None i=29 switch"
+    },
+    {
+     "t": 12.58,
+     "duet": 57,
+     "her": 59,
+     "iv": 2,
+     "fresh": true,
+     "src": "hear q=None i=32 switch"
+    },
+    {
+     "t": 12.67,
+     "duet": 56,
+     "her": 59,
+     "iv": 3,
+     "fresh": false,
+     "src": "hear q=None i=33 switch"
+    },
+    {
+     "t": 12.99,
+     "duet": 53,
+     "her": 51,
+     "iv": 2,
+     "fresh": true,
+     "src": "hear q=None i=34 switch"
+    },
+    {
+     "t": 13.77,
+     "duet": 53,
+     "her": 59,
+     "iv": 6,
+     "fresh": true,
+     "src": "hear q=None i=39 enter"
+    },
+    {
+     "t": 13.87,
+     "duet": 54,
+     "her": 59,
+     "iv": 5,
+     "fresh": false,
+     "src": "hear q=None i=40 switch"
+    }
+   ],
+   "decision_counts": {
+    "hear_enter": 4,
+    "hear_rest": 5,
+    "hear_same": 13,
+    "hear_silence": 2,
+    "hear_switch": 20,
+    "plan_idle": 9,
+    "plan_keep": 43,
+    "stop_she_stopped": 2
+   },
+   "adapter": null,
+   "name": "reactive"
+  },
+  {
+   "proxies": {
+    "answered": 44,
+    "sung": 41,
+    "cons_heard": 40,
+    "her_notes": 43,
+    "attacks": 35,
+    "attacks_on_her": 35,
+    "changes": 27,
+    "on_time_cons": 8,
+    "late": 3,
+    "fresh_heard": 6,
+    "fresh_heard_per100": 13.953488372093023,
+    "harsh_heard": 0.1719056974459725,
+    "blips": 0
+   },
+   "notes": [
+    {
+     "k": 0,
+     "on": 0.99,
+     "off": 1.05,
+     "m": 78,
+     "answered": null,
+     "beat": null,
+     "duet": [
+      -1
+     ],
+     "harsh_samples": 0,
+     "samples": 6,
+     "action": null
+    },
+    {
+     "k": 1,
+     "on": 2.98,
+     "off": 3.05,
+     "m": 55,
+     "answered": 55,
+     "beat": 0.0,
+     "duet": [
+      -1
+     ],
+     "harsh_samples": 0,
+     "samples": 7,
+     "action": "rest"
+    },
+    {
+     "k": 2,
+     "on": 3.05,
+     "off": 3.13,
+     "m": 56,
+     "answered": 56,
+     "beat": 0.143,
+     "duet": [
+      -1
+     ],
+     "harsh_samples": 0,
+     "samples": 8,
+     "action": "enter"
+    },
+    {
+     "k": 3,
+     "on": 3.13,
+     "off": 3.45,
+     "m": 57,
+     "answered": 57,
+     "beat": 0.25,
+     "duet": [
+      -1,
+      53,
+      54
+     ],
+     "harsh_samples": 0,
+     "samples": 32,
+     "action": "switch"
+    },
+    {
+     "k": 4,
+     "on": 3.48,
+     "off": 3.59,
+     "m": 57,
+     "answered": 57,
+     "beat": 1.0,
+     "duet": [
+      54,
+      61
+     ],
+     "harsh_samples": 0,
+     "samples": 11,
+     "action": "switch"
+    },
+    {
+     "k": 5,
+     "on": 3.59,
+     "off": 3.68,
+     "m": 56,
+     "answered": 56,
+     "beat": 1.25,
+     "duet": [
+      53,
+      54
+     ],
+     "harsh_samples": 9,
+     "samples": 10,
+     "action": "switch"
+    },
+    {
+     "k": 6,
+     "on": 3.68,
+     "off": 3.91,
+     "m": 57,
+     "answered": 57,
+     "beat": 1.5,
+     "duet": [
+      53,
+      54,
+      61
+     ],
+     "harsh_samples": 0,
+     "samples": 22,
+     "action": "switch"
+    },
+    {
+     "k": 7,
+     "on": 3.91,
+     "off": 4.03,
+     "m": 51,
+     "answered": 55,
+     "beat": 1.898,
+     "duet": [
+      54,
+      64
+     ],
+     "harsh_samples": 7,
+     "samples": 12,
+     "action": "switch"
+    },
+    {
+     "k": 8,
+     "on": 4.03,
+     "off": 4.45,
+     "m": 52,
+     "answered": 52,
+     "beat": 2.143,
+     "duet": [
+      -1,
+      64,
+      69
+     ],
+     "harsh_samples": 0,
+     "samples": 41,
+     "action": "silence"
+    },
+    {
+     "k": 9,
+     "on": 4.53,
+     "off": 4.98,
+     "m": 61,
+     "answered": 59,
+     "beat": 3.25,
+     "duet": [
+      56,
+      69
+     ],
+     "harsh_samples": 0,
+     "samples": 45,
+     "action": "switch"
+    },
+    {
+     "k": 10,
+     "on": 5.04,
+     "off": 5.43,
+     "m": 61,
+     "answered": 61,
+     "beat": 4.25,
+     "duet": [
+      54,
+      57
+     ],
+     "harsh_samples": 0,
+     "samples": 40,
+     "action": "switch"
+    },
+    {
+     "k": 11,
+     "on": 5.43,
+     "off": 6.33,
+     "m": 57,
+     "answered": 59,
+     "beat": 5.0,
+     "duet": [
+      56,
+      57
+     ],
+     "harsh_samples": 84,
+     "samples": 89,
+     "action": "switch"
+    },
+    {
+     "k": 12,
+     "on": 6.33,
+     "off": 6.47,
+     "m": 61,
+     "answered": 60,
+     "beat": 6.75,
+     "duet": [
+      54,
+      56
+     ],
+     "harsh_samples": 0,
+     "samples": 15,
+     "action": "switch"
+    },
+    {
+     "k": 13,
+     "on": 6.47,
+     "off": 6.74,
+     "m": 63,
+     "answered": 59,
+     "beat": 7.123,
+     "duet": [
+      54,
+      56
+     ],
+     "harsh_samples": 0,
+     "samples": 26,
+     "action": "switch"
+    },
+    {
+     "k": 14,
+     "on": 6.74,
+     "off": 7.5,
+     "m": 64,
+     "answered": 64,
+     "beat": 7.75,
+     "duet": [
+      56,
+      57
+     ],
+     "harsh_samples": 0,
+     "samples": 76,
+     "action": "keep"
+    },
+    {
+     "k": 15,
+     "on": 7.55,
+     "off": 7.83,
+     "m": 62,
+     "answered": 62,
+     "beat": 9.25,
+     "duet": [
+      54,
+      57
+     ],
+     "harsh_samples": 0,
+     "samples": 27,
+     "action": "switch"
+    },
+    {
+     "k": 16,
+     "on": 7.83,
+     "off": 8.0,
+     "m": 61,
+     "answered": 61,
+     "beat": 9.898,
+     "duet": [
+      54,
+      57
+     ],
+     "harsh_samples": 0,
+     "samples": 17,
+     "action": "switch"
+    },
+    {
+     "k": 17,
+     "on": 8.05,
+     "off": 8.34,
+     "m": 59,
+     "answered": 58,
+     "beat": 10.25,
+     "duet": [
+      54,
+      57
+     ],
+     "harsh_samples": 5,
+     "samples": 28,
+     "action": "switch"
+    },
+    {
+     "k": 18,
+     "on": 8.34,
+     "off": 8.4,
+     "m": 58,
+     "answered": 58,
+     "beat": 11.0,
+     "duet": [
+      54
+     ],
+     "harsh_samples": 0,
+     "samples": 6,
+     "action": "keep"
+    },
+    {
+     "k": 19,
+     "on": 8.4,
+     "off": 8.64,
+     "m": 59,
+     "answered": 59,
+     "beat": 11.0,
+     "duet": [
+      54,
+      56
+     ],
+     "harsh_samples": 0,
+     "samples": 24,
+     "action": "switch"
+    },
+    {
+     "k": 20,
+     "on": 9.07,
+     "off": 9.33,
+     "m": 59,
+     "answered": 59,
+     "beat": 12.5,
+     "duet": [
+      -1,
+      56
+     ],
+     "harsh_samples": 0,
+     "samples": 26,
+     "action": "reenter"
+    },
+    {
+     "k": 21,
+     "on": 9.35,
+     "off": 9.46,
+     "m": 61,
+     "answered": 61,
+     "beat": 13.0,
+     "duet": [
+      56,
+      57
+     ],
+     "harsh_samples": 0,
+     "samples": 12,
+     "action": "switch"
+    },
+    {
+     "k": 22,
+     "on": 9.53,
+     "off": 9.6,
+     "m": 63,
+     "answered": 63,
+     "beat": 13.367,
+     "duet": [
+      54,
+      57
+     ],
+     "harsh_samples": 5,
+     "samples": 6,
+     "action": "switch"
+    },
+    {
+     "k": 23,
+     "on": 9.6,
+     "off": 9.8,
+     "m": 62,
+     "answered": 62,
+     "beat": 13.5,
+     "duet": [
+      54
+     ],
+     "harsh_samples": 0,
+     "samples": 21,
+     "action": "keep"
+    },
+    {
+     "k": 24,
+     "on": 10.05,
+     "off": 10.46,
+     "m": 62,
+     "answered": 62,
+     "beat": 14.5,
+     "duet": [
+      54
+     ],
+     "harsh_samples": 0,
+     "samples": 41,
+     "action": "keep"
+    },
+    {
+     "k": 25,
+     "on": 10.46,
+     "off": 10.75,
+     "m": 61,
+     "answered": 60,
+     "beat": 15.25,
+     "duet": [
+      54,
+      57
+     ],
+     "harsh_samples": 0,
+     "samples": 28,
+     "action": "switch"
+    },
+    {
+     "k": 26,
+     "on": 10.87,
+     "off": 11.02,
+     "m": 59,
+     "answered": 59,
+     "beat": 16.102,
+     "duet": [
+      56,
+      57
+     ],
+     "harsh_samples": 5,
+     "samples": 14,
+     "action": "switch"
+    },
+    {
+     "k": 27,
+     "on": 11.02,
+     "off": 11.43,
+     "m": 61,
+     "answered": 61,
+     "beat": 16.5,
+     "duet": [
+      56,
+      57
+     ],
+     "harsh_samples": 0,
+     "samples": 41,
+     "action": "switch"
+    },
+    {
+     "k": 28,
+     "on": 11.43,
+     "off": 11.98,
+     "m": 57,
+     "answered": 60,
+     "beat": 17.25,
+     "duet": [
+      57
+     ],
+     "harsh_samples": 0,
+     "samples": 55,
+     "action": "keep"
+    },
+    {
+     "k": 29,
+     "on": 11.98,
+     "off": 12.04,
+     "m": 58,
+     "answered": 58,
+     "beat": 18.367,
+     "duet": [
+      54,
+      57
+     ],
+     "harsh_samples": 6,
+     "samples": 7,
+     "action": "switch"
+    },
+    {
+     "k": 30,
+     "on": 12.04,
+     "off": 12.25,
+     "m": 57,
+     "answered": 57,
+     "beat": 18.5,
+     "duet": [
+      54
+     ],
+     "harsh_samples": 0,
+     "samples": 20,
+     "action": "keep"
+    },
+    {
+     "k": 31,
+     "on": 12.32,
+     "off": 12.41,
+     "m": 61,
+     "answered": 62,
+     "beat": 19.0,
+     "duet": [
+      54
+     ],
+     "harsh_samples": 0,
+     "samples": 9,
+     "action": "keep"
+    },
+    {
+     "k": 32,
+     "on": 12.6,
+     "off": 12.95,
+     "m": 59,
+     "answered": 59,
+     "beat": 19.633,
+     "duet": [
+      56,
+      57
+     ],
+     "harsh_samples": 9,
+     "samples": 36,
+     "action": "switch"
+    },
+    {
+     "k": 33,
+     "on": 12.95,
+     "off": 13.16,
+     "m": 51,
+     "answered": 56,
+     "beat": 20.25,
+     "duet": [
+      53,
+      56
+     ],
+     "harsh_samples": 15,
+     "samples": 20,
+     "action": "switch"
+    },
+    {
+     "k": 34,
+     "on": 13.16,
+     "off": 13.29,
+     "m": 52,
+     "answered": 52,
+     "beat": 20.75,
+     "duet": [
+      -1,
+      53
+     ],
+     "harsh_samples": 9,
+     "samples": 14,
+     "action": "silence"
+    },
+    {
+     "k": 35,
+     "on": 13.29,
+     "off": 13.4,
+     "m": 51,
+     "answered": 51,
+     "beat": 21.0,
+     "duet": [
+      -1,
+      59
+     ],
+     "harsh_samples": 0,
+     "samples": 10,
+     "action": "enter"
+    },
+    {
+     "k": 36,
+     "on": 13.51,
+     "off": 13.59,
+     "m": 53,
+     "answered": 53,
+     "beat": 21.5,
+     "duet": [
+      57,
+      59
+     ],
+     "harsh_samples": 6,
+     "samples": 8,
+     "action": "switch"
+    },
+    {
+     "k": 37,
+     "on": 13.59,
+     "off": 13.7,
+     "m": 55,
+     "answered": 55,
+     "beat": 21.75,
+     "duet": [
+      57,
+      59
+     ],
+     "harsh_samples": 9,
+     "samples": 12,
+     "action": "switch"
+    },
+    {
+     "k": 38,
+     "on": 13.7,
+     "off": 13.83,
+     "m": 56,
+     "answered": 56,
+     "beat": 21.878,
+     "duet": [
+      53,
+      59
+     ],
+     "harsh_samples": 0,
+     "samples": 12,
+     "action": "switch"
+    },
+    {
+     "k": 39,
+     "on": 13.83,
+     "off": 13.96,
+     "m": 59,
+     "answered": 58,
+     "beat": 22.143,
+     "duet": [
+      53,
+      54
+     ],
+     "harsh_samples": 6,
+     "samples": 14,
+     "action": "switch"
+    },
+    {
+     "k": 40,
+     "on": 14.02,
+     "off": 14.38,
+     "m": 57,
+     "answered": 57,
+     "beat": 22.5,
+     "duet": [
+      54
+     ],
+     "harsh_samples": 0,
+     "samples": 37,
+     "action": "keep"
+    },
+    {
+     "k": 41,
+     "on": 14.38,
+     "off": 14.44,
+     "m": 58,
+     "answered": 58,
+     "beat": 23.25,
+     "duet": [
+      54
+     ],
+     "harsh_samples": 0,
+     "samples": 6,
+     "action": "keep"
+    },
+    {
+     "k": 42,
+     "on": 14.44,
+     "off": 14.71,
+     "m": 57,
+     "answered": 57,
+     "beat": 23.388,
+     "duet": [
+      54
+     ],
+     "harsh_samples": 0,
+     "samples": 27,
+     "action": "keep"
+    }
+   ],
+   "attacks": [
+    {
+     "t": 3.12,
+     "duet": 53,
+     "her": 57,
+     "iv": 4,
+     "fresh": false,
+     "src": "hear q=None i=1 enter"
+    },
+    {
+     "t": 3.2,
+     "duet": 54,
+     "her": 57,
+     "iv": 3,
+     "fresh": false,
+     "src": "hear q=None i=2 switch"
+    },
+    {
+     "t": 3.445,
+     "duet": 61,
+     "her": 57,
+     "iv": 4,
+     "fresh": false,
+     "src": "plan q=1.0 i=None switch"
+    },
+    {
+     "t": 3.52,
+     "duet": 54,
+     "her": 57,
+     "iv": 3,
+     "fresh": false,
+     "src": "hear q=None i=3 switch"
+    },
+    {
+     "t": 3.66,
+     "duet": 53,
+     "her": 57,
+     "iv": 4,
+     "fresh": false,
+     "src": "hear q=None i=4 switch"
+    },
+    {
+     "t": 3.69,
+     "duet": 61,
+     "her": 57,
+     "iv": 4,
+     "fresh": false,
+     "src": "plan q=1.5 i=None switch"
+    },
+    {
+     "t": 3.75,
+     "duet": 54,
+     "her": 57,
+     "iv": 3,
+     "fresh": false,
+     "src": "hear q=None i=5 switch"
+    },
+    {
+     "t": 3.95,
+     "duet": 64,
+     "her": 51,
+     "iv": 1,
+     "fresh": true,
+     "src": "hear q=None i=6 switch"
+    },
+    {
+     "t": 4.18,
+     "duet": 69,
+     "her": 52,
+     "iv": 5,
+     "fresh": false,
+     "src": "plan q=2.5 i=None enter"
+    },
+    {
+     "t": 4.57,
+     "duet": 56,
+     "her": 61,
+     "iv": 5,
+     "fresh": false,
+     "src": "hear q=None i=8 switch"
+    },
+    {
+     "t": 5.02,
+     "duet": 54,
+     "her": 61,
+     "iv": 7,
+     "fresh": false,
+     "src": "hear q=None i=9 switch"
+    },
+    {
+     "t": 5.11,
+     "duet": 57,
+     "her": 61,
+     "iv": 4,
+     "fresh": false,
+     "src": "hear q=None i=10 switch"
+    },
+    {
+     "t": 5.47,
+     "duet": 56,
+     "her": 57,
+     "iv": 1,
+     "fresh": true,
+     "src": "hear q=None i=11 switch"
+    },
+    {
+     "t": 6.37,
+     "duet": 54,
+     "her": 61,
+     "iv": 7,
+     "fresh": false,
+     "src": "hear q=None i=12 switch"
+    },
+    {
+     "t": 6.51,
+     "duet": 56,
+     "her": 63,
+     "iv": 7,
+     "fresh": false,
+     "src": "hear q=None i=13 switch"
+    },
+    {
+     "t": 6.875,
+     "duet": 57,
+     "her": 64,
+     "iv": 7,
+     "fresh": false,
+     "src": "plan q=8.0 i=None switch"
+    },
+    {
+     "t": 7.59,
+     "duet": 54,
+     "her": 62,
+     "iv": 8,
+     "fresh": false,
+     "src": "hear q=None i=15 switch"
+    },
+    {
+     "t": 7.9,
+     "duet": 57,
+     "her": 61,
+     "iv": 4,
+     "fresh": false,
+     "src": "hear q=None i=16 switch"
+    },
+    {
+     "t": 8.09,
+     "duet": 54,
+     "her": 59,
+     "iv": 5,
+     "fresh": false,
+     "src": "hear q=None i=17 switch"
+    },
+    {
+     "t": 8.47,
+     "duet": 56,
+     "her": 59,
+     "iv": 3,
+     "fresh": false,
+     "src": "hear q=None i=19 switch"
+    },
+    {
+     "t": 9.11,
+     "duet": 56,
+     "her": 59,
+     "iv": 3,
+     "fresh": false,
+     "src": "hear q=None i=20 reenter"
+    },
+    {
+     "t": 9.39,
+     "duet": 57,
+     "her": 61,
+     "iv": 4,
+     "fresh": false,
+     "src": "hear q=None i=21 switch"
+    },
+    {
+     "t": 9.57,
+     "duet": 54,
+     "her": 62,
+     "iv": 8,
+     "fresh": false,
+     "src": "hear q=None i=22 switch"
+    },
+    {
+     "t": 10.5,
+     "duet": 57,
+     "her": 61,
+     "iv": 4,
+     "fresh": false,
+     "src": "hear q=None i=25 switch"
+    },
+    {
+     "t": 10.91,
+     "duet": 56,
+     "her": 59,
+     "iv": 3,
+     "fresh": false,
+     "src": "hear q=None i=26 switch"
+    },
+    {
+     "t": 11.06,
+     "duet": 57,
+     "her": 61,
+     "iv": 4,
+     "fresh": false,
+     "src": "hear q=None i=27 switch"
+    },
+    {
+     "t": 12.02,
+     "duet": 54,
+     "her": 57,
+     "iv": 3,
+     "fresh": false,
+     "src": "hear q=None i=29 switch"
+    },
+    {
+     "t": 12.58,
+     "duet": 57,
+     "her": 59,
+     "iv": 2,
+     "fresh": true,
+     "src": "hear q=None i=32 switch"
+    },
+    {
+     "t": 12.67,
+     "duet": 56,
+     "her": 59,
+     "iv": 3,
+     "fresh": false,
+     "src": "hear q=None i=33 switch"
+    },
+    {
+     "t": 12.99,
+     "duet": 53,
+     "her": 51,
+     "iv": 2,
+     "fresh": true,
+     "src": "hear q=None i=34 switch"
+    },
+    {
+     "t": 13.36,
+     "duet": 59,
+     "her": 51,
+     "iv": 8,
+     "fresh": false,
+     "src": "hear q=None i=36 enter"
+    },
+    {
+     "t": 13.55,
+     "duet": 57,
+     "her": 55,
+     "iv": 2,
+     "fresh": true,
+     "src": "hear q=None i=37 switch"
+    },
+    {
+     "t": 13.66,
+     "duet": 59,
+     "her": 56,
+     "iv": 3,
+     "fresh": false,
+     "src": "hear q=None i=38 switch"
+    },
+    {
+     "t": 13.77,
+     "duet": 53,
+     "her": 59,
+     "iv": 6,
+     "fresh": true,
+     "src": "hear q=None i=39 switch"
+    },
+    {
+     "t": 13.87,
+     "duet": 54,
+     "her": 59,
+     "iv": 5,
+     "fresh": false,
+     "src": "hear q=None i=40 switch"
+    }
+   ],
+   "decision_counts": {
+    "hear_enter": 2,
+    "hear_keep": 10,
+    "hear_reenter": 1,
+    "hear_rest": 1,
+    "hear_silence": 2,
+    "hear_switch": 28,
+    "plan_enter": 1,
+    "plan_idle": 5,
+    "plan_keep": 43,
+    "plan_switch": 3,
+    "stop_she_stopped": 2
+   },
+   "adapter": null,
+   "name": "base_copyhm"
+  },
+  {
+   "proxies": {
+    "answered": 44,
+    "sung": 44,
+    "cons_heard": 42,
+    "her_notes": 43,
+    "attacks": 30,
+    "attacks_on_her": 30,
+    "changes": 26,
+    "on_time_cons": 11,
+    "late": 2,
+    "fresh_heard": 7,
+    "fresh_heard_per100": 16.27906976744186,
+    "harsh_heard": 0.17976424361493124,
+    "blips": 1
+   },
+   "notes": [
+    {
+     "k": 0,
+     "on": 0.99,
+     "off": 1.05,
+     "m": 78,
+     "answered": null,
+     "beat": null,
+     "duet": [
+      -1
+     ],
+     "harsh_samples": 0,
+     "samples": 6,
+     "action": null
+    },
+    {
+     "k": 1,
+     "on": 2.98,
+     "off": 3.05,
+     "m": 55,
+     "answered": 55,
+     "beat": 0.0,
+     "duet": [
+      -1
+     ],
+     "harsh_samples": 0,
+     "samples": 7,
+     "action": "enter"
+    },
+    {
+     "k": 2,
+     "on": 3.05,
+     "off": 3.13,
+     "m": 56,
+     "answered": 56,
+     "beat": 0.143,
+     "duet": [
+      -1
+     ],
+     "harsh_samples": 0,
+     "samples": 8,
+     "action": "switch"
+    },
+    {
+     "k": 3,
+     "on": 3.13,
+     "off": 3.45,
+     "m": 57,
+     "answered": 57,
+     "beat": 0.25,
+     "duet": [
+      49,
+      52
+     ],
+     "harsh_samples": 0,
+     "samples": 32,
+     "action": "keep"
+    },
+    {
+     "k": 4,
+     "on": 3.48,
+     "off": 3.59,
+     "m": 57,
+     "answered": 57,
+     "beat": 1.0,
+     "duet": [
+      49
+     ],
+     "harsh_samples": 0,
+     "samples": 11,
+     "action": "keep"
+    },
+    {
+     "k": 5,
+     "on": 3.59,
+     "off": 3.68,
+     "m": 56,
+     "answered": 56,
+     "beat": 1.25,
+     "duet": [
+      49
+     ],
+     "harsh_samples": 0,
+     "samples": 10,
+     "action": "keep"
+    },
+    {
+     "k": 6,
+     "on": 3.68,
+     "off": 3.91,
+     "m": 57,
+     "answered": 57,
+     "beat": 1.5,
+     "duet": [
+      49
+     ],
+     "harsh_samples": 0,
+     "samples": 22,
+     "action": "keep"
+    },
+    {
+     "k": 7,
+     "on": 3.91,
+     "off": 4.03,
+     "m": 51,
+     "answered": 55,
+     "beat": 1.898,
+     "duet": [
+      49,
+      52
+     ],
+     "harsh_samples": 12,
+     "samples": 12,
+     "action": "switch"
+    },
+    {
+     "k": 8,
+     "on": 4.03,
+     "off": 4.45,
+     "m": 52,
+     "answered": 52,
+     "beat": 2.143,
+     "duet": [
+      52,
+      57
+     ],
+     "harsh_samples": 0,
+     "samples": 41,
+     "action": "switch"
+    },
+    {
+     "k": 9,
+     "on": 4.53,
+     "off": 4.98,
+     "m": 61,
+     "answered": 59,
+     "beat": 3.25,
+     "duet": [
+      56,
+      57
+     ],
+     "harsh_samples": 0,
+     "samples": 45,
+     "action": "switch"
+    },
+    {
+     "k": 10,
+     "on": 5.04,
+     "off": 5.43,
+     "m": 61,
+     "answered": 61,
+     "beat": 4.25,
+     "duet": [
+      54
+     ],
+     "harsh_samples": 0,
+     "samples": 40,
+     "action": "keep"
+    },
+    {
+     "k": 11,
+     "on": 5.43,
+     "off": 6.33,
+     "m": 57,
+     "answered": 59,
+     "beat": 5.0,
+     "duet": [
+      54,
+      56
+     ],
+     "harsh_samples": 84,
+     "samples": 89,
+     "action": "switch"
+    },
+    {
+     "k": 12,
+     "on": 6.33,
+     "off": 6.47,
+     "m": 61,
+     "answered": 60,
+     "beat": 6.75,
+     "duet": [
+      54,
+      56
+     ],
+     "harsh_samples": 0,
+     "samples": 15,
+     "action": "switch"
+    },
+    {
+     "k": 13,
+     "on": 6.47,
+     "off": 6.74,
+     "m": 63,
+     "answered": 59,
+     "beat": 7.123,
+     "duet": [
+      54,
+      56
+     ],
+     "harsh_samples": 0,
+     "samples": 26,
+     "action": "switch"
+    },
+    {
+     "k": 14,
+     "on": 6.74,
+     "off": 7.5,
+     "m": 64,
+     "answered": 64,
+     "beat": 7.75,
+     "duet": [
+      56,
+      57
+     ],
+     "harsh_samples": 0,
+     "samples": 76,
+     "action": "keep"
+    },
+    {
+     "k": 15,
+     "on": 7.55,
+     "off": 7.83,
+     "m": 62,
+     "answered": 62,
+     "beat": 9.25,
+     "duet": [
+      54,
+      57
+     ],
+     "harsh_samples": 0,
+     "samples": 27,
+     "action": "switch"
+    },
+    {
+     "k": 16,
+     "on": 7.83,
+     "off": 8.0,
+     "m": 61,
+     "answered": 61,
+     "beat": 9.898,
+     "duet": [
+      54,
+      57
+     ],
+     "harsh_samples": 0,
+     "samples": 17,
+     "action": "switch"
+    },
+    {
+     "k": 17,
+     "on": 8.05,
+     "off": 8.34,
+     "m": 59,
+     "answered": 58,
+     "beat": 10.25,
+     "duet": [
+      54,
+      57
+     ],
+     "harsh_samples": 5,
+     "samples": 28,
+     "action": "switch"
+    },
+    {
+     "k": 18,
+     "on": 8.34,
+     "off": 8.4,
+     "m": 58,
+     "answered": 58,
+     "beat": 11.0,
+     "duet": [
+      54
+     ],
+     "harsh_samples": 0,
+     "samples": 6,
+     "action": "switch"
+    },
+    {
+     "k": 19,
+     "on": 8.4,
+     "off": 8.64,
+     "m": 59,
+     "answered": 59,
+     "beat": 11.0,
+     "duet": [
+      49,
+      52,
+      54
+     ],
+     "harsh_samples": 6,
+     "samples": 24,
+     "action": "switch"
+    },
+    {
+     "k": 20,
+     "on": 9.07,
+     "off": 9.33,
+     "m": 59,
+     "answered": 59,
+     "beat": 12.5,
+     "duet": [
+      -1,
+      52
+     ],
+     "harsh_samples": 0,
+     "samples": 26,
+     "action": "reenter"
+    },
+    {
+     "k": 21,
+     "on": 9.35,
+     "off": 9.46,
+     "m": 61,
+     "answered": 61,
+     "beat": 13.0,
+     "duet": [
+      52,
+      57
+     ],
+     "harsh_samples": 0,
+     "samples": 12,
+     "action": "switch"
+    },
+    {
+     "k": 22,
+     "on": 9.53,
+     "off": 9.6,
+     "m": 63,
+     "answered": 63,
+     "beat": 13.367,
+     "duet": [
+      54,
+      57
+     ],
+     "harsh_samples": 5,
+     "samples": 6,
+     "action": "switch"
+    },
+    {
+     "k": 23,
+     "on": 9.6,
+     "off": 9.8,
+     "m": 62,
+     "answered": 62,
+     "beat": 13.5,
+     "duet": [
+      54
+     ],
+     "harsh_samples": 0,
+     "samples": 21,
+     "action": "keep"
+    },
+    {
+     "k": 24,
+     "on": 10.05,
+     "off": 10.46,
+     "m": 62,
+     "answered": 62,
+     "beat": 14.5,
+     "duet": [
+      54
+     ],
+     "harsh_samples": 0,
+     "samples": 41,
+     "action": "keep"
+    },
+    {
+     "k": 25,
+     "on": 10.46,
+     "off": 10.75,
+     "m": 61,
+     "answered": 60,
+     "beat": 15.25,
+     "duet": [
+      54,
+      57
+     ],
+     "harsh_samples": 0,
+     "samples": 28,
+     "action": "switch"
+    },
+    {
+     "k": 26,
+     "on": 10.87,
+     "off": 11.02,
+     "m": 59,
+     "answered": 59,
+     "beat": 16.102,
+     "duet": [
+      52,
+      57
+     ],
+     "harsh_samples": 5,
+     "samples": 14,
+     "action": "switch"
+    },
+    {
+     "k": 27,
+     "on": 11.02,
+     "off": 11.43,
+     "m": 61,
+     "answered": 61,
+     "beat": 16.5,
+     "duet": [
+      52
+     ],
+     "harsh_samples": 0,
+     "samples": 41,
+     "action": "keep"
+    },
+    {
+     "k": 28,
+     "on": 11.43,
+     "off": 11.98,
+     "m": 57,
+     "answered": 60,
+     "beat": 17.25,
+     "duet": [
+      52
+     ],
+     "harsh_samples": 0,
+     "samples": 55,
+     "action": "keep"
+    },
+    {
+     "k": 29,
+     "on": 11.98,
+     "off": 12.04,
+     "m": 58,
+     "answered": 58,
+     "beat": 18.367,
+     "duet": [
+      52,
+      54
+     ],
+     "harsh_samples": 6,
+     "samples": 7,
+     "action": "switch"
+    },
+    {
+     "k": 30,
+     "on": 12.04,
+     "off": 12.25,
+     "m": 57,
+     "answered": 57,
+     "beat": 18.5,
+     "duet": [
+      49,
+      54
+     ],
+     "harsh_samples": 0,
+     "samples": 20,
+     "action": "switch"
+    },
+    {
+     "k": 31,
+     "on": 12.32,
+     "off": 12.41,
+     "m": 61,
+     "answered": 62,
+     "beat": 19.0,
+     "duet": [
+      49,
+      54
+     ],
+     "harsh_samples": 0,
+     "samples": 9,
+     "action": "switch"
+    },
+    {
+     "k": 32,
+     "on": 12.6,
+     "off": 12.95,
+     "m": 59,
+     "answered": 59,
+     "beat": 19.633,
+     "duet": [
+      52,
+      57
+     ],
+     "harsh_samples": 9,
+     "samples": 36,
+     "action": "switch"
+    },
+    {
+     "k": 33,
+     "on": 12.95,
+     "off": 13.16,
+     "m": 51,
+     "answered": 56,
+     "beat": 20.25,
+     "duet": [
+      52
+     ],
+     "harsh_samples": 20,
+     "samples": 20,
+     "action": "keep"
+    },
+    {
+     "k": 34,
+     "on": 13.16,
+     "off": 13.29,
+     "m": 52,
+     "answered": 52,
+     "beat": 20.75,
+     "duet": [
+      49,
+      52
+     ],
+     "harsh_samples": 0,
+     "samples": 14,
+     "action": "switch"
+    },
+    {
+     "k": 35,
+     "on": 13.29,
+     "off": 13.4,
+     "m": 51,
+     "answered": 51,
+     "beat": 21.0,
+     "duet": [
+      49,
+      59
+     ],
+     "harsh_samples": 8,
+     "samples": 10,
+     "action": "switch"
+    },
+    {
+     "k": 36,
+     "on": 13.51,
+     "off": 13.59,
+     "m": 53,
+     "answered": 53,
+     "beat": 21.5,
+     "duet": [
+      57,
+      59
+     ],
+     "harsh_samples": 6,
+     "samples": 8,
+     "action": "switch"
+    },
+    {
+     "k": 37,
+     "on": 13.59,
+     "off": 13.7,
+     "m": 55,
+     "answered": 55,
+     "beat": 21.75,
+     "duet": [
+      57,
+      59
+     ],
+     "harsh_samples": 9,
+     "samples": 12,
+     "action": "switch"
+    },
+    {
+     "k": 38,
+     "on": 13.7,
+     "off": 13.83,
+     "m": 56,
+     "answered": 56,
+     "beat": 21.878,
+     "duet": [
+      52,
+      59
+     ],
+     "harsh_samples": 0,
+     "samples": 12,
+     "action": "switch"
+    },
+    {
+     "k": 39,
+     "on": 13.83,
+     "off": 13.96,
+     "m": 59,
+     "answered": 58,
+     "beat": 22.143,
+     "duet": [
+      49,
+      52
+     ],
+     "harsh_samples": 8,
+     "samples": 14,
+     "action": "switch"
+    },
+    {
+     "k": 40,
+     "on": 14.02,
+     "off": 14.38,
+     "m": 57,
+     "answered": 57,
+     "beat": 22.5,
+     "duet": [
+      49
+     ],
+     "harsh_samples": 0,
+     "samples": 37,
+     "action": "keep"
+    },
+    {
+     "k": 41,
+     "on": 14.38,
+     "off": 14.44,
+     "m": 58,
+     "answered": 58,
+     "beat": 23.25,
+     "duet": [
+      49
+     ],
+     "harsh_samples": 0,
+     "samples": 6,
+     "action": "keep"
+    },
+    {
+     "k": 42,
+     "on": 14.44,
+     "off": 14.71,
+     "m": 57,
+     "answered": 57,
+     "beat": 23.388,
+     "duet": [
+      49
+     ],
+     "harsh_samples": 0,
+     "samples": 27,
+     "action": "keep"
+    }
+   ],
+   "attacks": [
+    {
+     "t": 3.12,
+     "duet": 49,
+     "her": 57,
+     "iv": 8,
+     "fresh": false,
+     "src": "hear q=None i=1 switch"
+    },
+    {
+     "t": 3.95,
+     "duet": 52,
+     "her": 51,
+     "iv": 1,
+     "fresh": true,
+     "src": "hear q=None i=6 switch"
+    },
+    {
+     "t": 4.1,
+     "duet": 57,
+     "her": 52,
+     "iv": 5,
+     "fresh": false,
+     "src": "hear q=None i=7 switch"
+    },
+    {
+     "t": 4.57,
+     "duet": 56,
+     "her": 61,
+     "iv": 5,
+     "fresh": false,
+     "src": "hear q=None i=8 switch"
+    },
+    {
+     "t": 5.02,
+     "duet": 54,
+     "her": 61,
+     "iv": 7,
+     "fresh": false,
+     "src": "hear q=None i=9 switch"
+    },
+    {
+     "t": 5.47,
+     "duet": 56,
+     "her": 57,
+     "iv": 1,
+     "fresh": true,
+     "src": "hear q=None i=11 switch"
+    },
+    {
+     "t": 6.37,
+     "duet": 54,
+     "her": 61,
+     "iv": 7,
+     "fresh": false,
+     "src": "hear q=None i=12 switch"
+    },
+    {
+     "t": 6.51,
+     "duet": 56,
+     "her": 63,
+     "iv": 7,
+     "fresh": false,
+     "src": "hear q=None i=13 switch"
+    },
+    {
+     "t": 6.875,
+     "duet": 57,
+     "her": 64,
+     "iv": 7,
+     "fresh": false,
+     "src": "plan q=8.0 i=None switch"
+    },
+    {
+     "t": 7.59,
+     "duet": 54,
+     "her": 62,
+     "iv": 8,
+     "fresh": false,
+     "src": "hear q=None i=15 switch"
+    },
+    {
+     "t": 7.9,
+     "duet": 57,
+     "her": 61,
+     "iv": 4,
+     "fresh": false,
+     "src": "hear q=None i=16 switch"
+    },
+    {
+     "t": 8.09,
+     "duet": 54,
+     "her": 59,
+     "iv": 5,
+     "fresh": false,
+     "src": "hear q=None i=17 switch"
+    },
+    {
+     "t": 8.41,
+     "duet": 49,
+     "her": 59,
+     "iv": 10,
+     "fresh": true,
+     "src": "hear q=None i=18 switch"
+    },
+    {
+     "t": 8.47,
+     "duet": 52,
+     "her": 59,
+     "iv": 7,
+     "fresh": false,
+     "src": "hear q=None i=19 switch"
+    },
+    {
+     "t": 9.11,
+     "duet": 52,
+     "her": 59,
+     "iv": 7,
+     "fresh": false,
+     "src": "hear q=None i=20 reenter"
+    },
+    {
+     "t": 9.39,
+     "duet": 57,
+     "her": 61,
+     "iv": 4,
+     "fresh": false,
+     "src": "hear q=None i=21 switch"
+    },
+    {
+     "t": 9.57,
+     "duet": 54,
+     "her": 62,
+     "iv": 8,
+     "fresh": false,
+     "src": "hear q=None i=22 switch"
+    },
+    {
+     "t": 10.5,
+     "duet": 57,
+     "her": 61,
+     "iv": 4,
+     "fresh": false,
+     "src": "hear q=None i=25 switch"
+    },
+    {
+     "t": 10.91,
+     "duet": 52,
+     "her": 59,
+     "iv": 7,
+     "fresh": false,
+     "src": "hear q=None i=26 switch"
+    },
+    {
+     "t": 12.02,
+     "duet": 54,
+     "her": 57,
+     "iv": 3,
+     "fresh": false,
+     "src": "hear q=None i=29 switch"
+    },
+    {
+     "t": 12.11,
+     "duet": 49,
+     "her": 57,
+     "iv": 8,
+     "fresh": false,
+     "src": "hear q=None i=30 switch"
+    },
+    {
+     "t": 12.36,
+     "duet": 54,
+     "her": 61,
+     "iv": 7,
+     "fresh": false,
+     "src": "hear q=None i=31 switch"
+    },
+    {
+     "t": 12.58,
+     "duet": 57,
+     "her": 59,
+     "iv": 2,
+     "fresh": true,
+     "src": "hear q=None i=32 switch"
+    },
+    {
+     "t": 12.67,
+     "duet": 52,
+     "her": 59,
+     "iv": 7,
+     "fresh": false,
+     "src": "hear q=None i=33 switch"
+    },
+    {
+     "t": 13.23,
+     "duet": 49,
+     "her": 51,
+     "iv": 2,
+     "fresh": true,
+     "src": "hear q=None i=35 switch"
+    },
+    {
+     "t": 13.36,
+     "duet": 59,
+     "her": 51,
+     "iv": 8,
+     "fresh": false,
+     "src": "hear q=None i=36 switch"
+    },
+    {
+     "t": 13.55,
+     "duet": 57,
+     "her": 55,
+     "iv": 2,
+     "fresh": true,
+     "src": "hear q=None i=37 switch"
+    },
+    {
+     "t": 13.66,
+     "duet": 59,
+     "her": 56,
+     "iv": 3,
+     "fresh": false,
+     "src": "hear q=None i=38 switch"
+    },
+    {
+     "t": 13.77,
+     "duet": 52,
+     "her": 59,
+     "iv": 7,
+     "fresh": false,
+     "src": "hear q=None i=39 switch"
+    },
+    {
+     "t": 13.87,
+     "duet": 49,
+     "her": 59,
+     "iv": 10,
+     "fresh": true,
+     "src": "hear q=None i=40 switch"
+    }
+   ],
+   "decision_counts": {
+    "hear_enter": 1,
+    "hear_keep": 14,
+    "hear_reenter": 1,
+    "hear_switch": 28,
+    "plan_idle": 4,
+    "plan_keep": 47,
+    "plan_switch": 1,
+    "stop_she_stopped": 2
+   },
+   "adapter": [
+    {
+     "s": [
+      [
+       1,
+       12
+      ]
+     ],
+     "resync": 0
+    }
+   ],
+   "name": "D_hm_fold"
+  }
+ ]
+}

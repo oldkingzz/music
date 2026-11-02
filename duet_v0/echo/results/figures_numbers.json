@@ -1,0 +1,57 @@
+{
+ "echo_path": {
+  "drr_db": 2.6507021220376052,
+  "distance_m": 0.686,
+  "critical_distance_m": 0.9308061022576077,
+  "delay_ms": 22.0
+ },
+ "why_it_fails": {
+  "bleed_db": -6,
+  "frames_both_voiced": 322,
+  "frames_wrong_pitch_no_guard": 66,
+  "frames_wrong_pitch_below_her_by_12plus": 66,
+  "frames_wrong_pitch_with_mask": 1,
+  "frames_both_voiced_with_mask": 322,
+  "no_guard": {
+   "played": 3,
+   "missed": 22,
+   "held": 1,
+   "resets": 2,
+   "tracking_within100ms": 0.9711744863538792,
+   "median_abs_ms": 8.145153063516375
+  },
+  "mask": {
+   "played": 26,
+   "missed": 0,
+   "held": 0,
+   "resets": 0,
+   "tracking_within100ms": 0.9966288691388293,
+   "median_abs_ms": 11.224124609894304
+  },
+  "mask_stats": {
+   "mask_active_frames": 2402,
+   "masked": 517,
+   "reestimated": 487,
+   "unvoiced": 30,
+   "recovered": 14,
+   "mask_delay_samples": 528
+  }
+ },
+ "aec_erle": {
+  "cold start, she sings throughout": {
+   "median_erle_db": 2.4013162683021956,
+   "p10_erle_db": -4.678679677815999
+  },
+  "2 s sound check, she sings throughout": {
+   "median_erle_db": 26.235991083267052,
+   "p10_erle_db": 24.647473722485223
+  },
+  "sound check, then the echo path changes": {
+   "median_erle_db": 15.429953469513709,
+   "p10_erle_db": 4.09594995765721,
+   "median_before_change_db": 26.24794706313164,
+   "median_after_change_db": 13.95787444867596
+  },
+  "soundcheck_erle_db": 28.7465343287641
+ }
+}

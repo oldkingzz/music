@@ -1,0 +1,1192 @@
+{
+ "what": "C1 offline test of latcal_v1.estimate on latcal_v1.make_test recordings (synthetic, never played)",
+ "written": "2026-11-02 05:23:42",
+ "tolerance_ms": 15.0,
+ "code": {
+  "latcal_v1.py": "0482fc8043b2d00312f0bbfc8b326f685e73725bb3446017039b3acc710f0a4e",
+  "latcal_selftest_v1.py": "b0785677fb014950abae4b2900dba5817ea9b3cd2ea30bc7d2b0b7ad46b58351"
+ },
+ "schedule": {
+  "sr": 24000,
+  "bpm": 100.0,
+  "count_in": [
+   12000,
+   26400,
+   40800,
+   55200
+  ],
+  "clicks": [
+   69600,
+   84000,
+   98400,
+   112800,
+   127200,
+   141600,
+   156000,
+   170400
+  ],
+  "n_total": 201600
+ },
+ "summary": {
+  "c1_pass": true,
+  "required_cases": 20,
+  "required_fail": 0,
+  "refuse_cases": 3,
+  "refuse_fail": 0,
+  "err_ms_by_case": {
+   "main rt20 s0": 8.4,
+   "main rt20 s1": 4.5,
+   "main rt20 s2": -7.3,
+   "main rt60 s0": 4.1,
+   "main rt60 s1": -9.3,
+   "main rt60 s2": -0.5,
+   "main rt160 s0": 3.8,
+   "main rt160 s1": 3.2,
+   "main rt160 s2": 7.9,
+   "main rt330 s0": 2.9,
+   "main rt330 s1": -7.7,
+   "main rt330 s2": -1.4,
+   "missing rt20 s0": 0.6,
+   "low rt20 s0": -8.7,
+   "missing rt60 s0": -0.4,
+   "low rt60 s0": -6.3,
+   "missing rt160 s0": -3.7,
+   "low rt160 s0": -2.1,
+   "missing rt330 s0": 6.9,
+   "low rt330 s0": 0.7
+  },
+  "max_abs_err_ms": 9.3,
+  "mean_err_ms": -0.22,
+  "detector_err_ms_mean": 0.12,
+  "detector_err_ms_max_abs": 0.3,
+  "max_response_err_ms": 0.6,
+  "refuse_why": [
+   "没听到你唱：看电平条有没有动，跟着高的嘀声每下唱一个短“哒”，再测一次。",
+   "没听到你唱：看电平条有没有动，跟着高的嘀声每下唱一个短“哒”，再测一次。",
+   "没听到你唱：看电平条有没有动，跟着高的嘀声每下唱一个短“哒”，再测一次。"
+  ],
+  "extra": {
+   "low_missing rt20": {
+    "ok": true,
+    "err_ms": -7.3,
+    "n_used": 7
+   },
+   "early rt20": {
+    "ok": true,
+    "err_ms": -1.2,
+    "n_used": 7
+   },
+   "low_missing rt60": {
+    "ok": true,
+    "err_ms": -5.3,
+    "n_used": 7
+   },
+   "early rt60": {
+    "ok": true,
+    "err_ms": 8.5,
+    "n_used": 7
+   },
+   "low_missing rt160": {
+    "ok": true,
+    "err_ms": 0.7,
+    "n_used": 7
+   },
+   "early rt160": {
+    "ok": true,
+    "err_ms": -6.8,
+    "n_used": 8
+   },
+   "low_missing rt330": {
+    "ok": true,
+    "err_ms": -5.1,
+    "n_used": 7
+   },
+   "early rt330": {
+    "ok": true,
+    "err_ms": -14.5,
+    "n_used": 7
+   }
+  },
+  "extra_all_ok_within_15ms": true
+ },
+ "cases": [
+  {
+   "group": "main",
+   "rt_true_ms": 20,
+   "seed": 0,
+   "opts": {},
+   "ok": true,
+   "why": "",
+   "rt_ms": 28.4,
+   "n_used": 8,
+   "spread_ms": 14.1,
+   "n_onsets": 8,
+   "floor_db": -71.2,
+   "rejected": {
+    "unvoiced": 5
+   },
+   "level_dbfs": -26.2,
+   "offsets_ms": [
+    -0.8,
+    26.0,
+    44.4,
+    55.1,
+    31.2,
+    16.1,
+    8.2,
+    30.9
+   ],
+   "secs": 0.807,
+   "err_ms": 8.4,
+   "true_median_used_ms": 28.3,
+   "detector_err_ms": 0.1,
+   "max_response_err_ms": 0.2,
+   "her_jitter_median_err_ms": 8.3,
+   "within_15ms": true
+  },
+  {
+   "group": "main",
+   "rt_true_ms": 20,
+   "seed": 1,
+   "opts": {},
+   "ok": true,
+   "why": "",
+   "rt_ms": 24.5,
+   "n_used": 8,
+   "spread_ms": 14.7,
+   "n_onsets": 8,
+   "floor_db": -79.2,
+   "rejected": {
+    "unvoiced": 4
+   },
+   "level_dbfs": -34.6,
+   "offsets_ms": [
+    10.9,
+    51.5,
+    51.8,
+    39.7,
+    19.7,
+    8.5,
+    29.3,
+    10.2
+   ],
+   "secs": 0.009,
+   "err_ms": 4.5,
+   "true_median_used_ms": 24.4,
+   "detector_err_ms": 0.1,
+   "max_response_err_ms": 0.1,
+   "her_jitter_median_err_ms": 4.4,
+   "within_15ms": true
+  },
+  {
+   "group": "main",
+   "rt_true_ms": 20,
+   "seed": 2,
+   "opts": {},
+   "ok": true,
+   "why": "",
+   "rt_ms": 12.7,
+   "n_used": 8,
+   "spread_ms": 11.8,
+   "n_onsets": 8,
+   "floor_db": -72.6,
+   "rejected": {
+    "unvoiced": 7
+   },
+   "level_dbfs": -28.3,
+   "offsets_ms": [
+    14.4,
+    -9.1,
+    23.6,
+    8.8,
+    11.0,
+    25.3,
+    -2.8,
+    40.5
+   ],
+   "secs": 0.01,
+   "err_ms": -7.3,
+   "true_median_used_ms": 12.5,
+   "detector_err_ms": 0.2,
+   "max_response_err_ms": 0.4,
+   "her_jitter_median_err_ms": -7.5,
+   "within_15ms": true
+  },
+  {
+   "group": "main",
+   "rt_true_ms": 60,
+   "seed": 0,
+   "opts": {},
+   "ok": true,
+   "why": "",
+   "rt_ms": 64.1,
+   "n_used": 8,
+   "spread_ms": 12.0,
+   "n_onsets": 8,
+   "floor_db": -76.2,
+   "rejected": {
+    "unvoiced": 4
+   },
+   "level_dbfs": -31.8,
+   "offsets_ms": [
+    79.9,
+    44.2,
+    77.9,
+    73.2,
+    55.8,
+    53.8,
+    13.6,
+    72.4
+   ],
+   "secs": 0.009,
+   "err_ms": 4.1,
+   "true_median_used_ms": 63.9,
+   "detector_err_ms": 0.2,
+   "max_response_err_ms": 0.4,
+   "her_jitter_median_err_ms": 3.9,
+   "within_15ms": true
+  },
+  {
+   "group": "main",
+   "rt_true_ms": 60,
+   "seed": 1,
+   "opts": {},
+   "ok": true,
+   "why": "",
+   "rt_ms": 50.7,
+   "n_used": 8,
+   "spread_ms": 10.7,
+   "n_onsets": 8,
+   "floor_db": -78.8,
+   "rejected": {
+    "unvoiced": 5
+   },
+   "level_dbfs": -33.8,
+   "offsets_ms": [
+    48.4,
+    37.6,
+    44.6,
+    32.3,
+    59.1,
+    77.4,
+    53.0,
+    82.0
+   ],
+   "secs": 0.009,
+   "err_ms": -9.3,
+   "true_median_used_ms": 50.6,
+   "detector_err_ms": 0.1,
+   "max_response_err_ms": 0.2,
+   "her_jitter_median_err_ms": -9.4,
+   "within_15ms": true
+  },
+  {
+   "group": "main",
+   "rt_true_ms": 60,
+   "seed": 2,
+   "opts": {},
+   "ok": true,
+   "why": "",
+   "rt_ms": 59.5,
+   "n_used": 8,
+   "spread_ms": 7.3,
+   "n_onsets": 8,
+   "floor_db": -77.8,
+   "rejected": {
+    "unvoiced": 3
+   },
+   "level_dbfs": -32.2,
+   "offsets_ms": [
+    58.7,
+    60.4,
+    87.5,
+    69.7,
+    74.6,
+    55.2,
+    40.3,
+    57.9
+   ],
+   "secs": 0.009,
+   "err_ms": -0.5,
+   "true_median_used_ms": 59.2,
+   "detector_err_ms": 0.3,
+   "max_response_err_ms": 0.6,
+   "her_jitter_median_err_ms": -0.8,
+   "within_15ms": true
+  },
+  {
+   "group": "main",
+   "rt_true_ms": 160,
+   "seed": 0,
+   "opts": {},
+   "ok": true,
+   "why": "",
+   "rt_ms": 163.8,
+   "n_used": 8,
+   "spread_ms": 5.7,
+   "n_onsets": 8,
+   "floor_db": -71.6,
+   "rejected": {
+    "unvoiced": 5
+   },
+   "level_dbfs": -27.2,
+   "offsets_ms": [
+    168.8,
+    156.0,
+    165.2,
+    170.2,
+    144.5,
+    167.5,
+    162.4,
+    153.2
+   ],
+   "secs": 0.009,
+   "err_ms": 3.8,
+   "true_median_used_ms": 163.7,
+   "detector_err_ms": 0.1,
+   "max_response_err_ms": 0.5,
+   "her_jitter_median_err_ms": 3.7,
+   "within_15ms": true
+  },
+  {
+   "group": "main",
+   "rt_true_ms": 160,
+   "seed": 1,
+   "opts": {},
+   "ok": true,
+   "why": "",
+   "rt_ms": 163.2,
+   "n_used": 8,
+   "spread_ms": 7.6,
+   "n_onsets": 8,
+   "floor_db": -72.1,
+   "rejected": {
+    "unvoiced": 4
+   },
+   "level_dbfs": -27.0,
+   "offsets_ms": [
+    181.8,
+    163.1,
+    163.2,
+    159.4,
+    195.2,
+    154.5,
+    142.4,
+    169.7
+   ],
+   "secs": 0.009,
+   "err_ms": 3.2,
+   "true_median_used_ms": 163.0,
+   "detector_err_ms": 0.2,
+   "max_response_err_ms": 0.2,
+   "her_jitter_median_err_ms": 3.0,
+   "within_15ms": true
+  },
+  {
+   "group": "main",
+   "rt_true_ms": 160,
+   "seed": 2,
+   "opts": {},
+   "ok": true,
+   "why": "",
+   "rt_ms": 167.9,
+   "n_used": 8,
+   "spread_ms": 12.4,
+   "n_onsets": 8,
+   "floor_db": -79.4,
+   "rejected": {
+    "unvoiced": 7
+   },
+   "level_dbfs": -35.0,
+   "offsets_ms": [
+    175.0,
+    154.5,
+    162.0,
+    173.8,
+    151.5,
+    192.6,
+    118.5,
+    179.4
+   ],
+   "secs": 0.009,
+   "err_ms": 7.9,
+   "true_median_used_ms": 167.8,
+   "detector_err_ms": 0.1,
+   "max_response_err_ms": 0.2,
+   "her_jitter_median_err_ms": 7.8,
+   "within_15ms": true
+  },
+  {
+   "group": "main",
+   "rt_true_ms": 330,
+   "seed": 0,
+   "opts": {},
+   "ok": true,
+   "why": "",
+   "rt_ms": 332.9,
+   "n_used": 8,
+   "spread_ms": 9.4,
+   "n_onsets": 8,
+   "floor_db": -80.5,
+   "rejected": {
+    "unvoiced": 4
+   },
+   "level_dbfs": -35.4,
+   "offsets_ms": [
+    337.9,
+    319.1,
+    316.0,
+    345.0,
+    332.3,
+    339.5,
+    307.8,
+    333.5
+   ],
+   "secs": 0.009,
+   "err_ms": 2.9,
+   "true_median_used_ms": 332.7,
+   "detector_err_ms": 0.2,
+   "max_response_err_ms": 0.3,
+   "her_jitter_median_err_ms": 2.7,
+   "within_15ms": true
+  },
+  {
+   "group": "main",
+   "rt_true_ms": 330,
+   "seed": 1,
+   "opts": {},
+   "ok": true,
+   "why": "",
+   "rt_ms": 322.3,
+   "n_used": 8,
+   "spread_ms": 4.4,
+   "n_onsets": 8,
+   "floor_db": -80.8,
+   "rejected": {
+    "unvoiced": 7
+   },
+   "level_dbfs": -35.9,
+   "offsets_ms": [
+    352.1,
+    307.6,
+    325.0,
+    322.4,
+    307.5,
+    322.2,
+    328.3,
+    322.2
+   ],
+   "secs": 0.01,
+   "err_ms": -7.7,
+   "true_median_used_ms": 322.1,
+   "detector_err_ms": 0.2,
+   "max_response_err_ms": 0.4,
+   "her_jitter_median_err_ms": -7.9,
+   "within_15ms": true
+  },
+  {
+   "group": "main",
+   "rt_true_ms": 330,
+   "seed": 2,
+   "opts": {},
+   "ok": true,
+   "why": "",
+   "rt_ms": 328.6,
+   "n_used": 8,
+   "spread_ms": 5.9,
+   "n_onsets": 8,
+   "floor_db": -78.0,
+   "rejected": {
+    "unvoiced": 5
+   },
+   "level_dbfs": -33.2,
+   "offsets_ms": [
+    328.3,
+    328.9,
+    343.9,
+    325.0,
+    297.2,
+    320.3,
+    348.6,
+    330.0
+   ],
+   "secs": 0.009,
+   "err_ms": -1.4,
+   "true_median_used_ms": 328.3,
+   "detector_err_ms": 0.3,
+   "max_response_err_ms": 0.3,
+   "her_jitter_median_err_ms": -1.7,
+   "within_15ms": true
+  },
+  {
+   "group": "missing",
+   "rt_true_ms": 20,
+   "seed": 0,
+   "opts": {
+    "missing": 2
+   },
+   "ok": true,
+   "why": "",
+   "rt_ms": 20.6,
+   "n_used": 7,
+   "spread_ms": 7.5,
+   "n_onsets": 7,
+   "floor_db": -71.7,
+   "rejected": {
+    "unvoiced": 4
+   },
+   "level_dbfs": -27.4,
+   "offsets_ms": [
+    37.2,
+    16.5,
+    null,
+    40.8,
+    13.1,
+    41.6,
+    16.2,
+    20.6
+   ],
+   "secs": 0.009,
+   "err_ms": 0.6,
+   "true_median_used_ms": 20.6,
+   "detector_err_ms": 0.0,
+   "max_response_err_ms": 0.3,
+   "her_jitter_median_err_ms": 0.6,
+   "within_15ms": true
+  },
+  {
+   "group": "low",
+   "rt_true_ms": 20,
+   "seed": 0,
+   "opts": {
+    "low": true
+   },
+   "ok": true,
+   "why": "",
+   "rt_ms": 11.3,
+   "n_used": 8,
+   "spread_ms": 3.4,
+   "n_onsets": 9,
+   "floor_db": -75.1,
+   "rejected": {
+    "unvoiced": 4
+   },
+   "level_dbfs": -30.9,
+   "offsets_ms": [
+    11.8,
+    27.0,
+    25.2,
+    9.4,
+    14.4,
+    7.6,
+    10.9,
+    2.4
+   ],
+   "secs": 0.009,
+   "err_ms": -8.7,
+   "true_median_used_ms": 11.3,
+   "detector_err_ms": 0.0,
+   "max_response_err_ms": 0.1,
+   "her_jitter_median_err_ms": -8.7,
+   "within_15ms": true
+  },
+  {
+   "group": "missing",
+   "rt_true_ms": 60,
+   "seed": 0,
+   "opts": {
+    "missing": 2
+   },
+   "ok": true,
+   "why": "",
+   "rt_ms": 59.6,
+   "n_used": 7,
+   "spread_ms": 5.6,
+   "n_onsets": 7,
+   "floor_db": -71.4,
+   "rejected": {
+    "unvoiced": 2
+   },
+   "level_dbfs": -26.6,
+   "offsets_ms": [
+    59.6,
+    27.2,
+    null,
+    71.3,
+    54.0,
+    62.8,
+    55.1,
+    84.5
+   ],
+   "secs": 0.009,
+   "err_ms": -0.4,
+   "true_median_used_ms": 59.6,
+   "detector_err_ms": 0.0,
+   "max_response_err_ms": 0.1,
+   "her_jitter_median_err_ms": -0.4,
+   "within_15ms": true
+  },
+  {
+   "group": "low",
+   "rt_true_ms": 60,
+   "seed": 0,
+   "opts": {
+    "low": true
+   },
+   "ok": true,
+   "why": "",
+   "rt_ms": 53.7,
+   "n_used": 8,
+   "spread_ms": 14.3,
+   "n_onsets": 8,
+   "floor_db": -75.7,
+   "rejected": {
+    "unvoiced": 3
+   },
+   "level_dbfs": -31.0,
+   "offsets_ms": [
+    77.5,
+    36.4,
+    65.9,
+    42.2,
+    47.8,
+    37.2,
+    59.7,
+    83.8
+   ],
+   "secs": 0.009,
+   "err_ms": -6.3,
+   "true_median_used_ms": 53.7,
+   "detector_err_ms": 0.0,
+   "max_response_err_ms": 0.1,
+   "her_jitter_median_err_ms": -6.3,
+   "within_15ms": true
+  },
+  {
+   "group": "missing",
+   "rt_true_ms": 160,
+   "seed": 0,
+   "opts": {
+    "missing": 2
+   },
+   "ok": true,
+   "why": "",
+   "rt_ms": 156.3,
+   "n_used": 7,
+   "spread_ms": 8.1,
+   "n_onsets": 7,
+   "floor_db": -73.9,
+   "rejected": {
+    "unvoiced": 3
+   },
+   "level_dbfs": -28.5,
+   "offsets_ms": [
+    171.4,
+    167.1,
+    null,
+    151.0,
+    148.2,
+    161.2,
+    147.4,
+    156.3
+   ],
+   "secs": 0.009,
+   "err_ms": -3.7,
+   "true_median_used_ms": 156.2,
+   "detector_err_ms": 0.1,
+   "max_response_err_ms": 0.3,
+   "her_jitter_median_err_ms": -3.8,
+   "within_15ms": true
+  },
+  {
+   "group": "low",
+   "rt_true_ms": 160,
+   "seed": 0,
+   "opts": {
+    "low": true
+   },
+   "ok": true,
+   "why": "",
+   "rt_ms": 157.9,
+   "n_used": 8,
+   "spread_ms": 8.6,
+   "n_onsets": 8,
+   "floor_db": -70.0,
+   "rejected": {
+    "unvoiced": 4
+   },
+   "level_dbfs": -25.3,
+   "offsets_ms": [
+    156.0,
+    202.8,
+    159.2,
+    139.9,
+    170.2,
+    163.5,
+    146.4,
+    156.5
+   ],
+   "secs": 0.009,
+   "err_ms": -2.1,
+   "true_median_used_ms": 157.8,
+   "detector_err_ms": 0.1,
+   "max_response_err_ms": 0.1,
+   "her_jitter_median_err_ms": -2.2,
+   "within_15ms": true
+  },
+  {
+   "group": "missing",
+   "rt_true_ms": 330,
+   "seed": 0,
+   "opts": {
+    "missing": 2
+   },
+   "ok": true,
+   "why": "",
+   "rt_ms": 336.9,
+   "n_used": 7,
+   "spread_ms": 12.2,
+   "n_onsets": 7,
+   "floor_db": -77.7,
+   "rejected": {
+    "unvoiced": 4
+   },
+   "level_dbfs": -32.8,
+   "offsets_ms": [
+    307.5,
+    312.5,
+    null,
+    336.9,
+    337.3,
+    324.8,
+    362.7,
+    348.4
+   ],
+   "secs": 0.009,
+   "err_ms": 6.9,
+   "true_median_used_ms": 336.8,
+   "detector_err_ms": 0.1,
+   "max_response_err_ms": 0.4,
+   "her_jitter_median_err_ms": 6.8,
+   "within_15ms": true
+  },
+  {
+   "group": "low",
+   "rt_true_ms": 330,
+   "seed": 0,
+   "opts": {
+    "low": true
+   },
+   "ok": true,
+   "why": "",
+   "rt_ms": 330.7,
+   "n_used": 8,
+   "spread_ms": 7.6,
+   "n_onsets": 8,
+   "floor_db": -74.7,
+   "rejected": {
+    "unvoiced": 4
+   },
+   "level_dbfs": -30.1,
+   "offsets_ms": [
+    328.8,
+    337.3,
+    322.2,
+    332.6,
+    346.4,
+    328.6,
+    316.3,
+    339.4
+   ],
+   "secs": 0.009,
+   "err_ms": 0.7,
+   "true_median_used_ms": 330.7,
+   "detector_err_ms": 0.0,
+   "max_response_err_ms": 0.1,
+   "her_jitter_median_err_ms": 0.7,
+   "within_15ms": true
+  },
+  {
+   "group": "refuse",
+   "rt_true_ms": 160,
+   "seed": 0,
+   "opts": {
+    "silent": true
+   },
+   "ok": false,
+   "why": "没听到你唱：看电平条有没有动，跟着高的嘀声每下唱一个短“哒”，再测一次。",
+   "rt_ms": null,
+   "n_used": 0,
+   "spread_ms": null,
+   "n_onsets": 0,
+   "floor_db": -120.0,
+   "rejected": {},
+   "level_dbfs": null,
+   "offsets_ms": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "secs": 0.005
+  },
+  {
+   "group": "refuse",
+   "rt_true_ms": 160,
+   "seed": 0,
+   "opts": {
+    "respond": false
+   },
+   "ok": false,
+   "why": "没听到你唱：看电平条有没有动，跟着高的嘀声每下唱一个短“哒”，再测一次。",
+   "rt_ms": null,
+   "n_used": 0,
+   "spread_ms": null,
+   "n_onsets": 0,
+   "floor_db": -74.1,
+   "rejected": {
+    "quiet": 3,
+    "short": 1
+   },
+   "level_dbfs": -29.5,
+   "offsets_ms": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "secs": 0.006
+  },
+  {
+   "group": "refuse",
+   "rt_true_ms": 160,
+   "seed": 0,
+   "opts": {
+    "respond": false,
+    "bleed": true
+   },
+   "ok": false,
+   "why": "没听到你唱：看电平条有没有动，跟着高的嘀声每下唱一个短“哒”，再测一次。",
+   "rt_ms": null,
+   "n_used": 0,
+   "spread_ms": null,
+   "n_onsets": 0,
+   "floor_db": -76.5,
+   "rejected": {
+    "short": 53
+   },
+   "level_dbfs": -31.3,
+   "offsets_ms": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "secs": 0.006
+  },
+  {
+   "group": "extra",
+   "rt_true_ms": 20,
+   "seed": 0,
+   "opts": {
+    "low": true,
+    "missing": 5
+   },
+   "ok": true,
+   "why": "",
+   "rt_ms": 12.7,
+   "n_used": 7,
+   "spread_ms": 10.0,
+   "n_onsets": 7,
+   "floor_db": -79.9,
+   "rejected": {
+    "unvoiced": 5
+   },
+   "level_dbfs": -33.9,
+   "offsets_ms": [
+    11.5,
+    22.7,
+    23.7,
+    12.7,
+    23.5,
+    null,
+    5.5,
+    -13.6
+   ],
+   "secs": 0.009,
+   "err_ms": -7.3,
+   "true_median_used_ms": 12.6,
+   "detector_err_ms": 0.1,
+   "max_response_err_ms": 0.4,
+   "her_jitter_median_err_ms": -7.4,
+   "within_15ms": true
+  },
+  {
+   "group": "extra",
+   "rt_true_ms": 20,
+   "seed": 0,
+   "opts": {
+    "early": 4
+   },
+   "ok": true,
+   "why": "",
+   "rt_ms": 18.8,
+   "n_used": 7,
+   "spread_ms": 8.7,
+   "n_onsets": 8,
+   "floor_db": -73.2,
+   "rejected": {
+    "unvoiced": 4
+   },
+   "level_dbfs": -28.4,
+   "offsets_ms": [
+    34.7,
+    27.5,
+    18.8,
+    13.2,
+    null,
+    15.7,
+    38.2,
+    0.5
+   ],
+   "secs": 0.009,
+   "err_ms": -1.2,
+   "true_median_used_ms": 18.7,
+   "detector_err_ms": 0.1,
+   "max_response_err_ms": 0.1,
+   "her_jitter_median_err_ms": -2.8,
+   "within_15ms": true
+  },
+  {
+   "group": "extra",
+   "rt_true_ms": 60,
+   "seed": 0,
+   "opts": {
+    "low": true,
+    "missing": 5
+   },
+   "ok": true,
+   "why": "",
+   "rt_ms": 54.7,
+   "n_used": 7,
+   "spread_ms": 5.3,
+   "n_onsets": 7,
+   "floor_db": -75.0,
+   "rejected": {
+    "unvoiced": 5
+   },
+   "level_dbfs": -30.5,
+   "offsets_ms": [
+    70.5,
+    49.4,
+    46.0,
+    51.2,
+    77.5,
+    null,
+    54.7,
+    57.7
+   ],
+   "secs": 0.009,
+   "err_ms": -5.3,
+   "true_median_used_ms": 54.6,
+   "detector_err_ms": 0.1,
+   "max_response_err_ms": 0.2,
+   "her_jitter_median_err_ms": -5.4,
+   "within_15ms": true
+  },
+  {
+   "group": "extra",
+   "rt_true_ms": 60,
+   "seed": 0,
+   "opts": {
+    "early": 4
+   },
+   "ok": true,
+   "why": "",
+   "rt_ms": 68.5,
+   "n_used": 7,
+   "spread_ms": 8.6,
+   "n_onsets": 8,
+   "floor_db": -81.0,
+   "rejected": {
+    "unvoiced": 6
+   },
+   "level_dbfs": -36.0,
+   "offsets_ms": [
+    64.5,
+    68.5,
+    60.9,
+    78.1,
+    null,
+    77.0,
+    42.5,
+    95.5
+   ],
+   "secs": 0.01,
+   "err_ms": 8.5,
+   "true_median_used_ms": 68.2,
+   "detector_err_ms": 0.3,
+   "max_response_err_ms": 2.4,
+   "her_jitter_median_err_ms": 6.3,
+   "within_15ms": true
+  },
+  {
+   "group": "extra",
+   "rt_true_ms": 160,
+   "seed": 0,
+   "opts": {
+    "low": true,
+    "missing": 5
+   },
+   "ok": true,
+   "why": "",
+   "rt_ms": 160.7,
+   "n_used": 7,
+   "spread_ms": 4.3,
+   "n_onsets": 7,
+   "floor_db": -75.1,
+   "rejected": {
+    "unvoiced": 3
+   },
+   "level_dbfs": -30.4,
+   "offsets_ms": [
+    153.2,
+    160.7,
+    163.7,
+    165.0,
+    167.2,
+    null,
+    160.5,
+    154.9
+   ],
+   "secs": 0.009,
+   "err_ms": 0.7,
+   "true_median_used_ms": 160.7,
+   "detector_err_ms": 0.0,
+   "max_response_err_ms": 0.1,
+   "her_jitter_median_err_ms": 0.7,
+   "within_15ms": true
+  },
+  {
+   "group": "extra",
+   "rt_true_ms": 160,
+   "seed": 0,
+   "opts": {
+    "early": 4
+   },
+   "ok": true,
+   "why": "",
+   "rt_ms": 153.2,
+   "n_used": 8,
+   "spread_ms": 16.9,
+   "n_onsets": 8,
+   "floor_db": -78.9,
+   "rejected": {
+    "unvoiced": 3
+   },
+   "level_dbfs": -34.4,
+   "offsets_ms": [
+    166.7,
+    157.9,
+    174.4,
+    133.0,
+    60.7,
+    143.5,
+    148.5,
+    173.5
+   ],
+   "secs": 0.009,
+   "err_ms": -6.8,
+   "true_median_used_ms": 153.2,
+   "detector_err_ms": 0.0,
+   "max_response_err_ms": 0.4,
+   "her_jitter_median_err_ms": -6.8,
+   "within_15ms": true
+  },
+  {
+   "group": "extra",
+   "rt_true_ms": 330,
+   "seed": 0,
+   "opts": {
+    "low": true,
+    "missing": 5
+   },
+   "ok": true,
+   "why": "",
+   "rt_ms": 324.9,
+   "n_used": 7,
+   "spread_ms": 5.6,
+   "n_onsets": 7,
+   "floor_db": -70.8,
+   "rejected": {
+    "unvoiced": 2
+   },
+   "level_dbfs": -25.9,
+   "offsets_ms": [
+    324.9,
+    310.8,
+    319.2,
+    336.0,
+    327.0,
+    null,
+    342.5,
+    321.6
+   ],
+   "secs": 0.009,
+   "err_ms": -5.1,
+   "true_median_used_ms": 324.8,
+   "detector_err_ms": 0.1,
+   "max_response_err_ms": 0.1,
+   "her_jitter_median_err_ms": -5.2,
+   "within_15ms": true
+  },
+  {
+   "group": "extra",
+   "rt_true_ms": 330,
+   "seed": 0,
+   "opts": {
+    "early": 4
+   },
+   "ok": true,
+   "why": "",
+   "rt_ms": 315.5,
+   "n_used": 7,
+   "spread_ms": 7.3,
+   "n_onsets": 8,
+   "floor_db": -75.6,
+   "rejected": {
+    "unvoiced": 5
+   },
+   "level_dbfs": -30.8,
+   "offsets_ms": [
+    308.4,
+    321.0,
+    332.1,
+    315.5,
+    null,
+    339.7,
+    307.8,
+    308.2
+   ],
+   "secs": 0.009,
+   "err_ms": -14.5,
+   "true_median_used_ms": 315.4,
+   "detector_err_ms": 0.1,
+   "max_response_err_ms": 0.4,
+   "her_jitter_median_err_ms": -18.2,
+   "within_15ms": true
+  }
+ ]
+}

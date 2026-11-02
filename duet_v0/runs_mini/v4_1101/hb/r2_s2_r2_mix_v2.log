@@ -1,0 +1,2 @@
+2026-11-01 15:21:56 START tl=600 cwd=$ABS/runs_mini/v4_1101/seed2 $ABS/.venv/bin/python $ABS/futures/v4_selfiter/seed2.py r2_mix_v2
+2026-11-01 15:22:06 END rc=0 secs=10 $ABS/.venv/bin/python $ABS/futures/v4_selfiter/seed2.py r2_mix_v2

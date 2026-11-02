@@ -1,0 +1,57 @@
+# Git attributes for Duet. Added 2026-10-16 (docs/COLLABORATION.md, docs/REPO_AUDIT.md).
+# This file changes how git diffs and merges files. It does not rewrite any committed file:
+# no global "text=auto" on purpose, because six CSV files are committed with CRLF line ends
+# and normalising them would show them all as modified.
+
+# Shell and Python sources must keep LF so they run on the Linux CI runner (all are LF today).
+*.sh   text eol=lf
+*.py   text eol=lf
+*.yml  text eol=lf
+*.yaml text eol=lf
+
+# Binary files: no text diff, no line-based merge, no line-end conversion.
+*.wav  binary
+*.mp3  binary
+*.mp4  binary
+*.mov  binary
+*.npz  binary
+*.npy  binary
+*.png  binary
+*.jpg  binary
+*.jpeg binary
+*.pdf  binary
+*.glb  binary
+*.stl  binary
+*.ttf  binary
+*.otf  binary
+*.mid  binary
+*.zip  binary
+*.xlsx binary
+*.pptx binary
+*.docx binary
+
+# KiCad files are text, but a line-based automatic merge can produce a board or schematic that opens
+# wrong. Make git stop with a conflict instead; resolve it by regenerating (hardware/scripts) or by
+# redoing the edit in KiCad. One person edits the PCB at a time (docs/COLLABORATION.md, rule 4).
+*.kicad_pcb  merge=binary
+*.kicad_sch  merge=binary
+*.kicad_pro  merge=binary
+*.kicad_prl  merge=binary
+*.kicad_sym  merge=binary
+
+# Generated outputs: GitHub/GitLab collapse their diffs in pull requests.
+hardware/out/**        linguist-generated=true
+live/runs/**           linguist-generated=true
+live/cache/**          linguist-generated=true
+harmony/results/**     linguist-generated=true
+eval/results/*.jsonl   linguist-generated=true
+media/figures/*.svg    linguist-generated=true
+mech/stl/**            linguist-generated=true
+mech/dxf/**            linguist-generated=true
+data/scripts/selections/*.tsv linguist-generated=true
+
+# Git LFS is NOT used (see docs/COLLABORATION.md, "Git LFS: not now"). If the team turns it on later,
+# run "git lfs install" on every machine first, then uncomment the lines below and run
+# "git lfs migrate import --include='*.wav' --everything" ONLY after everyone has pushed (it rewrites history).
+# *.wav filter=lfs diff=lfs merge=lfs -text
+# *.npz filter=lfs diff=lfs merge=lfs -text

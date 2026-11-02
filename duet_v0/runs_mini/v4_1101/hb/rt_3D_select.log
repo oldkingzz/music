@@ -1,0 +1,2 @@
+2026-11-02 02:08:19 START tl=600 cwd=$ABS $ABS/.venv/bin/python $ABS/runs_mini/v5rt_1101/r3/D/R3D_select_v1.py --out $ABS/runs_mini/v5rt_1101/live_bench/R3D_select_v1.json
+2026-11-02 02:08:34 END rc=0 secs=16 $ABS/.venv/bin/python $ABS/runs_mini/v5rt_1101/r3/D/R3D_select_v1.py --out $ABS/runs_mini/v5rt_1101/live_bench/R3D_select_v1.json

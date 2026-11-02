@@ -1,0 +1,2 @@
+2026-11-01 22:02:04 START tl=600 cwd=$ABS $ABS/.venv/bin/python $ABS/runs_mini/v5rt_1101/drafts/bench_rt_d1.py reactive:m1_filter_v5lo --L 0 --out $ABS/runs_mini/v5rt_1101/scores/dev/d1_reactive_m1_filter_v5lo_L0.json
+2026-11-01 22:02:07 END rc=0 secs=3 $ABS/.venv/bin/python $ABS/runs_mini/v5rt_1101/drafts/bench_rt_d1.py reactive:m1_filter_v5lo --L 0 --out $ABS/runs_mini/v5rt_1101/scores/dev/d1_reactive_m1_filter_v5lo_L0.json

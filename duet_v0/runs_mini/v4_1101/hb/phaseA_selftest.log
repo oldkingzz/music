@@ -1,0 +1,2 @@
+2026-11-01 11:41:28 START tl=600 cwd=$ABS/runs_mini/v4_1101/tools $ABS/.venv/bin/python $ABS/runs_mini/v4_1101/tools/selftest.py
+2026-11-01 11:41:30 END rc=0 secs=2 $ABS/.venv/bin/python $ABS/runs_mini/v4_1101/tools/selftest.py

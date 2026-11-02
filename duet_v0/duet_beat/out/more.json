@@ -1,0 +1,93 @@
+{
+ "A": {
+  "bach_test": {
+   "hmm": {
+    "two_part": 0.6246283448959365,
+    "four_part_support": 0.5592996372646185,
+    "chord": 0.35042016806722687
+   },
+   "repeat_2": {
+    "two_part": 0.6313397129186603,
+    "four_part_support": 0.5840510373205742,
+    "chord": 0.35798319327731093
+   },
+   "next_true": {
+    "two_part": 0.78256867884452,
+    "four_part_support": 0.9354290586236194,
+    "chord": 0.5394957983193277
+   },
+   "static": {
+    "two_part": 0.7761603383966245,
+    "four_part_support": 0.9303797485232067,
+    "chord": 0.5647058823529412
+   },
+   "oracle": {
+    "two_part": 0.8124472582278481,
+    "four_part_support": 0.8896624489451477,
+    "chord": 1.0
+   }
+  },
+  "twinkle": {
+   "hmm": {
+    "two_part": 0.6388888888888888,
+    "four_part_support": 0.6944444444444444,
+    "chord": 0.5
+   },
+   "repeat_2": {
+    "two_part": 0.8055555555555556,
+    "four_part_support": 0.8888888888888888,
+    "chord": 0.6
+   },
+   "next_true": {
+    "two_part": 0.868421052631579,
+    "four_part_support": 1.0,
+    "chord": 0.625
+   },
+   "static": {
+    "two_part": 0.85,
+    "four_part_support": 1.0,
+    "chord": 0.85
+   },
+   "oracle": {
+    "two_part": 0.85,
+    "four_part_support": 1.0,
+    "chord": 1.0
+   }
+  }
+ },
+ "B": {
+  "0.25": {
+   "two_part": 0.6193391930373098,
+   "four_part_support": 0.5520577115869555,
+   "chord": 0.338375350140056
+  },
+  "0.5": {
+   "two_part": 0.6268314173409305,
+   "four_part_support": 0.5617427721382491,
+   "chord": 0.34873949579831925
+  },
+  "1.0": {
+   "two_part": 0.6246283448959365,
+   "four_part_support": 0.5592996372646185,
+   "chord": 0.35042016806722687
+  }
+ },
+ "C": {
+  "bach_test": {
+   "most common note": 0.2,
+   "same as last beat": 0.31223628691983124,
+   "HMM": 0.2877637130801688,
+   "1-gram": 0.4531645569620253,
+   "2-gram": 0.4531645569620253,
+   "3-gram": 0.4345991561181435
+  },
+  "twinkle": {
+   "most common note": 0.15,
+   "same as last beat": 0.5,
+   "HMM": 0.375,
+   "1-gram": 0.8,
+   "2-gram": 0.7,
+   "3-gram": 0.725
+  }
+ }
+}

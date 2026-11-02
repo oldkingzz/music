@@ -1,0 +1,2 @@
+2026-11-01 15:38:35 START tl=600 cwd=$ABS/futures/v3_nolatency $ABS/.venv/bin/python $ABS/futures/v3_nolatency/bench3.py --system r3_true_cons_v2 --note v4 r3 E5 robust chooser only when the heard pc is outside the major scale, else champion hard rule
+2026-11-01 15:38:46 END rc=0 secs=11 $ABS/.venv/bin/python $ABS/futures/v3_nolatency/bench3.py --system r3_true_cons_v2 --note v4 r3 E5 robust chooser only when the heard pc is outside the major scale, else champion hard rule

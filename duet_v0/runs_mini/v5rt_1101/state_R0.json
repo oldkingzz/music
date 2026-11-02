@@ -1,0 +1,13 @@
+{
+ "round": 0,
+ "written": "2026-11-01 21:44 EST",
+ "ABS": "/Users/san/claude_sandbox/music/duet_v0",
+ "run": "v5rt_1101",
+ "why": "Vincent (2026-11-01 evening, after live tests): the real use is him singing while Duet harmonises in real time, so latency must be solved; 'I asked for the ultracode run to do exactly this'. The v4_1101 loop optimised bench3 music_nd, which assumes zero latency (Duet answers at the instant her note starts, knowing its heard pitch), so it never optimised for latency or look-ahead. A first hand-built look-ahead (futures/v4_selfiter/live_predict.py) put about half the notes on time but started the other half on a wrong note (mostly a 2nd against her next note) and Vincent heard it as clearly worse.",
+ "vincent_said": ["对，开始优化吧。依旧是这个设备", "不用改回被动版，实际上我让你做ultracode测试就是为了做这个，所以现在的意思是，你有没有以这个为优化目标来优化？"],
+ "objective": "Latency-aware real-time harmony on unknown songs (val split, tuned on val, no test split): Duet must commit each note before hearing the note it harmonises (plan points every 0.5 beat), may correct only L after her onset (L = 0.1 beat = 60 ms at a nominal 100 bpm; also 0.05 and 0.15). Score = rt_nd: music_nd computed over the note Duet is ACTUALLY sounding at every moment of her singing (late starts and wrong-then-corrected notes count as misses). Side metric harsh = time Duet sounds a 2nd, tritone or 7th against her true note.",
+ "keep_rule": "vs reactive:r2_mix_v2 at the same L and seed: headline rt_nd >= reactive + 0.005; harsh headline <= reactive, no dataset harsh above reactive + 0.005; no dataset rt_nd more than 0.01 below reactive; seed2 delta >= +0.003; mean us per decision < 2000.",
+ "device": "Mac mini (this machine), CPU only, PROGRAM §1 hard rules unchanged; code in futures/v5_rt/, outputs in runs_mini/v5rt_1101/",
+ "checks_before": "21:43 checksums 10/10 OK, env knobs empty, 103.4 GB free, runs_mini 76M",
+ "plan": "Workflow: (1) bench_rt + baselines and sanity (reactive at L=0 must reproduce bench3 music_nd); (2) three idea families in parallel: A melody prior + expected-fit choice, B conservative look-ahead, C learned joint forecaster; (3) round 2 combine/rescue; (4) adversarial verification of the winner (causality probe, reproduction, seed2, L robustness); (5) live engine wrapper + offline phone-file comparison; then the orchestrator wires it into the test page."
+}

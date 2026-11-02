@@ -1,0 +1,25 @@
+{
+ "voice": "alto",
+ "n_train": 243,
+ "n_val": 52,
+ "W": 11165,
+ "runs": [
+  {
+   "model": "unigram",
+   "val_acc": 0.32171387073347857
+  },
+  {
+   "model": "count_hmm",
+   "val_acc": 0.35548293391430646
+  },
+  {
+   "model": "crf",
+   "sigma": 0.3,
+   "val_acc": 0.38816267247639796,
+   "val_acc_noparallel": 0.38816267247639796,
+   "nll": 15981.150021231502,
+   "iters": 97
+  }
+ ],
+ "chosen_sigma": 0.3
+}

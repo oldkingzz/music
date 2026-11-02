@@ -1,0 +1,15 @@
+# gitleaks configuration for this repo: the default rules plus two reviewed false positives.
+# Used by .github/workflows/ci.yml (job "secrets") and scripts/publish_private_repo.sh.
+#   gitleaks git --config scripts/ci/gitleaks.toml .
+title = "duet gitleaks config"
+
+[extend]
+useDefault = true
+
+# Reviewed 2026-10-16: data/scripts/sanity_check.py compares dataset track keys such as
+# 'dcs/LI/QuartetA/Take01/ROOM/STM'; the generic-api-key rule mistakes them for keys.
+[[allowlists]]
+description = "dataset track keys in sanity_check.py"
+paths = ['''^data/scripts/sanity_check\.py$''']
+regexTarget = "line"
+regexes = ['''t\.key == '(dcs|ecd)/''']

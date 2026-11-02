@@ -1,0 +1,2 @@
+2026-11-02 05:37:18 START tl=600 cwd=$ABS $ABS/.venv/bin/python $ABS/runs_mini/v5rt_1101/r4/G/probe_lob_v1.py sung@wired sung@micbt_cal sung_low@wired sung_low@micbt_cal sung@bt_cal
+2026-11-02 05:38:53 END rc=0 secs=96 $ABS/.venv/bin/python $ABS/runs_mini/v5rt_1101/r4/G/probe_lob_v1.py sung@wired sung@micbt_cal sung_low@wired sung_low@micbt_cal sung@bt_cal

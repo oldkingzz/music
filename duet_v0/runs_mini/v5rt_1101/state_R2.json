@@ -1,0 +1,43 @@
+{
+ "round": 2,
+ "written": "2026-11-02 00:55 EST",
+ "ABS": "/Users/san/claude_sandbox/music/duet_v0",
+ "run": "v5rt_1101",
+ "workflow": "wyhb6g79g / wf_5a1249e6-6f2 finished 00:27 (6 agents, 2 h 13 min): round 1 ideas A/B/C, round 2 combine, verify, integrate",
+ "orchestrator_checks_00_30": {
+  "checksums": "futures/v4_selfiter/CHECKSUMS.sha256 10/10 OK",
+  "bench": "futures/v5_rt/bench_rt.py sha256 f1eb524aa939b5ba54704532ac7b5eb536659ceaaef32c3701934f9cf7d3e772 = BENCH_SHA.txt (unchanged)",
+  "env": "no M1_*, M3_*, DUET_HIST",
+  "disk": "96 GB available (df), runs_mini 88 MB",
+  "keep_table": "recomputed from the score/attack files on disk by runs_mini/v5rt_1101/tools/keep_table_v1.py -> runs_mini/v5rt_1101/verify/keep_table_orch_v1.json: all 7 listed systems pass 17/17 (keep rule + fresh clashes); numbers equal the agents' reports",
+  "live_eval": "futures/v4_selfiter/live_rt_eval_v2.py re-run -> runs_mini/v5rt_1101/live/O_live_rt_eval_v2_repro.json: identical to the integrate agent's table (no sound device; tripwire stub)"
+ },
+ "val_L0.1_table": {
+  "note": "val only, tuned on val, no test split; fresh = fresh clashes per 100 of her notes (attack_metric.py)",
+  "reactive_r2_mix_v2": {"rt_nd": 0.6008, "harsh": 0.0541, "fresh": 1.81, "on_time_right": 0.2191},
+  "r2_copyhmbold_v1": {"rt_nd": 0.6315, "harsh": 0.0313, "seed2_delta": 0.0336, "fresh": 1.54, "fresh_bach": 2.29, "on_time_right": 0.2945, "verify": "confirmed (reproduced, causal probe, seed2, L 0.05/0.15, song bootstrap +0.025..+0.037)"},
+  "r2_copyhm_v1": {"rt_nd": 0.6308, "harsh": 0.0327, "seed2_delta": 0.0322, "fresh": 1.42, "fresh_bach": 1.99, "on_time_right": 0.2884},
+  "r2_copy_v1": {"rt_nd": 0.6286, "harsh": 0.0326, "seed2_delta": 0.0279, "fresh": 1.28},
+  "r2_copysafe_v1": {"rt_nd": 0.6270, "harsh": 0.0338, "seed2_delta": 0.0259, "fresh": 1.13},
+  "r1_A_prior_v1": {"rt_nd": 0.6198, "harsh": 0.0421, "fresh": 1.34},
+  "r1_B_cons_v1": {"rt_nd": 0.6122, "harsh": 0.0474, "fresh": 1.56},
+  "r1_C_revoice_v2": {"rt_nd": 0.6071, "harsh": 0.0529, "fresh": 1.80},
+  "oracle_ceiling": 0.6305,
+  "where_the_gain_comes_from": "moving under her held notes at beat lines (round 1), a mishearing-aware hear, and (round 2) a copy model of the song's own repeats that predicts her next pitch and onset: about 20 % of reactive's latency cost recovered; nd_first 0.300 -> 0.391"
+ },
+ "phone_files_offline": {
+  "twinkle_truth": "champion fit 0.796 vs reactive 0.638, harsh 0.010 vs 0.063, fresh clashes 0 vs 1, on time and right 0.474 vs 0.316",
+  "v11_real_voice_proxies": "champion NOT better: harsh vs heard 0.172 vs 0.155, fresh vs heard 6 vs 4. Cause (integrate agent's diagnostic): the posterior hear (hear_tau 0.2, tuned to bench3's synthetic 10 % uniform mishearing) fired on 14 of 44 notes of this low real voice (about 5 % on val) and sang notes above her (E4 over Eb3, A3 over G3) where reactive stays silent; its 5 planned attacks were all consonant"
+ },
+ "caveats": ["champion's edge over r2_copyhm_v1 is +0.0007 (selection noise); runner-up has fewer fresh clashes in every dataset", "stumbles (wrong start corrected at hear) 5.1 % of notes (bach 8.1 %) vs reactive ~0: the kind of sound Vincent disliked, though far below r0's 8.9 %", "bench3's synthetic mishearing does not match the live tracker's errors"],
+ "rule_notes": ["integrate agent edited its own not-yet-run file futures/v4_selfiter/live_rt_eval.py twice (breach of the never-rewrite rule; no result depended on it; v2 is a new file)", "idea B agent once wrote a scratch file in the session scratchpad with shell redirection (outside the project)", "nothing deleted; no sound device opened by any agent"],
+ "decision": "Round 3 (live transfer) before handing over: Vincent's real use is his own voice through the real tracker, and the only real-voice file shows the round-2 champion is not better there. Build a tracker-in-the-loop live benchmark with ground truth (val Bach + Twinkle rendered as a sung voice, also an octave lower, through follow.FeatureTracker and RTDuet, offline), then fix register (low voices), tracker-aware hearing and stumbles, combine, verify. Page wiring by the orchestrator afterwards; no sound until Vincent is awake and asks.",
+ "round3_selection_rule_fixed_now": {
+  "G1": "bench_rt keep rule 17/17 at L = 0.1 vs reactive:r2_mix_v2 (incl. fresh clashes <= 1.8100634866373206, datasets <= reactive + 1.0)",
+  "G2": "live bench, wired latency, val Bach (17 songs, headline): voice 'sung' rt_nd_live >= reactive + 0.005 and voice 'sung_low' rt_nd_live >= reactive; on both voices harsh <= reactive and fresh clashes per 100 <= reactive (reactive = RTDuet(reactive:r2_mix_v2) on the same audio)",
+  "G3": "real voice v11 (no truth, proxies vs heard notes, first-note sync as the page): fresh_heard count <= reactive's and harsh_heard <= reactive's + 0.005",
+  "rank": "among G1 & G2 & G3: highest mean of rt_nd_live on 'sung' and 'sung_low'; within 0.003 the one with fewer live fresh clashes. If none passes G3: best of G1 & G2, flagged. If none passes G2: the page keeps the round-2 systems and the report says so.",
+  "pool": "round-1/2 systems scored live in phase 1 plus every round-3 variant"
+ },
+ "no_sound": "still in force (Vincent asleep): offline only, tripwire stub on sounddevice"
+}

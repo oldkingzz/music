@@ -1,0 +1,2 @@
+2026-11-02 00:00:04 START tl=600 cwd=$ABS $ABS/.venv/bin/python $ABS/runs_mini/v5rt_1101/verify/song_delta_v1.py --out $ABS/runs_mini/v5rt_1101/verify/song_delta_result_v1.json
+2026-11-02 00:00:33 END rc=0 secs=29 $ABS/.venv/bin/python $ABS/runs_mini/v5rt_1101/verify/song_delta_v1.py --out $ABS/runs_mini/v5rt_1101/verify/song_delta_result_v1.json

@@ -1,0 +1,142 @@
+{
+ "name": "r2_mix_v2",
+ "b_grep": {
+  "ok": true,
+  "files": [
+   "r2_mix_v2",
+   "m3_seq_v4",
+   "m3_seq_v1",
+   "m1_filter_v5lo"
+  ],
+  "hits": [
+   {
+    "file": "m3_seq_v4.py",
+    "line": 29,
+    "token": "torch\\.load",
+    "text": "net.load_state_dict(torch.load(os.path.join(S.HERE, f'm3_seq_{tag}.pt')))",
+    "legacy": true
+   },
+   {
+    "file": "m3_seq_v4.py",
+    "line": 36,
+    "token": "os\\.environ",
+    "text": "hist = float(os.environ.get('DUET_HIST', '-1'))",
+    "legacy": true
+   },
+   {
+    "file": "m3_seq_v1.py",
+    "line": 180,
+    "token": "os\\.environ",
+    "text": "net = Net(int(os.environ.get('M3_HID', '96')))",
+    "legacy": true
+   },
+   {
+    "file": "m3_seq_v1.py",
+    "line": 181,
+    "token": "torch\\.load",
+    "text": "net.load_state_dict(torch.load(path))",
+    "legacy": true
+   },
+   {
+    "file": "m3_seq_v1.py",
+    "line": 184,
+    "token": "os\\.environ",
+    "text": "net = train_net(train, secs=float(os.environ.get('M3_SECS', secs)), crop=crop,",
+    "legacy": true
+   },
+   {
+    "file": "m3_seq_v1.py",
+    "line": 185,
+    "token": "os\\.environ",
+    "text": "hid=int(os.environ.get('M3_HID', '96')), seed=int(os.environ.get('M3_SEED', '0')))",
+    "legacy": true
+   },
+   {
+    "file": "m3_seq_v1.py",
+    "line": 191,
+    "token": "os\\.environ",
+    "text": "hist = float(os.environ.get('DUET_HIST', '-1'))",
+    "legacy": true
+   },
+   {
+    "file": "m3_seq_v1.py",
+    "line": 194,
+    "token": "os\\.environ",
+    "text": "if os.environ.get('M3_' + k.upper()):",
+    "legacy": true
+   },
+   {
+    "file": "m3_seq_v1.py",
+    "line": 195,
+    "token": "os\\.environ",
+    "text": "cfg[k] = float(os.environ['M3_' + k.upper()])",
+    "legacy": true
+   },
+   {
+    "file": "m3_seq_v1.py",
+    "line": 196,
+    "token": "os\\.environ",
+    "text": "net = get_net(train, os.environ.get('M3_TAG', 'full'))",
+    "legacy": true
+   },
+   {
+    "file": "m1_filter_v5lo.py",
+    "line": 28,
+    "token": "os\\.environ",
+    "text": "if os.environ.get('M1_' + _k.upper()):",
+    "legacy": true
+   },
+   {
+    "file": "m1_filter_v5lo.py",
+    "line": 29,
+    "token": "os\\.environ",
+    "text": "P[_k] = float(os.environ['M1_' + _k.upper()])",
+    "legacy": true
+   },
+   {
+    "file": "m1_filter_v5lo.py",
+    "line": 93,
+    "token": "os\\.environ",
+    "text": "self.H = int(os.environ.get('DUET_HIST', '-1'))",
+    "legacy": true
+   }
+  ],
+  "fails": []
+ },
+ "a_causal": {
+  "ok": true,
+  "checks": 72,
+  "mismatches": [],
+  "nondeterministic": []
+ },
+ "d_range": {
+  "ok": true,
+  "sung": 46019,
+  "silent": 291,
+  "out_of_alto": 0,
+  "above_share": 0.0,
+  "per_dataset": {
+   "bach": {
+    "sung": 1073,
+    "out_of_alto": 0,
+    "above_share": 0.0
+   },
+   "folk": {
+    "sung": 17324,
+    "out_of_alto": 0,
+    "above_share": 0.0
+   },
+   "pop": {
+    "sung": 14218,
+    "out_of_alto": 0,
+    "above_share": 0.0
+   },
+   "pop909": {
+    "sung": 13404,
+    "out_of_alto": 0,
+    "above_share": 0.0
+   }
+  }
+ },
+ "ok_abd": true
+}

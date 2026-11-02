@@ -1,0 +1,13 @@
+# Python packages the CI jobs need (Python 3.11). Pinned to the versions in the team's .venv on 2026-10-16.
+# Only what the dataset-free tests import: no librosa, mir_eval, music21, sounddevice or python-rtmidi
+# (those are imported lazily by code paths CI does not run).
+numpy==2.4.6
+scipy==1.17.1
+soundfile==0.14.0
+matplotlib==3.11.2
+mido==1.3.3
+pyserial==3.5
+trimesh==5.1.1
+manifold3d==3.5.4
+ezdxf==1.4.4
+shapely==2.2.0

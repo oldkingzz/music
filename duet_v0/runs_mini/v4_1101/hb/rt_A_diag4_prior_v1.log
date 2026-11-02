@@ -1,0 +1,2 @@
+2026-11-01 23:00:38 START tl=600 cwd=$ABS $ABS/.venv/bin/python $ABS/runs_mini/v5rt_1101/r1/A/diag_A_v4.py {"hear_tau": 0.2, "kappa": 1, "kappa_hold": 0.5, "lam": 2}
+2026-11-01 23:00:56 END rc=0 secs=18 $ABS/.venv/bin/python $ABS/runs_mini/v5rt_1101/r1/A/diag_A_v4.py {"hear_tau": 0.2, "kappa": 1, "kappa_hold": 0.5, "lam": 2}

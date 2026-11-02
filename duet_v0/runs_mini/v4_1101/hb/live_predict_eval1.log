@@ -1,0 +1,2 @@
+2026-11-01 21:27:48 START tl=600 cwd=$ABS .venv/bin/python futures/v4_selfiter/live_predict.py --evaluate
+2026-11-01 21:27:53 END rc=0 secs=5 .venv/bin/python futures/v4_selfiter/live_predict.py --evaluate

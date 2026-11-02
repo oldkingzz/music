@@ -1,0 +1,2 @@
+2026-11-01 23:33:07 START tl=600 cwd=$ABS $ABS/.venv/bin/python $ABS/runs_mini/v5rt_1101/r1/A/attack_honest_A_v1.py rt:r2_copy_v1 rt:r2_copyhm_v1 rt:r2_copysafe_v1 rt:r2_copyhmbold_v1 --L 0.1
+2026-11-01 23:34:25 END rc=0 secs=78 $ABS/.venv/bin/python $ABS/runs_mini/v5rt_1101/r1/A/attack_honest_A_v1.py rt:r2_copy_v1 rt:r2_copyhm_v1 rt:r2_copysafe_v1 rt:r2_copyhmbold_v1 --L 0.1

@@ -1,0 +1,7 @@
+# Everything in this folder goes into the repository (2026-11-02), except Python environments, caches and macOS
+# folder files. duet_v0/.gitignore (the team's own rules) still hides new recordings and run outputs from a plain
+# `git add`; push_all_v1.sh adds them with -f.
+**/.venv/
+**/__pycache__/
+*.pyc
+.DS_Store

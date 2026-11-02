@@ -1,0 +1,592 @@
+{
+ "what": "report-only robustness sweep of latcal_v1.estimate (synthetic, never played)",
+ "written": "2026-11-02 05:37:29",
+ "summary": {
+  "jitter30": {
+   "cases": 6,
+   "ok": 6,
+   "max_abs_err_ms_when_ok": 24.7,
+   "ok_but_off_by_more_than_25ms": 0
+  },
+  "noise-25": {
+   "cases": 6,
+   "ok": 6,
+   "max_abs_err_ms_when_ok": 23.9,
+   "ok_but_off_by_more_than_25ms": 0
+  },
+  "noise-15": {
+   "cases": 6,
+   "ok": 6,
+   "max_abs_err_ms_when_ok": 31.0,
+   "ok_but_off_by_more_than_25ms": 4
+  },
+  "bleed": {
+   "cases": 6,
+   "ok": 6,
+   "max_abs_err_ms_when_ok": 4.8,
+   "ok_but_off_by_more_than_25ms": 0
+  },
+  "miss+early": {
+   "cases": 6,
+   "ok": 6,
+   "max_abs_err_ms_when_ok": 3.1,
+   "ok_but_off_by_more_than_25ms": 0
+  },
+  "long": {
+   "cases": 6,
+   "ok": 6,
+   "max_abs_err_ms_when_ok": 6.6,
+   "ok_but_off_by_more_than_25ms": 0
+  },
+  "too_long": {
+   "cases": 4,
+   "ok": 0,
+   "max_abs_err_ms_when_ok": null,
+   "ok_but_off_by_more_than_25ms": 0
+  }
+ },
+ "cases": [
+  {
+   "group": "jitter30",
+   "rt_true_ms": 60,
+   "seed": 0,
+   "ok": true,
+   "err_ms": 24.7,
+   "rt_ms": 84.7,
+   "n_used": 7,
+   "spread_ms": 15.1,
+   "why": "",
+   "rejected": {
+    "unvoiced": 4
+   }
+  },
+  {
+   "group": "jitter30",
+   "rt_true_ms": 60,
+   "seed": 1,
+   "ok": true,
+   "err_ms": -18.7,
+   "rt_ms": 41.3,
+   "n_used": 8,
+   "spread_ms": 21.5,
+   "why": "",
+   "rejected": {
+    "unvoiced": 5
+   }
+  },
+  {
+   "group": "jitter30",
+   "rt_true_ms": 160,
+   "seed": 0,
+   "ok": true,
+   "err_ms": 7.5,
+   "rt_ms": 167.5,
+   "n_used": 8,
+   "spread_ms": 11.2,
+   "why": "",
+   "rejected": {
+    "unvoiced": 6
+   }
+  },
+  {
+   "group": "jitter30",
+   "rt_true_ms": 160,
+   "seed": 1,
+   "ok": true,
+   "err_ms": 6.2,
+   "rt_ms": 166.2,
+   "n_used": 8,
+   "spread_ms": 15.1,
+   "why": "",
+   "rejected": {
+    "unvoiced": 5
+   }
+  },
+  {
+   "group": "jitter30",
+   "rt_true_ms": 330,
+   "seed": 0,
+   "ok": true,
+   "err_ms": 5.6,
+   "rt_ms": 335.6,
+   "n_used": 8,
+   "spread_ms": 18.8,
+   "why": "",
+   "rejected": {
+    "unvoiced": 4
+   }
+  },
+  {
+   "group": "jitter30",
+   "rt_true_ms": 330,
+   "seed": 1,
+   "ok": true,
+   "err_ms": -15.5,
+   "rt_ms": 314.5,
+   "n_used": 8,
+   "spread_ms": 8.8,
+   "why": "",
+   "rejected": {
+    "unvoiced": 8
+   }
+  },
+  {
+   "group": "noise-25",
+   "rt_true_ms": 60,
+   "seed": 0,
+   "ok": true,
+   "err_ms": 15.7,
+   "rt_ms": 75.7,
+   "n_used": 8,
+   "spread_ms": 6.6,
+   "why": "",
+   "rejected": {}
+  },
+  {
+   "group": "noise-25",
+   "rt_true_ms": 60,
+   "seed": 1,
+   "ok": true,
+   "err_ms": 6.8,
+   "rt_ms": 66.8,
+   "n_used": 8,
+   "spread_ms": 16.4,
+   "why": "",
+   "rejected": {}
+  },
+  {
+   "group": "noise-25",
+   "rt_true_ms": 160,
+   "seed": 0,
+   "ok": true,
+   "err_ms": 16.4,
+   "rt_ms": 176.4,
+   "n_used": 8,
+   "spread_ms": 8.4,
+   "why": "",
+   "rejected": {}
+  },
+  {
+   "group": "noise-25",
+   "rt_true_ms": 160,
+   "seed": 1,
+   "ok": true,
+   "err_ms": 23.9,
+   "rt_ms": 183.9,
+   "n_used": 8,
+   "spread_ms": 9.8,
+   "why": "",
+   "rejected": {}
+  },
+  {
+   "group": "noise-25",
+   "rt_true_ms": 330,
+   "seed": 0,
+   "ok": true,
+   "err_ms": 23.9,
+   "rt_ms": 353.9,
+   "n_used": 8,
+   "spread_ms": 9.4,
+   "why": "",
+   "rejected": {}
+  },
+  {
+   "group": "noise-25",
+   "rt_true_ms": 330,
+   "seed": 1,
+   "ok": true,
+   "err_ms": 15.0,
+   "rt_ms": 345.0,
+   "n_used": 8,
+   "spread_ms": 8.5,
+   "why": "",
+   "rejected": {}
+  },
+  {
+   "group": "noise-15",
+   "rt_true_ms": 60,
+   "seed": 0,
+   "ok": true,
+   "err_ms": 28.0,
+   "rt_ms": 88.0,
+   "n_used": 8,
+   "spread_ms": 11.9,
+   "why": "",
+   "rejected": {}
+  },
+  {
+   "group": "noise-15",
+   "rt_true_ms": 60,
+   "seed": 1,
+   "ok": true,
+   "err_ms": 16.9,
+   "rt_ms": 76.9,
+   "n_used": 8,
+   "spread_ms": 13.3,
+   "why": "",
+   "rejected": {}
+  },
+  {
+   "group": "noise-15",
+   "rt_true_ms": 160,
+   "seed": 0,
+   "ok": true,
+   "err_ms": 27.3,
+   "rt_ms": 187.3,
+   "n_used": 8,
+   "spread_ms": 7.4,
+   "why": "",
+   "rejected": {}
+  },
+  {
+   "group": "noise-15",
+   "rt_true_ms": 160,
+   "seed": 1,
+   "ok": true,
+   "err_ms": 31.0,
+   "rt_ms": 191.0,
+   "n_used": 8,
+   "spread_ms": 8.7,
+   "why": "",
+   "rejected": {}
+  },
+  {
+   "group": "noise-15",
+   "rt_true_ms": 330,
+   "seed": 0,
+   "ok": true,
+   "err_ms": 29.0,
+   "rt_ms": 359.0,
+   "n_used": 8,
+   "spread_ms": 9.2,
+   "why": "",
+   "rejected": {}
+  },
+  {
+   "group": "noise-15",
+   "rt_true_ms": 330,
+   "seed": 1,
+   "ok": true,
+   "err_ms": 19.9,
+   "rt_ms": 349.9,
+   "n_used": 8,
+   "spread_ms": 3.6,
+   "why": "",
+   "rejected": {}
+  },
+  {
+   "group": "bleed",
+   "rt_true_ms": 20,
+   "seed": 0,
+   "ok": true,
+   "err_ms": -4.8,
+   "rt_ms": 15.2,
+   "n_used": 8,
+   "spread_ms": 5.1,
+   "why": "",
+   "rejected": {
+    "short": 16,
+    "unvoiced": 4
+   }
+  },
+  {
+   "group": "bleed",
+   "rt_true_ms": 20,
+   "seed": 1,
+   "ok": true,
+   "err_ms": -2.7,
+   "rt_ms": 17.3,
+   "n_used": 8,
+   "spread_ms": 3.3,
+   "why": "",
+   "rejected": {
+    "short": 16,
+    "unvoiced": 4
+   }
+  },
+  {
+   "group": "bleed",
+   "rt_true_ms": 160,
+   "seed": 0,
+   "ok": true,
+   "err_ms": -3.8,
+   "rt_ms": 156.2,
+   "n_used": 8,
+   "spread_ms": 4.1,
+   "why": "",
+   "rejected": {
+    "short": 14,
+    "unvoiced": 3
+   }
+  },
+  {
+   "group": "bleed",
+   "rt_true_ms": 160,
+   "seed": 1,
+   "ok": true,
+   "err_ms": 0.1,
+   "rt_ms": 160.1,
+   "n_used": 8,
+   "spread_ms": 0.0,
+   "why": "",
+   "rejected": {
+    "short": 16,
+    "unvoiced": 3
+   }
+  },
+  {
+   "group": "bleed",
+   "rt_true_ms": 330,
+   "seed": 0,
+   "ok": true,
+   "err_ms": -3.2,
+   "rt_ms": 326.8,
+   "n_used": 8,
+   "spread_ms": 3.9,
+   "why": "",
+   "rejected": {
+    "short": 16,
+    "unvoiced": 4
+   }
+  },
+  {
+   "group": "bleed",
+   "rt_true_ms": 330,
+   "seed": 1,
+   "ok": true,
+   "err_ms": 0.3,
+   "rt_ms": 330.3,
+   "n_used": 8,
+   "spread_ms": 0.5,
+   "why": "",
+   "rejected": {
+    "short": 16,
+    "unvoiced": 5
+   }
+  },
+  {
+   "group": "miss+early",
+   "rt_true_ms": 60,
+   "seed": 0,
+   "ok": true,
+   "err_ms": -0.9,
+   "rt_ms": 59.1,
+   "n_used": 6,
+   "spread_ms": 7.7,
+   "why": "",
+   "rejected": {
+    "unvoiced": 5
+   }
+  },
+  {
+   "group": "miss+early",
+   "rt_true_ms": 60,
+   "seed": 1,
+   "ok": true,
+   "err_ms": 0.1,
+   "rt_ms": 60.1,
+   "n_used": 6,
+   "spread_ms": 9.1,
+   "why": "",
+   "rejected": {
+    "unvoiced": 5
+   }
+  },
+  {
+   "group": "miss+early",
+   "rt_true_ms": 160,
+   "seed": 0,
+   "ok": true,
+   "err_ms": -2.3,
+   "rt_ms": 157.7,
+   "n_used": 6,
+   "spread_ms": 5.1,
+   "why": "",
+   "rejected": {
+    "unvoiced": 6
+   }
+  },
+  {
+   "group": "miss+early",
+   "rt_true_ms": 160,
+   "seed": 1,
+   "ok": true,
+   "err_ms": -2.9,
+   "rt_ms": 157.1,
+   "n_used": 6,
+   "spread_ms": 17.3,
+   "why": "",
+   "rejected": {
+    "unvoiced": 3
+   }
+  },
+  {
+   "group": "miss+early",
+   "rt_true_ms": 330,
+   "seed": 0,
+   "ok": true,
+   "err_ms": -3.1,
+   "rt_ms": 326.9,
+   "n_used": 6,
+   "spread_ms": 9.2,
+   "why": "",
+   "rejected": {
+    "unvoiced": 2
+   }
+  },
+  {
+   "group": "miss+early",
+   "rt_true_ms": 330,
+   "seed": 1,
+   "ok": true,
+   "err_ms": -2.8,
+   "rt_ms": 327.2,
+   "n_used": 6,
+   "spread_ms": 16.4,
+   "why": "",
+   "rejected": {
+    "unvoiced": 3
+   }
+  },
+  {
+   "group": "long",
+   "rt_true_ms": 400,
+   "seed": 0,
+   "ok": true,
+   "err_ms": 3.0,
+   "rt_ms": 403.0,
+   "n_used": 8,
+   "spread_ms": 6.9,
+   "why": "",
+   "rejected": {
+    "unvoiced": 5
+   }
+  },
+  {
+   "group": "long",
+   "rt_true_ms": 400,
+   "seed": 1,
+   "ok": true,
+   "err_ms": -0.9,
+   "rt_ms": 399.1,
+   "n_used": 8,
+   "spread_ms": 4.8,
+   "why": "",
+   "rejected": {
+    "unvoiced": 3
+   }
+  },
+  {
+   "group": "long",
+   "rt_true_ms": 480,
+   "seed": 0,
+   "ok": true,
+   "err_ms": -6.6,
+   "rt_ms": 473.4,
+   "n_used": 8,
+   "spread_ms": 9.2,
+   "why": "",
+   "rejected": {
+    "unvoiced": 5
+   }
+  },
+  {
+   "group": "long",
+   "rt_true_ms": 480,
+   "seed": 1,
+   "ok": true,
+   "err_ms": -1.6,
+   "rt_ms": 478.4,
+   "n_used": 8,
+   "spread_ms": 10.8,
+   "why": "",
+   "rejected": {
+    "unvoiced": 4
+   }
+  },
+  {
+   "group": "long",
+   "rt_true_ms": 540,
+   "seed": 0,
+   "ok": true,
+   "err_ms": -1.2,
+   "rt_ms": 538.8,
+   "n_used": 8,
+   "spread_ms": 3.7,
+   "why": "",
+   "rejected": {
+    "unvoiced": 3
+   }
+  },
+  {
+   "group": "long",
+   "rt_true_ms": 540,
+   "seed": 1,
+   "ok": true,
+   "err_ms": -6.3,
+   "rt_ms": 533.7,
+   "n_used": 8,
+   "spread_ms": 8.1,
+   "why": "",
+   "rejected": {
+    "unvoiced": 5
+   }
+  },
+  {
+   "group": "too_long",
+   "rt_true_ms": 620,
+   "seed": 0,
+   "ok": false,
+   "err_ms": -603.3,
+   "rt_ms": 16.7,
+   "n_used": 7,
+   "spread_ms": 7.4,
+   "why": "第一下没对上、最后一下之后还有声音：延迟可能超过半秒，或者多唱了。再测一次。",
+   "rejected": {
+    "unvoiced": 7
+   }
+  },
+  {
+   "group": "too_long",
+   "rt_true_ms": 620,
+   "seed": 1,
+   "ok": false,
+   "err_ms": -609.8,
+   "rt_ms": 10.2,
+   "n_used": 7,
+   "spread_ms": 8.4,
+   "why": "第一下没对上、最后一下之后还有声音：延迟可能超过半秒，或者多唱了。再测一次。",
+   "rejected": {
+    "unvoiced": 5
+   }
+  },
+  {
+   "group": "too_long",
+   "rt_true_ms": 700,
+   "seed": 0,
+   "ok": false,
+   "err_ms": -599.6,
+   "rt_ms": 100.4,
+   "n_used": 7,
+   "spread_ms": 10.9,
+   "why": "第一下没对上、最后一下之后还有声音：延迟可能超过半秒，或者多唱了。再测一次。",
+   "rejected": {
+    "unvoiced": 6
+   }
+  },
+  {
+   "group": "too_long",
+   "rt_true_ms": 700,
+   "seed": 1,
+   "ok": false,
+   "err_ms": -599.1,
+   "rt_ms": 100.9,
+   "n_used": 7,
+   "spread_ms": 9.5,
+   "why": "第一下没对上、最后一下之后还有声音：延迟可能超过半秒，或者多唱了。再测一次。",
+   "rejected": {
+    "unvoiced": 5
+   }
+  }
+ ]
+}

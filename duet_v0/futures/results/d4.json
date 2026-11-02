@@ -1,0 +1,76 @@
+{
+ "id": "d4",
+ "title_zh": "换个风格",
+ "updated": "2026-10-30T11:16:11-0400",
+ "summary_zh": "三种风格都能自动配出来，与她不冲突比例（巴赫按刺耳音程、流行/爵士按避免音）最低 95.0%；和弦预测在 4 个数据集上平均 59.0%，比现有实时 HMM 高 28 个百分点（test）。风格能否被人听出来还没有真人盲听；流行/爵士若按刺耳音程版算，最低只有 74%。",
+ "acceptance": [
+  {
+   "line": "A4.1",
+   "text_zh": "盲听：听者说对风格 >= 80%（需要真人；已备盲听包，并给自动代理指标）",
+   "measured": "needs listeners; blind kit 4 melodies x 3 styles in futures/d4_styles/blind/. Proxy: 7th-chord share Bach 0.01 / pop 0.00 / jazz 0.70; substitutions jazz 0.29 (others 0); swung off-beat onsets jazz 0.24 vs pop 0.00; straight 8th onsets pop 0.32; onsets/s Bach 2.1 pop 2.4 jazz 2.1; chord changes per beat Bach 1.33 pop 0.53 jazz 0.59; leave-one-melody-out nearest-centroid style ID on these 8 statistics 0.83 (12 clips).",
+   "threshold": ">= 80% correct style naming by listeners",
+   "status": "needs_human",
+   "evidence": "futures/d4_styles/blind/INSTRUCTIONS.md"
+  },
+  {
+   "line": "A4.2",
+   "text_zh": "三种风格各自与她的不冲突比例 >= 90%（巴赫用刺耳音程版；流行/爵士用避免音版，另报刺耳版）",
+   "measured": "min over 4 melodies (time-weighted mean): Bach harsh 1.000 (1.000); pop avoid 0.950 (0.980), pop harsh 0.746 (0.809); jazz avoid 0.955 (0.978), jazz harsh 0.744 (0.801). Bach's own A/T/B on the same chorale excerpt (harsh): 0.766. Robustness on 30 more test melodies (Bach/folk/POP909, 32 beats): min Bach harsh 1.000, pop avoid 0.955, jazz avoid 0.971; mean pop harsh 0.837, jazz harsh 0.766.",
+   "threshold": ">= 0.90 per style (Bach: harsh rule; pop/jazz: avoid-note rule)",
+   "status": "pass",
+   "evidence": "futures/d4_styles/out/styles.json"
+  },
+  {
+   "line": "A4.3",
+   "text_zh": "从旋律预测原曲和弦（每拍 7 个调内三和弦），明显超过现有 HMM（增益 >= 10 个百分点且 95% 置信区间不含 0）",
+   "measured": "test: mean accuracy 0.590 (ens) vs current causal HMM 0.308 (gain +28.2 pts, 95% CI [+27.0, +29.5]); vs offline HMM (hmm_fb) 0.442 (gain +14.8 pts, CI [+13.7, +16.0]). Per dataset ours vs causal/offline: bach 0.630 vs 0.362/0.576, folk 0.758 vs 0.350/0.522, pop 0.454 vs 0.265/0.344, pop909 0.518 vs 0.254/0.325. Board estimate 192 us/beat (79 us/beat M4).",
+   "threshold": "gain over current HMM >= 10 points, CI excludes 0",
+   "status": "pass",
+   "evidence": "futures/d4_styles/out/board_test.json"
+  }
+ ],
+ "demos": [
+  {
+   "file": "futures/d4_styles/demo/folk_ashover_35_bach_pop_jazz.mp3",
+   "label_zh": "同一旋律依次配成 巴赫 / 流行 / 爵士（folk_ashover_35）",
+   "source": "Nottingham folk nottingham/ashover.abc#35 (test split), synthetic singer; GPL (Nottingham dataset)",
+   "page_safe": true
+  },
+  {
+   "file": "futures/d4_styles/demo/vocadito_12_bach_pop_jazz.mp3",
+   "label_zh": "同一旋律依次配成 巴赫 / 流行 / 爵士（vocadito_12）",
+   "source": "vocadito track 12 (Bittner et al.), notes from its A1 annotation; beat 0.480s by estimate_beat; pulse x key score 0.65; CC BY 4.0",
+   "page_safe": true
+  },
+  {
+   "file": "futures/d4_styles/demo/bach_test_bwv267_bach_pop_jazz.mp3",
+   "label_zh": "同一旋律依次配成 巴赫 / 流行 / 爵士（bach_test_bwv267）",
+   "source": "Bach chorale bach/bwv267 soprano (music21 corpus, test split), synthetic singer; public domain",
+   "page_safe": true
+  }
+ ],
+ "local_only": [],
+ "how_to_run": "bash futures/d4_styles/run_all.sh",
+ "caveats_zh": [
+  "和弦标签只有 7 个调内三和弦，离调和弦被折算成最接近的三和弦；流行数据（Hooktheory）只用于训练和打分，从未渲染成音频。",
+  "基线 1 是实时系统的因果判断（提前 L+delta 决定），本任务是离线看整首旋律，所以增益里有一大块来自“能看后文”；对离线 HMM 的增益更能说明模型本身。",
+  "流行/爵士的“刺耳版”不冲突比例低：三和弦/七和弦下任何经过音都会和某个和弦音成二度，这是定义使然，验收用避免音版。",
+  "巴赫风格用 D1 的 futures/common/satb.py（硬性禁止刺耳音程），所以刺耳版是 100%，比巴赫本人在同一段上的值还高；这说明它很保守，不代表更像巴赫。",
+  "vocadito 片段的拍子是从音符起点估出来的（estimate_beat），真人唱得不完全按拍，流行/爵士伴奏和她可能有轻微错拍；音符用的是人工标注而不是自动转写。",
+  "A4.2 的和声是从她的真实音符（乐谱或人工标注）算出来的，没有经过音高识别这一步；换成麦克风实录要再测。巴赫本人的参考值用的是女高音起音切片，内声部在一个旋律音内部的移动被忽略。",
+  "风格可辨认度只有统计代理（七和弦比例、替代和弦、摇摆八分音符），合成音色很简单，真人盲听还没做。"
+ ],
+ "board_estimate": {
+  "chord_model_us_per_beat": 192.23692464025044,
+  "arrange_3_styles_s_per_melody": 0.16757885401602834,
+  "note": "board_estimate = 2 x M4 efficiency-core time (estimate)",
+  "m4": {
+   "tag": "m4",
+   "chord_model_us_per_beat": 78.90471706832965,
+   "chord_model_ms_per_255beat_song": 20.12070285242406,
+   "arrange_3_styles_s_total": 0.22889725002460182,
+   "melody_seconds_total": 84.6868676464035,
+   "arrange_s_per_melody_3_styles": 0.057224312506150454
+  }
+ }
+}

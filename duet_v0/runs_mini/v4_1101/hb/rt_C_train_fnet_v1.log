@@ -1,0 +1,2 @@
+2026-11-01 22:26:43 START tl=590 cwd=$ABS $ABS/.venv/bin/python $ABS/runs_mini/v5rt_1101/r1/C/train_fnet_C_v1.py --secs 440 --out $ABS/runs_mini/v5rt_1101/models/C_fnet_v1.pt --log $ABS/runs_mini/v5rt_1101/r1/C/train_fnet_C_v1_log.json
+2026-11-01 22:34:07 END rc=0 secs=444 $ABS/.venv/bin/python $ABS/runs_mini/v5rt_1101/r1/C/train_fnet_C_v1.py --secs 440 --out $ABS/runs_mini/v5rt_1101/models/C_fnet_v1.pt --log $ABS/runs_mini/v5rt_1101/r1/C/train_fnet_C_v1_log.json

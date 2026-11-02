@@ -1,0 +1,2 @@
+2026-11-02 01:24:48 START tl=600 cwd=$ABS $ABS/.venv/bin/python $ABS/runs_mini/v5rt_1101/r3/E/diag_fresh_E_v2.py rt:r2_copyhm_v1 --voice sung_low --out $ABS/runs_mini/v5rt_1101/r3/E/D_copyhm_sung_low_v1.json
+2026-11-02 01:25:12 END rc=0 secs=24 $ABS/.venv/bin/python $ABS/runs_mini/v5rt_1101/r3/E/diag_fresh_E_v2.py rt:r2_copyhm_v1 --voice sung_low --out $ABS/runs_mini/v5rt_1101/r3/E/D_copyhm_sung_low_v1.json

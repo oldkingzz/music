@@ -1,0 +1,361 @@
+<title>Duet 和弦跟唱</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;600;700&family=IBM+Plex+Mono:wght@400;600&family=Noto+Sans+SC:wght@400;600;700&display=swap">
+<style>
+/* Layout: a results report read top to bottom: verdict, listen (demo cards: audio + piano roll + beat table),
+   the test-set numbers, why, the ear check, what was built, what is left. Orange = her voice, blue = Duet
+   (validated colour-blind safe on both surfaces); green tick / red cross = chord guessed right / wrong. */
+:root {
+  --bg: #F3F4F1; --card: #FFFFFF; --ink: #1A1E24; --ink2: #545C66; --muted: #7A828C; --rule: #E3E6E1; --rule2: #CDD2CB;
+  --her: #eb6834; --duet: #2a78d6; --duet-soft: #9CC0EC; --good: #0ca30c; --bad: #d03b3b; --hl: #EEF4FC;
+  --sans: "IBM Plex Sans", "Noto Sans SC", "PingFang SC", system-ui, sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg: #14171B; --card: #1C2026; --ink: #E7EAEE; --ink2: #A7B0BA; --muted: #848D97; --rule: #2C333B; --rule2: #3A424B;
+  --her: #d95926; --duet: #3987e5; --duet-soft: #2D5A8F; --good: #0ca30c; --bad: #d03b3b; --hl: #1F2C3C; color-scheme: dark } }
+:root[data-theme="dark"] {
+  --bg: #14171B; --card: #1C2026; --ink: #E7EAEE; --ink2: #A7B0BA; --muted: #848D97; --rule: #2C333B; --rule2: #3A424B;
+  --her: #d95926; --duet: #3987e5; --duet-soft: #2D5A8F; --good: #0ca30c; --bad: #d03b3b; --hl: #1F2C3C; color-scheme: dark }
+body { background: var(--bg); color: var(--ink); font: 16px/1.7 var(--sans); }
+.wrap { max-width: 980px; margin: 0 auto; padding-block: 28px 72px;
+  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px));
+  display: grid; gap: 40px; }
+h1 { font-size: 1.9rem; line-height: 1.25; margin: 0; text-wrap: balance; }
+h2 { font-size: 1.3rem; margin: 0; text-wrap: balance; }
+h3 { font-size: 1.05rem; margin: 0; text-wrap: balance; }
+p { margin: 0; max-width: 72ch; }
+section { display: grid; gap: 14px; min-width: 0; }
+.verdict { font-size: 1.1rem; max-width: 68ch; }
+.lead { color: var(--ink2); }
+.legend { display: flex; flex-wrap: wrap; gap: 8px 18px; font-size: .9rem; color: var(--ink2); align-items: center; }
+.key { display: inline-block; width: 18px; height: 6px; border-radius: 3px; vertical-align: middle; margin-right: 6px; }
+.ok { color: var(--good); font-weight: 700; } .no { color: var(--bad); font-weight: 700; }
+.demos { display: grid; gap: 18px; }
+.demo { background: var(--card); border: 1px solid var(--rule); border-radius: 12px; padding: 16px; display: grid; gap: 10px; min-width: 0; }
+.demo .note { color: var(--ink2); }
+.demo audio { width: 100%; max-width: 520px; }
+.stats { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: .92rem; color: var(--ink2); }
+.stats b { color: var(--ink); font-variant-numeric: tabular-nums; font-size: 1.02rem; }
+.muted { color: var(--muted); }
+.roll { overflow-x: auto; border-radius: 8px; outline-offset: 3px; }
+.roll:focus-visible { outline: 2px solid var(--duet); }
+.roll svg { display: block; }
+.roll text, .dots text { font-family: var(--sans); fill: var(--ink2); }
+.tablebox { overflow-x: auto; background: var(--card); border: 1px solid var(--rule); border-radius: 10px; }
+.demo .tablebox { border: none; }
+table { border-collapse: collapse; width: 100%; font-size: .9rem; }
+th, td { text-align: left; vertical-align: top; padding: 7px 11px; border-bottom: 1px solid var(--rule); }
+th { font-size: .76rem; letter-spacing: .04em; color: var(--ink2); font-weight: 600; }
+tr:last-child td { border-bottom: none; }
+td.n, th.n { font-variant-numeric: tabular-nums; text-align: right; white-space: nowrap; }
+tr.main td { background: var(--hl); font-weight: 600; }
+table.big { min-width: 760px; }
+table.beats { min-width: 560px; font-size: .84rem; }
+details summary { cursor: pointer; color: var(--ink2); font-size: .92rem; }
+details summary:focus-visible { outline: 2px solid var(--duet); outline-offset: 2px; }
+.dots { display: flex; flex-wrap: wrap; gap: 18px; }
+.dots figure { margin: 0; flex: 1 1 420px; min-width: 0; display: grid; gap: 6px; }
+.dots figcaption { font-weight: 600; }
+.dotbox { overflow-x: auto; background: var(--card); border: 1px solid var(--rule); border-radius: 10px; padding: 8px 4px; }
+ul.points { margin: 0; padding-left: 1.2em; display: grid; gap: 8px; max-width: 76ch; }
+code { font-family: var(--mono); font-size: .86em; }
+.map td:first-child { font-family: var(--mono); font-size: .84rem; white-space: nowrap; }
+#tip { position: fixed; z-index: 20; pointer-events: none; background: var(--card); color: var(--ink); border: 1px solid var(--rule2);
+  border-radius: 8px; padding: 8px 10px; font-size: .84rem; line-height: 1.45; box-shadow: 0 4px 16px rgba(0,0,0,.12); max-width: 280px; }
+#tip .row { display: flex; gap: 8px; align-items: baseline; }
+#tip .v { font-weight: 700; font-variant-numeric: tabular-nums; }
+#tip .l { color: var(--ink2); }
+#tip .lk { display: inline-block; width: 12px; height: 3px; border-radius: 2px; transform: translateY(-3px); }
+.say { cursor: pointer; color: var(--duet); text-decoration: underline dotted; text-underline-offset: 3px; }
+.say::after { content: " \25B8"; font-size: .75em; }
+.say.playing { background: var(--hl); }
+.say:focus-visible { outline: 2px solid var(--duet); outline-offset: 2px; }
+@media (prefers-reduced-motion: reduce) { * { scroll-behavior: auto !important; } }
+</style>
+
+<div class="wrap">
+  <header style="display:grid;gap:12px">
+    <h1>Duet 和弦跟唱：第一版结果</h1>
+    <p class="verdict">整条链路跑通了：合成歌手唱，Duet 用耳朵听，每拍提前猜和弦，再从和弦里挑一个音唱出来，而且从不偷看她还没唱的音（有自动检查）。从这几段看，效果很看歌的和弦节奏：你的琶音一小节才换一次和弦，Duet 猜对 __ARP_M1__，唱的音有 __ARP_M2__ 落在和弦里（只是一首短歌、16 拍计分，用的是手设的流行和弦节奏）；巴赫众赞歌大约四分之三的拍都换和弦，在 27 首测试曲上 Duet 猜对 __MAIN_M1__，"永远猜 I 和弦"也有 __B0_M1__。瓶颈不在耳朵，而在旋律给的线索不够：她下一拍唱什么还不知道，而且一个旋律音本来就能配好几个和弦。</p>
+    <div class="legend"><span><i class="key" style="background:var(--her)"></i>她（合成歌手）</span><span><i class="key" style="background:var(--duet)"></i>Duet</span><span><span class="ok">✓</span> 这一拍和弦猜对</span><span><span class="no">✗</span> 猜错</span><span>竖线：Duet 开始唱或停唱</span></div>
+  </header>
+
+  <section aria-labelledby="listen">
+    <h2 id="listen">先听</h2>
+    <p class="lead">左声道偏她、右声道偏 Duet，中间是节拍器（__T:click track__）。图里横轴是时间（下面标的是小节号），纵轴是音高；鼠标移上去，或者点一下图再按左右方向键，可以逐拍看她唱了什么、Duet 唱了什么、和弦猜对没有。</p>
+    <div class="demos">
+__CARDS__
+    </div>
+  </section>
+
+  <section aria-labelledby="test">
+    <h2 id="test">在 __N_TEST__ 首没见过的巴赫众赞歌上</h2>
+    <p class="lead">训练 __N_TRAIN__ 首（__B_TRAIN__ 拍），调参 __N_VAL__ 首，测试 __N_TEST__ 首（__B_TEST__ 拍），都是大调，按曲调分组切开，测试曲的旋律训练时没出现过。100 BPM，每拍提前 72 毫秒做决定（输出延迟 52 加计算余量 20）。从第 9 拍起计分。区间是按整首曲子重抽样的 95% 区间。</p>
+    <div class="dots">
+      <figure><figcaption>和弦猜对（M1）</figcaption><div class="dotbox"><svg id="dots1" class="dots" role="img" aria-label="各系统的和弦猜对率与区间"></svg></div></figure>
+      <figure><figcaption>Duet 的音在巴赫的和弦里（M2；B1 几乎不出声，不画）</figcaption><div class="dotbox"><svg id="dots2" class="dots" role="img" aria-label="各系统的音在和弦里的比例与区间"></svg></div></figure>
+    </div>
+    <ul class="points">
+      <li><b>比"永远猜 I"</b>（__T:baseline__）：和弦猜对多 __D_M1_B0__；音在和弦里多 __D_M2_B0__，基本打平。原因见下一节。</li>
+      <li><b>比仓库原来的规则</b>（在她上一个音下面唱三度或六度）：音在和弦里多 __D_M2_B2__。旧规则是给"排练过、知道她这一拍唱什么"设计的，没有排练时只能拿上一拍的音去配，经常配错。</li>
+      <li><b>如果能偷看这一拍</b>（B3，不守因果）：和弦猜对能多 __D_M1_B3__。这是"不知道她下一拍唱什么"的代价；排练过的歌事先知道整条旋律，预计至少能补回这一块。就算能偷看，也只猜对 __B3_M1__：一个旋律音本来就能配好几个和弦。</li>
+      <li><b>一次规划 4 拍对比只规划 1 拍</b>（__T:receding horizon__）：音在和弦里 __D_N__，看不出差别。</li>
+      <li><b>12 格比例对比只看最长的音</b>：在巴赫上和弦猜对 __D_VEC__，没差别，因为众赞歌大多一拍只有一个音。到了你的琶音（一拍三个音），同样用流行和弦节奏，只看最长的音 16 拍里猜对 11 拍，用 12 格比例猜对 14 拍（只有一首短歌）。上面头两条演示同时换了和弦节奏和观测方式，不能单独看出这一点。</li>
+    </ul>
+    <details><summary>完整表格（含 M3 到 M5）</summary>
+      <div class="tablebox"><table class="big">
+        <thead><tr><th>系统</th><th class="n">M1 和弦猜对</th><th class="n">M2 音在和弦里</th><th class="n">M2b 音在巴赫实际响的音里</th><th class="n">M3 和她协和</th><th class="n">M4 平行五/八度 每100次</th><th class="n">M5 出声</th><th class="n">U 净正确音/拍</th></tr></thead>
+        <tbody>
+__ROWS__
+        </tbody>
+      </table></div>
+      <p class="lead" style="margin-top:8px">M2b 可以和仓库原来那套离线模型的 65% 对照，但条件不同：那套模型看过整首旋律、按音符计、大调小调都算，这里是边听边猜、按拍计、只有大调。B1 几乎从不出声（M5 很低），所以它的 M2 只算了很少几拍，不能直接比。U 是每拍"在和弦里的音减去不在和弦里的音"，用来在调参集上挑把握门槛 q_min（选出 __QMIN__），规划权重 γ 选出 __GAMMA__。</p>
+    </details>
+    <details><summary>把握门槛 q_min 怎么选的（调参集）</summary>
+      <div class="tablebox"><table><thead><tr><th class="n">q_min</th><th class="n">音在和弦里</th><th class="n">出声</th><th class="n">U</th></tr></thead><tbody>__QROWS__</tbody></table></div>
+    </details>
+  </section>
+
+  <section aria-labelledby="why">
+    <h2 id="why">为什么巴赫这么难，你的琶音这么容易</h2>
+    <p>巴赫换和弦很勤（__T:harmonic rhythm__ 很快）：按我们的和弦标注，测试曲里大约四分之三的拍都和上一拍不同。下表是模型学到的"下一拍和弦不变"的概率（七个和弦各自的概率取平均）：</p>
+    <div class="tablebox"><table>
+      <thead><tr><th>下一拍落在小节的</th><th class="n">第 1 拍（强拍）</th><th class="n">第 2 拍</th><th class="n">第 3 拍</th><th class="n">第 4 拍</th></tr></thead>
+      <tbody>
+        <tr><td>从巴赫学到的（4/4）</td><td class="n">__STAY0__</td><td class="n">__STAY1__</td><td class="n">__STAY2__</td><td class="n">__STAY3__</td></tr>
+        <tr><td>手设的"流行和弦节奏"</td><td class="n">__SSTAY0__</td><td class="n">__SSTAY1__</td><td class="n">__SSTAY2__</td><td class="n">__SSTAY3__</td></tr>
+      </tbody>
+    </table></div>
+    <p class="lead">按拍数直接数，训练数据里下一拍和弦不变的比例是 11%、32%、11%、36%（第 1 到第 4 拍），同样是大多数拍都换。</p>
+    <ul class="points">
+      <li>你说的"前面几秒是 CEG，后面大概率还是 CEG"，在巴赫身上不成立，在《小星星》和你的琶音上成立。和弦节奏是一种风格，模型的转移矩阵要和歌的风格对上。</li>
+      <li>反过来，把手设的流行节奏用在巴赫上，和弦猜对是 __SLOW_M1__，比 __MAIN_M1__ 略低，差别在误差范围内：它在巴赫上没有明显好处。</li>
+      <li>手设的流行节奏不是学出来的，是在巴赫的转移概率上加一个"直接保持原和弦"的机会：进入强拍时 30%、第三拍 60%、弱拍 90%，其余时候照巴赫的习惯走。以后应该用流行歌数据学。</li>
+      <li>换和弦的那一拍最难：在她唱出新和弦的音之前，模型只能凭转移概率猜换不换。《小星星》流行设定那条，换和弦的拍大多猜错。</li>
+      <li>规划里"少跳、能不动就不动"的代价，加上没把握时保持原音，让 Duet 常常停在几个和弦共有的音（__T:common tone__）上：分不清是 I 还是 V 时，G 两边都对。《小星星》巴赫设定那条，和弦只猜对一半，Duet 唱的 36 个音里却有 33 个是 G，所以大多仍在和弦里。</li>
+    </ul>
+  </section>
+
+  <section aria-labelledby="ear">
+    <h2 id="ear">耳朵检查：从声音里听出的音准不准</h2>
+    <p>把 __N_TEST__ 首测试曲用合成歌手唱出来，用仓库现有的 YIN 音高检测（__T:front end__）去听，再和谱子对照（共 __FE_N__ 拍）：</p>
+    <div class="tablebox"><table>
+      <thead><tr><th>歌手</th><th class="n">整拍"唱得最久的音"对上</th><th class="n">决定时刻已听到的部分对上</th><th class="n">和弦猜对（听 / 读谱）</th><th class="n">音在和弦里（听 / 读谱）</th></tr></thead>
+      <tbody>
+        <tr><td>干净的声音（不颤、不滑）</td><td class="n">__FE_C_FULL__</td><td class="n">__FE_C_PART__</td><td class="n">__FE_C_M1__ / __FE_S_M1__</td><td class="n">__FE_C_M2__ / __FE_S_M2__</td></tr>
+        <tr><td>仓库的合成歌手（__T:vibrato__、滑音、音准偏差）</td><td class="n">__FE_V_FULL__</td><td class="n">__FE_V_PART__</td><td class="n">__FE_V_M1__ / __FE_S_M1__</td><td class="n">__FE_V_M2__ / __FE_S_M2__</td></tr>
+      </tbody>
+    </table></div>
+    <p>听音频和直接读谱子，最后的分数几乎一样。干净声音整拍对不上的 __FE_MIS__ 拍里，__FE_MIS_MULTI__ 拍是一拍里有两个以上音的拍子，听出的"最长的音"和谱子挑的不同；只看决定时刻已经听到的部分，就全部对上了。在节拍器和干净唱法的前提下，耳朵不是瓶颈。</p>
+    <p><b>对拍监测</b>（规格 E17）：她偏离节拍器时，Duet 停唱，逐拍表里记作"跑拍，停唱"。在上面所有测试曲上一次误报都没有：监测读数（她最近 4 个起音离最近的半拍格点的中位数），干净声音 95% 在 __FE_C_P95__ 毫秒以内，带颤音的在 __FE_V_P95__ 毫秒以内，门槛是 80 毫秒。最后一条演示里她唱快了 1.5%，Duet 跟唱几拍后自动停下。</p>
+  </section>
+
+  <section aria-labelledby="built">
+    <h2 id="built">规格里每一条在哪</h2>
+    <p class="lead">新代码都在 <code>project/duet_v0/duet_beat/</code>，没有改动现有的 Duet。借用了仓库的 YIN 前端、合成歌手、Duet 的声音，以及巴赫数据的切分方式和每首的调。</p>
+    <div class="tablebox"><table class="map">
+      <thead><tr><th>规格</th><th>做了什么</th><th>在哪</th></tr></thead>
+      <tbody>
+        <tr><td>E1–E3</td><td>YIN 基频、有声判定、响度</td><td><code>audio.py</code> AudioSource（调用仓库的 <code>follow.FeatureTracker</code>）</td></tr>
+        <tr><td>E4–E5</td><td>节拍网格；每拍在 τ − L − δ 决定，只用那之前到达的帧</td><td><code>planner.run</code>，<code>AudioSource.partial</code></td></tr>
+        <tr><td>E6</td><td>两种观测都做了：唱得最久的音、12 格比例</td><td><code>model.soprano_obs</code>，<code>planner.to_obs</code></td></tr>
+        <tr><td>E7</td><td>转移按拍位：4/4 四套，其他拍号分强拍、弱拍两套</td><td><code>model.ChordHMM</code></td></tr>
+        <tr><td>E8–E12</td><td>发射、前向滤波、预测、把握（__T:hidden Markov model__）</td><td><code>model.loglik / update / predict</code></td></tr>
+        <tr><td>E13–E15</td><td>在和弦音里选女低音；没把握时保持或不出声</td><td><code>planner.Planner</code>，<code>planner.run</code></td></tr>
+        <tr><td>E16</td><td>数巴赫并做拉普拉斯平滑（κ = 1）；E9 的手设初值没用到</td><td><code>data.py</code>，<code>model.fit</code></td></tr>
+        <tr><td>E17</td><td>对拍监测，偏差中位数超过 80 毫秒就停唱</td><td><code>AudioSource.drift_ms</code>，<code>planner.run</code></td></tr>
+        <tr><td>E18</td><td>听满 8 拍、连续两拍有把握才加入</td><td><code>planner.run</code></td></tr>
+        <tr><td>E19–E21</td><td>和弦与音一起规划 4 拍（Viterbi），只执行第一拍，每拍重算</td><td><code>planner.Planner.plan</code></td></tr>
+        <tr><td>指标与对照组</td><td>M1–M5、U，B0–B4，整曲重抽样区间</td><td><code>metrics.py</code>，<code>run_eval.py</code></td></tr>
+        <tr><td>自检</td><td>因果性（改她后面唱的，前面的决定一个不变；作弊的 B3 会变）、概率归一、选音合法、上限全对</td><td><code>tests/test_core.py</code>，全部通过</td></tr>
+      </tbody>
+    </table></div>
+  </section>
+
+  <section aria-labelledby="left">
+    <h2 id="left">还没做到的，和下一步</h2>
+    <ul class="points">
+      <li><b>平行五度、八度</b>：规格 E14 里的 w2 项没进规划，因为规划时看不到她下一拍的音（__T:causality__）。主系统每 100 次换音出现 __M4__ 次；告诉它正确和弦的上限版反而有 __M4_ORACLE__ 次，说明这一项迟早要补。</li>
+      <li><b>没测过的</b>：真人、回声、真的跑拍的人。对拍监测只用模拟的"唱快 1.5%"测过。所有声音都是合成的。</li>
+      <li><b>规格里的 M6 没做</b>：实测 Duet 真正出声的时刻、量出输出延迟。模拟里出声时刻按定义就是准的，要真机才能量。</li>
+      <li><b>下一步一：边唱边记住这首歌。</b>歌会重复，第二遍时用第一遍听到的旋律和猜出的和弦，相当于对重复段落事先听过。这就是你说的"多听听就更准"，不需要事先排练；预计能补回 B3 那 __B3GAIN__ 个百分点里的一部分，还没测。</li>
+      <li><b>下一步二：用流行歌数据学转移矩阵</b>，替代手设的流行节奏。</li>
+      <li><b>下一步三：加回排练。</b>和弦直接从排练算出来，不用猜。</li>
+    </ul>
+    <p class="lead">重跑：<code>.venv/bin/python duet_beat/data.py</code>（解析巴赫，约 10 秒），<code>run_eval.py</code>（调参和测试，约 6 秒），<code>run_audio.py</code>（音频和演示，约 20 秒），<code>tests/test_core.py</code>。</p>
+  </section>
+</div>
+<div id="tip" hidden></div>
+
+<script>
+(() => {
+  const DEMOS = __PAYLOAD__;
+  const DOTS = __DOTS__;
+  const CH = ['I', 'ii', 'iii', 'IV', 'V', 'vi', 'vii°'];
+  const PC = ['C', 'C#', 'D', 'Eb', 'E', 'F', 'F#', 'G', 'Ab', 'A', 'Bb', 'B'];
+  const NS = 'http://www.w3.org/2000/svg';
+  const nm = m => PC[((m % 12) + 12) % 12] + (Math.floor(m / 12) - 1);
+  const ACT = { sing: '唱', hold: '保持', silent: '没把握，不出声', wait: '还在听', stopped: '跑拍，停唱' };
+  const tip = document.getElementById('tip');
+  function el(tag, a, txt) { const e = document.createElementNS(NS, tag); for (const k in a) e.setAttribute(k, a[k]); if (txt !== undefined) e.textContent = txt; return e; }
+  function showTip(rows, x, y) {
+    tip.textContent = '';
+    rows.forEach(([v, l, key, cls]) => {
+      const r = document.createElement('div'); r.className = 'row';
+      if (key) { const k = document.createElement('span'); k.className = 'lk'; k.style.background = key; r.appendChild(k); }
+      const vv = document.createElement('span'); vv.className = 'v' + (cls ? ' ' + cls : ''); vv.textContent = v; r.appendChild(vv);
+      const ll = document.createElement('span'); ll.className = 'l'; ll.textContent = l; r.appendChild(ll);
+      tip.appendChild(r);
+    });
+    tip.hidden = false;
+    const w = tip.offsetWidth, h = tip.offsetHeight;
+    tip.style.left = Math.min(window.innerWidth - w - 8, x + 14) + 'px';
+    tip.style.top = Math.max(8, Math.min(window.innerHeight - h - 8, y - h - 10)) + 'px';
+  }
+  const hideTip = () => { tip.hidden = true; };
+
+  // ---------------------------------------------------------------- piano rolls
+  function herIn(sop, k) { return sop.filter(n => n[0] < k + 1 - 1e-9 && n[1] > k + 1e-9).map(n => n[2]); }
+  function duetSpans(beats) {
+    const out = []; let cur = null;
+    beats.forEach(b => {
+      if (b.h < 0) { if (cur) { out.push(cur); cur = null; } return; }
+      if (cur && cur.h === b.h && cur.b === b.k) { cur.b = b.k + 1; } else { if (cur) out.push(cur); cur = { a: b.k, b: b.k + 1, h: b.h }; }
+    });
+    if (cur) out.push(cur);
+    return out;
+  }
+  function roll(div) {
+    const d = DEMOS[div.dataset.demo];
+    const K = d.K, bw = Math.max(14, Math.min(34, Math.floor(720 / K))), L = 44, R = 10, T = 18, rh = 6;
+    const ms = d.sop.map(n => n[2]).concat(d.beats.filter(b => b.h >= 0).map(b => b.h));
+    const lo = Math.min(...ms) - 1, hi = Math.max(...ms) + 1;
+    const ph = (hi - lo + 1) * rh, laneH = 16, W = L + K * bw + R, H = T + ph + 10 + laneH * 2 + 18;
+    const x = k => L + k * bw, y = m => T + (hi - m) * rh;
+    const svg = el('svg', { width: W, height: H, viewBox: `0 0 ${W} ${H}` });
+    // bar lines (downbeats) and pitch labels at every C
+    for (let k = 0; k <= K; k++) if (k % d.M === 0) svg.appendChild(el('line', { x1: x(k), x2: x(k), y1: T, y2: T + ph, stroke: 'var(--rule)', 'stroke-width': 1 }));
+    for (let m = lo; m <= hi; m++) if (m % 12 === 0) {
+      svg.appendChild(el('line', { x1: L, x2: x(K), y1: y(m) + rh / 2, y2: y(m) + rh / 2, stroke: 'var(--rule)', 'stroke-width': 1 }));
+      svg.appendChild(el('text', { x: L - 6, y: y(m) + rh, 'text-anchor': 'end', 'font-size': 10 }, nm(m)));
+    }
+    // her notes, then Duet's (2px surface gap between neighbours)
+    d.sop.forEach(n => svg.appendChild(el('rect', { x: x(n[0]) + 1, y: y(n[2]), width: Math.max(2, (n[1] - n[0]) * bw - 2), height: rh - 1, rx: 2, fill: 'var(--her)' })));
+    duetSpans(d.beats).forEach(s => svg.appendChild(el('rect', { x: x(s.a) + 1, y: y(s.h), width: (s.b - s.a) * bw - 2, height: rh - 1, rx: 2, fill: 'var(--duet)' })));
+    // join and stop markers
+    const join = d.beats.find(b => b.action !== 'wait'), stop = d.beats.find(b => b.action === 'stopped');
+    const mark = (k, label) => { svg.appendChild(el('line', { x1: x(k), x2: x(k), y1: T - 4, y2: T + ph + 10 + laneH * 2, stroke: 'var(--ink2)', 'stroke-width': 1.5 }));
+      svg.appendChild(el('text', { x: x(k) + 4, y: T - 6, 'font-size': 11 }, label)); };
+    if (join && join.action !== 'stopped') mark(join.k, '开始唱');
+    if (stop) mark(stop.k, '跑拍，停唱');
+    // lanes: Bach's / the right chord (runs), Duet's guess (tick or cross per beat)
+    const y1 = T + ph + 10, y2 = y1 + laneH;
+    svg.appendChild(el('text', { x: L - 6, y: y1 + 11, 'text-anchor': 'end', 'font-size': 10 }, '正确'));
+    svg.appendChild(el('text', { x: L - 6, y: y2 + 11, 'text-anchor': 'end', 'font-size': 10 }, '猜对?'));
+    let a = 0;
+    for (let k = 1; k <= K; k++) {
+      if (k === K || d.beats[k].z_true !== d.beats[a].z_true) {
+        const z = d.beats[a].z_true;
+        svg.appendChild(el('rect', { x: x(a) + 1, y: y1 + 2, width: (k - a) * bw - 2, height: laneH - 4, rx: 3, fill: 'var(--rule)' }));
+        if ((k - a) * bw >= 18 && z >= 0) svg.appendChild(el('text', { x: x(a) + 4, y: y1 + 11.5, 'font-size': 10, fill: 'var(--ink)' }, CH[z]));
+        a = k;
+      }
+    }
+    d.beats.forEach(b => {
+      if (b.z_hat < 0 || b.action === 'wait' || b.z_true < 0) return;
+      const ok = b.z_hat === b.z_true;
+      svg.appendChild(el('text', { x: x(b.k) + bw / 2, y: y2 + 12, 'text-anchor': 'middle', 'font-size': 11, 'font-weight': 700, fill: ok ? 'var(--good)' : 'var(--bad)' }, ok ? '✓' : '✗'));
+    });
+    // x axis: bar numbers
+    for (let k = 0; k < K; k += d.M) svg.appendChild(el('text', { x: x(k) + 2, y: H - 4, 'font-size': 10 }, String(k / d.M + 1)));
+    // crosshair
+    const cross = el('line', { x1: 0, x2: 0, y1: T, y2: y2 + laneH, stroke: 'var(--ink)', 'stroke-width': 1, opacity: 0 });
+    svg.appendChild(cross);
+    div.appendChild(svg);
+    let cur = -1;
+    function at(k, cx, cy) {
+      k = Math.max(0, Math.min(K - 1, k)); cur = k;
+      const b = d.beats[k];
+      cross.setAttribute('x1', x(k) + bw / 2); cross.setAttribute('x2', x(k) + bw / 2); cross.setAttribute('opacity', 1);
+      const her = herIn(d.sop, k).map(nm).join(' ') || '不出声';
+      const rows = [[`第 ${k + 1} 拍`, `第 ${Math.floor(k / d.M) + 1} 小节第 ${(k % d.M) + 1} 拍`],
+        [her, '她', 'var(--her)'],
+        [b.h >= 0 ? nm(b.h) : '—', 'Duet · ' + ACT[b.action], 'var(--duet)'],
+        [b.z_true >= 0 ? CH[b.z_true] : '—', '正确和弦']];
+      if (b.z_hat >= 0) rows.push([CH[b.z_hat] + (b.action === 'wait' ? '' : (b.z_hat === b.z_true ? ' ✓' : ' ✗')), `Duet 猜的 · 把握 ${b.q.toFixed(2)}`, null, b.action === 'wait' ? '' : (b.z_hat === b.z_true ? 'ok' : 'no')]);
+      if (b.drift === b.drift && b.drift !== null) rows.push([`${b.drift} ms`, '她离节拍器']);
+      const r = svg.getBoundingClientRect();
+      showTip(rows, cx !== undefined ? cx : r.left + x(k) + bw, cy !== undefined ? cy : r.top + T + 20);
+    }
+    svg.addEventListener('pointermove', e => { const r = svg.getBoundingClientRect(); at(Math.floor((e.clientX - r.left - L) / bw), e.clientX, e.clientY); });
+    svg.addEventListener('pointerleave', () => { cross.setAttribute('opacity', 0); hideTip(); });
+    div.addEventListener('keydown', e => {
+      if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') { e.preventDefault(); at((cur < 0 ? 0 : cur) + (e.key === 'ArrowRight' ? 1 : -1)); }
+    });
+    div.addEventListener('blur', () => { cross.setAttribute('opacity', 0); hideTip(); });
+    // beat table (the same data, readable without hovering)
+    const tb = document.querySelector(`table.beats[data-demo="${div.dataset.demo}"]`);
+    const head = document.createElement('tr');
+    ['拍', '她', 'Duet', '动作', '正确和弦', 'Duet 猜', '把握'].forEach(t => { const th = document.createElement('th'); th.textContent = t; head.appendChild(th); });
+    const thead = document.createElement('thead'); thead.appendChild(head); tb.appendChild(thead);
+    const body = document.createElement('tbody');
+    d.beats.forEach(b => {
+      const tr = document.createElement('tr');
+      const cells = [String(b.k + 1), herIn(d.sop, b.k).map(nm).join(' ') || '—', b.h >= 0 ? nm(b.h) : '—', ACT[b.action],
+        b.z_true >= 0 ? CH[b.z_true] : '—', b.z_hat >= 0 ? CH[b.z_hat] + (b.action === 'wait' ? '' : (b.z_hat === b.z_true ? ' ✓' : ' ✗')) : '—', b.z_hat >= 0 ? b.q.toFixed(2) : '—'];
+      cells.forEach(c => { const td = document.createElement('td'); td.textContent = c; tr.appendChild(td); });
+      body.appendChild(tr);
+    });
+    tb.appendChild(body);
+  }
+  document.querySelectorAll('.roll').forEach(roll);
+
+  // ---------------------------------------------------------------- dot plots (one per metric, small multiples)
+  function dots(id, key, ci) {
+    const svg = document.getElementById(id);
+    const rows = DOTS.filter(r => r[key] === r[key] && r[key] !== null);
+    const L = 250, W = 470, Rm = 16, rh = 26, T = 8, H = T + rows.length * rh + 24;
+    svg.setAttribute('viewBox', `0 0 ${W} ${H}`); svg.setAttribute('width', W); svg.setAttribute('height', H);
+    const x = v => L + v * (W - L - Rm);
+    [0, .25, .5, .75, 1].forEach(v => {
+      svg.appendChild(el('line', { x1: x(v), x2: x(v), y1: T, y2: H - 20, stroke: 'var(--rule)', 'stroke-width': 1 }));
+      svg.appendChild(el('text', { x: x(v), y: H - 6, 'text-anchor': 'middle', 'font-size': 10 }, Math.round(v * 100) + '%'));
+    });
+    rows.forEach((r, i) => {
+      const cy = T + i * rh + rh / 2, main = r.key === 'hmm_long_N4';
+      const lab = el('text', { x: L - 8, y: cy + 4, 'text-anchor': 'end', 'font-size': 11.5, 'font-weight': main ? 700 : 400, fill: main ? 'var(--ink)' : 'var(--ink2)' }, r.label);
+      svg.appendChild(lab);
+      const c = r[ci];
+      svg.appendChild(el('line', { x1: x(c[0]), x2: x(c[1]), y1: cy, y2: cy, stroke: 'var(--duet-soft)', 'stroke-width': 3, 'stroke-linecap': 'round' }));
+      svg.appendChild(el('circle', { cx: x(r[key]), cy, r: main ? 6 : 4.5, fill: 'var(--duet)', stroke: 'var(--card)', 'stroke-width': 2 }));
+      if (['hmm_long_N4', 'B0_tonic', 'B3_peek'].includes(r.key)) svg.appendChild(el('text', { x: x(c[1]) + 6, y: cy + 4, 'font-size': 11 }, (100 * r[key]).toFixed(1) + '%'));
+      const hit = el('rect', { x: 0, y: cy - rh / 2, width: W, height: rh, fill: 'transparent', tabindex: 0 });
+      const show = (cx, cy2) => showTip([[(100 * r[key]).toFixed(1) + '%', r.label, 'var(--duet)'], [`${(100 * c[0]).toFixed(1)}% 到 ${(100 * c[1]).toFixed(1)}%`, '95% 区间']], cx, cy2);
+      hit.addEventListener('pointermove', e => show(e.clientX, e.clientY));
+      hit.addEventListener('pointerleave', hideTip);
+      hit.addEventListener('focus', () => { const b = hit.getBoundingClientRect(); show(b.left + x(r[key]), b.top + 4); });
+      hit.addEventListener('blur', hideTip);
+      svg.appendChild(hit);
+    });
+  }
+  dots('dots1', 'm1', 'ci1');
+  dots('dots2', 'm2', 'ci2');
+
+  // ---------------------------------------------------------------- pronunciation
+  const slug = t => t.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+  let au = null;
+  function speak(e) {
+    const t = e.dataset.say;
+    if (au) au.pause();
+    document.querySelectorAll('.say.playing').forEach(x => x.classList.remove('playing'));
+    e.classList.add('playing');
+    au = new Audio('audio/' + slug(t) + '.mp3');
+    au.onended = () => e.classList.remove('playing');
+    au.play().catch(() => { e.classList.remove('playing'); try { const u = new SpeechSynthesisUtterance(t); u.lang = 'en-US'; speechSynthesis.cancel(); speechSynthesis.speak(u); } catch (er) {} });
+  }
+  document.addEventListener('click', e => { const s = e.target.closest('.say'); if (s) { e.preventDefault(); speak(s); } });
+  document.addEventListener('keydown', e => { const s = e.target.closest && e.target.closest('.say'); if (s && (e.key === 'Enter' || e.key === ' ')) { e.preventDefault(); speak(s); } });
+})();
+</script>

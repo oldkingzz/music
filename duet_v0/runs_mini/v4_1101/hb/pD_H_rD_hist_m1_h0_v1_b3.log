@@ -1,0 +1,2 @@
+2026-11-01 16:20:44 START tl=600 cwd=$ABS/futures/v3_nolatency $ABS/.venv/bin/python $ABS/futures/v3_nolatency/bench3.py --system rD_hist_m1_h0_v1 --note v4 Phase D history: m1_filter_v5lo with its HMM filter limited to her last 0 beats (filter H=0 set in the wrapper, no env)
+2026-11-01 16:20:47 END rc=0 secs=3 $ABS/.venv/bin/python $ABS/futures/v3_nolatency/bench3.py --system rD_hist_m1_h0_v1 --note v4 Phase D history: m1_filter_v5lo with its HMM filter limited to her last 0 beats (filter H=0 set in the wrapper, no env)

@@ -1,0 +1,2 @@
+2026-11-01 16:22:10 START tl=600 cwd=$ABS/futures/v3_nolatency $ABS/.venv/bin/python $ABS/futures/v3_nolatency/bench3.py --system rD_hist_mix_h4_v1 --note v4 Phase D history: r2_mix_v2 with both guessers limited to her last 4 beats (HMM H=4, GRU hist=4, set in the wrapper, no env)
+2026-11-01 16:22:28 END rc=0 secs=18 $ABS/.venv/bin/python $ABS/futures/v3_nolatency/bench3.py --system rD_hist_mix_h4_v1 --note v4 Phase D history: r2_mix_v2 with both guessers limited to her last 4 beats (HMM H=4, GRU hist=4, set in the wrapper, no env)

@@ -1,0 +1,437 @@
+{
+ "cfg": {
+  "lam": 2.0,
+  "kappa": 1.0,
+  "kappa_hold": 0.25,
+  "mu": 0.05,
+  "mu_old": -1.0,
+  "beta": 1.0,
+  "theta": 0.0,
+  "theta_sil": 0.0,
+  "nu": 1.0,
+  "w_x": 0.3,
+  "gamma": 0.0,
+  "min_cov": 0.0,
+  "silence": false,
+  "hold_win": "beat",
+  "post_hold": true,
+  "pan_floor": 0.0,
+  "hear_tau": 0.2,
+  "lam_h": 1.0,
+  "kappa_h": 1.0,
+  "hear_sil": false,
+  "w_next": 0.0,
+  "w_dyn": 1.0,
+  "lam_n": 1.0,
+  "hx": 0.0,
+  "hedge_post": 0,
+  "copy": true,
+  "copy_rhy": 1.0,
+  "copy_p": 1.0,
+  "hm_mode": "lr",
+  "hm_rho": 1.0,
+  "hm_min": 6,
+  "hm_bar": 0,
+  "hm_lag": 8,
+  "hm_plan": 1,
+  "trk": true,
+  "eps_u": 0.1,
+  "mel_w": 1.0,
+  "tau_t": 0.15,
+  "p_min": 0.1,
+  "harsh_max": 0.2,
+  "kappa_t": 1.0,
+  "lam_t": 1.0,
+  "sil_v": -0.2,
+  "above_att": false,
+  "free": true,
+  "frag_copy": 2.0,
+  "hold_trk": true
+ },
+ "voice": "sung_low",
+ "note": "val only, systems tuned on val; no test split",
+ "metrics": {
+  "rt_nd_live": 0.5046354271796346,
+  "harsh": 0.03724103904281752,
+  "double": 0.006651908198589683,
+  "first_100ms_hit": 0.2657372298099974,
+  "first_100ms_harsh": 0.21937683239478775,
+  "on_time_right": 0.1411530815109344,
+  "changes": 0.43240556660039764,
+  "late_entry": 0.03777335984095427,
+  "fresh_per100": 1.1928429423459244,
+  "fresh": 12,
+  "wrong_att_per100": 36.18290258449304,
+  "attacks_per100": 82.30616302186878,
+  "attacks_in_rest": 0,
+  "stumbles_per100": 9.542743538767395,
+  "stumbles_own_per100": 7.753479125248509,
+  "blips": 0,
+  "blips_on_her": 0,
+  "notes": 1006,
+  "counted_beats": 1111.8478685671187
+ },
+ "agg": {
+  "att": {
+   "hear_switch": 379,
+   "plan_attack": 340,
+   "trk_react": 67,
+   "trk_attack": 16,
+   "hear_enter": 21,
+   "reenter": 5
+  },
+  "wrong": {
+   "hear_switch": 140,
+   "plan_attack": 181,
+   "trk_react": 24,
+   "trk_attack": 9,
+   "hear_enter": 9,
+   "reenter": 1
+  },
+  "att_by_tracker": {
+   "hear_switch:right": 355,
+   "trk_react:right": 50,
+   "hear_switch:split": 12,
+   "trk_attack:split": 6,
+   "trk_react:split": 6,
+   "hear_switch:wrong": 12,
+   "trk_react:wrong": 11,
+   "hear_enter:right": 21,
+   "trk_attack:wrong": 7,
+   "trk_attack:right": 3,
+   "reenter:wrong": 3,
+   "reenter:right": 2
+  },
+  "wrong_by_tracker": {
+   "hear_switch:right": 127,
+   "hear_switch:wrong": 10,
+   "trk_attack:split": 5,
+   "trk_react:wrong": 7,
+   "trk_attack:right": 1,
+   "trk_react:right": 15,
+   "trk_react:split": 2,
+   "hear_switch:split": 3,
+   "hear_enter:right": 9,
+   "reenter:wrong": 1,
+   "trk_attack:wrong": 3
+  },
+  "stumble": {
+   "hear_switch": 33,
+   "plan_attack": 49,
+   "hear_enter": 1,
+   "trk_react": 7,
+   "trk_attack": 5,
+   "reenter": 1
+  },
+  "time": {
+   "plan_attack": 202.7399999998881,
+   "hear_switch": 342.78499999976077,
+   "silent": 99.47499999998202,
+   "trk_react": 59.16000000001181,
+   "trk_attack": 8.804999999999977,
+   "hear_enter": 20.42500000000022,
+   "reenter": 10.385000000000224
+  },
+  "hit_t": {
+   "hear_switch": 205.20499999988587,
+   "plan_attack": 107.02999999997515,
+   "trk_react": 36.83000000000039,
+   "trk_attack": 3.624999999999945,
+   "hear_enter": 12.335000000000528,
+   "reenter": 9.52500000000009
+  },
+  "harsh_t": {
+   "hear_switch": 17.245000000000854,
+   "plan_attack": 5.494999999999905,
+   "trk_react": 4.149999999999934,
+   "trk_attack": 0.3450000000000002,
+   "hear_enter": 0.6950000000000005,
+   "reenter": 0.3450000000000002
+  },
+  "hear_calls": {
+   "hear_enter:right": 75,
+   "hear_switch:right": 591,
+   "hear_same:right": 169,
+   "trk_react:right": 52,
+   "trk_keep:split": 172,
+   "trk_keep:wrong": 40,
+   "hear_switch:split": 15,
+   "trk_attack:split": 6,
+   "hear_same:wrong": 4,
+   "trk_react:split": 6,
+   "trk_sil:wrong": 13,
+   "hear_switch:wrong": 14,
+   "trk_keep:right": 38,
+   "trk_react:wrong": 11,
+   "trk_sil:right": 46,
+   "hear_enter:wrong": 4,
+   "trk_attack:wrong": 7,
+   "trk_attack:right": 3,
+   "reenter:wrong": 3,
+   "trk_sil:split": 25,
+   "hear_same:split": 7,
+   "hear_enter:split": 5,
+   "reenter:right": 2,
+   "hear_kept_plan:right": 1
+  },
+  "fresh": {
+   "trk_react": 3,
+   "plan_attack": 4,
+   "hear_switch": 4,
+   "trk_attack": 1
+  },
+  "fresh_by_tracker": {
+   "trk_react:wrong": 3,
+   "hear_switch:wrong": 4,
+   "trk_attack:split": 1
+  },
+  "fresh_above": {
+   "trk_react": 0,
+   "plan_attack": 4,
+   "hear_switch": 0,
+   "trk_attack": 0
+  }
+ },
+ "fresh_details": [
+  {
+   "song": "bach/bwv308",
+   "beat": 17.105,
+   "her_true": 55,
+   "duet": 53,
+   "iv": 2,
+   "src": "trk_react",
+   "terr": 2,
+   "frag": 0,
+   "above": false,
+   "call": {
+    "kind": "hear",
+    "i": 19,
+    "onset": 17.0,
+    "midi": 57,
+    "r": 53
+   }
+  },
+  {
+   "song": "bach/bwv291",
+   "beat": 13.463,
+   "her_true": 52,
+   "duet": 65,
+   "iv": 1,
+   "src": "plan_attack",
+   "terr": null,
+   "frag": null,
+   "above": true,
+   "call": {
+    "kind": "plan",
+    "q": 13.5,
+    "r": 65,
+    "last": [
+     13.0,
+     null,
+     50
+    ]
+   }
+  },
+  {
+   "song": "bach/bwv245.40",
+   "beat": 71.12,
+   "her_true": 62,
+   "duet": 60,
+   "iv": 2,
+   "src": "hear_switch",
+   "terr": 1,
+   "frag": 0,
+   "above": false,
+   "call": {
+    "kind": "hear",
+    "i": 101,
+    "onset": 71.0,
+    "midi": 63,
+    "r": 60
+   }
+  },
+  {
+   "song": "bach/bwv245.26",
+   "beat": 24.08,
+   "her_true": 62,
+   "duet": 56,
+   "iv": 6,
+   "src": "hear_switch",
+   "terr": -2,
+   "frag": 0,
+   "above": false,
+   "call": {
+    "kind": "hear",
+    "i": 23,
+    "onset": 24.0,
+    "midi": 60,
+    "r": 56
+   }
+  },
+  {
+   "song": "bach/bwv245.26",
+   "beat": 33.463,
+   "her_true": 56,
+   "duet": 70,
+   "iv": 2,
+   "src": "plan_attack",
+   "terr": null,
+   "frag": null,
+   "above": true,
+   "call": {
+    "kind": "plan",
+    "q": 33.5,
+    "r": 70,
+    "last": [
+     33.0,
+     null,
+     55
+    ]
+   }
+  },
+  {
+   "song": "bach/bwv294",
+   "beat": 53.462,
+   "her_true": 54,
+   "duet": 64,
+   "iv": 10,
+   "src": "plan_attack",
+   "terr": null,
+   "frag": null,
+   "above": true,
+   "call": {
+    "kind": "plan",
+    "q": 53.5,
+    "r": 64,
+    "last": [
+     53.0,
+     null,
+     55
+    ]
+   }
+  },
+  {
+   "song": "bach/bwv349",
+   "beat": 12.08,
+   "her_true": 57,
+   "duet": 55,
+   "iv": 2,
+   "src": "trk_react",
+   "terr": 1,
+   "frag": 0,
+   "above": false,
+   "call": {
+    "kind": "hear",
+    "i": 8,
+    "onset": 12.0,
+    "midi": 58,
+    "r": 55
+   }
+  },
+  {
+   "song": "bach/bwv328",
+   "beat": 65.96,
+   "her_true": 57,
+   "duet": 55,
+   "iv": 2,
+   "src": "trk_attack",
+   "terr": 0,
+   "frag": 2,
+   "above": false,
+   "call": {
+    "kind": "hear",
+    "i": 71,
+    "onset": 65.75,
+    "midi": 60,
+    "r": 55
+   }
+  },
+  {
+   "song": "bach/bwv299",
+   "beat": 30.575,
+   "her_true": 59,
+   "duet": 53,
+   "iv": 6,
+   "src": "hear_switch",
+   "terr": 1,
+   "frag": 0,
+   "above": false,
+   "call": {
+    "kind": "hear",
+    "i": 40,
+    "onset": 30.5,
+    "midi": 60,
+    "r": 53
+   }
+  },
+  {
+   "song": "bach/bwv299",
+   "beat": 37.13,
+   "her_true": 57,
+   "duet": 55,
+   "iv": 2,
+   "src": "hear_switch",
+   "terr": 1,
+   "frag": 0,
+   "above": false,
+   "call": {
+    "kind": "hear",
+    "i": 47,
+    "onset": 37.0,
+    "midi": 58,
+    "r": 55
+   }
+  },
+  {
+   "song": "bach/bwv346",
+   "beat": 36.14,
+   "her_true": 57,
+   "duet": 55,
+   "iv": 2,
+   "src": "trk_react",
+   "terr": 2,
+   "frag": 0,
+   "above": false,
+   "call": {
+    "kind": "hear",
+    "i": 38,
+    "onset": 36.0,
+    "midi": 59,
+    "r": 55
+   }
+  },
+  {
+   "song": "bach/bwv346",
+   "beat": 49.463,
+   "her_true": 53,
+   "duet": 67,
+   "iv": 2,
+   "src": "plan_attack",
+   "terr": null,
+   "frag": null,
+   "above": true,
+   "call": {
+    "kind": "plan",
+    "q": 49.5,
+    "r": 67,
+    "last": [
+     49.0,
+     null,
+     52
+    ]
+   }
+  }
+ ],
+ "stats": {
+  "hear_enter": 84,
+  "plan_attack": 371,
+  "hear_switch": 620,
+  "hear_same": 180,
+  "hedge_moved": 22,
+  "trk_react": 69,
+  "trk_keep": 255,
+  "trk_attack": 16,
+  "trk_sil": 84,
+  "hear_kept_plan": 1
+ }
+}

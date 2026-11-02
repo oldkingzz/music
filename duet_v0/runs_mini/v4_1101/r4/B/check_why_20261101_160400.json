@@ -1,0 +1,142 @@
+{
+ "what": "One-off diagnostic, v4 round 4, implementer B (E5); not a system, not a scored variant; ALL val songs (val, tuned on val).",
+ "rows": {
+  "bach": {
+   "heard": 0.70279,
+   "clean": 0.75809,
+   "hybrid": 0.71313,
+   "cost_total": 0.0553,
+   "cost_belief": 0.01034,
+   "cost_choice": 0.04496,
+   "by_note": {
+    "heard_right|in_scale": {
+     "notes": 952,
+     "belief_cost": 0.00944,
+     "choice_cost": 0.00225,
+     "total_cost": 0.01169
+    },
+    "heard_right|out_of_scale": {
+     "notes": 21,
+     "belief_cost": -0.0009,
+     "choice_cost": 0.0,
+     "total_cost": -0.0009
+    },
+    "misheard|in_scale": {
+     "notes": 55,
+     "belief_cost": 0.00405,
+     "choice_cost": 0.02338,
+     "total_cost": 0.02743
+    },
+    "misheard|out_of_scale": {
+     "notes": 45,
+     "belief_cost": -0.00225,
+     "choice_cost": 0.01933,
+     "total_cost": 0.01709
+    }
+   }
+  },
+  "folk": {
+   "heard": 0.71784,
+   "clean": 0.76942,
+   "hybrid": 0.72639,
+   "cost_total": 0.05158,
+   "cost_belief": 0.00855,
+   "cost_choice": 0.04303,
+   "by_note": {
+    "heard_right|in_scale": {
+     "notes": 15309,
+     "belief_cost": 0.00526,
+     "choice_cost": 0.00057,
+     "total_cost": 0.00583
+    },
+    "heard_right|out_of_scale": {
+     "notes": 281,
+     "belief_cost": 5e-05,
+     "choice_cost": 3e-05,
+     "total_cost": 8e-05
+    },
+    "misheard|in_scale": {
+     "notes": 926,
+     "belief_cost": 0.00145,
+     "choice_cost": 0.02365,
+     "total_cost": 0.02511
+    },
+    "misheard|out_of_scale": {
+     "notes": 810,
+     "belief_cost": 0.00179,
+     "choice_cost": 0.01877,
+     "total_cost": 0.02056
+    }
+   }
+  },
+  "pop": {
+   "heard": 0.59635,
+   "clean": 0.63751,
+   "hybrid": 0.60188,
+   "cost_total": 0.04116,
+   "cost_belief": 0.00553,
+   "cost_choice": 0.03563,
+   "by_note": {
+    "heard_right|in_scale": {
+     "notes": 12687,
+     "belief_cost": 0.00226,
+     "choice_cost": 0.00055,
+     "total_cost": 0.0028
+    },
+    "heard_right|out_of_scale": {
+     "notes": 243,
+     "belief_cost": 0.00017,
+     "choice_cost": 0.00015,
+     "total_cost": 0.00032
+    },
+    "misheard|in_scale": {
+     "notes": 773,
+     "belief_cost": 0.00238,
+     "choice_cost": 0.0179,
+     "total_cost": 0.02028
+    },
+    "misheard|out_of_scale": {
+     "notes": 685,
+     "belief_cost": 0.00072,
+     "choice_cost": 0.01704,
+     "total_cost": 0.01775
+    }
+   }
+  },
+  "pop909": {
+   "heard": 0.59594,
+   "clean": 0.6524,
+   "hybrid": 0.60931,
+   "cost_total": 0.05646,
+   "cost_belief": 0.01337,
+   "cost_choice": 0.04309,
+   "by_note": {
+    "heard_right|in_scale": {
+     "notes": 12146,
+     "belief_cost": 0.00886,
+     "choice_cost": 0.00047,
+     "total_cost": 0.00933
+    },
+    "heard_right|out_of_scale": {
+     "notes": 10,
+     "belief_cost": 4e-05,
+     "choice_cost": 0.0,
+     "total_cost": 4e-05
+    },
+    "misheard|in_scale": {
+     "notes": 729,
+     "belief_cost": 0.00242,
+     "choice_cost": 0.02319,
+     "total_cost": 0.0256
+    },
+    "misheard|out_of_scale": {
+     "notes": 638,
+     "belief_cost": 0.00205,
+     "choice_cost": 0.01944,
+     "total_cost": 0.02149
+    }
+   }
+  }
+ },
+ "secs": 28.2
+}

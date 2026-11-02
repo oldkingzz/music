@@ -1,0 +1,2 @@
+2026-11-01 22:40:07 START tl=590 cwd=$ABS $ABS/.venv/bin/python $ABS/runs_mini/v5rt_1101/r1/C/sweep_C_v1.py $ABS/runs_mini/v5rt_1101/r1/C/configs_C_s1.json --out $ABS/runs_mini/v5rt_1101/r1/C/sweep_C_s1.json --diag
+2026-11-01 22:42:49 END rc=0 secs=162 $ABS/.venv/bin/python $ABS/runs_mini/v5rt_1101/r1/C/sweep_C_v1.py $ABS/runs_mini/v5rt_1101/r1/C/configs_C_s1.json --out $ABS/runs_mini/v5rt_1101/r1/C/sweep_C_s1.json --diag

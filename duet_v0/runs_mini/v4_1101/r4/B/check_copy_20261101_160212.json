@@ -1,0 +1,309 @@
+{
+ "check": "r4 B: r4_true_cons_v<k> with both parts off vs r3_style_mix_v3 (first 40 val songs per dataset; val, tuned on val)",
+ "songs": {
+  "bach": 17,
+  "folk": 40,
+  "pop": 40,
+  "pop909": 40
+ },
+ "copy": {
+  "r4_true_cons_v1": {
+   "file_settings": [
+    "cur",
+    "prev",
+    "off"
+   ],
+   "off": {
+    "bach": {
+     "notes": 1073,
+     "notes_differing_vs_champion": 0,
+     "gru_calls": 1073
+    },
+    "folk": {
+     "notes": 4198,
+     "notes_differing_vs_champion": 0,
+     "gru_calls": 4198
+    },
+    "pop": {
+     "notes": 2017,
+     "notes_differing_vs_champion": 0,
+     "gru_calls": 2017
+    },
+    "pop909": {
+     "notes": 13523,
+     "notes_differing_vs_champion": 0,
+     "gru_calls": 13523
+    }
+   },
+   "own_gru_calls_ok": {
+    "bach": {
+     "notes": 1073,
+     "gru_calls": 1073,
+     "changed_vs_champion": 34
+    },
+    "folk": {
+     "notes": 4198,
+     "gru_calls": 4198,
+     "changed_vs_champion": 68
+    },
+    "pop": {
+     "notes": 2017,
+     "gru_calls": 2017,
+     "changed_vs_champion": 18
+    },
+    "pop909": {
+     "notes": 13523,
+     "gru_calls": 13523,
+     "changed_vs_champion": 233
+    }
+   }
+  },
+  "r4_true_cons_v2": {
+   "file_settings": [
+    "cur",
+    "prev",
+    "v4"
+   ],
+   "off": {
+    "bach": {
+     "notes": 1073,
+     "notes_differing_vs_champion": 0,
+     "gru_calls": 1073
+    },
+    "folk": {
+     "notes": 4198,
+     "notes_differing_vs_champion": 0,
+     "gru_calls": 4198
+    },
+    "pop": {
+     "notes": 2017,
+     "notes_differing_vs_champion": 0,
+     "gru_calls": 2017
+    },
+    "pop909": {
+     "notes": 13523,
+     "notes_differing_vs_champion": 0,
+     "gru_calls": 13523
+    }
+   },
+   "own_gru_calls_ok": {
+    "bach": {
+     "notes": 1073,
+     "gru_calls": 1073,
+     "changed_vs_champion": 77
+    },
+    "folk": {
+     "notes": 4198,
+     "gru_calls": 4198,
+     "changed_vs_champion": 428
+    },
+    "pop": {
+     "notes": 2017,
+     "gru_calls": 2017,
+     "changed_vs_champion": 89
+    },
+    "pop909": {
+     "notes": 13523,
+     "gru_calls": 13523,
+     "changed_vs_champion": 945
+    }
+   }
+  }
+ },
+ "explore": {
+  "champion_copy": {
+   "bach": {
+    "music_nd": 0.702788,
+    "double": 0.03507,
+    "suspect_share": 0.0531
+   },
+   "folk": {
+    "music_nd": 0.71784,
+    "double": 0.04301,
+    "suspect_share": 0.0515
+   },
+   "pop": {
+    "music_nd": 0.59635,
+    "double": 0.01818,
+    "suspect_share": 0.0544
+   },
+   "pop909": {
+    "music_nd": 0.595941,
+    "double": 0.03168,
+    "suspect_share": 0.0463
+   },
+   "headline_nd": 0.65323,
+   "secs": 8.3
+  },
+  "cur_prev": {
+   "bach": {
+    "music_nd": 0.701888,
+    "double": 0.03777,
+    "suspect_share": 0.0531
+   },
+   "folk": {
+    "music_nd": 0.716751,
+    "double": 0.04312,
+    "suspect_share": 0.0515
+   },
+   "pop": {
+    "music_nd": 0.596275,
+    "double": 0.01743,
+    "suspect_share": 0.0544
+   },
+   "pop909": {
+    "music_nd": 0.596142,
+    "double": 0.03022,
+    "suspect_share": 0.0463
+   },
+   "headline_nd": 0.652764,
+   "secs": 8.3
+  },
+  "cur_prev_v4": {
+   "bach": {
+    "music_nd": 0.685701,
+    "double": 0.04451,
+    "suspect_share": 0.0531
+   },
+   "folk": {
+    "music_nd": 0.716032,
+    "double": 0.04518,
+    "suspect_share": 0.0515
+   },
+   "pop": {
+    "music_nd": 0.59573,
+    "double": 0.0182,
+    "suspect_share": 0.0544
+   },
+   "pop909": {
+    "music_nd": 0.598717,
+    "double": 0.03022,
+    "suspect_share": 0.0463
+   },
+   "headline_nd": 0.649045,
+   "secs": 10.8
+  },
+  "cur_heard": {
+   "bach": {
+    "music_nd": 0.701888,
+    "double": 0.03507,
+    "suspect_share": 0.0531
+   },
+   "folk": {
+    "music_nd": 0.717678,
+    "double": 0.04292,
+    "suspect_share": 0.0515
+   },
+   "pop": {
+    "music_nd": 0.596052,
+    "double": 0.01813,
+    "suspect_share": 0.0544
+   },
+   "pop909": {
+    "music_nd": 0.595911,
+    "double": 0.03166,
+    "suspect_share": 0.0463
+   },
+   "headline_nd": 0.652882,
+   "secs": 8.3
+  },
+  "gru_side_only": {
+   "bach": {
+    "music_nd": 0.701888,
+    "double": 0.03777,
+    "suspect_share": 0.0531
+   },
+   "folk": {
+    "music_nd": 0.716967,
+    "double": 0.04284,
+    "suspect_share": 0.0515
+   },
+   "pop": {
+    "music_nd": 0.597168,
+    "double": 0.01733,
+    "suspect_share": 0.0544
+   },
+   "pop909": {
+    "music_nd": 0.595906,
+    "double": 0.03022,
+    "suspect_share": 0.0463
+   },
+   "headline_nd": 0.652982,
+   "secs": 8.2
+  },
+  "all_prev": {
+   "bach": {
+    "music_nd": 0.70009,
+    "double": 0.03867,
+    "suspect_share": 0.0531
+   },
+   "folk": {
+    "music_nd": 0.716086,
+    "double": 0.04291,
+    "suspect_share": 0.0515
+   },
+   "pop": {
+    "music_nd": 0.595903,
+    "double": 0.01763,
+    "suspect_share": 0.0544
+   },
+   "pop909": {
+    "music_nd": 0.595818,
+    "double": 0.0304,
+    "suspect_share": 0.0463
+   },
+   "headline_nd": 0.651974,
+   "secs": 8.3
+  },
+  "all_prev_v4": {
+   "bach": {
+    "music_nd": 0.683903,
+    "double": 0.04451,
+    "suspect_share": 0.0531
+   },
+   "folk": {
+    "music_nd": 0.716326,
+    "double": 0.04422,
+    "suspect_share": 0.0515
+   },
+   "pop": {
+    "music_nd": 0.594614,
+    "double": 0.01887,
+    "suspect_share": 0.0544
+   },
+   "pop909": {
+    "music_nd": 0.598395,
+    "double": 0.03022,
+    "suspect_share": 0.0463
+   },
+   "headline_nd": 0.648309,
+   "secs": 10.6
+  },
+  "choice_v4_only": {
+   "bach": {
+    "music_nd": 0.692896,
+    "double": 0.03957,
+    "suspect_share": 0.0531
+   },
+   "folk": {
+    "music_nd": 0.717346,
+    "double": 0.04598,
+    "suspect_share": 0.0515
+   },
+   "pop": {
+    "music_nd": 0.595829,
+    "double": 0.01892,
+    "suspect_share": 0.0544
+   },
+   "pop909": {
+    "music_nd": 0.599824,
+    "double": 0.03205,
+    "suspect_share": 0.0463
+   },
+   "headline_nd": 0.651474,
+   "secs": 10.1
+  }
+ },
+ "copy_ok": true,
+ "secs": 101.2
+}

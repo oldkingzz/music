@@ -1,0 +1,56 @@
+{
+ "round": 2,
+ "written": "2026-11-01 15:30 EST",
+ "ABS": "/Users/san/claude_sandbox/music/duet_v0",
+ "run": "v4_1101",
+ "loop": {"started": "2026-11-01 14:45 EST", "elapsed_at_write": "0 h 45 min", "ends_by": "2026-11-02 00:45 EST (10 h) or 2026-11-02 10:00 EST, whichever first", "max_rounds": 8,
+  "consecutive_rounds_without_keep": 0},
+ "checks_before_round_2": "15:09 checksums 10/10 OK, env knobs empty, 104.0 GB free",
+ "checks_after_round_2": "15:27 46 r2 hb logs, START=END, every rc 0, no stale START (no ALERTS_2.md); checksums 10/10 OK; env empty; 104.0 GB free; runs_mini 900K",
+ "workflow_round_2": {"id": "wf8mhqiyw", "run_id": "wf_e53aa961-926", "agents": 6, "minutes": 14},
+ "champion": {
+  "name": "r2_mix_v2", "sha": "b481d9156f3c", "since_round": 2, "presentable": true,
+  "what": "chord belief = normalized b_HMM^0.3 * b_GRU^0.7 (m1_filter_v5lo's real-time HMM filter and m3_seq_v5's 3-GRU average), then m1_filter_v5lo's chooser with all 6 weights unchanged",
+  "presentable_why": "exactly §4.3's 'log-linear mix of the HMM and the fixed 3-GRU average with one weight alpha' + m1's chooser unchanged (no weight-value reading needed)",
+  "headline_nd": 0.644428, "music_nd": {"bach": 0.6853, "folk": 0.7126, "pop": 0.5908, "pop909": 0.5891},
+  "double": {"bach": 0.0553, "folk": 0.0536, "pop": 0.0222, "pop909": 0.0361},
+  "big": {"bach": 0.0051, "folk": 0.0185, "pop": 0.0074, "pop909": 0.0116}, "par": {"bach": 0.001, "folk": 0.0045, "pop": 0.0042, "pop909": 0.0044},
+  "us_per_note": 155, "seed2": 0.647007, "seed2_delta_vs_m1": 0.0262,
+  "review": "(a) 72/72 causal, (b) tool ok + manual ok, (d) 0 out of range, 0.0 above her; keep.py vs m1_filter_v5lo: pass, nothing failed (re-run by the orchestrator 15:27)",
+  "one_sentence_zh": "实时猜和弦改为 GRU 平均占七成、HMM 占三成的对数线性混合：主要听更准的 GRU，再用 HMM 的平稳压住突然换和弦带来的大跳；选音规则一点没改。",
+  "previous": {"name": "m1_filter_v5lo", "headline_nd": 0.620637625406759, "seed2": 0.6207916780068529}
+ },
+ "ideas": [
+  {"id": "E1", "attempts": 2, "verdict": "attempt 1 (r1) failed folk big; attempt 2 (r2) PASSED the keep rule vs m1 but is not champion (r2_mix_v2 is higher and needs no weight change)",
+   "variants": [
+    {"name": "r1_gru_chooser_v1", "sha": "2d26a11f22fe", "headline_nd": 0.6440, "verdict": "fail folk big 0.0212"},
+    {"name": "r1_gru_chooser_v2", "sha": "ef8aede496f4", "headline_nd": 0.6331, "verdict": "fail folk big 0.0206"},
+    {"name": "r2_gru_chooser_v1", "sha": "743fd66e930d", "what": "r1 v1 with w_big 0.6", "headline_nd": 0.6433, "music_nd": {"bach": 0.6915, "folk": 0.7110, "pop": 0.5902, "pop909": 0.5804}, "big_folk": 0.0145, "seed2": 0.64646, "review": "a/b/d ok", "verdict": "passes keep vs m1 (full review)"},
+    {"name": "r2_gru_chooser_v2", "sha": "f0e98682930f", "what": "w_big 0.8", "headline_nd": 0.6417, "verdict": "gate pass, not reviewed"},
+    {"name": "r2_gru_chooser_v3", "sha": "16a7694c10e1", "what": "w_big 1.0", "headline_nd": 0.6407, "verdict": "gate pass, not reviewed"}
+   ]},
+  {"id": "E2", "attempts": 1, "verdict": "KEPT: r2_mix_v2 is the champion",
+   "variants": [
+    {"name": "r2_mix_v1", "sha": "fa2f9316da31", "what": "alpha 0.5", "headline_nd": 0.6428, "big_folk": 0.0163, "verdict": "gate pass"},
+    {"name": "r2_mix_v2", "sha": "b481d9156f3c", "what": "alpha 0.7", "headline_nd": 0.6444, "big_folk": 0.0185, "verdict": "KEPT (full review)"},
+    {"name": "r2_mix_v3", "sha": "b432b5bf7396", "what": "alpha 0.85", "headline_nd": 0.6454, "big_folk": 0.0205, "verdict": "fail folk big vs m1"},
+    {"name": "r2_mix_v4", "sha": "472399bd5d17", "what": "alpha 0.85 + w_big 0.8", "headline_nd": 0.6427, "verdict": "gate pass, lower"}
+   ], "trend": "alpha 0 / 0.5 / 0.7 / 0.85 / 1.0 -> 0.6206 / 0.6428 / 0.6444 / 0.6454 / 0.6440: flat above 0.5; folk big rises with alpha"},
+  {"id": "E3", "attempts": 1, "verdict": "style-aware HMM (redesigned E3) PASSED the keep rule vs m1 (r2_style_hmm_v3: 0.6296, seed2 0.6312, review ok) but is below the champion; presentable only if a style-aware HMM counts as 'the HMM' (Vincent)",
+   "variants": [
+    {"name": "r2_style_hmm_v1", "sha": "a37e0f1b3168", "what": "POP3: pooled + pop + pop909 HMMs, rhythm-based style weights, lam 1.0", "headline_nd": 0.6292, "verdict": "gate pass; reproduces the round-1 diagnostic exactly"},
+    {"name": "r2_style_hmm_v2", "sha": "1edbcde9b696", "what": "POP3, pooled lam 1.5", "headline_nd": 0.6295, "verdict": "fail folk +0.003"},
+    {"name": "r2_style_hmm_v3", "sha": "65e73054e972", "what": "4 styles: pooled + folk + pop + pop909, lam 1.0", "headline_nd": 0.6296, "music_nd": {"bach": 0.6625, "folk": 0.6886, "pop": 0.5785, "pop909": 0.5888}, "seed2": 0.6312, "verdict": "passes keep vs m1 (full review)"},
+    {"name": "r2_style_hmm_v4", "sha": "8c9174117e91", "what": "4 styles, pooled lam 1.5", "headline_nd": 0.6284, "verdict": "gate pass"}
+   ]}
+ ],
+ "dead_ideas": [],
+ "variants_scored_in_loop": 13,
+ "variants_note": "13 scored candidates (2 in round 1, 11 in round 2); plus about 40 diagnostic configurations in the round-1 analysis (not candidates)",
+ "champion_choice_rule": "when several candidates pass the full keep rule in one round, the highest headline_nd becomes champion",
+ "next": "Round 3 against the new champion r2_mix_v2: A = E4 (expected fit over the beats her note will cover), B = E5 (expected consonance with her TRUE note given 10 % mishearing), C = E2 x E3 (the champion's mix with the style-aware HMM in place of m1's HMM). Wave 2 (E6, E7) is not triggered: wave 1 produced a presentable champion. History from the laptop (raw music, m1): look-ahead blend +0.0005, mishearing-aware choice -0.0004.",
+ "observations_not_acted_on": [
+  "Doubling: the champion sings her note or its octave on 2-6 % of the time (music_nd counts that as a miss); a higher w_oct might turn some of it into real harmony. It is a chooser change, not the real-time chord guess, and not in §4.4.",
+  "No good note below her: 6.9 % of m1's scored time; 4.2 % would fit above her (Duet sings under her by design)."
+ ]
+}

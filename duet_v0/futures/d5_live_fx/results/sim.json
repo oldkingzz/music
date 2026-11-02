@@ -1,0 +1,2722 @@
+[
+ {
+  "total_s": 180.0,
+  "rt60": 0.3,
+  "extra_db": 0.0,
+  "guard": true,
+  "gate": true,
+  "howl": {
+   "narrowband_longest_s": 0.26,
+   "runaway_longest_s": 0.05,
+   "howl": false
+  },
+  "gate_metrics": {
+   "n_offsets": 24,
+   "singing_level_out_dbfs": -21.83248366473538,
+   "release_to_-40dBFS_s": {
+    "median": 0.0,
+    "p95": 0.01,
+    "max": 0.035,
+    "share_le_0.2": 1.0
+   },
+   "release_to_sing-30dB_s": {
+    "median": 0.0075,
+    "p95": 0.3349999999999998,
+    "max": 0.36,
+    "share_le_0.2": 0.875
+   },
+   "gap_time_s": 30.797333333333334,
+   "false_trigger_events": 5,
+   "false_open_time_s": 0.128,
+   "gap_output_above_-40dBFS_s": 0.0,
+   "between_songs": {
+    "time_s": 13.904,
+    "gate_open_events": 0,
+    "gate_open_s": 0.0,
+    "output_above_-40dBFS_s": 0.0
+   }
+  },
+  "gate_metrics_open_loop": {
+   "n_offsets": 24,
+   "singing_level_out_dbfs": -21.819405008343296,
+   "release_to_-40dBFS_s": {
+    "median": 0.0,
+    "p95": 0.01,
+    "max": 0.01,
+    "share_le_0.2": 1.0
+   },
+   "release_to_sing-30dB_s": {
+    "median": 0.0075,
+    "p95": 0.3342499999999998,
+    "max": 0.365,
+    "share_le_0.2": 0.875
+   },
+   "gap_time_s": 30.797333333333334,
+   "false_trigger_events": 5,
+   "false_open_time_s": 0.128,
+   "gap_output_above_-40dBFS_s": 0.0,
+   "between_songs": {
+    "time_s": 13.904,
+    "gate_open_events": 0,
+    "gate_open_s": 0.0,
+    "output_above_-40dBFS_s": 0.0
+   }
+  },
+  "erle_soundcheck_db": 14.649682547208872,
+  "peak_out_dbfs": -2.999999999999198,
+  "g_spk": 0.9547941516779351,
+  "secs": 24.211642026901245
+ },
+ {
+  "total_s": 180.0,
+  "rt60": 0.3,
+  "extra_db": 0.0,
+  "guard": false,
+  "gate": true,
+  "howl": {
+   "narrowband_longest_s": 0.24,
+   "runaway_longest_s": 0.05,
+   "howl": false
+  },
+  "gate_metrics": {
+   "n_offsets": 24,
+   "singing_level_out_dbfs": -21.492276885634865,
+   "release_to_-40dBFS_s": {
+    "median": 0.0,
+    "p95": 0.01,
+    "max": 0.04,
+    "share_le_0.2": 1.0
+   },
+   "release_to_sing-30dB_s": {
+    "median": 0.015,
+    "p95": 0.3299999999999998,
+    "max": 0.35000000000000003,
+    "share_le_0.2": 0.875
+   },
+   "gap_time_s": 30.797333333333334,
+   "false_trigger_events": 5,
+   "false_open_time_s": 0.16,
+   "gap_output_above_-40dBFS_s": 0.0,
+   "between_songs": {
+    "time_s": 13.904,
+    "gate_open_events": 0,
+    "gate_open_s": 0.0,
+    "output_above_-40dBFS_s": 0.0
+   }
+  },
+  "gate_metrics_open_loop": {
+   "n_offsets": 24,
+   "singing_level_out_dbfs": -21.78188223544786,
+   "release_to_-40dBFS_s": {
+    "median": 0.0,
+    "p95": 0.00924999999999999,
+    "max": 0.035,
+    "share_le_0.2": 1.0
+   },
+   "release_to_sing-30dB_s": {
+    "median": 0.0175,
+    "p95": 0.3342499999999998,
+    "max": 0.36,
+    "share_le_0.2": 0.875
+   },
+   "gap_time_s": 30.797333333333334,
+   "false_trigger_events": 5,
+   "false_open_time_s": 0.16,
+   "gap_output_above_-40dBFS_s": 0.0,
+   "between_songs": {
+    "time_s": 13.904,
+    "gate_open_events": 0,
+    "gate_open_s": 0.0,
+    "output_above_-40dBFS_s": 0.0
+   }
+  },
+  "erle_soundcheck_db": null,
+  "peak_out_dbfs": -2.999999999996818,
+  "g_spk": 0.9547941516779351,
+  "secs": 20.003707885742188
+ },
+ {
+  "total_s": 180.0,
+  "rt60": 0.6,
+  "extra_db": 0.0,
+  "guard": true,
+  "gate": true,
+  "howl": {
+   "narrowband_longest_s": 0.12,
+   "runaway_longest_s": 0.05,
+   "howl": false
+  },
+  "gate_metrics": {
+   "n_offsets": 24,
+   "singing_level_out_dbfs": -21.80673918599224,
+   "release_to_-40dBFS_s": {
+    "median": 0.0,
+    "p95": 0.050499999999999934,
+    "max": 0.065,
+    "share_le_0.2": 1.0
+   },
+   "release_to_sing-30dB_s": {
+    "median": 0.0275,
+    "p95": 0.3342499999999998,
+    "max": 0.365,
+    "share_le_0.2": 0.875
+   },
+   "gap_time_s": 30.797333333333334,
+   "false_trigger_events": 5,
+   "false_open_time_s": 0.128,
+   "gap_output_above_-40dBFS_s": 0.0,
+   "between_songs": {
+    "time_s": 13.904,
+    "gate_open_events": 0,
+    "gate_open_s": 0.0,
+    "output_above_-40dBFS_s": 0.0
+   }
+  },
+  "gate_metrics_open_loop": {
+   "n_offsets": 24,
+   "singing_level_out_dbfs": -21.83453077019493,
+   "release_to_-40dBFS_s": {
+    "median": 0.0,
+    "p95": 0.07774999999999997,
+    "max": 0.115,
+    "share_le_0.2": 1.0
+   },
+   "release_to_sing-30dB_s": {
+    "median": 0.075,
+    "p95": 0.3334999999999998,
+    "max": 0.36,
+    "share_le_0.2": 0.875
+   },
+   "gap_time_s": 30.797333333333334,
+   "false_trigger_events": 4,
+   "false_open_time_s": 0.08533333333333333,
+   "gap_output_above_-40dBFS_s": 0.0,
+   "between_songs": {
+    "time_s": 13.904,
+    "gate_open_events": 0,
+    "gate_open_s": 0.0,
+    "output_above_-40dBFS_s": 0.0
+   }
+  },
+  "erle_soundcheck_db": 14.641119891278008,
+  "peak_out_dbfs": -2.9999999999987152,
+  "g_spk": 0.9555761897336462,
+  "secs": 32.11271810531616
+ },
+ {
+  "total_s": 180.0,
+  "rt60": 0.6,
+  "extra_db": 0.0,
+  "guard": false,
+  "gate": true,
+  "howl": {
+   "narrowband_longest_s": 0.34,
+   "runaway_longest_s": 0.1,
+   "howl": false
+  },
+  "gate_metrics": {
+   "n_offsets": 24,
+   "singing_level_out_dbfs": -21.378785280238965,
+   "release_to_-40dBFS_s": {
+    "median": 0.0,
+    "p95": 0.09,
+    "max": 0.115,
+    "share_le_0.2": 1.0
+   },
+   "release_to_sing-30dB_s": {
+    "median": 0.052500000000000005,
+    "p95": 0.3342499999999998,
+    "max": 0.36,
+    "share_le_0.2": 0.875
+   },
+   "gap_time_s": 30.797333333333334,
+   "false_trigger_events": 5,
+   "false_open_time_s": 0.15200000000000002,
+   "gap_output_above_-40dBFS_s": 0.0,
+   "between_songs": {
+    "time_s": 13.904,
+    "gate_open_events": 0,
+    "gate_open_s": 0.0,
+    "output_above_-40dBFS_s": 0.0
+   }
+  },
+  "gate_metrics_open_loop": {
+   "n_offsets": 24,
+   "singing_level_out_dbfs": -21.787306926847968,
+   "release_to_-40dBFS_s": {
+    "median": 0.0,
+    "p95": 0.08424999999999999,
+    "max": 0.12,
+    "share_le_0.2": 1.0
+   },
+   "release_to_sing-30dB_s": {
+    "median": 0.075,
+    "p95": 0.3342499999999998,
+    "max": 0.36,
+    "share_le_0.2": 0.875
+   },
+   "gap_time_s": 30.797333333333334,
+   "false_trigger_events": 3,
+   "false_open_time_s": 0.15466666666666667,
+   "gap_output_above_-40dBFS_s": 0.0,
+   "between_songs": {
+    "time_s": 13.904,
+    "gate_open_events": 0,
+    "gate_open_s": 0.0,
+    "output_above_-40dBFS_s": 0.0
+   }
+  },
+  "erle_soundcheck_db": null,
+  "peak_out_dbfs": -2.9999999999981766,
+  "g_spk": 0.9555761897336462,
+  "secs": 38.87934589385986
+ },
+ {
+  "total_s": 60.0,
+  "rt60": 0.3,
+  "extra_db": 3.0,
+  "guard": true,
+  "gate": true,
+  "howl": {
+   "narrowband_longest_s": 0.22,
+   "runaway_longest_s": 0.05,
+   "howl": false
+  },
+  "gate_metrics": {
+   "n_offsets": 8,
+   "singing_level_out_dbfs": -21.667198755845476,
+   "release_to_-40dBFS_s": {
+    "median": 0.0,
+    "p95": 0.006499999999999995,
+    "max": 0.01,
+    "share_le_0.2": 1.0
+   },
+   "release_to_sing-30dB_s": {
+    "median": 0.0125,
+    "p95": 0.26349999999999985,
+    "max": 0.365,
+    "share_le_0.2": 0.875
+   },
+   "gap_time_s": 8.058666666666667,
+   "false_trigger_events": 2,
+   "false_open_time_s": 0.12,
+   "gap_output_above_-40dBFS_s": 0.0,
+   "between_songs": {
+    "time_s": 2.2346666666666666,
+    "gate_open_events": 0,
+    "gate_open_s": 0.0,
+    "output_above_-40dBFS_s": 0.0
+   }
+  },
+  "gate_metrics_open_loop": {
+   "n_offsets": 8,
+   "singing_level_out_dbfs": -21.693304232955594,
+   "release_to_-40dBFS_s": {
+    "median": 0.0,
+    "p95": 0.0032499999999999977,
+    "max": 0.005,
+    "share_le_0.2": 1.0
+   },
+   "release_to_sing-30dB_s": {
+    "median": 0.0125,
+    "p95": 0.2667499999999998,
+    "max": 0.37,
+    "share_le_0.2": 0.875
+   },
+   "gap_time_s": 8.058666666666667,
+   "false_trigger_events": 2,
+   "false_open_time_s": 0.12,
+   "gap_output_above_-40dBFS_s": 0.0,
+   "between_songs": {
+    "time_s": 2.2346666666666666,
+    "gate_open_events": 0,
+    "gate_open_s": 0.0,
+    "output_above_-40dBFS_s": 0.0
+   }
+  },
+  "erle_soundcheck_db": 16.462769411907246,
+  "peak_out_dbfs": -3.1666636812164612,
+  "g_spk": 0.9721153023670652,
+  "secs": 15.304189920425415
+ },
+ {
+  "total_s": 60.0,
+  "rt60": 0.3,
+  "extra_db": 6.0,
+  "guard": true,
+  "gate": true,
+  "howl": {
+   "narrowband_longest_s": 0.28,
+   "runaway_longest_s": 0.05,
+   "howl": false
+  },
+  "gate_metrics": {
+   "n_offsets": 8,
+   "singing_level_out_dbfs": -21.683769361670223,
+   "release_to_-40dBFS_s": {
+    "median": 0.0,
+    "p95": 0.006499999999999995,
+    "max": 0.01,
+    "share_le_0.2": 1.0
+   },
+   "release_to_sing-30dB_s": {
+    "median": 0.005,
+    "p95": 0.26024999999999987,
+    "max": 0.36,
+    "share_le_0.2": 0.875
+   },
+   "gap_time_s": 8.058666666666667,
+   "false_trigger_events": 2,
+   "false_open_time_s": 0.12,
+   "gap_output_above_-40dBFS_s": 0.0,
+   "between_songs": {
+    "time_s": 2.2346666666666666,
+    "gate_open_events": 0,
+    "gate_open_s": 0.0,
+    "output_above_-40dBFS_s": 0.0
+   }
+  },
+  "gate_metrics_open_loop": {
+   "n_offsets": 8,
+   "singing_level_out_dbfs": -21.693304232955594,
+   "release_to_-40dBFS_s": {
+    "median": 0.0,
+    "p95": 0.0032499999999999977,
+    "max": 0.005,
+    "share_le_0.2": 1.0
+   },
+   "release_to_sing-30dB_s": {
+    "median": 0.0125,
+    "p95": 0.2667499999999998,
+    "max": 0.37,
+    "share_le_0.2": 0.875
+   },
+   "gap_time_s": 8.058666666666667,
+   "false_trigger_events": 2,
+   "false_open_time_s": 0.12,
+   "gap_output_above_-40dBFS_s": 0.0,
+   "between_songs": {
+    "time_s": 2.2346666666666666,
+    "gate_open_events": 0,
+    "gate_open_s": 0.0,
+    "output_above_-40dBFS_s": 0.0
+   }
+  },
+  "erle_soundcheck_db": 17.95737273582001,
+  "peak_out_dbfs": -2.9999999999985927,
+  "g_spk": 0.9721153023670652,
+  "secs": 7.532308101654053
+ },
+ {
+  "total_s": 60.0,
+  "rt60": 0.3,
+  "extra_db": 9.0,
+  "guard": true,
+  "gate": true,
+  "howl": {
+   "narrowband_longest_s": 0.26,
+   "runaway_longest_s": 0.05,
+   "howl": false
+  },
+  "gate_metrics": {
+   "n_offsets": 8,
+   "singing_level_out_dbfs": -21.67661555395188,
+   "release_to_-40dBFS_s": {
+    "median": 0.0,
+    "p95": 0.006499999999999995,
+    "max": 0.01,
+    "share_le_0.2": 1.0
+   },
+   "release_to_sing-30dB_s": {
+    "median": 0.01,
+    "p95": 0.24749999999999983,
+    "max": 0.37,
+    "share_le_0.2": 0.875
+   },
+   "gap_time_s": 8.058666666666667,
+   "false_trigger_events": 2,
+   "false_open_time_s": 0.12,
+   "gap_output_above_-40dBFS_s": 0.0,
+   "between_songs": {
+    "time_s": 2.2346666666666666,
+    "gate_open_events": 0,
+    "gate_open_s": 0.0,
+    "output_above_-40dBFS_s": 0.0
+   }
+  },
+  "gate_metrics_open_loop": {
+   "n_offsets": 8,
+   "singing_level_out_dbfs": -21.693304232955594,
+   "release_to_-40dBFS_s": {
+    "median": 0.0,
+    "p95": 0.0032499999999999977,
+    "max": 0.005,
+    "share_le_0.2": 1.0
+   },
+   "release_to_sing-30dB_s": {
+    "median": 0.0125,
+    "p95": 0.2667499999999998,
+    "max": 0.37,
+    "share_le_0.2": 0.875
+   },
+   "gap_time_s": 8.058666666666667,
+   "false_trigger_events": 2,
+   "false_open_time_s": 0.12,
+   "gap_output_above_-40dBFS_s": 0.0,
+   "between_songs": {
+    "time_s": 2.2346666666666666,
+    "gate_open_events": 0,
+    "gate_open_s": 0.0,
+    "output_above_-40dBFS_s": 0.0
+   }
+  },
+  "erle_soundcheck_db": 18.959507200775946,
+  "peak_out_dbfs": -2.9999999999983276,
+  "g_spk": 0.9721153023670652,
+  "secs": 8.320813179016113
+ },
+ {
+  "total_s": 60.0,
+  "rt60": 0.3,
+  "extra_db": 12.0,
+  "guard": true,
+  "gate": true,
+  "howl": {
+   "narrowband_longest_s": 0.2,
+   "runaway_longest_s": 0.0,
+   "howl": false
+  },
+  "gate_metrics": {
+   "n_offsets": 8,
+   "singing_level_out_dbfs": -21.628144834781384,
+   "release_to_-40dBFS_s": {
+    "median": 0.0,
+    "p95": 0.006499999999999995,
+    "max": 0.01,
+    "share_le_0.2": 1.0
+   },
+   "release_to_sing-30dB_s": {
+    "median": 0.0125,
+    "p95": 0.2702499999999999,
+    "max": 0.37,
+    "share_le_0.2": 0.875
+   },
+   "gap_time_s": 8.058666666666667,
+   "false_trigger_events": 2,
+   "false_open_time_s": 0.12,
+   "gap_output_above_-40dBFS_s": 0.0,
+   "between_songs": {
+    "time_s": 2.2346666666666666,
+    "gate_open_events": 0,
+    "gate_open_s": 0.0,
+    "output_above_-40dBFS_s": 0.0
+   }
+  },
+  "gate_metrics_open_loop": {
+   "n_offsets": 8,
+   "singing_level_out_dbfs": -21.693304232955594,
+   "release_to_-40dBFS_s": {
+    "median": 0.0,
+    "p95": 0.0032499999999999977,
+    "max": 0.005,
+    "share_le_0.2": 1.0
+   },
+   "release_to_sing-30dB_s": {
+    "median": 0.0125,
+    "p95": 0.2667499999999998,
+    "max": 0.37,
+    "share_le_0.2": 0.875
+   },
+   "gap_time_s": 8.058666666666667,
+   "false_trigger_events": 2,
+   "false_open_time_s": 0.12,
+   "gap_output_above_-40dBFS_s": 0.0,
+   "between_songs": {
+    "time_s": 2.2346666666666666,
+    "gate_open_events": 0,
+    "gate_open_s": 0.0,
+    "output_above_-40dBFS_s": 0.0
+   }
+  },
+  "erle_soundcheck_db": 19.560375042844097,
+  "peak_out_dbfs": -2.9999999999987423,
+  "g_spk": 0.9721153023670652,
+  "secs": 9.437244892120361
+ },
+ {
+  "total_s": 60.0,
+  "rt60": 0.3,
+  "extra_db": 15.0,
+  "guard": true,
+  "gate": true,
+  "howl": {
+   "narrowband_longest_s": 0.26,
+   "runaway_longest_s": 0.05,
+   "howl": false
+  },
+  "gate_metrics": {
+   "n_offsets": 8,
+   "singing_level_out_dbfs": -21.656666659765087,
+   "release_to_-40dBFS_s": {
+    "median": 0.0,
+    "p95": 0.0,
+    "max": 0.0,
+    "share_le_0.2": 1.0
+   },
+   "release_to_sing-30dB_s": {
+    "median": 0.005,
+    "p95": 0.2702499999999999,
+    "max": 0.37,
+    "share_le_0.2": 0.875
+   },
+   "gap_time_s": 8.058666666666667,
+   "false_trigger_events": 2,
+   "false_open_time_s": 0.12,
+   "gap_output_above_-40dBFS_s": 0.0,
+   "between_songs": {
+    "time_s": 2.2346666666666666,
+    "gate_open_events": 0,
+    "gate_open_s": 0.0,
+    "output_above_-40dBFS_s": 0.0
+   }
+  },
+  "gate_metrics_open_loop": {
+   "n_offsets": 8,
+   "singing_level_out_dbfs": -21.693304232955594,
+   "release_to_-40dBFS_s": {
+    "median": 0.0,
+    "p95": 0.0032499999999999977,
+    "max": 0.005,
+    "share_le_0.2": 1.0
+   },
+   "release_to_sing-30dB_s": {
+    "median": 0.0125,
+    "p95": 0.2667499999999998,
+    "max": 0.37,
+    "share_le_0.2": 0.875
+   },
+   "gap_time_s": 8.058666666666667,
+   "false_trigger_events": 2,
+   "false_open_time_s": 0.12,
+   "gap_output_above_-40dBFS_s": 0.0,
+   "between_songs": {
+    "time_s": 2.2346666666666666,
+    "gate_open_events": 0,
+    "gate_open_s": 0.0,
+    "output_above_-40dBFS_s": 0.0
+   }
+  },
+  "erle_soundcheck_db": 19.891238415811422,
+  "peak_out_dbfs": -2.999999999999053,
+  "g_spk": 0.9721153023670652,
+  "secs": 9.235725164413452
+ },
+ {
+  "total_s": 60.0,
+  "rt60": 0.3,
+  "extra_db": 18.0,
+  "guard": true,
+  "gate": true,
+  "howl": {
+   "narrowband_longest_s": 0.16,
+   "runaway_longest_s": 0.05,
+   "howl": false
+  },
+  "gate_metrics": {
+   "n_offsets": 8,
+   "singing_level_out_dbfs": -21.624449390279494,
+   "release_to_-40dBFS_s": {
+    "median": 0.0,
+    "p95": 0.0032499999999999977,
+    "max": 0.005,
+    "share_le_0.2": 1.0
+   },
+   "release_to_sing-30dB_s": {
+    "median": 0.0,
+    "p95": 0.2389999999999998,
+    "max": 0.365,
+    "share_le_0.2": 0.875
+   },
+   "gap_time_s": 8.058666666666667,
+   "false_trigger_events": 2,
+   "false_open_time_s": 0.12266666666666666,
+   "gap_output_above_-40dBFS_s": 0.0,
+   "between_songs": {
+    "time_s": 2.2346666666666666,
+    "gate_open_events": 0,
+    "gate_open_s": 0.0,
+    "output_above_-40dBFS_s": 0.0
+   }
+  },
+  "gate_metrics_open_loop": {
+   "n_offsets": 8,
+   "singing_level_out_dbfs": -21.693304232955594,
+   "release_to_-40dBFS_s": {
+    "median": 0.0,
+    "p95": 0.0032499999999999977,
+    "max": 0.005,
+    "share_le_0.2": 1.0
+   },
+   "release_to_sing-30dB_s": {
+    "median": 0.0125,
+    "p95": 0.2667499999999998,
+    "max": 0.37,
+    "share_le_0.2": 0.875
+   },
+   "gap_time_s": 8.058666666666667,
+   "false_trigger_events": 2,
+   "false_open_time_s": 0.12,
+   "gap_output_above_-40dBFS_s": 0.0,
+   "between_songs": {
+    "time_s": 2.2346666666666666,
+    "gate_open_events": 0,
+    "gate_open_s": 0.0,
+    "output_above_-40dBFS_s": 0.0
+   }
+  },
+  "erle_soundcheck_db": 20.06316983144993,
+  "peak_out_dbfs": -2.9999999999984377,
+  "g_spk": 0.9721153023670652,
+  "secs": 8.05991506576538
+ },
+ {
+  "total_s": 60.0,
+  "rt60": 0.3,
+  "extra_db": 21.0,
+  "guard": true,
+  "gate": true,
+  "howl": {
+   "narrowband_longest_s": 0.26,
+   "runaway_longest_s": 0.05,
+   "howl": false
+  },
+  "gate_metrics": {
+   "n_offsets": 8,
+   "singing_level_out_dbfs": -21.527342002574553,
+   "release_to_-40dBFS_s": {
+    "median": 0.0,
+    "p95": 0.0032499999999999977,
+    "max": 0.005,
+    "share_le_0.2": 1.0
+   },
+   "release_to_sing-30dB_s": {
+    "median": 0.0025,
+    "p95": 0.22099999999999986,
+    "max": 0.305,
+    "share_le_0.2": 0.875
+   },
+   "gap_time_s": 8.058666666666667,
+   "false_trigger_events": 1,
+   "false_open_time_s": 0.06933333333333333,
+   "gap_output_above_-40dBFS_s": 0.0,
+   "between_songs": {
+    "time_s": 2.2346666666666666,
+    "gate_open_events": 0,
+    "gate_open_s": 0.0,
+    "output_above_-40dBFS_s": 0.0
+   }
+  },
+  "gate_metrics_open_loop": {
+   "n_offsets": 8,
+   "singing_level_out_dbfs": -21.693304232955594,
+   "release_to_-40dBFS_s": {
+    "median": 0.0,
+    "p95": 0.0032499999999999977,
+    "max": 0.005,
+    "share_le_0.2": 1.0
+   },
+   "release_to_sing-30dB_s": {
+    "median": 0.0125,
+    "p95": 0.2667499999999998,
+    "max": 0.37,
+    "share_le_0.2": 0.875
+   },
+   "gap_time_s": 8.058666666666667,
+   "false_trigger_events": 2,
+   "false_open_time_s": 0.12,
+   "gap_output_above_-40dBFS_s": 0.0,
+   "between_songs": {
+    "time_s": 2.2346666666666666,
+    "gate_open_events": 0,
+    "gate_open_s": 0.0,
+    "output_above_-40dBFS_s": 0.0
+   }
+  },
+  "erle_soundcheck_db": 20.149063506968837,
+  "peak_out_dbfs": -2.999999999998363,
+  "g_spk": 0.9721153023670652,
+  "secs": 10.261527061462402
+ },
+ {
+  "total_s": 60.0,
+  "rt60": 0.3,
+  "extra_db": 24.0,
+  "guard": true,
+  "gate": true,
+  "howl": {
+   "narrowband_longest_s": 0.16,
+   "runaway_longest_s": 0.15000000000000002,
+   "howl": false
+  },
+  "gate_metrics": {
+   "n_offsets": 8,
+   "singing_level_out_dbfs": -21.459589289300858,
+   "release_to_-40dBFS_s": {
+    "median": 0.0,
+    "p95": 0.0032499999999999977,
+    "max": 0.005,
+    "share_le_0.2": 1.0
+   },
+   "release_to_sing-30dB_s": {
+    "median": 0.005,
+    "p95": 0.2212499999999999,
+    "max": 0.3,
+    "share_le_0.2": 0.875
+   },
+   "gap_time_s": 8.058666666666667,
+   "false_trigger_events": 1,
+   "false_open_time_s": 0.06933333333333333,
+   "gap_output_above_-40dBFS_s": 0.0,
+   "between_songs": {
+    "time_s": 2.2346666666666666,
+    "gate_open_events": 0,
+    "gate_open_s": 0.0,
+    "output_above_-40dBFS_s": 0.0
+   }
+  },
+  "gate_metrics_open_loop": {
+   "n_offsets": 8,
+   "singing_level_out_dbfs": -21.693304232955594,
+   "release_to_-40dBFS_s": {
+    "median": 0.0,
+    "p95": 0.0032499999999999977,
+    "max": 0.005,
+    "share_le_0.2": 1.0
+   },
+   "release_to_sing-30dB_s": {
+    "median": 0.0125,
+    "p95": 0.2667499999999998,
+    "max": 0.37,
+    "share_le_0.2": 0.875
+   },
+   "gap_time_s": 8.058666666666667,
+   "false_trigger_events": 2,
+   "false_open_time_s": 0.12,
+   "gap_output_above_-40dBFS_s": 0.0,
+   "between_songs": {
+    "time_s": 2.2346666666666666,
+    "gate_open_events": 0,
+    "gate_open_s": 0.0,
+    "output_above_-40dBFS_s": 0.0
+   }
+  },
+  "erle_soundcheck_db": 20.190656069189615,
+  "peak_out_dbfs": -2.9999999999986198,
+  "g_spk": 0.9721153023670652,
+  "secs": 11.30912709236145
+ },
+ {
+  "total_s": 60.0,
+  "rt60": 0.3,
+  "extra_db": 30.0,
+  "guard": true,
+  "gate": true,
+  "howl": {
+   "narrowband_longest_s": 0.56,
+   "runaway_longest_s": 0.35000000000000003,
+   "howl": true
+  },
+  "gate_metrics": {
+   "n_offsets": 8,
+   "singing_level_out_dbfs": -20.124872555174473,
+   "release_to_-40dBFS_s": {
+    "median": 0.0,
+    "p95": 0.26749999999999985,
+    "max": 0.355,
+    "share_le_0.2": 0.875
+   },
+   "release_to_sing-30dB_s": {
+    "median": 0.02,
+    "p95": 0.34099999999999997,
+    "max": 0.355,
+    "share_le_0.2": 0.75
+   },
+   "gap_time_s": 8.058666666666667,
+   "false_trigger_events": 1,
+   "false_open_time_s": 0.21066666666666667,
+   "gap_output_above_-40dBFS_s": 0.125,
+   "between_songs": {
+    "time_s": 2.2346666666666666,
+    "gate_open_events": 0,
+    "gate_open_s": 0.0,
+    "output_above_-40dBFS_s": 0.0
+   }
+  },
+  "gate_metrics_open_loop": {
+   "n_offsets": 8,
+   "singing_level_out_dbfs": -21.693304232955594,
+   "release_to_-40dBFS_s": {
+    "median": 0.0,
+    "p95": 0.0032499999999999977,
+    "max": 0.005,
+    "share_le_0.2": 1.0
+   },
+   "release_to_sing-30dB_s": {
+    "median": 0.0125,
+    "p95": 0.2667499999999998,
+    "max": 0.37,
+    "share_le_0.2": 0.875
+   },
+   "gap_time_s": 8.058666666666667,
+   "false_trigger_events": 2,
+   "false_open_time_s": 0.12,
+   "gap_output_above_-40dBFS_s": 0.0,
+   "between_songs": {
+    "time_s": 2.2346666666666666,
+    "gate_open_events": 0,
+    "gate_open_s": 0.0,
+    "output_above_-40dBFS_s": 0.0
+   }
+  },
+  "erle_soundcheck_db": 20.21888410762374,
+  "peak_out_dbfs": -2.9999999999960743,
+  "g_spk": 0.9721153023670652,
+  "secs": 10.803921937942505
+ },
+ {
+  "total_s": 60.0,
+  "rt60": 0.3,
+  "extra_db": 3.0,
+  "guard": false,
+  "gate": true,
+  "howl": {
+   "narrowband_longest_s": 0.24,
+   "runaway_longest_s": 0.1,
+   "howl": false
+  },
+  "gate_metrics": {
+   "n_offsets": 8,
+   "singing_level_out_dbfs": -20.95931490025373,
+   "release_to_-40dBFS_s": {
+    "median": 0.0,
+    "p95": 0.0,
+    "max": 0.0,
+    "share_le_0.2": 1.0
+   },
+   "release_to_sing-30dB_s": {
+    "median": 0.015,
+    "p95": 0.2332499999999999,
+    "max": 0.305,
+    "share_le_0.2": 0.875
+   },
+   "gap_time_s": 8.058666666666667,
+   "false_trigger_events": 2,
+   "false_open_time_s": 0.13066666666666668,
+   "gap_output_above_-40dBFS_s": 0.0,
+   "between_songs": {
+    "time_s": 2.2346666666666666,
+    "gate_open_events": 0,
+    "gate_open_s": 0.0,
+    "output_above_-40dBFS_s": 0.0
+   }
+  },
+  "gate_metrics_open_loop": {
+   "n_offsets": 8,
+   "singing_level_out_dbfs": -21.634028069159736,
+   "release_to_-40dBFS_s": {
+    "median": 0.0,
+    "p95": 0.0,
+    "max": 0.0,
+    "share_le_0.2": 1.0
+   },
+   "release_to_sing-30dB_s": {
+    "median": 0.015000000000000001,
+    "p95": 0.2984999999999999,
+    "max": 0.365,
+    "share_le_0.2": 0.875
+   },
+   "gap_time_s": 8.058666666666667,
+   "false_trigger_events": 1,
+   "false_open_time_s": 0.15466666666666667,
+   "gap_output_above_-40dBFS_s": 0.0,
+   "between_songs": {
+    "time_s": 2.2346666666666666,
+    "gate_open_events": 0,
+    "gate_open_s": 0.0,
+    "output_above_-40dBFS_s": 0.0
+   }
+  },
+  "erle_soundcheck_db": null,
+  "peak_out_dbfs": -2.9999999999974083,
+  "g_spk": 0.9721153023670652,
+  "secs": 12.544960975646973
+ },
+ {
+  "total_s": 60.0,
+  "rt60": 0.3,
+  "extra_db": 6.0,
+  "guard": false,
+  "gate": true,
+  "howl": {
+   "narrowband_longest_s": 0.42,
+   "runaway_longest_s": 0.1,
+   "howl": false
+  },
+  "gate_metrics": {
+   "n_offsets": 8,
+   "singing_level_out_dbfs": -20.05451602653014,
+   "release_to_-40dBFS_s": {
+    "median": 0.0,
+    "p95": 0.04074999999999997,
+    "max": 0.06,
+    "share_le_0.2": 1.0
+   },
+   "release_to_sing-30dB_s": {
+    "median": 0.015,
+    "p95": 0.25699999999999984,
+    "max": 0.355,
+    "share_le_0.2": 0.875
+   },
+   "gap_time_s": 8.058666666666667,
+   "false_trigger_events": 3,
+   "false_open_time_s": 0.10666666666666666,
+   "gap_output_above_-40dBFS_s": 0.0,
+   "between_songs": {
+    "time_s": 2.2346666666666666,
+    "gate_open_events": 0,
+    "gate_open_s": 0.0,
+    "output_above_-40dBFS_s": 0.0
+   }
+  },
+  "gate_metrics_open_loop": {
+   "n_offsets": 8,
+   "singing_level_out_dbfs": -21.634028069159736,
+   "release_to_-40dBFS_s": {
+    "median": 0.0,
+    "p95": 0.0,
+    "max": 0.0,
+    "share_le_0.2": 1.0
+   },
+   "release_to_sing-30dB_s": {
+    "median": 0.015000000000000001,
+    "p95": 0.2984999999999999,
+    "max": 0.365,
+    "share_le_0.2": 0.875
+   },
+   "gap_time_s": 8.058666666666667,
+   "false_trigger_events": 1,
+   "false_open_time_s": 0.15466666666666667,
+   "gap_output_above_-40dBFS_s": 0.0,
+   "between_songs": {
+    "time_s": 2.2346666666666666,
+    "gate_open_events": 0,
+    "gate_open_s": 0.0,
+    "output_above_-40dBFS_s": 0.0
+   }
+  },
+  "erle_soundcheck_db": null,
+  "peak_out_dbfs": -2.9999999999957394,
+  "g_spk": 0.9721153023670652,
+  "secs": 16.283617973327637
+ },
+ {
+  "total_s": 60.0,
+  "rt60": 0.3,
+  "extra_db": 9.0,
+  "guard": false,
+  "gate": true,
+  "howl": {
+   "narrowband_longest_s": 0.64,
+   "runaway_longest_s": 0.30000000000000004,
+   "howl": true
+  },
+  "gate_metrics": {
+   "n_offsets": 8,
+   "singing_level_out_dbfs": -17.791448903620356,
+   "release_to_-40dBFS_s": {
+    "median": 0.0,
+    "p95": 0.133,
+    "max": 0.14,
+    "share_le_0.2": 1.0
+   },
+   "release_to_sing-30dB_s": {
+    "median": 0.0075,
+    "p95": 0.2442499999999999,
+    "max": 0.295,
+    "share_le_0.2": 0.875
+   },
+   "gap_time_s": 8.058666666666667,
+   "false_trigger_events": 2,
+   "false_open_time_s": 0.11733333333333333,
+   "gap_output_above_-40dBFS_s": 0.0,
+   "between_songs": {
+    "time_s": 2.2346666666666666,
+    "gate_open_events": 0,
+    "gate_open_s": 0.0,
+    "output_above_-40dBFS_s": 0.0
+   }
+  },
+  "gate_metrics_open_loop": {
+   "n_offsets": 8,
+   "singing_level_out_dbfs": -21.634028069159736,
+   "release_to_-40dBFS_s": {
+    "median": 0.0,
+    "p95": 0.0,
+    "max": 0.0,
+    "share_le_0.2": 1.0
+   },
+   "release_to_sing-30dB_s": {
+    "median": 0.015000000000000001,
+    "p95": 0.2984999999999999,
+    "max": 0.365,
+    "share_le_0.2": 0.875
+   },
+   "gap_time_s": 8.058666666666667,
+   "false_trigger_events": 1,
+   "false_open_time_s": 0.15466666666666667,
+   "gap_output_above_-40dBFS_s": 0.0,
+   "between_songs": {
+    "time_s": 2.2346666666666666,
+    "gate_open_events": 0,
+    "gate_open_s": 0.0,
+    "output_above_-40dBFS_s": 0.0
+   }
+  },
+  "erle_soundcheck_db": null,
+  "peak_out_dbfs": -2.999999999995366,
+  "g_spk": 0.9721153023670652,
+  "secs": 10.329044103622437
+ },
+ {
+  "total_s": 60.0,
+  "rt60": 0.3,
+  "extra_db": 12.0,
+  "guard": false,
+  "gate": true,
+  "howl": {
+   "narrowband_longest_s": 1.8,
+   "runaway_longest_s": 1.4000000000000001,
+   "howl": true
+  },
+  "gate_metrics": {
+   "n_offsets": 8,
+   "singing_level_out_dbfs": -14.527491421950396,
+   "release_to_-40dBFS_s": {
+    "median": 0.0,
+    "p95": 0.5857499999999997,
+    "max": 0.8150000000000001,
+    "share_le_0.2": 0.875
+   },
+   "release_to_sing-30dB_s": {
+    "median": 0.005,
+    "p95": 0.5874999999999997,
+    "max": 0.8150000000000001,
+    "share_le_0.2": 0.875
+   },
+   "gap_time_s": 8.058666666666667,
+   "false_trigger_events": 3,
+   "false_open_time_s": 0.552,
+   "gap_output_above_-40dBFS_s": 0.595,
+   "between_songs": {
+    "time_s": 2.2346666666666666,
+    "gate_open_events": 0,
+    "gate_open_s": 0.0,
+    "output_above_-40dBFS_s": 0.0
+   }
+  },
+  "gate_metrics_open_loop": {
+   "n_offsets": 8,
+   "singing_level_out_dbfs": -21.634028069159736,
+   "release_to_-40dBFS_s": {
+    "median": 0.0,
+    "p95": 0.0,
+    "max": 0.0,
+    "share_le_0.2": 1.0
+   },
+   "release_to_sing-30dB_s": {
+    "median": 0.015000000000000001,
+    "p95": 0.2984999999999999,
+    "max": 0.365,
+    "share_le_0.2": 0.875
+   },
+   "gap_time_s": 8.058666666666667,
+   "false_trigger_events": 1,
+   "false_open_time_s": 0.15466666666666667,
+   "gap_output_above_-40dBFS_s": 0.0,
+   "between_songs": {
+    "time_s": 2.2346666666666666,
+    "gate_open_events": 0,
+    "gate_open_s": 0.0,
+    "output_above_-40dBFS_s": 0.0
+   }
+  },
+  "erle_soundcheck_db": null,
+  "peak_out_dbfs": -2.9999999999922196,
+  "g_spk": 0.9721153023670652,
+  "secs": 11.294713020324707
+ },
+ {
+  "total_s": 60.0,
+  "rt60": 0.3,
+  "extra_db": 15.0,
+  "guard": false,
+  "gate": true,
+  "howl": {
+   "narrowband_longest_s": 0.76,
+   "runaway_longest_s": 0.65,
+   "howl": true
+  },
+  "gate_metrics": {
+   "n_offsets": 8,
+   "singing_level_out_dbfs": -14.657875243983993,
+   "release_to_-40dBFS_s": {
+    "median": 0.0,
+    "p95": 0.3399999999999999,
+    "max": 0.41000000000000003,
+    "share_le_0.2": 0.75
+   },
+   "release_to_sing-30dB_s": {
+    "median": 0.045,
+    "p95": 0.36749999999999994,
+    "max": 0.42,
+    "share_le_0.2": 0.625
+   },
+   "gap_time_s": 8.058666666666667,
+   "false_trigger_events": 1,
+   "false_open_time_s": 0.21333333333333332,
+   "gap_output_above_-40dBFS_s": 0.22,
+   "between_songs": {
+    "time_s": 2.2346666666666666,
+    "gate_open_events": 0,
+    "gate_open_s": 0.0,
+    "output_above_-40dBFS_s": 0.0
+   }
+  },
+  "gate_metrics_open_loop": {
+   "n_offsets": 8,
+   "singing_level_out_dbfs": -21.634028069159736,
+   "release_to_-40dBFS_s": {
+    "median": 0.0,
+    "p95": 0.0,
+    "max": 0.0,
+    "share_le_0.2": 1.0
+   },
+   "release_to_sing-30dB_s": {
+    "median": 0.015000000000000001,
+    "p95": 0.2984999999999999,
+    "max": 0.365,
+    "share_le_0.2": 0.875
+   },
+   "gap_time_s": 8.058666666666667,
+   "false_trigger_events": 1,
+   "false_open_time_s": 0.15466666666666667,
+   "gap_output_above_-40dBFS_s": 0.0,
+   "between_songs": {
+    "time_s": 2.2346666666666666,
+    "gate_open_events": 0,
+    "gate_open_s": 0.0,
+    "output_above_-40dBFS_s": 0.0
+   }
+  },
+  "erle_soundcheck_db": null,
+  "peak_out_dbfs": -2.999999999990608,
+  "g_spk": 0.9721153023670652,
+  "secs": 17.662479162216187
+ },
+ {
+  "total_s": 60.0,
+  "rt60": 0.3,
+  "extra_db": 18.0,
+  "guard": false,
+  "gate": true,
+  "howl": {
+   "narrowband_longest_s": 1.18,
+   "runaway_longest_s": 1.1,
+   "howl": true
+  },
+  "gate_metrics": {
+   "n_offsets": 8,
+   "singing_level_out_dbfs": -15.073514225931193,
+   "release_to_-40dBFS_s": {
+    "median": 0.0,
+    "p95": 0.26049999999999984,
+    "max": 0.355,
+    "share_le_0.2": 0.875
+   },
+   "release_to_sing-30dB_s": {
+    "median": 0.0125,
+    "p95": 0.2622499999999998,
+    "max": 0.355,
+    "share_le_0.2": 0.875
+   },
+   "gap_time_s": 8.058666666666667,
+   "false_trigger_events": 0,
+   "false_open_time_s": 0.136,
+   "gap_output_above_-40dBFS_s": 0.135,
+   "between_songs": {
+    "time_s": 2.2346666666666666,
+    "gate_open_events": 0,
+    "gate_open_s": 0.0,
+    "output_above_-40dBFS_s": 0.0
+   }
+  },
+  "gate_metrics_open_loop": {
+   "n_offsets": 8,
+   "singing_level_out_dbfs": -21.634028069159736,
+   "release_to_-40dBFS_s": {
+    "median": 0.0,
+    "p95": 0.0,
+    "max": 0.0,
+    "share_le_0.2": 1.0
+   },
+   "release_to_sing-30dB_s": {
+    "median": 0.015000000000000001,
+    "p95": 0.2984999999999999,
+    "max": 0.365,
+    "share_le_0.2": 0.875
+   },
+   "gap_time_s": 8.058666666666667,
+   "false_trigger_events": 1,
+   "false_open_time_s": 0.15466666666666667,
+   "gap_output_above_-40dBFS_s": 0.0,
+   "between_songs": {
+    "time_s": 2.2346666666666666,
+    "gate_open_events": 0,
+    "gate_open_s": 0.0,
+    "output_above_-40dBFS_s": 0.0
+   }
+  },
+  "erle_soundcheck_db": null,
+  "peak_out_dbfs": -2.9999999999900737,
+  "g_spk": 0.9721153023670652,
+  "secs": 17.132567882537842
+ },
+ {
+  "total_s": 60.0,
+  "rt60": 0.3,
+  "extra_db": 21.0,
+  "guard": false,
+  "gate": true,
+  "howl": {
+   "narrowband_longest_s": 1.54,
+   "runaway_longest_s": 1.2000000000000002,
+   "howl": true
+  },
+  "gate_metrics": {
+   "n_offsets": 8,
+   "singing_level_out_dbfs": -14.989600670625673,
+   "release_to_-40dBFS_s": {
+    "median": 0.0,
+    "p95": 0.39324999999999993,
+    "max": 0.43,
+    "share_le_0.2": 0.75
+   },
+   "release_to_sing-30dB_s": {
+    "median": 0.0,
+    "p95": 0.39999999999999997,
+    "max": 0.435,
+    "share_le_0.2": 0.75
+   },
+   "gap_time_s": 8.058666666666667,
+   "false_trigger_events": 0,
+   "false_open_time_s": 0.28800000000000003,
+   "gap_output_above_-40dBFS_s": 0.355,
+   "between_songs": {
+    "time_s": 2.2346666666666666,
+    "gate_open_events": 0,
+    "gate_open_s": 0.0,
+    "output_above_-40dBFS_s": 0.0
+   }
+  },
+  "gate_metrics_open_loop": {
+   "n_offsets": 8,
+   "singing_level_out_dbfs": -21.634028069159736,
+   "release_to_-40dBFS_s": {
+    "median": 0.0,
+    "p95": 0.0,
+    "max": 0.0,
+    "share_le_0.2": 1.0
+   },
+   "release_to_sing-30dB_s": {
+    "median": 0.015000000000000001,
+    "p95": 0.2984999999999999,
+    "max": 0.365,
+    "share_le_0.2": 0.875
+   },
+   "gap_time_s": 8.058666666666667,
+   "false_trigger_events": 1,
+   "false_open_time_s": 0.15466666666666667,
+   "gap_output_above_-40dBFS_s": 0.0,
+   "between_songs": {
+    "time_s": 2.2346666666666666,
+    "gate_open_events": 0,
+    "gate_open_s": 0.0,
+    "output_above_-40dBFS_s": 0.0
+   }
+  },
+  "erle_soundcheck_db": null,
+  "peak_out_dbfs": -2.999999999989329,
+  "g_spk": 0.9721153023670652,
+  "secs": 12.748137950897217
+ },
+ {
+  "total_s": 60.0,
+  "rt60": 0.3,
+  "extra_db": 24.0,
+  "guard": false,
+  "gate": true,
+  "howl": {
+   "narrowband_longest_s": 1.28,
+   "runaway_longest_s": 1.1500000000000001,
+   "howl": true
+  },
+  "gate_metrics": {
+   "n_offsets": 8,
+   "singing_level_out_dbfs": -15.684497296695648,
+   "release_to_-40dBFS_s": {
+    "median": 0.0225,
+    "p95": 0.6387499999999999,
+    "max": 0.7000000000000001,
+    "share_le_0.2": 0.75
+   },
+   "release_to_sing-30dB_s": {
+    "median": 0.025,
+    "p95": 0.6437499999999999,
+    "max": 0.705,
+    "share_le_0.2": 0.75
+   },
+   "gap_time_s": 8.058666666666667,
+   "false_trigger_events": 4,
+   "false_open_time_s": 0.6746666666666667,
+   "gap_output_above_-40dBFS_s": 0.81,
+   "between_songs": {
+    "time_s": 2.2346666666666666,
+    "gate_open_events": 0,
+    "gate_open_s": 0.0,
+    "output_above_-40dBFS_s": 0.0
+   }
+  },
+  "gate_metrics_open_loop": {
+   "n_offsets": 8,
+   "singing_level_out_dbfs": -21.634028069159736,
+   "release_to_-40dBFS_s": {
+    "median": 0.0,
+    "p95": 0.0,
+    "max": 0.0,
+    "share_le_0.2": 1.0
+   },
+   "release_to_sing-30dB_s": {
+    "median": 0.015000000000000001,
+    "p95": 0.2984999999999999,
+    "max": 0.365,
+    "share_le_0.2": 0.875
+   },
+   "gap_time_s": 8.058666666666667,
+   "false_trigger_events": 1,
+   "false_open_time_s": 0.15466666666666667,
+   "gap_output_above_-40dBFS_s": 0.0,
+   "between_songs": {
+    "time_s": 2.2346666666666666,
+    "gate_open_events": 0,
+    "gate_open_s": 0.0,
+    "output_above_-40dBFS_s": 0.0
+   }
+  },
+  "erle_soundcheck_db": null,
+  "peak_out_dbfs": -2.9999999999886957,
+  "g_spk": 0.9721153023670652,
+  "secs": 20.038259983062744
+ },
+ {
+  "total_s": 60.0,
+  "rt60": 0.3,
+  "extra_db": 30.0,
+  "guard": false,
+  "gate": true,
+  "howl": {
+   "narrowband_longest_s": 2.22,
+   "runaway_longest_s": 2.2,
+   "howl": true
+  },
+  "gate_metrics": {
+   "n_offsets": 8,
+   "singing_level_out_dbfs": -16.62677524566685,
+   "release_to_-40dBFS_s": {
+    "median": 0.10250000000000001,
+    "p95": 1.3947499999999995,
+    "max": 1.75,
+    "share_le_0.2": 0.625
+   },
+   "release_to_sing-30dB_s": {
+    "median": 0.11,
+    "p95": 1.3997499999999996,
+    "max": 1.7550000000000001,
+    "share_le_0.2": 0.625
+   },
+   "gap_time_s": 8.058666666666667,
+   "false_trigger_events": 7,
+   "false_open_time_s": 2.184,
+   "gap_output_above_-40dBFS_s": 2.4,
+   "between_songs": {
+    "time_s": 2.2346666666666666,
+    "gate_open_events": 0,
+    "gate_open_s": 0.0,
+    "output_above_-40dBFS_s": 0.0
+   }
+  },
+  "gate_metrics_open_loop": {
+   "n_offsets": 8,
+   "singing_level_out_dbfs": -21.634028069159736,
+   "release_to_-40dBFS_s": {
+    "median": 0.0,
+    "p95": 0.0,
+    "max": 0.0,
+    "share_le_0.2": 1.0
+   },
+   "release_to_sing-30dB_s": {
+    "median": 0.015000000000000001,
+    "p95": 0.2984999999999999,
+    "max": 0.365,
+    "share_le_0.2": 0.875
+   },
+   "gap_time_s": 8.058666666666667,
+   "false_trigger_events": 1,
+   "false_open_time_s": 0.15466666666666667,
+   "gap_output_above_-40dBFS_s": 0.0,
+   "between_songs": {
+    "time_s": 2.2346666666666666,
+    "gate_open_events": 0,
+    "gate_open_s": 0.0,
+    "output_above_-40dBFS_s": 0.0
+   }
+  },
+  "erle_soundcheck_db": null,
+  "peak_out_dbfs": -2.9999999999883227,
+  "g_spk": 0.9721153023670652,
+  "secs": 14.07317590713501
+ },
+ {
+  "total_s": 60.0,
+  "rt60": 0.6,
+  "extra_db": 3.0,
+  "guard": true,
+  "gate": true,
+  "howl": {
+   "narrowband_longest_s": 0.24,
+   "runaway_longest_s": 0.0,
+   "howl": false
+  },
+  "gate_metrics": {
+   "n_offsets": 8,
+   "singing_level_out_dbfs": -21.62713164597892,
+   "release_to_-40dBFS_s": {
+    "median": 0.0,
+    "p95": 0.009749999999999991,
+    "max": 0.015,
+    "share_le_0.2": 1.0
+   },
+   "release_to_sing-30dB_s": {
+    "median": 0.0175,
+    "p95": 0.27199999999999985,
+    "max": 0.37,
+    "share_le_0.2": 0.875
+   },
+   "gap_time_s": 8.058666666666667,
+   "false_trigger_events": 1,
+   "false_open_time_s": 0.07733333333333334,
+   "gap_output_above_-40dBFS_s": 0.0,
+   "between_songs": {
+    "time_s": 2.2346666666666666,
+    "gate_open_events": 0,
+    "gate_open_s": 0.0,
+    "output_above_-40dBFS_s": 0.0
+   }
+  },
+  "gate_metrics_open_loop": {
+   "n_offsets": 8,
+   "singing_level_out_dbfs": -21.649398646076833,
+   "release_to_-40dBFS_s": {
+    "median": 0.0,
+    "p95": 0.04249999999999997,
+    "max": 0.06,
+    "share_le_0.2": 1.0
+   },
+   "release_to_sing-30dB_s": {
+    "median": 0.0275,
+    "p95": 0.2687499999999998,
+    "max": 0.365,
+    "share_le_0.2": 0.875
+   },
+   "gap_time_s": 8.058666666666667,
+   "false_trigger_events": 1,
+   "false_open_time_s": 0.07733333333333334,
+   "gap_output_above_-40dBFS_s": 0.0,
+   "between_songs": {
+    "time_s": 2.2346666666666666,
+    "gate_open_events": 0,
+    "gate_open_s": 0.0,
+    "output_above_-40dBFS_s": 0.0
+   }
+  },
+  "erle_soundcheck_db": 15.932254252096293,
+  "peak_out_dbfs": -2.999999999998541,
+  "g_spk": 0.9783480771522319,
+  "secs": 16.57045030593872
+ },
+ {
+  "total_s": 60.0,
+  "rt60": 0.6,
+  "extra_db": 6.0,
+  "guard": true,
+  "gate": true,
+  "howl": {
+   "narrowband_longest_s": 0.12,
+   "runaway_longest_s": 0.05,
+   "howl": false
+  },
+  "gate_metrics": {
+   "n_offsets": 8,
+   "singing_level_out_dbfs": -21.686782281223934,
+   "release_to_-40dBFS_s": {
+    "median": 0.0,
+    "p95": 0.01299999999999999,
+    "max": 0.02,
+    "share_le_0.2": 1.0
+   },
+   "release_to_sing-30dB_s": {
+    "median": 0.025,
+    "p95": 0.27199999999999985,
+    "max": 0.37,
+    "share_le_0.2": 0.875
+   },
+   "gap_time_s": 8.058666666666667,
+   "false_trigger_events": 1,
+   "false_open_time_s": 0.11733333333333333,
+   "gap_output_above_-40dBFS_s": 0.0,
+   "between_songs": {
+    "time_s": 2.2346666666666666,
+    "gate_open_events": 0,
+    "gate_open_s": 0.0,
+    "output_above_-40dBFS_s": 0.0
+   }
+  },
+  "gate_metrics_open_loop": {
+   "n_offsets": 8,
+   "singing_level_out_dbfs": -21.649398646076833,
+   "release_to_-40dBFS_s": {
+    "median": 0.0,
+    "p95": 0.04249999999999997,
+    "max": 0.06,
+    "share_le_0.2": 1.0
+   },
+   "release_to_sing-30dB_s": {
+    "median": 0.0275,
+    "p95": 0.2687499999999998,
+    "max": 0.365,
+    "share_le_0.2": 0.875
+   },
+   "gap_time_s": 8.058666666666667,
+   "false_trigger_events": 1,
+   "false_open_time_s": 0.07733333333333334,
+   "gap_output_above_-40dBFS_s": 0.0,
+   "between_songs": {
+    "time_s": 2.2346666666666666,
+    "gate_open_events": 0,
+    "gate_open_s": 0.0,
+    "output_above_-40dBFS_s": 0.0
+   }
+  },
+  "erle_soundcheck_db": 16.82532176290206,
+  "peak_out_dbfs": -2.999999999998601,
+  "g_spk": 0.9783480771522319,
+  "secs": 14.004786014556885
+ },
+ {
+  "total_s": 60.0,
+  "rt60": 0.6,
+  "extra_db": 9.0,
+  "guard": true,
+  "gate": true,
+  "howl": {
+   "narrowband_longest_s": 0.18,
+   "runaway_longest_s": 0.0,
+   "howl": false
+  },
+  "gate_metrics": {
+   "n_offsets": 8,
+   "singing_level_out_dbfs": -21.667423885989567,
+   "release_to_-40dBFS_s": {
+    "median": 0.0,
+    "p95": 0.009749999999999991,
+    "max": 0.015,
+    "share_le_0.2": 1.0
+   },
+   "release_to_sing-30dB_s": {
+    "median": 0.0275,
+    "p95": 0.28249999999999986,
+    "max": 0.37,
+    "share_le_0.2": 0.875
+   },
+   "gap_time_s": 8.058666666666667,
+   "false_trigger_events": 1,
+   "false_open_time_s": 0.11733333333333333,
+   "gap_output_above_-40dBFS_s": 0.0,
+   "between_songs": {
+    "time_s": 2.2346666666666666,
+    "gate_open_events": 0,
+    "gate_open_s": 0.0,
+    "output_above_-40dBFS_s": 0.0
+   }
+  },
+  "gate_metrics_open_loop": {
+   "n_offsets": 8,
+   "singing_level_out_dbfs": -21.649398646076833,
+   "release_to_-40dBFS_s": {
+    "median": 0.0,
+    "p95": 0.04249999999999997,
+    "max": 0.06,
+    "share_le_0.2": 1.0
+   },
+   "release_to_sing-30dB_s": {
+    "median": 0.0275,
+    "p95": 0.2687499999999998,
+    "max": 0.365,
+    "share_le_0.2": 0.875
+   },
+   "gap_time_s": 8.058666666666667,
+   "false_trigger_events": 1,
+   "false_open_time_s": 0.07733333333333334,
+   "gap_output_above_-40dBFS_s": 0.0,
+   "between_songs": {
+    "time_s": 2.2346666666666666,
+    "gate_open_events": 0,
+    "gate_open_s": 0.0,
+    "output_above_-40dBFS_s": 0.0
+   }
+  },
+  "erle_soundcheck_db": 17.352987240141534,
+  "peak_out_dbfs": -2.9999999999983764,
+  "g_spk": 0.9783480771522319,
+  "secs": 17.542335987091064
+ },
+ {
+  "total_s": 60.0,
+  "rt60": 0.6,
+  "extra_db": 12.0,
+  "guard": true,
+  "gate": true,
+  "howl": {
+   "narrowband_longest_s": 0.26,
+   "runaway_longest_s": 0.1,
+   "howl": false
+  },
+  "gate_metrics": {
+   "n_offsets": 8,
+   "singing_level_out_dbfs": -21.682568453410145,
+   "release_to_-40dBFS_s": {
+    "median": 0.0,
+    "p95": 0.01799999999999999,
+    "max": 0.025,
+    "share_le_0.2": 1.0
+   },
+   "release_to_sing-30dB_s": {
+    "median": 0.01,
+    "p95": 0.25299999999999984,
+    "max": 0.365,
+    "share_le_0.2": 0.875
+   },
+   "gap_time_s": 8.058666666666667,
+   "false_trigger_events": 1,
+   "false_open_time_s": 0.11733333333333333,
+   "gap_output_above_-40dBFS_s": 0.0,
+   "between_songs": {
+    "time_s": 2.2346666666666666,
+    "gate_open_events": 0,
+    "gate_open_s": 0.0,
+    "output_above_-40dBFS_s": 0.0
+   }
+  },
+  "gate_metrics_open_loop": {
+   "n_offsets": 8,
+   "singing_level_out_dbfs": -21.649398646076833,
+   "release_to_-40dBFS_s": {
+    "median": 0.0,
+    "p95": 0.04249999999999997,
+    "max": 0.06,
+    "share_le_0.2": 1.0
+   },
+   "release_to_sing-30dB_s": {
+    "median": 0.0275,
+    "p95": 0.2687499999999998,
+    "max": 0.365,
+    "share_le_0.2": 0.875
+   },
+   "gap_time_s": 8.058666666666667,
+   "false_trigger_events": 1,
+   "false_open_time_s": 0.07733333333333334,
+   "gap_output_above_-40dBFS_s": 0.0,
+   "between_songs": {
+    "time_s": 2.2346666666666666,
+    "gate_open_events": 0,
+    "gate_open_s": 0.0,
+    "output_above_-40dBFS_s": 0.0
+   }
+  },
+  "erle_soundcheck_db": 17.64178412043935,
+  "peak_out_dbfs": -2.9999999999985016,
+  "g_spk": 0.9783480771522319,
+  "secs": 13.296860933303833
+ },
+ {
+  "total_s": 60.0,
+  "rt60": 0.6,
+  "extra_db": 15.0,
+  "guard": true,
+  "gate": true,
+  "howl": {
+   "narrowband_longest_s": 0.22,
+   "runaway_longest_s": 0.05,
+   "howl": false
+  },
+  "gate_metrics": {
+   "n_offsets": 8,
+   "singing_level_out_dbfs": -21.674022674852612,
+   "release_to_-40dBFS_s": {
+    "median": 0.0,
+    "p95": 0.009749999999999991,
+    "max": 0.015,
+    "share_le_0.2": 1.0
+   },
+   "release_to_sing-30dB_s": {
+    "median": 0.0025,
+    "p95": 0.11599999999999994,
+    "max": 0.165,
+    "share_le_0.2": 1.0
+   },
+   "gap_time_s": 8.058666666666667,
+   "false_trigger_events": 0,
+   "false_open_time_s": 0.0,
+   "gap_output_above_-40dBFS_s": 0.0,
+   "between_songs": {
+    "time_s": 2.2346666666666666,
+    "gate_open_events": 0,
+    "gate_open_s": 0.0,
+    "output_above_-40dBFS_s": 0.0
+   }
+  },
+  "gate_metrics_open_loop": {
+   "n_offsets": 8,
+   "singing_level_out_dbfs": -21.649398646076833,
+   "release_to_-40dBFS_s": {
+    "median": 0.0,
+    "p95": 0.04249999999999997,
+    "max": 0.06,
+    "share_le_0.2": 1.0
+   },
+   "release_to_sing-30dB_s": {
+    "median": 0.0275,
+    "p95": 0.2687499999999998,
+    "max": 0.365,
+    "share_le_0.2": 0.875
+   },
+   "gap_time_s": 8.058666666666667,
+   "false_trigger_events": 1,
+   "false_open_time_s": 0.07733333333333334,
+   "gap_output_above_-40dBFS_s": 0.0,
+   "between_songs": {
+    "time_s": 2.2346666666666666,
+    "gate_open_events": 0,
+    "gate_open_s": 0.0,
+    "output_above_-40dBFS_s": 0.0
+   }
+  },
+  "erle_soundcheck_db": 17.792173119766822,
+  "peak_out_dbfs": -3.013784917559753,
+  "g_spk": 0.9783480771522319,
+  "secs": 18.628173112869263
+ },
+ {
+  "total_s": 60.0,
+  "rt60": 0.6,
+  "extra_db": 18.0,
+  "guard": true,
+  "gate": true,
+  "howl": {
+   "narrowband_longest_s": 0.28,
+   "runaway_longest_s": 0.2,
+   "howl": false
+  },
+  "gate_metrics": {
+   "n_offsets": 8,
+   "singing_level_out_dbfs": -21.63122675398753,
+   "release_to_-40dBFS_s": {
+    "median": 0.0,
+    "p95": 0.0032499999999999977,
+    "max": 0.005,
+    "share_le_0.2": 1.0
+   },
+   "release_to_sing-30dB_s": {
+    "median": 0.0,
+    "p95": 0.11424999999999992,
+    "max": 0.165,
+    "share_le_0.2": 1.0
+   },
+   "gap_time_s": 8.058666666666667,
+   "false_trigger_events": 0,
+   "false_open_time_s": 0.0,
+   "gap_output_above_-40dBFS_s": 0.0,
+   "between_songs": {
+    "time_s": 2.2346666666666666,
+    "gate_open_events": 0,
+    "gate_open_s": 0.0,
+    "output_above_-40dBFS_s": 0.0
+   }
+  },
+  "gate_metrics_open_loop": {
+   "n_offsets": 8,
+   "singing_level_out_dbfs": -21.649398646076833,
+   "release_to_-40dBFS_s": {
+    "median": 0.0,
+    "p95": 0.04249999999999997,
+    "max": 0.06,
+    "share_le_0.2": 1.0
+   },
+   "release_to_sing-30dB_s": {
+    "median": 0.0275,
+    "p95": 0.2687499999999998,
+    "max": 0.365,
+    "share_le_0.2": 0.875
+   },
+   "gap_time_s": 8.058666666666667,
+   "false_trigger_events": 1,
+   "false_open_time_s": 0.07733333333333334,
+   "gap_output_above_-40dBFS_s": 0.0,
+   "between_songs": {
+    "time_s": 2.2346666666666666,
+    "gate_open_events": 0,
+    "gate_open_s": 0.0,
+    "output_above_-40dBFS_s": 0.0
+   }
+  },
+  "erle_soundcheck_db": 17.86803518959999,
+  "peak_out_dbfs": -2.999999999997875,
+  "g_spk": 0.9783480771522319,
+  "secs": 17.17305612564087
+ },
+ {
+  "total_s": 60.0,
+  "rt60": 0.6,
+  "extra_db": 21.0,
+  "guard": true,
+  "gate": true,
+  "howl": {
+   "narrowband_longest_s": 0.34,
+   "runaway_longest_s": 0.2,
+   "howl": false
+  },
+  "gate_metrics": {
+   "n_offsets": 8,
+   "singing_level_out_dbfs": -21.526405258267065,
+   "release_to_-40dBFS_s": {
+    "median": 0.0,
+    "p95": 0.011499999999999995,
+    "max": 0.015,
+    "share_le_0.2": 1.0
+   },
+   "release_to_sing-30dB_s": {
+    "median": 0.01,
+    "p95": 0.08849999999999994,
+    "max": 0.12,
+    "share_le_0.2": 1.0
+   },
+   "gap_time_s": 8.058666666666667,
+   "false_trigger_events": 0,
+   "false_open_time_s": 0.0,
+   "gap_output_above_-40dBFS_s": 0.0,
+   "between_songs": {
+    "time_s": 2.2346666666666666,
+    "gate_open_events": 0,
+    "gate_open_s": 0.0,
+    "output_above_-40dBFS_s": 0.0
+   }
+  },
+  "gate_metrics_open_loop": {
+   "n_offsets": 8,
+   "singing_level_out_dbfs": -21.649398646076833,
+   "release_to_-40dBFS_s": {
+    "median": 0.0,
+    "p95": 0.04249999999999997,
+    "max": 0.06,
+    "share_le_0.2": 1.0
+   },
+   "release_to_sing-30dB_s": {
+    "median": 0.0275,
+    "p95": 0.2687499999999998,
+    "max": 0.365,
+    "share_le_0.2": 0.875
+   },
+   "gap_time_s": 8.058666666666667,
+   "false_trigger_events": 1,
+   "false_open_time_s": 0.07733333333333334,
+   "gap_output_above_-40dBFS_s": 0.0,
+   "between_songs": {
+    "time_s": 2.2346666666666666,
+    "gate_open_events": 0,
+    "gate_open_s": 0.0,
+    "output_above_-40dBFS_s": 0.0
+   }
+  },
+  "erle_soundcheck_db": 17.90543996425285,
+  "peak_out_dbfs": -2.9999999999987397,
+  "g_spk": 0.9783480771522319,
+  "secs": 17.995893955230713
+ },
+ {
+  "total_s": 60.0,
+  "rt60": 0.6,
+  "extra_db": 24.0,
+  "guard": true,
+  "gate": true,
+  "howl": {
+   "narrowband_longest_s": 0.5,
+   "runaway_longest_s": 0.30000000000000004,
+   "howl": false
+  },
+  "gate_metrics": {
+   "n_offsets": 8,
+   "singing_level_out_dbfs": -21.23612153164839,
+   "release_to_-40dBFS_s": {
+    "median": 0.0,
+    "p95": 0.07474999999999994,
+    "max": 0.115,
+    "share_le_0.2": 1.0
+   },
+   "release_to_sing-30dB_s": {
+    "median": 0.0,
+    "p95": 0.151,
+    "max": 0.165,
+    "share_le_0.2": 1.0
+   },
+   "gap_time_s": 8.058666666666667,
+   "false_trigger_events": 0,
+   "false_open_time_s": 0.0,
+   "gap_output_above_-40dBFS_s": 0.0,
+   "between_songs": {
+    "time_s": 2.2346666666666666,
+    "gate_open_events": 0,
+    "gate_open_s": 0.0,
+    "output_above_-40dBFS_s": 0.0
+   }
+  },
+  "gate_metrics_open_loop": {
+   "n_offsets": 8,
+   "singing_level_out_dbfs": -21.649398646076833,
+   "release_to_-40dBFS_s": {
+    "median": 0.0,
+    "p95": 0.04249999999999997,
+    "max": 0.06,
+    "share_le_0.2": 1.0
+   },
+   "release_to_sing-30dB_s": {
+    "median": 0.0275,
+    "p95": 0.2687499999999998,
+    "max": 0.365,
+    "share_le_0.2": 0.875
+   },
+   "gap_time_s": 8.058666666666667,
+   "false_trigger_events": 1,
+   "false_open_time_s": 0.07733333333333334,
+   "gap_output_above_-40dBFS_s": 0.0,
+   "between_songs": {
+    "time_s": 2.2346666666666666,
+    "gate_open_events": 0,
+    "gate_open_s": 0.0,
+    "output_above_-40dBFS_s": 0.0
+   }
+  },
+  "erle_soundcheck_db": 17.923501415587527,
+  "peak_out_dbfs": -3.0679515541254556,
+  "g_spk": 0.9783480771522319,
+  "secs": 13.542323350906372
+ },
+ {
+  "total_s": 60.0,
+  "rt60": 0.6,
+  "extra_db": 30.0,
+  "guard": true,
+  "gate": true,
+  "howl": {
+   "narrowband_longest_s": 1.24,
+   "runaway_longest_s": 0.8500000000000001,
+   "howl": true
+  },
+  "gate_metrics": {
+   "n_offsets": 8,
+   "singing_level_out_dbfs": -18.04845153581816,
+   "release_to_-40dBFS_s": {
+    "median": 0.0,
+    "p95": 0.3212499999999998,
+    "max": 0.47000000000000003,
+    "share_le_0.2": 0.875
+   },
+   "release_to_sing-30dB_s": {
+    "median": 0.0,
+    "p95": 0.3397499999999998,
+    "max": 0.485,
+    "share_le_0.2": 0.875
+   },
+   "gap_time_s": 8.058666666666667,
+   "false_trigger_events": 0,
+   "false_open_time_s": 0.248,
+   "gap_output_above_-40dBFS_s": 0.27,
+   "between_songs": {
+    "time_s": 2.2346666666666666,
+    "gate_open_events": 0,
+    "gate_open_s": 0.0,
+    "output_above_-40dBFS_s": 0.0
+   }
+  },
+  "gate_metrics_open_loop": {
+   "n_offsets": 8,
+   "singing_level_out_dbfs": -21.649398646076833,
+   "release_to_-40dBFS_s": {
+    "median": 0.0,
+    "p95": 0.04249999999999997,
+    "max": 0.06,
+    "share_le_0.2": 1.0
+   },
+   "release_to_sing-30dB_s": {
+    "median": 0.0275,
+    "p95": 0.2687499999999998,
+    "max": 0.365,
+    "share_le_0.2": 0.875
+   },
+   "gap_time_s": 8.058666666666667,
+   "false_trigger_events": 1,
+   "false_open_time_s": 0.07733333333333334,
+   "gap_output_above_-40dBFS_s": 0.0,
+   "between_songs": {
+    "time_s": 2.2346666666666666,
+    "gate_open_events": 0,
+    "gate_open_s": 0.0,
+    "output_above_-40dBFS_s": 0.0
+   }
+  },
+  "erle_soundcheck_db": 17.935866436452354,
+  "peak_out_dbfs": -2.9999999999925886,
+  "g_spk": 0.9783480771522319,
+  "secs": 18.103975772857666
+ },
+ {
+  "total_s": 60.0,
+  "rt60": 0.6,
+  "extra_db": 3.0,
+  "guard": false,
+  "gate": true,
+  "howl": {
+   "narrowband_longest_s": 0.28,
+   "runaway_longest_s": 0.05,
+   "howl": false
+  },
+  "gate_metrics": {
+   "n_offsets": 8,
+   "singing_level_out_dbfs": -20.62910763360254,
+   "release_to_-40dBFS_s": {
+    "median": 0.0,
+    "p95": 0.052749999999999984,
+    "max": 0.065,
+    "share_le_0.2": 1.0
+   },
+   "release_to_sing-30dB_s": {
+    "median": 0.0175,
+    "p95": 0.24324999999999986,
+    "max": 0.35000000000000003,
+    "share_le_0.2": 0.875
+   },
+   "gap_time_s": 8.058666666666667,
+   "false_trigger_events": 1,
+   "false_open_time_s": 0.14133333333333334,
+   "gap_output_above_-40dBFS_s": 0.0,
+   "between_songs": {
+    "time_s": 2.2346666666666666,
+    "gate_open_events": 0,
+    "gate_open_s": 0.0,
+    "output_above_-40dBFS_s": 0.0
+   }
+  },
+  "gate_metrics_open_loop": {
+   "n_offsets": 8,
+   "singing_level_out_dbfs": -21.688861475213947,
+   "release_to_-40dBFS_s": {
+    "median": 0.0,
+    "p95": 0.07674999999999996,
+    "max": 0.11,
+    "share_le_0.2": 1.0
+   },
+   "release_to_sing-30dB_s": {
+    "median": 0.0675,
+    "p95": 0.28099999999999986,
+    "max": 0.365,
+    "share_le_0.2": 0.875
+   },
+   "gap_time_s": 8.058666666666667,
+   "false_trigger_events": 0,
+   "false_open_time_s": 0.152,
+   "gap_output_above_-40dBFS_s": 0.0,
+   "between_songs": {
+    "time_s": 2.2346666666666666,
+    "gate_open_events": 0,
+    "gate_open_s": 0.0,
+    "output_above_-40dBFS_s": 0.0
+   }
+  },
+  "erle_soundcheck_db": null,
+  "peak_out_dbfs": -2.9999999999973315,
+  "g_spk": 0.9783480771522319,
+  "secs": 15.320482015609741
+ },
+ {
+  "total_s": 60.0,
+  "rt60": 0.6,
+  "extra_db": 6.0,
+  "guard": false,
+  "gate": true,
+  "howl": {
+   "narrowband_longest_s": 0.44,
+   "runaway_longest_s": 0.1,
+   "howl": false
+  },
+  "gate_metrics": {
+   "n_offsets": 8,
+   "singing_level_out_dbfs": -19.327599221487503,
+   "release_to_-40dBFS_s": {
+    "median": 0.0025,
+    "p95": 0.09824999999999995,
+    "max": 0.135,
+    "share_le_0.2": 1.0
+   },
+   "release_to_sing-30dB_s": {
+    "median": 0.025,
+    "p95": 0.2479999999999999,
+    "max": 0.325,
+    "share_le_0.2": 0.875
+   },
+   "gap_time_s": 8.058666666666667,
+   "false_trigger_events": 3,
+   "false_open_time_s": 0.12,
+   "gap_output_above_-40dBFS_s": 0.0,
+   "between_songs": {
+    "time_s": 2.2346666666666666,
+    "gate_open_events": 0,
+    "gate_open_s": 0.0,
+    "output_above_-40dBFS_s": 0.0
+   }
+  },
+  "gate_metrics_open_loop": {
+   "n_offsets": 8,
+   "singing_level_out_dbfs": -21.688861475213947,
+   "release_to_-40dBFS_s": {
+    "median": 0.0,
+    "p95": 0.07674999999999996,
+    "max": 0.11,
+    "share_le_0.2": 1.0
+   },
+   "release_to_sing-30dB_s": {
+    "median": 0.0675,
+    "p95": 0.28099999999999986,
+    "max": 0.365,
+    "share_le_0.2": 0.875
+   },
+   "gap_time_s": 8.058666666666667,
+   "false_trigger_events": 0,
+   "false_open_time_s": 0.152,
+   "gap_output_above_-40dBFS_s": 0.0,
+   "between_songs": {
+    "time_s": 2.2346666666666666,
+    "gate_open_events": 0,
+    "gate_open_s": 0.0,
+    "output_above_-40dBFS_s": 0.0
+   }
+  },
+  "erle_soundcheck_db": null,
+  "peak_out_dbfs": -2.999999999995717,
+  "g_spk": 0.9783480771522319,
+  "secs": 8.161015033721924
+ },
+ {
+  "total_s": 60.0,
+  "rt60": 0.6,
+  "extra_db": 9.0,
+  "guard": false,
+  "gate": true,
+  "howl": {
+   "narrowband_longest_s": 1.76,
+   "runaway_longest_s": 1.3,
+   "howl": true
+  },
+  "gate_metrics": {
+   "n_offsets": 8,
+   "singing_level_out_dbfs": -15.958121015326672,
+   "release_to_-40dBFS_s": {
+    "median": 0.1125,
+    "p95": 0.5402499999999999,
+    "max": 0.64,
+    "share_le_0.2": 0.75
+   },
+   "release_to_sing-30dB_s": {
+    "median": 0.12000000000000001,
+    "p95": 0.5402499999999999,
+    "max": 0.64,
+    "share_le_0.2": 0.75
+   },
+   "gap_time_s": 8.058666666666667,
+   "false_trigger_events": 2,
+   "false_open_time_s": 0.512,
+   "gap_output_above_-40dBFS_s": 0.575,
+   "between_songs": {
+    "time_s": 2.2346666666666666,
+    "gate_open_events": 0,
+    "gate_open_s": 0.0,
+    "output_above_-40dBFS_s": 0.0
+   }
+  },
+  "gate_metrics_open_loop": {
+   "n_offsets": 8,
+   "singing_level_out_dbfs": -21.688861475213947,
+   "release_to_-40dBFS_s": {
+    "median": 0.0,
+    "p95": 0.07674999999999996,
+    "max": 0.11,
+    "share_le_0.2": 1.0
+   },
+   "release_to_sing-30dB_s": {
+    "median": 0.0675,
+    "p95": 0.28099999999999986,
+    "max": 0.365,
+    "share_le_0.2": 0.875
+   },
+   "gap_time_s": 8.058666666666667,
+   "false_trigger_events": 0,
+   "false_open_time_s": 0.152,
+   "gap_output_above_-40dBFS_s": 0.0,
+   "between_songs": {
+    "time_s": 2.2346666666666666,
+    "gate_open_events": 0,
+    "gate_open_s": 0.0,
+    "output_above_-40dBFS_s": 0.0
+   }
+  },
+  "erle_soundcheck_db": null,
+  "peak_out_dbfs": -2.999999999992777,
+  "g_spk": 0.9783480771522319,
+  "secs": 8.0694420337677
+ },
+ {
+  "total_s": 60.0,
+  "rt60": 0.6,
+  "extra_db": 12.0,
+  "guard": false,
+  "gate": true,
+  "howl": {
+   "narrowband_longest_s": 1.92,
+   "runaway_longest_s": 1.4000000000000001,
+   "howl": true
+  },
+  "gate_metrics": {
+   "n_offsets": 8,
+   "singing_level_out_dbfs": -13.601128163979606,
+   "release_to_-40dBFS_s": {
+    "median": 0.1025,
+    "p95": 0.63475,
+    "max": 0.64,
+    "share_le_0.2": 0.625
+   },
+   "release_to_sing-30dB_s": {
+    "median": 0.1075,
+    "p95": 0.638,
+    "max": 0.645,
+    "share_le_0.2": 0.625
+   },
+   "gap_time_s": 8.058666666666667,
+   "false_trigger_events": 3,
+   "false_open_time_s": 0.704,
+   "gap_output_above_-40dBFS_s": 0.87,
+   "between_songs": {
+    "time_s": 2.2346666666666666,
+    "gate_open_events": 0,
+    "gate_open_s": 0.0,
+    "output_above_-40dBFS_s": 0.0
+   }
+  },
+  "gate_metrics_open_loop": {
+   "n_offsets": 8,
+   "singing_level_out_dbfs": -21.688861475213947,
+   "release_to_-40dBFS_s": {
+    "median": 0.0,
+    "p95": 0.07674999999999996,
+    "max": 0.11,
+    "share_le_0.2": 1.0
+   },
+   "release_to_sing-30dB_s": {
+    "median": 0.0675,
+    "p95": 0.28099999999999986,
+    "max": 0.365,
+    "share_le_0.2": 0.875
+   },
+   "gap_time_s": 8.058666666666667,
+   "false_trigger_events": 0,
+   "false_open_time_s": 0.152,
+   "gap_output_above_-40dBFS_s": 0.0,
+   "between_songs": {
+    "time_s": 2.2346666666666666,
+    "gate_open_events": 0,
+    "gate_open_s": 0.0,
+    "output_above_-40dBFS_s": 0.0
+   }
+  },
+  "erle_soundcheck_db": null,
+  "peak_out_dbfs": -2.9999999999915232,
+  "g_spk": 0.9783480771522319,
+  "secs": 14.013514995574951
+ },
+ {
+  "total_s": 60.0,
+  "rt60": 0.6,
+  "extra_db": 15.0,
+  "guard": false,
+  "gate": true,
+  "howl": {
+   "narrowband_longest_s": 2.12,
+   "runaway_longest_s": 2.5500000000000003,
+   "howl": true
+  },
+  "gate_metrics": {
+   "n_offsets": 8,
+   "singing_level_out_dbfs": -14.11679497008043,
+   "release_to_-40dBFS_s": {
+    "median": 0.06,
+    "p95": 0.6669999999999997,
+    "max": 0.835,
+    "share_le_0.2": 0.75
+   },
+   "release_to_sing-30dB_s": {
+    "median": 0.0975,
+    "p95": 0.6702499999999997,
+    "max": 0.84,
+    "share_le_0.2": 0.75
+   },
+   "gap_time_s": 8.058666666666667,
+   "false_trigger_events": 5,
+   "false_open_time_s": 0.608,
+   "gap_output_above_-40dBFS_s": 0.76,
+   "between_songs": {
+    "time_s": 2.2346666666666666,
+    "gate_open_events": 0,
+    "gate_open_s": 0.0,
+    "output_above_-40dBFS_s": 0.015
+   }
+  },
+  "gate_metrics_open_loop": {
+   "n_offsets": 8,
+   "singing_level_out_dbfs": -21.688861475213947,
+   "release_to_-40dBFS_s": {
+    "median": 0.0,
+    "p95": 0.07674999999999996,
+    "max": 0.11,
+    "share_le_0.2": 1.0
+   },
+   "release_to_sing-30dB_s": {
+    "median": 0.0675,
+    "p95": 0.28099999999999986,
+    "max": 0.365,
+    "share_le_0.2": 0.875
+   },
+   "gap_time_s": 8.058666666666667,
+   "false_trigger_events": 0,
+   "false_open_time_s": 0.152,
+   "gap_output_above_-40dBFS_s": 0.0,
+   "between_songs": {
+    "time_s": 2.2346666666666666,
+    "gate_open_events": 0,
+    "gate_open_s": 0.0,
+    "output_above_-40dBFS_s": 0.0
+   }
+  },
+  "erle_soundcheck_db": null,
+  "peak_out_dbfs": -2.99999999999065,
+  "g_spk": 0.9783480771522319,
+  "secs": 7.774188995361328
+ },
+ {
+  "total_s": 60.0,
+  "rt60": 0.6,
+  "extra_db": 18.0,
+  "guard": false,
+  "gate": true,
+  "howl": {
+   "narrowband_longest_s": 1.1400000000000001,
+   "runaway_longest_s": 1.0,
+   "howl": true
+  },
+  "gate_metrics": {
+   "n_offsets": 8,
+   "singing_level_out_dbfs": -14.918511797101901,
+   "release_to_-40dBFS_s": {
+    "median": 0.052500000000000005,
+    "p95": 0.44499999999999995,
+    "max": 0.48,
+    "share_le_0.2": 0.625
+   },
+   "release_to_sing-30dB_s": {
+    "median": 0.0625,
+    "p95": 0.45824999999999994,
+    "max": 0.495,
+    "share_le_0.2": 0.625
+   },
+   "gap_time_s": 8.058666666666667,
+   "false_trigger_events": 0,
+   "false_open_time_s": 0.376,
+   "gap_output_above_-40dBFS_s": 0.47500000000000003,
+   "between_songs": {
+    "time_s": 2.2346666666666666,
+    "gate_open_events": 0,
+    "gate_open_s": 0.0,
+    "output_above_-40dBFS_s": 0.0
+   }
+  },
+  "gate_metrics_open_loop": {
+   "n_offsets": 8,
+   "singing_level_out_dbfs": -21.688861475213947,
+   "release_to_-40dBFS_s": {
+    "median": 0.0,
+    "p95": 0.07674999999999996,
+    "max": 0.11,
+    "share_le_0.2": 1.0
+   },
+   "release_to_sing-30dB_s": {
+    "median": 0.0675,
+    "p95": 0.28099999999999986,
+    "max": 0.365,
+    "share_le_0.2": 0.875
+   },
+   "gap_time_s": 8.058666666666667,
+   "false_trigger_events": 0,
+   "false_open_time_s": 0.152,
+   "gap_output_above_-40dBFS_s": 0.0,
+   "between_songs": {
+    "time_s": 2.2346666666666666,
+    "gate_open_events": 0,
+    "gate_open_s": 0.0,
+    "output_above_-40dBFS_s": 0.0
+   }
+  },
+  "erle_soundcheck_db": null,
+  "peak_out_dbfs": -2.9999999999898694,
+  "g_spk": 0.9783480771522319,
+  "secs": 13.50405478477478
+ },
+ {
+  "total_s": 60.0,
+  "rt60": 0.6,
+  "extra_db": 21.0,
+  "guard": false,
+  "gate": true,
+  "howl": {
+   "narrowband_longest_s": 2.04,
+   "runaway_longest_s": 1.9500000000000002,
+   "howl": true
+  },
+  "gate_metrics": {
+   "n_offsets": 8,
+   "singing_level_out_dbfs": -14.852574833663112,
+   "release_to_-40dBFS_s": {
+    "median": 0.0,
+    "p95": 1.1317499999999994,
+    "max": 1.55,
+    "share_le_0.2": 0.75
+   },
+   "release_to_sing-30dB_s": {
+    "median": 0.0,
+    "p95": 1.1317499999999994,
+    "max": 1.55,
+    "share_le_0.2": 0.75
+   },
+   "gap_time_s": 8.058666666666667,
+   "false_trigger_events": 10,
+   "false_open_time_s": 1.3039999999999998,
+   "gap_output_above_-40dBFS_s": 1.465,
+   "between_songs": {
+    "time_s": 2.2346666666666666,
+    "gate_open_events": 0,
+    "gate_open_s": 0.0,
+    "output_above_-40dBFS_s": 0.0
+   }
+  },
+  "gate_metrics_open_loop": {
+   "n_offsets": 8,
+   "singing_level_out_dbfs": -21.688861475213947,
+   "release_to_-40dBFS_s": {
+    "median": 0.0,
+    "p95": 0.07674999999999996,
+    "max": 0.11,
+    "share_le_0.2": 1.0
+   },
+   "release_to_sing-30dB_s": {
+    "median": 0.0675,
+    "p95": 0.28099999999999986,
+    "max": 0.365,
+    "share_le_0.2": 0.875
+   },
+   "gap_time_s": 8.058666666666667,
+   "false_trigger_events": 0,
+   "false_open_time_s": 0.152,
+   "gap_output_above_-40dBFS_s": 0.0,
+   "between_songs": {
+    "time_s": 2.2346666666666666,
+    "gate_open_events": 0,
+    "gate_open_s": 0.0,
+    "output_above_-40dBFS_s": 0.0
+   }
+  },
+  "erle_soundcheck_db": null,
+  "peak_out_dbfs": -2.9999999999893263,
+  "g_spk": 0.9783480771522319,
+  "secs": 11.4930899143219
+ },
+ {
+  "total_s": 60.0,
+  "rt60": 0.6,
+  "extra_db": 24.0,
+  "guard": false,
+  "gate": true,
+  "howl": {
+   "narrowband_longest_s": 2.04,
+   "runaway_longest_s": 1.9500000000000002,
+   "howl": true
+  },
+  "gate_metrics": {
+   "n_offsets": 8,
+   "singing_level_out_dbfs": -14.194641343344932,
+   "release_to_-40dBFS_s": {
+    "median": 0.035,
+    "p95": 1.4625,
+    "max": 1.55,
+    "share_le_0.2": 0.75
+   },
+   "release_to_sing-30dB_s": {
+    "median": 0.0375,
+    "p95": 1.4625,
+    "max": 1.55,
+    "share_le_0.2": 0.75
+   },
+   "gap_time_s": 8.058666666666667,
+   "false_trigger_events": 4,
+   "false_open_time_s": 2.224,
+   "gap_output_above_-40dBFS_s": 2.325,
+   "between_songs": {
+    "time_s": 2.2346666666666666,
+    "gate_open_events": 0,
+    "gate_open_s": 0.0,
+    "output_above_-40dBFS_s": 0.0
+   }
+  },
+  "gate_metrics_open_loop": {
+   "n_offsets": 8,
+   "singing_level_out_dbfs": -21.688861475213947,
+   "release_to_-40dBFS_s": {
+    "median": 0.0,
+    "p95": 0.07674999999999996,
+    "max": 0.11,
+    "share_le_0.2": 1.0
+   },
+   "release_to_sing-30dB_s": {
+    "median": 0.0675,
+    "p95": 0.28099999999999986,
+    "max": 0.365,
+    "share_le_0.2": 0.875
+   },
+   "gap_time_s": 8.058666666666667,
+   "false_trigger_events": 0,
+   "false_open_time_s": 0.152,
+   "gap_output_above_-40dBFS_s": 0.0,
+   "between_songs": {
+    "time_s": 2.2346666666666666,
+    "gate_open_events": 0,
+    "gate_open_s": 0.0,
+    "output_above_-40dBFS_s": 0.0
+   }
+  },
+  "erle_soundcheck_db": null,
+  "peak_out_dbfs": -2.9999999999887295,
+  "g_spk": 0.9783480771522319,
+  "secs": 11.579566955566406
+ },
+ {
+  "total_s": 60.0,
+  "rt60": 0.6,
+  "extra_db": 30.0,
+  "guard": false,
+  "gate": true,
+  "howl": {
+   "narrowband_longest_s": 1.68,
+   "runaway_longest_s": 1.1500000000000001,
+   "howl": true
+  },
+  "gate_metrics": {
+   "n_offsets": 8,
+   "singing_level_out_dbfs": -15.187493194513246,
+   "release_to_-40dBFS_s": {
+    "median": 0.0225,
+    "p95": 0.45425,
+    "max": 0.47000000000000003,
+    "share_le_0.2": 0.625
+   },
+   "release_to_sing-30dB_s": {
+    "median": 0.0275,
+    "p95": 0.4595,
+    "max": 0.47000000000000003,
+    "share_le_0.2": 0.625
+   },
+   "gap_time_s": 8.058666666666667,
+   "false_trigger_events": 5,
+   "false_open_time_s": 0.39999999999999997,
+   "gap_output_above_-40dBFS_s": 0.6799999999999999,
+   "between_songs": {
+    "time_s": 2.2346666666666666,
+    "gate_open_events": 0,
+    "gate_open_s": 0.0,
+    "output_above_-40dBFS_s": 0.0
+   }
+  },
+  "gate_metrics_open_loop": {
+   "n_offsets": 8,
+   "singing_level_out_dbfs": -21.688861475213947,
+   "release_to_-40dBFS_s": {
+    "median": 0.0,
+    "p95": 0.07674999999999996,
+    "max": 0.11,
+    "share_le_0.2": 1.0
+   },
+   "release_to_sing-30dB_s": {
+    "median": 0.0675,
+    "p95": 0.28099999999999986,
+    "max": 0.365,
+    "share_le_0.2": 0.875
+   },
+   "gap_time_s": 8.058666666666667,
+   "false_trigger_events": 0,
+   "false_open_time_s": 0.152,
+   "gap_output_above_-40dBFS_s": 0.0,
+   "between_songs": {
+    "time_s": 2.2346666666666666,
+    "gate_open_events": 0,
+    "gate_open_s": 0.0,
+    "output_above_-40dBFS_s": 0.0
+   }
+  },
+  "erle_soundcheck_db": null,
+  "peak_out_dbfs": -2.999999999988213,
+  "g_spk": 0.9783480771522319,
+  "secs": 5.87333869934082
+ }
+]

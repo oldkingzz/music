@@ -1,0 +1,2556 @@
+{
+ "note": "val only, tuned on val (no test split); every number read from the files on disk; K5 (causal probe) is the verifier's and is not run here; W is checked against itself (K1 fails by definition)",
+ "W": {
+  "k1_mean": 0.5027744882595084,
+  "cells": {
+   "sung@micbt_cal": {
+    "rt_nd_live": 0.5387390757966636,
+    "harsh": 0.10163310988471534,
+    "fresh_per100": 2.485089463220676,
+    "stumbles_per100": 1.0934393638170974
+   },
+   "sung_low@micbt_cal": {
+    "rt_nd_live": 0.558448799340815,
+    "harsh": 0.08637101217246862,
+    "fresh_per100": 1.5904572564612327,
+    "stumbles_per100": 1.4910536779324055
+   },
+   "sung@bt_cal": {
+    "rt_nd_live": 0.4497022264229732,
+    "harsh": 0.15960464464358637,
+    "fresh_per100": 7.057654075546719,
+    "stumbles_per100": 0.6958250497017893
+   },
+   "sung_low@bt_cal": {
+    "rt_nd_live": 0.4642078514775816,
+    "harsh": 0.1447617120280011,
+    "fresh_per100": 6.063618290258449,
+    "stumbles_per100": 0.7952286282306164
+   }
+  },
+  "wired_mean": 0.6240347540074722
+ },
+ "reactive": {
+  "cells": {
+   "sung@micbt_cal": {
+    "rt_nd_live": 0.5151614503493234,
+    "harsh": 0.1280284484348105,
+    "fresh_per100": 5.168986083499006,
+    "stumbles_per100": 4.174950298210735
+   },
+   "sung_low@micbt_cal": {
+    "rt_nd_live": 0.34114411006977924,
+    "harsh": 0.1027935844799662,
+    "fresh_per100": 4.671968190854871,
+    "stumbles_per100": 3.3797216699801194
+   },
+   "sung@bt_cal": {
+    "rt_nd_live": 0.4415917764626009,
+    "harsh": 0.18937860184859737,
+    "fresh_per100": 8.946322067594433,
+    "stumbles_per100": 2.982107355864811
+   },
+   "sung_low@bt_cal": {
+    "rt_nd_live": 0.28713251637423176,
+    "harsh": 0.14933023842542226,
+    "fresh_per100": 8.05168986083499,
+    "stumbles_per100": 2.485089463220676
+   }
+  },
+  "k1_mean": 0.3962574633139838,
+  "wired": {
+   "sung": {
+    "rt_nd_live": 0.5936451194275247,
+    "harsh": 0.0833604908808919,
+    "fresh_per100": 5.069582504970179,
+    "stumbles_per100": 3.7773359840954273
+   },
+   "sung_low": {
+    "rt_nd_live": 0.4012977048161021,
+    "harsh": 0.05156959122194172,
+    "fresh_per100": 3.7773359840954273,
+    "stumbles_per100": 2.68389662027833
+   }
+  },
+  "v11": {
+   "fresh_heard": 4,
+   "harsh_heard": 0.15520628683693516
+  },
+  "L0.5": {
+   "rt_nd": 0.44752242047172197,
+   "seed2": 0.4507445563821703,
+   "harsh": 0.15667854444959436,
+   "fresh_per100": 9.44048954239172
+  },
+  "L0.1": {
+   "rt_nd": 0.600766125793285,
+   "harsh": 0.054102409054943575,
+   "seed2": 0.6034694958749114,
+   "fresh": 1.8100634866373206
+  }
+ },
+ "bars": {
+  "K1": 0.5077744882595084,
+  "K4 rt_nd": 0.452522420471722,
+  "K4 harsh": 0.15667854444959436,
+  "K4 fresh": 9.44048954239172,
+  "K4 seed2 rt_nd": 0.4537445563821703,
+  "wired mean": 0.6210347540074722
+ },
+ "rows": {
+  "r3_X_regtrkst_v1": {
+   "what": "W (round-3 page default): register adapter + tracker-aware hearing + stumble guards + doubt rule",
+   "source": "/Users/san/claude_sandbox/music/duet_v0/futures/v5_rt/rt_systems/r3_X_regtrkst_v1.py",
+   "k1_mean": 0.5027744882595084,
+   "k1_delta_vs_W": 0.0,
+   "k1_pass": false,
+   "k2_pass": true,
+   "k3_pass": true,
+   "k4_pass": true,
+   "k5": "not run here (the verifier's causal probe)",
+   "k_fresh_stumbles": 21.272365805168988,
+   "cells": {
+    "sung@micbt_cal": {
+     "rt_nd_live": 0.5387390757966636,
+     "harsh": 0.10163310988471534,
+     "fresh_per100": 2.485089463220676,
+     "stumbles_per100": 1.0934393638170974
+    },
+    "sung_low@micbt_cal": {
+     "rt_nd_live": 0.558448799340815,
+     "harsh": 0.08637101217246862,
+     "fresh_per100": 1.5904572564612327,
+     "stumbles_per100": 1.4910536779324055
+    },
+    "sung@bt_cal": {
+     "rt_nd_live": 0.4497022264229732,
+     "harsh": 0.15960464464358637,
+     "fresh_per100": 7.057654075546719,
+     "stumbles_per100": 0.6958250497017893
+    },
+    "sung_low@bt_cal": {
+     "rt_nd_live": 0.4642078514775816,
+     "harsh": 0.1447617120280011,
+     "fresh_per100": 6.063618290258449,
+     "stumbles_per100": 0.7952286282306164
+    }
+   },
+   "k2": {
+    "sung@micbt_cal harsh <= W+0.003": true,
+    "sung@micbt_cal fresh_per100 <= W+0.5": true,
+    "sung@micbt_cal stumbles_per100 <= W+1.0": true,
+    "sung_low@micbt_cal harsh <= W+0.003": true,
+    "sung_low@micbt_cal fresh_per100 <= W+0.5": true,
+    "sung_low@micbt_cal stumbles_per100 <= W+1.0": true,
+    "sung@bt_cal harsh <= W+0.003": true,
+    "sung@bt_cal fresh_per100 <= W+0.5": true,
+    "sung@bt_cal stumbles_per100 <= W+1.0": true,
+    "sung_low@bt_cal harsh <= W+0.003": true,
+    "sung_low@bt_cal fresh_per100 <= W+0.5": true,
+    "sung_low@bt_cal stumbles_per100 <= W+1.0": true
+   },
+   "k2_min_slack": {
+    "harsh": 0.0030000000000000027,
+    "fresh_per100": 0.4999999999999998,
+    "stumbles_per100": 0.9999999999999998
+   },
+   "k3": {
+    "v11 fresh_heard <= 4": true,
+    "v11 harsh_heard <= 0.1602": true
+   },
+   "v11": {
+    "fresh_heard": 2,
+    "harsh_heard": 0.09135559921414538
+   },
+   "k4": {
+    "rt_nd": 0.469652807915357,
+    "seed2": 0.4733308741959769,
+    "seed2_delta": 0.0225863178138066,
+    "harsh": 0.12324260545127937,
+    "fresh_per100": 6.910640213885911,
+    "checks": {
+     "L0.5 rt_nd >= reactive+0.005": true,
+     "L0.5 harsh <= reactive": true,
+     "L0.5 fresh <= reactive": true,
+     "L0.5 seed2 delta >= +0.003": true
+    }
+   },
+   "g1_pass": true,
+   "g1_n": "17/17",
+   "g1": {
+    "rt_nd": 0.6121068047721656,
+    "seed2_delta": 0.01340046833713937,
+    "fresh": 1.144501197330628,
+    "checks": {
+     "rt_nd +0.005": true,
+     "harsh <= reactive": true,
+     "seed2 +0.003": true,
+     "us < 2000": true,
+     "fresh <= reactive": true,
+     "bach harsh <= +0.005": true,
+     "bach rt_nd >= -0.01": true,
+     "bach fresh <= +1.0": true,
+     "folk harsh <= +0.005": true,
+     "folk rt_nd >= -0.01": true,
+     "folk fresh <= +1.0": true,
+     "pop harsh <= +0.005": true,
+     "pop rt_nd >= -0.01": true,
+     "pop fresh <= +1.0": true,
+     "pop909 harsh <= +0.005": true,
+     "pop909 rt_nd >= -0.01": true,
+     "pop909 fresh <= +1.0": true
+    }
+   },
+   "g2_pass": true,
+   "g2": {
+    "sung rt_nd >= reactive+0.005": true,
+    "sung_low rt_nd >= reactive": true,
+    "sung harsh <= reactive": true,
+    "sung fresh <= reactive": true,
+    "sung_low harsh <= reactive": true,
+    "sung_low fresh <= reactive": true
+   },
+   "g3_pass": true,
+   "g3": {
+    "v11 fresh_heard <= reactive": true,
+    "v11 harsh_heard <= reactive+0.005": true
+   },
+   "wired": {
+    "sung": {
+     "rt_nd_live": 0.6070752376469969,
+     "harsh": 0.05654961094778799,
+     "fresh_per100": 1.9880715705765408,
+     "stumbles_per100": 3.280318091451292
+    },
+    "sung_low": {
+     "rt_nd_live": 0.6409942703679476,
+     "harsh": 0.03968077572207441,
+     "fresh_per100": 1.0934393638170974,
+     "stumbles_per100": 3.8767395626242545
+    }
+   },
+   "wired_mean": 0.6240347540074722,
+   "wired_mean_ok": true,
+   "same_as_W": {
+    "wired digests": true,
+    "micbt_cal digests": true,
+    "bt_cal digests": true,
+    "v11 digest": true,
+    "bench_rt L0.1 (rt_nd, harsh, seed2, fresh)": true
+   },
+   "failed": [
+    "K1 (W against itself: fails by definition)"
+   ],
+   "files": [
+    "attack/L4_rt_r3_X_regtrkst_v1_L0.5.json",
+    "attack/R3X_rt_r3_X_regtrkst_v1_L0.1.json",
+    "live_bench/L4_rt_r3_X_regtrkst_v1_sung_bt_cal.json",
+    "live_bench/L4_rt_r3_X_regtrkst_v1_sung_low_bt_cal.json",
+    "live_bench/L4_rt_r3_X_regtrkst_v1_sung_low_micbt_cal.json",
+    "live_bench/L4_rt_r3_X_regtrkst_v1_sung_micbt_cal.json",
+    "live_bench/R3X_rt_r3_X_regtrkst_v1_phone_v11.json",
+    "live_bench/R3X_rt_r3_X_regtrkst_v1_sung_low_wired.json",
+    "live_bench/R3X_rt_r3_X_regtrkst_v1_sung_wired.json",
+    "scores/L4_rt_r3_X_regtrkst_v1_L0.5.json",
+    "scores/L4_rt_r3_X_regtrkst_v1_L0.5_seed2.json",
+    "scores/R3X_rt_r3_X_regtrkst_v1_L0.1.json",
+    "scores/R3X_rt_r3_X_regtrkst_v1_L0.1_seed2.json"
+   ]
+  },
+  "r3_X_regtrkdk_v1": {
+   "what": "round 3: W without the stumble guards (top round-3 wired mean)",
+   "source": "/Users/san/claude_sandbox/music/duet_v0/futures/v5_rt/rt_systems/r3_X_regtrkdk_v1.py",
+   "k1_mean": 0.515765821033423,
+   "k1_delta_vs_W": 0.012991332773914621,
+   "k1_pass": true,
+   "k2_pass": false,
+   "k3_pass": true,
+   "k4_pass": true,
+   "k5": "not run here (the verifier's causal probe)",
+   "k_fresh_stumbles": 36.381709741550694,
+   "cells": {
+    "sung@micbt_cal": {
+     "rt_nd_live": 0.5476676439639514,
+     "harsh": 0.09037289430851463,
+     "fresh_per100": 3.3797216699801194,
+     "stumbles_per100": 5.168986083499006
+    },
+    "sung_low@micbt_cal": {
+     "rt_nd_live": 0.5707485399615397,
+     "harsh": 0.07674291282576597,
+     "fresh_per100": 2.1868787276341948,
+     "stumbles_per100": 4.3737574552683895
+    },
+    "sung@bt_cal": {
+     "rt_nd_live": 0.4680230755904884,
+     "harsh": 0.1447396551370371,
+     "fresh_per100": 9.642147117296222,
+     "stumbles_per100": 1.8886679920477136
+    },
+    "sung_low@bt_cal": {
+     "rt_nd_live": 0.4766240246177128,
+     "harsh": 0.13478229292132693,
+     "fresh_per100": 8.34990059642147,
+     "stumbles_per100": 1.3916500994035785
+    }
+   },
+   "k2": {
+    "sung@micbt_cal harsh <= W+0.003": true,
+    "sung@micbt_cal fresh_per100 <= W+0.5": false,
+    "sung@micbt_cal stumbles_per100 <= W+1.0": false,
+    "sung_low@micbt_cal harsh <= W+0.003": true,
+    "sung_low@micbt_cal fresh_per100 <= W+0.5": false,
+    "sung_low@micbt_cal stumbles_per100 <= W+1.0": false,
+    "sung@bt_cal harsh <= W+0.003": true,
+    "sung@bt_cal fresh_per100 <= W+0.5": false,
+    "sung@bt_cal stumbles_per100 <= W+1.0": false,
+    "sung_low@bt_cal harsh <= W+0.003": true,
+    "sung_low@bt_cal fresh_per100 <= W+0.5": false,
+    "sung_low@bt_cal stumbles_per100 <= W+1.0": true
+   },
+   "k2_min_slack": {
+    "harsh": 0.012628099346702656,
+    "fresh_per100": -2.0844930417495027,
+    "stumbles_per100": -3.075546719681909
+   },
+   "k3": {
+    "v11 fresh_heard <= 4": true,
+    "v11 harsh_heard <= 0.1602": true
+   },
+   "v11": {
+    "fresh_heard": 2,
+    "harsh_heard": 0.09135559921414538
+   },
+   "k4": {
+    "rt_nd": 0.4833950038255443,
+    "seed2": 0.48602186718621054,
+    "seed2_delta": 0.03527731080404023,
+    "harsh": 0.1157453292411749,
+    "fresh_per100": 7.317782976273048,
+    "checks": {
+     "L0.5 rt_nd >= reactive+0.005": true,
+     "L0.5 harsh <= reactive": true,
+     "L0.5 fresh <= reactive": true,
+     "L0.5 seed2 delta >= +0.003": true
+    }
+   },
+   "g1_pass": true,
+   "g1_n": "17/17",
+   "g1": {
+    "rt_nd": 0.621004620333839,
+    "seed2_delta": 0.023103475815007046,
+    "fresh": 1.6823097524864767,
+    "checks": {
+     "rt_nd +0.005": true,
+     "harsh <= reactive": true,
+     "seed2 +0.003": true,
+     "us < 2000": true,
+     "fresh <= reactive": true,
+     "bach harsh <= +0.005": true,
+     "bach rt_nd >= -0.01": true,
+     "bach fresh <= +1.0": true,
+     "folk harsh <= +0.005": true,
+     "folk rt_nd >= -0.01": true,
+     "folk fresh <= +1.0": true,
+     "pop harsh <= +0.005": true,
+     "pop rt_nd >= -0.01": true,
+     "pop fresh <= +1.0": true,
+     "pop909 harsh <= +0.005": true,
+     "pop909 rt_nd >= -0.01": true,
+     "pop909 fresh <= +1.0": true
+    }
+   },
+   "g2_pass": true,
+   "g2": {
+    "sung rt_nd >= reactive+0.005": true,
+    "sung_low rt_nd >= reactive": true,
+    "sung harsh <= reactive": true,
+    "sung fresh <= reactive": true,
+    "sung_low harsh <= reactive": true,
+    "sung_low fresh <= reactive": true
+   },
+   "g3_pass": true,
+   "g3": {
+    "v11 fresh_heard <= reactive": true,
+    "v11 harsh_heard <= reactive+0.005": true
+   },
+   "wired": {
+    "sung": {
+     "rt_nd_live": 0.6110185118823327,
+     "harsh": 0.05391089988221098,
+     "fresh_per100": 2.8827037773359843,
+     "stumbles_per100": 10.03976143141153
+    },
+    "sung_low": {
+     "rt_nd_live": 0.6420908638979522,
+     "harsh": 0.035200078933399964,
+     "fresh_per100": 1.2922465208747516,
+     "stumbles_per100": 10.139165009940358
+    }
+   },
+   "wired_mean": 0.6265546878901425,
+   "wired_mean_ok": true,
+   "same_as_W": {
+    "wired digests": false,
+    "micbt_cal digests": false,
+    "bt_cal digests": false,
+    "v11 digest": false,
+    "bench_rt L0.1 (rt_nd, harsh, seed2, fresh)": false
+   },
+   "failed": [
+    "K2 sung@micbt_cal fresh_per100 <= W+0.5",
+    "K2 sung@micbt_cal stumbles_per100 <= W+1.0",
+    "K2 sung_low@micbt_cal fresh_per100 <= W+0.5",
+    "K2 sung_low@micbt_cal stumbles_per100 <= W+1.0",
+    "K2 sung@bt_cal fresh_per100 <= W+0.5",
+    "K2 sung@bt_cal stumbles_per100 <= W+1.0",
+    "K2 sung_low@bt_cal fresh_per100 <= W+0.5"
+   ],
+   "files": [
+    "attack/R3X_rt_r3_X_regtrkdk_v1_L0.1.json",
+    "attack/R4X_rt_r3_X_regtrkdk_v1_L0.5.json",
+    "live_bench/L4_rt_r3_X_regtrkdk_v1_sung_bt_cal.json",
+    "live_bench/L4_rt_r3_X_regtrkdk_v1_sung_low_bt_cal.json",
+    "live_bench/L4_rt_r3_X_regtrkdk_v1_sung_low_micbt_cal.json",
+    "live_bench/L4_rt_r3_X_regtrkdk_v1_sung_micbt_cal.json",
+    "live_bench/R3X_rt_r3_X_regtrkdk_v1_phone_v11.json",
+    "live_bench/R3X_rt_r3_X_regtrkdk_v1_sung_low_wired.json",
+    "live_bench/R3X_rt_r3_X_regtrkdk_v1_sung_wired.json",
+    "scores/R3X_rt_r3_X_regtrkdk_v1_L0.1.json",
+    "scores/R3X_rt_r3_X_regtrkdk_v1_L0.1_seed2.json",
+    "scores/R4X_rt_r3_X_regtrkdk_v1_L0.5.json",
+    "scores/R4X_rt_r3_X_regtrkdk_v1_L0.5_seed2.json"
+   ]
+  },
+  "r3_X_regtrkstsafe_v1": {
+   "what": "round 3: most cautious W variant",
+   "source": "/Users/san/claude_sandbox/music/duet_v0/futures/v5_rt/rt_systems/r3_X_regtrkstsafe_v1.py",
+   "k1_mean": 0.49988822826941864,
+   "k1_delta_vs_W": -0.00288625999008979,
+   "k1_pass": false,
+   "k2_pass": true,
+   "k3_pass": true,
+   "k4_pass": true,
+   "k5": "not run here (the verifier's causal probe)",
+   "k_fresh_stumbles": 20.97415506958251,
+   "cells": {
+    "sung@micbt_cal": {
+     "rt_nd_live": 0.5345811017787538,
+     "harsh": 0.10021599837242576,
+     "fresh_per100": 2.286282306163022,
+     "stumbles_per100": 0.8946322067594433
+    },
+    "sung_low@micbt_cal": {
+     "rt_nd_live": 0.5549173160262205,
+     "harsh": 0.08674359487214649,
+     "fresh_per100": 1.4910536779324055,
+     "stumbles_per100": 1.2922465208747516
+    },
+    "sung@bt_cal": {
+     "rt_nd_live": 0.44919336985534264,
+     "harsh": 0.15404104145181044,
+     "fresh_per100": 7.256461232604374,
+     "stumbles_per100": 0.6958250497017893
+    },
+    "sung_low@bt_cal": {
+     "rt_nd_live": 0.4608611254173575,
+     "harsh": 0.14120673800908118,
+     "fresh_per100": 6.262425447316104,
+     "stumbles_per100": 0.7952286282306164
+    }
+   },
+   "k2": {
+    "sung@micbt_cal harsh <= W+0.003": true,
+    "sung@micbt_cal fresh_per100 <= W+0.5": true,
+    "sung@micbt_cal stumbles_per100 <= W+1.0": true,
+    "sung_low@micbt_cal harsh <= W+0.003": true,
+    "sung_low@micbt_cal fresh_per100 <= W+0.5": true,
+    "sung_low@micbt_cal stumbles_per100 <= W+1.0": true,
+    "sung@bt_cal harsh <= W+0.003": true,
+    "sung@bt_cal fresh_per100 <= W+0.5": true,
+    "sung@bt_cal stumbles_per100 <= W+1.0": true,
+    "sung_low@bt_cal harsh <= W+0.003": true,
+    "sung_low@bt_cal fresh_per100 <= W+0.5": true,
+    "sung_low@bt_cal stumbles_per100 <= W+1.0": true
+   },
+   "k2_min_slack": {
+    "harsh": 0.002627417300322135,
+    "fresh_per100": 0.3011928429423456,
+    "stumbles_per100": 0.9999999999999999
+   },
+   "k3": {
+    "v11 fresh_heard <= 4": true,
+    "v11 harsh_heard <= 0.1602": true
+   },
+   "v11": {
+    "fresh_heard": 2,
+    "harsh_heard": 0.08349705304518663
+   },
+   "k4": {
+    "rt_nd": 0.4684674265767869,
+    "seed2": 0.4719759010065249,
+    "seed2_delta": 0.02123134462435461,
+    "harsh": 0.12250403910967658,
+    "fresh_per100": 6.813838517906419,
+    "checks": {
+     "L0.5 rt_nd >= reactive+0.005": true,
+     "L0.5 harsh <= reactive": true,
+     "L0.5 fresh <= reactive": true,
+     "L0.5 seed2 delta >= +0.003": true
+    }
+   },
+   "g1_pass": true,
+   "g1_n": "17/17",
+   "g1": {
+    "rt_nd": 0.6106894978693401,
+    "seed2_delta": 0.011911506705727604,
+    "fresh": 1.0528818834835134,
+    "checks": {
+     "rt_nd +0.005": true,
+     "harsh <= reactive": true,
+     "seed2 +0.003": true,
+     "us < 2000": true,
+     "fresh <= reactive": true,
+     "bach harsh <= +0.005": true,
+     "bach rt_nd >= -0.01": true,
+     "bach fresh <= +1.0": true,
+     "folk harsh <= +0.005": true,
+     "folk rt_nd >= -0.01": true,
+     "folk fresh <= +1.0": true,
+     "pop harsh <= +0.005": true,
+     "pop rt_nd >= -0.01": true,
+     "pop fresh <= +1.0": true,
+     "pop909 harsh <= +0.005": true,
+     "pop909 rt_nd >= -0.01": true,
+     "pop909 fresh <= +1.0": true
+    }
+   },
+   "g2_pass": true,
+   "g2": {
+    "sung rt_nd >= reactive+0.005": true,
+    "sung_low rt_nd >= reactive": true,
+    "sung harsh <= reactive": true,
+    "sung fresh <= reactive": true,
+    "sung_low harsh <= reactive": true,
+    "sung_low fresh <= reactive": true
+   },
+   "g3_pass": true,
+   "g3": {
+    "v11 fresh_heard <= reactive": true,
+    "v11 harsh_heard <= reactive+0.005": true
+   },
+   "wired": {
+    "sung": {
+     "rt_nd_live": 0.6043103142971548,
+     "harsh": 0.05450023568367276,
+     "fresh_per100": 1.7892644135188867,
+     "stumbles_per100": 3.1809145129224654
+    },
+    "sung_low": {
+     "rt_nd_live": 0.637155311804682,
+     "harsh": 0.038762954894883385,
+     "fresh_per100": 0.8946322067594433,
+     "stumbles_per100": 3.6779324055666005
+    }
+   },
+   "wired_mean": 0.6207328130509184,
+   "wired_mean_ok": false,
+   "same_as_W": {
+    "wired digests": false,
+    "micbt_cal digests": false,
+    "bt_cal digests": false,
+    "v11 digest": false,
+    "bench_rt L0.1 (rt_nd, harsh, seed2, fresh)": false
+   },
+   "failed": [
+    "K1",
+    "wired mean >= W-0.003"
+   ],
+   "files": [
+    "attack/R3X_rt_r3_X_regtrkstsafe_v1_L0.1.json",
+    "attack/R4X_rt_r3_X_regtrkstsafe_v1_L0.5.json",
+    "live_bench/L4_rt_r3_X_regtrkstsafe_v1_sung_bt_cal.json",
+    "live_bench/L4_rt_r3_X_regtrkstsafe_v1_sung_low_bt_cal.json",
+    "live_bench/L4_rt_r3_X_regtrkstsafe_v1_sung_low_micbt_cal.json",
+    "live_bench/L4_rt_r3_X_regtrkstsafe_v1_sung_micbt_cal.json",
+    "live_bench/R3X_rt_r3_X_regtrkstsafe_v1_phone_v11.json",
+    "live_bench/R3X_rt_r3_X_regtrkstsafe_v1_sung_low_wired.json",
+    "live_bench/R3X_rt_r3_X_regtrkstsafe_v1_sung_wired.json",
+    "scores/R3X_rt_r3_X_regtrkstsafe_v1_L0.1.json",
+    "scores/R3X_rt_r3_X_regtrkstsafe_v1_L0.1_seed2.json",
+    "scores/R4X_rt_r3_X_regtrkstsafe_v1_L0.5.json",
+    "scores/R4X_rt_r3_X_regtrkstsafe_v1_L0.5_seed2.json"
+   ]
+  },
+  "r4_G_ehedgesafe_v1": {
+   "what": "idea G: W + lag regime from call order + lag-aware hedge (floor 0.25, next-note harsh 0.3) + E hedge + late override; keep guard off in the large regime",
+   "source": "/Users/san/claude_sandbox/music/duet_v0/futures/v5_rt/rt_systems/r4_G_ehedgesafe_v1.py",
+   "k1_mean": 0.5103000069208411,
+   "k1_delta_vs_W": 0.007525518661332664,
+   "k1_pass": true,
+   "k2_pass": true,
+   "k3_pass": true,
+   "k4_pass": true,
+   "k5": "not run here (the verifier's causal probe)",
+   "k_fresh_stumbles": 16.998011928429424,
+   "cells": {
+    "sung@micbt_cal": {
+     "rt_nd_live": 0.5387390757966636,
+     "harsh": 0.10163310988471534,
+     "fresh_per100": 2.485089463220676,
+     "stumbles_per100": 1.0934393638170974
+    },
+    "sung_low@micbt_cal": {
+     "rt_nd_live": 0.558448799340815,
+     "harsh": 0.08637101217246862,
+     "fresh_per100": 1.5904572564612327,
+     "stumbles_per100": 1.4910536779324055
+    },
+    "sung@bt_cal": {
+     "rt_nd_live": 0.46476797753231375,
+     "harsh": 0.13637641872274628,
+     "fresh_per100": 4.970178926441352,
+     "stumbles_per100": 0.5964214711729622
+    },
+    "sung_low@bt_cal": {
+     "rt_nd_live": 0.4792441750135719,
+     "harsh": 0.12236999048545516,
+     "fresh_per100": 4.075546719681909,
+     "stumbles_per100": 0.6958250497017893
+    }
+   },
+   "k2": {
+    "sung@micbt_cal harsh <= W+0.003": true,
+    "sung@micbt_cal fresh_per100 <= W+0.5": true,
+    "sung@micbt_cal stumbles_per100 <= W+1.0": true,
+    "sung_low@micbt_cal harsh <= W+0.003": true,
+    "sung_low@micbt_cal fresh_per100 <= W+0.5": true,
+    "sung_low@micbt_cal stumbles_per100 <= W+1.0": true,
+    "sung@bt_cal harsh <= W+0.003": true,
+    "sung@bt_cal fresh_per100 <= W+0.5": true,
+    "sung@bt_cal stumbles_per100 <= W+1.0": true,
+    "sung_low@bt_cal harsh <= W+0.003": true,
+    "sung_low@bt_cal fresh_per100 <= W+0.5": true,
+    "sung_low@bt_cal stumbles_per100 <= W+1.0": true
+   },
+   "k2_min_slack": {
+    "harsh": 0.0030000000000000027,
+    "fresh_per100": 0.4999999999999998,
+    "stumbles_per100": 0.9999999999999998
+   },
+   "k3": {
+    "v11 fresh_heard <= 4": true,
+    "v11 harsh_heard <= 0.1602": true
+   },
+   "v11": {
+    "fresh_heard": 2,
+    "harsh_heard": 0.09135559921414538
+   },
+   "k4": {
+    "rt_nd": 0.4839877491296957,
+    "seed2": 0.4846707817489625,
+    "seed2_delta": 0.033926225366792184,
+    "harsh": 0.10938421625365405,
+    "fresh_per100": 4.860589109095606,
+    "checks": {
+     "L0.5 rt_nd >= reactive+0.005": true,
+     "L0.5 harsh <= reactive": true,
+     "L0.5 fresh <= reactive": true,
+     "L0.5 seed2 delta >= +0.003": true
+    }
+   },
+   "g1_pass": true,
+   "g1_n": "17/17",
+   "g1": {
+    "rt_nd": 0.6121068047721656,
+    "seed2_delta": 0.01340046833713937,
+    "fresh": 1.144501197330628,
+    "checks": {
+     "rt_nd +0.005": true,
+     "harsh <= reactive": true,
+     "seed2 +0.003": true,
+     "us < 2000": true,
+     "fresh <= reactive": true,
+     "bach harsh <= +0.005": true,
+     "bach rt_nd >= -0.01": true,
+     "bach fresh <= +1.0": true,
+     "folk harsh <= +0.005": true,
+     "folk rt_nd >= -0.01": true,
+     "folk fresh <= +1.0": true,
+     "pop harsh <= +0.005": true,
+     "pop rt_nd >= -0.01": true,
+     "pop fresh <= +1.0": true,
+     "pop909 harsh <= +0.005": true,
+     "pop909 rt_nd >= -0.01": true,
+     "pop909 fresh <= +1.0": true
+    }
+   },
+   "g2_pass": true,
+   "g2": {
+    "sung rt_nd >= reactive+0.005": true,
+    "sung_low rt_nd >= reactive": true,
+    "sung harsh <= reactive": true,
+    "sung fresh <= reactive": true,
+    "sung_low harsh <= reactive": true,
+    "sung_low fresh <= reactive": true
+   },
+   "g3_pass": true,
+   "g3": {
+    "v11 fresh_heard <= reactive": true,
+    "v11 harsh_heard <= reactive+0.005": true
+   },
+   "wired": {
+    "sung": {
+     "rt_nd_live": 0.6070752376469969,
+     "harsh": 0.05654961094778799,
+     "fresh_per100": 1.9880715705765408,
+     "stumbles_per100": 3.280318091451292
+    },
+    "sung_low": {
+     "rt_nd_live": 0.6409942703679476,
+     "harsh": 0.03968077572207441,
+     "fresh_per100": 1.0934393638170974,
+     "stumbles_per100": 3.8767395626242545
+    }
+   },
+   "wired_mean": 0.6240347540074722,
+   "wired_mean_ok": true,
+   "same_as_W": {
+    "wired digests": false,
+    "micbt_cal digests": false,
+    "bt_cal digests": false,
+    "v11 digest": false,
+    "bench_rt L0.1 (rt_nd, harsh, seed2, fresh)": true
+   },
+   "failed": [],
+   "files": [
+    "attack/R4G_rt_r4_G_ehedgesafe_v1_L0.1.json",
+    "attack/R4G_rt_r4_G_ehedgesafe_v1_L0.5.json",
+    "live_bench/R4G_rt_r4_G_ehedgesafe_v1_phone_v11.json",
+    "live_bench/R4G_rt_r4_G_ehedgesafe_v1_sung_bt_cal.json",
+    "live_bench/R4G_rt_r4_G_ehedgesafe_v1_sung_low_bt_cal.json",
+    "live_bench/R4G_rt_r4_G_ehedgesafe_v1_sung_low_micbt_cal.json",
+    "live_bench/R4G_rt_r4_G_ehedgesafe_v1_sung_low_wired.json",
+    "live_bench/R4G_rt_r4_G_ehedgesafe_v1_sung_micbt_cal.json",
+    "live_bench/R4G_rt_r4_G_ehedgesafe_v1_sung_wired.json",
+    "scores/R4G_rt_r4_G_ehedgesafe_v1_L0.1.json",
+    "scores/R4G_rt_r4_G_ehedgesafe_v1_L0.1_seed2.json",
+    "scores/R4G_rt_r4_G_ehedgesafe_v1_L0.5.json",
+    "scores/R4G_rt_r4_G_ehedgesafe_v1_L0.5_seed2.json"
+   ]
+  },
+  "r4_G_ehedge_v1": {
+   "what": "idea G: as ehedgesafe with next-note harsh weight 0.2, keep guard unchanged",
+   "source": "/Users/san/claude_sandbox/music/duet_v0/futures/v5_rt/rt_systems/r4_G_ehedge_v1.py",
+   "k1_mean": 0.5112219370555454,
+   "k1_delta_vs_W": 0.008447448796036983,
+   "k1_pass": true,
+   "k2_pass": true,
+   "k3_pass": true,
+   "k4_pass": true,
+   "k5": "not run here (the verifier's causal probe)",
+   "k_fresh_stumbles": 17.693836978131213,
+   "cells": {
+    "sung@micbt_cal": {
+     "rt_nd_live": 0.5387390757966636,
+     "harsh": 0.10163310988471534,
+     "fresh_per100": 2.485089463220676,
+     "stumbles_per100": 1.0934393638170974
+    },
+    "sung_low@micbt_cal": {
+     "rt_nd_live": 0.558448799340815,
+     "harsh": 0.08637101217246862,
+     "fresh_per100": 1.5904572564612327,
+     "stumbles_per100": 1.4910536779324055
+    },
+    "sung@bt_cal": {
+     "rt_nd_live": 0.46691478333806113,
+     "harsh": 0.1383711879580965,
+     "fresh_per100": 5.36779324055666,
+     "stumbles_per100": 0.6958250497017893
+    },
+    "sung_low@bt_cal": {
+     "rt_nd_live": 0.480785089746642,
+     "harsh": 0.12393475823706093,
+     "fresh_per100": 4.075546719681909,
+     "stumbles_per100": 0.8946322067594433
+    }
+   },
+   "k2": {
+    "sung@micbt_cal harsh <= W+0.003": true,
+    "sung@micbt_cal fresh_per100 <= W+0.5": true,
+    "sung@micbt_cal stumbles_per100 <= W+1.0": true,
+    "sung_low@micbt_cal harsh <= W+0.003": true,
+    "sung_low@micbt_cal fresh_per100 <= W+0.5": true,
+    "sung_low@micbt_cal stumbles_per100 <= W+1.0": true,
+    "sung@bt_cal harsh <= W+0.003": true,
+    "sung@bt_cal fresh_per100 <= W+0.5": true,
+    "sung@bt_cal stumbles_per100 <= W+1.0": true,
+    "sung_low@bt_cal harsh <= W+0.003": true,
+    "sung_low@bt_cal fresh_per100 <= W+0.5": true,
+    "sung_low@bt_cal stumbles_per100 <= W+1.0": true
+   },
+   "k2_min_slack": {
+    "harsh": 0.0030000000000000027,
+    "fresh_per100": 0.4999999999999998,
+    "stumbles_per100": 0.9005964214711729
+   },
+   "k3": {
+    "v11 fresh_heard <= 4": true,
+    "v11 harsh_heard <= 0.1602": true
+   },
+   "v11": {
+    "fresh_heard": 2,
+    "harsh_heard": 0.09135559921414538
+   },
+   "k4": {
+    "rt_nd": 0.48335264421234947,
+    "seed2": 0.4840630784270635,
+    "seed2_delta": 0.03331852204489316,
+    "harsh": 0.11122495147450698,
+    "fresh_per100": 4.869061692819834,
+    "checks": {
+     "L0.5 rt_nd >= reactive+0.005": true,
+     "L0.5 harsh <= reactive": true,
+     "L0.5 fresh <= reactive": true,
+     "L0.5 seed2 delta >= +0.003": true
+    }
+   },
+   "g1_pass": true,
+   "g1_n": "17/17",
+   "g1": {
+    "rt_nd": 0.6121068047721656,
+    "seed2_delta": 0.01340046833713937,
+    "fresh": 1.144501197330628,
+    "checks": {
+     "rt_nd +0.005": true,
+     "harsh <= reactive": true,
+     "seed2 +0.003": true,
+     "us < 2000": true,
+     "fresh <= reactive": true,
+     "bach harsh <= +0.005": true,
+     "bach rt_nd >= -0.01": true,
+     "bach fresh <= +1.0": true,
+     "folk harsh <= +0.005": true,
+     "folk rt_nd >= -0.01": true,
+     "folk fresh <= +1.0": true,
+     "pop harsh <= +0.005": true,
+     "pop rt_nd >= -0.01": true,
+     "pop fresh <= +1.0": true,
+     "pop909 harsh <= +0.005": true,
+     "pop909 rt_nd >= -0.01": true,
+     "pop909 fresh <= +1.0": true
+    }
+   },
+   "g2_pass": true,
+   "g2": {
+    "sung rt_nd >= reactive+0.005": true,
+    "sung_low rt_nd >= reactive": true,
+    "sung harsh <= reactive": true,
+    "sung fresh <= reactive": true,
+    "sung_low harsh <= reactive": true,
+    "sung_low fresh <= reactive": true
+   },
+   "g3_pass": true,
+   "g3": {
+    "v11 fresh_heard <= reactive": true,
+    "v11 harsh_heard <= reactive+0.005": true
+   },
+   "wired": {
+    "sung": {
+     "rt_nd_live": 0.6070752376469969,
+     "harsh": 0.05654961094778799,
+     "fresh_per100": 1.9880715705765408,
+     "stumbles_per100": 3.280318091451292
+    },
+    "sung_low": {
+     "rt_nd_live": 0.6409942703679476,
+     "harsh": 0.03968077572207441,
+     "fresh_per100": 1.0934393638170974,
+     "stumbles_per100": 3.8767395626242545
+    }
+   },
+   "wired_mean": 0.6240347540074722,
+   "wired_mean_ok": true,
+   "same_as_W": {
+    "wired digests": false,
+    "micbt_cal digests": false,
+    "bt_cal digests": false,
+    "v11 digest": false,
+    "bench_rt L0.1 (rt_nd, harsh, seed2, fresh)": true
+   },
+   "failed": [],
+   "files": [
+    "attack/R4G_rt_r4_G_ehedge_v1_L0.1.json",
+    "attack/R4G_rt_r4_G_ehedge_v1_L0.5.json",
+    "live_bench/R4G_rt_r4_G_ehedge_v1_phone_v11.json",
+    "live_bench/R4G_rt_r4_G_ehedge_v1_sung_bt_cal.json",
+    "live_bench/R4G_rt_r4_G_ehedge_v1_sung_low_bt_cal.json",
+    "live_bench/R4G_rt_r4_G_ehedge_v1_sung_low_micbt_cal.json",
+    "live_bench/R4G_rt_r4_G_ehedge_v1_sung_low_wired.json",
+    "live_bench/R4G_rt_r4_G_ehedge_v1_sung_micbt_cal.json",
+    "live_bench/R4G_rt_r4_G_ehedge_v1_sung_wired.json",
+    "scores/R4G_rt_r4_G_ehedge_v1_L0.1.json",
+    "scores/R4G_rt_r4_G_ehedge_v1_L0.1_seed2.json",
+    "scores/R4G_rt_r4_G_ehedge_v1_L0.5.json",
+    "scores/R4G_rt_r4_G_ehedge_v1_L0.5_seed2.json"
+   ]
+  },
+  "r4_G_hedge_v1": {
+   "what": "idea G: lag-aware hedge (floor 0.15, harsh 0.2) + late override; no E hedge",
+   "source": "/Users/san/claude_sandbox/music/duet_v0/futures/v5_rt/rt_systems/r4_G_hedge_v1.py",
+   "k1_mean": 0.50950935599129,
+   "k1_delta_vs_W": 0.0067348677317815575,
+   "k1_pass": true,
+   "k2_pass": true,
+   "k3_pass": true,
+   "k4_pass": true,
+   "k5": "not run here (the verifier's causal probe)",
+   "k_fresh_stumbles": 17.79324055666004,
+   "cells": {
+    "sung@micbt_cal": {
+     "rt_nd_live": 0.5387390757966636,
+     "harsh": 0.10163310988471534,
+     "fresh_per100": 2.485089463220676,
+     "stumbles_per100": 1.0934393638170974
+    },
+    "sung_low@micbt_cal": {
+     "rt_nd_live": 0.558448799340815,
+     "harsh": 0.08637101217246862,
+     "fresh_per100": 1.5904572564612327,
+     "stumbles_per100": 1.4910536779324055
+    },
+    "sung@bt_cal": {
+     "rt_nd_live": 0.4615323795046674,
+     "harsh": 0.1415015914410547,
+     "fresh_per100": 5.566600397614314,
+     "stumbles_per100": 0.5964214711729622
+    },
+    "sung_low@bt_cal": {
+     "rt_nd_live": 0.4793171693230137,
+     "harsh": 0.1240746609517565,
+     "fresh_per100": 4.274353876739562,
+     "stumbles_per100": 0.6958250497017893
+    }
+   },
+   "k2": {
+    "sung@micbt_cal harsh <= W+0.003": true,
+    "sung@micbt_cal fresh_per100 <= W+0.5": true,
+    "sung@micbt_cal stumbles_per100 <= W+1.0": true,
+    "sung_low@micbt_cal harsh <= W+0.003": true,
+    "sung_low@micbt_cal fresh_per100 <= W+0.5": true,
+    "sung_low@micbt_cal stumbles_per100 <= W+1.0": true,
+    "sung@bt_cal harsh <= W+0.003": true,
+    "sung@bt_cal fresh_per100 <= W+0.5": true,
+    "sung@bt_cal stumbles_per100 <= W+1.0": true,
+    "sung_low@bt_cal harsh <= W+0.003": true,
+    "sung_low@bt_cal fresh_per100 <= W+0.5": true,
+    "sung_low@bt_cal stumbles_per100 <= W+1.0": true
+   },
+   "k2_min_slack": {
+    "harsh": 0.0030000000000000027,
+    "fresh_per100": 0.4999999999999998,
+    "stumbles_per100": 0.9999999999999998
+   },
+   "k3": {
+    "v11 fresh_heard <= 4": true,
+    "v11 harsh_heard <= 0.1602": true
+   },
+   "v11": {
+    "fresh_heard": 2,
+    "harsh_heard": 0.09135559921414538
+   },
+   "k4": {
+    "rt_nd": 0.4805784790229085,
+    "seed2": 0.48205558684002003,
+    "seed2_delta": 0.03131103045784972,
+    "harsh": 0.1116802472002395,
+    "fresh_per100": 4.91258914580484,
+    "checks": {
+     "L0.5 rt_nd >= reactive+0.005": true,
+     "L0.5 harsh <= reactive": true,
+     "L0.5 fresh <= reactive": true,
+     "L0.5 seed2 delta >= +0.003": true
+    }
+   },
+   "g1_pass": true,
+   "g1_n": "17/17",
+   "g1": {
+    "rt_nd": 0.6121068047721656,
+    "seed2_delta": 0.01340046833713937,
+    "fresh": 1.144501197330628,
+    "checks": {
+     "rt_nd +0.005": true,
+     "harsh <= reactive": true,
+     "seed2 +0.003": true,
+     "us < 2000": true,
+     "fresh <= reactive": true,
+     "bach harsh <= +0.005": true,
+     "bach rt_nd >= -0.01": true,
+     "bach fresh <= +1.0": true,
+     "folk harsh <= +0.005": true,
+     "folk rt_nd >= -0.01": true,
+     "folk fresh <= +1.0": true,
+     "pop harsh <= +0.005": true,
+     "pop rt_nd >= -0.01": true,
+     "pop fresh <= +1.0": true,
+     "pop909 harsh <= +0.005": true,
+     "pop909 rt_nd >= -0.01": true,
+     "pop909 fresh <= +1.0": true
+    }
+   },
+   "g2_pass": true,
+   "g2": {
+    "sung rt_nd >= reactive+0.005": true,
+    "sung_low rt_nd >= reactive": true,
+    "sung harsh <= reactive": true,
+    "sung fresh <= reactive": true,
+    "sung_low harsh <= reactive": true,
+    "sung_low fresh <= reactive": true
+   },
+   "g3_pass": true,
+   "g3": {
+    "v11 fresh_heard <= reactive": true,
+    "v11 harsh_heard <= reactive+0.005": true
+   },
+   "wired": {
+    "sung": {
+     "rt_nd_live": 0.6070752376469969,
+     "harsh": 0.05654961094778799,
+     "fresh_per100": 1.9880715705765408,
+     "stumbles_per100": 3.280318091451292
+    },
+    "sung_low": {
+     "rt_nd_live": 0.6409942703679476,
+     "harsh": 0.03968077572207441,
+     "fresh_per100": 1.0934393638170974,
+     "stumbles_per100": 3.8767395626242545
+    }
+   },
+   "wired_mean": 0.6240347540074722,
+   "wired_mean_ok": true,
+   "same_as_W": {
+    "wired digests": false,
+    "micbt_cal digests": false,
+    "bt_cal digests": false,
+    "v11 digest": false,
+    "bench_rt L0.1 (rt_nd, harsh, seed2, fresh)": true
+   },
+   "failed": [],
+   "files": [
+    "attack/R4G_rt_r4_G_hedge_v1_L0.1.json",
+    "attack/R4G_rt_r4_G_hedge_v1_L0.5.json",
+    "live_bench/R4G_rt_r4_G_hedge_v1_phone_v11.json",
+    "live_bench/R4G_rt_r4_G_hedge_v1_sung_bt_cal.json",
+    "live_bench/R4G_rt_r4_G_hedge_v1_sung_low_bt_cal.json",
+    "live_bench/R4G_rt_r4_G_hedge_v1_sung_low_micbt_cal.json",
+    "live_bench/R4G_rt_r4_G_hedge_v1_sung_low_wired.json",
+    "live_bench/R4G_rt_r4_G_hedge_v1_sung_micbt_cal.json",
+    "live_bench/R4G_rt_r4_G_hedge_v1_sung_wired.json",
+    "scores/R4G_rt_r4_G_hedge_v1_L0.1.json",
+    "scores/R4G_rt_r4_G_hedge_v1_L0.1_seed2.json",
+    "scores/R4G_rt_r4_G_hedge_v1_L0.5.json",
+    "scores/R4G_rt_r4_G_hedge_v1_L0.5_seed2.json"
+   ]
+  },
+  "r4_H_lagk15hd_v1": {
+   "what": "idea H: lag-aware plan table, kappa_L 1.5, kappa_st_L 0, late_keep 2, hedge_L 0.5",
+   "source": "/Users/san/claude_sandbox/music/duet_v0/futures/v5_rt/rt_systems/r4_H_lagk15hd_v1.py",
+   "k1_mean": 0.5147018744100048,
+   "k1_delta_vs_W": 0.011927386150496377,
+   "k1_pass": true,
+   "k2_pass": true,
+   "k3_pass": true,
+   "k4_pass": true,
+   "k5": "not run here (the verifier's causal probe)",
+   "k_fresh_stumbles": 18.886679920477135,
+   "cells": {
+    "sung@micbt_cal": {
+     "rt_nd_live": 0.5387390757966636,
+     "harsh": 0.10163310988471534,
+     "fresh_per100": 2.485089463220676,
+     "stumbles_per100": 1.0934393638170974
+    },
+    "sung_low@micbt_cal": {
+     "rt_nd_live": 0.558448799340815,
+     "harsh": 0.08637101217246862,
+     "fresh_per100": 1.5904572564612327,
+     "stumbles_per100": 1.4910536779324055
+    },
+    "sung@bt_cal": {
+     "rt_nd_live": 0.4704755243576996,
+     "harsh": 0.11724169455072622,
+     "fresh_per100": 5.7654075546719685,
+     "stumbles_per100": 1.0934393638170974
+    },
+    "sung_low@bt_cal": {
+     "rt_nd_live": 0.4911440981448409,
+     "harsh": 0.09759915843061798,
+     "fresh_per100": 4.274353876739562,
+     "stumbles_per100": 1.0934393638170974
+    }
+   },
+   "k2": {
+    "sung@micbt_cal harsh <= W+0.003": true,
+    "sung@micbt_cal fresh_per100 <= W+0.5": true,
+    "sung@micbt_cal stumbles_per100 <= W+1.0": true,
+    "sung_low@micbt_cal harsh <= W+0.003": true,
+    "sung_low@micbt_cal fresh_per100 <= W+0.5": true,
+    "sung_low@micbt_cal stumbles_per100 <= W+1.0": true,
+    "sung@bt_cal harsh <= W+0.003": true,
+    "sung@bt_cal fresh_per100 <= W+0.5": true,
+    "sung@bt_cal stumbles_per100 <= W+1.0": true,
+    "sung_low@bt_cal harsh <= W+0.003": true,
+    "sung_low@bt_cal fresh_per100 <= W+0.5": true,
+    "sung_low@bt_cal stumbles_per100 <= W+1.0": true
+   },
+   "k2_min_slack": {
+    "harsh": 0.0030000000000000027,
+    "fresh_per100": 0.4999999999999998,
+    "stumbles_per100": 0.6023856858846919
+   },
+   "k3": {
+    "v11 fresh_heard <= 4": true,
+    "v11 harsh_heard <= 0.1602": true
+   },
+   "v11": {
+    "fresh_heard": 2,
+    "harsh_heard": 0.09135559921414538
+   },
+   "k4": {
+    "rt_nd": 0.48931883353220695,
+    "seed2": 0.48829381197025257,
+    "seed2_delta": 0.03754925558808225,
+    "harsh": 0.09881826503339539,
+    "fresh_per100": 6.410961083463863,
+    "checks": {
+     "L0.5 rt_nd >= reactive+0.005": true,
+     "L0.5 harsh <= reactive": true,
+     "L0.5 fresh <= reactive": true,
+     "L0.5 seed2 delta >= +0.003": true
+    }
+   },
+   "g1_pass": true,
+   "g1_n": "17/17",
+   "g1": {
+    "rt_nd": 0.6121068047721656,
+    "seed2_delta": 0.01340046833713937,
+    "fresh": 1.144501197330628,
+    "checks": {
+     "rt_nd +0.005": true,
+     "harsh <= reactive": true,
+     "seed2 +0.003": true,
+     "us < 2000": true,
+     "fresh <= reactive": true,
+     "bach harsh <= +0.005": true,
+     "bach rt_nd >= -0.01": true,
+     "bach fresh <= +1.0": true,
+     "folk harsh <= +0.005": true,
+     "folk rt_nd >= -0.01": true,
+     "folk fresh <= +1.0": true,
+     "pop harsh <= +0.005": true,
+     "pop rt_nd >= -0.01": true,
+     "pop fresh <= +1.0": true,
+     "pop909 harsh <= +0.005": true,
+     "pop909 rt_nd >= -0.01": true,
+     "pop909 fresh <= +1.0": true
+    }
+   },
+   "g2_pass": true,
+   "g2": {
+    "sung rt_nd >= reactive+0.005": true,
+    "sung_low rt_nd >= reactive": true,
+    "sung harsh <= reactive": true,
+    "sung fresh <= reactive": true,
+    "sung_low harsh <= reactive": true,
+    "sung_low fresh <= reactive": true
+   },
+   "g3_pass": true,
+   "g3": {
+    "v11 fresh_heard <= reactive": true,
+    "v11 harsh_heard <= reactive+0.005": true
+   },
+   "wired": {
+    "sung": {
+     "rt_nd_live": 0.6070752376469969,
+     "harsh": 0.05654961094778799,
+     "fresh_per100": 1.9880715705765408,
+     "stumbles_per100": 3.280318091451292
+    },
+    "sung_low": {
+     "rt_nd_live": 0.6409942703679476,
+     "harsh": 0.03968077572207441,
+     "fresh_per100": 1.0934393638170974,
+     "stumbles_per100": 3.8767395626242545
+    }
+   },
+   "wired_mean": 0.6240347540074722,
+   "wired_mean_ok": true,
+   "same_as_W": {
+    "wired digests": false,
+    "micbt_cal digests": false,
+    "bt_cal digests": false,
+    "v11 digest": false,
+    "bench_rt L0.1 (rt_nd, harsh, seed2, fresh)": true
+   },
+   "failed": [],
+   "files": [
+    "attack/R4H_rt_r4_H_lagk15hd_v1_L0.1.json",
+    "attack/R4H_rt_r4_H_lagk15hd_v1_L0.5.json",
+    "live_bench/R4H_rt_r4_H_lagk15hd_v1_phone_v11.json",
+    "live_bench/R4H_rt_r4_H_lagk15hd_v1_sung_bt_cal.json",
+    "live_bench/R4H_rt_r4_H_lagk15hd_v1_sung_low_bt_cal.json",
+    "live_bench/R4H_rt_r4_H_lagk15hd_v1_sung_low_micbt_cal.json",
+    "live_bench/R4H_rt_r4_H_lagk15hd_v1_sung_low_wired.json",
+    "live_bench/R4H_rt_r4_H_lagk15hd_v1_sung_micbt_cal.json",
+    "live_bench/R4H_rt_r4_H_lagk15hd_v1_sung_wired.json",
+    "scores/R4H_rt_r4_H_lagk15hd_v1_L0.1.json",
+    "scores/R4H_rt_r4_H_lagk15hd_v1_L0.1_seed2.json",
+    "scores/R4H_rt_r4_H_lagk15hd_v1_L0.5.json",
+    "scores/R4H_rt_r4_H_lagk15hd_v1_L0.5_seed2.json"
+   ]
+  },
+  "r4_H_lagk15_v1": {
+   "what": "idea H: as lagk15hd without the lag-aware hedge",
+   "source": "/Users/san/claude_sandbox/music/duet_v0/futures/v5_rt/rt_systems/r4_H_lagk15_v1.py",
+   "k1_mean": 0.5160855158234037,
+   "k1_delta_vs_W": 0.013311027563895239,
+   "k1_pass": true,
+   "k2_pass": true,
+   "k3_pass": true,
+   "k4_pass": true,
+   "k5": "not run here (the verifier's causal probe)",
+   "k_fresh_stumbles": 22.465208747514907,
+   "cells": {
+    "sung@micbt_cal": {
+     "rt_nd_live": 0.5387390757966636,
+     "harsh": 0.10163310988471534,
+     "fresh_per100": 2.485089463220676,
+     "stumbles_per100": 1.0934393638170974
+    },
+    "sung_low@micbt_cal": {
+     "rt_nd_live": 0.558448799340815,
+     "harsh": 0.08637101217246862,
+     "fresh_per100": 1.5904572564612327,
+     "stumbles_per100": 1.4910536779324055
+    },
+    "sung@bt_cal": {
+     "rt_nd_live": 0.4728943579883681,
+     "harsh": 0.12316653905051397,
+     "fresh_per100": 7.057654075546719,
+     "stumbles_per100": 1.3916500994035785
+    },
+    "sung_low@bt_cal": {
+     "rt_nd_live": 0.4942598301677677,
+     "harsh": 0.10417134837697123,
+     "fresh_per100": 5.864811133200795,
+     "stumbles_per100": 1.4910536779324055
+    }
+   },
+   "k2": {
+    "sung@micbt_cal harsh <= W+0.003": true,
+    "sung@micbt_cal fresh_per100 <= W+0.5": true,
+    "sung@micbt_cal stumbles_per100 <= W+1.0": true,
+    "sung_low@micbt_cal harsh <= W+0.003": true,
+    "sung_low@micbt_cal fresh_per100 <= W+0.5": true,
+    "sung_low@micbt_cal stumbles_per100 <= W+1.0": true,
+    "sung@bt_cal harsh <= W+0.003": true,
+    "sung@bt_cal fresh_per100 <= W+0.5": true,
+    "sung@bt_cal stumbles_per100 <= W+1.0": true,
+    "sung_low@bt_cal harsh <= W+0.003": true,
+    "sung_low@bt_cal fresh_per100 <= W+0.5": true,
+    "sung_low@bt_cal stumbles_per100 <= W+1.0": true
+   },
+   "k2_min_slack": {
+    "harsh": 0.0030000000000000027,
+    "fresh_per100": 0.4999999999999998,
+    "stumbles_per100": 0.30417495029821073
+   },
+   "k3": {
+    "v11 fresh_heard <= 4": true,
+    "v11 harsh_heard <= 0.1602": true
+   },
+   "v11": {
+    "fresh_heard": 2,
+    "harsh_heard": 0.09135559921414538
+   },
+   "k4": {
+    "rt_nd": 0.48048691608465,
+    "seed2": 0.4815587582479064,
+    "seed2_delta": 0.03081420186573608,
+    "harsh": 0.10657505535085841,
+    "fresh_per100": 7.580385677351064,
+    "checks": {
+     "L0.5 rt_nd >= reactive+0.005": true,
+     "L0.5 harsh <= reactive": true,
+     "L0.5 fresh <= reactive": true,
+     "L0.5 seed2 delta >= +0.003": true
+    }
+   },
+   "g1_pass": true,
+   "g1_n": "17/17",
+   "g1": {
+    "rt_nd": 0.6121068047721656,
+    "seed2_delta": 0.01340046833713937,
+    "fresh": 1.144501197330628,
+    "checks": {
+     "rt_nd +0.005": true,
+     "harsh <= reactive": true,
+     "seed2 +0.003": true,
+     "us < 2000": true,
+     "fresh <= reactive": true,
+     "bach harsh <= +0.005": true,
+     "bach rt_nd >= -0.01": true,
+     "bach fresh <= +1.0": true,
+     "folk harsh <= +0.005": true,
+     "folk rt_nd >= -0.01": true,
+     "folk fresh <= +1.0": true,
+     "pop harsh <= +0.005": true,
+     "pop rt_nd >= -0.01": true,
+     "pop fresh <= +1.0": true,
+     "pop909 harsh <= +0.005": true,
+     "pop909 rt_nd >= -0.01": true,
+     "pop909 fresh <= +1.0": true
+    }
+   },
+   "g2_pass": true,
+   "g2": {
+    "sung rt_nd >= reactive+0.005": true,
+    "sung_low rt_nd >= reactive": true,
+    "sung harsh <= reactive": true,
+    "sung fresh <= reactive": true,
+    "sung_low harsh <= reactive": true,
+    "sung_low fresh <= reactive": true
+   },
+   "g3_pass": true,
+   "g3": {
+    "v11 fresh_heard <= reactive": true,
+    "v11 harsh_heard <= reactive+0.005": true
+   },
+   "wired": {
+    "sung": {
+     "rt_nd_live": 0.6070752376469969,
+     "harsh": 0.05654961094778799,
+     "fresh_per100": 1.9880715705765408,
+     "stumbles_per100": 3.280318091451292
+    },
+    "sung_low": {
+     "rt_nd_live": 0.6409942703679476,
+     "harsh": 0.03968077572207441,
+     "fresh_per100": 1.0934393638170974,
+     "stumbles_per100": 3.8767395626242545
+    }
+   },
+   "wired_mean": 0.6240347540074722,
+   "wired_mean_ok": true,
+   "same_as_W": {
+    "wired digests": false,
+    "micbt_cal digests": false,
+    "bt_cal digests": false,
+    "v11 digest": false,
+    "bench_rt L0.1 (rt_nd, harsh, seed2, fresh)": true
+   },
+   "failed": [],
+   "files": [
+    "attack/R4H_rt_r4_H_lagk15_v1_L0.1.json",
+    "attack/R4H_rt_r4_H_lagk15_v1_L0.5.json",
+    "live_bench/R4H_rt_r4_H_lagk15_v1_phone_v11.json",
+    "live_bench/R4H_rt_r4_H_lagk15_v1_sung_bt_cal.json",
+    "live_bench/R4H_rt_r4_H_lagk15_v1_sung_low_bt_cal.json",
+    "live_bench/R4H_rt_r4_H_lagk15_v1_sung_low_micbt_cal.json",
+    "live_bench/R4H_rt_r4_H_lagk15_v1_sung_low_wired.json",
+    "live_bench/R4H_rt_r4_H_lagk15_v1_sung_micbt_cal.json",
+    "live_bench/R4H_rt_r4_H_lagk15_v1_sung_wired.json",
+    "scores/R4H_rt_r4_H_lagk15_v1_L0.1.json",
+    "scores/R4H_rt_r4_H_lagk15_v1_L0.1_seed2.json",
+    "scores/R4H_rt_r4_H_lagk15_v1_L0.5.json",
+    "scores/R4H_rt_r4_H_lagk15_v1_L0.5_seed2.json"
+   ]
+  },
+  "r4_H_lagk15hq_v1": {
+   "what": "idea H: as lagk15hd with hedge_L 0.25",
+   "source": "/Users/san/claude_sandbox/music/duet_v0/futures/v5_rt/rt_systems/r4_H_lagk15hq_v1.py",
+   "k1_mean": 0.5158700483415175,
+   "k1_delta_vs_W": 0.013095560082009072,
+   "k1_pass": true,
+   "k2_pass": true,
+   "k3_pass": true,
+   "k4_pass": true,
+   "k5": "not run here (the verifier's causal probe)",
+   "k_fresh_stumbles": 20.17892644135189,
+   "cells": {
+    "sung@micbt_cal": {
+     "rt_nd_live": 0.5387390757966636,
+     "harsh": 0.10163310988471534,
+     "fresh_per100": 2.485089463220676,
+     "stumbles_per100": 1.0934393638170974
+    },
+    "sung_low@micbt_cal": {
+     "rt_nd_live": 0.558448799340815,
+     "harsh": 0.08637101217246862,
+     "fresh_per100": 1.5904572564612327,
+     "stumbles_per100": 1.4910536779324055
+    },
+    "sung@bt_cal": {
+     "rt_nd_live": 0.47246958917010534,
+     "harsh": 0.12042124180126568,
+     "fresh_per100": 6.063618290258449,
+     "stumbles_per100": 1.3916500994035785
+    },
+    "sung_low@bt_cal": {
+     "rt_nd_live": 0.4938227290584859,
+     "harsh": 0.09955807963832114,
+     "fresh_per100": 4.671968190854871,
+     "stumbles_per100": 1.3916500994035785
+    }
+   },
+   "k2": {
+    "sung@micbt_cal harsh <= W+0.003": true,
+    "sung@micbt_cal fresh_per100 <= W+0.5": true,
+    "sung@micbt_cal stumbles_per100 <= W+1.0": true,
+    "sung_low@micbt_cal harsh <= W+0.003": true,
+    "sung_low@micbt_cal fresh_per100 <= W+0.5": true,
+    "sung_low@micbt_cal stumbles_per100 <= W+1.0": true,
+    "sung@bt_cal harsh <= W+0.003": true,
+    "sung@bt_cal fresh_per100 <= W+0.5": true,
+    "sung@bt_cal stumbles_per100 <= W+1.0": true,
+    "sung_low@bt_cal harsh <= W+0.003": true,
+    "sung_low@bt_cal fresh_per100 <= W+0.5": true,
+    "sung_low@bt_cal stumbles_per100 <= W+1.0": true
+   },
+   "k2_min_slack": {
+    "harsh": 0.0030000000000000027,
+    "fresh_per100": 0.4999999999999998,
+    "stumbles_per100": 0.30417495029821073
+   },
+   "k3": {
+    "v11 fresh_heard <= 4": true,
+    "v11 harsh_heard <= 0.1602": true
+   },
+   "v11": {
+    "fresh_heard": 2,
+    "harsh_heard": 0.09135559921414538
+   },
+   "k4": {
+    "rt_nd": 0.48677720260610075,
+    "seed2": 0.48593355251256926,
+    "seed2_delta": 0.03518899613039894,
+    "harsh": 0.10061875202436973,
+    "fresh_per100": 6.747782004851558,
+    "checks": {
+     "L0.5 rt_nd >= reactive+0.005": true,
+     "L0.5 harsh <= reactive": true,
+     "L0.5 fresh <= reactive": true,
+     "L0.5 seed2 delta >= +0.003": true
+    }
+   },
+   "g1_pass": true,
+   "g1_n": "17/17",
+   "g1": {
+    "rt_nd": 0.6121068047721656,
+    "seed2_delta": 0.01340046833713937,
+    "fresh": 1.144501197330628,
+    "checks": {
+     "rt_nd +0.005": true,
+     "harsh <= reactive": true,
+     "seed2 +0.003": true,
+     "us < 2000": true,
+     "fresh <= reactive": true,
+     "bach harsh <= +0.005": true,
+     "bach rt_nd >= -0.01": true,
+     "bach fresh <= +1.0": true,
+     "folk harsh <= +0.005": true,
+     "folk rt_nd >= -0.01": true,
+     "folk fresh <= +1.0": true,
+     "pop harsh <= +0.005": true,
+     "pop rt_nd >= -0.01": true,
+     "pop fresh <= +1.0": true,
+     "pop909 harsh <= +0.005": true,
+     "pop909 rt_nd >= -0.01": true,
+     "pop909 fresh <= +1.0": true
+    }
+   },
+   "g2_pass": true,
+   "g2": {
+    "sung rt_nd >= reactive+0.005": true,
+    "sung_low rt_nd >= reactive": true,
+    "sung harsh <= reactive": true,
+    "sung fresh <= reactive": true,
+    "sung_low harsh <= reactive": true,
+    "sung_low fresh <= reactive": true
+   },
+   "g3_pass": true,
+   "g3": {
+    "v11 fresh_heard <= reactive": true,
+    "v11 harsh_heard <= reactive+0.005": true
+   },
+   "wired": {
+    "sung": {
+     "rt_nd_live": 0.6070752376469969,
+     "harsh": 0.05654961094778799,
+     "fresh_per100": 1.9880715705765408,
+     "stumbles_per100": 3.280318091451292
+    },
+    "sung_low": {
+     "rt_nd_live": 0.6409942703679476,
+     "harsh": 0.03968077572207441,
+     "fresh_per100": 1.0934393638170974,
+     "stumbles_per100": 3.8767395626242545
+    }
+   },
+   "wired_mean": 0.6240347540074722,
+   "wired_mean_ok": true,
+   "same_as_W": {
+    "wired digests": false,
+    "micbt_cal digests": false,
+    "bt_cal digests": false,
+    "v11 digest": false,
+    "bench_rt L0.1 (rt_nd, harsh, seed2, fresh)": true
+   },
+   "failed": [],
+   "files": [
+    "attack/R4H_rt_r4_H_lagk15hq_v1_L0.1.json",
+    "attack/R4H_rt_r4_H_lagk15hq_v1_L0.5.json",
+    "live_bench/R4H_rt_r4_H_lagk15hq_v1_phone_v11.json",
+    "live_bench/R4H_rt_r4_H_lagk15hq_v1_sung_bt_cal.json",
+    "live_bench/R4H_rt_r4_H_lagk15hq_v1_sung_low_bt_cal.json",
+    "live_bench/R4H_rt_r4_H_lagk15hq_v1_sung_low_micbt_cal.json",
+    "live_bench/R4H_rt_r4_H_lagk15hq_v1_sung_low_wired.json",
+    "live_bench/R4H_rt_r4_H_lagk15hq_v1_sung_micbt_cal.json",
+    "live_bench/R4H_rt_r4_H_lagk15hq_v1_sung_wired.json",
+    "scores/R4H_rt_r4_H_lagk15hq_v1_L0.1.json",
+    "scores/R4H_rt_r4_H_lagk15hq_v1_L0.1_seed2.json",
+    "scores/R4H_rt_r4_H_lagk15hq_v1_L0.5.json",
+    "scores/R4H_rt_r4_H_lagk15hq_v1_L0.5_seed2.json"
+   ]
+  },
+  "r4_H_lagk2hd_v1": {
+   "what": "idea H: kappa_L 2.0, hedge_L 0.5",
+   "source": "/Users/san/claude_sandbox/music/duet_v0/futures/v5_rt/rt_systems/r4_H_lagk2hd_v1.py",
+   "k1_mean": 0.51267329949743,
+   "k1_delta_vs_W": 0.009898811237921579,
+   "k1_pass": true,
+   "k2_pass": true,
+   "k3_pass": true,
+   "k4_pass": true,
+   "k5": "not run here (the verifier's causal probe)",
+   "k_fresh_stumbles": 18.389662027833,
+   "cells": {
+    "sung@micbt_cal": {
+     "rt_nd_live": 0.5387390757966636,
+     "harsh": 0.10163310988471534,
+     "fresh_per100": 2.485089463220676,
+     "stumbles_per100": 1.0934393638170974
+    },
+    "sung_low@micbt_cal": {
+     "rt_nd_live": 0.558448799340815,
+     "harsh": 0.08637101217246862,
+     "fresh_per100": 1.5904572564612327,
+     "stumbles_per100": 1.4910536779324055
+    },
+    "sung@bt_cal": {
+     "rt_nd_live": 0.46658737098474395,
+     "harsh": 0.11928018469805231,
+     "fresh_per100": 5.666003976143141,
+     "stumbles_per100": 0.9940357852882704
+    },
+    "sung_low@bt_cal": {
+     "rt_nd_live": 0.48691795186749764,
+     "harsh": 0.09939687096973629,
+     "fresh_per100": 4.075546719681909,
+     "stumbles_per100": 0.9940357852882704
+    }
+   },
+   "k2": {
+    "sung@micbt_cal harsh <= W+0.003": true,
+    "sung@micbt_cal fresh_per100 <= W+0.5": true,
+    "sung@micbt_cal stumbles_per100 <= W+1.0": true,
+    "sung_low@micbt_cal harsh <= W+0.003": true,
+    "sung_low@micbt_cal fresh_per100 <= W+0.5": true,
+    "sung_low@micbt_cal stumbles_per100 <= W+1.0": true,
+    "sung@bt_cal harsh <= W+0.003": true,
+    "sung@bt_cal fresh_per100 <= W+0.5": true,
+    "sung@bt_cal stumbles_per100 <= W+1.0": true,
+    "sung_low@bt_cal harsh <= W+0.003": true,
+    "sung_low@bt_cal fresh_per100 <= W+0.5": true,
+    "sung_low@bt_cal stumbles_per100 <= W+1.0": true
+   },
+   "k2_min_slack": {
+    "harsh": 0.0030000000000000027,
+    "fresh_per100": 0.4999999999999998,
+    "stumbles_per100": 0.7017892644135189
+   },
+   "k3": {
+    "v11 fresh_heard <= 4": true,
+    "v11 harsh_heard <= 0.1602": true
+   },
+   "v11": {
+    "fresh_heard": 2,
+    "harsh_heard": 0.09135559921414538
+   },
+   "k4": {
+    "rt_nd": 0.48954496063010916,
+    "seed2": 0.48873412472700933,
+    "seed2_delta": 0.03798956834483902,
+    "harsh": 0.09930674594355596,
+    "fresh_per100": 6.091297726608353,
+    "checks": {
+     "L0.5 rt_nd >= reactive+0.005": true,
+     "L0.5 harsh <= reactive": true,
+     "L0.5 fresh <= reactive": true,
+     "L0.5 seed2 delta >= +0.003": true
+    }
+   },
+   "g1_pass": true,
+   "g1_n": "17/17",
+   "g1": {
+    "rt_nd": 0.6121068047721656,
+    "seed2_delta": 0.01340046833713937,
+    "fresh": 1.144501197330628,
+    "checks": {
+     "rt_nd +0.005": true,
+     "harsh <= reactive": true,
+     "seed2 +0.003": true,
+     "us < 2000": true,
+     "fresh <= reactive": true,
+     "bach harsh <= +0.005": true,
+     "bach rt_nd >= -0.01": true,
+     "bach fresh <= +1.0": true,
+     "folk harsh <= +0.005": true,
+     "folk rt_nd >= -0.01": true,
+     "folk fresh <= +1.0": true,
+     "pop harsh <= +0.005": true,
+     "pop rt_nd >= -0.01": true,
+     "pop fresh <= +1.0": true,
+     "pop909 harsh <= +0.005": true,
+     "pop909 rt_nd >= -0.01": true,
+     "pop909 fresh <= +1.0": true
+    }
+   },
+   "g2_pass": true,
+   "g2": {
+    "sung rt_nd >= reactive+0.005": true,
+    "sung_low rt_nd >= reactive": true,
+    "sung harsh <= reactive": true,
+    "sung fresh <= reactive": true,
+    "sung_low harsh <= reactive": true,
+    "sung_low fresh <= reactive": true
+   },
+   "g3_pass": true,
+   "g3": {
+    "v11 fresh_heard <= reactive": true,
+    "v11 harsh_heard <= reactive+0.005": true
+   },
+   "wired": {
+    "sung": {
+     "rt_nd_live": 0.6070752376469969,
+     "harsh": 0.05654961094778799,
+     "fresh_per100": 1.9880715705765408,
+     "stumbles_per100": 3.280318091451292
+    },
+    "sung_low": {
+     "rt_nd_live": 0.6409942703679476,
+     "harsh": 0.03968077572207441,
+     "fresh_per100": 1.0934393638170974,
+     "stumbles_per100": 3.8767395626242545
+    }
+   },
+   "wired_mean": 0.6240347540074722,
+   "wired_mean_ok": true,
+   "same_as_W": {
+    "wired digests": false,
+    "micbt_cal digests": false,
+    "bt_cal digests": false,
+    "v11 digest": false,
+    "bench_rt L0.1 (rt_nd, harsh, seed2, fresh)": true
+   },
+   "failed": [],
+   "files": [
+    "attack/R4H_rt_r4_H_lagk2hd_v1_L0.1.json",
+    "attack/R4H_rt_r4_H_lagk2hd_v1_L0.5.json",
+    "live_bench/R4H_rt_r4_H_lagk2hd_v1_phone_v11.json",
+    "live_bench/R4H_rt_r4_H_lagk2hd_v1_sung_bt_cal.json",
+    "live_bench/R4H_rt_r4_H_lagk2hd_v1_sung_low_bt_cal.json",
+    "live_bench/R4H_rt_r4_H_lagk2hd_v1_sung_low_micbt_cal.json",
+    "live_bench/R4H_rt_r4_H_lagk2hd_v1_sung_low_wired.json",
+    "live_bench/R4H_rt_r4_H_lagk2hd_v1_sung_micbt_cal.json",
+    "live_bench/R4H_rt_r4_H_lagk2hd_v1_sung_wired.json",
+    "scores/R4H_rt_r4_H_lagk2hd_v1_L0.1.json",
+    "scores/R4H_rt_r4_H_lagk2hd_v1_L0.1_seed2.json",
+    "scores/R4H_rt_r4_H_lagk2hd_v1_L0.5.json",
+    "scores/R4H_rt_r4_H_lagk2hd_v1_L0.5_seed2.json"
+   ]
+  },
+  "r4_X_hgsafe_v1": {
+   "what": "merge: H lagk15 plan + late_keep 2 (no H hedge) + G ehedgesafe hear (hedge, E hedge, late override, keep guard off)",
+   "source": "/Users/san/claude_sandbox/music/duet_v0/futures/v5_rt/rt_systems/r4_X_hgsafe_v1.py",
+   "k1_mean": 0.5160729108957912,
+   "k1_delta_vs_W": 0.01329842263628278,
+   "k1_pass": true,
+   "k2_pass": true,
+   "k3_pass": true,
+   "k4_pass": true,
+   "k5": "not run here (the verifier's causal probe)",
+   "k_fresh_stumbles": 16.202783300198806,
+   "cells": {
+    "sung@micbt_cal": {
+     "rt_nd_live": 0.5387390757966636,
+     "harsh": 0.10163310988471534,
+     "fresh_per100": 2.485089463220676,
+     "stumbles_per100": 1.0934393638170974
+    },
+    "sung_low@micbt_cal": {
+     "rt_nd_live": 0.558448799340815,
+     "harsh": 0.08637101217246862,
+     "fresh_per100": 1.5904572564612327,
+     "stumbles_per100": 1.4910536779324055
+    },
+    "sung@bt_cal": {
+     "rt_nd_live": 0.47106443538632353,
+     "harsh": 0.11629672726830151,
+     "fresh_per100": 4.7713717693836974,
+     "stumbles_per100": 0.6958250497017893
+    },
+    "sung_low@bt_cal": {
+     "rt_nd_live": 0.49603933305936254,
+     "harsh": 0.09655472831196008,
+     "fresh_per100": 3.280318091451292,
+     "stumbles_per100": 0.7952286282306164
+    }
+   },
+   "k2": {
+    "sung@micbt_cal harsh <= W+0.003": true,
+    "sung@micbt_cal fresh_per100 <= W+0.5": true,
+    "sung@micbt_cal stumbles_per100 <= W+1.0": true,
+    "sung_low@micbt_cal harsh <= W+0.003": true,
+    "sung_low@micbt_cal fresh_per100 <= W+0.5": true,
+    "sung_low@micbt_cal stumbles_per100 <= W+1.0": true,
+    "sung@bt_cal harsh <= W+0.003": true,
+    "sung@bt_cal fresh_per100 <= W+0.5": true,
+    "sung@bt_cal stumbles_per100 <= W+1.0": true,
+    "sung_low@bt_cal harsh <= W+0.003": true,
+    "sung_low@bt_cal fresh_per100 <= W+0.5": true,
+    "sung_low@bt_cal stumbles_per100 <= W+1.0": true
+   },
+   "k2_min_slack": {
+    "harsh": 0.0030000000000000027,
+    "fresh_per100": 0.4999999999999998,
+    "stumbles_per100": 0.9999999999999998
+   },
+   "k3": {
+    "v11 fresh_heard <= 4": true,
+    "v11 harsh_heard <= 0.1602": true
+   },
+   "v11": {
+    "fresh_heard": 2,
+    "harsh_heard": 0.09135559921414538
+   },
+   "k4": {
+    "rt_nd": 0.49040392052114107,
+    "seed2": 0.49163242444000066,
+    "seed2_delta": 0.040887868057830346,
+    "harsh": 0.09971103507581336,
+    "fresh_per100": 5.3571578458022575,
+    "checks": {
+     "L0.5 rt_nd >= reactive+0.005": true,
+     "L0.5 harsh <= reactive": true,
+     "L0.5 fresh <= reactive": true,
+     "L0.5 seed2 delta >= +0.003": true
+    }
+   },
+   "g1_pass": true,
+   "g1_n": "17/17",
+   "g1": {
+    "rt_nd": 0.6121068047721656,
+    "seed2_delta": 0.01340046833713937,
+    "fresh": 1.144501197330628,
+    "checks": {
+     "rt_nd +0.005": true,
+     "harsh <= reactive": true,
+     "seed2 +0.003": true,
+     "us < 2000": true,
+     "fresh <= reactive": true,
+     "bach harsh <= +0.005": true,
+     "bach rt_nd >= -0.01": true,
+     "bach fresh <= +1.0": true,
+     "folk harsh <= +0.005": true,
+     "folk rt_nd >= -0.01": true,
+     "folk fresh <= +1.0": true,
+     "pop harsh <= +0.005": true,
+     "pop rt_nd >= -0.01": true,
+     "pop fresh <= +1.0": true,
+     "pop909 harsh <= +0.005": true,
+     "pop909 rt_nd >= -0.01": true,
+     "pop909 fresh <= +1.0": true
+    }
+   },
+   "g2_pass": true,
+   "g2": {
+    "sung rt_nd >= reactive+0.005": true,
+    "sung_low rt_nd >= reactive": true,
+    "sung harsh <= reactive": true,
+    "sung fresh <= reactive": true,
+    "sung_low harsh <= reactive": true,
+    "sung_low fresh <= reactive": true
+   },
+   "g3_pass": true,
+   "g3": {
+    "v11 fresh_heard <= reactive": true,
+    "v11 harsh_heard <= reactive+0.005": true
+   },
+   "wired": {
+    "sung": {
+     "rt_nd_live": 0.6070752376469969,
+     "harsh": 0.05654961094778799,
+     "fresh_per100": 1.9880715705765408,
+     "stumbles_per100": 3.280318091451292
+    },
+    "sung_low": {
+     "rt_nd_live": 0.6409942703679476,
+     "harsh": 0.03968077572207441,
+     "fresh_per100": 1.0934393638170974,
+     "stumbles_per100": 3.8767395626242545
+    }
+   },
+   "wired_mean": 0.6240347540074722,
+   "wired_mean_ok": true,
+   "same_as_W": {
+    "wired digests": false,
+    "micbt_cal digests": false,
+    "bt_cal digests": false,
+    "v11 digest": false,
+    "bench_rt L0.1 (rt_nd, harsh, seed2, fresh)": true
+   },
+   "failed": [],
+   "files": [
+    "attack/R4X_rt_r4_X_hgsafe_v1_L0.1.json",
+    "attack/R4X_rt_r4_X_hgsafe_v1_L0.5.json",
+    "live_bench/R4X_rt_r4_X_hgsafe_v1_phone_v11.json",
+    "live_bench/R4X_rt_r4_X_hgsafe_v1_sung_bt_cal.json",
+    "live_bench/R4X_rt_r4_X_hgsafe_v1_sung_low_bt_cal.json",
+    "live_bench/R4X_rt_r4_X_hgsafe_v1_sung_low_micbt_cal.json",
+    "live_bench/R4X_rt_r4_X_hgsafe_v1_sung_low_wired.json",
+    "live_bench/R4X_rt_r4_X_hgsafe_v1_sung_micbt_cal.json",
+    "live_bench/R4X_rt_r4_X_hgsafe_v1_sung_wired.json",
+    "scores/R4X_rt_r4_X_hgsafe_v1_L0.1.json",
+    "scores/R4X_rt_r4_X_hgsafe_v1_L0.1_seed2.json",
+    "scores/R4X_rt_r4_X_hgsafe_v1_L0.5.json",
+    "scores/R4X_rt_r4_X_hgsafe_v1_L0.5_seed2.json"
+   ]
+  },
+  "r4_X_hdgsafe_v1": {
+   "what": "merge of the two idea picks: H lagk15hd (hedge_L 0.5) + G ehedgesafe hear",
+   "source": "/Users/san/claude_sandbox/music/duet_v0/futures/v5_rt/rt_systems/r4_X_hdgsafe_v1.py",
+   "k1_mean": 0.5173045715070504,
+   "k1_delta_vs_W": 0.014530083247542014,
+   "k1_pass": true,
+   "k2_pass": true,
+   "k3_pass": true,
+   "k4_pass": true,
+   "k5": "not run here (the verifier's causal probe)",
+   "k_fresh_stumbles": 16.40159045725646,
+   "cells": {
+    "sung@micbt_cal": {
+     "rt_nd_live": 0.5387390757966636,
+     "harsh": 0.10163310988471534,
+     "fresh_per100": 2.485089463220676,
+     "stumbles_per100": 1.0934393638170974
+    },
+    "sung_low@micbt_cal": {
+     "rt_nd_live": 0.558448799340815,
+     "harsh": 0.08637101217246862,
+     "fresh_per100": 1.5904572564612327,
+     "stumbles_per100": 1.4910536779324055
+    },
+    "sung@bt_cal": {
+     "rt_nd_live": 0.47512858892948556,
+     "harsh": 0.11862644215475493,
+     "fresh_per100": 4.870775347912525,
+     "stumbles_per100": 0.6958250497017893
+    },
+    "sung_low@bt_cal": {
+     "rt_nd_live": 0.4969018219612375,
+     "harsh": 0.09693713846728157,
+     "fresh_per100": 3.3797216699801194,
+     "stumbles_per100": 0.7952286282306164
+    }
+   },
+   "k2": {
+    "sung@micbt_cal harsh <= W+0.003": true,
+    "sung@micbt_cal fresh_per100 <= W+0.5": true,
+    "sung@micbt_cal stumbles_per100 <= W+1.0": true,
+    "sung_low@micbt_cal harsh <= W+0.003": true,
+    "sung_low@micbt_cal fresh_per100 <= W+0.5": true,
+    "sung_low@micbt_cal stumbles_per100 <= W+1.0": true,
+    "sung@bt_cal harsh <= W+0.003": true,
+    "sung@bt_cal fresh_per100 <= W+0.5": true,
+    "sung@bt_cal stumbles_per100 <= W+1.0": true,
+    "sung_low@bt_cal harsh <= W+0.003": true,
+    "sung_low@bt_cal fresh_per100 <= W+0.5": true,
+    "sung_low@bt_cal stumbles_per100 <= W+1.0": true
+   },
+   "k2_min_slack": {
+    "harsh": 0.0030000000000000027,
+    "fresh_per100": 0.4999999999999998,
+    "stumbles_per100": 0.9999999999999998
+   },
+   "k3": {
+    "v11 fresh_heard <= 4": true,
+    "v11 harsh_heard <= 0.1602": true
+   },
+   "v11": {
+    "fresh_heard": 2,
+    "harsh_heard": 0.09135559921414538
+   },
+   "k4": {
+    "rt_nd": 0.49407460143763215,
+    "seed2": 0.4938919558000458,
+    "seed2_delta": 0.04314739941787549,
+    "harsh": 0.09754566129858655,
+    "fresh_per100": 5.3625822448478235,
+    "checks": {
+     "L0.5 rt_nd >= reactive+0.005": true,
+     "L0.5 harsh <= reactive": true,
+     "L0.5 fresh <= reactive": true,
+     "L0.5 seed2 delta >= +0.003": true
+    }
+   },
+   "g1_pass": true,
+   "g1_n": "17/17",
+   "g1": {
+    "rt_nd": 0.6121068047721656,
+    "seed2_delta": 0.01340046833713937,
+    "fresh": 1.144501197330628,
+    "checks": {
+     "rt_nd +0.005": true,
+     "harsh <= reactive": true,
+     "seed2 +0.003": true,
+     "us < 2000": true,
+     "fresh <= reactive": true,
+     "bach harsh <= +0.005": true,
+     "bach rt_nd >= -0.01": true,
+     "bach fresh <= +1.0": true,
+     "folk harsh <= +0.005": true,
+     "folk rt_nd >= -0.01": true,
+     "folk fresh <= +1.0": true,
+     "pop harsh <= +0.005": true,
+     "pop rt_nd >= -0.01": true,
+     "pop fresh <= +1.0": true,
+     "pop909 harsh <= +0.005": true,
+     "pop909 rt_nd >= -0.01": true,
+     "pop909 fresh <= +1.0": true
+    }
+   },
+   "g2_pass": true,
+   "g2": {
+    "sung rt_nd >= reactive+0.005": true,
+    "sung_low rt_nd >= reactive": true,
+    "sung harsh <= reactive": true,
+    "sung fresh <= reactive": true,
+    "sung_low harsh <= reactive": true,
+    "sung_low fresh <= reactive": true
+   },
+   "g3_pass": true,
+   "g3": {
+    "v11 fresh_heard <= reactive": true,
+    "v11 harsh_heard <= reactive+0.005": true
+   },
+   "wired": {
+    "sung": {
+     "rt_nd_live": 0.6070752376469969,
+     "harsh": 0.05654961094778799,
+     "fresh_per100": 1.9880715705765408,
+     "stumbles_per100": 3.280318091451292
+    },
+    "sung_low": {
+     "rt_nd_live": 0.6409942703679476,
+     "harsh": 0.03968077572207441,
+     "fresh_per100": 1.0934393638170974,
+     "stumbles_per100": 3.8767395626242545
+    }
+   },
+   "wired_mean": 0.6240347540074722,
+   "wired_mean_ok": true,
+   "same_as_W": {
+    "wired digests": false,
+    "micbt_cal digests": false,
+    "bt_cal digests": false,
+    "v11 digest": false,
+    "bench_rt L0.1 (rt_nd, harsh, seed2, fresh)": true
+   },
+   "failed": [],
+   "files": [
+    "attack/R4X_rt_r4_X_hdgsafe_v1_L0.1.json",
+    "attack/R4X_rt_r4_X_hdgsafe_v1_L0.5.json",
+    "live_bench/R4X_rt_r4_X_hdgsafe_v1_phone_v11.json",
+    "live_bench/R4X_rt_r4_X_hdgsafe_v1_sung_bt_cal.json",
+    "live_bench/R4X_rt_r4_X_hdgsafe_v1_sung_low_bt_cal.json",
+    "live_bench/R4X_rt_r4_X_hdgsafe_v1_sung_low_micbt_cal.json",
+    "live_bench/R4X_rt_r4_X_hdgsafe_v1_sung_low_wired.json",
+    "live_bench/R4X_rt_r4_X_hdgsafe_v1_sung_micbt_cal.json",
+    "live_bench/R4X_rt_r4_X_hdgsafe_v1_sung_wired.json",
+    "scores/R4X_rt_r4_X_hdgsafe_v1_L0.1.json",
+    "scores/R4X_rt_r4_X_hdgsafe_v1_L0.1_seed2.json",
+    "scores/R4X_rt_r4_X_hdgsafe_v1_L0.5.json",
+    "scores/R4X_rt_r4_X_hdgsafe_v1_L0.5_seed2.json"
+   ]
+  },
+  "r4_X_hgeh_v1": {
+   "what": "merge: H lagk15 plan + late_keep 2 (no H hedge) + G ehedge hear (next-note harsh 0.2, keep guard on)",
+   "source": "/Users/san/claude_sandbox/music/duet_v0/futures/v5_rt/rt_systems/r4_X_hgeh_v1.py",
+   "k1_mean": 0.5167006444273878,
+   "k1_delta_vs_W": 0.0139261561678794,
+   "k1_pass": true,
+   "k2_pass": true,
+   "k3_pass": true,
+   "k4_pass": true,
+   "k5": "not run here (the verifier's causal probe)",
+   "k_fresh_stumbles": 15.904572564612327,
+   "cells": {
+    "sung@micbt_cal": {
+     "rt_nd_live": 0.5387390757966636,
+     "harsh": 0.10163310988471534,
+     "fresh_per100": 2.485089463220676,
+     "stumbles_per100": 1.0934393638170974
+    },
+    "sung_low@micbt_cal": {
+     "rt_nd_live": 0.558448799340815,
+     "harsh": 0.08637101217246862,
+     "fresh_per100": 1.5904572564612327,
+     "stumbles_per100": 1.4910536779324055
+    },
+    "sung@bt_cal": {
+     "rt_nd_live": 0.47259547875829117,
+     "harsh": 0.12081038266753623,
+     "fresh_per100": 4.671968190854871,
+     "stumbles_per100": 0.6958250497017893
+    },
+    "sung_low@bt_cal": {
+     "rt_nd_live": 0.49701922381378166,
+     "harsh": 0.0965590616918633,
+     "fresh_per100": 3.1809145129224654,
+     "stumbles_per100": 0.6958250497017893
+    }
+   },
+   "k2": {
+    "sung@micbt_cal harsh <= W+0.003": true,
+    "sung@micbt_cal fresh_per100 <= W+0.5": true,
+    "sung@micbt_cal stumbles_per100 <= W+1.0": true,
+    "sung_low@micbt_cal harsh <= W+0.003": true,
+    "sung_low@micbt_cal fresh_per100 <= W+0.5": true,
+    "sung_low@micbt_cal stumbles_per100 <= W+1.0": true,
+    "sung@bt_cal harsh <= W+0.003": true,
+    "sung@bt_cal fresh_per100 <= W+0.5": true,
+    "sung@bt_cal stumbles_per100 <= W+1.0": true,
+    "sung_low@bt_cal harsh <= W+0.003": true,
+    "sung_low@bt_cal fresh_per100 <= W+0.5": true,
+    "sung_low@bt_cal stumbles_per100 <= W+1.0": true
+   },
+   "k2_min_slack": {
+    "harsh": 0.0030000000000000027,
+    "fresh_per100": 0.4999999999999998,
+    "stumbles_per100": 0.9999999999999998
+   },
+   "k3": {
+    "v11 fresh_heard <= 4": true,
+    "v11 harsh_heard <= 0.1602": true
+   },
+   "v11": {
+    "fresh_heard": 2,
+    "harsh_heard": 0.09135559921414538
+   },
+   "k4": {
+    "rt_nd": 0.49051362412193195,
+    "seed2": 0.4911127661512886,
+    "seed2_delta": 0.04036820976911831,
+    "harsh": 0.10039590501878962,
+    "fresh_per100": 5.42174153955189,
+    "checks": {
+     "L0.5 rt_nd >= reactive+0.005": true,
+     "L0.5 harsh <= reactive": true,
+     "L0.5 fresh <= reactive": true,
+     "L0.5 seed2 delta >= +0.003": true
+    }
+   },
+   "g1_pass": true,
+   "g1_n": "17/17",
+   "g1": {
+    "rt_nd": 0.6121068047721656,
+    "seed2_delta": 0.01340046833713937,
+    "fresh": 1.144501197330628,
+    "checks": {
+     "rt_nd +0.005": true,
+     "harsh <= reactive": true,
+     "seed2 +0.003": true,
+     "us < 2000": true,
+     "fresh <= reactive": true,
+     "bach harsh <= +0.005": true,
+     "bach rt_nd >= -0.01": true,
+     "bach fresh <= +1.0": true,
+     "folk harsh <= +0.005": true,
+     "folk rt_nd >= -0.01": true,
+     "folk fresh <= +1.0": true,
+     "pop harsh <= +0.005": true,
+     "pop rt_nd >= -0.01": true,
+     "pop fresh <= +1.0": true,
+     "pop909 harsh <= +0.005": true,
+     "pop909 rt_nd >= -0.01": true,
+     "pop909 fresh <= +1.0": true
+    }
+   },
+   "g2_pass": true,
+   "g2": {
+    "sung rt_nd >= reactive+0.005": true,
+    "sung_low rt_nd >= reactive": true,
+    "sung harsh <= reactive": true,
+    "sung fresh <= reactive": true,
+    "sung_low harsh <= reactive": true,
+    "sung_low fresh <= reactive": true
+   },
+   "g3_pass": true,
+   "g3": {
+    "v11 fresh_heard <= reactive": true,
+    "v11 harsh_heard <= reactive+0.005": true
+   },
+   "wired": {
+    "sung": {
+     "rt_nd_live": 0.6070752376469969,
+     "harsh": 0.05654961094778799,
+     "fresh_per100": 1.9880715705765408,
+     "stumbles_per100": 3.280318091451292
+    },
+    "sung_low": {
+     "rt_nd_live": 0.6409942703679476,
+     "harsh": 0.03968077572207441,
+     "fresh_per100": 1.0934393638170974,
+     "stumbles_per100": 3.8767395626242545
+    }
+   },
+   "wired_mean": 0.6240347540074722,
+   "wired_mean_ok": true,
+   "same_as_W": {
+    "wired digests": false,
+    "micbt_cal digests": false,
+    "bt_cal digests": false,
+    "v11 digest": false,
+    "bench_rt L0.1 (rt_nd, harsh, seed2, fresh)": true
+   },
+   "failed": [],
+   "files": [
+    "attack/R4X_rt_r4_X_hgeh_v1_L0.1.json",
+    "attack/R4X_rt_r4_X_hgeh_v1_L0.5.json",
+    "live_bench/R4X_rt_r4_X_hgeh_v1_phone_v11.json",
+    "live_bench/R4X_rt_r4_X_hgeh_v1_sung_bt_cal.json",
+    "live_bench/R4X_rt_r4_X_hgeh_v1_sung_low_bt_cal.json",
+    "live_bench/R4X_rt_r4_X_hgeh_v1_sung_low_micbt_cal.json",
+    "live_bench/R4X_rt_r4_X_hgeh_v1_sung_low_wired.json",
+    "live_bench/R4X_rt_r4_X_hgeh_v1_sung_micbt_cal.json",
+    "live_bench/R4X_rt_r4_X_hgeh_v1_sung_wired.json",
+    "scores/R4X_rt_r4_X_hgeh_v1_L0.1.json",
+    "scores/R4X_rt_r4_X_hgeh_v1_L0.1_seed2.json",
+    "scores/R4X_rt_r4_X_hgeh_v1_L0.5.json",
+    "scores/R4X_rt_r4_X_hgeh_v1_L0.5_seed2.json"
+   ]
+  }
+ },
+ "pass_K1_K4": [
+  "r4_G_ehedgesafe_v1",
+  "r4_G_ehedge_v1",
+  "r4_G_hedge_v1",
+  "r4_H_lagk15hd_v1",
+  "r4_H_lagk15_v1",
+  "r4_H_lagk15hq_v1",
+  "r4_H_lagk2hd_v1",
+  "r4_X_hgsafe_v1",
+  "r4_X_hdgsafe_v1",
+  "r4_X_hgeh_v1"
+ ],
+ "top_k1": 0.5173045715070504,
+ "band": [
+  "r4_X_hgeh_v1",
+  "r4_X_hgsafe_v1",
+  "r4_X_hdgsafe_v1",
+  "r4_H_lagk15hd_v1",
+  "r4_H_lagk15hq_v1",
+  "r4_H_lagk15_v1"
+ ],
+ "pick": "r4_X_hgeh_v1",
+ "use": "single default",
+ "sensitivity": {
+  "without X merges": {
+   "pass_K1_K4": [
+    "r4_G_ehedgesafe_v1",
+    "r4_G_ehedge_v1",
+    "r4_G_hedge_v1",
+    "r4_H_lagk15hd_v1",
+    "r4_H_lagk15_v1",
+    "r4_H_lagk15hq_v1",
+    "r4_H_lagk2hd_v1"
+   ],
+   "band": [
+    "r4_H_lagk15hd_v1",
+    "r4_H_lagk15hq_v1",
+    "r4_H_lagk15_v1"
+   ],
+   "pick": "r4_H_lagk15hd_v1",
+   "use": "single default"
+  },
+  "idea G only (+ round 3)": {
+   "pass_K1_K4": [
+    "r4_G_ehedgesafe_v1",
+    "r4_G_ehedge_v1",
+    "r4_G_hedge_v1"
+   ],
+   "band": [
+    "r4_G_ehedgesafe_v1",
+    "r4_G_ehedge_v1",
+    "r4_G_hedge_v1"
+   ],
+   "pick": "r4_G_ehedgesafe_v1",
+   "use": "single default"
+  },
+  "idea H only (+ round 3)": {
+   "pass_K1_K4": [
+    "r4_H_lagk15hd_v1",
+    "r4_H_lagk15_v1",
+    "r4_H_lagk15hq_v1",
+    "r4_H_lagk2hd_v1"
+   ],
+   "band": [
+    "r4_H_lagk15hd_v1",
+    "r4_H_lagk15hq_v1",
+    "r4_H_lagk15_v1"
+   ],
+   "pick": "r4_H_lagk15hd_v1",
+   "use": "single default"
+  }
+ },
+ "schema_rows": [
+  {
+   "name": "r3_X_regtrkst_v1",
+   "source": "/Users/san/claude_sandbox/music/duet_v0/futures/v5_rt/rt_systems/r3_X_regtrkst_v1.py",
+   "what": "W (round-3 page default): register adapter + tracker-aware hearing + stumble guards + doubt rule",
+   "k1_mean": 0.5028,
+   "k_fresh_stumbles": 21.27,
+   "k1_pass": false,
+   "k2_pass": true,
+   "k3_pass": true,
+   "k4_pass": true,
+   "wired_g1": true,
+   "wired_g2": true,
+   "wired_g3": true,
+   "wired_mean": 0.624,
+   "failed": "K1 (W against itself: fails by definition)",
+   "micbt_cal_sung": 0.5387,
+   "micbt_cal_low": 0.5584,
+   "bt_cal_sung": 0.4497,
+   "bt_cal_low": 0.4642,
+   "cells": "sung@micbt_cal 0.5387/0.1016/2.49/1.09; sung_low@micbt_cal 0.5584/0.0864/1.59/1.49; sung@bt_cal 0.4497/0.1596/7.06/0.70; sung_low@bt_cal 0.4642/0.1448/6.06/0.80",
+   "v11_fresh_heard": 2,
+   "v11_harsh_heard": 0.0914,
+   "bench05_rt_nd": 0.4697,
+   "files": "attack/L4_rt_r3_X_regtrkst_v1_L0.5.json, attack/R3X_rt_r3_X_regtrkst_v1_L0.1.json, live_bench/L4_rt_r3_X_regtrkst_v1_sung_bt_cal.json, live_bench/L4_rt_r3_X_regtrkst_v1_sung_low_bt_cal.json, live_bench/L4_rt_r3_X_regtrkst_v1_sung_low_micbt_cal.json, live_bench/L4_rt_r3_X_regtrkst_v1_sung_micbt_cal.json, live_bench/R3X_rt_r3_X_regtrkst_v1_phone_v11.json, live_bench/R3X_rt_r3_X_regtrkst_v1_sung_low_wired.json, live_bench/R3X_rt_r3_X_regtrkst_v1_sung_wired.json, scores/L4_rt_r3_X_regtrkst_v1_L0.5.json, scores/L4_rt_r3_X_regtrkst_v1_L0.5_seed2.json, scores/R3X_rt_r3_X_regtrkst_v1_L0.1.json, scores/R3X_rt_r3_X_regtrkst_v1_L0.1_seed2.json"
+  },
+  {
+   "name": "r3_X_regtrkdk_v1",
+   "source": "/Users/san/claude_sandbox/music/duet_v0/futures/v5_rt/rt_systems/r3_X_regtrkdk_v1.py",
+   "what": "round 3: W without the stumble guards (top round-3 wired mean)",
+   "k1_mean": 0.5158,
+   "k_fresh_stumbles": 36.38,
+   "k1_pass": true,
+   "k2_pass": false,
+   "k3_pass": true,
+   "k4_pass": true,
+   "wired_g1": true,
+   "wired_g2": true,
+   "wired_g3": true,
+   "wired_mean": 0.6266,
+   "failed": "K2 sung@micbt_cal fresh_per100 <= W+0.5; K2 sung@micbt_cal stumbles_per100 <= W+1.0; K2 sung_low@micbt_cal fresh_per100 <= W+0.5; K2 sung_low@micbt_cal stumbles_per100 <= W+1.0; K2 sung@bt_cal fresh_per100 <= W+0.5; K2 sung@bt_cal stumbles_per100 <= W+1.0; K2 sung_low@bt_cal fresh_per100 <= W+0.5",
+   "micbt_cal_sung": 0.5477,
+   "micbt_cal_low": 0.5707,
+   "bt_cal_sung": 0.468,
+   "bt_cal_low": 0.4766,
+   "cells": "sung@micbt_cal 0.5477/0.0904/3.38/5.17; sung_low@micbt_cal 0.5707/0.0767/2.19/4.37; sung@bt_cal 0.4680/0.1447/9.64/1.89; sung_low@bt_cal 0.4766/0.1348/8.35/1.39",
+   "v11_fresh_heard": 2,
+   "v11_harsh_heard": 0.0914,
+   "bench05_rt_nd": 0.4834,
+   "files": "attack/R3X_rt_r3_X_regtrkdk_v1_L0.1.json, attack/R4X_rt_r3_X_regtrkdk_v1_L0.5.json, live_bench/L4_rt_r3_X_regtrkdk_v1_sung_bt_cal.json, live_bench/L4_rt_r3_X_regtrkdk_v1_sung_low_bt_cal.json, live_bench/L4_rt_r3_X_regtrkdk_v1_sung_low_micbt_cal.json, live_bench/L4_rt_r3_X_regtrkdk_v1_sung_micbt_cal.json, live_bench/R3X_rt_r3_X_regtrkdk_v1_phone_v11.json, live_bench/R3X_rt_r3_X_regtrkdk_v1_sung_low_wired.json, live_bench/R3X_rt_r3_X_regtrkdk_v1_sung_wired.json, scores/R3X_rt_r3_X_regtrkdk_v1_L0.1.json, scores/R3X_rt_r3_X_regtrkdk_v1_L0.1_seed2.json, scores/R4X_rt_r3_X_regtrkdk_v1_L0.5.json, scores/R4X_rt_r3_X_regtrkdk_v1_L0.5_seed2.json"
+  },
+  {
+   "name": "r3_X_regtrkstsafe_v1",
+   "source": "/Users/san/claude_sandbox/music/duet_v0/futures/v5_rt/rt_systems/r3_X_regtrkstsafe_v1.py",
+   "what": "round 3: most cautious W variant",
+   "k1_mean": 0.4999,
+   "k_fresh_stumbles": 20.97,
+   "k1_pass": false,
+   "k2_pass": true,
+   "k3_pass": true,
+   "k4_pass": true,
+   "wired_g1": true,
+   "wired_g2": true,
+   "wired_g3": true,
+   "wired_mean": 0.6207,
+   "failed": "K1; wired mean >= W-0.003",
+   "micbt_cal_sung": 0.5346,
+   "micbt_cal_low": 0.5549,
+   "bt_cal_sung": 0.4492,
+   "bt_cal_low": 0.4609,
+   "cells": "sung@micbt_cal 0.5346/0.1002/2.29/0.89; sung_low@micbt_cal 0.5549/0.0867/1.49/1.29; sung@bt_cal 0.4492/0.1540/7.26/0.70; sung_low@bt_cal 0.4609/0.1412/6.26/0.80",
+   "v11_fresh_heard": 2,
+   "v11_harsh_heard": 0.0835,
+   "bench05_rt_nd": 0.4685,
+   "files": "attack/R3X_rt_r3_X_regtrkstsafe_v1_L0.1.json, attack/R4X_rt_r3_X_regtrkstsafe_v1_L0.5.json, live_bench/L4_rt_r3_X_regtrkstsafe_v1_sung_bt_cal.json, live_bench/L4_rt_r3_X_regtrkstsafe_v1_sung_low_bt_cal.json, live_bench/L4_rt_r3_X_regtrkstsafe_v1_sung_low_micbt_cal.json, live_bench/L4_rt_r3_X_regtrkstsafe_v1_sung_micbt_cal.json, live_bench/R3X_rt_r3_X_regtrkstsafe_v1_phone_v11.json, live_bench/R3X_rt_r3_X_regtrkstsafe_v1_sung_low_wired.json, live_bench/R3X_rt_r3_X_regtrkstsafe_v1_sung_wired.json, scores/R3X_rt_r3_X_regtrkstsafe_v1_L0.1.json, scores/R3X_rt_r3_X_regtrkstsafe_v1_L0.1_seed2.json, scores/R4X_rt_r3_X_regtrkstsafe_v1_L0.5.json, scores/R4X_rt_r3_X_regtrkstsafe_v1_L0.5_seed2.json"
+  },
+  {
+   "name": "r4_G_ehedgesafe_v1",
+   "source": "/Users/san/claude_sandbox/music/duet_v0/futures/v5_rt/rt_systems/r4_G_ehedgesafe_v1.py",
+   "what": "idea G: W + lag regime from call order + lag-aware hedge (floor 0.25, next-note harsh 0.3) + E hedge + late override; keep guard off in the large regime",
+   "k1_mean": 0.5103,
+   "k_fresh_stumbles": 17.0,
+   "k1_pass": true,
+   "k2_pass": true,
+   "k3_pass": true,
+   "k4_pass": true,
+   "wired_g1": true,
+   "wired_g2": true,
+   "wired_g3": true,
+   "wired_mean": 0.624,
+   "failed": "none",
+   "micbt_cal_sung": 0.5387,
+   "micbt_cal_low": 0.5584,
+   "bt_cal_sung": 0.4648,
+   "bt_cal_low": 0.4792,
+   "cells": "sung@micbt_cal 0.5387/0.1016/2.49/1.09; sung_low@micbt_cal 0.5584/0.0864/1.59/1.49; sung@bt_cal 0.4648/0.1364/4.97/0.60; sung_low@bt_cal 0.4792/0.1224/4.08/0.70",
+   "v11_fresh_heard": 2,
+   "v11_harsh_heard": 0.0914,
+   "bench05_rt_nd": 0.484,
+   "files": "attack/R4G_rt_r4_G_ehedgesafe_v1_L0.1.json, attack/R4G_rt_r4_G_ehedgesafe_v1_L0.5.json, live_bench/R4G_rt_r4_G_ehedgesafe_v1_phone_v11.json, live_bench/R4G_rt_r4_G_ehedgesafe_v1_sung_bt_cal.json, live_bench/R4G_rt_r4_G_ehedgesafe_v1_sung_low_bt_cal.json, live_bench/R4G_rt_r4_G_ehedgesafe_v1_sung_low_micbt_cal.json, live_bench/R4G_rt_r4_G_ehedgesafe_v1_sung_low_wired.json, live_bench/R4G_rt_r4_G_ehedgesafe_v1_sung_micbt_cal.json, live_bench/R4G_rt_r4_G_ehedgesafe_v1_sung_wired.json, scores/R4G_rt_r4_G_ehedgesafe_v1_L0.1.json, scores/R4G_rt_r4_G_ehedgesafe_v1_L0.1_seed2.json, scores/R4G_rt_r4_G_ehedgesafe_v1_L0.5.json, scores/R4G_rt_r4_G_ehedgesafe_v1_L0.5_seed2.json"
+  },
+  {
+   "name": "r4_G_ehedge_v1",
+   "source": "/Users/san/claude_sandbox/music/duet_v0/futures/v5_rt/rt_systems/r4_G_ehedge_v1.py",
+   "what": "idea G: as ehedgesafe with next-note harsh weight 0.2, keep guard unchanged",
+   "k1_mean": 0.5112,
+   "k_fresh_stumbles": 17.69,
+   "k1_pass": true,
+   "k2_pass": true,
+   "k3_pass": true,
+   "k4_pass": true,
+   "wired_g1": true,
+   "wired_g2": true,
+   "wired_g3": true,
+   "wired_mean": 0.624,
+   "failed": "none",
+   "micbt_cal_sung": 0.5387,
+   "micbt_cal_low": 0.5584,
+   "bt_cal_sung": 0.4669,
+   "bt_cal_low": 0.4808,
+   "cells": "sung@micbt_cal 0.5387/0.1016/2.49/1.09; sung_low@micbt_cal 0.5584/0.0864/1.59/1.49; sung@bt_cal 0.4669/0.1384/5.37/0.70; sung_low@bt_cal 0.4808/0.1239/4.08/0.89",
+   "v11_fresh_heard": 2,
+   "v11_harsh_heard": 0.0914,
+   "bench05_rt_nd": 0.4834,
+   "files": "attack/R4G_rt_r4_G_ehedge_v1_L0.1.json, attack/R4G_rt_r4_G_ehedge_v1_L0.5.json, live_bench/R4G_rt_r4_G_ehedge_v1_phone_v11.json, live_bench/R4G_rt_r4_G_ehedge_v1_sung_bt_cal.json, live_bench/R4G_rt_r4_G_ehedge_v1_sung_low_bt_cal.json, live_bench/R4G_rt_r4_G_ehedge_v1_sung_low_micbt_cal.json, live_bench/R4G_rt_r4_G_ehedge_v1_sung_low_wired.json, live_bench/R4G_rt_r4_G_ehedge_v1_sung_micbt_cal.json, live_bench/R4G_rt_r4_G_ehedge_v1_sung_wired.json, scores/R4G_rt_r4_G_ehedge_v1_L0.1.json, scores/R4G_rt_r4_G_ehedge_v1_L0.1_seed2.json, scores/R4G_rt_r4_G_ehedge_v1_L0.5.json, scores/R4G_rt_r4_G_ehedge_v1_L0.5_seed2.json"
+  },
+  {
+   "name": "r4_G_hedge_v1",
+   "source": "/Users/san/claude_sandbox/music/duet_v0/futures/v5_rt/rt_systems/r4_G_hedge_v1.py",
+   "what": "idea G: lag-aware hedge (floor 0.15, harsh 0.2) + late override; no E hedge",
+   "k1_mean": 0.5095,
+   "k_fresh_stumbles": 17.79,
+   "k1_pass": true,
+   "k2_pass": true,
+   "k3_pass": true,
+   "k4_pass": true,
+   "wired_g1": true,
+   "wired_g2": true,
+   "wired_g3": true,
+   "wired_mean": 0.624,
+   "failed": "none",
+   "micbt_cal_sung": 0.5387,
+   "micbt_cal_low": 0.5584,
+   "bt_cal_sung": 0.4615,
+   "bt_cal_low": 0.4793,
+   "cells": "sung@micbt_cal 0.5387/0.1016/2.49/1.09; sung_low@micbt_cal 0.5584/0.0864/1.59/1.49; sung@bt_cal 0.4615/0.1415/5.57/0.60; sung_low@bt_cal 0.4793/0.1241/4.27/0.70",
+   "v11_fresh_heard": 2,
+   "v11_harsh_heard": 0.0914,
+   "bench05_rt_nd": 0.4806,
+   "files": "attack/R4G_rt_r4_G_hedge_v1_L0.1.json, attack/R4G_rt_r4_G_hedge_v1_L0.5.json, live_bench/R4G_rt_r4_G_hedge_v1_phone_v11.json, live_bench/R4G_rt_r4_G_hedge_v1_sung_bt_cal.json, live_bench/R4G_rt_r4_G_hedge_v1_sung_low_bt_cal.json, live_bench/R4G_rt_r4_G_hedge_v1_sung_low_micbt_cal.json, live_bench/R4G_rt_r4_G_hedge_v1_sung_low_wired.json, live_bench/R4G_rt_r4_G_hedge_v1_sung_micbt_cal.json, live_bench/R4G_rt_r4_G_hedge_v1_sung_wired.json, scores/R4G_rt_r4_G_hedge_v1_L0.1.json, scores/R4G_rt_r4_G_hedge_v1_L0.1_seed2.json, scores/R4G_rt_r4_G_hedge_v1_L0.5.json, scores/R4G_rt_r4_G_hedge_v1_L0.5_seed2.json"
+  },
+  {
+   "name": "r4_H_lagk15hd_v1",
+   "source": "/Users/san/claude_sandbox/music/duet_v0/futures/v5_rt/rt_systems/r4_H_lagk15hd_v1.py",
+   "what": "idea H: lag-aware plan table, kappa_L 1.5, kappa_st_L 0, late_keep 2, hedge_L 0.5",
+   "k1_mean": 0.5147,
+   "k_fresh_stumbles": 18.89,
+   "k1_pass": true,
+   "k2_pass": true,
+   "k3_pass": true,
+   "k4_pass": true,
+   "wired_g1": true,
+   "wired_g2": true,
+   "wired_g3": true,
+   "wired_mean": 0.624,
+   "failed": "none",
+   "micbt_cal_sung": 0.5387,
+   "micbt_cal_low": 0.5584,
+   "bt_cal_sung": 0.4705,
+   "bt_cal_low": 0.4911,
+   "cells": "sung@micbt_cal 0.5387/0.1016/2.49/1.09; sung_low@micbt_cal 0.5584/0.0864/1.59/1.49; sung@bt_cal 0.4705/0.1172/5.77/1.09; sung_low@bt_cal 0.4911/0.0976/4.27/1.09",
+   "v11_fresh_heard": 2,
+   "v11_harsh_heard": 0.0914,
+   "bench05_rt_nd": 0.4893,
+   "files": "attack/R4H_rt_r4_H_lagk15hd_v1_L0.1.json, attack/R4H_rt_r4_H_lagk15hd_v1_L0.5.json, live_bench/R4H_rt_r4_H_lagk15hd_v1_phone_v11.json, live_bench/R4H_rt_r4_H_lagk15hd_v1_sung_bt_cal.json, live_bench/R4H_rt_r4_H_lagk15hd_v1_sung_low_bt_cal.json, live_bench/R4H_rt_r4_H_lagk15hd_v1_sung_low_micbt_cal.json, live_bench/R4H_rt_r4_H_lagk15hd_v1_sung_low_wired.json, live_bench/R4H_rt_r4_H_lagk15hd_v1_sung_micbt_cal.json, live_bench/R4H_rt_r4_H_lagk15hd_v1_sung_wired.json, scores/R4H_rt_r4_H_lagk15hd_v1_L0.1.json, scores/R4H_rt_r4_H_lagk15hd_v1_L0.1_seed2.json, scores/R4H_rt_r4_H_lagk15hd_v1_L0.5.json, scores/R4H_rt_r4_H_lagk15hd_v1_L0.5_seed2.json"
+  },
+  {
+   "name": "r4_H_lagk15_v1",
+   "source": "/Users/san/claude_sandbox/music/duet_v0/futures/v5_rt/rt_systems/r4_H_lagk15_v1.py",
+   "what": "idea H: as lagk15hd without the lag-aware hedge",
+   "k1_mean": 0.5161,
+   "k_fresh_stumbles": 22.47,
+   "k1_pass": true,
+   "k2_pass": true,
+   "k3_pass": true,
+   "k4_pass": true,
+   "wired_g1": true,
+   "wired_g2": true,
+   "wired_g3": true,
+   "wired_mean": 0.624,
+   "failed": "none",
+   "micbt_cal_sung": 0.5387,
+   "micbt_cal_low": 0.5584,
+   "bt_cal_sung": 0.4729,
+   "bt_cal_low": 0.4943,
+   "cells": "sung@micbt_cal 0.5387/0.1016/2.49/1.09; sung_low@micbt_cal 0.5584/0.0864/1.59/1.49; sung@bt_cal 0.4729/0.1232/7.06/1.39; sung_low@bt_cal 0.4943/0.1042/5.86/1.49",
+   "v11_fresh_heard": 2,
+   "v11_harsh_heard": 0.0914,
+   "bench05_rt_nd": 0.4805,
+   "files": "attack/R4H_rt_r4_H_lagk15_v1_L0.1.json, attack/R4H_rt_r4_H_lagk15_v1_L0.5.json, live_bench/R4H_rt_r4_H_lagk15_v1_phone_v11.json, live_bench/R4H_rt_r4_H_lagk15_v1_sung_bt_cal.json, live_bench/R4H_rt_r4_H_lagk15_v1_sung_low_bt_cal.json, live_bench/R4H_rt_r4_H_lagk15_v1_sung_low_micbt_cal.json, live_bench/R4H_rt_r4_H_lagk15_v1_sung_low_wired.json, live_bench/R4H_rt_r4_H_lagk15_v1_sung_micbt_cal.json, live_bench/R4H_rt_r4_H_lagk15_v1_sung_wired.json, scores/R4H_rt_r4_H_lagk15_v1_L0.1.json, scores/R4H_rt_r4_H_lagk15_v1_L0.1_seed2.json, scores/R4H_rt_r4_H_lagk15_v1_L0.5.json, scores/R4H_rt_r4_H_lagk15_v1_L0.5_seed2.json"
+  },
+  {
+   "name": "r4_H_lagk15hq_v1",
+   "source": "/Users/san/claude_sandbox/music/duet_v0/futures/v5_rt/rt_systems/r4_H_lagk15hq_v1.py",
+   "what": "idea H: as lagk15hd with hedge_L 0.25",
+   "k1_mean": 0.5159,
+   "k_fresh_stumbles": 20.18,
+   "k1_pass": true,
+   "k2_pass": true,
+   "k3_pass": true,
+   "k4_pass": true,
+   "wired_g1": true,
+   "wired_g2": true,
+   "wired_g3": true,
+   "wired_mean": 0.624,
+   "failed": "none",
+   "micbt_cal_sung": 0.5387,
+   "micbt_cal_low": 0.5584,
+   "bt_cal_sung": 0.4725,
+   "bt_cal_low": 0.4938,
+   "cells": "sung@micbt_cal 0.5387/0.1016/2.49/1.09; sung_low@micbt_cal 0.5584/0.0864/1.59/1.49; sung@bt_cal 0.4725/0.1204/6.06/1.39; sung_low@bt_cal 0.4938/0.0996/4.67/1.39",
+   "v11_fresh_heard": 2,
+   "v11_harsh_heard": 0.0914,
+   "bench05_rt_nd": 0.4868,
+   "files": "attack/R4H_rt_r4_H_lagk15hq_v1_L0.1.json, attack/R4H_rt_r4_H_lagk15hq_v1_L0.5.json, live_bench/R4H_rt_r4_H_lagk15hq_v1_phone_v11.json, live_bench/R4H_rt_r4_H_lagk15hq_v1_sung_bt_cal.json, live_bench/R4H_rt_r4_H_lagk15hq_v1_sung_low_bt_cal.json, live_bench/R4H_rt_r4_H_lagk15hq_v1_sung_low_micbt_cal.json, live_bench/R4H_rt_r4_H_lagk15hq_v1_sung_low_wired.json, live_bench/R4H_rt_r4_H_lagk15hq_v1_sung_micbt_cal.json, live_bench/R4H_rt_r4_H_lagk15hq_v1_sung_wired.json, scores/R4H_rt_r4_H_lagk15hq_v1_L0.1.json, scores/R4H_rt_r4_H_lagk15hq_v1_L0.1_seed2.json, scores/R4H_rt_r4_H_lagk15hq_v1_L0.5.json, scores/R4H_rt_r4_H_lagk15hq_v1_L0.5_seed2.json"
+  },
+  {
+   "name": "r4_H_lagk2hd_v1",
+   "source": "/Users/san/claude_sandbox/music/duet_v0/futures/v5_rt/rt_systems/r4_H_lagk2hd_v1.py",
+   "what": "idea H: kappa_L 2.0, hedge_L 0.5",
+   "k1_mean": 0.5127,
+   "k_fresh_stumbles": 18.39,
+   "k1_pass": true,
+   "k2_pass": true,
+   "k3_pass": true,
+   "k4_pass": true,
+   "wired_g1": true,
+   "wired_g2": true,
+   "wired_g3": true,
+   "wired_mean": 0.624,
+   "failed": "none",
+   "micbt_cal_sung": 0.5387,
+   "micbt_cal_low": 0.5584,
+   "bt_cal_sung": 0.4666,
+   "bt_cal_low": 0.4869,
+   "cells": "sung@micbt_cal 0.5387/0.1016/2.49/1.09; sung_low@micbt_cal 0.5584/0.0864/1.59/1.49; sung@bt_cal 0.4666/0.1193/5.67/0.99; sung_low@bt_cal 0.4869/0.0994/4.08/0.99",
+   "v11_fresh_heard": 2,
+   "v11_harsh_heard": 0.0914,
+   "bench05_rt_nd": 0.4895,
+   "files": "attack/R4H_rt_r4_H_lagk2hd_v1_L0.1.json, attack/R4H_rt_r4_H_lagk2hd_v1_L0.5.json, live_bench/R4H_rt_r4_H_lagk2hd_v1_phone_v11.json, live_bench/R4H_rt_r4_H_lagk2hd_v1_sung_bt_cal.json, live_bench/R4H_rt_r4_H_lagk2hd_v1_sung_low_bt_cal.json, live_bench/R4H_rt_r4_H_lagk2hd_v1_sung_low_micbt_cal.json, live_bench/R4H_rt_r4_H_lagk2hd_v1_sung_low_wired.json, live_bench/R4H_rt_r4_H_lagk2hd_v1_sung_micbt_cal.json, live_bench/R4H_rt_r4_H_lagk2hd_v1_sung_wired.json, scores/R4H_rt_r4_H_lagk2hd_v1_L0.1.json, scores/R4H_rt_r4_H_lagk2hd_v1_L0.1_seed2.json, scores/R4H_rt_r4_H_lagk2hd_v1_L0.5.json, scores/R4H_rt_r4_H_lagk2hd_v1_L0.5_seed2.json"
+  },
+  {
+   "name": "r4_X_hgsafe_v1",
+   "source": "/Users/san/claude_sandbox/music/duet_v0/futures/v5_rt/rt_systems/r4_X_hgsafe_v1.py",
+   "what": "merge: H lagk15 plan + late_keep 2 (no H hedge) + G ehedgesafe hear (hedge, E hedge, late override, keep guard off)",
+   "k1_mean": 0.5161,
+   "k_fresh_stumbles": 16.2,
+   "k1_pass": true,
+   "k2_pass": true,
+   "k3_pass": true,
+   "k4_pass": true,
+   "wired_g1": true,
+   "wired_g2": true,
+   "wired_g3": true,
+   "wired_mean": 0.624,
+   "failed": "none",
+   "micbt_cal_sung": 0.5387,
+   "micbt_cal_low": 0.5584,
+   "bt_cal_sung": 0.4711,
+   "bt_cal_low": 0.496,
+   "cells": "sung@micbt_cal 0.5387/0.1016/2.49/1.09; sung_low@micbt_cal 0.5584/0.0864/1.59/1.49; sung@bt_cal 0.4711/0.1163/4.77/0.70; sung_low@bt_cal 0.4960/0.0966/3.28/0.80",
+   "v11_fresh_heard": 2,
+   "v11_harsh_heard": 0.0914,
+   "bench05_rt_nd": 0.4904,
+   "files": "attack/R4X_rt_r4_X_hgsafe_v1_L0.1.json, attack/R4X_rt_r4_X_hgsafe_v1_L0.5.json, live_bench/R4X_rt_r4_X_hgsafe_v1_phone_v11.json, live_bench/R4X_rt_r4_X_hgsafe_v1_sung_bt_cal.json, live_bench/R4X_rt_r4_X_hgsafe_v1_sung_low_bt_cal.json, live_bench/R4X_rt_r4_X_hgsafe_v1_sung_low_micbt_cal.json, live_bench/R4X_rt_r4_X_hgsafe_v1_sung_low_wired.json, live_bench/R4X_rt_r4_X_hgsafe_v1_sung_micbt_cal.json, live_bench/R4X_rt_r4_X_hgsafe_v1_sung_wired.json, scores/R4X_rt_r4_X_hgsafe_v1_L0.1.json, scores/R4X_rt_r4_X_hgsafe_v1_L0.1_seed2.json, scores/R4X_rt_r4_X_hgsafe_v1_L0.5.json, scores/R4X_rt_r4_X_hgsafe_v1_L0.5_seed2.json"
+  },
+  {
+   "name": "r4_X_hdgsafe_v1",
+   "source": "/Users/san/claude_sandbox/music/duet_v0/futures/v5_rt/rt_systems/r4_X_hdgsafe_v1.py",
+   "what": "merge of the two idea picks: H lagk15hd (hedge_L 0.5) + G ehedgesafe hear",
+   "k1_mean": 0.5173,
+   "k_fresh_stumbles": 16.4,
+   "k1_pass": true,
+   "k2_pass": true,
+   "k3_pass": true,
+   "k4_pass": true,
+   "wired_g1": true,
+   "wired_g2": true,
+   "wired_g3": true,
+   "wired_mean": 0.624,
+   "failed": "none",
+   "micbt_cal_sung": 0.5387,
+   "micbt_cal_low": 0.5584,
+   "bt_cal_sung": 0.4751,
+   "bt_cal_low": 0.4969,
+   "cells": "sung@micbt_cal 0.5387/0.1016/2.49/1.09; sung_low@micbt_cal 0.5584/0.0864/1.59/1.49; sung@bt_cal 0.4751/0.1186/4.87/0.70; sung_low@bt_cal 0.4969/0.0969/3.38/0.80",
+   "v11_fresh_heard": 2,
+   "v11_harsh_heard": 0.0914,
+   "bench05_rt_nd": 0.4941,
+   "files": "attack/R4X_rt_r4_X_hdgsafe_v1_L0.1.json, attack/R4X_rt_r4_X_hdgsafe_v1_L0.5.json, live_bench/R4X_rt_r4_X_hdgsafe_v1_phone_v11.json, live_bench/R4X_rt_r4_X_hdgsafe_v1_sung_bt_cal.json, live_bench/R4X_rt_r4_X_hdgsafe_v1_sung_low_bt_cal.json, live_bench/R4X_rt_r4_X_hdgsafe_v1_sung_low_micbt_cal.json, live_bench/R4X_rt_r4_X_hdgsafe_v1_sung_low_wired.json, live_bench/R4X_rt_r4_X_hdgsafe_v1_sung_micbt_cal.json, live_bench/R4X_rt_r4_X_hdgsafe_v1_sung_wired.json, scores/R4X_rt_r4_X_hdgsafe_v1_L0.1.json, scores/R4X_rt_r4_X_hdgsafe_v1_L0.1_seed2.json, scores/R4X_rt_r4_X_hdgsafe_v1_L0.5.json, scores/R4X_rt_r4_X_hdgsafe_v1_L0.5_seed2.json"
+  },
+  {
+   "name": "r4_X_hgeh_v1",
+   "source": "/Users/san/claude_sandbox/music/duet_v0/futures/v5_rt/rt_systems/r4_X_hgeh_v1.py",
+   "what": "merge: H lagk15 plan + late_keep 2 (no H hedge) + G ehedge hear (next-note harsh 0.2, keep guard on)",
+   "k1_mean": 0.5167,
+   "k_fresh_stumbles": 15.9,
+   "k1_pass": true,
+   "k2_pass": true,
+   "k3_pass": true,
+   "k4_pass": true,
+   "wired_g1": true,
+   "wired_g2": true,
+   "wired_g3": true,
+   "wired_mean": 0.624,
+   "failed": "none",
+   "micbt_cal_sung": 0.5387,
+   "micbt_cal_low": 0.5584,
+   "bt_cal_sung": 0.4726,
+   "bt_cal_low": 0.497,
+   "cells": "sung@micbt_cal 0.5387/0.1016/2.49/1.09; sung_low@micbt_cal 0.5584/0.0864/1.59/1.49; sung@bt_cal 0.4726/0.1208/4.67/0.70; sung_low@bt_cal 0.4970/0.0966/3.18/0.70",
+   "v11_fresh_heard": 2,
+   "v11_harsh_heard": 0.0914,
+   "bench05_rt_nd": 0.4905,
+   "files": "attack/R4X_rt_r4_X_hgeh_v1_L0.1.json, attack/R4X_rt_r4_X_hgeh_v1_L0.5.json, live_bench/R4X_rt_r4_X_hgeh_v1_phone_v11.json, live_bench/R4X_rt_r4_X_hgeh_v1_sung_bt_cal.json, live_bench/R4X_rt_r4_X_hgeh_v1_sung_low_bt_cal.json, live_bench/R4X_rt_r4_X_hgeh_v1_sung_low_micbt_cal.json, live_bench/R4X_rt_r4_X_hgeh_v1_sung_low_wired.json, live_bench/R4X_rt_r4_X_hgeh_v1_sung_micbt_cal.json, live_bench/R4X_rt_r4_X_hgeh_v1_sung_wired.json, scores/R4X_rt_r4_X_hgeh_v1_L0.1.json, scores/R4X_rt_r4_X_hgeh_v1_L0.1_seed2.json, scores/R4X_rt_r4_X_hgeh_v1_L0.5.json, scores/R4X_rt_r4_X_hgeh_v1_L0.5_seed2.json"
+  }
+ ],
+ "file_notes": []
+}

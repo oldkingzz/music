@@ -1,0 +1,2 @@
+2026-11-02 06:03:48 START tl=600 cwd=$ABS $ABS/.venv/bin/python $ABS/runs_mini/v5rt_1101/r4/H/diag_H_v1.py --spec rt:r4_H_lagk15hd_v1 --voice sung --lats bt_cal --out $ABS/runs_mini/v5rt_1101/r4/H/diag_k15hd_sung_v1.json
+2026-11-02 06:04:10 END rc=0 secs=22 $ABS/.venv/bin/python $ABS/runs_mini/v5rt_1101/r4/H/diag_H_v1.py --spec rt:r4_H_lagk15hd_v1 --voice sung --lats bt_cal --out $ABS/runs_mini/v5rt_1101/r4/H/diag_k15hd_sung_v1.json

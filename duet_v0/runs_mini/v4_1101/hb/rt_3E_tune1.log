@@ -1,0 +1,2 @@
+2026-11-02 01:38:58 START tl=600 cwd=$ABS $ABS/.venv/bin/python $ABS/runs_mini/v5rt_1101/r3/E/tune_E_v1.py --tag t1 {"trk": false} {} {"tau_t": 0.3} {"tau_t": 0.12}
+2026-11-02 01:41:45 END rc=0 secs=167 $ABS/.venv/bin/python $ABS/runs_mini/v5rt_1101/r3/E/tune_E_v1.py --tag t1 {"trk": false} {} {"tau_t": 0.3} {"tau_t": 0.12}

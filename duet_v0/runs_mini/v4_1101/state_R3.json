@@ -1,0 +1,61 @@
+{
+ "round": 3,
+ "written": "2026-11-01 15:58 EST",
+ "ABS": "/Users/san/claude_sandbox/music/duet_v0",
+ "run": "v4_1101",
+ "loop": {"started": "2026-11-01 14:45 EST", "elapsed_at_write": "1 h 13 min", "ends_by": "2026-11-02 00:45 EST (10 h) or 2026-11-02 10:00 EST, whichever first", "max_rounds": 8,
+  "consecutive_rounds_without_keep": 0},
+ "checks_before_round_3": "15:27 checksums 10/10 OK, env knobs empty, 104.0 GB free",
+ "checks_after_round_3": "15:53 53 r3 hb logs, START=END, every rc 0, no stale START (no ALERTS_3.md); checksums 10/10 OK; env empty; 103.9 GB free; runs_mini 1.3M",
+ "workflow_round_3": {"id": "wdotp7g4t", "run_id": "wf_cf8aba5b-80a", "agents": 4, "minutes": 23},
+ "champion": {
+  "name": "r3_style_mix_v3", "sha": "b79ea9bf01c4", "since_round": 3,
+  "presentable": false,
+  "presentable_note": "best score, NOT presentable under the strict reading of §4.3: its HMM side is r2_style_hmm_v1's style-aware HMM (3 copies of m1's HMM: pooled, pop-only, pop909-only, weighted by a running style probability from the meter and each beat's rhythm), which is more than 'the HMM'. Presentable only if Vincent accepts the style-aware HMM as 'the HMM'.",
+  "what": "chord belief = normalized b_styleHMM^0.5 * b_GRU^0.5 (style-aware HMM with lam 1.0, and m3_seq_v5's 3-GRU average), then m1_filter_v5lo's chooser with all 6 weights unchanged",
+  "headline_nd": 0.65323, "music_nd": {"bach": 0.7028, "folk": 0.7178, "pop": 0.5964, "pop909": 0.5959},
+  "double_max": 0.043, "us_per_note": 181, "seed2": 0.652734, "seed2_delta_vs_r2_mix_v2": 0.005727,
+  "review": "(a) 72/72 causal, (b) tool ok + manual ok, (d) 0 out of range, 0.0 above her; keep.py vs r2_mix_v2: pass, nothing failed (re-run by the orchestrator 15:53)",
+  "why_it_wins": "Top-1 chord accuracy is unchanged (0.4913 -> 0.4916); the belief is flatter (mean top probability 0.504 -> 0.458), so m1's chooser hedges with notes that fit several likely chords and doubles her less (bach 0.055 -> 0.035), and the pop/pop909 HMMs guess pop chords a little better. Ablation at a = 0.5: pooled HMM lam 1.5 0.6428, pooled lam 1.0 0.6497 (pop 0.5867, fails pop vs r2_mix_v2), styles lam 1.5 0.6480, styles lam 1.0 0.6532.",
+  "one_sentence_zh": "风格感知 HMM（通用、pop、pop909 三个）和三个 GRU 的平均各占一半：猜和弦不那么武断，选音时更会挑几个可能和弦都用得上的音、更少跟她唱同音或八度，专门的 pop HMM 又把流行歌的和弦猜得更好。"
+ },
+ "presentable_champion": {
+  "name": "r2_mix_v2", "sha": "b481d9156f3c", "headline_nd": 0.644428, "seed2": 0.647007,
+  "why_presentable": "exactly §4.3: a log-linear mix of the HMM (m1's) and the fixed 3-GRU average with one weight alpha = 0.7, + m1's chooser unchanged",
+  "chord_accuracy_top1": "0.491 vs m1's 0.434 (a real chord-guess improvement)"
+ },
+ "ideas": [
+  {"id": "E1", "attempts": 2, "verdict": "passed the keep rule vs m1 in round 2 (r2_gru_chooser_v1 0.6433, w_big 0.6) but never champion; finished"},
+  {"id": "E2", "attempts": 1, "verdict": "KEPT in round 2 (r2_mix_v2, alpha 0.7) = the presentable champion"},
+  {"id": "E3", "attempts": 1, "verdict": "style-aware HMM passed the keep rule vs m1 in round 2 (r2_style_hmm_v3 0.6296) but never champion alone; used in E2xE3"},
+  {"id": "E2xE3", "round": 3, "attempts": 1, "verdict": "KEPT in round 3 (r3_style_mix_v3) = best score, not presentable (strict)",
+   "variants": [
+    {"name": "r3_style_mix_v1", "sha": "2180bd2efd01", "what": "r2_style_hmm_v1 HMM, a 0.7", "headline_nd": 0.64889, "verdict": "fail headline +0.005 (short by 0.0005)"},
+    {"name": "r3_style_mix_v2", "sha": "bbc6eb0cbde6", "what": "r2_style_hmm_v3 (4 styles) HMM, a 0.7", "headline_nd": 0.64833, "verdict": "fail headline"},
+    {"name": "r3_style_mix_v3", "sha": "b79ea9bf01c4", "what": "r2_style_hmm_v1 HMM, a 0.5", "headline_nd": 0.65323, "verdict": "KEPT"},
+    {"name": "r3_style_mix_v4", "sha": "2b28004107fe", "what": "r2_style_hmm_v1 HMM, a 0.85", "headline_nd": 0.64625, "verdict": "fail headline, folk, pop"}
+   ]},
+  {"id": "E4", "round": 3, "attempts": 1, "verdict": "fail (no gain): best +0.0027, and most of it is less doubling, not a better fit; the GRUs were already trained on the chords of every beat a note covers",
+   "variants": [
+    {"name": "r3_cover_fit_v1", "sha": "74ffa24ea606", "what": "mix forecast with m1's A, last 8 lengths, to the note's end", "headline_nd": 0.64558},
+    {"name": "r3_cover_fit_v2", "sha": "e4200a32157b", "what": "as v1, last 32 lengths", "headline_nd": 0.64653},
+    {"name": "r3_cover_fit_v3", "sha": "c0bbc6019b01", "what": "as v1, 32 lengths of notes that started like this one (on/off the beat)", "headline_nd": 0.64714},
+    {"name": "r3_cover_fit_v4", "sha": "d6422a0337ee", "what": "forecast the HMM part only, then the 0.3/0.7 mix, 16 lengths", "headline_nd": 0.64573, "note": "the principled version; pop gains +0.0022 exactly on time where the chord changed under her held note"}
+   ], "exploration": "16 configurations on val in r3/A/explore*.json"},
+  {"id": "E5", "round": 3, "attempts": 1, "verdict": "fail (no gain): -0.0008 to +0.0005; wins on misheard out-of-scale notes are cancelled by doubting her real chromatic notes; chooser-side ceiling about +0.002-0.003 per dataset",
+   "variants": [
+    {"name": "r3_true_cons_v1", "sha": "7afd27933eb5", "what": "m1's robust scoring on the champion's belief", "headline_nd": 0.64425},
+    {"name": "r3_true_cons_v2", "sha": "5fab200b685e", "what": "robust only when the heard pc is out of the major scale", "headline_nd": 0.6436},
+    {"name": "r3_true_cons_v3", "sha": "87914fce8d63", "what": "as v1, no credit for doubling a guessed true note", "headline_nd": 0.64489},
+    {"name": "r3_true_cons_v4", "sha": "9fc753cb8335", "what": "as v1, but trust an out-of-scale pc she already sang >= 2 times and >= 3 % of notes", "headline_nd": 0.64482}
+   ], "inference": "most of mishearing's 0.047 cost (m1: clean melody 0.668) probably flows through the chord belief, not the choice"}
+ ],
+ "dead_ideas": [],
+ "variants_scored_in_loop": 25,
+ "variants_note": "25 scored candidates (2 + 11 + 12); plus about 40 diagnostic configurations in the round-1 analysis and about 27 unscored exploration/ablation configurations in round 3 (r3/A explore 16, r3/C ablation 5 + diagnostic 6)",
+ "process_notes": [
+  "Round-3 implementers ran a few read-only 'python -c' one-liners (printing existing JSON results) outside hbrun; nothing was written. Every scored run went through hbrun.",
+  "Presentability is decided by the orchestrator under the strict reading of §4.3 and flagged for Vincent."
+ ],
+ "next": "Round 4 = the second (last) attempts of E4 and E5 against the champion r3_style_mix_v3, designed from round 3's findings: E4 forecasts only the HMM part with the champion's style-weighted tables; E5 also tries the belief side (a suspected mishearing should not move the chord belief). Wave 2 (E6, E7) stays off: wave 1 produced a presentable champion. After round 4, §4.4 has no untried idea left, so the loop ends (or earlier by the stop rules)."
+}

@@ -1,0 +1,2 @@
+2026-11-02 10:09:11 START tl=600 cwd=$ABS .venv/bin/python runs_mini/choir_1102/choir_follow_test_v3.py
+2026-11-02 10:09:30 END rc=0 secs=19 .venv/bin/python runs_mini/choir_1102/choir_follow_test_v3.py

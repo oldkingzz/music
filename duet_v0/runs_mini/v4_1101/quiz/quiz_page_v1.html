@@ -1,0 +1,387 @@
+<title>Duet 周二测验</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&family=Noto+Serif+SC:wght@600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: one narrow column like a score sheet; a 15-beat strip on top shows where you are */
+:root{
+  --bg:#f2f4f1;--card:#ffffff;--fg:#1c2320;--muted:#5b6862;--line:#d3dbd6;
+  --accent:#2b5e88;--accent-soft:#e3ecf4;--ok:#2d774a;--ok-soft:#e2f1e7;--bad:#ad3f2b;--bad-soft:#f7e4df;--warn:#93650f;
+  --display:"Noto Serif SC","Songti SC",serif;--body:"Noto Sans SC","PingFang SC",system-ui,sans-serif;--mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#111513;--card:#19201c;--fg:#e3e9e5;--muted:#99a69f;--line:#2c3631;
+  --accent:#86afd8;--accent-soft:#1d2b38;--ok:#71c38f;--ok-soft:#18301f;--bad:#e8826d;--bad-soft:#3a1f19;--warn:#dcae57;color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#111513;--card:#19201c;--fg:#e3e9e5;--muted:#99a69f;--line:#2c3631;
+  --accent:#86afd8;--accent-soft:#1d2b38;--ok:#71c38f;--ok-soft:#18301f;--bad:#e8826d;--bad-soft:#3a1f19;--warn:#dcae57;color-scheme:dark}
+body{background:var(--bg);color:var(--fg);font-family:var(--body);font-size:15px;line-height:1.65}
+.wrap{max-width:720px;margin:0 auto;padding-block:28px 56px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));display:flex;flex-direction:column;gap:20px}
+h1{font-family:var(--display);font-size:1.7rem;line-height:1.3;margin:0;text-wrap:balance}
+.sub{color:var(--muted);margin:4px 0 0;font-size:.9rem}
+.mono{font-family:var(--mono);font-variant-numeric:tabular-nums}
+.rules{font-size:.9rem;color:var(--muted);margin:0;padding-left:1.2em}
+.rules li{margin:2px 0}
+.strip{display:grid;grid-template-columns:repeat(15,minmax(0,1fr));gap:4px;align-items:end}
+.strip .bar{grid-column:span 5;border-top:1px solid var(--line);font-size:.72rem;color:var(--muted);letter-spacing:.04em;padding-top:2px}
+.cell{appearance:none;border:1px solid var(--line);background:var(--card);color:var(--muted);font-family:var(--mono);font-size:.8rem;height:34px;border-radius:4px;cursor:pointer;padding:0}
+.cell:disabled{cursor:default;opacity:.55}
+.cell.cur{border-color:var(--accent);color:var(--accent);box-shadow:inset 0 -3px 0 var(--accent)}
+.cell.ok{background:var(--ok-soft);border-color:var(--ok);color:var(--ok)}
+.cell.bad{background:var(--bad-soft);border-color:var(--bad);color:var(--bad)}
+.cell.wait{border-style:dashed;color:var(--warn);border-color:var(--warn)}
+.cell:focus-visible,button:focus-visible,textarea:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:20px;display:flex;flex-direction:column;gap:14px;min-width:0}
+.eyebrow{font-family:var(--mono);font-size:.78rem;letter-spacing:.06em;color:var(--accent)}
+.q{font-family:var(--display);font-size:1.25rem;line-height:1.45;margin:0;text-wrap:balance}
+textarea{width:100%;box-sizing:border-box;min-height:150px;resize:vertical;font:inherit;color:var(--fg);background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:10px 12px}
+.row{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+button.primary,button.ghost{font:inherit;font-weight:500;border-radius:6px;padding:8px 18px;cursor:pointer}
+button.primary{background:var(--accent);color:var(--card);border:1px solid var(--accent)}
+button.ghost{background:transparent;color:var(--accent);border:1px solid var(--accent)}
+button:disabled{opacity:.5;cursor:default}
+.hint{font-size:.85rem;color:var(--muted)}
+.err{font-size:.9rem;color:var(--bad)}
+.yours{white-space:pre-wrap;background:var(--bg);border-left:3px solid var(--line);padding:8px 12px;border-radius:0 6px 6px 0;margin:0}
+.pill{display:inline-block;font-weight:700;padding:2px 12px;border-radius:999px;font-size:.95rem}
+.pill.ok{background:var(--ok-soft);color:var(--ok)}
+.pill.bad{background:var(--bad-soft);color:var(--bad)}
+.pill.wait{background:var(--accent-soft);color:var(--accent)}
+.fb{margin:0;padding-left:1.2em;display:flex;flex-direction:column;gap:4px}
+.fb .k{font-weight:700}
+.fb .miss .k,.fb .wrong .k{color:var(--bad)}
+.fb .det .k{color:var(--muted)}
+.score{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px}
+.score div{border-top:2px solid var(--line);padding-top:6px}
+.score .n{font-family:var(--mono);font-size:1.5rem;font-variant-numeric:tabular-nums}
+.score .l{font-size:.82rem;color:var(--muted)}
+.verdict{font-family:var(--display);font-size:1.15rem;margin:0}
+.verdict.ok{color:var(--ok)}.verdict.bad{color:var(--bad)}
+@media (prefers-reduced-motion:no-preference){.card{transition:border-color .2s}}
+</style>
+
+<div class="wrap">
+  <header>
+    <h1>Duet 周二测验：r2_mix_v2</h1>
+    <p class="sub">10 道题 + 5 个要背的数，一次一题。全部数字是 val 上的，也在 val 上调（没有 test）。</p>
+  </header>
+
+  <ul class="rules">
+    <li>用你自己的话回答。每题的核心要点都说到、没说错事实，就算对；漏一个核心要点或说错一个事实，这题不算。</li>
+    <li>按第一次回答计分，提交后不能改。题里的数字说个大概就行；5 个要背的数要在 ±0.01 以内。</li>
+    <li>通过 = 10 题至少对 8 题，且 5 个数全对。通过后周二讲 r2_mix_v2，否则讲 m1_filter_v5lo。</li>
+    <li>页面上是即时初判；全部答完后，Claude 会在聊天里按同一份要点复核。</li>
+  </ul>
+
+  <nav class="strip" id="strip" aria-label="题目进度"></nav>
+
+  <section class="card" id="main" aria-live="polite"></section>
+
+  <section class="card" id="sum"></section>
+
+  <p class="hint" id="status"></p>
+</div>
+
+<script>
+const ITEMS = [
+  {id:"q01", kind:"open", label:"第 1 题", q:"每听到她一个音，Duet 拿到什么、给出什么？",
+   core:["拿到这个音的起音时刻和音高","没有和弦标签，也没有任何未来的信息","给出一个在她下方的音"],
+   details:["音高是“听到的”，10 % 会听错","还拿到上一个音的长度、主音、拍号、拍子网格","同一刻（零延迟）给出，一直唱到她下一个音；下方没有协和的音就不唱","音域是女中音 MIDI 53–77；每个音的计算约 0.15 毫秒"]},
+  {id:"q02", kind:"open", label:"第 2 题", q:"和老模型 m1 比，到底改了什么？",
+   core:["只改了猜和弦这一步","从“只用 HMM”变成 HMM 和 3 个 GRU（的平均）相乘混合，GRU 占大头（0.7），HMM 占 0.3","选音规则（选音器和它的 6 个权重）一点没改"],
+   details:["公式 b ∝ b_HMM^0.3 · b_GRU^0.7，叫对数线性混合","α = 0 时和 m1 逐音相同"],
+   notes:"说成相加或算术平均，算说错。只说“混合/结合”、没说怎么混不算错，但要说出 GRU 占大头。"},
+  {id:"q03", kind:"open", label:"第 3 题", q:"music_nd 怎么算？为什么不算唱她的同音或八度？",
+   core:["Duet 的音要同时满足三条才得分：和她的真音协和；是这一拍真和弦的和弦音；不是她的同音或八度（三条要说全）","原因：唱她的同音或八度只是重复她，不是和声；旧的原始分会奖励这种抄写，把分数抬高"],
+   details:["按她唱歌的时间算比例，跳过开头 4 拍","总分是 4 个数据集各自分数的平均","协和指三度、五度、六度","例子：m3_seq_v5 的原始分 0.720，music_nd 只有 0.610"]},
+  {id:"q04", kind:"open", label:"第 4 题", q:"GRU 读什么、学什么？",
+   core:["读她每个音的音高和节奏/拍位信息（上一个音多长、在小节和拍子里的位置、拍号），用隐藏状态记住到目前为止的整段旋律","输出 7 个和弦的概率","学的是预测“她这个音响着的那几拍的真和弦”（按时长加权）"],
+   details:["只用训练集的歌（9117 首）训练","训练时模拟 10 % 听错，损失是交叉熵","每个音读 24 个数","3 个网络（96、128、96 个单元）的概率取平均；这次没有重训"]},
+  {id:"q05", kind:"open", label:"第 5 题", q:"为什么要把 HMM 和 GRU 相乘，不只用 GRU？",
+   core:["相乘时，只有两边都觉得可能的和弦才会胜出，所以猜对率比任何一边单独都高（0.491，HMM 0.434，GRU 0.484）","只用 GRU 会突然改判和弦、带着 Duet 大跳，folk 的大跳比例超过上限、没过保留规则；混进 0.3 的 HMM 后变平稳，过了检查"],
+   details:["只用 GRU 的总分其实差不多（0.6440）","folk 大跳 0.0212，上限 0.0195，混合后 0.0185"]},
+  {id:"q06", kind:"open", label:"第 6 题", q:"α = 0.7 怎么定的？会不会对 val 过拟合（overfitting）？",
+   core:["在 val 上只试了几个值（0.5、0.7、0.85），分数几乎一样平；0.85 略高但 folk 大跳超标，所以选通过全部检查里最高的 0.7","过拟合风险小：只试了几个值，曲线平，结果不靠 α 的精确值","老实说：全部是 val 上的数字，没有 test 集做最后确认"],
+   details:["分数 0.6428、0.6444、0.6454","另有一个同时改 w_big 的变体","换一套听错抽样（seed 2）仍比 m1 高 0.0262"],
+   notes:"只说“0.7 分最高”算说错：0.85 更高，只是没过大跳检查。"},
+  {id:"q07", kind:"open", label:"第 7 题", q:"为什么不直接用 GRU 自带的选音器（m3_seq_v5）？",
+   core:["它自己的选音器经常抄她（唱她的同音或八度），music_nd 把这算失败，所以分低（约 0.61）","所以只借用 GRU 的和弦猜测，选音交给不抄她的 m1 选音器，分数升到 0.644"],
+   details:["它的 double 在 bach 是 0.184、folk 0.118","0.6104 比 m1 的 0.6206 还低","新模型的 double 最多 0.0553"]},
+  {id:"q08", kind:"open", label:"第 8 题", q:"怎么保证它没偷看未来、没作弊？",
+   core:["因果检查：在歌中间截断，把截断点以后的音和和弦标签全部打乱，截断点之前的输出完全不变（72/72）","代码检查：只用训练集建模；每一步只用当时收到的输入，拿不到和弦标签，也拿不到未来"],
+   details:["24 首 val 歌，每首 3 个截断点","GRU 每个音只前进一次","0 个音超出音域；从不高于她被听到的音"]},
+  {id:"q09", kind:"open", label:"第 9 题", q:"离“告诉你和弦”的天花板还差多少？差在哪？",
+   core:["告诉它真和弦时约 0.84，我们是 0.644，还差约 0.2","最大的一块是和弦猜错（约 17 % 的时间）"],
+   details:["其次是她下方没有好音（约 7 %）和听错（约 6 %）","精确值：天花板 0.8403（m4_oracle 0.8388），差 0.196"]},
+  {id:"q10", kind:"open", label:"第 10 题", q:"哪个数据集最难？为什么？",
+   core:["流行歌最难（pop909 和 pop 都约 0.59；说 pop 或 pop909 都算）","原因至少说对一条：和弦最难猜（pop 猜对率约 0.37）；她的旋律常不在和弦音上（pop 约 66 % 的时间在，bach 约 92 %）；她下方常找不到好音（约 12 % 的时间）"],
+   details:["连告诉真和弦的天花板也最低（pop 0.778）"]},
+  {id:"n1", kind:"num", label:"数 1", q:"基线 third_below（唱她下方三度）的 music_nd 是多少？", target:0.505, lo:0.495, hi:0.515},
+  {id:"n2", kind:"num", label:"数 2", q:"旧模型 m1_filter_v5lo 的 music_nd 是多少？", target:0.621, lo:0.611, hi:0.631},
+  {id:"n3", kind:"num", label:"数 3", q:"可上台的冠军 r2_mix_v2 的 music_nd 是多少？", target:0.644, lo:0.634, hi:0.654},
+  {id:"n4", kind:"num", label:"数 4", q:"告诉它真和弦时的天花板（m4_oracle）是多少？", target:0.839, lo:0.829, hi:0.849},
+  {id:"n5", kind:"open", label:"数 5", q:"double（抄她, doubling）是什么意思？",
+   core:["Duet 唱她的同音或八度（抄她）"],
+   details:["是按时间算的比例","music_nd 把它算失败","保留规则要求 ≤ 0.08"]}
+];
+
+const $ = s => document.querySelector(s);
+const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+let db = null, sample = null, dbState = "loading", sampleState = "loading";
+let answers = {}, busy = {}, cur = 0, pinned = false, lastMain = "", errMsg = "";
+const drafts = {};
+
+function firstOpen(){ const k = ITEMS.findIndex(it => !answers[it.id]); return k < 0 ? ITEMS.length - 1 : k; }
+function readDraft(id){ try { return localStorage.getItem("duetquiz:" + id) || ""; } catch(e){ return ""; } }
+function saveDraft(id, v){ drafts[id] = v; try { localStorage.setItem("duetquiz:" + id, v); } catch(e){} }
+function clearDraft(id){ delete drafts[id]; try { localStorage.removeItem("duetquiz:" + id); } catch(e){} }
+
+function parseNum(s){
+  s = String(s).replace(/，/g, ",");
+  const m = s.match(/\d+(?:\.\d+)?/);
+  if (!m) return null;
+  let v = parseFloat(m[0]);
+  const after = s.slice(m.index + m[0].length, m.index + m[0].length + 2);
+  if (/[%％]/.test(after) || (v > 1 && v <= 100)) v = v / 100;
+  return v;
+}
+
+function buildPrompt(it, ans){
+  const core = it.core.map((c, k) => (k + 1) + ". " + c).join("\n");
+  const det = it.details.map((c, k) => (k + 1) + ". " + c).join("\n");
+  return [
+    "你是一场口头测验的判分员。学生要在周二向教授讲清楚一个音乐和声模型。请严格按下面这道题固定的判分要点，判断学生的回答。",
+    "",
+    "判分规则：",
+    "- 只按“核心要点”判对错。对每个核心要点：学生用自己的话说到了这个意思 = covered；完全没提到 = missing；提到了但说错了 = wrong。",
+    "- 措辞不必和要点一样，意思对就行。要点括号里的数字是参考：学生不说具体数字不算漏；说个大概（如“约 0.2”“七成”）算对；数字明显错、方向错、或把别的模型的数安到这个模型上，算 wrong。",
+    "- 一个核心要点里有几层意思时，主要意思都要有才算 covered；只说了一半算 missing，并在 note 里说漏了哪一半。",
+    "- wrong_facts：回答里其他与要点或细节矛盾的错误说法。正确的补充不算错，含糊但不矛盾的说法也不算错。",
+    "- missed_details：学生没提到的细节编号（细节不影响对错）。",
+    "- note 用一句简短中文，只说漏了什么或错在哪里；covered 的 note 留空。不要复述学生答对的部分。",
+    "",
+    "只回复一个 JSON 对象，不要其他文字。格式示例：",
+    '{"core":[{"i":1,"status":"covered","note":""},{"i":2,"status":"missing","note":"没说选音规则没变"}],"wrong_facts":[],"missed_details":[1,2]}',
+    "",
+    "题目：" + it.q,
+    "",
+    "核心要点：",
+    core,
+    "",
+    "细节：",
+    det,
+    it.notes ? "\n特别说明：" + it.notes : "",
+    "",
+    "学生的回答：",
+    "<<<",
+    ans,
+    ">>>"
+  ].join("\n");
+}
+
+function normalize(it, r){
+  if (!r || typeof r !== "object" || !Array.isArray(r.core) || r.core.length === 0) return {status:"error", error:"invalid_json"};
+  const core = it.core.map((_, k) => {
+    const f = r.core.find(c => c && Number(c.i) === k + 1) || {};
+    const st = ["covered","missing","wrong"].includes(f.status) ? f.status : "missing";
+    return {status: st, note: String(f.note || "")};
+  });
+  const wrong = (Array.isArray(r.wrong_facts) ? r.wrong_facts : []).map(x => String(x)).filter(x => x.trim());
+  const md = (Array.isArray(r.missed_details) ? r.missed_details : []).map(Number).filter(n => Number.isInteger(n) && n >= 1 && n <= it.details.length);
+  return {status:"done", ok: core.every(c => c.status === "covered") && wrong.length === 0, core, wrong_facts: wrong, missed_details: md};
+}
+
+async function writeDoc(id, doc){
+  if (!db) return;
+  try { await db.collection("answers").doc(id).set(doc); }
+  catch(e){ errMsg = "保存判分结果失败（" + (e && e.code || "unknown") + "）。"; }
+}
+
+async function grade(it){
+  const a = answers[it.id];
+  if (!a || busy[it.id]) return;
+  busy[it.id] = true; errMsg = ""; render();
+  let g;
+  if (it.kind === "num"){
+    const v = parseNum(a.answer);
+    g = v == null ? {status:"done", ok:false, value:null} : {status:"done", ok: v >= it.lo - 1e-9 && v <= it.hi + 1e-9, value:v};
+  } else if (!sample){
+    g = {status:"error", error:"no_sample"};
+  } else {
+    try {
+      const r = await sample.json(buildPrompt(it, a.answer), {modelTier:"default", cache:false});
+      g = normalize(it, r);
+    } catch(e){
+      g = {status:"error", error: (e && e.code) || "upstream_error"};
+    }
+  }
+  g.gradedAt = new Date().toISOString();
+  const doc = {item: a.item, answer: a.answer, submittedAt: a.submittedAt, grade: g};
+  answers[it.id] = doc;
+  busy[it.id] = false;
+  await writeDoc(it.id, doc);
+  render();
+}
+
+async function submit(){
+  const it = ITEMS[cur];
+  if (answers[it.id] || busy[it.id]) return;
+  const ta = $("#answer");
+  const text = (ta ? ta.value : "").trim();
+  if (!text){ errMsg = "先写下你的回答。"; render(true); return; }
+  const doc = {item: it.id, answer: text, submittedAt: new Date().toISOString(), grade: {status:"pending"}};
+  busy[it.id] = true; errMsg = ""; render(true);
+  if (db){
+    try {
+      const ref = db.collection("answers").doc(it.id);
+      const ex = await ref.get();
+      if (ex.exists){ answers[it.id] = ex.data(); busy[it.id] = false; render(); return; }
+      await ref.set(doc);
+    } catch(e){
+      busy[it.id] = false;
+      errMsg = "没存上（" + (e && e.code || "unknown") + "），请再点一次提交。";
+      render(true); return;
+    }
+  }
+  answers[it.id] = doc;
+  busy[it.id] = false;
+  clearDraft(it.id);
+  grade(it);
+}
+
+function cellClass(it, k){
+  const a = answers[it.id], cls = ["cell"];
+  if (k === cur) cls.push("cur");
+  if (a){
+    const g = a.grade || {};
+    if (busy[it.id] || g.status !== "done") cls.push("wait");
+    else cls.push(g.ok ? "ok" : "bad");
+  }
+  return cls.join(" ");
+}
+
+function renderStrip(){
+  const open = firstOpen();
+  let html = '<span class="bar">第 1–5 题</span><span class="bar">第 6–10 题</span><span class="bar">5 个数</span>';
+  ITEMS.forEach((it, k) => {
+    const short = it.kind === "num" || it.id === "n5" ? "数" + it.id.slice(1) : String(k + 1);
+    const can = !!answers[it.id] || k === open;
+    html += '<button class="' + cellClass(it, k) + '" data-k="' + k + '"' + (can ? "" : " disabled") + ' aria-label="' + esc(it.label) + '">' + short + "</button>";
+  });
+  const s = $("#strip");
+  s.innerHTML = html;
+  s.querySelectorAll(".cell").forEach(b => b.onclick = () => { stash(); cur = Number(b.dataset.k); pinned = cur !== firstOpen(); render(true); });
+}
+
+function feedback(it, a){
+  const g = a.grade || {};
+  if (busy[it.id] || g.status === "pending"){
+    if (busy[it.id]) return '<p><span class="pill wait">判分中…</span></p><p class="hint">Claude 在按要点读你的回答，通常 5–60 秒。第一次会请你允许这个页面使用 Claude。</p>';
+    return '<p><span class="pill wait">还没判</span></p><p class="hint">判分没走完（页面可能刷新过）。</p><div class="row"><button class="ghost" id="regrade">判分</button></div>';
+  }
+  if (g.status === "error"){
+    const why = g.error === "no_sample" || g.error === "not_granted" || g.error === "sampling_disabled"
+      ? "这个页面现在不能调用 Claude 判分。答案已经保存，回聊天说一声，Claude 在那里判。"
+      : g.error === "rate_limited" ? "调用太频繁，过一会儿再点“重新判分”。"
+      : "判分没完成（" + esc(g.error) + "）。答案已经保存，可以重新判分。";
+    return '<p><span class="pill wait">没判完</span></p><p class="hint">' + why + '</p><div class="row"><button class="ghost" id="regrade">重新判分</button></div>';
+  }
+  if (it.kind === "num"){
+    const val = g.value == null ? "没认出数字" : "你写的是 " + g.value.toFixed(3);
+    let extra = "";
+    if (it.id === "n3" && g.value != null && Math.abs(g.value - 0.653) < 0.003) extra = "<li>0.653 是 r3_style_mix_v3（不可上台的最高分）的分；r2_mix_v2 是 0.644。</li>";
+    return '<p><span class="pill ' + (g.ok ? "ok" : "bad") + '">' + (g.ok ? "对" : "不对") + '</span></p><ul class="fb"><li>' + val + "；标准值 " + it.target.toFixed(3) + "（接受 " + it.lo.toFixed(3) + "–" + it.hi.toFixed(3) + "）。</li>" + extra + "</ul>";
+  }
+  const lines = [];
+  g.core.forEach((c, k) => {
+    if (c.status === "missing") lines.push('<li class="miss"><span class="k">漏了：</span>' + esc(it.core[k]) + (c.note ? "（" + esc(c.note) + "）" : "") + "</li>");
+    if (c.status === "wrong") lines.push('<li class="wrong"><span class="k">说错：</span>' + esc(c.note || it.core[k]) + "</li>");
+  });
+  (g.wrong_facts || []).forEach(w => lines.push('<li class="wrong"><span class="k">说错：</span>' + esc(w) + "</li>"));
+  (g.missed_details || []).forEach(n => lines.push('<li class="det"><span class="k">细节（不影响对错）：</span>' + esc(it.details[n - 1]) + "</li>"));
+  if (!lines.length) lines.push("<li>核心要点都说到了，细节也齐。</li>");
+  else if (g.ok) lines.unshift("<li>核心要点都说到了。</li>");
+  return '<p><span class="pill ' + (g.ok ? "ok" : "bad") + '">' + (g.ok ? "对" : "不算") + '</span></p><ul class="fb">' + lines.join("") + "</ul>";
+}
+
+function stash(){ const ta = $("#answer"); if (ta) saveDraft(ta.dataset.id, ta.value); }
+
+function renderMain(force){
+  const it = ITEMS[cur], a = answers[it.id];
+  const key = cur + "|" + JSON.stringify(a || null) + "|" + !!busy[it.id] + "|" + errMsg + "|" + dbState + "|" + sampleState;
+  if (!force && key === lastMain) return;
+  lastMain = key;
+  const kind = it.kind === "num" ? "要背的数 · ±0.01" : "用你自己的话";
+  let html = '<div class="eyebrow">' + esc(it.label) + " · " + kind + '</div><h2 class="q">' + esc(it.q) + "</h2>";
+  if (!a){
+    const ph = it.kind === "num" ? "写一个小数，比如 0.62" : "用你自己的话写，几句话就行。";
+    html += '<label class="hint" for="answer">你的回答（提交后不能改）</label><textarea id="answer" data-id="' + it.id + '" placeholder="' + ph + '"' + (it.kind === "num" ? ' style="min-height:60px"' : "") + "></textarea>";
+    html += '<div class="row"><button class="primary" id="submit"' + (busy[it.id] ? " disabled" : "") + ">" + (busy[it.id] ? "正在保存…" : "提交") + "</button></div>";
+    if (errMsg) html += '<p class="err">' + esc(errMsg) + "</p>";
+  } else {
+    html += '<p class="hint">你的回答</p><p class="yours">' + esc(a.answer) + "</p>" + feedback(it, a);
+    if (errMsg) html += '<p class="err">' + esc(errMsg) + "</p>";
+    const open = firstOpen();
+    if (!answers[ITEMS[open].id] && open !== cur) html += '<div class="row"><button class="primary" id="next">下一题：' + esc(ITEMS[open].label) + "</button></div>";
+  }
+  const m = $("#main");
+  m.innerHTML = html;
+  const ta = $("#answer");
+  if (ta){ ta.value = drafts[it.id] ?? readDraft(it.id); ta.oninput = () => saveDraft(it.id, ta.value); }
+  const sb = $("#submit"); if (sb) sb.onclick = submit;
+  const rg = $("#regrade"); if (rg) rg.onclick = () => grade(it);
+  const nx = $("#next"); if (nx) nx.onclick = () => { cur = firstOpen(); pinned = false; render(true); };
+}
+
+function renderSum(){
+  const qs = ITEMS.slice(0, 10), ns = ITEMS.slice(10);
+  const done = it => answers[it.id] && answers[it.id].grade && answers[it.id].grade.status === "done";
+  const ok = it => done(it) && answers[it.id].grade.ok;
+  const qDone = qs.filter(done).length, qOk = qs.filter(ok).length, nDone = ns.filter(done).length, nOk = ns.filter(ok).length;
+  const qBad = qDone - qOk, nBad = nDone - nOk;
+  let verdict;
+  if (qBad > 2 || nBad > 0) verdict = '<p class="verdict bad">已经不能通过：周二讲 m1_filter_v5lo（CARD_m1_zh.md）。</p>';
+  else if (qDone === 10 && nDone === 5) verdict = '<p class="verdict ok">通过（初判）：周二讲 r2_mix_v2。等 Claude 在聊天里复核。</p>';
+  else verdict = '<p class="hint">还在进行。题目最多还能错 ' + (2 - qBad) + " 道；5 个数一个都不能错。</p>";
+  $("#sum").innerHTML = '<div class="eyebrow">得分</div><div class="score">'
+    + '<div><div class="n">' + qOk + " / 10</div><div class=\"l\">题目答对（已判 " + qDone + "）· 要 ≥ 8</div></div>"
+    + '<div><div class="n">' + nOk + " / 5</div><div class=\"l\">数字全对（已判 " + nDone + "）· 要 5 / 5</div></div></div>" + verdict;
+}
+
+function renderStatus(){
+  const parts = [];
+  if (dbState === "loading") parts.push("正在读取你的作答记录…");
+  if (dbState === "slow") parts.push("作答记录一时读不到，可能已过期；稍等或刷新。");
+  if (dbState === "none" || dbState === "error") parts.push("保存不可用（需要在 claude.ai 登录后打开）：答案不会存下来，Claude 也读不到，刷新会丢。");
+  if (sampleState === "none") parts.push("这个视图不能调用 Claude 判分：答案照样保存，回聊天里让 Claude 判。");
+  $("#status").textContent = parts.join(" ");
+}
+
+function render(force){
+  if (!pinned) cur = cur > firstOpen() ? firstOpen() : cur;
+  renderStrip(); renderMain(force); renderSum(); renderStatus();
+}
+
+render(true);
+
+(async () => {
+  try { sample = await window.claude?.use?.("sample"); } catch(e){ sample = null; }
+  sampleState = sample ? "ok" : "none";
+  render();
+})();
+
+(async () => {
+  try { db = await window.claude?.use?.("db"); } catch(e){ db = null; }
+  if (!db){ dbState = "none"; render(); return; }
+  const timer = setTimeout(() => { if (dbState === "loading"){ dbState = "slow"; render(); } }, 10000);
+  db.collection("answers").onSnapshot(snap => {
+    const next = {};
+    snap.docs.forEach(d => { next[d.id] = d.data(); });
+    ITEMS.forEach(it => { if (busy[it.id] && answers[it.id]) next[it.id] = answers[it.id]; });
+    answers = next;
+    if (!snap.metadata.fromCache) clearTimeout(timer);
+    dbState = "ok";
+    if (!pinned) cur = firstOpen();
+    render();
+  }, e => { clearTimeout(timer); dbState = "error"; render(); });
+})();
+</script>

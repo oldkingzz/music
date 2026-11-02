@@ -1,0 +1,2 @@
+2026-11-01 16:00:46 START tl=600 cwd=$ABS $ABS/.venv/bin/python $ABS/runs_mini/v4_1101/r4/A/explore.py
+2026-11-01 16:02:00 END rc=0 secs=73 $ABS/.venv/bin/python $ABS/runs_mini/v4_1101/r4/A/explore.py

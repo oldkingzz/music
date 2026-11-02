@@ -1,0 +1,2 @@
+2026-11-01 15:46:14 START tl=600 cwd=$ABS/runs_mini/v4_1101/r3/B $ABS/.venv/bin/python $ABS/runs_mini/v4_1101/r3/B/check_where.py
+2026-11-01 15:46:42 END rc=0 secs=29 $ABS/.venv/bin/python $ABS/runs_mini/v4_1101/r3/B/check_where.py

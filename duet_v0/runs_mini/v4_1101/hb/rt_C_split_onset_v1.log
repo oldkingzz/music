@@ -1,0 +1,2 @@
+2026-11-01 23:04:31 START tl=600 cwd=$ABS $ABS/.venv/bin/python $ABS/runs_mini/v5rt_1101/r1/C/split_C_v1.py rt:r1_C_onset_v1 --out $ABS/runs_mini/v5rt_1101/r1/C/split_rt_r1_C_onset_v1_L0.1.json
+2026-11-01 23:04:46 END rc=0 secs=14 $ABS/.venv/bin/python $ABS/runs_mini/v5rt_1101/r1/C/split_C_v1.py rt:r1_C_onset_v1 --out $ABS/runs_mini/v5rt_1101/r1/C/split_rt_r1_C_onset_v1_L0.1.json

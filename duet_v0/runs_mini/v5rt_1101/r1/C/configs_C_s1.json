@@ -1,0 +1,16 @@
+[
+ {"name": "d0_never_fc", "diag": true, "cfg": {"P_ON_MIN": 2.0, "LAM": 4.0, "LAM_KEEP": 1.0, "HARSH_MAX": 0.05, "GAIN_MIN": 0.02, "W_ABOVE": 0.5, "W_STEP": 0.005, "KEEP_MARGIN": 0.1, "W_R2": 0.0, "HOLD": 1, "Q_MIN": 1.0, "CKPT": "C_fnet_v1s.pt"}},
+ {"name": "d1_never_r2", "diag": true, "cfg": {"P_ON_MIN": 2.0, "LAM": 4.0, "LAM_KEEP": 1.0, "HARSH_MAX": 0.05, "GAIN_MIN": 0.02, "W_ABOVE": 0.5, "W_STEP": 0.005, "KEEP_MARGIN": 0.1, "W_R2": 1.0, "HOLD": 1, "Q_MIN": 1.0, "CKPT": "C_fnet_v1s.pt"}},
+ {"name": "d2_never_mix", "diag": true, "cfg": {"P_ON_MIN": 2.0, "LAM": 4.0, "LAM_KEEP": 1.0, "HARSH_MAX": 0.05, "GAIN_MIN": 0.02, "W_ABOVE": 0.5, "W_STEP": 0.005, "KEEP_MARGIN": 0.1, "W_R2": 0.5, "HOLD": 1, "Q_MIN": 1.0, "CKPT": "C_fnet_v1s.pt"}},
+ {"name": "base", "cfg": {"P_ON_MIN": 0.5, "LAM": 4.0, "LAM_KEEP": 1.0, "HARSH_MAX": 0.05, "GAIN_MIN": 0.02, "W_ABOVE": 0.5, "W_STEP": 0.005, "KEEP_MARGIN": 0.1, "W_R2": 0.5, "HOLD": 1, "Q_MIN": 1.0, "CKPT": "C_fnet_v1s.pt"}},
+ {"name": "hm02", "cfg": {"P_ON_MIN": 0.5, "LAM": 4.0, "LAM_KEEP": 1.0, "HARSH_MAX": 0.02, "GAIN_MIN": 0.02, "W_ABOVE": 0.5, "W_STEP": 0.005, "KEEP_MARGIN": 0.1, "W_R2": 0.5, "HOLD": 1, "Q_MIN": 1.0, "CKPT": "C_fnet_v1s.pt"}},
+ {"name": "hm10", "cfg": {"P_ON_MIN": 0.5, "LAM": 4.0, "LAM_KEEP": 1.0, "HARSH_MAX": 0.10, "GAIN_MIN": 0.02, "W_ABOVE": 0.5, "W_STEP": 0.005, "KEEP_MARGIN": 0.1, "W_R2": 0.5, "HOLD": 1, "Q_MIN": 1.0, "CKPT": "C_fnet_v1s.pt"}},
+ {"name": "lam10", "cfg": {"P_ON_MIN": 0.5, "LAM": 10.0, "LAM_KEEP": 1.0, "HARSH_MAX": 0.05, "GAIN_MIN": 0.02, "W_ABOVE": 0.5, "W_STEP": 0.005, "KEEP_MARGIN": 0.1, "W_R2": 0.5, "HOLD": 1, "Q_MIN": 1.0, "CKPT": "C_fnet_v1s.pt"}},
+ {"name": "km0", "cfg": {"P_ON_MIN": 0.5, "LAM": 4.0, "LAM_KEEP": 1.0, "HARSH_MAX": 0.05, "GAIN_MIN": 0.02, "W_ABOVE": 0.5, "W_STEP": 0.005, "KEEP_MARGIN": 0.0, "W_R2": 0.5, "HOLD": 1, "Q_MIN": 1.0, "CKPT": "C_fnet_v1s.pt"}},
+ {"name": "km9", "cfg": {"P_ON_MIN": 0.5, "LAM": 4.0, "LAM_KEEP": 1.0, "HARSH_MAX": 0.05, "GAIN_MIN": 0.02, "W_ABOVE": 0.5, "W_STEP": 0.005, "KEEP_MARGIN": 9.0, "W_R2": 0.5, "HOLD": 1, "Q_MIN": 1.0, "CKPT": "C_fnet_v1s.pt"}},
+ {"name": "wr0", "cfg": {"P_ON_MIN": 0.5, "LAM": 4.0, "LAM_KEEP": 1.0, "HARSH_MAX": 0.05, "GAIN_MIN": 0.02, "W_ABOVE": 0.5, "W_STEP": 0.005, "KEEP_MARGIN": 0.1, "W_R2": 0.0, "HOLD": 1, "Q_MIN": 1.0, "CKPT": "C_fnet_v1s.pt"}},
+ {"name": "wr1", "cfg": {"P_ON_MIN": 0.5, "LAM": 4.0, "LAM_KEEP": 1.0, "HARSH_MAX": 0.05, "GAIN_MIN": 0.02, "W_ABOVE": 0.5, "W_STEP": 0.005, "KEEP_MARGIN": 0.1, "W_R2": 1.0, "HOLD": 1, "Q_MIN": 1.0, "CKPT": "C_fnet_v1s.pt"}},
+ {"name": "pon7", "cfg": {"P_ON_MIN": 0.7, "LAM": 4.0, "LAM_KEEP": 1.0, "HARSH_MAX": 0.05, "GAIN_MIN": 0.02, "W_ABOVE": 0.5, "W_STEP": 0.005, "KEEP_MARGIN": 0.1, "W_R2": 0.5, "HOLD": 1, "Q_MIN": 1.0, "CKPT": "C_fnet_v1s.pt"}},
+ {"name": "g10", "cfg": {"P_ON_MIN": 0.5, "LAM": 4.0, "LAM_KEEP": 1.0, "HARSH_MAX": 0.05, "GAIN_MIN": 0.10, "W_ABOVE": 0.5, "W_STEP": 0.005, "KEEP_MARGIN": 0.1, "W_R2": 0.5, "HOLD": 1, "Q_MIN": 1.0, "CKPT": "C_fnet_v1s.pt"}},
+ {"name": "hold0", "cfg": {"P_ON_MIN": 0.5, "LAM": 4.0, "LAM_KEEP": 1.0, "HARSH_MAX": 0.05, "GAIN_MIN": 0.02, "W_ABOVE": 0.5, "W_STEP": 0.005, "KEEP_MARGIN": 0.1, "W_R2": 0.5, "HOLD": 0, "Q_MIN": 1.0, "CKPT": "C_fnet_v1s.pt"}}
+]

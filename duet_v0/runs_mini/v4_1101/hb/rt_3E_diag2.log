@@ -1,0 +1,2 @@
+2026-11-02 01:25:37 START tl=600 cwd=$ABS $ABS/.venv/bin/python $ABS/runs_mini/v5rt_1101/r3/E/diag_fresh_E_v2.py reactive:r2_mix_v2 --voice sung_low --out $ABS/runs_mini/v5rt_1101/r3/E/D_reactive_sung_low_v1.json
+2026-11-02 01:25:57 END rc=0 secs=21 $ABS/.venv/bin/python $ABS/runs_mini/v5rt_1101/r3/E/diag_fresh_E_v2.py reactive:r2_mix_v2 --voice sung_low --out $ABS/runs_mini/v5rt_1101/r3/E/D_reactive_sung_low_v1.json

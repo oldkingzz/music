@@ -1,0 +1,242 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Duet Live</title>
+<style>
+/* One column of control cards. Blue = Duet sounding, orange = her input, vermilion = stop / problems. */
+:root {
+  --paper: #F6F3EC; --sheet: #FBF9F4; --ink: #1E1C19; --ink2: #6B655B; --rule: #E2DBCD;
+  --duet: #2456C9; --orange: #D9600F; --verm: #B5432F;
+  --body: -apple-system, "Helvetica Neue", "Segoe UI", system-ui, sans-serif; --mono: ui-monospace, Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) { :root {
+  --paper: #1B1916; --sheet: #24211D; --ink: #ECE6DA; --ink2: #A79F92; --rule: #3A352E;
+  --duet: #7FA2F0; --orange: #F08A45; --verm: #E07A63; color-scheme: dark; } }
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--paper); color: var(--ink); font: 15px/1.55 var(--body); }
+.wrap { max-width: 900px; margin: 0 auto; padding: 18px 16px 48px; display: grid; gap: 16px; }
+nav.top { display: flex; gap: 6px; }
+nav.top a { text-decoration: none; color: var(--ink2); font-weight: 600; padding: 6px 12px; border-radius: 999px; border: 1px solid var(--rule); background: var(--sheet); }
+nav.top a.here { color: var(--sheet); background: var(--duet); border-color: var(--duet); }
+header { display: flex; flex-wrap: wrap; align-items: baseline; gap: 8px 16px; }
+h1 { font-size: 26px; margin: 0; } h1 span { color: var(--duet); }
+.pill { font: 600 12.5px/1 var(--body); padding: 6px 10px; border-radius: 999px; background: var(--rule); color: var(--ink2); }
+.pill.on { background: var(--duet); color: var(--sheet); } .pill.rec { background: var(--orange); color: var(--sheet); }
+.pill.err { background: var(--verm); color: var(--sheet); }
+.card { background: var(--sheet); border: 1px solid var(--rule); border-radius: 10px; padding: 16px 18px; display: grid; gap: 12px; }
+.card h2 { font-size: 18px; margin: 0; }
+.hint { color: var(--ink2); font-size: 13.5px; margin: 0; }
+.row { display: grid; grid-template-columns: 150px 1fr auto; gap: 10px; align-items: center; }
+.row label { color: var(--ink2); font-size: 14px; }
+select, input[type=range] { width: 100%; min-width: 0; }
+select { font: inherit; padding: 6px 8px; border-radius: 6px; border: 1px solid var(--rule); background: var(--paper); color: var(--ink); }
+.val { font: 13px var(--mono); color: var(--ink2); min-width: 64px; text-align: right; }
+button { font: 600 15px var(--body); padding: 9px 16px; border-radius: 8px; border: 1px solid var(--rule); background: var(--paper); color: var(--ink); cursor: pointer; }
+button.go { background: var(--duet); color: var(--sheet); border-color: var(--duet); }
+button.stop { background: var(--verm); color: var(--sheet); border-color: var(--verm); }
+button:disabled { opacity: .45; cursor: default; }
+.btns { display: flex; flex-wrap: wrap; gap: 8px; }
+.meters { display: grid; gap: 8px; }
+.meter { display: grid; grid-template-columns: 110px 1fr 70px; gap: 10px; align-items: center; font-size: 14px; color: var(--ink2); }
+.bar { height: 14px; background: var(--rule); border-radius: 7px; overflow: hidden; }
+.bar i { display: block; height: 100%; width: 0; border-radius: 7px; transition: width .08s linear; }
+#barIn i { background: var(--orange); } #barOut i { background: var(--duet); }
+.notes { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; }
+.big { background: var(--paper); border-radius: 8px; padding: 10px; text-align: center; }
+.big b { display: block; font: 700 26px/1.25 var(--mono); min-height: 34px; }
+.big span { color: var(--ink2); font-size: 13px; }
+.stats { font: 13px var(--mono); color: var(--ink2); display: flex; flex-wrap: wrap; gap: 4px 18px; }
+.sess { display: grid; gap: 10px; }
+.s { border-top: 1px solid var(--rule); padding-top: 10px; display: grid; gap: 6px; }
+.s .t { font-weight: 600; } .s .t small { color: var(--ink2); font-weight: 400; }
+audio { width: 100%; height: 34px; }
+.err { color: var(--verm); font-size: 14px; white-space: pre-wrap; }
+@media (max-width: 560px) { .row { grid-template-columns: 1fr; } .val { text-align: left; } .notes { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <nav class="top"><a href="/">Studio</a><a href="/live" class="here">Live</a></nav>
+  <header>
+    <h1><span>Duet</span> Live</h1>
+    <span class="pill" id="pill">Idle</span>
+    <span class="hint" id="note"></span>
+  </header>
+
+  <section class="card">
+    <h2>Devices</h2>
+    <div class="row"><label for="in">Input (microphone)</label><select id="in"></select><span></span></div>
+    <div class="row"><label for="out">Output</label><select id="out"></select><button id="refresh">Refresh</button></div>
+    <p class="hint">Press Refresh after plugging headphones in or out. When the phone plays the singer, use the MacBook microphone as input and put the phone on the keyboard. Headphones avoid feedback; with the speaker the panel first plays 2 s of soft noise to learn the echo.</p>
+  </section>
+
+  <section class="card">
+    <h2>Live harmonizer</h2>
+    <p class="hint">Her voice from the microphone, shifted in real time to the diatonic third below.</p>
+    <div class="row"><label for="tonic">Key</label><select id="tonic"></select><span></span></div>
+    <div class="row"><label for="pre">Input gain</label><input type="range" id="pre" min="0" max="36" step="1" value="12"><span class="val" id="preV"></span></div>
+    <div class="row"><label for="duet">Duet volume</label><input type="range" id="duet" min="-24" max="6" step="1" value="0"><span class="val" id="duetV"></span></div>
+    <div class="row"><label for="mon">Hear her in headphones</label><input type="range" id="mon" min="-30" max="0" step="1" value="-6"><span class="val"><input type="checkbox" id="monOn" checked> <span id="monV"></span></span></div>
+    <div class="row"><label for="gate">Gate</label><select id="gate"><option value="normal">Normal (today's tuned settings)</option><option value="lenient">Lenient (opens more easily; applies from the next start)</option></select><span></span></div>
+    <div class="btns"><button class="go" id="start">Start live</button><button class="stop" id="stop" disabled>Stop and save</button></div>
+    <div class="meters">
+      <div class="meter"><span>Her (input)</span><div class="bar" id="barIn"><i></i></div><span class="val" id="inV">—</span></div>
+      <div class="meter"><span>Duet (output)</span><div class="bar" id="barOut"><i></i></div><span class="val" id="outV">—</span></div>
+    </div>
+    <div class="notes">
+      <div class="big"><b id="her">—</b><span>Her note now</span></div>
+      <div class="big"><b id="duetN">—</b><span>Duet's note (third below)</span></div>
+      <div class="big" id="gate2"><b id="gateB">closed</b><span>Gate (open = Duet sings)</span></div>
+    </div>
+    <div class="stats" id="stats"></div>
+  </section>
+
+  <section class="card">
+    <h2>Duet, beat by beat</h2>
+    <p class="hint">The original Duet: on every beat it guesses ahead and sings one harmony note in its own voice. It needs the key and the beat: either it follows a count-in played from the phone, or it gives the click and the singer follows.</p>
+    <div class="row"><label for="brain">Guesser</label><select id="brain"><option value="policy">Leaderboard #1: policy (0.79)</option><option value="hmm">PDR chord HMM (0.50)</option></select><span></span></div>
+    <div class="row"><label for="src">Who sings</label><select id="src"><option value="mic">The microphone (phone clip or you)</option><option value="test">Built-in singer (synthetic Twinkle, C major, 100 BPM)</option></select><span></span></div>
+    <div class="row"><label for="sync">Beat</label><select id="sync"><option value="phone">Follow the phone's 4-click count-in</option><option value="click">Duet clicks, the singer follows</option></select><span></span></div>
+    <div class="row"><label for="hpsync">Headphones play</label><select id="hpsync"><option value="1">Her and Duet together (aligned, recommended)</option><option value="0">Duet only (her from the phone; Bluetooth will lag)</option></select><span></span></div>
+    <div class="row"><label for="herdb">Her level in headphones</label><input type="range" id="herdb" min="-6" max="30" step="1" value="12"><span class="val" id="herdbV"></span></div>
+    <div class="row"><label for="bpm">Tempo (Duet clicks)</label><input type="range" id="bpm" min="60" max="120" step="2" value="80"><span class="val" id="bpmV"></span></div>
+    <div class="row"><label for="beats">Beats</label><input type="range" id="beats" min="16" max="64" step="4" value="48"><span class="val" id="beatsV"></span></div>
+    <div class="row"><label for="style">Chord habits (HMM)</label><select id="style"><option value="bach">Bach (chord may change every beat)</option><option value="slow">Pop / folk (mostly one chord per bar)</option></select><span></span></div>
+    <div class="row"><label for="rng">Duet range</label><select id="rng"><option value="alto">Middle (F3–F5, under a female voice)</option><option value="low">Low (F2–F4, under a male voice)</option></select><span></span></div>
+    <p class="hint">The key is the one set in the Live harmonizer card (the built-in singer is always C major). With the count-in the tempo comes from the phone's clicks. Test clips with a count-in: Twinkle (C major, 80 BPM) and the vocadito singer (A major, about 122 BPM).</p>
+    <div class="btns"><button class="go" id="dstart">Start Duet</button></div>
+    <div class="notes">
+      <div class="big"><b id="dphase">—</b><span>State / beat</span></div>
+      <div class="big"><b id="dchord">—</b><span>Duet's guess (chord / her next note)</span></div>
+      <div class="big"><b id="dpair">—</b><span>Her → Duet</span></div>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>Recordings</h2>
+    <p class="hint">Every live run is saved here (her and Duet together). For the offline effects on a phrase, use <a href="/">Studio</a>.</p>
+    <div class="sess" id="sess"><p class="hint">No recordings yet.</p></div>
+  </section>
+  <p class="err" id="err"></p>
+</div>
+<script>
+const $ = id => document.getElementById(id);
+const NAMES = ['C','C#','D','Eb','E','F','F#','G','Ab','A','Bb','B'];
+NAMES.forEach((n, i) => { const o = document.createElement('option'); o.value = i; o.textContent = n + ' major'; $('tonic').appendChild(o); });
+$('tonic').value = 0;
+let running = null, outIsSpeaker = false;
+
+async function api(path, body) {
+  const r = await fetch(path, body === undefined ? {} : {method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify(body)});
+  const j = await r.json();
+  if (!r.ok) { $('err').textContent = j.error || 'Something went wrong'; throw new Error(j.error); }
+  $('err').textContent = '';
+  return j;
+}
+async function loadDevices() {
+  const j = await api('/api/devices?refresh=1');
+  for (const [sel, key] of [['in', 'in'], ['out', 'out']]) {
+    const s = $(sel), keep = s.value; s.innerHTML = '';
+    j.devices.filter(d => d[key] > 0).forEach(d => {
+      const o = document.createElement('option'); o.value = d.index;
+      o.textContent = d.name + (d.iphone ? ' (iPhone, not recommended)' : '') + (key === 'in' && d.sr < 44100 ? ` (${d.sr / 1000} kHz, Bluetooth call quality)` : '');
+      s.appendChild(o);
+    });
+    s.value = keep && [...s.options].some(o => o.value === keep) ? keep : j.default[key];
+  }
+  checkOut();
+}
+function checkOut() {
+  const name = $('out').selectedOptions[0]?.textContent || '';
+  outIsSpeaker = name.includes('扬声器') || name.includes('Speakers');
+  $('mon').disabled = $('monOn').disabled = outIsSpeaker;
+  if (outIsSpeaker) $('monOn').checked = false;
+}
+function dlabels() { $('herdbV').textContent = `+${$('herdb').value} dB`; $('bpmV').textContent = `${$('bpm').value} BPM`; $('beatsV').textContent = `${$('beats').value} beats`;
+  const test = $('src').value === 'test'; $('bpm').disabled = $('beats').disabled = $('sync').disabled = test; }
+['bpm', 'beats', 'src', 'herdb'].forEach(id => $(id).addEventListener('input', dlabels));
+$('herdb').addEventListener('input', () => { if (running === 'duet') api('/api/update', {her_db: +$('herdb').value}).catch(() => {}); });
+function labels() {
+  $('preV').textContent = `+${$('pre').value} dB`;
+  $('duetV').textContent = `${$('duet').value > 0 ? '+' : ''}${$('duet').value} dB`;
+  $('monV').textContent = $('monOn').checked ? `${$('mon').value} dB` : 'off';
+}
+function settings() {
+  return {in: +$('in').value, out: +$('out').value, tonic: +$('tonic').value, pre_db: +$('pre').value,
+          duet_db: +$('duet').value, monitor: $('monOn').checked && !outIsSpeaker, monitor_db: +$('mon').value, gate: $('gate').value};
+}
+let tmr = null;
+function live() {
+  labels();
+  if (running !== 'live') return;
+  clearTimeout(tmr);
+  tmr = setTimeout(() => api('/api/update', settings()).catch(() => {}), 80);
+}
+['pre', 'duet', 'mon', 'monOn', 'tonic'].forEach(id => $(id).addEventListener('input', live));
+$('out').addEventListener('change', checkOut);
+$('refresh').onclick = loadDevices;
+$('start').onclick = async () => { $('start').disabled = true; $('note').textContent = 'Starting…'; try { await api('/api/start', settings()); } catch (e) { $('start').disabled = false; } };
+$('dstart').onclick = async () => { $('dstart').disabled = true; $('note').textContent = 'Starting Duet… (the first start loads the model, a few seconds)';
+  try { await api('/api/duet', {in: +$('in').value, out: +$('out').value, source: $('src').value, brain: $('brain').value, sync: $('sync').value, hpsync: $('hpsync').value === '1', her_db: +$('herdb').value, bpm: +$('bpm').value, beats: +$('beats').value,
+        style: $('style').value, range: $('rng').value, tonic: +$('tonic').value, duet_db: +$('duet').value}); } catch (e) { $('dstart').disabled = false; } };
+$('stop').onclick = async () => { $('stop').disabled = true; $('note').textContent = 'Saving…'; await api('/api/stop', {}); loadSessions(); };
+
+function pct(dbv) { return Math.max(0, Math.min(100, (dbv + 60) / 60 * 100)); }
+const es = new EventSource('/api/events');
+es.onmessage = ev => {
+  const {meter: m, status: s} = JSON.parse(ev.data);
+  running = s.running ? s.mode : null;
+  const pill = $('pill');
+  pill.className = 'pill' + (s.error ? ' err' : (running === 'live' || running === 'duet') ? ' on' : running === 'record' ? ' rec' : '');
+  pill.textContent = s.error ? 'Error' : running === 'duet' ? `Duet ${s.elapsed}s` : running === 'live' ? `Live ${s.elapsed}s` : running === 'record' ? `Recording ${s.elapsed}s` : 'Idle';
+  if (s.note) $('note').textContent = s.note;
+  if (s.error) $('err').textContent = s.error;
+  $('start').disabled = !!running; $('stop').disabled = !running; $('dstart').disabled = !!running;
+  if (running === 'duet' && m) {
+    $('dphase').textContent = `${m.phase || '—'} ${m.beat ? m.beat + '/' + m.K : ''}`;
+    $('dchord').textContent = m.chord || '—';
+    $('dpair').textContent = (m.her || '—') + ' → ' + (m.duet || '—');
+  }
+  if (!running && window._wasRunning) loadSessions();
+  window._wasRunning = !!running;
+  if (m && m.in_db !== undefined) {
+    $('barIn').firstElementChild.style.width = pct(m.in_db) + '%'; $('inV').textContent = m.in_db.toFixed(0) + ' dB';
+    $('barOut').firstElementChild.style.width = pct(m.out_db) + '%'; $('outV').textContent = m.out_db.toFixed(0) + ' dB';
+    if (running !== 'duet') { $('her').textContent = m.her || '—'; $('duetN').textContent = m.duet || '—'; }
+    $('gateB').textContent = m.gate ? 'open' : 'closed';
+    $('gateB').style.color = m.gate ? 'var(--duet)' : 'var(--ink2)';
+    const lat = s.latency_ms ? `sound card latency in ${s.latency_ms[0]} ms / out ${s.latency_ms[1]} ms` : '';
+    $('stats').textContent = running === 'live'
+      ? `${lat} · glitches ${m.xruns} · compute ${m.compute_ms.toFixed(2)} ms (max ${m.peak_compute_ms.toFixed(1)}) per 2.67 ms block · gate open ${(100 * m.gate_share).toFixed(0)}%`
+      : '';
+  }
+};
+
+const LABEL = {'listen.mp3': 'Her + Duet', 'phrase.mp3': 'The phrase'};
+async function loadSessions() {
+  if ([...document.querySelectorAll('#sess audio')].some(a => !a.paused && !a.ended)) return;   // do not cut playback
+  const j = await api('/api/sessions');
+  const box = $('sess'); box.innerHTML = '';
+  const list = j.sessions.filter(s => s.mode === 'live' || s.mode === 'duet');
+  if (!list.length) { box.innerHTML = '<p class="hint">No recordings yet.</p>'; }
+  for (const s of list) {
+    const div = document.createElement('div'); div.className = 's';
+    const st = s.settings && s.settings.tonic !== undefined ? ` · ${NAMES[s.settings.tonic]} major` + (s.mode === 'live' ? ` · gain +${s.settings.pre} dB` : '') : '';
+    const kind = s.mode === 'live' ? 'Harmonizer' : 'Duet';
+    const br = s.settings && s.settings.brain ? (s.settings.brain === 'policy' ? ' · policy' : ' · HMM') : '';
+    const dx = s.duet ? `${br} · sang ${s.duet.beats_sung}/${s.duet.beats_decided} beats` + (s.duet.consonant !== undefined ? ` · consonant ${(100 * s.duet.consonant).toFixed(0)}% · chord right ${(100 * s.duet.chord_right).toFixed(0)}%` : '') : '';
+    div.innerHTML = `<div class="t">${kind} ${s.name.split('_').slice(1).join(' ')} <small>${s.seconds}s${st}${dx}</small></div>`;
+    for (const f of s.mp3) {
+      const base = f.split('/').pop();
+      div.insertAdjacentHTML('beforeend', `<div class="hint">${LABEL[base] || base}</div><audio controls preload="none" src="/files/${f}"></audio>`);
+    }
+    box.appendChild(div);
+  }
+}
+$('monOn').addEventListener('change', live);
+labels(); dlabels(); loadDevices(); loadSessions();
+</script>
+</body>
+</html>

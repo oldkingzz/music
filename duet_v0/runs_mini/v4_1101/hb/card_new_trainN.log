@@ -1,0 +1,2 @@
+2026-11-01 16:30:42 START tl=120 cwd=$ABS/futures/v3_nolatency $ABS/.venv/bin/python -c import sys; sys.path.insert(0, '$ABS/futures/v3_nolatency'); import bench3; t = bench3.train_sets(); print({k: len(v) for k, v in t.items()}); print({k: sum(len(s['sop']) for s in v) for k, v in t.items()})
+2026-11-01 16:30:43 END rc=0 secs=1 $ABS/.venv/bin/python -c import sys; sys.path.insert(0, '$ABS/futures/v3_nolatency'); import bench3; t = bench3.train_sets(); print({k: len(v) for k, v in t.items()}); print({k: sum(len(s['sop']) for s in v) for k, v in t.items()})

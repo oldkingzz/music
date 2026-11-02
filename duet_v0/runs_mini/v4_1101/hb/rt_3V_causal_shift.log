@@ -1,0 +1,2 @@
+2026-11-02 04:05:41 START tl=600 cwd=$ABS $ABS/.venv/bin/python $ABS/runs_mini/v5rt_1101/verify/VER3_causal_probe_regtrkst_v1.py --phase shift --out $ABS/runs_mini/v5rt_1101/verify/VER3_causal_probe_shift_v1.json
+2026-11-02 04:06:43 END rc=0 secs=62 $ABS/.venv/bin/python $ABS/runs_mini/v5rt_1101/verify/VER3_causal_probe_regtrkst_v1.py --phase shift --out $ABS/runs_mini/v5rt_1101/verify/VER3_causal_probe_shift_v1.json

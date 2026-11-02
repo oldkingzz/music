@@ -1,0 +1,2 @@
+2026-11-01 14:39:13 START tl=600 cwd=$ABS/runs_mini/v4_1101/diag $ABS/.venv/bin/python $ABS/runs_mini/v4_1101/tools/diag_rt.py diag_rt_v1
+2026-11-01 14:39:26 END rc=0 secs=13 $ABS/.venv/bin/python $ABS/runs_mini/v4_1101/tools/diag_rt.py diag_rt_v1

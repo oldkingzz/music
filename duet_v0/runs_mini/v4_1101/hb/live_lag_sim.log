@@ -1,0 +1,14 @@
+2026-11-01 21:23:08 START tl=300 cwd=$ABS .venv/bin/python -c 
+import sys; sys.argv=['x']; sys.path.insert(0,'futures/v4_selfiter')
+import numpy as np, soundfile as sf, live_bench3 as LB, bench3
+from songs import twinkle
+sysm=LB.build('r2_mix_v2', bench3.train_sets())
+x,sr=sf.read('futures/live_test/phone/twinkle_C_80bpm_countin.wav',dtype='float32',always_2d=True); her=x.mean(1)
+song=twinkle(); true=sorted(song['sop']); beat1,Tb=4.0,0.75
+2026-11-01 21:23:11 END rc=0 secs=3 .venv/bin/python -c 
+import sys; sys.argv=['x']; sys.path.insert(0,'futures/v4_selfiter')
+import numpy as np, soundfile as sf, live_bench3 as LB, bench3
+from songs import twinkle
+sysm=LB.build('r2_mix_v2', bench3.train_sets())
+x,sr=sf.read('futures/live_test/phone/twinkle_C_80bpm_countin.wav',dtype='float32',always_2d=True); her=x.mean(1)
+song=twinkle(); true=sorted(song['sop']); beat1,Tb=4.0,0.75

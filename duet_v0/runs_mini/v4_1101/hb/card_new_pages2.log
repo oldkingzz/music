@@ -1,0 +1,2 @@
+2026-11-01 16:56:42 START tl=60 cwd=$ABS/runs_mini/v4_1101/report_drafts $ABS/.venv/bin/python -I $ABS/runs_mini/v4_1101/report_drafts/tools/page_estimate.py 46 CARD_m1_zh.md CARD_new_zh.md
+2026-11-01 16:56:42 END rc=0 secs=0 $ABS/.venv/bin/python -I $ABS/runs_mini/v4_1101/report_drafts/tools/page_estimate.py 46 CARD_m1_zh.md CARD_new_zh.md

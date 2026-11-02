@@ -1,0 +1,16 @@
+2026-11-01 20:55:41 START tl=300 cwd=$ABS .venv/bin/python -c 
+import sys,json,numpy as np,soundfile as sf
+sys.path.insert(0,'.')
+from follow import FeatureTracker
+from dsp import HOP
+x,sr=sf.read('runs_mini/live/205128_r2_mix_v2/run.wav',dtype='float32',always_2d=True)
+mic=x[:,0]; out=x[:,1]
+print('sr',sr,'sec',round(len(mic)/sr,1),'mic rms dB',round(20*np.log10(np.sqrt(np.mean(mic**2))+1e-9),1),'peak',round(float(np.abs(mic).max()),3),'
+2026-11-01 20:55:41 END rc=0 secs=1 .venv/bin/python -c 
+import sys,json,numpy as np,soundfile as sf
+sys.path.insert(0,'.')
+from follow import FeatureTracker
+from dsp import HOP
+x,sr=sf.read('runs_mini/live/205128_r2_mix_v2/run.wav',dtype='float32',always_2d=True)
+mic=x[:,0]; out=x[:,1]
+print('sr',sr,'sec',round(len(mic)/sr,1),'mic rms dB',round(20*np.log10(np.sqrt(np.mean(mic**2))+1e-9),1),'peak',round(float(np.abs(mic).max()),3),'

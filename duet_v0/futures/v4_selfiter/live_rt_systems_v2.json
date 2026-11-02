@@ -1,0 +1,10 @@
+{
+ "written": "2026-11-02 04:31 EST, run v5rt_1101 after round 3 (val only, tuned on val; no test split)",
+ "default": "r3_X_regtrkst_v1",
+ "systems": {
+  "r3_X_regtrkst_v1": "实时预判 第 3 轮（推荐：低嗓音自动换八度，按真实听音误差判断，少“先错后改”）",
+  "r3_X_regtrkstsafe_v1": "实时预判 第 3 轮保守版（新起刺耳最少，稍晚一点）",
+  "r2_copyhm_v1": "实时预判 第 2 轮（对照用：低嗓音和真人声音上较差，常“先错后改”）"
+ },
+ "why_default": "Round-3 rule pick (state_R2 round3_selection_rule_fixed_now), confirmed by the orchestrator's own gate check (verify/r3_gates_orch_v2.json) and the verify agent (partial: reproduced, causal, gates pass). Live bench vs reactive: sung 0.607 vs 0.594, octave-lower voice 0.641 vs 0.401, fresh clashes 20 vs 51 and 11 vs 38, stumbles 3.3 / 3.9 per 100 (round 2: about 11-13); v11 fresh_heard 2 vs 4. Caveats: v11 was used for tuning; on low voices Duet sits above her about 20% of the time."
+}

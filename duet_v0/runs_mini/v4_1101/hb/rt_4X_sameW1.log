@@ -1,0 +1,2 @@
+2026-11-02 06:42:32 START tl=600 cwd=$ABS $ABS/.venv/bin/python $ABS/runs_mini/v5rt_1101/r4/X/same_as_W_v1.py --out $ABS/runs_mini/v5rt_1101/r4/X/same_as_W_v1.json
+2026-11-02 06:42:33 END rc=0 secs=0 $ABS/.venv/bin/python $ABS/runs_mini/v5rt_1101/r4/X/same_as_W_v1.py --out $ABS/runs_mini/v5rt_1101/r4/X/same_as_W_v1.json

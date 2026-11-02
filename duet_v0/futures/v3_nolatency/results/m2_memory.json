@@ -1,0 +1,130 @@
+{
+ "label": "m2_memory",
+ "best_system": "m2_memory_v4",
+ "headline": 0.6731,
+ "rows": {
+  "bach": {
+   "music": 0.6969,
+   "cons": 0.9573,
+   "fit": 0.7028,
+   "harsh": 0.027,
+   "double": 0.2028,
+   "leap": 4.0634,
+   "big": 0.0147,
+   "par": 0.005,
+   "us_per_note": 57.4923
+  },
+  "folk": {
+   "music": 0.7563,
+   "cons": 0.958,
+   "fit": 0.7744,
+   "harsh": 0.0275,
+   "double": 0.2094,
+   "leap": 4.0694,
+   "big": 0.0307,
+   "par": 0.0066,
+   "us_per_note": 59.8969
+  },
+  "pop": {
+   "music": 0.6166,
+   "cons": 0.9487,
+   "fit": 0.6391,
+   "harsh": 0.023,
+   "double": 0.1286,
+   "leap": 3.899,
+   "big": 0.0316,
+   "par": 0.0043,
+   "us_per_note": 53.9252
+  },
+  "pop909": {
+   "music": 0.6224,
+   "cons": 0.9529,
+   "fit": 0.6425,
+   "harsh": 0.0238,
+   "double": 0.1634,
+   "leap": 4.1389,
+   "big": 0.0224,
+   "par": 0.0065,
+   "us_per_note": 51.7797
+  }
+ },
+ "flags": [],
+ "history_use": "Duet keeps a running guess of which chord the song is on, updated with every note she has sung so far (notes on the downbeat count more than passing notes in between). A few notes later it looks back and re-guesses the chord under each earlier note using the notes that came after it, and files that better guess in a memory of this song under a key made of the last 2-4 notes plus where they fell in the bar. When she sings the same little phrase again, Duet pulls out the chord it worked out last time, so repeats get consistent, better-informed harmony; history length matters mostly for the last 2-4 beats (music 0.637 with none, 0.667 with 2 beats, 0.670 with 4) and the long-range song memory adds a smaller +0.004 (most in pop909, which repeats a lot).",
+ "history_sweep_DUET_HIST": {
+  "0": 0.637,
+  "1": 0.656,
+  "2": 0.667,
+  "4": 0.67,
+  "8": 0.668,
+  "16": 0.67,
+  "64": 0.672,
+  "all": 0.6731
+ },
+ "memory_stats_val": {
+  "bach": {
+   "fire_rate": 0.308,
+   "acc_filter_when_fired": 0.41,
+   "acc_combined_when_fired": 0.439,
+   "acc_memory_alone_when_fired": 0.4,
+   "acc_filter_when_not_fired": 0.385
+  },
+  "folk": {
+   "fire_rate": 0.382,
+   "acc_filter_when_fired": 0.609,
+   "acc_combined_when_fired": 0.63,
+   "acc_memory_alone_when_fired": 0.588,
+   "acc_filter_when_not_fired": 0.528
+  },
+  "pop": {
+   "fire_rate": 0.313,
+   "acc_filter_when_fired": 0.36,
+   "acc_combined_when_fired": 0.36,
+   "acc_memory_alone_when_fired": 0.343,
+   "acc_filter_when_not_fired": 0.351
+  },
+  "pop909": {
+   "fire_rate": 0.608,
+   "acc_filter_when_fired": 0.342,
+   "acc_combined_when_fired": 0.36,
+   "acc_memory_alone_when_fired": 0.358,
+   "acc_filter_when_not_fired": 0.299
+  }
+ },
+ "memory_stats_note": "fire_rate = share of scored notes whose context matched an earlier one in the same song; accuracies = argmax chord vs true chord label (analysis only, after the run). Memory raises chord accuracy on fired notes by +2-3 points in bach/folk/pop909, ~0 in pop.",
+ "other_systems": [
+  {
+   "name": "m2_memory_v1",
+   "headline": 0.6634,
+   "note": "plain note-level chord HMM + memory, vl 0.01 dbl 0.12 (memory off: 0.658); default vl 0.02 dbl 0.25: 0.639 vs 0.633 memory off"
+  },
+  {
+   "name": "m2_memory_v3",
+   "headline": 0.6731,
+   "note": "metric-aware chord model (emission by bar/beat/off-beat onset, transitions by bar position of new beat) + memory; memory off 0.669"
+  },
+  {
+   "name": "m2_memory_v3 dbl=0.2",
+   "headline": 0.653,
+   "note": "same as v4 with a stronger doubling penalty; doubling drops but music falls"
+  },
+  {
+   "name": "m2_memory_v5",
+   "headline": 0.668,
+   "note": "v4 + emission conditioned on previous pitch class; slightly worse"
+  },
+  {
+   "name": "m2_memory_v2",
+   "headline": 0.663,
+   "note": "v1 with retuned voice-leading weights"
+  }
+ ],
+ "what_failed": "Online adaptation of chord transition counts to this song: no effect when added to corpus counts, and hurts when weighted strongly (Dirichlet prior beta 3: 0.654, 10: 0.661, 30: 0.663 vs 0.663 off), because it learns from its own uncertain guesses. Trusting memory more (weights 1.5/1.0/0.6) hurts (0.670), memory's own chord guess alone is a bit less accurate than the filter, it helps only as an extra vote. Reusing the exact harmony note sung last time at a repeat (hrep 0.05/0.15) slightly hurts (0.672/0.669). Bigram emission (v5) slightly hurts. Caveat: part of the gain over baseline came from a weaker doubling penalty (doubling 0.13-0.21, under the 0.25 flag); with penalty 0.2 the headline is 0.653.",
+ "files": [
+  "/Users/wangzesen/work/claude_sandbox/MEAM5160/project/duet_v0/futures/v3_nolatency/systems/m2_memory_v4.py",
+  "/Users/wangzesen/work/claude_sandbox/MEAM5160/project/duet_v0/futures/v3_nolatency/systems/m2_memory_v3.py",
+  "/Users/wangzesen/work/claude_sandbox/MEAM5160/project/duet_v0/futures/v3_nolatency/systems/m2_memory_v1.py",
+  "/Users/wangzesen/work/claude_sandbox/MEAM5160/project/duet_v0/futures/v3_nolatency/systems/m2_memory_v2.py",
+  "/Users/wangzesen/work/claude_sandbox/MEAM5160/project/duet_v0/futures/v3_nolatency/systems/m2_memory_v5.py",
+  "/private/tmp/claude-501/-Users-wangzesen-work-claude-sandbox-MEAM5160/6ab47876-3a40-4016-8958-f13b4835c161/scratchpad/memacc4.py"
+ ]
+}

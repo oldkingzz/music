@@ -1,0 +1,2 @@
+2026-11-01 23:01:18 START tl=600 cwd=$ABS $ABS/.venv/bin/python $ABS/runs_mini/v5rt_1101/tools/attack_metric.py rt:r1_C_revoice_v2 --L 0.1 --out $ABS/runs_mini/v5rt_1101/attack/C_rt_r1_C_revoice_v2_L0.1.json
+2026-11-01 23:01:32 END rc=0 secs=14 $ABS/.venv/bin/python $ABS/runs_mini/v5rt_1101/tools/attack_metric.py rt:r1_C_revoice_v2 --L 0.1 --out $ABS/runs_mini/v5rt_1101/attack/C_rt_r1_C_revoice_v2_L0.1.json

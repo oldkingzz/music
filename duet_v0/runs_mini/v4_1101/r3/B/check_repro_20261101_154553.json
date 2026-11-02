@@ -1,0 +1,71 @@
+{
+ "songs": {
+  "bach": 17,
+  "folk": 170,
+  "pop": 300,
+  "pop909": 40
+ },
+ "v1_E5_off_vs_recorded_r2_mix_v2": {
+  "got": {
+   "bach": {
+    "music_nd": 0.685251798561151,
+    "double": 0.055305755395683456
+   },
+   "folk": {
+    "music_nd": 0.7125780357578692,
+    "double": 0.05361778869190362
+   },
+   "pop": {
+    "music_nd": 0.5907704515585092,
+    "double": 0.022168770302774816
+   },
+   "pop909": {
+    "music_nd": 0.589111572902715,
+    "double": 0.03611186128707759
+   },
+   "headline_nd": 0.6444279646950611
+  },
+  "recorded": {
+   "bach": {
+    "music_nd": 0.685251798561151,
+    "double": 0.055305755395683456
+   },
+   "folk": {
+    "music_nd": 0.7125780357578692,
+    "double": 0.05361778869190362
+   },
+   "pop": {
+    "music_nd": 0.5907704515585092,
+    "double": 0.022168770302774816
+   },
+   "pop909": {
+    "music_nd": 0.589111572902715,
+    "double": 0.03611186128707759
+   },
+   "headline_nd": 0.6444279646950611
+  },
+  "exact": true
+ },
+ "r3_true_cons_v1_vs_own_recorded": {
+  "got_headline_nd": 0.6442527623721008,
+  "recorded_headline_nd": 0.6442527623721008,
+  "exact": true
+ },
+ "r3_true_cons_v2_vs_own_recorded": {
+  "got_headline_nd": 0.6435983953469587,
+  "recorded_headline_nd": 0.6435983953469587,
+  "exact": true
+ },
+ "r3_true_cons_v3_vs_own_recorded": {
+  "got_headline_nd": 0.6448927668339601,
+  "recorded_headline_nd": 0.6448927668339601,
+  "exact": true
+ },
+ "r3_true_cons_v4_vs_own_recorded": {
+  "got_headline_nd": 0.6448233813502218,
+  "recorded_headline_nd": 0.6448233813502218,
+  "exact": true
+ },
+ "all_ok": true,
+ "secs": 44.1
+}

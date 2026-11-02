@@ -1,0 +1,271 @@
+{
+ "note": "idea D dev runs; val only, tuned on val, no test split",
+ "lib": "r3_D_lib_v3",
+ "mode": "bench",
+ "rows": [
+  {
+   "name": "G_hs_copy",
+   "seed": "seed1",
+   "headline": {
+    "rt_nd": 0.6195663984492885,
+    "harsh": 0.030620666185523095,
+    "fresh_per100": 1.1745968896797836,
+    "on_time_right": 0.2762406909366108,
+    "us_mean": 146.14770411047962
+   },
+   "rows": {
+    "bach": {
+     "rt_nd": 0.6760341726618658,
+     "harsh": 0.03426258992805747,
+     "fresh_per100": 1.6898608349900597,
+     "on_time_right": 0.22962226640159045
+    },
+    "folk": {
+     "rt_nd": 0.6628330272130272,
+     "harsh": 0.03447487216206045,
+     "fresh_per100": 1.2624543597994926,
+     "on_time_right": 0.2968005445881552
+    },
+    "pop": {
+     "rt_nd": 0.5552905001611669,
+     "harsh": 0.028928509435365745,
+     "fresh_per100": 0.9292519131657035,
+     "on_time_right": 0.26792128689676714
+    },
+    "pop909": {
+     "rt_nd": 0.5841078937610941,
+     "harsh": 0.024816693216608714,
+     "fresh_per100": 0.8168204507638784,
+     "on_time_right": 0.3106186658599304
+    }
+   },
+   "d_vs_reactive": {
+    "rt_nd": 0.01880027265600348,
+    "harsh": -0.02348174286942048
+   },
+   "secs": 19.1,
+   "songs_shifted": {
+    "bach": 0,
+    "folk": 5,
+    "pop": 34,
+    "pop909": 4
+   },
+   "checks": {
+    "rt_nd +0.005": true,
+    "harsh <= reactive": true,
+    "us < 2000": true,
+    "fresh <= reactive": true,
+    "bach harsh": true,
+    "bach rt_nd": true,
+    "bach fresh": true,
+    "folk harsh": true,
+    "folk rt_nd": true,
+    "folk fresh": true,
+    "pop harsh": true,
+    "pop rt_nd": true,
+    "pop fresh": true,
+    "pop909 harsh": true,
+    "pop909 rt_nd": true,
+    "pop909 fresh": true
+   }
+  },
+  {
+   "name": "G_hs_safe",
+   "seed": "seed1",
+   "headline": {
+    "rt_nd": 0.6177987236210195,
+    "harsh": 0.03173494686420934,
+    "fresh_per100": 1.031727667363891,
+    "on_time_right": 0.2689028549032946,
+    "us_mean": 141.89875287589518
+   },
+   "rows": {
+    "bach": {
+     "rt_nd": 0.6761241007194196,
+     "harsh": 0.036420863309352444,
+     "fresh_per100": 1.4910536779324055,
+     "on_time_right": 0.22465208747514911
+    },
+    "folk": {
+     "rt_nd": 0.6608641826825515,
+     "harsh": 0.03579464711907022,
+     "fresh_per100": 1.1201188192338636,
+     "on_time_right": 0.28733213688965903
+    },
+    "pop": {
+     "rt_nd": 0.5531678528033174,
+     "harsh": 0.02917152280110091,
+     "fresh_per100": 0.8199281586756209,
+     "on_time_right": 0.26268936436045603
+    },
+    "pop909": {
+     "rt_nd": 0.5810387582787894,
+     "harsh": 0.025552754227313783,
+     "fresh_per100": 0.6958100136136742,
+     "on_time_right": 0.3009378308879141
+    }
+   },
+   "d_vs_reactive": {
+    "rt_nd": 0.017032597827734475,
+    "harsh": -0.02236746219073423
+   },
+   "secs": 18.8,
+   "songs_shifted": {
+    "bach": 0,
+    "folk": 5,
+    "pop": 34,
+    "pop909": 4
+   },
+   "checks": {
+    "rt_nd +0.005": true,
+    "harsh <= reactive": true,
+    "us < 2000": true,
+    "fresh <= reactive": true,
+    "bach harsh": true,
+    "bach rt_nd": true,
+    "bach fresh": true,
+    "folk harsh": true,
+    "folk rt_nd": true,
+    "folk fresh": true,
+    "pop harsh": true,
+    "pop rt_nd": true,
+    "pop fresh": true,
+    "pop909 harsh": true,
+    "pop909 rt_nd": true,
+    "pop909 fresh": true
+   }
+  },
+  {
+   "name": "G_hs_hm",
+   "seed": "seed1",
+   "headline": {
+    "rt_nd": 0.622197114426297,
+    "harsh": 0.03091614762103867,
+    "fresh_per100": 1.3465754871912294,
+    "on_time_right": 0.2855661576281093,
+    "us_mean": 150.83432906596352
+   },
+   "rows": {
+    "bach": {
+     "rt_nd": 0.6694694244604273,
+     "harsh": 0.03534172661870495,
+     "fresh_per100": 1.9880715705765408,
+     "on_time_right": 0.23757455268389663
+    },
+    "folk": {
+     "rt_nd": 0.6670148902553211,
+     "harsh": 0.03434814900584881,
+     "fresh_per100": 1.3181508756729996,
+     "on_time_right": 0.30435051673989727
+    },
+    "pop": {
+     "rt_nd": 0.5553103379869418,
+     "harsh": 0.02868053661318701,
+     "fresh_per100": 0.968296111197876,
+     "on_time_right": 0.27088864594721224
+    },
+    "pop909": {
+     "rt_nd": 0.5969938050024975,
+     "harsh": 0.02529417824641392,
+     "fresh_per100": 1.111783391317501,
+     "on_time_right": 0.32945091514143093
+    }
+   },
+   "d_vs_reactive": {
+    "rt_nd": 0.02143098863301196,
+    "harsh": -0.023186261433904905
+   },
+   "secs": 19.9,
+   "songs_shifted": {
+    "bach": 0,
+    "folk": 5,
+    "pop": 34,
+    "pop909": 4
+   },
+   "checks": {
+    "rt_nd +0.005": true,
+    "harsh <= reactive": true,
+    "us < 2000": true,
+    "fresh <= reactive": true,
+    "bach harsh": true,
+    "bach rt_nd": true,
+    "bach fresh": true,
+    "folk harsh": true,
+    "folk rt_nd": true,
+    "folk fresh": true,
+    "pop harsh": true,
+    "pop rt_nd": true,
+    "pop fresh": true,
+    "pop909 harsh": true,
+    "pop909 rt_nd": true,
+    "pop909 fresh": true
+   }
+  },
+  {
+   "name": "D_copy",
+   "seed": "seed1",
+   "headline": {
+    "rt_nd": 0.6305152021289124,
+    "harsh": 0.03256472791726529,
+    "fresh_per100": 1.2833324647178848,
+    "on_time_right": 0.28190387201615075,
+    "us_mean": 145.47570467013156
+   },
+   "rows": {
+    "bach": {
+     "rt_nd": 0.6862859712230167,
+     "harsh": 0.033992805755395594,
+     "fresh_per100": 1.7892644135188867,
+     "on_time_right": 0.2286282306163022
+    },
+    "folk": {
+     "rt_nd": 0.6749922652244926,
+     "harsh": 0.037374049942555554,
+     "fresh_per100": 1.3676588897827835,
+     "on_time_right": 0.3033603564577016
+    },
+    "pop": {
+     "rt_nd": 0.5679271951793905,
+     "harsh": 0.03294070969821746,
+     "fresh_per100": 1.0385756676557865,
+     "on_time_right": 0.2749492425425582
+    },
+    "pop909": {
+     "rt_nd": 0.5928553768887498,
+     "harsh": 0.02595134627289255,
+     "fresh_per100": 0.9378308879140826,
+     "on_time_right": 0.32067765844804114
+    }
+   },
+   "d_vs_reactive": {
+    "rt_nd": 0.0297490763356274,
+    "harsh": -0.02153768113767828
+   },
+   "secs": 19.0,
+   "songs_shifted": {
+    "bach": 0,
+    "folk": 5,
+    "pop": 34,
+    "pop909": 4
+   },
+   "checks": {
+    "rt_nd +0.005": true,
+    "harsh <= reactive": true,
+    "us < 2000": true,
+    "fresh <= reactive": true,
+    "bach harsh": true,
+    "bach rt_nd": true,
+    "bach fresh": true,
+    "folk harsh": true,
+    "folk rt_nd": true,
+    "folk fresh": true,
+    "pop harsh": true,
+    "pop rt_nd": true,
+    "pop fresh": true,
+    "pop909 harsh": true,
+    "pop909 rt_nd": true,
+    "pop909 fresh": true
+   }
+  }
+ ]
+}

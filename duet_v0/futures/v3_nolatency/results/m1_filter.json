@@ -1,0 +1,125 @@
+{
+ "label": "m1_filter",
+ "best_system": "m1_filter_v5",
+ "headline": 0.6872,
+ "rows": {
+  "bach": {
+   "music": 0.751,
+   "cons": 0.96,
+   "fit": 0.754,
+   "harsh": 0.025,
+   "double": 0.195,
+   "leap": 3.781,
+   "big": 0.006,
+   "par": 0.004
+  },
+  "folk": {
+   "music": 0.751,
+   "cons": 0.959,
+   "fit": 0.769,
+   "harsh": 0.025,
+   "double": 0.185,
+   "leap": 3.766,
+   "big": 0.008,
+   "par": 0.007
+  },
+  "pop": {
+   "music": 0.599,
+   "cons": 0.946,
+   "fit": 0.623,
+   "harsh": 0.023,
+   "double": 0.121,
+   "leap": 3.616,
+   "big": 0.011,
+   "par": 0.004
+  },
+  "pop909": {
+   "music": 0.648,
+   "cons": 0.949,
+   "fit": 0.67,
+   "harsh": 0.026,
+   "double": 0.186,
+   "leap": 3.834,
+   "big": 0.006,
+   "par": 0.007
+  }
+ },
+ "flags": [],
+ "history_use": "Duet keeps one running guess of which of the 7 chords is playing, as probabilities. Every finished beat it nudges that guess using how chords usually move at that point in the bar (learned from labelled training songs: chords mostly change on beat 1) and then re-weights it by how well the notes she just held fit each chord; her current note is counted too before Duet picks. So the past is used only through this chord guess plus Duet's own last note (to move in small steps), and in practice only the last ~4 beats matter: with history cut to 0 / 1 / 4 beats / all, music is 0.628 / 0.671 / 0.685 / 0.687 (low-doubling variant: 0.624 / 0.640 / 0.653 / 0.654).",
+ "other_systems": [
+  {
+   "name": "m1_filter_v5lo",
+   "headline": 0.654,
+   "note": "same filter, stronger octave penalty (w_oct 0.3): doubling only 3-5 % vs 12-20 % for v5; the more honest 'real harmony' version. Doubling trade-off curve (w_oct -> music, max double): 0.6->0.637/low, 0.3->0.654/0.048, 0.2->0.677/0.137, 0.15->0.687/0.195, 0->0.707/0.405 (DOUBLING flag). Part of v5's gain over v5lo is octave echoing, which 'music' counts as consonant."
+  },
+  {
+   "name": "m1_filter_v1",
+   "headline": 0.6143,
+   "note": "first filter: pooled counts, clean emission table, step cost 0.04"
+  },
+  {
+   "name": "m1_filter_v2/v3 (tuning only, not on board)",
+   "headline": 0.6457,
+   "note": "noisy emission (accounts for 10 % mishearing) +0.008; balancing train datasets equally (pop no longer drowns bach/folk) +0.009, mostly bach/pop909, costs pop -0.018; lower step cost 0.04->0.01 +0.015"
+  },
+  {
+   "name": "m1_filter_v4 (style mixture, tuning only)",
+   "headline": 0.6413,
+   "note": "factorial filter over (style, chord) with 4 per-dataset HMMs; melody alone cannot tell pop from pop909/folk (pop songs got 42 % pop909 weight), no gain over balanced pooled"
+  }
+ ],
+ "what_failed": "2nd-order chord transitions (+0.001, noise); lookahead blend of next-beat chord for notes that run into the next beat (+0.0005); mishearing-aware expected-consonance choice (-0.0004); style mixture filter (-0.004 vs balanced pooled); repetition memory (prior mixed with the posterior 4/8/16 bars ago: -0.003 to -0.023, probably bar misalignment); metric weighting of off-beat notes (+0.001, noise); temperature on current-note evidence (0.7 or 1.3 both worse). The big remaining lever is not the chord guess (fit ~0.62 pop, ~0.75 bach/folk) but the doubling penalty, which trades real harmony for score.",
+ "files": [
+  "/Users/wangzesen/work/claude_sandbox/MEAM5160/project/duet_v0/futures/v3_nolatency/systems/m1_filter_v5.py",
+  "/Users/wangzesen/work/claude_sandbox/MEAM5160/project/duet_v0/futures/v3_nolatency/systems/m1_filter_v5lo.py",
+  "/Users/wangzesen/work/claude_sandbox/MEAM5160/project/duet_v0/futures/v3_nolatency/systems/m1_filter_v1.py",
+  "/Users/wangzesen/work/claude_sandbox/MEAM5160/project/duet_v0/futures/v3_nolatency/systems/m1_filter_v3.py",
+  "/Users/wangzesen/work/claude_sandbox/MEAM5160/project/duet_v0/futures/v3_nolatency/systems/m1_filter_v4.py",
+  "/Users/wangzesen/work/claude_sandbox/MEAM5160/project/duet_v0/futures/v3_nolatency/systems/m1_filter_v6.py",
+  "/Users/wangzesen/work/claude_sandbox/MEAM5160/project/duet_v0/futures/v3_nolatency/systems/m1_filter_v7.py",
+  "/Users/wangzesen/work/claude_sandbox/MEAM5160/project/duet_v0/futures/v3_nolatency/m1_tune.py"
+ ],
+ "rows_v5lo": {
+  "bach": {
+   "music": 0.712,
+   "cons": 0.959,
+   "fit": 0.715,
+   "harsh": 0.026,
+   "double": 0.048,
+   "leap": 3.528,
+   "big": 0.003,
+   "par": 0.001
+  },
+  "folk": {
+   "music": 0.714,
+   "cons": 0.958,
+   "fit": 0.732,
+   "harsh": 0.025,
+   "double": 0.041,
+   "leap": 3.605,
+   "big": 0.009,
+   "par": 0.004
+  },
+  "pop": {
+   "music": 0.579,
+   "cons": 0.944,
+   "fit": 0.603,
+   "harsh": 0.024,
+   "double": 0.027,
+   "leap": 3.52,
+   "big": 0.011,
+   "par": 0.003
+  },
+  "pop909": {
+   "music": 0.611,
+   "cons": 0.949,
+   "fit": 0.631,
+   "harsh": 0.025,
+   "double": 0.034,
+   "leap": 3.593,
+   "big": 0.007,
+   "par": 0.004
+  }
+ },
+ "flags_v5lo": []
+}

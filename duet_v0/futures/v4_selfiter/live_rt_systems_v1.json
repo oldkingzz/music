@@ -1,0 +1,10 @@
+{
+ "written": "2026-11-02 01:10 EST, run v5rt_1101 after round 2 (val only, tuned on val)",
+ "default": "r2_copyhm_v1",
+ "systems": {
+  "r2_copyhm_v1": "实时预判 r2_copyhm_v1（推荐：分数几乎同冠军，起音刺耳最少）",
+  "r2_copyhmbold_v1": "实时预判 r2_copyhmbold_v1（第 2 轮冠军，更敢提前）",
+  "r2_copysafe_v1": "实时预判 r2_copysafe_v1（最保守，最少刺耳）"
+ },
+ "why_default": "r2_copyhm_v1 is 0.0007 rt_nd behind the verified champion r2_copyhmbold_v1 (within selection noise, per the verifier) and has fewer fresh clashes in every dataset (1.42 vs 1.54 per 100 notes; bach 1.99, below reactive's 2.09), and fresh wrong attacks are what Vincent's ear punished."
+}

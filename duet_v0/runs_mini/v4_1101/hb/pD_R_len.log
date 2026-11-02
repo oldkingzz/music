@@ -1,0 +1,24 @@
+2026-11-01 16:46:07 START tl=600 cwd=$ABS $ABS/.venv/bin/python -I -c 
+import re,sys
+for f in ['MORNING.md','TEAM.md','DIAGNOSIS_zh.md']:
+    t=open('$ABS/runs_mini/v4_1101/report_drafts/'+f).read()
+    t=re.sub(r'<!--.*?-->','',t,flags=re.S)
+    lines=[l for l in t.split('\n')]
+    tot=0
+    for l in lines:
+        w=sum(1.0 if ord(c)>0x2e80 else 0.5 for c in l)
+        tot+=max(1,-(-w//42))
+    cjk=sum(1 for c in t if ord(c)>0x2e80)
+   
+2026-11-01 16:46:07 END rc=0 secs=0 $ABS/.venv/bin/python -I -c 
+import re,sys
+for f in ['MORNING.md','TEAM.md','DIAGNOSIS_zh.md']:
+    t=open('$ABS/runs_mini/v4_1101/report_drafts/'+f).read()
+    t=re.sub(r'<!--.*?-->','',t,flags=re.S)
+    lines=[l for l in t.split('\n')]
+    tot=0
+    for l in lines:
+        w=sum(1.0 if ord(c)>0x2e80 else 0.5 for c in l)
+        tot+=max(1,-(-w//42))
+    cjk=sum(1 for c in t if ord(c)>0x2e80)
+   

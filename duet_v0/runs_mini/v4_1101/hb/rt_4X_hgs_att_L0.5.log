@@ -1,0 +1,2 @@
+2026-11-02 06:25:31 START tl=600 cwd=$ABS $ABS/.venv/bin/python $ABS/runs_mini/v5rt_1101/tools/attack_metric.py rt:r4_X_hgsafe_v1 --L 0.5 --out $ABS/runs_mini/v5rt_1101/attack/R4X_rt_r4_X_hgsafe_v1_L0.5.json
+2026-11-02 06:25:55 END rc=0 secs=24 $ABS/.venv/bin/python $ABS/runs_mini/v5rt_1101/tools/attack_metric.py rt:r4_X_hgsafe_v1 --L 0.5 --out $ABS/runs_mini/v5rt_1101/attack/R4X_rt_r4_X_hgsafe_v1_L0.5.json

@@ -1,0 +1,2 @@
+2026-11-02 03:53:23 START tl=600 cwd=$ABS $ABS/.venv/bin/python $ABS/futures/v5_rt/bench_rt.py rt:r3_X_regtrkst_v1 --L 0.15 --out $ABS/runs_mini/v5rt_1101/scores/VER3_rt_r3_X_regtrkst_v1_L0.15.json
+2026-11-02 03:53:43 END rc=0 secs=21 $ABS/.venv/bin/python $ABS/futures/v5_rt/bench_rt.py rt:r3_X_regtrkst_v1 --L 0.15 --out $ABS/runs_mini/v5rt_1101/scores/VER3_rt_r3_X_regtrkst_v1_L0.15.json

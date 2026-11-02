@@ -1,0 +1,284 @@
+{
+ "spec": "rt:r4_H_lagk15hd_v1",
+ "voice": "sung",
+ "note": "val only (17 Bach chorales), tuned on val, no test split; diagnostic, offline, nothing played",
+ "live_bench_rt_v2_sha256": "ffeb1ab0b6585719afcb6baf974cf1fc0a373852822eb12b32875572ed442946",
+ "settings": {
+  "bt_cal": {
+   "hear_attacks": {
+    "n": 596,
+    "per100": 59.24453280318092,
+    "fresh": 41,
+    "fresh_per100": 4.075546719681909,
+    "sounding_beats": 757.1054375000007,
+    "hit_share_new": 0.49131264203587816,
+    "hit_share_replaced": 0.1745687138748819,
+    "harsh_share_new": 0.12700696264545108,
+    "harsh_share_replaced": 0.21393670298089132,
+    "net_rt_nd": 0.2156846787095529,
+    "net_harsh": -0.05919423056793133,
+    "dur_ms_median": 670.0,
+    "by_action": {
+     "switch": 561,
+     "enter": 27,
+     "reenter": 8
+    },
+    "delay_ms": {
+     "p10": 375.29999999999995,
+     "median": 388.70000000000005,
+     "p90": 419.5
+    },
+    "left_of_her_note": {
+     "ended": 109,
+     "0-25%": 6,
+     "25-50%": 395,
+     "50-75%": 64,
+     "75-100%": 22
+    },
+    "left_median": 0.4118493195292171,
+    "lands_on": {
+     "same": 485,
+     "later": 111
+    },
+    "by_left": {
+     "ended": {
+      "n": 109,
+      "per100": 10.834990059642147,
+      "fresh": 27,
+      "fresh_per100": 2.68389662027833,
+      "sounding_beats": 93.60062499999998,
+      "hit_share_new": 0.374094330733213,
+      "hit_share_replaced": 0.2501494292175868,
+      "harsh_share_new": 0.1416804906335836,
+      "harsh_share_replaced": 0.1885673067286045,
+      "net_rt_nd": 0.010434269449450079,
+      "net_harsh": -0.003947154475737608,
+      "dur_ms_median": 350.0
+     },
+     "0-25%": {
+      "n": 6,
+      "per100": 0.5964214711729622,
+      "fresh": 0,
+      "fresh_per100": 0.0,
+      "sounding_beats": 2.04399999999999,
+      "hit_share_new": 0.3237440795249976,
+      "hit_share_replaced": 0.2458404633483295,
+      "harsh_share_new": 0.0,
+      "harsh_share_replaced": 0.2963656004319714,
+      "net_rt_nd": 0.00014321652805821474,
+      "net_harsh": -0.0005448328898301783,
+      "dur_ms_median": 123.15
+     },
+     "25-50%": {
+      "n": 395,
+      "per100": 39.26441351888668,
+      "fresh": 11,
+      "fresh_per100": 1.0934393638170974,
+      "sounding_beats": 474.76899999999966,
+      "hit_share_new": 0.44148250861314137,
+      "hit_share_replaced": 0.17662485318419555,
+      "harsh_share_new": 0.14970443792714241,
+      "harsh_share_replaced": 0.2397853422261597,
+      "net_rt_nd": 0.11309659150797247,
+      "net_harsh": -0.03846535309570404,
+      "dur_ms_median": 670.0
+     },
+     "50-75%": {
+      "n": 64,
+      "per100": 6.361829025844931,
+      "fresh": 3,
+      "fresh_per100": 0.2982107355864811,
+      "sounding_beats": 118.9724374999999,
+      "hit_share_new": 0.6022559755347466,
+      "hit_share_replaced": 0.16677154907185823,
+      "harsh_share_new": 0.09046125012641888,
+      "harsh_share_replaced": 0.2094042881454383,
+      "net_rt_nd": 0.04659868060578265,
+      "net_harsh": -0.01272740952862084,
+      "dur_ms_median": 1340.0
+     },
+     "75-100%": {
+      "n": 22,
+      "per100": 2.1868787276341948,
+      "fresh": 0,
+      "fresh_per100": 0.0,
+      "sounding_beats": 67.71937499999997,
+      "hit_share_new": 0.8128280302891056,
+      "hit_share_replaced": 0.06723421541729412,
+      "harsh_share_new": 0.015635965756502505,
+      "harsh_share_replaced": 0.07325623322751662,
+      "net_rt_nd": 0.04541192061828991,
+      "net_harsh": -0.003509480578038594,
+      "dur_ms_median": 2180.0
+     }
+    },
+    "by_land": {
+     "later": {
+      "n": 111,
+      "per100": 11.033797216699801,
+      "fresh": 27,
+      "fresh_per100": 2.68389662027833,
+      "sounding_beats": 94.18012499999998,
+      "hit_share_new": 0.3718509107786963,
+      "hit_share_replaced": 0.2539457324487876,
+      "harsh_share_new": 0.1408087159961836,
+      "harsh_share_replaced": 0.1878052280911722,
+      "net_rt_nd": 0.009987269614114273,
+      "net_harsh": -0.003980883993935409,
+      "dur_ms_median": 350.0
+     },
+     "same": {
+      "n": 485,
+      "per100": 48.210735586481114,
+      "fresh": 14,
+      "fresh_per100": 1.3916500994035785,
+      "sounding_beats": 662.9253125000007,
+      "hit_share_new": 0.5082842685077789,
+      "hit_share_replaced": 0.16329182130424605,
+      "harsh_share_new": 0.1250461824017623,
+      "harsh_share_replaced": 0.21764913562623256,
+      "net_rt_nd": 0.20569740909543885,
+      "net_harsh": -0.05521334657399592,
+      "dur_ms_median": 680.0
+     }
+    }
+   },
+   "plan_attacks": {
+    "n": 213,
+    "per100": 21.17296222664016,
+    "fresh": 17,
+    "fresh_per100": 1.6898608349900597,
+    "sounding_beats": 306.8135624999999,
+    "hit_share_new": 0.45944793836673464,
+    "hit_share_replaced": 0.21265562219695885,
+    "harsh_share_new": 0.0972290665307033,
+    "harsh_share_replaced": 0.2835537114330699,
+    "net_rt_nd": 0.06810214945976165,
+    "net_harsh": -0.051416142172144325,
+    "dur_ms_median": 666.7
+   },
+   "hear_decisions_delay_ms": {
+    "n": 1006,
+    "p10": 374.1962808685386,
+    "median": 388.6622907602586,
+    "p90": 412.5988403986014
+   },
+   "hear_unmatched": 0,
+   "stumbles": {
+    "total": 11,
+    "per100": 1.0934393638170974,
+    "by_origin": {
+     "hear>plan:switch": 7,
+     "hear>hear:switch": 4
+    },
+    "hear_attack_stumbles": 11,
+    "replaced_by_hear": 4
+   },
+   "plan_points": {
+    "by_state": {
+     "new": {
+      "n": 1003,
+      "share": 0.4522091974752029,
+      "window_beats": 501.34786856711844,
+      "plan_hit_share": 0.30368819457784896,
+      "plan_harsh_share": 0.18956213248127027,
+      "actual_hit_share": 0.31522391990622856,
+      "actual_harsh_share": 0.19459756191566083
+     },
+     "held_heard": {
+      "n": 369,
+      "share": 0.16636609558160506,
+      "window_beats": 184.5,
+      "plan_hit_share": 0.6921911090998252,
+      "plan_harsh_share": 0.022364662920798018,
+      "actual_hit_share": 0.691691761371107,
+      "actual_harsh_share": 0.02260091235579026
+     },
+     "held_unheard": {
+      "n": 846,
+      "share": 0.3814247069431921,
+      "window_beats": 423.0,
+      "plan_hit_share": 0.3278968907025181,
+      "plan_harsh_share": 0.18530902756811282,
+      "actual_hit_share": 0.5589674672122387,
+      "actual_harsh_share": 0.06530493373287102
+     }
+    },
+    "counted": 2218,
+    "rest": 38,
+    "uncounted": 142,
+    "not_yet_heard_share": 0.8336339044183949,
+    "held_unheard_share_of_held": 0.6962962962962963
+   },
+   "bins": {
+    "0-100": {
+     "beats": 150.57235134943178,
+     "hit_share": 0.30334203832919926,
+     "harsh_share": 0.19221851138978951,
+     "rt_nd_part": 0.041080192052911066
+    },
+    "100-250": {
+     "beats": 225.56917217838358,
+     "hit_share": 0.31733390738987416,
+     "harsh_share": 0.19886845936219702,
+     "rt_nd_part": 0.0643799829254651
+    },
+    "250-450": {
+     "beats": 273.40430643576303,
+     "hit_share": 0.39720355906470284,
+     "harsh_share": 0.1506271249329812,
+     "rt_nd_part": 0.09767268225270355
+    },
+    "450+": {
+     "beats": 462.3020386035406,
+     "hit_share": 0.642965744904904,
+     "harsh_share": 0.03324977028777527,
+     "rt_nd_part": 0.2673426671266204
+    }
+   },
+   "bins_check": {
+    "sum_beats_minus_d": 1.8189894035458565e-12,
+    "sum_hit_minus_hit": -2.2737367544323206e-13
+   },
+   "latency": {
+    "Li": 0.15,
+    "Lo": 0.18,
+    "Li_told": 0.288,
+    "Lo_told": 0.042
+   },
+   "round_trip_error_ms": 0.0,
+   "metrics": {
+    "rt_nd_live": 0.4704755243577003,
+    "harsh": 0.11724169455072637,
+    "double": 0.042909914879064204,
+    "first_100ms_hit": 0.30334203832919926,
+    "first_100ms_harsh": 0.19221851138978951,
+    "on_time_right": 0.279324055666004,
+    "changes": 0.09840954274353876,
+    "late_entry": 0.005964214711729622,
+    "fresh_per100": 5.7654075546719685,
+    "fresh": 58,
+    "wrong_att_per100": 36.97813121272366,
+    "attacks_per100": 80.41749502982107,
+    "attacks_in_rest": 0,
+    "stumbles_per100": 1.0934393638170974,
+    "stumbles_own_per100": 0.5964214711729622,
+    "blips": 1,
+    "blips_on_her": 1,
+    "notes": 1006,
+    "counted_beats": 1111.847868567117
+   },
+   "acc": {
+    "d": 1111.847868567117,
+    "hit": 523.0972089701058,
+    "harsh": 130.3549281934221,
+    "d_first": 150.57235134943178,
+    "hit_first": 45.67492397435699,
+    "notes": 1006.0
+   },
+   "bench_check": null,
+   "secs": 21.8
+  }
+ },
+ "time": "2026-11-02 06:03:48"
+}

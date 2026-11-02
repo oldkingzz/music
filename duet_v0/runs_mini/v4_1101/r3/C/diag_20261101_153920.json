@@ -1,0 +1,190 @@
+{
+ "what": "real-time chord belief quality at each heard note (beat >= 4, labelled beats), val, tuned on val",
+ "pooled_hmm m1_filter_v5lo": {
+  "bach": {
+   "notes": 1006,
+   "top1_acc": 0.4712,
+   "mean_logp_true": -1.4432,
+   "mean_top_prob": 0.4556
+  },
+  "folk": {
+   "notes": 16159,
+   "top1_acc": 0.5714,
+   "mean_logp_true": -1.2218,
+   "mean_top_prob": 0.4759
+  },
+  "pop": {
+   "notes": 12806,
+   "top1_acc": 0.3571,
+   "mean_logp_true": -1.6885,
+   "mean_top_prob": 0.4469
+  },
+  "pop909": {
+   "notes": 13222,
+   "top1_acc": 0.3344,
+   "mean_logp_true": -1.6106,
+   "mean_top_prob": 0.4247
+  },
+  "mean4": {
+   "top1_acc": 0.4335,
+   "mean_logp_true": -1.491,
+   "mean_top_prob": 0.4508
+  }
+ },
+ "style_hmm r2_style_hmm_v1": {
+  "bach": {
+   "notes": 1006,
+   "top1_acc": 0.4791,
+   "mean_logp_true": -1.4746,
+   "mean_top_prob": 0.3969
+  },
+  "folk": {
+   "notes": 16159,
+   "top1_acc": 0.5846,
+   "mean_logp_true": -1.2431,
+   "mean_top_prob": 0.4203
+  },
+  "pop": {
+   "notes": 12806,
+   "top1_acc": 0.371,
+   "mean_logp_true": -1.5937,
+   "mean_top_prob": 0.368
+  },
+  "pop909": {
+   "notes": 13222,
+   "top1_acc": 0.3372,
+   "mean_logp_true": -1.5844,
+   "mean_top_prob": 0.3457
+  },
+  "mean4": {
+   "top1_acc": 0.443,
+   "mean_logp_true": -1.4739,
+   "mean_top_prob": 0.3827
+  }
+ },
+ "gru3 r1_gru_chooser_v1": {
+  "bach": {
+   "notes": 1006,
+   "top1_acc": 0.5298,
+   "mean_logp_true": -1.2152,
+   "mean_top_prob": 0.5538
+  },
+  "folk": {
+   "notes": 16159,
+   "top1_acc": 0.6544,
+   "mean_logp_true": -0.9726,
+   "mean_top_prob": 0.6555
+  },
+  "pop": {
+   "notes": 12806,
+   "top1_acc": 0.3662,
+   "mean_logp_true": -1.6165,
+   "mean_top_prob": 0.3747
+  },
+  "pop909": {
+   "notes": 13222,
+   "top1_acc": 0.3862,
+   "mean_logp_true": -1.6413,
+   "mean_top_prob": 0.5277
+  },
+  "mean4": {
+   "top1_acc": 0.4842,
+   "mean_logp_true": -1.3614,
+   "mean_top_prob": 0.5279
+  }
+ },
+ "champion r2_mix_v2 (pooled, a 0.7)": {
+  "bach": {
+   "notes": 1006,
+   "top1_acc": 0.5388,
+   "mean_logp_true": -1.2129,
+   "mean_top_prob": 0.5219
+  },
+  "folk": {
+   "notes": 16159,
+   "top1_acc": 0.6534,
+   "mean_logp_true": -0.9683,
+   "mean_top_prob": 0.6164
+  },
+  "pop": {
+   "notes": 12806,
+   "top1_acc": 0.3697,
+   "mean_logp_true": -1.5974,
+   "mean_top_prob": 0.392
+  },
+  "pop909": {
+   "notes": 13222,
+   "top1_acc": 0.4032,
+   "mean_logp_true": -1.5303,
+   "mean_top_prob": 0.4862
+  },
+  "mean4": {
+   "top1_acc": 0.4913,
+   "mean_logp_true": -1.3272,
+   "mean_top_prob": 0.5041
+  }
+ },
+ "r3_style_mix_v3 (style, a 0.5)": {
+  "bach": {
+   "notes": 1006,
+   "top1_acc": 0.5328,
+   "mean_logp_true": -1.251,
+   "mean_top_prob": 0.4768
+  },
+  "folk": {
+   "notes": 16159,
+   "top1_acc": 0.6503,
+   "mean_logp_true": -0.9987,
+   "mean_top_prob": 0.5615
+  },
+  "pop": {
+   "notes": 12806,
+   "top1_acc": 0.377,
+   "mean_logp_true": -1.584,
+   "mean_top_prob": 0.3662
+  },
+  "pop909": {
+   "notes": 13222,
+   "top1_acc": 0.4062,
+   "mean_logp_true": -1.491,
+   "mean_top_prob": 0.4291
+  },
+  "mean4": {
+   "top1_acc": 0.4916,
+   "mean_logp_true": -1.3312,
+   "mean_top_prob": 0.4584
+  }
+ },
+ "r3_style_mix_v1 (style, a 0.7)": {
+  "bach": {
+   "notes": 1006,
+   "top1_acc": 0.5348,
+   "mean_logp_true": -1.2185,
+   "mean_top_prob": 0.5095
+  },
+  "folk": {
+   "notes": 16159,
+   "top1_acc": 0.6549,
+   "mean_logp_true": -0.9714,
+   "mean_top_prob": 0.6043
+  },
+  "pop": {
+   "notes": 12806,
+   "top1_acc": 0.3767,
+   "mean_logp_true": -1.5921,
+   "mean_top_prob": 0.3681
+  },
+  "pop909": {
+   "notes": 13222,
+   "top1_acc": 0.4011,
+   "mean_logp_true": -1.529,
+   "mean_top_prob": 0.4704
+  },
+  "mean4": {
+   "top1_acc": 0.4919,
+   "mean_logp_true": -1.3277,
+   "mean_top_prob": 0.4881
+  }
+ },
+ "secs": 40.8
+}

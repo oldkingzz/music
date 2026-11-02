@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Duet Studio</title>
+<style>
+/* Layout: sources on top, then the chosen recording and one card per effect.
+   Color carries state: blue = ready to play, orange = working, vermilion = failed or recording. */
+:root {
+  --paper: #F6F3EC; --sheet: #FBF9F4; --ink: #1E1C19; --ink2: #6B655B; --rule: #E2DBCD;
+  --duet: #2456C9; --orange: #D9600F; --verm: #B5432F;
+  --body: -apple-system, "Helvetica Neue", "Segoe UI", system-ui, sans-serif; --mono: ui-monospace, Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) { :root {
+  --paper: #1B1916; --sheet: #24211D; --ink: #ECE6DA; --ink2: #A79F92; --rule: #3A352E;
+  --duet: #7FA2F0; --orange: #F08A45; --verm: #E07A63; color-scheme: dark; } }
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--paper); color: var(--ink); font: 15px/1.55 var(--body); }
+.wrap { max-width: 1060px; margin: 0 auto; padding: 18px 16px 56px; display: grid; gap: 18px; }
+nav.top { display: flex; gap: 6px; }
+nav.top a { text-decoration: none; color: var(--ink2); font-weight: 600; padding: 6px 12px; border-radius: 999px; border: 1px solid var(--rule); background: var(--sheet); }
+nav.top a.here { color: var(--sheet); background: var(--duet); border-color: var(--duet); }
+header { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 8px 16px; }
+h1 { font-size: 28px; margin: 0; letter-spacing: -0.01em; } h1 span { color: var(--duet); }
+.sub { color: var(--ink2); margin: 2px 0 0; }
+a { color: var(--duet); }
+.bar { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.chip { border: 1px solid var(--rule); background: var(--sheet); color: var(--ink); border-radius: 999px; padding: 7px 14px;
+        font: 600 14px var(--body); cursor: pointer; display: inline-flex; gap: 8px; align-items: center; }
+.chip small { font-weight: 400; color: var(--ink2); }
+.chip.on { border-color: var(--duet); box-shadow: inset 0 0 0 1px var(--duet); }
+.dot { width: 8px; height: 8px; border-radius: 50%; background: var(--rule); display: inline-block; }
+.dot.ready { background: var(--duet); } .dot.work { background: var(--orange); } .dot.fail { background: var(--verm); }
+.tools { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+button.act { font: 600 14px var(--body); padding: 8px 14px; border-radius: 8px; border: 1px solid var(--rule); background: var(--sheet); color: var(--ink); cursor: pointer; }
+button.rec { background: var(--verm); border-color: var(--verm); color: var(--sheet); }
+button:disabled { opacity: .45; cursor: default; }
+select { font: inherit; padding: 6px 8px; border-radius: 6px; border: 1px solid var(--rule); background: var(--sheet); color: var(--ink); max-width: 260px; }
+.src { background: var(--sheet); border: 1px solid var(--rule); border-radius: 12px; padding: 16px 18px; display: grid; gap: 10px; }
+.src h2 { font-size: 20px; margin: 0; }
+.facts { display: flex; flex-wrap: wrap; gap: 6px 18px; color: var(--ink2); font-size: 14px; }
+.facts b { color: var(--ink); font-weight: 600; }
+audio { width: 100%; height: 36px; }
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 320px), 1fr)); gap: 14px; }
+.fx { background: var(--sheet); border: 1px solid var(--rule); border-radius: 12px; padding: 14px 16px; display: grid; gap: 8px; align-content: start; }
+.fx h3 { font-size: 16px; margin: 0; display: flex; justify-content: space-between; gap: 8px; align-items: baseline; }
+.fx p { margin: 0; color: var(--ink2); font-size: 13.5px; }
+.badge { font: 600 12px var(--body); padding: 3px 8px; border-radius: 999px; background: var(--rule); color: var(--ink2); white-space: nowrap; }
+.badge.ready { background: var(--duet); color: var(--sheet); } .badge.work { background: var(--orange); color: var(--sheet); }
+.badge.fail { background: var(--verm); color: var(--sheet); }
+.stat { font: 12.5px var(--mono); color: var(--ink2); }
+.err { color: var(--verm); font-size: 13px; white-space: pre-wrap; overflow-wrap: anywhere; }
+.hint { color: var(--ink2); font-size: 13.5px; margin: 0; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <nav class="top"><a href="/" class="here">Studio</a><a href="/live">Live</a></nav>
+  <header>
+    <div>
+      <h1><span>Duet</span> Studio</h1>
+      <p class="sub">Every harmony effect on one recording. Pick a clip, record a phrase, or upload a file.</p>
+    </div>
+  </header>
+
+  <div class="bar" id="sources"></div>
+
+  <div class="tools">
+    <select id="in" title="Microphone"></select>
+    <button class="act" id="rec">● Record a phrase</button>
+    <label class="act" style="cursor:pointer">Upload audio<input type="file" id="file" accept="audio/*" hidden></label>
+    <span class="hint" id="toolnote">Recording uses the selected microphone and stops when you press Stop (max 30 s).</span>
+  </div>
+
+  <section class="src" id="src"></section>
+  <div class="grid" id="grid"></div>
+  <p class="hint">Real-voice test clip: vocadito (Bittner et al.), CC BY 4.0. Recordings and uploads stay on this Mac.</p>
+</div>
+<script>
+const $ = id => document.getElementById(id);
+let data = null, sel = null, timer = null;
+const DESC = {};
+
+async function api(path, body) {
+  const r = await fetch(path, body === undefined ? {} : {method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify(body)});
+  const j = await r.json(); if (!r.ok) throw new Error(j.error || 'request failed'); return j;
+}
+async function devices() {
+  const j = await api('/api/devices?refresh=1');
+  const s = $('in'); s.innerHTML = '';
+  j.devices.filter(d => d.in > 0 && !d.iphone).forEach(d => { const o = document.createElement('option'); o.value = d.index; o.textContent = '🎙 ' + d.name; s.appendChild(o); });
+  s.value = j.default.in;
+}
+function state(src, key) {
+  const st = (src.status || {})[key] || {};
+  if (src.files && src.files[key]) return ['ready', 'Ready'];
+  if (st.state === 'working') return ['work', 'Working…'];
+  if (st.state === 'failed') return ['fail', 'Failed'];
+  return ['', src.running ? 'Waiting' : 'Not made yet'];
+}
+function srcDot(src) {
+  const keys = data.effects.map(e => e[0]);
+  if (keys.every(k => src.files && src.files[k])) return 'ready';
+  if (src.running) return 'work';
+  if (keys.some(k => ((src.status || {})[k] || {}).state === 'failed')) return 'fail';
+  return '';
+}
+let lastSig = '';
+function playing() { return [...document.querySelectorAll('audio')].some(a => !a.paused && !a.ended); }
+function render(force) {
+  const rec = $('rec');
+  rec.textContent = data.recording ? `■ Stop and harmonize (${Math.round(data.elapsed)} s)` : '● Record a phrase';
+  rec.className = 'act' + (data.recording ? ' rec' : '');
+  rec.disabled = data.busy && !data.recording;
+  const sig = JSON.stringify([sel, data.sources.map(s => [s.id, s.files, s.status, s.running, s.info])]);
+  if (!force && (sig === lastSig || playing())) return;      // never rebuild players while one is playing
+  lastSig = sig;
+  const box = $('sources'); box.innerHTML = '';
+  for (const s of data.sources) {
+    const b = document.createElement('button'); b.className = 'chip' + (s.id === sel ? ' on' : '');
+    b.innerHTML = `<span class="dot ${srcDot(s)}"></span>${s.title}${s.builtin ? ' <small>built-in</small>' : ''}`;
+    b.onclick = () => { sel = s.id; render(true); };
+    box.appendChild(b);
+  }
+  const s = data.sources.find(x => x.id === sel) || data.sources[0];
+  if (!s) { $('src').innerHTML = '<p class="hint">No recordings yet.</p>'; $('grid').innerHTML = ''; return; }
+  sel = s.id;
+  const i = s.info || {};
+  const facts = [i.key && `Key <b>${i.key}</b>`, i.bpm && `Tempo <b>${Math.round(i.bpm)} BPM</b>`, i.seconds && `Length <b>${i.seconds} s</b>`,
+                 i.notes && `Notes heard <b>${i.notes}</b>`].filter(Boolean).map(f => `<span>${f}</span>`).join('');
+  $('src').innerHTML = `<h2>${s.title}</h2><p class="hint">${s.note || ''}</p>` +
+    (s.files && s.files.original ? `<audio controls preload="none" src="/files/${s.files.original}"></audio>` : '') +
+    `<div class="facts">${facts}</div>` +
+    `<div class="tools"><button class="act" id="rerun">${s.running ? 'Working…' : (srcDot(s) === 'ready' ? 'Make again' : 'Make all effects')}</button></div>`;
+  $('rerun').disabled = !!s.running;
+  $('rerun').onclick = async () => { await api('/api/studio/run', {id: s.id, force: srcDot(s) === 'ready'}); refresh(); };
+  const g = $('grid'); g.innerHTML = '';
+  for (const [key, title, desc] of data.effects) {
+    const [cls, label] = state(s, key);
+    const st = (s.status || {})[key] || {};
+    let stat = '';
+    if (['bach', 'pop', 'jazz'].includes(key) && i.styles && i.styles[key] != null) stat = `in tune with her ${(100 * i.styles[key]).toFixed(0)}% of the time`;
+    if (key === 'duet' && i.duet) stat = `sang ${i.duet.sung} of ${i.duet.beats} beats at ${Math.round(i.duet.bpm)} BPM`;
+    if (st.seconds) stat += (stat ? ' · ' : '') + `made in ${st.seconds} s`;
+    const div = document.createElement('div'); div.className = 'fx';
+    div.innerHTML = `<h3>${title}<span class="badge ${cls}">${label}</span></h3><p>${desc}</p>` +
+      (s.files && s.files[key] ? `<audio controls preload="none" src="/files/${s.files[key]}"></audio>` : '') +
+      (stat ? `<div class="stat">${stat}</div>` : '') + (st.state === 'failed' && st.error ? `<div class="err">${st.error.replace(/</g, '&lt;')}</div>` : '');
+    g.appendChild(div);
+  }
+}
+async function refresh() {
+  data = await api('/api/studio');
+  render();
+  clearTimeout(timer);
+  const active = data.recording || data.sources.some(s => s.running);
+  timer = setTimeout(refresh, active ? 1000 : 4000);
+}
+$('rec').onclick = async () => {
+  try {
+    if (data && data.recording) { const r = await api('/api/studio/stop', {}); if (r.id) sel = r.id; }
+    else { await api('/api/studio/record', {in: +$('in').value}); }
+  } catch (e) { $('toolnote').textContent = e.message; }
+  refresh();
+};
+$('file').onchange = async e => {
+  const f = e.target.files[0]; if (!f) return;
+  $('toolnote').textContent = `Uploading ${f.name}…`;
+  const r = await fetch('/api/studio/upload?name=' + encodeURIComponent(f.name), {method: 'POST', body: f});
+  const j = await r.json();
+  $('toolnote').textContent = r.ok ? `${f.name}: making every effect…` : (j.error || 'upload failed');
+  if (j.id) sel = j.id;
+  e.target.value = '';
+  refresh();
+};
+devices(); refresh();
+</script>
+</body>
+</html>

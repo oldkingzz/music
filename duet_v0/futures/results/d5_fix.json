@@ -1,0 +1,74 @@
+{
+ "id": "d5",
+ "title_zh": "实时和声效果器",
+ "updated": "2026-10-30T11:51:33-04:00",
+ "summary_zh": "能用的：2.67 ms 一块的实时引擎在仿真里算法延迟约 2 ms，估计端到端约 20 ms；仿真房间里 3 分钟不啸叫，有防护时稳定裕量 ≥ 24 dB；停唱后 0.12 s 内降到 -40 dBFS。改进（iter2）：真实业余歌声（vocadito 40 段）冲突时间从 24.5% 降到 21.7%（留出的 21-40 段 25.6% → 23.1%），主要是静音少了（11.8% → 9.9%）。不行的：还没过 10% 线；就算零延迟的理想跟随也有 14.2%（她滑音、音头不准）。代价：收声稍慢（-40 dBFS 最长 0.065 → 0.115 s，仍在 0.2 s 内）。延迟和啸叫只是仿真，要板子和房间实测。",
+ "acceptance": [
+  {
+   "line": "A5.1",
+   "text_zh": "麦克风进到喇叭出 ≤ 30 ms（端到端，板上实测）",
+   "measured": "估计端到端 18.8 ms（最坏 22.8 ms，160 Hz 时 PSOLA 延迟 6.3 ms）；仿真算法延迟：音频通路 2.3 ms、起音 1.9 ms；每块（2.67 ms）计算 板上估计 0.63 ms 均值 / 2.79 ms p99（M4 E 核 x2；M4 普通 0.24/0.55 ms）；假设 ALSA 48 kHz 每周期 128 帧、每方向 2 个周期 + USB 2 ms + 编解码 1 ms = 13.7 ms；iter2 引擎：起音 1.9 ms、音频通路 2.3 ms 不变，换音后音高稳定最长 22 ms（原 18 ms，因 15 ms 音高平滑）",
+   "threshold": "<= 30 ms",
+   "status": "needs_hardware",
+   "evidence": "futures/d5_live_fx/results/latency.json; futures/d5_live_fx/results/timing_ecore.json; futures/d5_live_fx/HARDWARE_TEST.md; futures/d5_live_fx/iter2/results/checks_v2.json"
+  },
+  {
+   "line": "A5.2",
+   "text_zh": "正常唱歌音量、麦克风和喇叭相距 1 m、一个房间里唱 3 分钟不啸叫",
+   "measured": "iter2 引擎仿真：RT60 0.3 s 与 0.6 s 有防护，正常音量 3 分钟均无啸叫；+24 dB 时 60 s 均无啸叫（与原引擎同为 ≥ 24 dB 裕量；30 dB 与无防护的扫描没有重跑）。原引擎：仿真：RT60 0.3 s 有防护：3 分钟无啸叫，稳定裕量 ≥ 24.0 dB（30.0 dB 时啸叫）；RT60 0.3 s 无防护：3 分钟无啸叫，稳定裕量 ≥ 6.0 dB（9.0 dB 时啸叫）；RT60 0.6 s 有防护：3 分钟无啸叫，稳定裕量 ≥ 24.0 dB（30.0 dB 时啸叫）；RT60 0.6 s 无防护：3 分钟无啸叫，稳定裕量 ≥ 6.0 dB（9.0 dB 时啸叫）",
+   "threshold": "3 分钟无啸叫（房间实测）",
+   "status": "needs_hardware",
+   "evidence": "futures/d5_live_fx/iter2/results/checks_v2.json; futures/d5_live_fx/results/sim.json"
+  },
+  {
+   "line": "A5.3",
+   "text_zh": "她停下后 0.2 s 内喇叭安静，且不重放房间噪声或自己的回声",
+   "measured": "iter2 引擎仿真闭环（RT60 0.3/0.6 s，有防护，正常音量 3 分钟，48 次收声）：降到 -40 dBFS 最长 0.115 s（原 0.065 s），p95 0.078 s；更严口径降到演唱电平 -30 dB：p95 0.363 s（原 0.335 s），最长 3.65 s（原 0.365 s；一次收声后有很轻的输出，低于 -40 dBFS 但高于演唱电平 -30 dB）；她乐句间的停顿共 62 s 内门打开 12 次（原 10 次），喇叭高于 -40 dBFS 共 0.00 s；两首歌之间的纯静音（只有房间噪声和回声）共 28 s：门打开 0 次，喇叭高于 -40 dBFS 0.00 s。在稳定裕量边上（+24 dB，60 s）RT60 0.6 s 降到 -40 dBFS 最长 0.355 s（原 0.115 s）",
+   "threshold": "<= 0.2 s，无误触发",
+   "status": "needs_hardware",
+   "evidence": "futures/d5_live_fx/iter2/results/checks_v2.json; futures/d5_live_fx/results/sim.json"
+  },
+  {
+   "line": "A5.4",
+   "text_zh": "她换音后的冲突时间 ≤ 她演唱时间的 10%（现有评分）",
+   "measured": "(a) 符号评测（她的音被听错 10%，延迟 19 ms），不好/刺耳：bach 6.2%/4.3%，folk 7.2%/4.8%，pop909 6.0%/3.8%，pop 6.6%/4.5%；按移调器真实物理（和声 = 她当前音高下移三度）不好：bach 0.2%，folk 0.3%，pop909 0.3%，pop 0.2%。 (b) 改进后的引擎（iter2：门不再因电平 50 ms 内跌 10 dB 就关，改为 16 dB；起音时只要高于演唱电平 -26 dB 就开门（原 -14 dB）；她的音高先做 15 ms 平滑再算移调；移调按她实际音高整体下移调内三度）跑 vocadito：调参只用 1-20 段，不好 20.3%（原 23.5%）；留出的 21-40 段只测一次，不好 23.1%（原 25.6%；刺耳 5.8%，四度 5.8%，静音 11.4%）；全部 40 段不好 21.7%（原 24.5%；刺耳 5.8%，四度 6.0%，静音 9.9%，原 11.8%）。参照上限不变：她自己的实际音高零延迟、按正确音程下移，同样评分 14.2% 不好。剩下的静音主要是门开着、她在唱、引擎音高也对，但输出不够周期（移调后的声音被评分用的 YIN 判为无音高）",
+   "threshold": "不好 <= 10%",
+   "status": "fail",
+   "evidence": "futures/d5_live_fx/iter2/runs/v2_1-20.json; futures/d5_live_fx/iter2/runs/v2_21-40.json; futures/d5_live_fx/iter2/NOTES.txt; futures/d5_live_fx/results/clash.json"
+  }
+ ],
+ "demos": [
+  {
+   "file": "futures/d5_live_fx/iter2/demo/vocadito_37_harmony_v2.mp3",
+   "label_zh": "vocadito 第 37 段：她 + Duet 实时下三度和声（iter2 引擎；原引擎下 40 段里冲突最少的一段，不代表平均）",
+   "source": "vocadito (Bittner et al.), CC BY 4.0; 仿真",
+   "page_safe": true
+  },
+  {
+   "file": "futures/d5_live_fx/iter2/demo/vocadito_2_harmony_v2.mp3",
+   "label_zh": "vocadito 第 2 段：她 + Duet 实时下三度和声（iter2 引擎）",
+   "source": "vocadito (Bittner et al.), CC BY 4.0; 仿真",
+   "page_safe": true
+  },
+  {
+   "file": "futures/d5_live_fx/demo/room_3min_closed_loop.mp3",
+   "label_zh": "3 分钟闭环房间仿真（原引擎，有防护，RT60 0.6 s，正常音量）：麦克风听到的声音",
+   "source": "vocadito (Bittner et al.), CC BY 4.0; 仿真",
+   "page_safe": true
+  }
+ ],
+ "local_only": [],
+ "how_to_run": ".venv/bin/python futures/d5_live_fx/run_all.py；iter2：.venv/bin/python futures/d5_live_fx/iter2/eval54.py --ids 21-40 --kw '{\"drop_db\":16,\"onset_db\":26,\"f0_tau\":0.015,\"mode\":\"follow\"}' --tag v2（见 iter2/NOTES.txt）",
+ "caveats_zh": [
+  "板上计算 p99 估计 2.79 ms，超过一个块 2.67 ms：板上需要实测，可能要把块加大到 128@24 kHz（延迟 +5 ms 左右）",
+  "按更严的\"演唱电平 -30 dB\"口径，少数收声（她慢慢渐弱时）超过 0.2 s（最长 0.36 s）",
+  "全部是仿真：房间是合成的扩散场脉冲响应（固定不变），真实房间里人走动会让回声路径变化，回声消除器只在开场 2 s 试音时学习一次",
+  "延迟里的 USB/ALSA 部分是假设值，不是测量值；需要 Vincent 按 HARDWARE_TEST.md 做回环实测",
+  "音频评测把她的标注音和 Duet 的音高分别取整；业余歌手常常唱在两个半音之间（约 10-25% 的时间），这部分取整噪声算进了\"不好\"",
+  "A5.4 符号评测里\"和声 = 下三度(听到的音)\"会把听错的音也算错；而真实移调器是把她当前的实际音高下移三度，所以听错几乎不造成冲突（0.2-0.3%）",
+  "板上计算时间是 M4 E 核 x2 的估计；E 核测量时本机还有其他任务在跑，p99 偏高（另一次更忙时 p99 估计 4.8 ms）",
+  "没有 test 划分：A5.4 符号评测用 bench 的 val 歌曲，引擎参数只在少量 vocadito 段上看过，没有留出测试集",
+  "iter2 只调了 4 个参数，只在 vocadito 1-20 段上调，21-40 段只测了一次；收声更严口径（演唱电平 -30 dB）有一次 3.65 s 的很轻尾音（低于 -40 dBFS）",
+  "3 分钟房间 demo 和 A5.2 的 30 dB / 无防护扫描仍是原引擎的结果"
+ ]
+}

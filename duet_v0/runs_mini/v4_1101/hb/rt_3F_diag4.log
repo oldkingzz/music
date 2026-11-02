@@ -1,0 +1,2 @@
+2026-11-02 01:39:12 START tl=600 cwd=$ABS $ABS/.venv/bin/python $ABS/runs_mini/v5rt_1101/r3/F/diag_live_F_v3.py --cfg {"guard":1,"g_mu":0.2,"g_sil":0.3,"g_above":1,"rec_win":0.4,"kappa_st":0.5,"hop_win":0.55} --voice sung_low --out $ABS/runs_mini/v5rt_1101/r3/F/diag4_sunglow_guard_v1.json
+2026-11-02 01:39:40 END rc=0 secs=28 $ABS/.venv/bin/python $ABS/runs_mini/v5rt_1101/r3/F/diag_live_F_v3.py --cfg {"guard":1,"g_mu":0.2,"g_sil":0.3,"g_above":1,"rec_win":0.4,"kappa_st":0.5,"hop_win":0.55} --voice sung_low --out $ABS/runs_mini/v5rt_1101/r3/F/diag4_sunglow_guard_v1.json

@@ -1,0 +1,2 @@
+2026-11-02 07:28:46 START tl=600 cwd=$ABS $ABS/.venv/bin/python $ABS/runs_mini/v5rt_1101/verify/VER4_tempo_probe_v1.py rt:r4_X_hgeh_v1 --out $ABS/runs_mini/v5rt_1101/verify/VER4_tempo_probe_hgeh_v1.json
+2026-11-02 07:31:12 END rc=0 secs=146 $ABS/.venv/bin/python $ABS/runs_mini/v5rt_1101/verify/VER4_tempo_probe_v1.py rt:r4_X_hgeh_v1 --out $ABS/runs_mini/v5rt_1101/verify/VER4_tempo_probe_hgeh_v1.json

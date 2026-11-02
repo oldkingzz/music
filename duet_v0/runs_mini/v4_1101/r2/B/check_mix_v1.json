@@ -1,0 +1,58 @@
+{
+ "alpha_file": 0.5,
+ "songs_per_dataset": 25,
+ "bach": {
+  "songs": 25,
+  "notes": 1163,
+  "a0_same_notes_as_m1": 1163,
+  "a1_same_notes_as_r1": 1163,
+  "file_alpha_diff_vs_m1": 398,
+  "file_alpha_diff_vs_r1": 307,
+  "gru_calls": 1163,
+  "beliefs_a0": 1163,
+  "beliefs_a1": 1163,
+  "max_belief_diff_a0_vs_m1": 2.220446049250313e-16,
+  "max_belief_diff_a1_vs_r1": 2.220446049250313e-16
+ },
+ "folk": {
+  "songs": 25,
+  "notes": 2244,
+  "a0_same_notes_as_m1": 2244,
+  "a1_same_notes_as_r1": 2244,
+  "file_alpha_diff_vs_m1": 709,
+  "file_alpha_diff_vs_r1": 468,
+  "gru_calls": 2244,
+  "beliefs_a0": 2244,
+  "beliefs_a1": 2244,
+  "max_belief_diff_a0_vs_m1": 3.3306690738754696e-16,
+  "max_belief_diff_a1_vs_r1": 2.220446049250313e-16
+ },
+ "pop": {
+  "songs": 25,
+  "notes": 959,
+  "a0_same_notes_as_m1": 959,
+  "a1_same_notes_as_r1": 959,
+  "file_alpha_diff_vs_m1": 171,
+  "file_alpha_diff_vs_r1": 220,
+  "gru_calls": 959,
+  "beliefs_a0": 959,
+  "beliefs_a1": 959,
+  "max_belief_diff_a0_vs_m1": 2.220446049250313e-16,
+  "max_belief_diff_a1_vs_r1": 2.220446049250313e-16
+ },
+ "pop909": {
+  "songs": 25,
+  "notes": 8553,
+  "a0_same_notes_as_m1": 8553,
+  "a1_same_notes_as_r1": 8553,
+  "file_alpha_diff_vs_m1": 3624,
+  "file_alpha_diff_vs_r1": 1958,
+  "gru_calls": 8553,
+  "beliefs_a0": 8553,
+  "beliefs_a1": 8553,
+  "max_belief_diff_a0_vs_m1": 2.220446049250313e-16,
+  "max_belief_diff_a1_vs_r1": 3.3306690738754696e-16
+ },
+ "all_ok": true,
+ "secs": 9.9
+}

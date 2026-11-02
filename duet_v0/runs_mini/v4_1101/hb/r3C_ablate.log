@@ -1,0 +1,2 @@
+2026-11-01 15:40:39 START tl=600 cwd=$ABS $ABS/.venv/bin/python $ABS/runs_mini/v4_1101/r3/C/ablate.py
+2026-11-01 15:41:22 END rc=0 secs=43 $ABS/.venv/bin/python $ABS/runs_mini/v4_1101/r3/C/ablate.py

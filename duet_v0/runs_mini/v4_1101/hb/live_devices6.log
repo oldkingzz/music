@@ -1,0 +1,2 @@
+2026-11-01 20:51:19 START tl=60 cwd=$ABS .venv/bin/python futures/v4_selfiter/live_bench3.py --devices
+2026-11-01 20:51:20 END rc=0 secs=0 .venv/bin/python futures/v4_selfiter/live_bench3.py --devices

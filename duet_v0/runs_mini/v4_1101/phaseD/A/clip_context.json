@@ -1,0 +1,524 @@
+{
+ "what": "Context for the Phase D audio clips (read-only, no audio): are the two Bach clip songs typical?",
+ "summary": {
+  "songs": 17,
+  "song_level": {
+   "champion_better": 9,
+   "tie": 1,
+   "m1_better": 7,
+   "mean_diff": 0.0118
+  },
+  "clip_level": {
+   "champion_better": 6,
+   "tie": 1,
+   "m1_better": 10,
+   "mean_diff": -0.0021
+  },
+  "pooled_bach_music_nd": {
+   "r2_mix_v2": 0.68525,
+   "r3_style_mix_v3": 0.70279,
+   "m1_filter_v5lo": 0.66547,
+   "third_below": 0.54294
+  },
+  "rank_of_clip_songs_by_song_diff": {
+   "bach/bwv140.7": "10 of 17 (1 = champion gains most)",
+   "bach/bwv245.26": "11 of 17 (1 = champion gains most)"
+  }
+ },
+ "rows": [
+  {
+   "id": "bach/bwv140.7",
+   "beats": 68,
+   "earlier_demo": false,
+   "r2_mix_v2": {
+    "song_nd": 0.675,
+    "song_double": 0.09166666666666666,
+    "clip_nd": 0.5909090909090909,
+    "clip_double": 0.16666666666666666
+   },
+   "r3_style_mix_v3": {
+    "song_nd": 0.6583333333333333,
+    "song_double": 0.09166666666666666,
+    "clip_nd": 0.5606060606060606,
+    "clip_double": 0.16666666666666666
+   },
+   "m1_filter_v5lo": {
+    "song_nd": 0.675,
+    "song_double": 0.05,
+    "clip_nd": 0.6515151515151515,
+    "clip_double": 0.09090909090909091
+   },
+   "third_below": {
+    "song_nd": 0.5916666666666667,
+    "song_double": 0.03333333333333333,
+    "clip_nd": 0.5757575757575758,
+    "clip_double": 0.06060606060606061
+   }
+  },
+  {
+   "id": "bach/bwv245.26",
+   "beats": 48,
+   "earlier_demo": false,
+   "r2_mix_v2": {
+    "song_nd": 0.6931818181818182,
+    "song_double": 0.06818181818181818,
+    "clip_nd": 0.6527777777777778,
+    "clip_double": 0.08333333333333333
+   },
+   "r3_style_mix_v3": {
+    "song_nd": 0.6704545454545454,
+    "song_double": 0.022727272727272728,
+    "clip_nd": 0.625,
+    "clip_double": 0.027777777777777776
+   },
+   "m1_filter_v5lo": {
+    "song_nd": 0.7045454545454546,
+    "song_double": 0.0,
+    "clip_nd": 0.6666666666666666,
+    "clip_double": 0.0
+   },
+   "third_below": {
+    "song_nd": 0.45454545454545453,
+    "song_double": 0.0,
+    "clip_nd": 0.4722222222222222,
+    "clip_double": 0.0
+   }
+  },
+  {
+   "id": "bach/bwv245.40",
+   "beats": 112,
+   "earlier_demo": false,
+   "r2_mix_v2": {
+    "song_nd": 0.6527777777777778,
+    "song_double": 0.05555555555555555,
+    "clip_nd": 0.6944444444444444,
+    "clip_double": 0.027777777777777776
+   },
+   "r3_style_mix_v3": {
+    "song_nd": 0.6620370370370371,
+    "song_double": 0.027777777777777776,
+    "clip_nd": 0.6944444444444444,
+    "clip_double": 0.027777777777777776
+   },
+   "m1_filter_v5lo": {
+    "song_nd": 0.6481481481481481,
+    "song_double": 0.027777777777777776,
+    "clip_nd": 0.6944444444444444,
+    "clip_double": 0.05555555555555555
+   },
+   "third_below": {
+    "song_nd": 0.5462962962962963,
+    "song_double": 0.046296296296296294,
+    "clip_nd": 0.6944444444444444,
+    "clip_double": 0.027777777777777776
+   }
+  },
+  {
+   "id": "bach/bwv264",
+   "beats": 40,
+   "earlier_demo": false,
+   "r2_mix_v2": {
+    "song_nd": 0.8181818181818182,
+    "song_double": 0.06060606060606061,
+    "clip_nd": 0.8181818181818182,
+    "clip_double": 0.06060606060606061
+   },
+   "r3_style_mix_v3": {
+    "song_nd": 0.9393939393939394,
+    "song_double": 0.0,
+    "clip_nd": 0.9393939393939394,
+    "clip_double": 0.0
+   },
+   "m1_filter_v5lo": {
+    "song_nd": 0.9393939393939394,
+    "song_double": 0.0,
+    "clip_nd": 0.9393939393939394,
+    "clip_double": 0.0
+   },
+   "third_below": {
+    "song_nd": 0.6363636363636364,
+    "song_double": 0.0,
+    "clip_nd": 0.6363636363636364,
+    "clip_double": 0.0
+   }
+  },
+  {
+   "id": "bach/bwv269",
+   "beats": 63,
+   "earlier_demo": false,
+   "r2_mix_v2": {
+    "song_nd": 0.635593220338983,
+    "song_double": 0.11864406779661017,
+    "clip_nd": 0.5972222222222222,
+    "clip_double": 0.1388888888888889
+   },
+   "r3_style_mix_v3": {
+    "song_nd": 0.7542372881355932,
+    "song_double": 0.03389830508474576,
+    "clip_nd": 0.7916666666666666,
+    "clip_double": 0.0
+   },
+   "m1_filter_v5lo": {
+    "song_nd": 0.711864406779661,
+    "song_double": 0.1016949152542373,
+    "clip_nd": 0.6944444444444444,
+    "clip_double": 0.1111111111111111
+   },
+   "third_below": {
+    "song_nd": 0.7203389830508474,
+    "song_double": 0.0,
+    "clip_nd": 0.7361111111111112,
+    "clip_double": 0.0
+   }
+  },
+  {
+   "id": "bach/bwv282",
+   "beats": 57,
+   "earlier_demo": false,
+   "r2_mix_v2": {
+    "song_nd": 0.6176470588235294,
+    "song_double": 0.09803921568627451,
+    "clip_nd": 0.6617647058823529,
+    "clip_double": 0.08823529411764706
+   },
+   "r3_style_mix_v3": {
+    "song_nd": 0.7058823529411765,
+    "song_double": 0.0,
+    "clip_nd": 0.7647058823529411,
+    "clip_double": 0.0
+   },
+   "m1_filter_v5lo": {
+    "song_nd": 0.7254901960784313,
+    "song_double": 0.0784313725490196,
+    "clip_nd": 0.7941176470588235,
+    "clip_double": 0.11764705882352941
+   },
+   "third_below": {
+    "song_nd": 0.5294117647058824,
+    "song_double": 0.0196078431372549,
+    "clip_nd": 0.6176470588235294,
+    "clip_double": 0.029411764705882353
+   }
+  },
+  {
+   "id": "bach/bwv291",
+   "beats": 44,
+   "earlier_demo": false,
+   "r2_mix_v2": {
+    "song_nd": 0.8076923076923077,
+    "song_double": 0.02564102564102564,
+    "clip_nd": 0.7857142857142857,
+    "clip_double": 0.02857142857142857
+   },
+   "r3_style_mix_v3": {
+    "song_nd": 0.7564102564102564,
+    "song_double": 0.02564102564102564,
+    "clip_nd": 0.7285714285714285,
+    "clip_double": 0.02857142857142857
+   },
+   "m1_filter_v5lo": {
+    "song_nd": 0.6794871794871795,
+    "song_double": 0.02564102564102564,
+    "clip_nd": 0.6714285714285714,
+    "clip_double": 0.02857142857142857
+   },
+   "third_below": {
+    "song_nd": 0.47435897435897434,
+    "song_double": 0.02564102564102564,
+    "clip_nd": 0.5285714285714286,
+    "clip_double": 0.02857142857142857
+   }
+  },
+  {
+   "id": "bach/bwv294",
+   "beats": 64,
+   "earlier_demo": false,
+   "r2_mix_v2": {
+    "song_nd": 0.8083333333333333,
+    "song_double": 0.025,
+    "clip_nd": 0.875,
+    "clip_double": 0.013888888888888888
+   },
+   "r3_style_mix_v3": {
+    "song_nd": 0.7916666666666666,
+    "song_double": 0.016666666666666666,
+    "clip_nd": 0.8194444444444444,
+    "clip_double": 0.027777777777777776
+   },
+   "m1_filter_v5lo": {
+    "song_nd": 0.7416666666666667,
+    "song_double": 0.008333333333333333,
+    "clip_nd": 0.7361111111111112,
+    "clip_double": 0.013888888888888888
+   },
+   "third_below": {
+    "song_nd": 0.4583333333333333,
+    "song_double": 0.0,
+    "clip_nd": 0.4305555555555556,
+    "clip_double": 0.0
+   }
+  },
+  {
+   "id": "bach/bwv296",
+   "beats": 57,
+   "earlier_demo": false,
+   "r2_mix_v2": {
+    "song_nd": 0.53125,
+    "song_double": 0.041666666666666664,
+    "clip_nd": 0.421875,
+    "clip_double": 0.0625
+   },
+   "r3_style_mix_v3": {
+    "song_nd": 0.5833333333333334,
+    "song_double": 0.041666666666666664,
+    "clip_nd": 0.5,
+    "clip_double": 0.0625
+   },
+   "m1_filter_v5lo": {
+    "song_nd": 0.5625,
+    "song_double": 0.020833333333333332,
+    "clip_nd": 0.46875,
+    "clip_double": 0.03125
+   },
+   "third_below": {
+    "song_nd": 0.4166666666666667,
+    "song_double": 0.0,
+    "clip_nd": 0.359375,
+    "clip_double": 0.0
+   }
+  },
+  {
+   "id": "bach/bwv299",
+   "beats": 48,
+   "earlier_demo": false,
+   "r2_mix_v2": {
+    "song_nd": 0.75,
+    "song_double": 0.011363636363636364,
+    "clip_nd": 0.7222222222222222,
+    "clip_double": 0.013888888888888888
+   },
+   "r3_style_mix_v3": {
+    "song_nd": 0.75,
+    "song_double": 0.011363636363636364,
+    "clip_nd": 0.7222222222222222,
+    "clip_double": 0.013888888888888888
+   },
+   "m1_filter_v5lo": {
+    "song_nd": 0.7613636363636364,
+    "song_double": 0.03409090909090909,
+    "clip_nd": 0.7361111111111112,
+    "clip_double": 0.041666666666666664
+   },
+   "third_below": {
+    "song_nd": 0.5,
+    "song_double": 0.0,
+    "clip_nd": 0.5,
+    "clip_double": 0.0
+   }
+  },
+  {
+   "id": "bach/bwv308",
+   "beats": 40,
+   "earlier_demo": true,
+   "r2_mix_v2": {
+    "song_nd": 0.7638888888888888,
+    "song_double": 0.1111111111111111,
+    "clip_nd": 0.7638888888888888,
+    "clip_double": 0.1111111111111111
+   },
+   "r3_style_mix_v3": {
+    "song_nd": 0.8055555555555556,
+    "song_double": 0.05555555555555555,
+    "clip_nd": 0.8055555555555556,
+    "clip_double": 0.05555555555555555
+   },
+   "m1_filter_v5lo": {
+    "song_nd": 0.7222222222222222,
+    "song_double": 0.013888888888888888,
+    "clip_nd": 0.7222222222222222,
+    "clip_double": 0.013888888888888888
+   },
+   "third_below": {
+    "song_nd": 0.5555555555555556,
+    "song_double": 0.0,
+    "clip_nd": 0.5555555555555556,
+    "clip_double": 0.0
+   }
+  },
+  {
+   "id": "bach/bwv328",
+   "beats": 193,
+   "earlier_demo": false,
+   "r2_mix_v2": {
+    "song_nd": 0.6648936170212766,
+    "song_double": 0.02127659574468085,
+    "clip_nd": 0.6285714285714286,
+    "clip_double": 0.0
+   },
+   "r3_style_mix_v3": {
+    "song_nd": 0.6648936170212766,
+    "song_double": 0.02127659574468085,
+    "clip_nd": 0.6571428571428571,
+    "clip_double": 0.02857142857142857
+   },
+   "m1_filter_v5lo": {
+    "song_nd": 0.5930851063829787,
+    "song_double": 0.047872340425531915,
+    "clip_nd": 0.6571428571428571,
+    "clip_double": 0.08571428571428572
+   },
+   "third_below": {
+    "song_nd": 0.5904255319148937,
+    "song_double": 0.010638297872340425,
+    "clip_nd": 0.37142857142857144,
+    "clip_double": 0.02857142857142857
+   }
+  },
+  {
+   "id": "bach/bwv346",
+   "beats": 61,
+   "earlier_demo": false,
+   "r2_mix_v2": {
+    "song_nd": 0.6636363636363637,
+    "song_double": 0.01818181818181818,
+    "clip_nd": 0.7058823529411765,
+    "clip_double": 0.029411764705882353
+   },
+   "r3_style_mix_v3": {
+    "song_nd": 0.6818181818181818,
+    "song_double": 0.03636363636363636,
+    "clip_nd": 0.7352941176470589,
+    "clip_double": 0.058823529411764705
+   },
+   "m1_filter_v5lo": {
+    "song_nd": 0.6090909090909091,
+    "song_double": 0.05454545454545454,
+    "clip_nd": 0.6470588235294118,
+    "clip_double": 0.058823529411764705
+   },
+   "third_below": {
+    "song_nd": 0.5,
+    "song_double": 0.0,
+    "clip_nd": 0.5,
+    "clip_double": 0.0
+   }
+  },
+  {
+   "id": "bach/bwv349",
+   "beats": 48,
+   "earlier_demo": false,
+   "r2_mix_v2": {
+    "song_nd": 0.7159090909090909,
+    "song_double": 0.13636363636363635,
+    "clip_nd": 0.7083333333333334,
+    "clip_double": 0.16666666666666666
+   },
+   "r3_style_mix_v3": {
+    "song_nd": 0.7159090909090909,
+    "song_double": 0.13636363636363635,
+    "clip_nd": 0.7083333333333334,
+    "clip_double": 0.16666666666666666
+   },
+   "m1_filter_v5lo": {
+    "song_nd": 0.6022727272727273,
+    "song_double": 0.1590909090909091,
+    "clip_nd": 0.5694444444444444,
+    "clip_double": 0.19444444444444445
+   },
+   "third_below": {
+    "song_nd": 0.5568181818181818,
+    "song_double": 0.0,
+    "clip_nd": 0.5694444444444444,
+    "clip_double": 0.0
+   }
+  },
+  {
+   "id": "bach/bwv371",
+   "beats": 160,
+   "earlier_demo": false,
+   "r2_mix_v2": {
+    "song_nd": 0.6516129032258065,
+    "song_double": 0.04516129032258064,
+    "clip_nd": 0.6666666666666666,
+    "clip_double": 0.05555555555555555
+   },
+   "r3_style_mix_v3": {
+    "song_nd": 0.667741935483871,
+    "song_double": 0.025806451612903226,
+    "clip_nd": 0.6944444444444444,
+    "clip_double": 0.05555555555555555
+   },
+   "m1_filter_v5lo": {
+    "song_nd": 0.6290322580645161,
+    "song_double": 0.05806451612903226,
+    "clip_nd": 0.75,
+    "clip_double": 0.05555555555555555
+   },
+   "third_below": {
+    "song_nd": 0.5225806451612903,
+    "song_double": 0.01935483870967742,
+    "clip_nd": 0.5416666666666666,
+    "clip_double": 0.0
+   }
+  },
+  {
+   "id": "bach/bwv399",
+   "beats": 48,
+   "earlier_demo": false,
+   "r2_mix_v2": {
+    "song_nd": 0.6818181818181818,
+    "song_double": 0.13636363636363635,
+    "clip_nd": 0.6736111111111112,
+    "clip_double": 0.1388888888888889
+   },
+   "r3_style_mix_v3": {
+    "song_nd": 0.7045454545454546,
+    "song_double": 0.11363636363636363,
+    "clip_nd": 0.6736111111111112,
+    "clip_double": 0.1388888888888889
+   },
+   "m1_filter_v5lo": {
+    "song_nd": 0.7045454545454546,
+    "song_double": 0.09090909090909091,
+    "clip_nd": 0.7013888888888888,
+    "clip_double": 0.1111111111111111
+   },
+   "third_below": {
+    "song_nd": 0.5852272727272727,
+    "song_double": 0.0,
+    "clip_nd": 0.6111111111111112,
+    "clip_double": 0.0
+   }
+  },
+  {
+   "id": "bach/bwv415",
+   "beats": 48,
+   "earlier_demo": true,
+   "r2_mix_v2": {
+    "song_nd": 0.7840909090909091,
+    "song_double": 0.0,
+    "clip_nd": 0.7916666666666666,
+    "clip_double": 0.0
+   },
+   "r3_style_mix_v3": {
+    "song_nd": 0.7727272727272727,
+    "song_double": 0.0,
+    "clip_nd": 0.7777777777777778,
+    "clip_double": 0.0
+   },
+   "m1_filter_v5lo": {
+    "song_nd": 0.7045454545454546,
+    "song_double": 0.022727272727272728,
+    "clip_nd": 0.6944444444444444,
+    "clip_double": 0.027777777777777776
+   },
+   "third_below": {
+    "song_nd": 0.4772727272727273,
+    "song_double": 0.022727272727272728,
+    "clip_nd": 0.5,
+    "clip_double": 0.027777777777777776
+   }
+  }
+ ],
+ "note": "val only, tuned on val (no test split in this bundle)"
+}

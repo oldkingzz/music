@@ -1,0 +1,1653 @@
+{
+ "spec": "reactive:r2_mix_v2",
+ "split": "val",
+ "note": "val only (17 val Bach chorales); systems tuned on val; no test split",
+ "code": {
+  "live_bench_rt.py": "46b43f91bf4bfa03f04c07ecdb543368394b6279f198cc8a21c435a8ab2bd8fd",
+  "voice_v1.py": "ed395a5acb7c4a1dbf341c22f41b3b772f74feaeb492880ff93ae8799220e2f9",
+  "bench_rt.py": "f1eb524aa939b5ba54704532ac7b5eb536659ceaaef32c3701934f9cf7d3e772"
+ },
+ "conditions": {
+  "base_sung": {
+   "voice": "sung",
+   "lat": {
+    "Li": 0.012,
+    "Lo": 0.01,
+    "Li_told": 0.012,
+    "Lo_told": 0.01
+   },
+   "bpm": 90.0,
+   "headline": {
+    "rt_nd_live": 0.5936451194275247,
+    "harsh": 0.0833604908808919,
+    "double": 0.04173858293147702,
+    "first_100ms_hit": 0.29076681344374017,
+    "first_100ms_harsh": 0.2982979473273377,
+    "on_time_right": 0.13817097415506957,
+    "changes": 0.7415506958250497,
+    "late_entry": 0.018886679920477135,
+    "fresh_per100": 5.069582504970179,
+    "fresh": 51,
+    "wrong_att_per100": 35.089463220675945,
+    "attacks_per100": 86.97813121272365,
+    "attacks_in_rest": 0,
+    "stumbles_per100": 3.7773359840954273,
+    "stumbles_own_per100": 3.1809145129224654,
+    "blips": 0,
+    "blips_on_her": 0,
+    "notes": 1006,
+    "counted_beats": 1111.8478685671187
+   },
+   "songs": [
+    {
+     "id": "bach/bwv269",
+     "rt_nd_live": 0.5540330038516339,
+     "counted_beats": 59.0,
+     "harsh": 0.13918935526942247,
+     "fresh": 9,
+     "stumbles_per100": 13.953488372093023,
+     "notes": 43,
+     "pickup": 2
+    },
+    {
+     "id": "bach/bwv415",
+     "rt_nd_live": 0.5486299202794425,
+     "counted_beats": 44.0,
+     "harsh": 0.05729422431142062,
+     "fresh": 2,
+     "stumbles_per100": 0.0,
+     "notes": 41,
+     "pickup": 3
+    },
+    {
+     "id": "bach/bwv308",
+     "rt_nd_live": 0.5740997969386912,
+     "counted_beats": 36.0,
+     "harsh": 0.09057702809423497,
+     "fresh": 2,
+     "stumbles_per100": 2.5,
+     "notes": 40,
+     "pickup": 3
+    },
+    {
+     "id": "bach/bwv291",
+     "rt_nd_live": 0.5940862928322763,
+     "counted_beats": 39.0,
+     "harsh": 0.05860686345295255,
+     "fresh": 1,
+     "stumbles_per100": 2.857142857142857,
+     "notes": 35,
+     "pickup": 3
+    },
+    {
+     "id": "bach/bwv245.40",
+     "rt_nd_live": 0.5586675472195454,
+     "counted_beats": 107.99999999999999,
+     "harsh": 0.06615015967772313,
+     "fresh": 2,
+     "stumbles_per100": 4.545454545454546,
+     "notes": 110,
+     "pickup": 3
+    },
+    {
+     "id": "bach/bwv245.26",
+     "rt_nd_live": 0.6106089636252365,
+     "counted_beats": 44.0,
+     "harsh": 0.06643031494704457,
+     "fresh": 1,
+     "stumbles_per100": 0.0,
+     "notes": 41,
+     "pickup": 3
+    },
+    {
+     "id": "bach/bwv371",
+     "rt_nd_live": 0.6468795922179743,
+     "counted_beats": 155.0,
+     "harsh": 0.06885835185489622,
+     "fresh": 4,
+     "stumbles_per100": 3.076923076923077,
+     "notes": 130,
+     "pickup": 0
+    },
+    {
+     "id": "bach/bwv294",
+     "rt_nd_live": 0.6762976074276094,
+     "counted_beats": 60.0,
+     "harsh": 0.10912693251328719,
+     "fresh": 4,
+     "stumbles_per100": 1.639344262295082,
+     "notes": 61,
+     "pickup": 3
+    },
+    {
+     "id": "bach/bwv264",
+     "rt_nd_live": 0.7016911144773786,
+     "counted_beats": 32.96407497829081,
+     "harsh": 0.06814275270968029,
+     "fresh": 1,
+     "stumbles_per100": 7.407407407407407,
+     "notes": 27,
+     "pickup": 3
+    },
+    {
+     "id": "bach/bwv140.7",
+     "rt_nd_live": 0.5948750472500441,
+     "counted_beats": 59.96055340964855,
+     "harsh": 0.07145923506468625,
+     "fresh": 3,
+     "stumbles_per100": 3.4482758620689653,
+     "notes": 58,
+     "pickup": 0
+    },
+    {
+     "id": "bach/bwv349",
+     "rt_nd_live": 0.6993643949263695,
+     "counted_beats": 44.0,
+     "harsh": 0.04092573586429487,
+     "fresh": 0,
+     "stumbles_per100": 0.0,
+     "notes": 29,
+     "pickup": 0
+    },
+    {
+     "id": "bach/bwv328",
+     "rt_nd_live": 0.5448793381792764,
+     "counted_beats": 188.0,
+     "harsh": 0.10837502888780637,
+     "fresh": 11,
+     "stumbles_per100": 3.314917127071823,
+     "notes": 181,
+     "pickup": 3
+    },
+    {
+     "id": "bach/bwv299",
+     "rt_nd_live": 0.5700609341599471,
+     "counted_beats": 44.0,
+     "harsh": 0.148833685266965,
+     "fresh": 3,
+     "stumbles_per100": 0.0,
+     "notes": 49,
+     "pickup": 2
+    },
+    {
+     "id": "bach/bwv346",
+     "rt_nd_live": 0.4989496183551147,
+     "counted_beats": 54.9687368039882,
+     "harsh": 0.09492271297240142,
+     "fresh": 2,
+     "stumbles_per100": 1.9607843137254901,
+     "notes": 51,
+     "pickup": 3
+    },
+    {
+     "id": "bach/bwv296",
+     "rt_nd_live": 0.6036568108374063,
+     "counted_beats": 47.96509503597653,
+     "harsh": 0.038617616315786724,
+     "fresh": 3,
+     "stumbles_per100": 5.555555555555555,
+     "notes": 36,
+     "pickup": 3
+    },
+    {
+     "id": "bach/bwv399",
+     "rt_nd_live": 0.6523149570463208,
+     "counted_beats": 44.0,
+     "harsh": 0.04530536624523556,
+     "fresh": 0,
+     "stumbles_per100": 13.333333333333334,
+     "notes": 45,
+     "pickup": 3
+    },
+    {
+     "id": "bach/bwv282",
+     "rt_nd_live": 0.5718196549393102,
+     "counted_beats": 50.989408339214314,
+     "harsh": 0.09410543735669605,
+     "fresh": 3,
+     "stumbles_per100": 3.4482758620689653,
+     "notes": 29,
+     "pickup": 2
+    }
+   ],
+   "reg": [],
+   "base_stats": {}
+  },
+  "base_sung_low": {
+   "voice": "sung_low",
+   "lat": {
+    "Li": 0.012,
+    "Lo": 0.01,
+    "Li_told": 0.012,
+    "Lo_told": 0.01
+   },
+   "bpm": 90.0,
+   "headline": {
+    "rt_nd_live": 0.4012977048161021,
+    "harsh": 0.05156959122194172,
+    "double": 0.004486215745756225,
+    "first_100ms_hit": 0.19902151370432286,
+    "first_100ms_harsh": 0.24113886316395597,
+    "on_time_right": 0.12524850894632206,
+    "changes": 0.4165009940357853,
+    "late_entry": 0.09443339960238568,
+    "fresh_per100": 3.7773359840954273,
+    "fresh": 38,
+    "wrong_att_per100": 24.15506958250497,
+    "attacks_per100": 57.85288270377733,
+    "attacks_in_rest": 0,
+    "stumbles_per100": 2.68389662027833,
+    "stumbles_own_per100": 2.0874751491053676,
+    "blips": 0,
+    "blips_on_her": 0,
+    "notes": 1006,
+    "counted_beats": 1111.8478685671187
+   },
+   "songs": [
+    {
+     "id": "bach/bwv269",
+     "rt_nd_live": 0.5536969680425142,
+     "counted_beats": 59.0,
+     "harsh": 0.05366898803568402,
+     "fresh": 8,
+     "stumbles_per100": 11.627906976744185,
+     "notes": 43,
+     "pickup": 2
+    },
+    {
+     "id": "bach/bwv415",
+     "rt_nd_live": 0.5005085440205757,
+     "counted_beats": 44.0,
+     "harsh": 0.04269855191325464,
+     "fresh": 1,
+     "stumbles_per100": 0.0,
+     "notes": 41,
+     "pickup": 3
+    },
+    {
+     "id": "bach/bwv308",
+     "rt_nd_live": 0.4989974188577368,
+     "counted_beats": 36.0,
+     "harsh": 0.07756508083288668,
+     "fresh": 2,
+     "stumbles_per100": 0.0,
+     "notes": 40,
+     "pickup": 3
+    },
+    {
+     "id": "bach/bwv291",
+     "rt_nd_live": 0.16330684293676956,
+     "counted_beats": 39.0,
+     "harsh": 0.012580535061899193,
+     "fresh": 0,
+     "stumbles_per100": 0.0,
+     "notes": 35,
+     "pickup": 3
+    },
+    {
+     "id": "bach/bwv245.40",
+     "rt_nd_live": 0.6205484774844114,
+     "counted_beats": 107.99999999999999,
+     "harsh": 0.06723514541594781,
+     "fresh": 4,
+     "stumbles_per100": 4.545454545454546,
+     "notes": 110,
+     "pickup": 3
+    },
+    {
+     "id": "bach/bwv245.26",
+     "rt_nd_live": 0.3784666162180178,
+     "counted_beats": 44.0,
+     "harsh": 0.06413541899090514,
+     "fresh": 1,
+     "stumbles_per100": 0.0,
+     "notes": 41,
+     "pickup": 3
+    },
+    {
+     "id": "bach/bwv371",
+     "rt_nd_live": 0.2939279528826103,
+     "counted_beats": 155.0,
+     "harsh": 0.04462282033769375,
+     "fresh": 4,
+     "stumbles_per100": 0.7692307692307693,
+     "notes": 130,
+     "pickup": 0
+    },
+    {
+     "id": "bach/bwv294",
+     "rt_nd_live": 0.2836410097251854,
+     "counted_beats": 60.0,
+     "harsh": 0.03118422024608581,
+     "fresh": 0,
+     "stumbles_per100": 0.0,
+     "notes": 61,
+     "pickup": 3
+    },
+    {
+     "id": "bach/bwv264",
+     "rt_nd_live": 0.5167485272316931,
+     "counted_beats": 32.96407497829081,
+     "harsh": 0.05983592569085024,
+     "fresh": 2,
+     "stumbles_per100": 7.407407407407407,
+     "notes": 27,
+     "pickup": 3
+    },
+    {
+     "id": "bach/bwv140.7",
+     "rt_nd_live": 0.4037996612084407,
+     "counted_beats": 59.96055340964855,
+     "harsh": 0.0361104129200705,
+     "fresh": 0,
+     "stumbles_per100": 0.0,
+     "notes": 58,
+     "pickup": 0
+    },
+    {
+     "id": "bach/bwv349",
+     "rt_nd_live": 0.39106044248085065,
+     "counted_beats": 44.0,
+     "harsh": 0.05218432193770368,
+     "fresh": 2,
+     "stumbles_per100": 0.0,
+     "notes": 29,
+     "pickup": 0
+    },
+    {
+     "id": "bach/bwv328",
+     "rt_nd_live": 0.2663729078749984,
+     "counted_beats": 188.0,
+     "harsh": 0.04577066575979018,
+     "fresh": 7,
+     "stumbles_per100": 3.314917127071823,
+     "notes": 181,
+     "pickup": 3
+    },
+    {
+     "id": "bach/bwv299",
+     "rt_nd_live": 0.5642998771294776,
+     "counted_beats": 44.0,
+     "harsh": 0.1256436545631294,
+     "fresh": 4,
+     "stumbles_per100": 0.0,
+     "notes": 49,
+     "pickup": 2
+    },
+    {
+     "id": "bach/bwv346",
+     "rt_nd_live": 0.16285062548147597,
+     "counted_beats": 54.9687368039882,
+     "harsh": 0.05912326944118268,
+     "fresh": 2,
+     "stumbles_per100": 1.9607843137254901,
+     "notes": 51,
+     "pickup": 3
+    },
+    {
+     "id": "bach/bwv296",
+     "rt_nd_live": 0.4250595114311918,
+     "counted_beats": 47.96509503597653,
+     "harsh": 0.058094593960186236,
+     "fresh": 1,
+     "stumbles_per100": 2.7777777777777777,
+     "notes": 36,
+     "pickup": 3
+    },
+    {
+     "id": "bach/bwv399",
+     "rt_nd_live": 0.5771420960091892,
+     "counted_beats": 44.0,
+     "harsh": 0.04312837323181074,
+     "fresh": 0,
+     "stumbles_per100": 13.333333333333334,
+     "notes": 45,
+     "pickup": 3
+    },
+    {
+     "id": "bach/bwv282",
+     "rt_nd_live": 0.6435739011927396,
+     "counted_beats": 50.989408339214314,
+     "harsh": 0.032111771468694046,
+     "fresh": 0,
+     "stumbles_per100": 0.0,
+     "notes": 29,
+     "pickup": 2
+    }
+   ],
+   "reg": [],
+   "base_stats": {}
+  },
+  "bpm72_sung": {
+   "voice": "sung",
+   "lat": {
+    "Li": 0.012,
+    "Lo": 0.01,
+    "Li_told": 0.012,
+    "Lo_told": 0.01
+   },
+   "bpm": 72.0,
+   "headline": {
+    "rt_nd_live": 0.6014451676248735,
+    "harsh": 0.07251601306822116,
+    "double": 0.04181109543354277,
+    "first_100ms_hit": 0.30087543426331664,
+    "first_100ms_harsh": 0.2954985252973771,
+    "on_time_right": 0.13618290258449303,
+    "changes": 0.7544731610337972,
+    "late_entry": 0.018886679920477135,
+    "fresh_per100": 4.7713717693836974,
+    "fresh": 48,
+    "wrong_att_per100": 37.77335984095428,
+    "attacks_per100": 91.35188866799204,
+    "attacks_in_rest": 0,
+    "stumbles_per100": 3.6779324055666005,
+    "stumbles_own_per100": 3.1809145129224654,
+    "blips": 0,
+    "blips_on_her": 0,
+    "notes": 1006,
+    "counted_beats": 1111.8782948536948
+   },
+   "songs": [
+    {
+     "id": "bach/bwv269",
+     "rt_nd_live": 0.5585965369362182,
+     "counted_beats": 59.0,
+     "harsh": 0.11976265575985032,
+     "fresh": 7,
+     "stumbles_per100": 9.30232558139535,
+     "notes": 43,
+     "pickup": 2
+    },
+    {
+     "id": "bach/bwv415",
+     "rt_nd_live": 0.6196220808249931,
+     "counted_beats": 44.0,
+     "harsh": 0.036997236177358866,
+     "fresh": 1,
+     "stumbles_per100": 4.878048780487805,
+     "notes": 41,
+     "pickup": 3
+    },
+    {
+     "id": "bach/bwv308",
+     "rt_nd_live": 0.622242064374612,
+     "counted_beats": 36.0,
+     "harsh": 0.07697666410739507,
+     "fresh": 2,
+     "stumbles_per100": 2.5,
+     "notes": 40,
+     "pickup": 3
+    },
+    {
+     "id": "bach/bwv291",
+     "rt_nd_live": 0.5876519171920744,
+     "counted_beats": 39.0,
+     "harsh": 0.0713802597800128,
+     "fresh": 1,
+     "stumbles_per100": 2.857142857142857,
+     "notes": 35,
+     "pickup": 3
+    },
+    {
+     "id": "bach/bwv245.40",
+     "rt_nd_live": 0.603383331670662,
+     "counted_beats": 108.0,
+     "harsh": 0.05300907942411049,
+     "fresh": 4,
+     "stumbles_per100": 4.545454545454546,
+     "notes": 110,
+     "pickup": 3
+    },
+    {
+     "id": "bach/bwv245.26",
+     "rt_nd_live": 0.6536326533426171,
+     "counted_beats": 44.0,
+     "harsh": 0.05024438264750693,
+     "fresh": 1,
+     "stumbles_per100": 2.4390243902439024,
+     "notes": 41,
+     "pickup": 3
+    },
+    {
+     "id": "bach/bwv371",
+     "rt_nd_live": 0.6424880545322726,
+     "counted_beats": 155.0,
+     "harsh": 0.055494800756142826,
+     "fresh": 4,
+     "stumbles_per100": 3.076923076923077,
+     "notes": 130,
+     "pickup": 0
+    },
+    {
+     "id": "bach/bwv294",
+     "rt_nd_live": 0.6697392408775955,
+     "counted_beats": 60.0,
+     "harsh": 0.11659614427744357,
+     "fresh": 4,
+     "stumbles_per100": 3.278688524590164,
+     "notes": 61,
+     "pickup": 3
+    },
+    {
+     "id": "bach/bwv264",
+     "rt_nd_live": 0.7277061757576275,
+     "counted_beats": 32.97125998263265,
+     "harsh": 0.07283088540686593,
+     "fresh": 2,
+     "stumbles_per100": 7.407407407407407,
+     "notes": 27,
+     "pickup": 3
+    },
+    {
+     "id": "bach/bwv140.7",
+     "rt_nd_live": 0.6578620164857926,
+     "counted_beats": 59.96844272771885,
+     "harsh": 0.04805949330903954,
+     "fresh": 1,
+     "stumbles_per100": 1.7241379310344827,
+     "notes": 58,
+     "pickup": 0
+    },
+    {
+     "id": "bach/bwv349",
+     "rt_nd_live": 0.7143612772383158,
+     "counted_beats": 44.0,
+     "harsh": 0.05350684498186009,
+     "fresh": 2,
+     "stumbles_per100": 3.4482758620689653,
+     "notes": 29,
+     "pickup": 0
+    },
+    {
+     "id": "bach/bwv328",
+     "rt_nd_live": 0.4845110413150029,
+     "counted_beats": 188.0,
+     "harsh": 0.09367196980090017,
+     "fresh": 10,
+     "stumbles_per100": 3.314917127071823,
+     "notes": 181,
+     "pickup": 3
+    },
+    {
+     "id": "bach/bwv299",
+     "rt_nd_live": 0.5456067511853714,
+     "counted_beats": 44.0,
+     "harsh": 0.16539117293690364,
+     "fresh": 3,
+     "stumbles_per100": 0.0,
+     "notes": 49,
+     "pickup": 2
+    },
+    {
+     "id": "bach/bwv346",
+     "rt_nd_live": 0.4925481337731238,
+     "counted_beats": 54.974989443190566,
+     "harsh": 0.0763095016591071,
+     "fresh": 1,
+     "stumbles_per100": 0.0,
+     "notes": 51,
+     "pickup": 3
+    },
+    {
+     "id": "bach/bwv296",
+     "rt_nd_live": 0.6186686057516637,
+     "counted_beats": 47.97207602878122,
+     "harsh": 0.06731101888192856,
+     "fresh": 4,
+     "stumbles_per100": 5.555555555555555,
+     "notes": 36,
+     "pickup": 3
+    },
+    {
+     "id": "bach/bwv399",
+     "rt_nd_live": 0.6612995614210612,
+     "counted_beats": 44.0,
+     "harsh": 0.04466783573964312,
+     "fresh": 1,
+     "stumbles_per100": 11.11111111111111,
+     "notes": 45,
+     "pickup": 3
+    },
+    {
+     "id": "bach/bwv282",
+     "rt_nd_live": 0.6603849323981037,
+     "counted_beats": 50.991526671371446,
+     "harsh": 0.018280475896340097,
+     "fresh": 0,
+     "stumbles_per100": 0.0,
+     "notes": 29,
+     "pickup": 2
+    }
+   ],
+   "reg": [],
+   "base_stats": {}
+  },
+  "bpm72_sung_low": {
+   "voice": "sung_low",
+   "lat": {
+    "Li": 0.012,
+    "Lo": 0.01,
+    "Li_told": 0.012,
+    "Lo_told": 0.01
+   },
+   "bpm": 72.0,
+   "headline": {
+    "rt_nd_live": 0.40463521186860435,
+    "harsh": 0.048339973427643394,
+    "double": 0.0033577169449354924,
+    "first_100ms_hit": 0.2053686172708844,
+    "first_100ms_harsh": 0.23362247691108742,
+    "on_time_right": 0.12226640159045726,
+    "changes": 0.41848906560636184,
+    "late_entry": 0.09642147117296222,
+    "fresh_per100": 5.268389662027833,
+    "fresh": 53,
+    "wrong_att_per100": 27.335984095427435,
+    "attacks_per100": 62.02783300198807,
+    "attacks_in_rest": 0,
+    "stumbles_per100": 2.783300198807157,
+    "stumbles_own_per100": 2.286282306163022,
+    "blips": 0,
+    "blips_on_her": 0,
+    "notes": 1006,
+    "counted_beats": 1111.8782948536948
+   },
+   "songs": [
+    {
+     "id": "bach/bwv269",
+     "rt_nd_live": 0.503966475042483,
+     "counted_beats": 59.0,
+     "harsh": 0.09632129175097108,
+     "fresh": 12,
+     "stumbles_per100": 9.30232558139535,
+     "notes": 43,
+     "pickup": 2
+    },
+    {
+     "id": "bach/bwv415",
+     "rt_nd_live": 0.511399819751329,
+     "counted_beats": 44.0,
+     "harsh": 0.020984038813917548,
+     "fresh": 0,
+     "stumbles_per100": 0.0,
+     "notes": 41,
+     "pickup": 3
+    },
+    {
+     "id": "bach/bwv308",
+     "rt_nd_live": 0.5041619107521049,
+     "counted_beats": 36.0,
+     "harsh": 0.046088089000393996,
+     "fresh": 1,
+     "stumbles_per100": 0.0,
+     "notes": 40,
+     "pickup": 3
+    },
+    {
+     "id": "bach/bwv291",
+     "rt_nd_live": 0.16561983332377453,
+     "counted_beats": 39.0,
+     "harsh": 0.010474684459775601,
+     "fresh": 0,
+     "stumbles_per100": 0.0,
+     "notes": 35,
+     "pickup": 3
+    },
+    {
+     "id": "bach/bwv245.40",
+     "rt_nd_live": 0.6445587008790971,
+     "counted_beats": 108.0,
+     "harsh": 0.06635742067016596,
+     "fresh": 8,
+     "stumbles_per100": 4.545454545454546,
+     "notes": 110,
+     "pickup": 3
+    },
+    {
+     "id": "bach/bwv245.26",
+     "rt_nd_live": 0.417793784227392,
+     "counted_beats": 44.0,
+     "harsh": 0.02167532799624383,
+     "fresh": 0,
+     "stumbles_per100": 2.4390243902439024,
+     "notes": 41,
+     "pickup": 3
+    },
+    {
+     "id": "bach/bwv371",
+     "rt_nd_live": 0.3229875235964103,
+     "counted_beats": 155.0,
+     "harsh": 0.029375370618690784,
+     "fresh": 5,
+     "stumbles_per100": 0.7692307692307693,
+     "notes": 130,
+     "pickup": 0
+    },
+    {
+     "id": "bach/bwv294",
+     "rt_nd_live": 0.2897794744468161,
+     "counted_beats": 60.0,
+     "harsh": 0.024814042863534006,
+     "fresh": 0,
+     "stumbles_per100": 0.0,
+     "notes": 61,
+     "pickup": 3
+    },
+    {
+     "id": "bach/bwv264",
+     "rt_nd_live": 0.5146090797320731,
+     "counted_beats": 32.97125998263265,
+     "harsh": 0.05149784247217932,
+     "fresh": 3,
+     "stumbles_per100": 7.407407407407407,
+     "notes": 27,
+     "pickup": 3
+    },
+    {
+     "id": "bach/bwv140.7",
+     "rt_nd_live": 0.42617357486280366,
+     "counted_beats": 59.96844272771885,
+     "harsh": 0.027669369619533906,
+     "fresh": 0,
+     "stumbles_per100": 1.7241379310344827,
+     "notes": 58,
+     "pickup": 0
+    },
+    {
+     "id": "bach/bwv349",
+     "rt_nd_live": 0.40687104601224855,
+     "counted_beats": 44.0,
+     "harsh": 0.03999749279532166,
+     "fresh": 1,
+     "stumbles_per100": 0.0,
+     "notes": 29,
+     "pickup": 0
+    },
+    {
+     "id": "bach/bwv328",
+     "rt_nd_live": 0.27468056849863176,
+     "counted_beats": 188.0,
+     "harsh": 0.042398696152342055,
+     "fresh": 8,
+     "stumbles_per100": 2.7624309392265194,
+     "notes": 181,
+     "pickup": 3
+    },
+    {
+     "id": "bach/bwv299",
+     "rt_nd_live": 0.4823409296682966,
+     "counted_beats": 44.0,
+     "harsh": 0.1130275218102781,
+     "fresh": 4,
+     "stumbles_per100": 0.0,
+     "notes": 49,
+     "pickup": 2
+    },
+    {
+     "id": "bach/bwv346",
+     "rt_nd_live": 0.16766450761923016,
+     "counted_beats": 54.974989443190566,
+     "harsh": 0.053259585480203465,
+     "fresh": 1,
+     "stumbles_per100": 0.0,
+     "notes": 51,
+     "pickup": 3
+    },
+    {
+     "id": "bach/bwv296",
+     "rt_nd_live": 0.41384003158099547,
+     "counted_beats": 47.97207602878122,
+     "harsh": 0.0663481939999721,
+     "fresh": 5,
+     "stumbles_per100": 8.333333333333334,
+     "notes": 36,
+     "pickup": 3
+    },
+    {
+     "id": "bach/bwv399",
+     "rt_nd_live": 0.567763148191152,
+     "counted_beats": 44.0,
+     "harsh": 0.05627140901982972,
+     "fresh": 1,
+     "stumbles_per100": 11.11111111111111,
+     "notes": 45,
+     "pickup": 3
+    },
+    {
+     "id": "bach/bwv282",
+     "rt_nd_live": 0.5937093176313984,
+     "counted_beats": 50.991526671371446,
+     "harsh": 0.08361874555819089,
+     "fresh": 4,
+     "stumbles_per100": 3.4482758620689653,
+     "notes": 29,
+     "pickup": 2
+    }
+   ],
+   "reg": [],
+   "base_stats": {}
+  },
+  "bpm110_sung": {
+   "voice": "sung",
+   "lat": {
+    "Li": 0.012,
+    "Lo": 0.01,
+    "Li_told": 0.012,
+    "Lo_told": 0.01
+   },
+   "bpm": 110.0,
+   "headline": {
+    "rt_nd_live": 0.5800754058146725,
+    "harsh": 0.08343041813390215,
+    "double": 0.049805747204291595,
+    "first_100ms_hit": 0.29661855426336786,
+    "first_100ms_harsh": 0.2854406434876532,
+    "on_time_right": 0.15308151093439365,
+    "changes": 0.7375745526838966,
+    "late_entry": 0.018886679920477135,
+    "fresh_per100": 5.168986083499006,
+    "fresh": 52,
+    "wrong_att_per100": 35.188866799204774,
+    "attacks_per100": 83.1013916500994,
+    "attacks_in_rest": 0,
+    "stumbles_per100": 5.268389662027833,
+    "stumbles_own_per100": 3.1809145129224654,
+    "blips": 0,
+    "blips_on_her": 0,
+    "notes": 1006,
+    "counted_beats": 1111.8140615820337
+   },
+   "songs": [
+    {
+     "id": "bach/bwv269",
+     "rt_nd_live": 0.6077304875159117,
+     "counted_beats": 59.0,
+     "harsh": 0.09256628500771494,
+     "fresh": 8,
+     "stumbles_per100": 11.627906976744185,
+     "notes": 43,
+     "pickup": 2
+    },
+    {
+     "id": "bach/bwv415",
+     "rt_nd_live": 0.5864992942141951,
+     "counted_beats": 44.0,
+     "harsh": 0.03540842210340664,
+     "fresh": 0,
+     "stumbles_per100": 4.878048780487805,
+     "notes": 41,
+     "pickup": 3
+    },
+    {
+     "id": "bach/bwv308",
+     "rt_nd_live": 0.5123207991857099,
+     "counted_beats": 36.0,
+     "harsh": 0.1104338647019812,
+     "fresh": 2,
+     "stumbles_per100": 2.5,
+     "notes": 40,
+     "pickup": 3
+    },
+    {
+     "id": "bach/bwv291",
+     "rt_nd_live": 0.6624738309638285,
+     "counted_beats": 39.0,
+     "harsh": 0.06185657242540402,
+     "fresh": 1,
+     "stumbles_per100": 5.714285714285714,
+     "notes": 35,
+     "pickup": 3
+    },
+    {
+     "id": "bach/bwv245.40",
+     "rt_nd_live": 0.5394456396511651,
+     "counted_beats": 108.0,
+     "harsh": 0.0542999767101502,
+     "fresh": 3,
+     "stumbles_per100": 6.363636363636363,
+     "notes": 110,
+     "pickup": 3
+    },
+    {
+     "id": "bach/bwv245.26",
+     "rt_nd_live": 0.5518738696515242,
+     "counted_beats": 44.0,
+     "harsh": 0.06731770772609001,
+     "fresh": 2,
+     "stumbles_per100": 2.4390243902439024,
+     "notes": 41,
+     "pickup": 3
+    },
+    {
+     "id": "bach/bwv371",
+     "rt_nd_live": 0.6515596060207912,
+     "counted_beats": 155.0,
+     "harsh": 0.06891369675119215,
+     "fresh": 3,
+     "stumbles_per100": 2.3076923076923075,
+     "notes": 130,
+     "pickup": 0
+    },
+    {
+     "id": "bach/bwv294",
+     "rt_nd_live": 0.6298571129421193,
+     "counted_beats": 60.0,
+     "harsh": 0.12233027798535895,
+     "fresh": 3,
+     "stumbles_per100": 1.639344262295082,
+     "notes": 61,
+     "pickup": 3
+    },
+    {
+     "id": "bach/bwv264",
+     "rt_nd_live": 0.6870810357324946,
+     "counted_beats": 32.956091640133224,
+     "harsh": 0.06853684373327769,
+     "fresh": 1,
+     "stumbles_per100": 14.814814814814815,
+     "notes": 27,
+     "pickup": 3
+    },
+    {
+     "id": "bach/bwv140.7",
+     "rt_nd_live": 0.5618082332050625,
+     "counted_beats": 59.95178750068158,
+     "harsh": 0.06109149230903643,
+     "fresh": 0,
+     "stumbles_per100": 5.172413793103448,
+     "notes": 58,
+     "pickup": 0
+    },
+    {
+     "id": "bach/bwv349",
+     "rt_nd_live": 0.6920641608106447,
+     "counted_beats": 44.0,
+     "harsh": 0.05069162604210208,
+     "fresh": 1,
+     "stumbles_per100": 3.4482758620689653,
+     "notes": 29,
+     "pickup": 0
+    },
+    {
+     "id": "bach/bwv328",
+     "rt_nd_live": 0.49526170141741466,
+     "counted_beats": 188.0,
+     "harsh": 0.12312903442804912,
+     "fresh": 14,
+     "stumbles_per100": 4.419889502762431,
+     "notes": 181,
+     "pickup": 3
+    },
+    {
+     "id": "bach/bwv299",
+     "rt_nd_live": 0.6079086237323306,
+     "counted_beats": 44.0,
+     "harsh": 0.13430564310669454,
+     "fresh": 3,
+     "stumbles_per100": 2.0408163265306123,
+     "notes": 49,
+     "pickup": 2
+    },
+    {
+     "id": "bach/bwv346",
+     "rt_nd_live": 0.47009637897092477,
+     "counted_beats": 54.96178942709669,
+     "harsh": 0.14120594588137547,
+     "fresh": 4,
+     "stumbles_per100": 1.9607843137254901,
+     "notes": 51,
+     "pickup": 3
+    },
+    {
+     "id": "bach/bwv296",
+     "rt_nd_live": 0.595010418869215,
+     "counted_beats": 47.957338377304666,
+     "harsh": 0.017059394606449365,
+     "fresh": 1,
+     "stumbles_per100": 16.666666666666668,
+     "notes": 36,
+     "pickup": 3
+    },
+    {
+     "id": "bach/bwv399",
+     "rt_nd_live": 0.6458129687193371,
+     "counted_beats": 44.0,
+     "harsh": 0.06364472730511019,
+     "fresh": 5,
+     "stumbles_per100": 15.555555555555555,
+     "notes": 45,
+     "pickup": 3
+    },
+    {
+     "id": "bach/bwv282",
+     "rt_nd_live": 0.5540035923186984,
+     "counted_beats": 50.98705463681749,
+     "harsh": 0.07678571204917876,
+     "fresh": 1,
+     "stumbles_per100": 0.0,
+     "notes": 29,
+     "pickup": 2
+    }
+   ],
+   "reg": [],
+   "base_stats": {}
+  },
+  "bpm110_sung_low": {
+   "voice": "sung_low",
+   "lat": {
+    "Li": 0.012,
+    "Lo": 0.01,
+    "Li_told": 0.012,
+    "Lo_told": 0.01
+   },
+   "bpm": 110.0,
+   "headline": {
+    "rt_nd_live": 0.3934860193863244,
+    "harsh": 0.05619973216209426,
+    "double": 0.0057529492975263155,
+    "first_100ms_hit": 0.20064615344973571,
+    "first_100ms_harsh": 0.23641076994392007,
+    "on_time_right": 0.1242544731610338,
+    "changes": 0.4165009940357853,
+    "late_entry": 0.09542743538767395,
+    "fresh_per100": 3.3797216699801194,
+    "fresh": 34,
+    "wrong_att_per100": 23.45924453280318,
+    "attacks_per100": 56.06361829025845,
+    "attacks_in_rest": 0,
+    "stumbles_per100": 3.8767395626242545,
+    "stumbles_own_per100": 2.1868787276341948,
+    "blips": 0,
+    "blips_on_her": 0,
+    "notes": 1006,
+    "counted_beats": 1111.8140615820337
+   },
+   "songs": [
+    {
+     "id": "bach/bwv269",
+     "rt_nd_live": 0.5440571850022323,
+     "counted_beats": 59.0,
+     "harsh": 0.08143168186789448,
+     "fresh": 6,
+     "stumbles_per100": 6.976744186046512,
+     "notes": 43,
+     "pickup": 2
+    },
+    {
+     "id": "bach/bwv415",
+     "rt_nd_live": 0.4933633609837207,
+     "counted_beats": 44.0,
+     "harsh": 0.03065743303641559,
+     "fresh": 0,
+     "stumbles_per100": 0.0,
+     "notes": 41,
+     "pickup": 3
+    },
+    {
+     "id": "bach/bwv308",
+     "rt_nd_live": 0.4791669885897912,
+     "counted_beats": 36.0,
+     "harsh": 0.0878222129932808,
+     "fresh": 2,
+     "stumbles_per100": 5.0,
+     "notes": 40,
+     "pickup": 3
+    },
+    {
+     "id": "bach/bwv291",
+     "rt_nd_live": 0.15765993054095145,
+     "counted_beats": 39.0,
+     "harsh": 0.015813887582777006,
+     "fresh": 0,
+     "stumbles_per100": 0.0,
+     "notes": 35,
+     "pickup": 3
+    },
+    {
+     "id": "bach/bwv245.40",
+     "rt_nd_live": 0.5672269205406438,
+     "counted_beats": 108.0,
+     "harsh": 0.07762632117914016,
+     "fresh": 3,
+     "stumbles_per100": 5.454545454545454,
+     "notes": 110,
+     "pickup": 3
+    },
+    {
+     "id": "bach/bwv245.26",
+     "rt_nd_live": 0.4016485915391931,
+     "counted_beats": 44.0,
+     "harsh": 0.06254850226434053,
+     "fresh": 0,
+     "stumbles_per100": 2.4390243902439024,
+     "notes": 41,
+     "pickup": 3
+    },
+    {
+     "id": "bach/bwv371",
+     "rt_nd_live": 0.3151674134900524,
+     "counted_beats": 155.0,
+     "harsh": 0.03665277860993782,
+     "fresh": 3,
+     "stumbles_per100": 1.5384615384615385,
+     "notes": 130,
+     "pickup": 0
+    },
+    {
+     "id": "bach/bwv294",
+     "rt_nd_live": 0.2759316044789305,
+     "counted_beats": 60.0,
+     "harsh": 0.04067376918966016,
+     "fresh": 0,
+     "stumbles_per100": 1.639344262295082,
+     "notes": 61,
+     "pickup": 3
+    },
+    {
+     "id": "bach/bwv264",
+     "rt_nd_live": 0.5064837002682073,
+     "counted_beats": 32.956091640133224,
+     "harsh": 0.07117587472338677,
+     "fresh": 2,
+     "stumbles_per100": 11.11111111111111,
+     "notes": 27,
+     "pickup": 3
+    },
+    {
+     "id": "bach/bwv140.7",
+     "rt_nd_live": 0.3824509999820505,
+     "counted_beats": 59.95178750068158,
+     "harsh": 0.04196233311341741,
+     "fresh": 0,
+     "stumbles_per100": 0.0,
+     "notes": 58,
+     "pickup": 0
+    },
+    {
+     "id": "bach/bwv349",
+     "rt_nd_live": 0.3833762500148166,
+     "counted_beats": 44.0,
+     "harsh": 0.05601395029759864,
+     "fresh": 2,
+     "stumbles_per100": 0.0,
+     "notes": 29,
+     "pickup": 0
+    },
+    {
+     "id": "bach/bwv328",
+     "rt_nd_live": 0.2672808878381234,
+     "counted_beats": 188.0,
+     "harsh": 0.04775769135574114,
+     "fresh": 6,
+     "stumbles_per100": 3.867403314917127,
+     "notes": 181,
+     "pickup": 3
+    },
+    {
+     "id": "bach/bwv299",
+     "rt_nd_live": 0.5648587381149329,
+     "counted_beats": 44.0,
+     "harsh": 0.060173456464000026,
+     "fresh": 2,
+     "stumbles_per100": 2.0408163265306123,
+     "notes": 49,
+     "pickup": 2
+    },
+    {
+     "id": "bach/bwv346",
+     "rt_nd_live": 0.17480247324198742,
+     "counted_beats": 54.96178942709669,
+     "harsh": 0.04944159539238191,
+     "fresh": 1,
+     "stumbles_per100": 0.0,
+     "notes": 51,
+     "pickup": 3
+    },
+    {
+     "id": "bach/bwv296",
+     "rt_nd_live": 0.41618725279800506,
+     "counted_beats": 47.957338377304666,
+     "harsh": 0.06926543863565567,
+     "fresh": 2,
+     "stumbles_per100": 13.88888888888889,
+     "notes": 36,
+     "pickup": 3
+    },
+    {
+     "id": "bach/bwv399",
+     "rt_nd_live": 0.5308439511506211,
+     "counted_beats": 44.0,
+     "harsh": 0.07836577440854323,
+     "fresh": 3,
+     "stumbles_per100": 17.77777777777778,
+     "notes": 45,
+     "pickup": 3
+    },
+    {
+     "id": "bach/bwv282",
+     "rt_nd_live": 0.6162735606122559,
+     "counted_beats": 50.98705463681749,
+     "harsh": 0.09522348783997153,
+     "fresh": 2,
+     "stumbles_per100": 0.0,
+     "notes": 29,
+     "pickup": 2
+    }
+   ],
+   "reg": [],
+   "base_stats": {}
+  },
+  "phase_sung": {
+   "voice": "sung",
+   "lat": {
+    "Li": 0.017,
+    "Lo": 0.01,
+    "Li_told": 0.017,
+    "Lo_told": 0.01
+   },
+   "bpm": 90.0,
+   "headline": {
+    "rt_nd_live": 0.5860862715572779,
+    "harsh": 0.07468163458948729,
+    "double": 0.04701474401630396,
+    "first_100ms_hit": 0.28608158969558245,
+    "first_100ms_harsh": 0.29675775635519935,
+    "on_time_right": 0.15606361829025844,
+    "changes": 0.7286282306163022,
+    "late_entry": 0.018886679920477135,
+    "fresh_per100": 4.572564612326044,
+    "fresh": 46,
+    "wrong_att_per100": 35.387673956262425,
+    "attacks_per100": 84.79125248508946,
+    "attacks_in_rest": 1,
+    "stumbles_per100": 3.8767395626242545,
+    "stumbles_own_per100": 3.3797216699801194,
+    "blips": 0,
+    "blips_on_her": 0,
+    "notes": 1006,
+    "counted_beats": 1111.8478685671187
+   },
+   "songs": [
+    {
+     "id": "bach/bwv269",
+     "rt_nd_live": 0.5921298750372457,
+     "counted_beats": 59.0,
+     "harsh": 0.09957777442560657,
+     "fresh": 6,
+     "stumbles_per100": 13.953488372093023,
+     "notes": 43,
+     "pickup": 2
+    },
+    {
+     "id": "bach/bwv415",
+     "rt_nd_live": 0.5294068332004854,
+     "counted_beats": 44.0,
+     "harsh": 0.06249320961350933,
+     "fresh": 2,
+     "stumbles_per100": 0.0,
+     "notes": 41,
+     "pickup": 3
+    },
+    {
+     "id": "bach/bwv308",
+     "rt_nd_live": 0.5796553524942464,
+     "counted_beats": 36.0,
+     "harsh": 0.10182106114886198,
+     "fresh": 2,
+     "stumbles_per100": 0.0,
+     "notes": 40,
+     "pickup": 3
+    },
+    {
+     "id": "bach/bwv291",
+     "rt_nd_live": 0.5931503426459982,
+     "counted_beats": 39.0,
+     "harsh": 0.07555754321778616,
+     "fresh": 2,
+     "stumbles_per100": 2.857142857142857,
+     "notes": 35,
+     "pickup": 3
+    },
+    {
+     "id": "bach/bwv245.40",
+     "rt_nd_live": 0.595391974759137,
+     "counted_beats": 107.99999999999999,
+     "harsh": 0.04770159595983716,
+     "fresh": 4,
+     "stumbles_per100": 7.2727272727272725,
+     "notes": 110,
+     "pickup": 3
+    },
+    {
+     "id": "bach/bwv245.26",
+     "rt_nd_live": 0.6314097350446625,
+     "counted_beats": 44.0,
+     "harsh": 0.03824722418406293,
+     "fresh": 0,
+     "stumbles_per100": 0.0,
+     "notes": 41,
+     "pickup": 3
+    },
+    {
+     "id": "bach/bwv371",
+     "rt_nd_live": 0.6395046662916459,
+     "counted_beats": 155.0,
+     "harsh": 0.05842422525849131,
+     "fresh": 3,
+     "stumbles_per100": 3.8461538461538463,
+     "notes": 130,
+     "pickup": 0
+    },
+    {
+     "id": "bach/bwv294",
+     "rt_nd_live": 0.6425076256113921,
+     "counted_beats": 60.0,
+     "harsh": 0.08097106608631091,
+     "fresh": 4,
+     "stumbles_per100": 1.639344262295082,
+     "notes": 61,
+     "pickup": 3
+    },
+    {
+     "id": "bach/bwv264",
+     "rt_nd_live": 0.6944101963888228,
+     "counted_beats": 32.96407497829081,
+     "harsh": 0.07340590846821635,
+     "fresh": 1,
+     "stumbles_per100": 11.11111111111111,
+     "notes": 27,
+     "pickup": 3
+    },
+    {
+     "id": "bach/bwv140.7",
+     "rt_nd_live": 0.5751570006332672,
+     "counted_beats": 59.96055340964855,
+     "harsh": 0.04893204358050598,
+     "fresh": 0,
+     "stumbles_per100": 1.7241379310344827,
+     "notes": 58,
+     "pickup": 0
+    },
+    {
+     "id": "bach/bwv349",
+     "rt_nd_live": 0.6890186746274525,
+     "counted_beats": 44.0,
+     "harsh": 0.05450134436219011,
+     "fresh": 2,
+     "stumbles_per100": 0.0,
+     "notes": 29,
+     "pickup": 0
+    },
+    {
+     "id": "bach/bwv328",
+     "rt_nd_live": 0.5213990948774788,
+     "counted_beats": 188.0,
+     "harsh": 0.083876901643495,
+     "fresh": 7,
+     "stumbles_per100": 3.314917127071823,
+     "notes": 181,
+     "pickup": 3
+    },
+    {
+     "id": "bach/bwv299",
+     "rt_nd_live": 0.5455963131248459,
+     "counted_beats": 44.0,
+     "harsh": 0.12174479938857026,
+     "fresh": 2,
+     "stumbles_per100": 0.0,
+     "notes": 49,
+     "pickup": 2
+    },
+    {
+     "id": "bach/bwv346",
+     "rt_nd_live": 0.4620340862337347,
+     "counted_beats": 54.9687368039882,
+     "harsh": 0.12681275481409945,
+     "fresh": 4,
+     "stumbles_per100": 1.9607843137254901,
+     "notes": 51,
+     "pickup": 3
+    },
+    {
+     "id": "bach/bwv296",
+     "rt_nd_live": 0.4647244471069548,
+     "counted_beats": 47.96509503597653,
+     "harsh": 0.12622411848562842,
+     "fresh": 5,
+     "stumbles_per100": 2.7777777777777777,
+     "notes": 36,
+     "pickup": 3
+    },
+    {
+     "id": "bach/bwv399",
+     "rt_nd_live": 0.706647913451619,
+     "counted_beats": 44.0,
+     "harsh": 0.053135167255137734,
+     "fresh": 1,
+     "stumbles_per100": 13.333333333333334,
+     "notes": 45,
+     "pickup": 3
+    },
+    {
+     "id": "bach/bwv282",
+     "rt_nd_live": 0.6108485937879595,
+     "counted_beats": 50.989408339214314,
+     "harsh": 0.05507772425280499,
+     "fresh": 1,
+     "stumbles_per100": 0.0,
+     "notes": 29,
+     "pickup": 2
+    }
+   ],
+   "reg": [],
+   "base_stats": {}
+  },
+  "phase_sung_low": {
+   "voice": "sung_low",
+   "lat": {
+    "Li": 0.017,
+    "Lo": 0.01,
+    "Li_told": 0.017,
+    "Lo_told": 0.01
+   },
+   "bpm": 90.0,
+   "headline": {
+    "rt_nd_live": 0.39330942268065994,
+    "harsh": 0.054723274514068575,
+    "double": 0.00455718535838444,
+    "first_100ms_hit": 0.1893336377167274,
+    "first_100ms_harsh": 0.23992632902200892,
+    "on_time_right": 0.1242544731610338,
+    "changes": 0.41848906560636184,
+    "late_entry": 0.09443339960238568,
+    "fresh_per100": 3.9761431411530817,
+    "fresh": 40,
+    "wrong_att_per100": 25.54671968190855,
+    "attacks_per100": 59.14512922465209,
+    "attacks_in_rest": 0,
+    "stumbles_per100": 3.081510934393638,
+    "stumbles_own_per100": 2.584493041749503,
+    "blips": 0,
+    "blips_on_her": 0,
+    "notes": 1006,
+    "counted_beats": 1111.8478685671187
+   },
+   "songs": [
+    {
+     "id": "bach/bwv269",
+     "rt_nd_live": 0.536917307025565,
+     "counted_beats": 59.0,
+     "harsh": 0.07641796001301365,
+     "fresh": 8,
+     "stumbles_per100": 13.953488372093023,
+     "notes": 43,
+     "pickup": 2
+    },
+    {
+     "id": "bach/bwv415",
+     "rt_nd_live": 0.49856795650734215,
+     "counted_beats": 44.0,
+     "harsh": 0.027593684881033562,
+     "fresh": 0,
+     "stumbles_per100": 0.0,
+     "notes": 41,
+     "pickup": 3
+    },
+    {
+     "id": "bach/bwv308",
+     "rt_nd_live": 0.49483075219107,
+     "counted_beats": 36.0,
+     "harsh": 0.07923174749955332,
+     "fresh": 2,
+     "stumbles_per100": 0.0,
+     "notes": 40,
+     "pickup": 3
+    },
+    {
+     "id": "bach/bwv291",
+     "rt_nd_live": 0.1621529967829234,
+     "counted_beats": 39.0,
+     "harsh": 0.0133497658311299,
+     "fresh": 0,
+     "stumbles_per100": 0.0,
+     "notes": 35,
+     "pickup": 3
+    },
+    {
+     "id": "bach/bwv245.40",
+     "rt_nd_live": 0.6224479593587047,
+     "counted_beats": 107.99999999999999,
+     "harsh": 0.07662863288853146,
+     "fresh": 2,
+     "stumbles_per100": 3.6363636363636362,
+     "notes": 110,
+     "pickup": 3
+    },
+    {
+     "id": "bach/bwv245.26",
+     "rt_nd_live": 0.4102663605343411,
+     "counted_beats": 44.0,
+     "harsh": 0.044340845860340365,
+     "fresh": 1,
+     "stumbles_per100": 0.0,
+     "notes": 41,
+     "pickup": 3
+    },
+    {
+     "id": "bach/bwv371",
+     "rt_nd_live": 0.28568554857645956,
+     "counted_beats": 155.0,
+     "harsh": 0.047747999874087815,
+     "fresh": 5,
+     "stumbles_per100": 2.3076923076923075,
+     "notes": 130,
+     "pickup": 0
+    },
+    {
+     "id": "bach/bwv294",
+     "rt_nd_live": 0.28089100972518555,
+     "counted_beats": 60.0,
+     "harsh": 0.033184220246085784,
+     "fresh": 0,
+     "stumbles_per100": 0.0,
+     "notes": 61,
+     "pickup": 3
+    },
+    {
+     "id": "bach/bwv264",
+     "rt_nd_live": 0.5135632414298265,
+     "counted_beats": 32.96407497829081,
+     "harsh": 0.06211112983504063,
+     "fresh": 2,
+     "stumbles_per100": 7.407407407407407,
+     "notes": 27,
+     "pickup": 3
+    },
+    {
+     "id": "bach/bwv140.7",
+     "rt_nd_live": 0.41671074730713453,
+     "counted_beats": 59.96055340964855,
+     "harsh": 0.03600990378499462,
+     "fresh": 0,
+     "stumbles_per100": 1.7241379310344827,
+     "notes": 58,
+     "pickup": 0
+    },
+    {
+     "id": "bach/bwv349",
+     "rt_nd_live": 0.3876487500121239,
+     "counted_beats": 44.0,
+     "harsh": 0.05354795830133997,
+     "fresh": 2,
+     "stumbles_per100": 0.0,
+     "notes": 29,
+     "pickup": 0
+    },
+    {
+     "id": "bach/bwv328",
+     "rt_nd_live": 0.2701276219756973,
+     "counted_beats": 188.0,
+     "harsh": 0.03659172646478335,
+     "fresh": 6,
+     "stumbles_per100": 2.7624309392265194,
+     "notes": 181,
+     "pickup": 3
+    },
+    {
+     "id": "bach/bwv299",
+     "rt_nd_live": 0.5277234335760972,
+     "counted_beats": 44.0,
+     "harsh": 0.1219729402917889,
+     "fresh": 3,
+     "stumbles_per100": 0.0,
+     "notes": 49,
+     "pickup": 2
+    },
+    {
+     "id": "bach/bwv346",
+     "rt_nd_live": 0.17808818875443477,
+     "counted_beats": 54.9687368039882,
+     "harsh": 0.046112615535835996,
+     "fresh": 2,
+     "stumbles_per100": 1.9607843137254901,
+     "notes": 51,
+     "pickup": 3
+    },
+    {
+     "id": "bach/bwv296",
+     "rt_nd_live": 0.3837794931488372,
+     "counted_beats": 47.96509503597653,
+     "harsh": 0.09624777351629593,
+     "fresh": 3,
+     "stumbles_per100": 2.7777777777777777,
+     "notes": 36,
+     "pickup": 3
+    },
+    {
+     "id": "bach/bwv399",
+     "rt_nd_live": 0.5523743897843926,
+     "counted_beats": 44.0,
+     "harsh": 0.06653244309297103,
+     "fresh": 1,
+     "stumbles_per100": 13.333333333333334,
+     "notes": 45,
+     "pickup": 3
+    },
+    {
+     "id": "bach/bwv282",
+     "rt_nd_live": 0.5424449888790995,
+     "counted_beats": 50.989408339214314,
+     "harsh": 0.06357831512500531,
+     "fresh": 3,
+     "stumbles_per100": 6.896551724137931,
+     "notes": 29,
+     "pickup": 2
+    }
+   ],
+   "reg": [],
+   "base_stats": {}
+  }
+ },
+ "secs": 140.0
+}

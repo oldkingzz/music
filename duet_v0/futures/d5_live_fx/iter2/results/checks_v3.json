@@ -1,0 +1,246 @@
+{
+ "kw": {
+  "drop_db": 16,
+  "onset_db": 20,
+  "f0_tau": 0.015,
+  "mode": "follow"
+ },
+ "latency": {
+  "onset": [
+   {
+    "f0": 196.0,
+    "onset_ms": 0.9583333333333334
+   },
+   {
+    "f0": 262.0,
+    "onset_ms": 0.7083333333333334
+   },
+   {
+    "f0": 440.0,
+    "onset_ms": 1.875
+   },
+   {
+    "f0": 660.0,
+    "onset_ms": 1.4583333333333333
+   }
+  ],
+  "path_delay": [
+   {
+    "f0": 196.0,
+    "delay_ms": 0.375
+   },
+   {
+    "f0": 262.0,
+    "delay_ms": 2.2916666666666665
+   },
+   {
+    "f0": 440.0,
+    "delay_ms": 1.2083333333333333
+   },
+   {
+    "f0": 660.0,
+    "delay_ms": 0.8333333333333334
+   }
+  ],
+  "pitch_step": [
+   {
+    "from": 69,
+    "to": 72,
+    "leave_ms": 0.0,
+    "settle_ms": 13.00000000000001,
+    "interim_interval": 4
+   },
+   {
+    "from": 72,
+    "to": 69,
+    "leave_ms": -1.0000000000000009,
+    "settle_ms": 14.000000000000012,
+    "interim_interval": 3
+   },
+   {
+    "from": 64,
+    "to": 65,
+    "leave_ms": 2.0000000000000018,
+    "settle_ms": 18.000000000000014,
+    "interim_interval": 4
+   },
+   {
+    "from": 67,
+    "to": 71,
+    "leave_ms": -2.0000000000000018,
+    "settle_ms": 22.00000000000002,
+    "interim_interval": 3
+   }
+  ]
+ },
+ "sim": [
+  {
+   "total_s": 180.0,
+   "rt60": 0.6,
+   "extra_db": 0.0,
+   "guard": true,
+   "gate": true,
+   "howl": {
+    "narrowband_longest_s": 0.1,
+    "runaway_longest_s": 0.0,
+    "howl": false
+   },
+   "gate_metrics": {
+    "n_offsets": 24,
+    "singing_level_out_dbfs": -21.812612398892455,
+    "release_to_-40dBFS_s": {
+     "median": 0.0025,
+     "p95": 0.08624999999999994,
+     "max": 0.115,
+     "share_le_0.2": 1.0
+    },
+    "release_to_sing-30dB_s": {
+     "median": 0.0325,
+     "p95": 0.34699999999999975,
+     "max": 3.65,
+     "share_le_0.2": 0.875
+    },
+    "gap_time_s": 30.797333333333334,
+    "false_trigger_events": 5,
+    "false_open_time_s": 0.16799999999999998,
+    "gap_output_above_-40dBFS_s": 0.0,
+    "between_songs": {
+     "time_s": 13.904,
+     "gate_open_events": 0,
+     "gate_open_s": 0.0,
+     "output_above_-40dBFS_s": 0.0
+    }
+   },
+   "erle_soundcheck_db": 14.643329585365436,
+   "peak_out_dbfs": -2.9999999999983302,
+   "g_spk": 0.9560763243978678,
+   "secs": 32.931477069854736
+  },
+  {
+   "total_s": 180.0,
+   "rt60": 0.3,
+   "extra_db": 0.0,
+   "guard": true,
+   "gate": true,
+   "howl": {
+    "narrowband_longest_s": 0.14,
+    "runaway_longest_s": 0.05,
+    "howl": false
+   },
+   "gate_metrics": {
+    "n_offsets": 24,
+    "singing_level_out_dbfs": -21.80919948457525,
+    "release_to_-40dBFS_s": {
+     "median": 0.0,
+     "p95": 0.03124999999999995,
+     "max": 0.05,
+     "share_le_0.2": 1.0
+    },
+    "release_to_sing-30dB_s": {
+     "median": 0.015,
+     "p95": 0.3342499999999998,
+     "max": 0.36,
+     "share_le_0.2": 0.875
+    },
+    "gap_time_s": 30.797333333333334,
+    "false_trigger_events": 6,
+    "false_open_time_s": 0.17066666666666666,
+    "gap_output_above_-40dBFS_s": 0.0,
+    "between_songs": {
+     "time_s": 13.904,
+     "gate_open_events": 0,
+     "gate_open_s": 0.0,
+     "output_above_-40dBFS_s": 0.0
+    }
+   },
+   "erle_soundcheck_db": 14.63969403388257,
+   "peak_out_dbfs": -2.99999999999818,
+   "g_spk": 0.9531714430156529,
+   "secs": 32.0987389087677
+  },
+  {
+   "total_s": 60.0,
+   "rt60": 0.6,
+   "extra_db": 24.0,
+   "guard": true,
+   "gate": true,
+   "howl": {
+    "narrowband_longest_s": 0.36,
+    "runaway_longest_s": 0.25,
+    "howl": false
+   },
+   "gate_metrics": {
+    "n_offsets": 8,
+    "singing_level_out_dbfs": -20.487768849405978,
+    "release_to_-40dBFS_s": {
+     "median": 0.015,
+     "p95": 0.1932499999999999,
+     "max": 0.265,
+     "share_le_0.2": 0.875
+    },
+    "release_to_sing-30dB_s": {
+     "median": 0.055,
+     "p95": 0.23599999999999993,
+     "max": 0.28500000000000003,
+     "share_le_0.2": 0.875
+    },
+    "gap_time_s": 8.058666666666667,
+    "false_trigger_events": 0,
+    "false_open_time_s": 0.06666666666666667,
+    "gap_output_above_-40dBFS_s": 0.065,
+    "between_songs": {
+     "time_s": 2.2346666666666666,
+     "gate_open_events": 0,
+     "gate_open_s": 0.0,
+     "output_above_-40dBFS_s": 0.0
+    }
+   },
+   "erle_soundcheck_db": 17.923345711763968,
+   "peak_out_dbfs": -2.9999999999969895,
+   "g_spk": 0.9740531022966594,
+   "secs": 11.586705207824707
+  },
+  {
+   "total_s": 60.0,
+   "rt60": 0.3,
+   "extra_db": 24.0,
+   "guard": true,
+   "gate": true,
+   "howl": {
+    "narrowband_longest_s": 0.32,
+    "runaway_longest_s": 0.1,
+    "howl": false
+   },
+   "gate_metrics": {
+    "n_offsets": 8,
+    "singing_level_out_dbfs": -21.138064468395402,
+    "release_to_-40dBFS_s": {
+     "median": 0.0,
+     "p95": 0.12149999999999994,
+     "max": 0.16,
+     "share_le_0.2": 1.0
+    },
+    "release_to_sing-30dB_s": {
+     "median": 0.0025,
+     "p95": 0.17749999999999996,
+     "max": 0.195,
+     "share_le_0.2": 1.0
+    },
+    "gap_time_s": 8.058666666666667,
+    "false_trigger_events": 1,
+    "false_open_time_s": 0.0026666666666666666,
+    "gap_output_above_-40dBFS_s": 0.0,
+    "between_songs": {
+     "time_s": 2.2346666666666666,
+     "gate_open_events": 0,
+     "gate_open_s": 0.0,
+     "output_above_-40dBFS_s": 0.0
+    }
+   },
+   "erle_soundcheck_db": 20.19068865203344,
+   "peak_out_dbfs": -2.9999999999981037,
+   "g_spk": 0.9725066626833992,
+   "secs": 11.921854972839355
+  }
+ ]
+}

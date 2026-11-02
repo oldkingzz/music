@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="zh">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Duet 盲听</title>
+<style>
+:root { --bg:#f7f7f5; --fg:#1d1d1f; --muted:#67676d; --card:#ffffff; --line:#e2e2de; --accent:#2f5bd3; --on:#e9eefc; --ok:#1f7a4d; }
+@media (prefers-color-scheme: dark) {
+  :root { --bg:#141416; --fg:#f1f1f2; --muted:#9c9ca3; --card:#1e1e21; --line:#34343a; --accent:#86a7ff; --on:#22304f; --ok:#5ccf93; }
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--fg); font: 16px/1.55 -apple-system, "PingFang SC", system-ui, sans-serif; }
+main { max-width: 780px; margin: 0 auto; padding: 28px 16px 96px; }
+h1 { font-size: 22px; margin: 0 0 6px; }
+.lead { color: var(--muted); margin: 0 0 20px; }
+.pair { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 14px 16px; margin: 0 0 14px; }
+.pair header { display: flex; justify-content: space-between; font-weight: 600; margin-bottom: 10px; }
+.pair header .st { font-weight: 500; color: var(--muted); font-size: 14px; }
+.pair.answered header .st { color: var(--ok); }
+.sides { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+@media (max-width: 560px) { .sides { grid-template-columns: 1fr; } }
+.side { border: 1px solid var(--line); border-radius: 10px; padding: 10px; }
+.side.chosen { border-color: var(--accent); background: var(--on); }
+.side .name { font-weight: 600; margin-bottom: 6px; }
+audio { width: 100%; }
+.pick { display: flex; gap: 8px; align-items: center; margin: 8px 0 6px; font-weight: 600; cursor: pointer; }
+.tags { display: flex; flex-wrap: wrap; gap: 4px 12px; font-size: 13px; color: var(--muted); }
+.tags label { cursor: pointer; }
+#bar { position: fixed; left: 0; right: 0; bottom: 0; background: var(--card); border-top: 1px solid var(--line); padding: 10px 16px; }
+#bar .in { max-width: 780px; margin: 0 auto; display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
+#code { font: 15px/1.4 ui-monospace, Menlo, monospace; word-break: break-all; padding: 4px 8px; border: 1px solid var(--line); border-radius: 6px; }
+button { font: inherit; padding: 4px 12px; border-radius: 6px; border: 1px solid var(--accent); background: var(--accent); color: #fff; cursor: pointer; }
+</style>
+</head>
+<body>
+<main>
+<h1>Duet 盲听 · 16 对</h1>
+<p class="lead">每一对：同一首歌的同一段，她的旋律（人声，偏左）一样，Duet 的和声（单簧管音色，偏右）不同。两段都听完，选你觉得<b>更好听</b>的一边，可以反复听。标签可选：刺耳 clashing / 无聊 boring / 乱跳 jumpy / 机械 robotic。全部选完，下方出现结果码，复制后粘贴到对话里。</p>
+<div id="pairs"></div>
+</main>
+<div id="bar"><div class="in"><span id="progress"></span><code id="code" hidden></code><button id="copy" hidden>复制结果码</button></div></div>
+<script>
+const PAIRS = [{"pair": 1, "title": "Bach bwv245.40"}, {"pair": 2, "title": "Twinkle"}, {"pair": 3, "title": "Bach bwv328"}, {"pair": 4, "title": "Bach bwv399"}, {"pair": 5, "title": "Bach bwv296"}, {"pair": 6, "title": "Bach bwv282"}, {"pair": 7, "title": "Twinkle"}, {"pair": 8, "title": "Twinkle"}, {"pair": 9, "title": "Bach bwv349"}, {"pair": 10, "title": "Bach bwv294"}, {"pair": 11, "title": "Bach bwv291"}, {"pair": 12, "title": "Bach bwv269"}, {"pair": 13, "title": "Twinkle"}, {"pair": 14, "title": "Bach bwv346"}, {"pair": 15, "title": "Bach bwv371"}, {"pair": 16, "title": "Bach bwv245.26"}];
+const TAGS = [['c', '刺耳 clashing'], ['b', '无聊 boring'], ['j', '乱跳 jumpy'], ['r', '机械 robotic']];
+const KEY = 'duet_ab_v2';
+let st = { choice: {}, tags: {} };
+try { st = JSON.parse(localStorage.getItem(KEY)) || st; } catch (e) {}
+function save() { try { localStorage.setItem(KEY, JSON.stringify(st)); } catch (e) {} }
+const pad = n => String(n).padStart(2, '0');
+const root = document.getElementById('pairs');
+for (const p of PAIRS) {
+  const a = document.createElement('article');
+  a.className = 'pair'; a.id = 'p' + p.pair;
+  let html = `<header><span>第 ${p.pair} 对 · ${p.title}</span><span class="st"></span></header><div class="sides">`;
+  for (const [s, zh] of [['L', '左 L'], ['R', '右 R']]) {
+    html += `<div class="side" data-side="${s}"><div class="name">${zh}</div>
+      <audio controls preload="none" src="audio/p${pad(p.pair)}_${s}.mp3"></audio>
+      <label class="pick"><input type="radio" name="c${p.pair}" value="${s}"> ${s === 'L' ? '左边' : '右边'}更好</label>
+      <div class="tags">${TAGS.map(([t, lab]) => `<label><input type="checkbox" data-t="${t}" data-s="${s}"> ${lab}</label>`).join('')}</div></div>`;
+  }
+  a.innerHTML = html + '</div>';
+  root.appendChild(a);
+  a.querySelectorAll('input[type=radio]').forEach(r => {
+    r.checked = st.choice[p.pair] === r.value;
+    r.addEventListener('change', () => { st.choice[p.pair] = r.value; save(); render(); });
+  });
+  a.querySelectorAll('input[type=checkbox]').forEach(c => {
+    const k = p.pair + c.dataset.s;
+    c.checked = (st.tags[k] || '').includes(c.dataset.t);
+    c.addEventListener('change', () => {
+      let v = (st.tags[k] || '').replace(c.dataset.t, '');
+      if (c.checked) v = TAGS.map(t => t[0]).filter(t => (v + c.dataset.t).includes(t)).join('');
+      if (v) st.tags[k] = v; else delete st.tags[k];
+      save(); render();
+    });
+  });
+}
+document.querySelectorAll('audio').forEach(au => au.addEventListener('play', () => {
+  document.querySelectorAll('audio').forEach(o => { if (o !== au) o.pause(); });
+}));
+function render() {
+  let n = 0;
+  for (const p of PAIRS) {
+    const a = document.getElementById('p' + p.pair), c = st.choice[p.pair];
+    a.classList.toggle('answered', !!c);
+    a.querySelector('.st').textContent = c ? '已选 ' + (c === 'L' ? '左' : '右') : '未选';
+    a.querySelectorAll('.side').forEach(d => d.classList.toggle('chosen', d.dataset.side === c));
+    if (c) n++;
+  }
+  document.getElementById('progress').textContent = `已选 ${n} / ${PAIRS.length}`;
+  const done = n === PAIRS.length, code = document.getElementById('code');
+  code.hidden = document.getElementById('copy').hidden = !done;
+  if (done) {
+    const tags = Object.keys(st.tags).sort((x, y) => parseInt(x) - parseInt(y) || x.localeCompare(y)).map(k => k + st.tags[k]);
+    code.textContent = 'L2-' + PAIRS.map(p => st.choice[p.pair]).join('') + (tags.length ? '-' + tags.join('.') : '');
+  }
+}
+document.getElementById('copy').addEventListener('click', () => {
+  const t = document.getElementById('code').textContent;
+  (navigator.clipboard ? navigator.clipboard.writeText(t) : Promise.reject()).then(
+    () => { document.getElementById('copy').textContent = '已复制'; },
+    () => { const r = document.createRange(); r.selectNodeContents(document.getElementById('code'));
+            const s = getSelection(); s.removeAllRanges(); s.addRange(r); });
+});
+render();
+</script>
+</body>
+</html>

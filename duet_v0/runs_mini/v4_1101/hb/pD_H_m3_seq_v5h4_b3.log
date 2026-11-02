@@ -1,0 +1,2 @@
+2026-11-01 16:19:06 START tl=600 cwd=$ABS/futures/v3_nolatency $ABS/.venv/bin/python $ABS/futures/v3_nolatency/bench3.py --system m3_seq_v5h4 --note v4 Phase D history: m3_seq_v5 limited to her last 4 beats (legacy file sets DUET_HIST=4 inside its own process; outside env empty)
+2026-11-01 16:19:23 END rc=0 secs=16 $ABS/.venv/bin/python $ABS/futures/v3_nolatency/bench3.py --system m3_seq_v5h4 --note v4 Phase D history: m3_seq_v5 limited to her last 4 beats (legacy file sets DUET_HIST=4 inside its own process; outside env empty)

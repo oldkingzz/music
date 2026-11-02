@@ -1,0 +1,1 @@
+{"sig": {"bach": 135, "folk": 511, "pop": 8149, "pop909": 322, "P": {"hid": 256, "epochs": 10, "lr": 0.002, "cap": 90000, "aug": 3, "ens": 2, "drop": 0.1, "ctx": 7, "tag": "v9"}, "hist": 0, "drop": []}, "rows": 250217}

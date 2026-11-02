@@ -1,0 +1,1004 @@
+{
+ "spec": "rt:r2_copyhm_v1",
+ "voice": "sung_low",
+ "note": "val only, systems tuned on val; no test split",
+ "metrics": {
+  "rt_nd_live": 0.5123196827438313,
+  "harsh": 0.04998525412357563,
+  "double": 0.00770242703200878,
+  "first_100ms_hit": 0.2691870927805204,
+  "first_100ms_harsh": 0.23926033320191614,
+  "on_time_right": 0.13618290258449303,
+  "changes": 0.47514910536779326,
+  "late_entry": 0.039761431411530816,
+  "fresh_per100": 4.671968190854871,
+  "fresh": 47,
+  "wrong_att_per100": 43.141153081510936,
+  "attacks_per100": 93.3399602385686,
+  "attacks_in_rest": 0,
+  "stumbles_per100": 11.530815109343937,
+  "stumbles_own_per100": 9.840954274353876,
+  "blips": 3,
+  "blips_on_her": 3,
+  "notes": 1006,
+  "counted_beats": 1111.8478685671187
+ },
+ "agg": {
+  "att": {
+   "hear_switch": 495,
+   "plan_attack": 333,
+   "hear_post_attack": 88,
+   "hear_enter": 19,
+   "reenter": 4
+  },
+  "wrong": {
+   "hear_switch": 196,
+   "plan_attack": 179,
+   "hear_post_attack": 50,
+   "hear_enter": 7,
+   "reenter": 2
+  },
+  "att_by_tracker": {
+   "hear_switch:right": 415,
+   "hear_switch:split": 56,
+   "hear_switch:wrong": 24,
+   "hear_post_attack:split": 30,
+   "hear_post_attack:wrong": 28,
+   "hear_enter:right": 17,
+   "hear_post_attack:right": 30,
+   "hear_enter:split": 2,
+   "reenter:right": 1,
+   "reenter:wrong": 3
+  },
+  "wrong_by_tracker": {
+   "hear_switch:right": 148,
+   "hear_switch:split": 28,
+   "hear_switch:wrong": 20,
+   "hear_post_attack:split": 24,
+   "hear_post_attack:wrong": 17,
+   "hear_post_attack:right": 9,
+   "hear_enter:split": 1,
+   "hear_enter:right": 6,
+   "reenter:wrong": 2
+  },
+  "stumble": {
+   "hear_switch": 44,
+   "plan_attack": 56,
+   "hear_post_attack": 15,
+   "hear_enter": 1
+  },
+  "fresh": {
+   "hear_switch": 21,
+   "hear_post_attack": 17,
+   "plan_attack": 9
+  },
+  "fresh_by_tracker": {
+   "hear_switch:split": 10,
+   "hear_switch:wrong": 11,
+   "hear_post_attack:wrong": 7,
+   "hear_post_attack:split": 10
+  },
+  "fresh_above": {
+   "hear_switch": 0,
+   "hear_post_attack": 7,
+   "plan_attack": 9
+  },
+  "time": {
+   "plan_attack": 178.74999999990993,
+   "hear_switch": 404.7799999997044,
+   "silent": 84.05999999999604,
+   "hear_post_attack": 46.60000000000539,
+   "hear_enter": 18.12000000000068,
+   "reenter": 11.465000000000392
+  },
+  "hit_t": {
+   "hear_switch": 243.3399999998512,
+   "plan_attack": 93.78499999998719,
+   "hear_post_attack": 21.98499999999991,
+   "hear_enter": 12.490000000000553,
+   "reenter": 8.659999999999954
+  },
+  "harsh_t": {
+   "hear_switch": 23.474999999999614,
+   "plan_attack": 5.7549999999998995,
+   "hear_post_attack": 7.11999999999987,
+   "hear_enter": 0.6950000000000005,
+   "reenter": 0.7350000000000005
+  },
+  "hear_calls": {
+   "hear_enter:right": 57,
+   "hear_switch:right": 697,
+   "hear_same:right": 185,
+   "hear_switch:split": 85,
+   "hear_switch:wrong": 29,
+   "hear_post_attack:split": 31,
+   "hear_same:split": 58,
+   "hear_enter:split": 28,
+   "hear_post_attack:wrong": 28,
+   "hear_enter:wrong": 6,
+   "hear_post_attack:right": 31,
+   "hear_post_keep:split": 34,
+   "hear_post_keep:wrong": 23,
+   "hear_same:wrong": 7,
+   "reenter:right": 1,
+   "hear_post_keep:right": 5,
+   "hear_kept_plan:right": 1,
+   "reenter:wrong": 3
+  }
+ },
+ "fresh_details": [
+  {
+   "song": "bach/bwv269",
+   "beat": 27.68,
+   "her_true": 59,
+   "duet": 57,
+   "iv": 2,
+   "src": "hear_switch",
+   "terr": 1,
+   "frag": 1,
+   "above": false,
+   "call": {
+    "kind": "hear",
+    "i": 23,
+    "onset": 27.5,
+    "midi": 60,
+    "r": 57
+   }
+  },
+  {
+   "song": "bach/bwv269",
+   "beat": 27.935,
+   "her_true": 59,
+   "duet": 57,
+   "iv": 2,
+   "src": "hear_switch",
+   "terr": 1,
+   "frag": 3,
+   "above": false,
+   "call": {
+    "kind": "hear",
+    "i": 25,
+    "onset": 27.75,
+    "midi": 60,
+    "r": 57
+   }
+  },
+  {
+   "song": "bach/bwv269",
+   "beat": 28.04,
+   "her_true": 57,
+   "duet": 55,
+   "iv": 2,
+   "src": "hear_switch",
+   "terr": 2,
+   "frag": 0,
+   "above": false,
+   "call": {
+    "kind": "hear",
+    "i": 26,
+    "onset": 28.0,
+    "midi": 59,
+    "r": 55
+   }
+  },
+  {
+   "song": "bach/bwv269",
+   "beat": 31.79,
+   "her_true": 59,
+   "duet": 57,
+   "iv": 2,
+   "src": "hear_switch",
+   "terr": 1,
+   "frag": 1,
+   "above": false,
+   "call": {
+    "kind": "hear",
+    "i": 30,
+    "onset": 31.75,
+    "midi": 60,
+    "r": 57
+   }
+  },
+  {
+   "song": "bach/bwv269",
+   "beat": 32.075,
+   "her_true": 59,
+   "duet": 57,
+   "iv": 2,
+   "src": "hear_switch",
+   "terr": 1,
+   "frag": 3,
+   "above": false,
+   "call": {
+    "kind": "hear",
+    "i": 32,
+    "onset": 32.0,
+    "midi": 60,
+    "r": 57
+   }
+  },
+  {
+   "song": "bach/bwv269",
+   "beat": 32.36,
+   "her_true": 59,
+   "duet": 57,
+   "iv": 2,
+   "src": "hear_switch",
+   "terr": 1,
+   "frag": 5,
+   "above": false,
+   "call": {
+    "kind": "hear",
+    "i": 34,
+    "onset": 32.25,
+    "midi": 60,
+    "r": 57
+   }
+  },
+  {
+   "song": "bach/bwv269",
+   "beat": 32.645,
+   "her_true": 59,
+   "duet": 57,
+   "iv": 2,
+   "src": "hear_switch",
+   "terr": 1,
+   "frag": 7,
+   "above": false,
+   "call": {
+    "kind": "hear",
+    "i": 36,
+    "onset": 32.5,
+    "midi": 60,
+    "r": 57
+   }
+  },
+  {
+   "song": "bach/bwv269",
+   "beat": 36.035,
+   "her_true": 60,
+   "duet": 59,
+   "iv": 1,
+   "src": "hear_switch",
+   "terr": 2,
+   "frag": 0,
+   "above": false,
+   "call": {
+    "kind": "hear",
+    "i": 53,
+    "onset": 36.0,
+    "midi": 62,
+    "r": 59
+   }
+  },
+  {
+   "song": "bach/bwv269",
+   "beat": 43.115,
+   "her_true": 62,
+   "duet": 64,
+   "iv": 2,
+   "src": "hear_post_attack",
+   "terr": -2,
+   "frag": 0,
+   "above": true,
+   "call": {
+    "kind": "hear",
+    "i": 69,
+    "onset": 43.0,
+    "midi": 60,
+    "r": 64
+   }
+  },
+  {
+   "song": "bach/bwv415",
+   "beat": 33.065,
+   "her_true": 54,
+   "duet": 53,
+   "iv": 1,
+   "src": "hear_switch",
+   "terr": 2,
+   "frag": 0,
+   "above": false,
+   "call": {
+    "kind": "hear",
+    "i": 30,
+    "onset": 33.0,
+    "midi": 56,
+    "r": 53
+   }
+  },
+  {
+   "song": "bach/bwv415",
+   "beat": 38.462,
+   "her_true": 54,
+   "duet": 64,
+   "iv": 10,
+   "src": "plan_attack",
+   "terr": null,
+   "frag": null,
+   "above": true,
+   "call": {
+    "kind": "plan",
+    "q": 38.5,
+    "r": 64,
+    "last": [
+     38.0,
+     null,
+     55
+    ]
+   }
+  },
+  {
+   "song": "bach/bwv308",
+   "beat": 13.1,
+   "her_true": 60,
+   "duet": 58,
+   "iv": 2,
+   "src": "hear_post_attack",
+   "terr": 1,
+   "frag": 0,
+   "above": false,
+   "call": {
+    "kind": "hear",
+    "i": 14,
+    "onset": 13.0,
+    "midi": 61,
+    "r": 58
+   }
+  },
+  {
+   "song": "bach/bwv308",
+   "beat": 17.105,
+   "her_true": 55,
+   "duet": 53,
+   "iv": 2,
+   "src": "hear_switch",
+   "terr": 2,
+   "frag": 0,
+   "above": false,
+   "call": {
+    "kind": "hear",
+    "i": 19,
+    "onset": 17.0,
+    "midi": 57,
+    "r": 53
+   }
+  },
+  {
+   "song": "bach/bwv291",
+   "beat": 13.463,
+   "her_true": 52,
+   "duet": 65,
+   "iv": 1,
+   "src": "plan_attack",
+   "terr": null,
+   "frag": null,
+   "above": true,
+   "call": {
+    "kind": "plan",
+    "q": 13.5,
+    "r": 65,
+    "last": [
+     13.0,
+     null,
+     50
+    ]
+   }
+  },
+  {
+   "song": "bach/bwv291",
+   "beat": 20.463,
+   "her_true": 55,
+   "duet": 69,
+   "iv": 2,
+   "src": "plan_attack",
+   "terr": null,
+   "frag": null,
+   "above": true,
+   "call": {
+    "kind": "plan",
+    "q": 20.5,
+    "r": 69,
+    "last": [
+     20.102000000000004,
+     null,
+     53
+    ]
+   }
+  },
+  {
+   "song": "bach/bwv245.40",
+   "beat": 71.12,
+   "her_true": 62,
+   "duet": 60,
+   "iv": 2,
+   "src": "hear_switch",
+   "terr": 1,
+   "frag": 0,
+   "above": false,
+   "call": {
+    "kind": "hear",
+    "i": 101,
+    "onset": 71.0,
+    "midi": 63,
+    "r": 60
+   }
+  },
+  {
+   "song": "bach/bwv245.26",
+   "beat": 24.08,
+   "her_true": 62,
+   "duet": 56,
+   "iv": 6,
+   "src": "hear_switch",
+   "terr": -2,
+   "frag": 0,
+   "above": false,
+   "call": {
+    "kind": "hear",
+    "i": 23,
+    "onset": 24.0,
+    "midi": 60,
+    "r": 56
+   }
+  },
+  {
+   "song": "bach/bwv245.26",
+   "beat": 33.463,
+   "her_true": 56,
+   "duet": 70,
+   "iv": 2,
+   "src": "plan_attack",
+   "terr": null,
+   "frag": null,
+   "above": true,
+   "call": {
+    "kind": "plan",
+    "q": 33.5,
+    "r": 70,
+    "last": [
+     33.0,
+     null,
+     55
+    ]
+   }
+  },
+  {
+   "song": "bach/bwv371",
+   "beat": 7.462,
+   "her_true": 60,
+   "duet": 62,
+   "iv": 2,
+   "src": "plan_attack",
+   "terr": null,
+   "frag": null,
+   "above": true,
+   "call": {
+    "kind": "plan",
+    "q": 7.5,
+    "r": 62,
+    "last": [
+     7.0,
+     null,
+     58
+    ]
+   }
+  },
+  {
+   "song": "bach/bwv371",
+   "beat": 10.79,
+   "her_true": 57,
+   "duet": 59,
+   "iv": 2,
+   "src": "hear_post_attack",
+   "terr": -1,
+   "frag": 1,
+   "above": true,
+   "call": {
+    "kind": "hear",
+    "i": 8,
+    "onset": 10.75,
+    "midi": 56,
+    "r": 59
+   }
+  },
+  {
+   "song": "bach/bwv371",
+   "beat": 14.54,
+   "her_true": 57,
+   "duet": 55,
+   "iv": 2,
+   "src": "hear_post_attack",
+   "terr": 1,
+   "frag": 1,
+   "above": false,
+   "call": {
+    "kind": "hear",
+    "i": 13,
+    "onset": 14.5,
+    "midi": 58,
+    "r": 55
+   }
+  },
+  {
+   "song": "bach/bwv371",
+   "beat": 14.825,
+   "her_true": 57,
+   "duet": 55,
+   "iv": 2,
+   "src": "hear_post_attack",
+   "terr": 1,
+   "frag": 3,
+   "above": false,
+   "call": {
+    "kind": "hear",
+    "i": 15,
+    "onset": 14.75,
+    "midi": 58,
+    "r": 55
+   }
+  },
+  {
+   "song": "bach/bwv371",
+   "beat": 16.963,
+   "her_true": 53,
+   "duet": 59,
+   "iv": 6,
+   "src": "plan_attack",
+   "terr": null,
+   "frag": null,
+   "above": true,
+   "call": {
+    "kind": "plan",
+    "q": 17.0,
+    "r": 59,
+    "last": [
+     16.75,
+     null,
+     54
+    ]
+   }
+  },
+  {
+   "song": "bach/bwv371",
+   "beat": 86.915,
+   "her_true": 57,
+   "duet": 67,
+   "iv": 10,
+   "src": "hear_post_attack",
+   "terr": 1,
+   "frag": 3,
+   "above": true,
+   "call": {
+    "kind": "hear",
+    "i": 91,
+    "onset": 86.75,
+    "midi": 51,
+    "r": 67
+   }
+  },
+  {
+   "song": "bach/bwv371",
+   "beat": 110.555,
+   "her_true": 60,
+   "duet": 54,
+   "iv": 6,
+   "src": "hear_post_attack",
+   "terr": 1,
+   "frag": 1,
+   "above": false,
+   "call": {
+    "kind": "hear",
+    "i": 117,
+    "onset": 110.5,
+    "midi": 61,
+    "r": 54
+   }
+  },
+  {
+   "song": "bach/bwv294",
+   "beat": 53.462,
+   "her_true": 54,
+   "duet": 64,
+   "iv": 10,
+   "src": "plan_attack",
+   "terr": null,
+   "frag": null,
+   "above": true,
+   "call": {
+    "kind": "plan",
+    "q": 53.5,
+    "r": 64,
+    "last": [
+     53.0,
+     null,
+     55
+    ]
+   }
+  },
+  {
+   "song": "bach/bwv264",
+   "beat": 24.545,
+   "her_true": 59,
+   "duet": 57,
+   "iv": 2,
+   "src": "hear_switch",
+   "terr": 1,
+   "frag": 1,
+   "above": false,
+   "call": {
+    "kind": "hear",
+    "i": 26,
+    "onset": 24.5,
+    "midi": 60,
+    "r": 57
+   }
+  },
+  {
+   "song": "bach/bwv264",
+   "beat": 24.8,
+   "her_true": 59,
+   "duet": 57,
+   "iv": 2,
+   "src": "hear_switch",
+   "terr": 1,
+   "frag": 3,
+   "above": false,
+   "call": {
+    "kind": "hear",
+    "i": 28,
+    "onset": 24.75,
+    "midi": 60,
+    "r": 57
+   }
+  },
+  {
+   "song": "bach/bwv349",
+   "beat": 12.08,
+   "her_true": 57,
+   "duet": 55,
+   "iv": 2,
+   "src": "hear_switch",
+   "terr": 1,
+   "frag": 0,
+   "above": false,
+   "call": {
+    "kind": "hear",
+    "i": 8,
+    "onset": 12.0,
+    "midi": 58,
+    "r": 55
+   }
+  },
+  {
+   "song": "bach/bwv349",
+   "beat": 17.09,
+   "her_true": 58,
+   "duet": 57,
+   "iv": 1,
+   "src": "hear_post_attack",
+   "terr": 3,
+   "frag": 0,
+   "above": false,
+   "call": {
+    "kind": "hear",
+    "i": 12,
+    "onset": 17.0,
+    "midi": 61,
+    "r": 57
+   }
+  },
+  {
+   "song": "bach/bwv328",
+   "beat": 50.09,
+   "her_true": 57,
+   "duet": 55,
+   "iv": 2,
+   "src": "hear_switch",
+   "terr": 2,
+   "frag": 0,
+   "above": false,
+   "call": {
+    "kind": "hear",
+    "i": 52,
+    "onset": 50.0,
+    "midi": 59,
+    "r": 55
+   }
+  },
+  {
+   "song": "bach/bwv328",
+   "beat": 63.875,
+   "her_true": 57,
+   "duet": 55,
+   "iv": 2,
+   "src": "hear_post_attack",
+   "terr": 1,
+   "frag": 1,
+   "above": false,
+   "call": {
+    "kind": "hear",
+    "i": 66,
+    "onset": 63.75,
+    "midi": 58,
+    "r": 55
+   }
+  },
+  {
+   "song": "bach/bwv328",
+   "beat": 63.965,
+   "her_true": 59,
+   "duet": 53,
+   "iv": 6,
+   "src": "hear_switch",
+   "terr": 0,
+   "frag": 2,
+   "above": false,
+   "call": {
+    "kind": "hear",
+    "i": 67,
+    "onset": 63.75,
+    "midi": 57,
+    "r": 53
+   }
+  },
+  {
+   "song": "bach/bwv328",
+   "beat": 66.095,
+   "her_true": 57,
+   "duet": 55,
+   "iv": 2,
+   "src": "hear_post_attack",
+   "terr": 1,
+   "frag": 0,
+   "above": false,
+   "call": {
+    "kind": "hear",
+    "i": 72,
+    "onset": 66.0,
+    "midi": 58,
+    "r": 55
+   }
+  },
+  {
+   "song": "bach/bwv328",
+   "beat": 74.72,
+   "her_true": 57,
+   "duet": 55,
+   "iv": 2,
+   "src": "hear_post_attack",
+   "terr": 1,
+   "frag": 1,
+   "above": false,
+   "call": {
+    "kind": "hear",
+    "i": 81,
+    "onset": 74.5,
+    "midi": 58,
+    "r": 55
+   }
+  },
+  {
+   "song": "bach/bwv328",
+   "beat": 75.005,
+   "her_true": 57,
+   "duet": 55,
+   "iv": 2,
+   "src": "hear_post_attack",
+   "terr": 1,
+   "frag": 0,
+   "above": false,
+   "call": {
+    "kind": "hear",
+    "i": 83,
+    "onset": 74.882,
+    "midi": 58,
+    "r": 55
+   }
+  },
+  {
+   "song": "bach/bwv328",
+   "beat": 85.1,
+   "her_true": 50,
+   "duet": 72,
+   "iv": 10,
+   "src": "hear_post_attack",
+   "terr": 1,
+   "frag": 0,
+   "above": true,
+   "call": {
+    "kind": "hear",
+    "i": 95,
+    "onset": 85.0,
+    "midi": 51,
+    "r": 72
+   }
+  },
+  {
+   "song": "bach/bwv328",
+   "beat": 170.75,
+   "her_true": 53,
+   "duet": 67,
+   "iv": 2,
+   "src": "hear_post_attack",
+   "terr": 1,
+   "frag": 1,
+   "above": true,
+   "call": {
+    "kind": "hear",
+    "i": 200,
+    "onset": 170.627,
+    "midi": 54,
+    "r": 67
+   }
+  },
+  {
+   "song": "bach/bwv328",
+   "beat": 181.463,
+   "her_true": 52,
+   "duet": 62,
+   "iv": 10,
+   "src": "plan_attack",
+   "terr": null,
+   "frag": null,
+   "above": true,
+   "call": {
+    "kind": "plan",
+    "q": 181.5,
+    "r": 62,
+    "last": [
+     181.0,
+     null,
+     53
+    ]
+   }
+  },
+  {
+   "song": "bach/bwv299",
+   "beat": 30.575,
+   "her_true": 59,
+   "duet": 53,
+   "iv": 6,
+   "src": "hear_switch",
+   "terr": 1,
+   "frag": 0,
+   "above": false,
+   "call": {
+    "kind": "hear",
+    "i": 40,
+    "onset": 30.5,
+    "midi": 60,
+    "r": 53
+   }
+  },
+  {
+   "song": "bach/bwv299",
+   "beat": 37.13,
+   "her_true": 57,
+   "duet": 55,
+   "iv": 2,
+   "src": "hear_switch",
+   "terr": 1,
+   "frag": 0,
+   "above": false,
+   "call": {
+    "kind": "hear",
+    "i": 47,
+    "onset": 37.0,
+    "midi": 58,
+    "r": 55
+   }
+  },
+  {
+   "song": "bach/bwv346",
+   "beat": 27.665,
+   "her_true": 53,
+   "duet": 59,
+   "iv": 6,
+   "src": "hear_post_attack",
+   "terr": 1,
+   "frag": 3,
+   "above": true,
+   "call": {
+    "kind": "hear",
+    "i": 28,
+    "onset": 27.5,
+    "midi": 54,
+    "r": 59
+   }
+  },
+  {
+   "song": "bach/bwv346",
+   "beat": 36.14,
+   "her_true": 57,
+   "duet": 55,
+   "iv": 2,
+   "src": "hear_switch",
+   "terr": 2,
+   "frag": 0,
+   "above": false,
+   "call": {
+    "kind": "hear",
+    "i": 38,
+    "onset": 36.0,
+    "midi": 59,
+    "r": 55
+   }
+  },
+  {
+   "song": "bach/bwv346",
+   "beat": 37.025,
+   "her_true": 55,
+   "duet": 53,
+   "iv": 2,
+   "src": "hear_post_attack",
+   "terr": 1,
+   "frag": 0,
+   "above": false,
+   "call": {
+    "kind": "hear",
+    "i": 39,
+    "onset": 37.0,
+    "midi": 56,
+    "r": 53
+   }
+  },
+  {
+   "song": "bach/bwv346",
+   "beat": 40.07,
+   "her_true": 55,
+   "duet": 69,
+   "iv": 2,
+   "src": "hear_post_attack",
+   "terr": -1,
+   "frag": 1,
+   "above": true,
+   "call": {
+    "kind": "hear",
+    "i": 48,
+    "onset": 40.0,
+    "midi": 54,
+    "r": 69
+   }
+  },
+  {
+   "song": "bach/bwv346",
+   "beat": 44.96,
+   "her_true": 59,
+   "duet": 57,
+   "iv": 2,
+   "src": "hear_switch",
+   "terr": 0,
+   "frag": 2,
+   "above": false,
+   "call": {
+    "kind": "hear",
+    "i": 54,
+    "onset": 44.75,
+    "midi": 60,
+    "r": 57
+   }
+  },
+  {
+   "song": "bach/bwv346",
+   "beat": 49.463,
+   "her_true": 53,
+   "duet": 67,
+   "iv": 2,
+   "src": "plan_attack",
+   "terr": null,
+   "frag": null,
+   "above": true,
+   "call": {
+    "kind": "plan",
+    "q": 49.5,
+    "r": 67,
+    "last": [
+     49.0,
+     null,
+     52
+    ]
+   }
+  }
+ ]
+}

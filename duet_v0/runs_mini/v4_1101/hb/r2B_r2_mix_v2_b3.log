@@ -1,0 +1,2 @@
+2026-11-01 15:15:29 START tl=600 cwd=$ABS/futures/v3_nolatency $ABS/.venv/bin/python $ABS/futures/v3_nolatency/bench3.py --system r2_mix_v2 --note v4 r2 E2 m1 chooser on log-linear mix b_HMM^0.3 b_GRU3^0.7 (a=0.7)
+2026-11-01 15:15:39 END rc=0 secs=10 $ABS/.venv/bin/python $ABS/futures/v3_nolatency/bench3.py --system r2_mix_v2 --note v4 r2 E2 m1 chooser on log-linear mix b_HMM^0.3 b_GRU3^0.7 (a=0.7)

@@ -1,0 +1,246 @@
+{
+ "2 songs (now)": {
+  "songs": 2,
+  "acc": {
+   "clean n=3": {
+    "top1": 1.0,
+    "top3": 1.0
+   },
+   "clean n=4": {
+    "top1": 1.0,
+    "top3": 1.0
+   },
+   "clean n=5": {
+    "top1": 1.0,
+    "top3": 1.0
+   },
+   "clean n=6": {
+    "top1": 1.0,
+    "top3": 1.0
+   },
+   "clean n=8": {
+    "top1": 1.0,
+    "top3": 1.0
+   },
+   "clean n=10": {
+    "top1": 1.0,
+    "top3": 1.0
+   },
+   "clean n=12": {
+    "top1": 1.0,
+    "top3": 1.0
+   },
+   "vincent n=3": {
+    "top1": 1.0,
+    "top3": 1.0
+   },
+   "vincent n=4": {
+    "top1": 1.0,
+    "top3": 1.0
+   },
+   "vincent n=5": {
+    "top1": 1.0,
+    "top3": 1.0
+   },
+   "vincent n=6": {
+    "top1": 1.0,
+    "top3": 1.0
+   },
+   "vincent n=8": {
+    "top1": 1.0,
+    "top3": 1.0
+   },
+   "vincent n=10": {
+    "top1": 1.0,
+    "top3": 1.0
+   },
+   "vincent n=12": {
+    "top1": 1.0,
+    "top3": 1.0
+   }
+  }
+ },
+ "POP909": {
+  "songs": 362,
+  "acc": {
+   "clean n=3": {
+    "top1": 0.191,
+    "top3": 0.39
+   },
+   "clean n=4": {
+    "top1": 0.386,
+    "top3": 0.668
+   },
+   "clean n=5": {
+    "top1": 0.642,
+    "top3": 0.874
+   },
+   "clean n=6": {
+    "top1": 0.829,
+    "top3": 0.966
+   },
+   "clean n=8": {
+    "top1": 0.964,
+    "top3": 1.0
+   },
+   "clean n=10": {
+    "top1": 0.992,
+    "top3": 1.0
+   },
+   "clean n=12": {
+    "top1": 1.0,
+    "top3": 1.0
+   },
+   "vincent n=3": {
+    "top1": 0.123,
+    "top3": 0.281
+   },
+   "vincent n=4": {
+    "top1": 0.26,
+    "top3": 0.464
+   },
+   "vincent n=5": {
+    "top1": 0.388,
+    "top3": 0.588
+   },
+   "vincent n=6": {
+    "top1": 0.558,
+    "top3": 0.756
+   },
+   "vincent n=8": {
+    "top1": 0.71,
+    "top3": 0.872
+   },
+   "vincent n=10": {
+    "top1": 0.792,
+    "top3": 0.863
+   },
+   "vincent n=12": {
+    "top1": 0.97,
+    "top3": 0.99
+   }
+  }
+ },
+ "POP909 + folk": {
+  "songs": 1025,
+  "acc": {
+   "clean n=3": {
+    "top1": 0.083,
+    "top3": 0.184
+   },
+   "clean n=4": {
+    "top1": 0.244,
+    "top3": 0.43
+   },
+   "clean n=5": {
+    "top1": 0.439,
+    "top3": 0.715
+   },
+   "clean n=6": {
+    "top1": 0.694,
+    "top3": 0.925
+   },
+   "clean n=8": {
+    "top1": 0.941,
+    "top3": 0.997
+   },
+   "clean n=10": {
+    "top1": 0.992,
+    "top3": 1.0
+   },
+   "clean n=12": {
+    "top1": 0.998,
+    "top3": 1.0
+   },
+   "vincent n=3": {
+    "top1": 0.034,
+    "top3": 0.095
+   },
+   "vincent n=4": {
+    "top1": 0.129,
+    "top3": 0.243
+   },
+   "vincent n=5": {
+    "top1": 0.272,
+    "top3": 0.483
+   },
+   "vincent n=6": {
+    "top1": 0.409,
+    "top3": 0.652
+   },
+   "vincent n=8": {
+    "top1": 0.602,
+    "top3": 0.754
+   },
+   "vincent n=10": {
+    "top1": 0.757,
+    "top3": 0.843
+   },
+   "vincent n=12": {
+    "top1": 0.975,
+    "top3": 0.99
+   }
+  }
+ },
+ "all (POP909 + folk + pop sections)": {
+  "songs": 9148,
+  "acc": {
+   "clean n=3": {
+    "top1": 0.032,
+    "top3": 0.062
+   },
+   "clean n=4": {
+    "top1": 0.133,
+    "top3": 0.252
+   },
+   "clean n=5": {
+    "top1": 0.331,
+    "top3": 0.544
+   },
+   "clean n=6": {
+    "top1": 0.526,
+    "top3": 0.761
+   },
+   "clean n=8": {
+    "top1": 0.85,
+    "top3": 0.947
+   },
+   "clean n=10": {
+    "top1": 0.958,
+    "top3": 0.992
+   },
+   "clean n=12": {
+    "top1": 0.982,
+    "top3": 1.0
+   },
+   "vincent n=3": {
+    "top1": 0.011,
+    "top3": 0.03
+   },
+   "vincent n=4": {
+    "top1": 0.053,
+    "top3": 0.111
+   },
+   "vincent n=5": {
+    "top1": 0.143,
+    "top3": 0.25
+   },
+   "vincent n=6": {
+    "top1": 0.266,
+    "top3": 0.426
+   },
+   "vincent n=8": {
+    "top1": 0.446,
+    "top3": 0.599
+   },
+   "vincent n=10": {
+    "top1": 0.639,
+    "top3": 0.736
+   },
+   "vincent n=12": {
+    "top1": 0.864,
+    "top3": 0.931
+   }
+  }
+ }
+}

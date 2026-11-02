@@ -1,0 +1,2 @@
+2026-11-02 00:59:48 START tl=600 cwd=$ABS $ABS/.venv/bin/python $ABS/futures/v5_rt/live_bench_rt.py rt:r2_copyhm_v1 --voice clean --lat wired --out $ABS/runs_mini/v5rt_1101/live_bench/L_rt_r2_copyhm_v1_clean_wired.json
+2026-11-02 00:59:59 END rc=0 secs=12 $ABS/.venv/bin/python $ABS/futures/v5_rt/live_bench_rt.py rt:r2_copyhm_v1 --voice clean --lat wired --out $ABS/runs_mini/v5rt_1101/live_bench/L_rt_r2_copyhm_v1_clean_wired.json

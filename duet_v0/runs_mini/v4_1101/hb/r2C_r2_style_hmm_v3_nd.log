@@ -1,0 +1,2 @@
+2026-11-01 15:17:02 START tl=600 cwd=$ABS/runs_mini/v4_1101/nd/r2_style_hmm_v3 $ABS/.venv/bin/python $ABS/futures/v3_nolatency/rescore_nd.py r2_style_hmm_v3
+2026-11-01 15:17:07 END rc=0 secs=5 $ABS/.venv/bin/python $ABS/futures/v3_nolatency/rescore_nd.py r2_style_hmm_v3

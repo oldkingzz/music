@@ -1,0 +1,18 @@
+{
+ "m4": {
+  "tag": "m4",
+  "chord_model_us_per_beat": 78.90471706832965,
+  "chord_model_ms_per_255beat_song": 20.12070285242406,
+  "arrange_3_styles_s_total": 0.22889725002460182,
+  "melody_seconds_total": 84.6868676464035,
+  "arrange_s_per_melody_3_styles": 0.057224312506150454
+ },
+ "ecore": {
+  "tag": "ecore",
+  "chord_model_us_per_beat": 96.11846232012522,
+  "chord_model_ms_per_255beat_song": 24.510207891631932,
+  "arrange_3_styles_s_total": 0.3351577080320567,
+  "melody_seconds_total": 84.6868676464035,
+  "arrange_s_per_melody_3_styles": 0.08378942700801417
+ }
+}

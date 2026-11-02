@@ -1,0 +1,2 @@
+2026-11-01 22:29:24 START tl=600 cwd=$ABS $ABS/.venv/bin/python $ABS/runs_mini/v5rt_1101/r1/A/tune_A_v1.py {"min_cov": 1e9, "mu": -1} {}
+2026-11-01 22:29:49 END rc=0 secs=26 $ABS/.venv/bin/python $ABS/runs_mini/v5rt_1101/r1/A/tune_A_v1.py {"min_cov": 1e9, "mu": -1} {}

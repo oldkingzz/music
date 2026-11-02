@@ -1,0 +1,196 @@
+{
+ "id": "d3",
+ "title_zh": "第二遍就会了",
+ "updated": "2026-10-30T11:48:49-04:00",
+ "summary_zh": "合成歌手上第二遍好听 96.9%，快慢 20% 也跟得上（修好节奏适应后 95.2% / 96.2%），停 2 秒后 5/5 在她重新开口的第一个音就对上（靠她开口前的吸气声提前安排，合成歌手上；没有吸气声时退回原来的 4/5）。真实合唱分轨的第二遍只有 56.6%（完美时机上限 80.6%），一半损失在时机（听晚、听漏音头、Duet 不出声），一半是她第二遍音高和第一遍不同，95% 远未达到。",
+ "acceptance": [
+  {
+   "line": "A3.1",
+   "text_zh": "第二遍好听占比 >= 95%（对她的真实音符，按她的演唱时间加权，Duet 不出声算不好）",
+   "measured": "合成歌手 5 首自然第二遍 (规则和声): 96.9% 合并, 最低一首 95.1%; 真实合唱分轨第二遍 (ECD Seele Christi 测试集, 36 条, 只跑一次, 原版跟随+从第一个音加入): 规则和声 56.6% 合并 (中位数 56.6%, 最低 20.4%), CRF 和声 58.9%; 调参集 (ECD Der Greis + DCS Locus Iste, 24 条): 79.6%",
+   "threshold": ">= 95%",
+   "status": "fail",
+   "evidence": "futures/d3_rehearsal/out/summary.json"
+  },
+  {
+   "line": "A3.2",
+   "text_zh": "她快 20% 或慢 20%：Duet 的位置估计偏离超过半拍的时间从不超过一拍，且好听占比 >= 95%",
+   "measured": "合成歌手 x0.8: 95.2% 合并 (最低一首 94.8%), 最大偏差 0.30 拍; x1.2: 96.2% 合并 (最低一首 94.4%), 最大偏差 0.44 拍; 偏差超过半拍的最长时间 0.00 拍。修改前: x0.8 79.6%, x1.2 91.3%。仅合成歌手, 没有真人快慢 20% 的录音; 需要开 --acc 的节奏修正, 这个修正在真实录音调参集上降约 4 点",
+   "threshold": "偏差 > 0.5 拍的连续时间 <= 1 拍; 好听 >= 95% (5 首合并)",
+   "status": "pass",
+   "evidence": "futures/d3_rehearsal/out/synth_fixed3.json"
+  },
+  {
+   "line": "A3.3",
+   "text_zh": "她停 2 秒再唱：从她重新开口到 Duet 重新对齐（音头差 <= 60 ms 且和谐）<= 1 拍",
+   "measured": "合成歌手 5 个停顿 (输出延迟 52 ms): 5/5 在一拍内, 全部 0.00 拍 (她重新开口的第一个音 Duet 就对上, 音头差 -14 到 -22 ms); 修改前 (builder 版): 4/5, bach_bwv145_5 2.02 拍, bach_bwv267 0.48, bach_bwv305 0.99, folk_hpps_26 0.52, greensleeves 0.98 拍。原因: 停顿后第一个音是听到才唱, 检测约 27 ms + 输出延迟 52 ms ≈ 晚 80 ms, 超过 60 ms 容差, 只能在第二个音对上; bach_bwv145_5 重新开口的音是 2 拍长, 所以要 2.02 拍。改法: 停顿等待时, 用停顿里第一个高出噪声底 4 倍的声音 (她重新开口前约 0.1 s 的吸气声) 提前安排这个音, 0.08 s 后发声。停顿这条好听 97.0% -> 97.3%。鲁棒性: 加白噪声底 rms 3e-4 / 1e-3 仍 5/5 为 0.00 拍; 噪声底 3e-3 (吸气声被盖住) 退回修改前的结果 (4/5)。仅合成歌手; 真人吸气声能否在真实麦克风上听到要实测。",
+   "threshold": "<= 1 拍 (每个停顿)",
+   "status": "pass",
+   "evidence": "futures/d3_rehearsal/iter2/out/synth_cue.json"
+  }
+ ],
+ "demos": [
+  {
+   "file": "futures/d3_rehearsal/demo/greensleeves_two_takes.mp3",
+   "label_zh": "两遍对比：第一遍她一个人唱（Duet 只听），第二遍她唱 + Duet 和声（第二遍好听 97.9%）",
+   "source": "synthetic singer (singer.py), Greensleeves (traditional, public domain); Duet machine voice",
+   "page_safe": true
+  },
+  {
+   "file": "futures/d3_rehearsal/demo/greensleeves_faster_x1.2.mp3",
+   "label_zh": "第二遍快 20%，Duet 跟上（好听 97.0%）",
+   "source": "synthetic singer (singer.py), Greensleeves (traditional, public domain); Duet machine voice",
+   "page_safe": true
+  },
+  {
+   "file": "futures/d3_rehearsal/demo/greensleeves_slower_x0.8.mp3",
+   "label_zh": "第二遍慢 20%，Duet 跟上（好听 95.7%）",
+   "source": "synthetic singer (singer.py), Greensleeves (traditional, public domain); Duet machine voice",
+   "page_safe": true
+  },
+  {
+   "file": "futures/d3_rehearsal/demo/greensleeves_pause_2s.mp3",
+   "label_zh": "第二遍中途停 2 秒再唱（修改后）（好听 98.4%，0.98 拍后重新对齐）",
+   "source": "synthetic singer (singer.py), Greensleeves (traditional, public domain); Duet machine voice",
+   "page_safe": true
+  },
+  {
+   "file": "futures/d3_rehearsal/demo/greensleeves_pause_2s_before_fix.mp3",
+   "label_zh": "同一个停顿，原版 live app（修改前，对比用）（好听 92.4%，4.0 拍后才对齐）",
+   "source": "synthetic singer (singer.py), Greensleeves (traditional, public domain); Duet machine voice",
+   "page_safe": true
+  },
+  {
+   "file": "futures/d3_rehearsal/iter2/demo/greensleeves_pause_2s_v2.mp3",
+   "label_zh": "第二遍中途停 2 秒再唱（第二次修改：听她吸气提前进）（好听 98.6%，重新开口的第一个音就对上，0.00 拍）",
+   "source": "synthetic singer (singer.py), Greensleeves (traditional, public domain); Duet machine voice",
+   "page_safe": true
+  }
+ ],
+ "local_only": [
+  "futures/d3_rehearsal/local_only/ecd_DG_FT_A1_take2_with_duet.mp3"
+ ],
+ "how_to_run": "bash futures/d3_rehearsal/run_all.sh",
+ "caveats_zh": [
+  "95% 只在合成歌手上做到（自然第二遍 96.9%）；真实合唱分轨（ECD/DCS，本地评估）第二遍远低于 95%，A3.1 判不通过。",
+  "测试集 Seele Christi 更难：第二遍规则和声 56.6%、CRF 58.9%；即使时机完美，用第一遍做的和声计划也只有 80.6%/84.0% 好听，因为她第二遍音高和第一遍不一样（SC2 整体高约半音，70% 的音四舍五入后不同），第一遍的计划在第二遍会撞。",
+  "A3.2、A3.3 只有合成歌手的数字；没有真人快/慢 20% 或停 2 秒的录音，需要按 HARDWARE_TEST.md 实测。",
+  "修好 A3.2/A3.3 的两处改动（更快的节奏适应 pair_min 0.5 + tempo_prior 1；中途停顿后暂停并重新入场）在真实录音调参集上反而降了约 4 个点（79.6% -> 75.5%），所以真人默认不开，作为开关 --acc 提供。",
+  "停顿后的第一个音是听到才唱：检测约 30 ms + 输出延迟。按板子估计 52 ms 时晚约 80 ms，第二个音才对上；若输出延迟 15 ms，5/5 都在第一个音对上。板子输出延迟还没实测。",
+  "规则和声（下方三度/六度）在完美时机下：合成 99.3%、真实调参集 96.4%、测试集 80.6%；CRF 学习和声：96.7%、94.9%、84.0%。合成和调参集上规则更好，所以默认规则和声；测试集上 CRF 实际略好（58.9% 对 56.6%）。",
+  "Duet 的发声时间取自 live app 的 summary.json（已含输出延迟）；从 duet.wav 右声道用 YIN 反推的独立检查相差在约 5 个点以内。",
+  "试过但放弃的两个改动：“延长和声音”（sustain 1.5）在合成和真实上都更差（89.5%、67.3%）；“跟她实际唱的音高改一个半音”（--retune）在真实调参集上 79.2%，比不改的 79.6% 没有提升（只在她音头被确认后才改，太晚、太少）。",
+  "代码只改了 futures/d3_rehearsal/app/ 里的拷贝（follow.py 的 Accompanist：pair_min、pause_hold；engine/duet_live 加开关）；原 follow.py、live/ 未动。差异见 app/*_changes.diff。",
+  "按 BRIEF 规则 REPORT.md 应写在文件夹里，但本代理的运行环境禁止写报告类 .md 文件；报告内容放在本 json 的 report_en 字段里。",
+  "A3.3 第二次修改（futures/d3_rehearsal/iter2/）: 停顿后靠她开口前的吸气声提前约 0.1 s 安排第一个音。合成歌手的吸气声比停顿里的噪声底高约 14 dB 以上才有效；真实麦克风、真人、房间噪声下能不能听到吸气声还没测。听不到时（或她不吸气直接唱）退回原来的行为：第一个音晚约 80 ms，第二个音才对上。这个开关（--acc 里 cue_lead 0.08）对自然/快/慢三种第二遍的结果没有任何改变，真实调参集 75.5% 不变。"
+ ],
+ "report_en": [
+  "Command: bash futures/d3_rehearsal/run_all.sh (metric unit tests, synthetic takes, before/after runs, real-take runs, oracle ceilings, demos, this file).",
+  "Method: rehearse take 1 with live/duet_live.py (join from the first note, --join-at 0.0); take 2 through the live app file backend (--fast) with the board's estimated 52 ms output latency. score_take.py reads Duet's sounding notes from summary.json (start_sample on the acoustic timeline, final sustain length, taken-back notes for the time they sounded) and scores them against her TRUE notes, time-weighted over her singing time, silence = not good. Unit-tested on hand-made cases.",
+  "Synthetic singer: Greensleeves, Bach BWV 267 / 145.5 / 305 (test split sopranos, first 40 beats), Nottingham folk hpps #26; take-2 variants natural, x0.8, x1.2, drift 1.0->1.2, 2 s pause mid-phrase, pitch errors.",
+  "Biggest failures found and fixed (copy in app/): (1) at x0.8/x1.2 Duet kept the rehearsal tempo for a whole phrase (tempo prior worth 30 pairs, pairs >= 1 s apart) -> tempo_prior 1, pair_min 0.5: x0.8 79.6 -> 95.2 %, x1.2 91.3 -> 96.2 % (5-melody pooled, time-weighted). (2) after a 2 s pause Duet kept singing predicted notes and took 4-8 beats (one case never) to resync -> pause_hold: after 0.6 s of unexpected mid-phrase silence take back scheduled notes, re-enter on her next onset (no tempo-plausibility gate on that anchor, no stale predictions until it is anchored, drop a false onset anchored just before the silence): pause 82.8 -> 97.0 %, resync 4/5 within one beat at 52 ms output latency, 5/5 at 15 ms.",
+  "Cost of the fixes on the synthetic singer: drift 93.4 -> 94.6 %, natural unchanged 96.9 %, pitch-error take 95.9 -> 94.9 % (Greensleeves 92.2 -> 87.9 %: faster tempo adaptation follows noisy onsets).",
+  "Real takes (take 2 of every series): tune split DG+LI 24 takes, unmodified accompanist 79.6 % (DG 69.7, LI 89.6); with the synthetic fixes 75.5 %. Oracle (rule plan, perfect timing) 96.4 % (DG 92.8: her pitch differs between takes; LI 100). So the loss on real voices is mostly timing/listening (late or missed onsets, Duet silent 14 %), not the plan.",
+  "Test split (ECD Seele Christi SC1-3, take 2, 36 takes, run once): unmodified accompanist rule plan 56.6 %, CRF plan 58.9 %; with the synthetic fixes 52.1 %. Oracle timing ceiling: rule 80.6 %, CRF 84.0 %; the low ceiling is pitch: in SC2 she sings take 2 about +0.5 semitone above take 1 (70 % of rounded note pitches differ; SC3 30 %, DG 17 %, LI 0 %), so a plan written for take-1 pitches clashes. Tried: re-harmonise from her heard pitch once an onset is confirmed (--retune, one-semitone shift of the sounding note): tune split 79.2 % vs 79.6 %, no gain (too late and too few confirmed notes); not used, test split not rerun.",
+  "Board estimate: one 10 ms frame p50 0.42 ms / p99 3.0 ms single-threaded on an M4 E-core (busy machine) -> board estimate p50 0.84 ms, p99 6.0 ms (estimate); M4 P-core p50 0.14 ms.",
+  "Next: the real-voice gap is onset hearing (eval/RESULTS.md: about 26 points); measure the board's real output latency (decides A3.3); record a real singer doing x0.8/x1.2/pause takes (HARDWARE_TEST.md); make the pause/tempo fixes robust to real-voice unvoiced gaps before turning them on by default."
+ ],
+ "numbers": {
+  "synthetic_before_rule": {
+   "natural": 0.9691,
+   "slow": 0.7956,
+   "fast": 0.9133,
+   "drift": 0.9337,
+   "pause": 0.8283,
+   "pitch": 0.9592
+  },
+  "synthetic_after_rule": {
+   "natural": 0.9689,
+   "slow": 0.9524,
+   "fast": 0.9624,
+   "drift": 0.9463,
+   "pause": 0.9704,
+   "pitch": 0.9491
+  },
+  "synthetic_after_learned": {
+   "natural": 0.9474,
+   "slow": 0.9341,
+   "fast": 0.9451,
+   "drift": 0.9336,
+   "pause": 0.9474,
+   "pitch": 0.9328
+  },
+  "synthetic_oracle_timing": {
+   "rule": 0.9928,
+   "learned": 0.9671
+  },
+  "real_tune_take2_rule": {
+   "base_tune": 0.7962,
+   "tempo_tune": 0.7729,
+   "pause_tune": 0.7778,
+   "all6_tune": 0.7555,
+   "sus_tune": 0.6734,
+   "fixed_tune": 0.7527,
+   "retune_tune": 0.7925
+  },
+  "real_test_take2_with_fixes_rule": 0.5211105938257533,
+  "real_test_take2": {
+   "rule/all": 0.5661,
+   "rule/SC1": 0.6299,
+   "rule/SC2": 0.4271,
+   "rule/SC3": 0.5613,
+   "learned/all": 0.5894,
+   "learned/SC1": 0.6558,
+   "learned/SC2": 0.4216,
+   "learned/SC3": 0.5966
+  },
+  "real_oracle_timing": {
+   "tune": {
+    "all": {
+     "rule": 0.9637956453436926,
+     "learned": 0.9492832972172097,
+     "matched_mean": 0.9963687939715905,
+     "n": 24
+    },
+    "DG": {
+     "rule": 0.9276643025589709,
+     "learned": 0.9374381908724376,
+     "matched_mean": 0.9927375879431809,
+     "n": 12
+    },
+    "LI": {
+     "rule": 1.0,
+     "learned": 0.9611523393838113,
+     "matched_mean": 1.0,
+     "n": 12
+    }
+   },
+   "test": {
+    "all": {
+     "rule": 0.8056476858615208,
+     "learned": 0.839563500345154,
+     "matched_mean": 0.9861231357197637,
+     "n": 36
+    },
+    "SC1": {
+     "rule": 0.8586962031733159,
+     "learned": 0.8947164509845101,
+     "matched_mean": 0.9843272318127662,
+     "n": 12
+    },
+    "SC2": {
+     "rule": 0.6319383130260756,
+     "learned": 0.630172464535876,
+     "matched_mean": 0.9851851851851853,
+     "n": 12
+    },
+    "SC3": {
+     "rule": 0.8320171722802875,
+     "learned": 0.8820086124779969,
+     "matched_mean": 0.9888569901613402,
+     "n": 12
+    }
+   }
+  }
+ }
+}

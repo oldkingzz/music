@@ -1,0 +1,2 @@
+2026-11-01 15:18:07 START tl=600 cwd=$ABS/runs_mini/v4_1101/nd/r2_mix_v4 $ABS/.venv/bin/python $ABS/futures/v3_nolatency/rescore_nd.py r2_mix_v4
+2026-11-01 15:18:17 END rc=0 secs=10 $ABS/.venv/bin/python $ABS/futures/v3_nolatency/rescore_nd.py r2_mix_v4

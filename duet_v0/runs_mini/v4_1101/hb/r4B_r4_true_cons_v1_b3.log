@@ -1,0 +1,2 @@
+2026-11-01 16:05:13 START tl=600 cwd=$ABS/futures/v3_nolatency $ABS/.venv/bin/python $ABS/futures/v3_nolatency/bench3.py --system r4_true_cons_v1 --note v4 r4 E5b belief side only: suspect heard note leaves its own chord belief alone (HMM w/o it, GRU = last trusted guess)
+2026-11-01 16:05:26 END rc=0 secs=13 $ABS/.venv/bin/python $ABS/futures/v3_nolatency/bench3.py --system r4_true_cons_v1 --note v4 r4 E5b belief side only: suspect heard note leaves its own chord belief alone (HMM w/o it, GRU = last trusted guess)

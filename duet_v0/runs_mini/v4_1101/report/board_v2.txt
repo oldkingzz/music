@@ -1,0 +1,87 @@
+board_v2.txt = board.txt + the 5 laptop-only systems that have music_nd results (Phase D finalizer, 2026-11-01; board.txt itself is unchanged).
+
+Duet v4 board (Mac mini run v4_1101, written in Phase D on 2026-11-01): every system with music_nd results, ranked by headline music_nd:
+40 scored with rescore_nd on the mini under runs_mini/v4_1101/nd/, and 5 scored on the laptop on 2026-10-31 (not re-run on the mini).
+val only, tuned on val (this bundle has no test split).
+
+music_nd = share of her singing time (from beat 4) where Duet is consonant with her AND on a tone of the true chord AND not her note/octave; headline = mean of the 4 datasets.
+double   = share of her singing time where Duet sings her own note or its octave (copying her; music_nd counts it as a miss; keep rule allows <= 0.08).
+big      = share of Duet's note changes that leap more than 7 semitones (bench3; ROUGH flag above 0.10; keep rule: <= champion + 0.01 per dataset).
+par      = share of Duet's consecutive note pairs that move with her into parallel 5ths/octaves (bench3; ROUGH above 0.05; keep rule: <= champion + 0.01).
+flags    = bench3 flags: SLOW (> 2000 us per note), DOUBLING (double > 0.25), ROUGH (big > 0.10 or par > 0.05); "-" = none.
+Sources: music_nd and double from nd/<name>/results/nd_<name>.json (laptop rows: futures/v3_nolatency/results/nd_<name>.json); big, par and
+flags from the LAST val row of futures/v3_nolatency/leaderboard_v3.jsonl for that system, except m2_memory_v4 and m4_retrieval_v4, whose last
+val rows are DUET_HIST ablations: for them, lines 97 and 146 (the full-history runs that match their nd files).  Status from state_R0..R4.json.
+Datasets: bach 17, folk 170, pop 300, pop909 40 val songs.
+
+                                   ---------- music_nd ----------  -------- double -------  --------- big ---------  --------- par ---------
+  # system               headline  bach   folk   pop    pop909    bach  folk  pop   p909   bach  folk  pop   p909   bach  folk  pop   p909   flags  status
+  1 r3_style_mix_v3      0.6532 0.7028 0.7178 0.5963 0.5959  0.035 0.043 0.018 0.032  0.004 0.016 0.006 0.010  0.000 0.004 0.005 0.004  -      best score, not presentable (kept R3; E2xE3 a=0.5)
+  2 r4_cover_fit_v1      0.6530 0.7028 0.7168 0.5973 0.5949  0.035 0.043 0.018 0.031  0.004 0.016 0.005 0.009  0.000 0.004 0.005 0.004  -      dead idea (E4; R4 no gain)
+  3 r4_true_cons_v1      0.6528 0.7019 0.7168 0.5963 0.5961  0.038 0.043 0.017 0.030  0.005 0.017 0.006 0.010  0.002 0.005 0.005 0.004  -      dead idea (E5; R4 no gain)
+  4 r4_true_cons_v2      0.6490 0.6857 0.7160 0.5957 0.5987  0.045 0.045 0.018 0.030  0.005 0.016 0.005 0.008  0.002 0.003 0.004 0.003  -      dead idea (E5; R4 no gain)
+  5 r3_style_mix_v1      0.6489 0.6929 0.7170 0.5948 0.5909  0.048 0.048 0.019 0.033  0.005 0.017 0.006 0.012  0.001 0.005 0.004 0.005  -      failed gate (R3; E2xE3 a=0.7: headline)
+  6 r3_style_mix_v2      0.6483 0.6906 0.7178 0.5940 0.5909  0.049 0.048 0.020 0.033  0.005 0.019 0.006 0.012  0.001 0.004 0.004 0.005  -      failed gate (R3; E2xE3 4 styles: headline)
+  7 r3_cover_fit_v3      0.6471 0.6920 0.7142 0.5874 0.5950  0.045 0.050 0.021 0.030  0.005 0.018 0.006 0.009  0.000 0.005 0.005 0.005  -      dead idea (E4; R3 no gain)
+  8 r3_cover_fit_v2      0.6465 0.6906 0.7133 0.5872 0.5950  0.046 0.050 0.021 0.030  0.005 0.018 0.006 0.009  0.000 0.005 0.005 0.005  -      dead idea (E4; R3 no gain)
+  9 r3_style_mix_v4      0.6462 0.6924 0.7133 0.5929 0.5864  0.049 0.049 0.020 0.034  0.005 0.020 0.007 0.013  0.001 0.004 0.004 0.004  -      failed gate (R3; E2xE3 a=0.85: headline, folk, pop)
+ 10 r3_cover_fit_v4      0.6457 0.6871 0.7144 0.5926 0.5889  0.055 0.052 0.021 0.035  0.005 0.018 0.006 0.012  0.001 0.005 0.004 0.005  -      dead idea (E4; R3 no gain)
+ 11 r3_cover_fit_v1      0.6456 0.6893 0.7128 0.5877 0.5925  0.050 0.051 0.021 0.033  0.005 0.018 0.006 0.009  0.001 0.004 0.004 0.005  -      dead idea (E4; R3 no gain)
+ 12 r2_mix_v3            0.6454 0.6906 0.7119 0.5930 0.5859  0.057 0.053 0.021 0.035  0.005 0.021 0.006 0.013  0.001 0.004 0.004 0.004  -      failed gate (R2; E2 a=0.85: folk big)
+ 13 r3_true_cons_v3      0.6449 0.6906 0.7099 0.5884 0.5906  0.058 0.057 0.023 0.035  0.006 0.018 0.006 0.010  0.001 0.003 0.004 0.004  -      dead idea (E5; R3 no gain)
+ 14 r3_true_cons_v4      0.6448 0.6835 0.7124 0.5913 0.5921  0.059 0.055 0.023 0.036  0.006 0.018 0.006 0.011  0.001 0.003 0.003 0.004  -      dead idea (E5; R3 no gain)
+ 15 r2_mix_v2            0.6444 0.6853 0.7126 0.5908 0.5891  0.055 0.054 0.022 0.036  0.005 0.019 0.007 0.012  0.001 0.004 0.004 0.004  -      presentable champion (kept R2; E2 a=0.7)
+ 16 r3_true_cons_v1      0.6443 0.6839 0.7110 0.5900 0.5922  0.058 0.055 0.023 0.036  0.006 0.019 0.006 0.010  0.001 0.003 0.003 0.004  -      dead idea (E5; R3 no gain)
+ 17 r1_gru_chooser_v1    0.6440 0.6915 0.7134 0.5903 0.5808  0.049 0.050 0.019 0.034  0.005 0.021 0.006 0.014  0.002 0.004 0.004 0.005  -      failed gate (R1; E1: folk big)
+ 18 r3_true_cons_v2      0.6436 0.6839 0.7092 0.5897 0.5916  0.059 0.058 0.023 0.037  0.005 0.018 0.006 0.011  0.001 0.003 0.003 0.004  -      dead idea (E5; R3 no gain)
+ 19 r2_gru_chooser_v1    0.6433 0.6915 0.7110 0.5902 0.5804  0.049 0.050 0.019 0.034  0.005 0.015 0.005 0.009  0.002 0.004 0.004 0.005  -      passed keep, not champion (R2; E1 w_big 0.6)
+ 20 r2_mix_v1            0.6428 0.6855 0.7125 0.5810 0.5921  0.055 0.053 0.023 0.036  0.005 0.016 0.008 0.011  0.002 0.004 0.004 0.004  -      passed gate, not champion (R2; E2 a=0.5)
+ 21 r2_mix_v4            0.6427 0.6897 0.7044 0.5927 0.5840  0.057 0.053 0.021 0.034  0.004 0.007 0.004 0.005  0.001 0.005 0.004 0.005  -      passed gate, not champion (R2; E2 a=0.85 + w_big 0.8)
+ 22 rD_hist_mix_h16_v1   0.6422 0.6853 0.7105 0.5900 0.5832  0.058 0.046 0.023 0.037  0.004 0.018 0.008 0.010  0.000 0.004 0.004 0.004  -      history ablation (r2_mix_v2, last 16 beats)
+ 23 r2_gru_chooser_v2    0.6417 0.6906 0.7068 0.5901 0.5792  0.049 0.050 0.019 0.034  0.004 0.007 0.005 0.005  0.002 0.004 0.004 0.005  -      passed gate, not champion (R2; E1 w_big 0.8)
+ 24 r2_gru_chooser_v3    0.6407 0.6906 0.7032 0.5901 0.5789  0.049 0.050 0.019 0.034  0.004 0.002 0.005 0.004  0.002 0.005 0.004 0.005  -      passed gate, not champion (R2; E1 w_big 1.0)
+ 25 rD_hist_mix_h4_v1    0.6344 0.6839 0.6947 0.5756 0.5836  0.028 0.038 0.023 0.032  0.004 0.017 0.012 0.011  0.000 0.004 0.004 0.005  -      history ablation (r2_mix_v2, last 4 beats)
+ 26 r1_gru_chooser_v2    0.6331 0.6745 0.7001 0.5815 0.5762  0.053 0.051 0.021 0.035  0.008 0.021 0.008 0.017  0.001 0.004 0.005 0.005  -      failed gate (R1; E1 one GRU: folk big)
+ 27 r2_style_hmm_v3      0.6296 0.6625 0.6886 0.5785 0.5888  0.023 0.037 0.019 0.020  0.001 0.011 0.009 0.005  0.001 0.003 0.005 0.004  -      passed keep, not champion (R2; E3 4 styles)
+ 28 r2_style_hmm_v2      0.6295 0.6664 0.6764 0.5865 0.5886  0.045 0.040 0.017 0.020  0.003 0.010 0.007 0.005  0.001 0.004 0.005 0.004  -      failed gate (R2; E3: folk +0.003)
+ 29 r2_style_hmm_v1      0.6292 0.6585 0.6819 0.5877 0.5886  0.026 0.030 0.017 0.020  0.000 0.005 0.007 0.005  0.001 0.004 0.005 0.004  -      passed gate, not champion (R2; E3 3 styles)
+ 30 r2_style_hmm_v4      0.6284 0.6637 0.6821 0.5791 0.5888  0.047 0.042 0.020 0.020  0.004 0.012 0.009 0.005  0.001 0.003 0.005 0.004  -      passed gate, not champion (R2; E3 4 styles lam 1.5)
+ 31 m1_filter_v5lo       0.6206 0.6655 0.6766 0.5601 0.5804  0.048 0.041 0.027 0.034  0.003 0.009 0.011 0.007  0.001 0.004 0.003 0.004  -      baseline (old Tuesday model, starting champion)
+ 32 rD_hist_m1_h16_v1    0.6206 0.6655 0.6766 0.5601 0.5804  0.048 0.041 0.027 0.034  0.003 0.009 0.011 0.007  0.001 0.004 0.003 0.004  -      history ablation (m1_filter_v5lo, last 16 beats)
+ 33 rD_hist_m1_h4_v1     0.6203 0.6668 0.6785 0.5586 0.5773  0.045 0.043 0.026 0.032  0.003 0.010 0.012 0.008  0.000 0.004 0.003 0.004  -      history ablation (m1_filter_v5lo, last 4 beats)
+ 34 rD_hist_mix_h0_v1    0.6114 0.6625 0.6573 0.5663 0.5595  0.013 0.020 0.016 0.019  0.006 0.016 0.018 0.007  0.002 0.005 0.004 0.005  -      history ablation (r2_mix_v2, H=0: HMM current beat, GRUs current note)
+ 35 m3_seq_v5            0.6104 0.6241 0.6805 0.5713 0.5655  0.184 0.118 0.100 0.087  0.030 0.049 0.055 0.070  0.003 0.004 0.004 0.006  -      baseline (3-GRU average + its own copying chooser)
+ 36 rD_hist_m1_h0_v1     0.6101 0.6641 0.6592 0.5605 0.5566  0.014 0.018 0.017 0.019  0.009 0.026 0.037 0.021  0.001 0.004 0.005 0.006  -      history ablation (m1_filter_v5lo, H=0: current beat only)
+ 37 m3_seq_v5h16         0.6023 0.6138 0.6691 0.5633 0.5630  0.170 0.118 0.108 0.084  0.035 0.047 0.059 0.068  0.002 0.005 0.004 0.006  -      history ablation (m3_seq_v5, last 16 beats)
+ 38 m3_seq_v5h4          0.5978 0.6205 0.6560 0.5538 0.5607  0.140 0.105 0.115 0.079  0.042 0.046 0.087 0.064  0.001 0.004 0.004 0.006  -      history ablation (m3_seq_v5, last 4 beats)
+ 39 m3_seq_v5h0          0.5766 0.6432 0.6200 0.5362 0.5072  0.077 0.090 0.103 0.115  0.042 0.025 0.047 0.024  0.000 0.005 0.003 0.005  -      history ablation (m3_seq_v5, H=0: current note only)
+ 40 m5_policy_v10        0.5696 0.5893 0.6133 0.5409 0.5348  0.176 0.160 0.111 0.152  0.022 0.037 0.051 0.030  0.002 0.006 0.004 0.006  -      laptop 2026-10-31, not re-run (policy model v10; copies her: double up to 0.18)
+ 41 m1_filter_v5         0.5366 0.5645 0.5834 0.5096 0.4891  0.195 0.185 0.121 0.186  0.006 0.008 0.011 0.006  0.004 0.007 0.004 0.007  -      laptop 2026-10-31, not re-run (m1 v5: w_oct 0.15; copies her: double up to 0.19)
+ 42 m5_policy_v9         0.5270 0.5501 0.5556 0.5181 0.4841  0.232 0.237 0.154 0.228  0.022 0.037 0.051 0.027  0.002 0.007 0.005 0.008  -      laptop 2026-10-31, not re-run (policy model v9; copies her: double up to 0.24)
+ 43 m4_retrieval_v4      0.5182 0.5247 0.5531 0.5209 0.4741  0.205 0.208 0.130 0.180  0.013 0.016 0.013 0.012  0.002 0.007 0.005 0.008  -      laptop 2026-10-31, not re-run (n-gram chord retrieval + planner; copies her: double up to 0.21)
+ 44 m2_memory_v4         0.5166 0.5031 0.5610 0.5193 0.4828  0.203 0.210 0.128 0.163  0.015 0.031 0.032 0.022  0.005 0.007 0.004 0.007  -      laptop 2026-10-31, not re-run (HMM + hindsight song memory; copies her: double up to 0.21)
+ 45 third_below          0.5054 0.5429 0.4903 0.5121 0.4763  0.013 0.013 0.014 0.013  0.018 0.098 0.062 0.108  0.001 0.000 0.000 0.000  ROUGH  baseline (scale third below her heard note, moved by octaves into 53-77)
+
+ -- m4_oracle            0.8388 0.8871 0.8784 0.7889 0.8009  0.036 0.040 0.025 0.039  0.008 0.041 0.041 0.039  0.003 0.003 0.009 0.007  -      ceiling, not causal, not ranked (told the true chord)
+    (m4_oracle: music_nd/double from futures/v3_nolatency/results/nd_m4_oracle.json, big/par from its last val leaderboard row; both laptop, 2026-10-31.)
+
+Status legend (verdicts from state_R0..R4.json):
+  presentable champion        passed the full keep rule (PROGRAM §4.2) and is one chord guesser + m1_filter_v5lo's chooser (§4.3);
+                              the Tuesday model if Vincent passes its quiz, otherwise m1_filter_v5lo stays.
+  best score, not presentable passed the full keep rule against r2_mix_v2; its style-aware HMM is more than "the HMM" (strict §4.3),
+                              so it never becomes the Tuesday model.
+  kept                        passed the full keep rule and became champion in that round: only the two lines above (R2, R3).
+  passed keep, not champion   passed the full keep rule against m1_filter_v5lo (numbers, review, seed 2) but a higher candidate won the round.
+  passed gate, not champion   passed the numeric part of the keep rule only (not reviewed, no seed 2) and was below the round's winner.
+  failed gate                 failed the numeric keep rule (the failed check in brackets).
+  dead idea                   its idea (E4, E5) failed twice and is never retried.
+  baseline                    reference systems; m1_filter_v5lo is the old Tuesday model and the starting champion.
+  history ablation            Phase D: the system limited to her last H beats of melody (see history_v2.txt). H=0 is the current beat for an
+                              HMM and the current note for the GRUs.
+  laptop 2026-10-31           scored on Vincent's laptop on 2026-10-31 (nd file and leaderboard row from then); not re-run on the mini and
+                              not a loop candidate.
+
+45 ranked rows = 28 scored loop candidates (R1 2, R2 11, R3 12, R4 3) + 3 baselines + 9 Phase D history ablations + 5 laptop-only systems.
+The rank is by score only. Told the onset chord with m1's own chooser: 0.8403 (runs_mini/v4_1101/diag/diag_rt_v1.json, a diagnostic, not a system).
+Known label limit: the chord labels are the 7 basic triads of the major key, so 7th chords and the raised 7th in minor-key songs count as wrong.
+val only, tuned on val.

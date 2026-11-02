@@ -1,0 +1,206 @@
+{
+ "what": "music_nd split by where her note is (all val songs, tuned on val)",
+ "systems": {
+  "r2_mix_v2": {
+   "bach": {
+    "music_nd_part": {
+     "onset_beat": 0.5705935251798561,
+     "later_same_chord": 0.08992805755395683,
+     "later_chord_changed": 0.02473021582733813
+    },
+    "time_share": {
+     "onset_beat": 0.8318345323741008,
+     "later_same_chord": 0.12050359712230216,
+     "later_chord_changed": 0.047661870503597124
+    }
+   },
+   "folk": {
+    "music_nd_part": {
+     "onset_beat": 0.6482737757589024,
+     "later_same_chord": 0.06350064999788217,
+     "later_chord_changed": 0.0008036100010845053
+    },
+    "time_share": {
+     "onset_beat": 0.9087284407130298,
+     "later_same_chord": 0.0875007737617443,
+     "later_chord_changed": 0.0037707855252242586
+    }
+   },
+   "pop": {
+    "music_nd_part": {
+     "onset_beat": 0.4163215711558013,
+     "later_same_chord": 0.12676370669774592,
+     "later_chord_changed": 0.04768517370496193
+    },
+    "time_share": {
+     "onset_beat": 0.7062513948471247,
+     "later_same_chord": 0.20663575272150173,
+     "later_chord_changed": 0.08711285243137352
+    }
+   },
+   "pop909": {
+    "music_nd_part": {
+     "onset_beat": 0.41577842049338554,
+     "later_same_chord": 0.1326937253845181,
+     "later_chord_changed": 0.04063942702482223
+    },
+    "time_share": {
+     "onset_beat": 0.7061708568777364,
+     "later_same_chord": 0.2150283395062205,
+     "later_chord_changed": 0.07880080361603693
+    }
+   }
+  },
+  "r3_cover_fit_v1": {
+   "bach": {
+    "music_nd_part": {
+     "onset_beat": 0.575089928057554,
+     "later_same_chord": 0.09082733812949641,
+     "later_chord_changed": 0.023381294964028777
+    },
+    "time_share": {
+     "onset_beat": 0.8318345323741008,
+     "later_same_chord": 0.12050359712230216,
+     "later_chord_changed": 0.047661870503597124
+    }
+   },
+   "folk": {
+    "music_nd_part": {
+     "onset_beat": 0.6484360429900012,
+     "later_same_chord": 0.06342337983043442,
+     "later_chord_changed": 0.0009890584771385048
+    },
+    "time_share": {
+     "onset_beat": 0.9087284407130298,
+     "later_same_chord": 0.0875007737617443,
+     "later_chord_changed": 0.0037707855252242586
+    }
+   },
+   "pop": {
+    "music_nd_part": {
+     "onset_beat": 0.41438738314280754,
+     "later_same_chord": 0.12507749150693084,
+     "later_chord_changed": 0.04825551119597292
+    },
+    "time_share": {
+     "onset_beat": 0.7062513948471247,
+     "later_same_chord": 0.20663575272150173,
+     "later_chord_changed": 0.08711285243137352
+    }
+   },
+   "pop909": {
+    "music_nd_part": {
+     "onset_beat": 0.4160092577892075,
+     "later_same_chord": 0.13334323924844765,
+     "later_chord_changed": 0.043098127735505656
+    },
+    "time_share": {
+     "onset_beat": 0.7061708568777364,
+     "later_same_chord": 0.2150283395062205,
+     "later_chord_changed": 0.07880080361603693
+    }
+   }
+  },
+  "r3_cover_fit_v3": {
+   "bach": {
+    "music_nd_part": {
+     "onset_beat": 0.5768884892086331,
+     "later_same_chord": 0.09082733812949641,
+     "later_chord_changed": 0.024280575539568347
+    },
+    "time_share": {
+     "onset_beat": 0.8318345323741008,
+     "later_same_chord": 0.12050359712230216,
+     "later_chord_changed": 0.047661870503597124
+    }
+   },
+   "folk": {
+    "music_nd_part": {
+     "onset_beat": 0.6490310236409734,
+     "later_same_chord": 0.06397972525859642,
+     "later_chord_changed": 0.0011745069531925042
+    },
+    "time_share": {
+     "onset_beat": 0.9087284407130298,
+     "later_same_chord": 0.0875007737617443,
+     "later_chord_changed": 0.0037707855252242586
+    }
+   },
+   "pop": {
+    "music_nd_part": {
+     "onset_beat": 0.41413941032062884,
+     "later_same_chord": 0.12500309966027723,
+     "later_chord_changed": 0.04828030847819079
+    },
+    "time_share": {
+     "onset_beat": 0.7062513948471247,
+     "later_same_chord": 0.20663575272150173,
+     "later_chord_changed": 0.08711285243137352
+    }
+   },
+   "pop909": {
+    "music_nd_part": {
+     "onset_beat": 0.4180801925018219,
+     "later_same_chord": 0.13452125772806992,
+     "later_chord_changed": 0.04237112925325875
+    },
+    "time_share": {
+     "onset_beat": 0.7061708568777364,
+     "later_same_chord": 0.2150283395062205,
+     "later_chord_changed": 0.07880080361603693
+    }
+   }
+  },
+  "r3_cover_fit_v4": {
+   "bach": {
+    "music_nd_part": {
+     "onset_beat": 0.5714928057553957,
+     "later_same_chord": 0.09082733812949641,
+     "later_chord_changed": 0.02473021582733813
+    },
+    "time_share": {
+     "onset_beat": 0.8318345323741008,
+     "later_same_chord": 0.12050359712230216,
+     "later_chord_changed": 0.047661870503597124
+    }
+   },
+   "folk": {
+    "music_nd_part": {
+     "onset_beat": 0.649069658585611,
+     "later_same_chord": 0.06416517373465042,
+     "later_chord_changed": 0.0011745069531925042
+    },
+    "time_share": {
+     "onset_beat": 0.9087284407130298,
+     "later_same_chord": 0.0875007737617443,
+     "later_chord_changed": 0.0037707855252242586
+    }
+   },
+   "pop": {
+    "music_nd_part": {
+     "onset_beat": 0.41619758474471197,
+     "later_same_chord": 0.1264661393111315,
+     "later_chord_changed": 0.04989213182235227
+    },
+    "time_share": {
+     "onset_beat": 0.7062513948471247,
+     "later_same_chord": 0.20663575272150173,
+     "later_chord_changed": 0.08711285243137352
+    }
+   },
+   "pop909": {
+    "music_nd_part": {
+     "onset_beat": 0.41601683847179594,
+     "later_same_chord": 0.13305701030909015,
+     "later_chord_changed": 0.039849456216451064
+    },
+    "time_share": {
+     "onset_beat": 0.7061708568777364,
+     "later_same_chord": 0.2150283395062205,
+     "later_chord_changed": 0.07880080361603693
+    }
+   }
+  }
+ },
+ "secs": 32.2
+}

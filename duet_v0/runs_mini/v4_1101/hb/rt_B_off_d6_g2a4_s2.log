@@ -1,0 +1,2 @@
+2026-11-01 22:41:45 START tl=600 cwd=$ABS $ABS/.venv/bin/python $ABS/runs_mini/v5rt_1101/r1/B/offline_d6.py $ABS/runs_mini/v5rt_1101/r1/B/grid_g2.json $ABS/runs_mini/v5rt_1101/r1/B/off_d6_g2_b0a4_seed2.json --beta 0 --adapt 4 --top 15 --seed2
+2026-11-01 22:43:05 END rc=0 secs=80 $ABS/.venv/bin/python $ABS/runs_mini/v5rt_1101/r1/B/offline_d6.py $ABS/runs_mini/v5rt_1101/r1/B/grid_g2.json $ABS/runs_mini/v5rt_1101/r1/B/off_d6_g2_b0a4_seed2.json --beta 0 --adapt 4 --top 15 --seed2

@@ -1,0 +1,23 @@
+[
+ {
+  "id": 37,
+  "tonic": 2,
+  "sound_check_erle_db": -1.0907795809860787,
+  "score": {
+   "good": 0.0,
+   "harsh": 0.0,
+   "fourth": 0.0,
+   "silent": 1.0
+  },
+  "gate_release_s_to_-40dBFS": 0.0,
+  "tail_max_dbfs": -240.0,
+  "mic_peak_dbfs": -31.8,
+  "out_peak_dbfs": -40.9,
+  "max_peak_to_median_db": 65.1,
+  "mic_level_last_vs_first_s_db": 3.1,
+  "compute_ms_mean_p99": [
+   0.17,
+   0.228
+  ]
+ }
+]

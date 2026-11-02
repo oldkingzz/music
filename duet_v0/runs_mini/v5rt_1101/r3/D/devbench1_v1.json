@@ -1,0 +1,258 @@
+{
+ "note": "idea D dev runs; val only, tuned on val, no test split",
+ "mode": "bench",
+ "rows": [
+  {
+   "name": "base_copyhm",
+   "seed": "seed1",
+   "headline": {
+    "rt_nd": 0.630798455262017,
+    "harsh": 0.03267968975430248,
+    "fresh_per100": 1.418403245547931,
+    "on_time_right": 0.2883858998872451,
+    "us_mean": 145.39651007803423
+   },
+   "rows": {
+    "bach": {
+     "rt_nd": 0.6794514388489163,
+     "harsh": 0.03453237410071934,
+     "fresh_per100": 1.9880715705765408,
+     "on_time_right": 0.2345924453280318
+    },
+    "folk": {
+     "rt_nd": 0.6785034232541387,
+     "harsh": 0.03722569106898811,
+     "fresh_per100": 1.4295439074200136,
+     "on_time_right": 0.31109598366235536
+    },
+    "pop": {
+     "rt_nd": 0.5672527091030655,
+     "harsh": 0.032717534158256616,
+     "fresh_per100": 1.0307668280493518,
+     "on_time_right": 0.2765890988599094
+    },
+    "pop909": {
+     "rt_nd": 0.5979862498419478,
+     "harsh": 0.026243159689245836,
+     "fresh_per100": 1.2252306761458176,
+     "on_time_right": 0.331266071698684
+    }
+   },
+   "d_vs_reactive": {
+    "rt_nd": 0.030032329468732022,
+    "harsh": -0.021422719300641095
+   },
+   "secs": 19.0,
+   "checks": {
+    "rt_nd +0.005": true,
+    "harsh <= reactive": true,
+    "us < 2000": true,
+    "fresh <= reactive": true,
+    "bach harsh": true,
+    "bach rt_nd": true,
+    "bach fresh": true,
+    "folk harsh": true,
+    "folk rt_nd": true,
+    "folk fresh": true,
+    "pop harsh": true,
+    "pop rt_nd": true,
+    "pop fresh": true,
+    "pop909 harsh": true,
+    "pop909 rt_nd": true,
+    "pop909 fresh": true
+   }
+  },
+  {
+   "name": "D_hm_fold",
+   "seed": "seed1",
+   "headline": {
+    "rt_nd": 0.6329274785859281,
+    "harsh": 0.032633994647942165,
+    "fresh_per100": 1.4278206324164329,
+    "on_time_right": 0.29044342332190476,
+    "us_mean": 143.87170726747576
+   },
+   "rows": {
+    "bach": {
+     "rt_nd": 0.6794514388489163,
+     "harsh": 0.03453237410071934,
+     "fresh_per100": 1.9880715705765408,
+     "on_time_right": 0.2345924453280318
+    },
+    "folk": {
+     "rt_nd": 0.6789423176717188,
+     "harsh": 0.03732459695379167,
+     "fresh_per100": 1.4357324091837367,
+     "on_time_right": 0.3109722136270809
+    },
+    "pop": {
+     "rt_nd": 0.5679420735487217,
+     "harsh": 0.03272745307114375,
+     "fresh_per100": 1.0698110260815243,
+     "on_time_right": 0.27768233640481027
+    },
+    "pop909": {
+     "rt_nd": 0.6053740842743557,
+     "harsh": 0.025951554466113903,
+     "fresh_per100": 1.2176675238239298,
+     "on_time_right": 0.33852669792769624
+    }
+   },
+   "d_vs_reactive": {
+    "rt_nd": 0.032161352792643094,
+    "harsh": -0.02146841440700141
+   },
+   "secs": 18.8,
+   "songs_shifted": {
+    "bach": 0,
+    "folk": 5,
+    "pop": 34,
+    "pop909": 4
+   },
+   "checks": {
+    "rt_nd +0.005": true,
+    "harsh <= reactive": true,
+    "us < 2000": true,
+    "fresh <= reactive": true,
+    "bach harsh": true,
+    "bach rt_nd": true,
+    "bach fresh": true,
+    "folk harsh": true,
+    "folk rt_nd": true,
+    "folk fresh": true,
+    "pop harsh": true,
+    "pop rt_nd": true,
+    "pop fresh": true,
+    "pop909 harsh": true,
+    "pop909 rt_nd": true,
+    "pop909 fresh": true
+   }
+  },
+  {
+   "name": "base_copyhm_tau1",
+   "seed": "seed1",
+   "headline": {
+    "rt_nd": 0.6279266389869708,
+    "harsh": 0.0369514104406968,
+    "fresh_per100": 2.477017835658015,
+    "on_time_right": 0.2812849760080264,
+    "us_mean": 142.7356947362987
+   },
+   "rows": {
+    "bach": {
+     "rt_nd": 0.676214028776974,
+     "harsh": 0.03875899280575532,
+     "fresh_per100": 2.8827037773359843,
+     "on_time_right": 0.2276341948310139
+    },
+    "folk": {
+     "rt_nd": 0.678755324317135,
+     "harsh": 0.041982444479773486,
+     "fresh_per100": 2.623924747818553,
+     "on_time_right": 0.3060832972337397
+    },
+    "pop": {
+     "rt_nd": 0.5635579140526037,
+     "harsh": 0.03430456022020038,
+     "fresh_per100": 1.9131657035764484,
+     "on_time_right": 0.27112291113540526
+    },
+    "pop909": {
+     "rt_nd": 0.5931792888011703,
+     "harsh": 0.03275964425705803,
+     "fresh_per100": 2.488277113901074,
+     "on_time_right": 0.32029950083194675
+    }
+   },
+   "d_vs_reactive": {
+    "rt_nd": 0.02716051319368573,
+    "harsh": -0.017150998614246772
+   },
+   "secs": 18.5,
+   "checks": {
+    "rt_nd +0.005": true,
+    "harsh <= reactive": true,
+    "us < 2000": true,
+    "fresh <= reactive": false,
+    "bach harsh": true,
+    "bach rt_nd": true,
+    "bach fresh": true,
+    "folk harsh": true,
+    "folk rt_nd": true,
+    "folk fresh": true,
+    "pop harsh": true,
+    "pop rt_nd": true,
+    "pop fresh": true,
+    "pop909 harsh": true,
+    "pop909 rt_nd": true,
+    "pop909 fresh": true
+   }
+  },
+  {
+   "name": "D_hm_tau1_fold",
+   "seed": "seed1",
+   "headline": {
+    "rt_nd": 0.6301727001226933,
+    "harsh": 0.037031162843647554,
+    "fresh_per100": 2.50463101509894,
+    "on_time_right": 0.2835158722380517,
+    "us_mean": 142.34306393450447
+   },
+   "rows": {
+    "bach": {
+     "rt_nd": 0.676214028776974,
+     "harsh": 0.03875899280575532,
+     "fresh_per100": 2.8827037773359843,
+     "on_time_right": 0.2276341948310139
+    },
+    "folk": {
+     "rt_nd": 0.679055132470399,
+     "harsh": 0.04200408010440503,
+     "fresh_per100": 2.61773624605483,
+     "on_time_right": 0.3063308373042886
+    },
+    "pop": {
+     "rt_nd": 0.5642571974111474,
+     "harsh": 0.03471123564857345,
+     "fresh_per100": 2.0146806184600967,
+     "on_time_right": 0.27284085584882084
+    },
+    "pop909": {
+     "rt_nd": 0.6011644418322528,
+     "harsh": 0.0326503428158564,
+     "fresh_per100": 2.5034034185448495,
+     "on_time_right": 0.3272576009680835
+    }
+   },
+   "d_vs_reactive": {
+    "rt_nd": 0.029406574329408297,
+    "harsh": -0.01707124621129602
+   },
+   "secs": 18.6,
+   "songs_shifted": {
+    "bach": 0,
+    "folk": 5,
+    "pop": 34,
+    "pop909": 4
+   },
+   "checks": {
+    "rt_nd +0.005": true,
+    "harsh <= reactive": true,
+    "us < 2000": true,
+    "fresh <= reactive": false,
+    "bach harsh": true,
+    "bach rt_nd": true,
+    "bach fresh": true,
+    "folk harsh": true,
+    "folk rt_nd": true,
+    "folk fresh": true,
+    "pop harsh": true,
+    "pop rt_nd": true,
+    "pop fresh": true,
+    "pop909 harsh": true,
+    "pop909 rt_nd": true,
+    "pop909 fresh": true
+   }
+  }
+ ]
+}

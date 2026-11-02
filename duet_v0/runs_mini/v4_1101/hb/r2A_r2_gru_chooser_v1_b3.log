@@ -1,0 +1,2 @@
+2026-11-01 15:16:46 START tl=600 cwd=$ABS/futures/v3_nolatency $ABS/.venv/bin/python $ABS/futures/v3_nolatency/bench3.py --system r2_gru_chooser_v1 --note v4 r2 E1b r1_gru_chooser_v1 with leap penalty w_big 0.6 (was 0.4)
+2026-11-01 15:16:55 END rc=0 secs=10 $ABS/.venv/bin/python $ABS/futures/v3_nolatency/bench3.py --system r2_gru_chooser_v1 --note v4 r2 E1b r1_gru_chooser_v1 with leap penalty w_big 0.6 (was 0.4)

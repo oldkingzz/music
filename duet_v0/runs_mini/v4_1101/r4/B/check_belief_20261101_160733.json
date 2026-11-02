@@ -1,0 +1,446 @@
+{
+ "what": "One-off diagnostic, v4 round 4, implementer B (E5); not a system, not a scored variant; ALL val songs (val, tuned on val).",
+ "rows": {
+  "champion_copy": {
+   "bach": {
+    "not_suspect|heard_right": {
+     "notes": 895,
+     "top1": 0.5654,
+     "p_true": 0.3799
+    },
+    "not_suspect|misheard": {
+     "notes": 56,
+     "top1": 0.1607,
+     "p_true": 0.176
+    },
+    "suspect|heard_right": {
+     "notes": 14,
+     "top1": 0.5,
+     "p_true": 0.271
+    },
+    "suspect|misheard": {
+     "notes": 41,
+     "top1": 0.3415,
+     "p_true": 0.211
+    },
+    "all": {
+     "notes": 1006,
+     "top1": 0.5328,
+     "p_true": 0.3602
+    }
+   },
+   "folk": {
+    "not_suspect|heard_right": {
+     "notes": 14384,
+     "top1": 0.6684,
+     "p_true": 0.4741
+    },
+    "not_suspect|misheard": {
+     "notes": 942,
+     "top1": 0.4565,
+     "p_true": 0.3524
+    },
+    "suspect|heard_right": {
+     "notes": 152,
+     "top1": 0.4342,
+     "p_true": 0.33
+    },
+    "suspect|misheard": {
+     "notes": 681,
+     "top1": 0.5844,
+     "p_true": 0.3861
+    },
+    "all": {
+     "notes": 16159,
+     "top1": 0.6503,
+     "p_true": 0.462
+    }
+   },
+   "pop": {
+    "not_suspect|heard_right": {
+     "notes": 11411,
+     "top1": 0.3837,
+     "p_true": 0.2487
+    },
+    "not_suspect|misheard": {
+     "notes": 723,
+     "top1": 0.3043,
+     "p_true": 0.22
+    },
+    "suspect|heard_right": {
+     "notes": 105,
+     "top1": 0.2667,
+     "p_true": 0.2118
+    },
+    "suspect|misheard": {
+     "notes": 567,
+     "top1": 0.3563,
+     "p_true": 0.2266
+    },
+    "all": {
+     "notes": 12806,
+     "top1": 0.377,
+     "p_true": 0.2458
+    }
+   },
+   "pop909": {
+    "not_suspect|heard_right": {
+     "notes": 11874,
+     "top1": 0.4136,
+     "p_true": 0.2949
+    },
+    "not_suspect|misheard": {
+     "notes": 733,
+     "top1": 0.307,
+     "p_true": 0.2431
+    },
+    "suspect|heard_right": {
+     "notes": 9,
+     "top1": 0.2222,
+     "p_true": 0.214
+    },
+    "suspect|misheard": {
+     "notes": 606,
+     "top1": 0.3845,
+     "p_true": 0.2695
+    },
+    "all": {
+     "notes": 13222,
+     "top1": 0.4062,
+     "p_true": 0.2908
+    }
+   }
+  },
+  "cur_prev": {
+   "bach": {
+    "not_suspect|heard_right": {
+     "notes": 895,
+     "top1": 0.5654,
+     "p_true": 0.3799
+    },
+    "not_suspect|misheard": {
+     "notes": 56,
+     "top1": 0.1607,
+     "p_true": 0.176
+    },
+    "suspect|heard_right": {
+     "notes": 14,
+     "top1": 0.1429,
+     "p_true": 0.1189
+    },
+    "suspect|misheard": {
+     "notes": 41,
+     "top1": 0.1463,
+     "p_true": 0.1631
+    },
+    "all": {
+     "notes": 1006,
+     "top1": 0.5199,
+     "p_true": 0.3561
+    }
+   },
+   "folk": {
+    "not_suspect|heard_right": {
+     "notes": 14384,
+     "top1": 0.6684,
+     "p_true": 0.4741
+    },
+    "not_suspect|misheard": {
+     "notes": 942,
+     "top1": 0.4565,
+     "p_true": 0.3524
+    },
+    "suspect|heard_right": {
+     "notes": 152,
+     "top1": 0.4408,
+     "p_true": 0.3237
+    },
+    "suspect|misheard": {
+     "notes": 681,
+     "top1": 0.5448,
+     "p_true": 0.392
+    },
+    "all": {
+     "notes": 16159,
+     "top1": 0.6487,
+     "p_true": 0.4622
+    }
+   },
+   "pop": {
+    "not_suspect|heard_right": {
+     "notes": 11411,
+     "top1": 0.3837,
+     "p_true": 0.2487
+    },
+    "not_suspect|misheard": {
+     "notes": 723,
+     "top1": 0.3043,
+     "p_true": 0.22
+    },
+    "suspect|heard_right": {
+     "notes": 105,
+     "top1": 0.2667,
+     "p_true": 0.1925
+    },
+    "suspect|misheard": {
+     "notes": 567,
+     "top1": 0.3651,
+     "p_true": 0.2344
+    },
+    "all": {
+     "notes": 12806,
+     "top1": 0.3774,
+     "p_true": 0.246
+    }
+   },
+   "pop909": {
+    "not_suspect|heard_right": {
+     "notes": 11874,
+     "top1": 0.4136,
+     "p_true": 0.2949
+    },
+    "not_suspect|misheard": {
+     "notes": 733,
+     "top1": 0.307,
+     "p_true": 0.2431
+    },
+    "suspect|heard_right": {
+     "notes": 9,
+     "top1": 0.2222,
+     "p_true": 0.1947
+    },
+    "suspect|misheard": {
+     "notes": 606,
+     "top1": 0.3416,
+     "p_true": 0.2623
+    },
+    "all": {
+     "notes": 13222,
+     "top1": 0.4043,
+     "p_true": 0.2905
+    }
+   }
+  },
+  "all_prev": {
+   "bach": {
+    "not_suspect|heard_right": {
+     "notes": 895,
+     "top1": 0.5654,
+     "p_true": 0.3799
+    },
+    "not_suspect|misheard": {
+     "notes": 56,
+     "top1": 0.1607,
+     "p_true": 0.1764
+    },
+    "suspect|heard_right": {
+     "notes": 14,
+     "top1": 0.1429,
+     "p_true": 0.1188
+    },
+    "suspect|misheard": {
+     "notes": 41,
+     "top1": 0.1463,
+     "p_true": 0.1631
+    },
+    "all": {
+     "notes": 1006,
+     "top1": 0.5199,
+     "p_true": 0.3561
+    }
+   },
+   "folk": {
+    "not_suspect|heard_right": {
+     "notes": 14384,
+     "top1": 0.668,
+     "p_true": 0.4743
+    },
+    "not_suspect|misheard": {
+     "notes": 942,
+     "top1": 0.4575,
+     "p_true": 0.3526
+    },
+    "suspect|heard_right": {
+     "notes": 152,
+     "top1": 0.4408,
+     "p_true": 0.3231
+    },
+    "suspect|misheard": {
+     "notes": 681,
+     "top1": 0.5477,
+     "p_true": 0.3924
+    },
+    "all": {
+     "notes": 16159,
+     "top1": 0.6485,
+     "p_true": 0.4624
+    }
+   },
+   "pop": {
+    "not_suspect|heard_right": {
+     "notes": 11411,
+     "top1": 0.3849,
+     "p_true": 0.2491
+    },
+    "not_suspect|misheard": {
+     "notes": 723,
+     "top1": 0.3057,
+     "p_true": 0.2202
+    },
+    "suspect|heard_right": {
+     "notes": 105,
+     "top1": 0.2667,
+     "p_true": 0.1921
+    },
+    "suspect|misheard": {
+     "notes": 567,
+     "top1": 0.3668,
+     "p_true": 0.2348
+    },
+    "all": {
+     "notes": 12806,
+     "top1": 0.3787,
+     "p_true": 0.2463
+    }
+   },
+   "pop909": {
+    "not_suspect|heard_right": {
+     "notes": 11874,
+     "top1": 0.4141,
+     "p_true": 0.295
+    },
+    "not_suspect|misheard": {
+     "notes": 733,
+     "top1": 0.3056,
+     "p_true": 0.2431
+    },
+    "suspect|heard_right": {
+     "notes": 9,
+     "top1": 0.2222,
+     "p_true": 0.1946
+    },
+    "suspect|misheard": {
+     "notes": 606,
+     "top1": 0.3416,
+     "p_true": 0.2623
+    },
+    "all": {
+     "notes": 13222,
+     "top1": 0.4046,
+     "p_true": 0.2905
+    }
+   }
+  },
+  "oracle_true_notes": {
+   "bach": {
+    "not_suspect|heard_right": {
+     "notes": 895,
+     "top1": 0.5799,
+     "p_true": 0.3869
+    },
+    "not_suspect|misheard": {
+     "notes": 56,
+     "top1": 0.4107,
+     "p_true": 0.3509
+    },
+    "suspect|heard_right": {
+     "notes": 14,
+     "top1": 0.5,
+     "p_true": 0.2697
+    },
+    "suspect|misheard": {
+     "notes": 41,
+     "top1": 0.4634,
+     "p_true": 0.3596
+    },
+    "all": {
+     "notes": 1006,
+     "top1": 0.5646,
+     "p_true": 0.3822
+    }
+   },
+   "folk": {
+    "not_suspect|heard_right": {
+     "notes": 14384,
+     "top1": 0.6849,
+     "p_true": 0.4925
+    },
+    "not_suspect|misheard": {
+     "notes": 942,
+     "top1": 0.6794,
+     "p_true": 0.4802
+    },
+    "suspect|heard_right": {
+     "notes": 152,
+     "top1": 0.4803,
+     "p_true": 0.3472
+    },
+    "suspect|misheard": {
+     "notes": 681,
+     "top1": 0.6593,
+     "p_true": 0.486
+    },
+    "all": {
+     "notes": 16159,
+     "top1": 0.6816,
+     "p_true": 0.4901
+    }
+   },
+   "pop": {
+    "not_suspect|heard_right": {
+     "notes": 11411,
+     "top1": 0.395,
+     "p_true": 0.2538
+    },
+    "not_suspect|misheard": {
+     "notes": 723,
+     "top1": 0.3776,
+     "p_true": 0.2486
+    },
+    "suspect|heard_right": {
+     "notes": 105,
+     "top1": 0.2857,
+     "p_true": 0.2178
+    },
+    "suspect|misheard": {
+     "notes": 567,
+     "top1": 0.4021,
+     "p_true": 0.2594
+    },
+    "all": {
+     "notes": 12806,
+     "top1": 0.3934,
+     "p_true": 0.2534
+    }
+   },
+   "pop909": {
+    "not_suspect|heard_right": {
+     "notes": 11874,
+     "top1": 0.4282,
+     "p_true": 0.3042
+    },
+    "not_suspect|misheard": {
+     "notes": 733,
+     "top1": 0.4188,
+     "p_true": 0.2961
+    },
+    "suspect|heard_right": {
+     "notes": 9,
+     "top1": 0.2222,
+     "p_true": 0.227
+    },
+    "suspect|misheard": {
+     "notes": 606,
+     "top1": 0.4736,
+     "p_true": 0.3111
+    },
+    "all": {
+     "notes": 13222,
+     "top1": 0.4297,
+     "p_true": 0.304
+    }
+   }
+  }
+ },
+ "secs": 43.8
+}

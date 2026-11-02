@@ -1,0 +1,16 @@
+2026-11-01 21:31:47 START tl=300 cwd=$ABS .venv/bin/python -c 
+import sys; sys.argv=['x']; sys.path.insert(0,'futures/v4_selfiter')
+import numpy as np, live_predict as LP, live_bench3 as LB, bench3
+from audio import render_her
+from songs import twinkle
+sysm=LB.build('r2_mix_v2', bench3.train_sets())
+eng=LP.PredictDuet(sysm,'r2_mix_v2',0,4,48,80.0,log=lambda s:None,count_in=4,click_all=True); eng.Lo=0.01
+song=twinkle(); her=render_her(song
+2026-11-01 21:31:50 END rc=0 secs=3 .venv/bin/python -c 
+import sys; sys.argv=['x']; sys.path.insert(0,'futures/v4_selfiter')
+import numpy as np, live_predict as LP, live_bench3 as LB, bench3
+from audio import render_her
+from songs import twinkle
+sysm=LB.build('r2_mix_v2', bench3.train_sets())
+eng=LP.PredictDuet(sysm,'r2_mix_v2',0,4,48,80.0,log=lambda s:None,count_in=4,click_all=True); eng.Lo=0.01
+song=twinkle(); her=render_her(song

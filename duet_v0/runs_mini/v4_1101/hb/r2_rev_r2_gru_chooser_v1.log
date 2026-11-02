@@ -1,0 +1,2 @@
+2026-11-01 15:21:15 START tl=600 cwd=$ABS/runs_mini/v4_1101/review $ABS/.venv/bin/python $ABS/runs_mini/v4_1101/tools/review.py r2_gru_chooser_v1
+2026-11-01 15:21:28 END rc=0 secs=13 $ABS/.venv/bin/python $ABS/runs_mini/v4_1101/tools/review.py r2_gru_chooser_v1

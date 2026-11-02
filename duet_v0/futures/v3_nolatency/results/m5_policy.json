@@ -1,0 +1,229 @@
+{
+ "label": "m5_policy",
+ "best_system": "m5_policy_v9",
+ "headline": 0.7137,
+ "rows": {
+  "bach": {
+   "music": 0.7729,
+   "cons": 0.9618,
+   "fit": 0.777,
+   "harsh": 0.0256,
+   "double": 0.2318,
+   "leap": 3.8338,
+   "big": 0.0221,
+   "par": 0.002
+  },
+  "folk": {
+   "music": 0.7685,
+   "cons": 0.9595,
+   "fit": 0.7881,
+   "harsh": 0.0269,
+   "double": 0.2367,
+   "leap": 4.1888,
+   "big": 0.0369,
+   "par": 0.0071
+  },
+  "pop": {
+   "music": 0.6375,
+   "cons": 0.953,
+   "fit": 0.6569,
+   "harsh": 0.0301,
+   "double": 0.1549,
+   "leap": 4.0822,
+   "big": 0.0508,
+   "par": 0.0051
+  },
+  "pop909": {
+   "music": 0.6757,
+   "cons": 0.9572,
+   "fit": 0.6896,
+   "harsh": 0.03,
+   "double": 0.2285,
+   "leap": 4.0824,
+   "big": 0.0272,
+   "par": 0.0075
+  }
+ },
+ "flags": [],
+ "history_use": "At each of her notes Duet looks at what she has just sung (the main note of each of the last 7 beats and the last bar), which notes this song has used so far, and a per-song memory of what she sang the last time the same situation came up earlier in this song; a small neural net turns that plus her current note into a score for each possible harmony note (will it agree with her AND fit the song's chord), and Duet picks the best-scoring note close to its previous one. History helps because the chord usually lasts across several notes, so recent notes tell Duet which chord is playing: with zero history the same net scores 0.628 vs 0.666 with full history (matched low doubling), and almost all of that gain comes from the last 4 beats (0.662).",
+ "ablation": {
+  "matched_low_doubling_wd0.6": {
+   "": 0.666,
+   "h0": 0.628,
+   "h4": 0.662,
+   "h16": 0.663,
+   "nomem": 0.662,
+   "nohist": 0.666,
+   "noctx": 0.658
+  },
+  "v1_wd0.6": {
+   "full": 0.662,
+   "h0": 0.623,
+   "h8": 0.659,
+   "nomem": 0.661,
+   "nohist": 0.659,
+   "noctx": 0.655
+  },
+  "reading": "History length matters (0 beats -> -0.038), but only the last ~4 beats; the 3 feature groups are largely redundant: dropping recent notes (ctx) costs most (-0.008), dropping per-song memory -0.004, dropping the song histogram ~0. The other big lever is the doubling weight: allowing octave doubling up to ~24% lifts music 0.666 -> 0.714, so about half of the gain over v1 is echoing her in octaves where that is consonant and a chord tone, not better chord tracking."
+ },
+ "other_systems": [
+  {
+   "name": "m5_policy_v3",
+   "headline": 0.7212,
+   "note": "v1 model, wd 0: DOUBLING (40%) FLAGS DOUBLING"
+  },
+  {
+   "name": "m5_policy_v6",
+   "headline": 0.716,
+   "note": "v1 model, wd .05: DOUBLING FLAGS DOUBLING"
+  },
+  {
+   "name": "m5_policy_v12",
+   "headline": 0.7134,
+   "note": "v9 model, weaker step cost vl .003"
+  },
+  {
+   "name": "m5_policy_v9nohist",
+   "headline": 0.7121,
+   "note": "v9 minus histogram"
+  },
+  {
+   "name": "m5_policy_v13",
+   "headline": 0.7098,
+   "note": "v9 model, wd .12, no centre pull"
+  },
+  {
+   "name": "m5_policy_v9h4",
+   "headline": 0.7088,
+   "note": "v9, DUET_HIST=4 FLAGS DOUBLING"
+  },
+  {
+   "name": "m5_policy_v5",
+   "headline": 0.7086,
+   "note": "v1 model, wd .1 (double up to 24.6%)"
+  },
+  {
+   "name": "m5_policy_v9h16",
+   "headline": 0.7084,
+   "note": "v9, DUET_HIST=16 FLAGS DOUBLING"
+  },
+  {
+   "name": "m5_policy_v9nomem",
+   "headline": 0.7077,
+   "note": "v9 minus memory"
+  },
+  {
+   "name": "m5_policy_v9noctx",
+   "headline": 0.7064,
+   "note": "v9 minus last-7 notes + bar vectors FLAGS DOUBLING"
+  },
+  {
+   "name": "m5_policy_v10",
+   "headline": 0.7013,
+   "note": "v9 model, wd .15: safer doubling margin (max 17.6%)"
+  },
+  {
+   "name": "m5_policy_v11",
+   "headline": 0.6983,
+   "note": "v1 model, wd .15"
+  },
+  {
+   "name": "m5_policy_v8",
+   "headline": 0.6931,
+   "note": "bigger net (384 hid, 3 ens, 150k rows) + budget: capacity not the bottleneck"
+  },
+  {
+   "name": "m5_policy_v7",
+   "headline": 0.692,
+   "note": "doubling budget 18% using own past choices: worse than flat wd"
+  },
+  {
+   "name": "m5_policy_v9h0",
+   "headline": 0.6912,
+   "note": "v9, DUET_HIST=0 (doubling rises -> flagged) FLAGS DOUBLING"
+  },
+  {
+   "name": "m5_policy_v2",
+   "headline": 0.685,
+   "note": "v1 model, wd .2 (double ~10%)"
+  },
+  {
+   "name": "m5_policy_v4",
+   "headline": 0.6685,
+   "note": "v1 model, wd .3, weaker leap costs"
+  },
+  {
+   "name": "m5_policy_v9nohistw6",
+   "headline": 0.6665,
+   "note": "matched-doubling ablation (wd .6, double ~2%): v9nohist"
+  },
+  {
+   "name": "m5_policy_v9w6",
+   "headline": 0.6658,
+   "note": "matched-doubling ablation (wd .6, double ~2%): v9"
+  },
+  {
+   "name": "m5_policy_v9h16w6",
+   "headline": 0.6631,
+   "note": "matched-doubling ablation (wd .6, double ~2%): v9h16"
+  },
+  {
+   "name": "m5_policy_v9h4w6",
+   "headline": 0.6621,
+   "note": "matched-doubling ablation (wd .6, double ~2%): v9h4"
+  },
+  {
+   "name": "m5_policy_v9nomemw6",
+   "headline": 0.662,
+   "note": "matched-doubling ablation (wd .6, double ~2%): v9nomem"
+  },
+  {
+   "name": "m5_policy_v1",
+   "headline": 0.6616,
+   "note": "D=0 policy adapted, new target, strong anti-doubling (wd .6, double ~2%)"
+  },
+  {
+   "name": "m5_policy_nomem",
+   "headline": 0.6608,
+   "note": "v1 minus per-song memory"
+  },
+  {
+   "name": "m5_policy_h8",
+   "headline": 0.6587,
+   "note": "v1, DUET_HIST=8"
+  },
+  {
+   "name": "m5_policy_nohist",
+   "headline": 0.6587,
+   "note": "v1 minus pitch histogram"
+  },
+  {
+   "name": "m5_policy_v9noctxw6",
+   "headline": 0.6581,
+   "note": "matched-doubling ablation (wd .6, double ~2%): v9noctx"
+  },
+  {
+   "name": "m5_policy_noctx",
+   "headline": 0.6549,
+   "note": "v1 minus last-7 beat notes"
+  },
+  {
+   "name": "m5_policy_v9h0w6",
+   "headline": 0.6277,
+   "note": "matched-doubling ablation (wd .6, double ~2%): v9h0"
+  },
+  {
+   "name": "m5_policy_h0",
+   "headline": 0.6231,
+   "note": "v1 retrained with DUET_HIST=0 (current note + bar position only)"
+  }
+ ],
+ "what_failed": "Doubling budget driven by Duet's own past doubling rate (v7, 0.692) was worse than a flat doubling weight (v5, 0.709); a bigger net/more rows (v8) gave +0.001; lower step costs (v12, v13) did not help. v9's max doubling is 0.237 (bach/folk), close to the 0.25 flag; m5_policy_v10 (0.701, max doubling 0.176) is the safe fallback. Limitations: DUET_HIST limits all feature groups (ctx, partial beat, previous note, histogram, memory, bar vectors) but the weights are retrained per N (cached by N); training rows are capped at 90k notes per dataset.",
+ "files": [
+  "/Users/wangzesen/work/claude_sandbox/MEAM5160/project/duet_v0/futures/v3_nolatency/systems/m5_policy_v9.py",
+  "/Users/wangzesen/work/claude_sandbox/MEAM5160/project/duet_v0/futures/v3_nolatency/systems/m5_policy_v1.py",
+  "/Users/wangzesen/work/claude_sandbox/MEAM5160/project/duet_v0/futures/v3_nolatency/systems/m5_policy_v10.py",
+  "/Users/wangzesen/work/claude_sandbox/MEAM5160/project/duet_v0/futures/v3_nolatency/models_m5/",
+  "/Users/wangzesen/work/claude_sandbox/MEAM5160/project/duet_v0/futures/v3_nolatency/results/m5_policy.json"
+ ]
+}

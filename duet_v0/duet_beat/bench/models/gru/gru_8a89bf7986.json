@@ -1,0 +1,17 @@
+{
+ "sig": {
+  "bach": 135,
+  "H": 128,
+  "layers": 2,
+  "train_s": 75.0,
+  "copies": 3,
+  "lr": 0.003,
+  "seed": 0
+ },
+ "val_ce": 0.7342728972434998,
+ "epochs": 67,
+ "steps": 469,
+ "device": "mps",
+ "train_s": 75.12395405769348,
+ "n_seq": 405
+}

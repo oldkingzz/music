@@ -1,0 +1,2 @@
+2026-11-02 01:29:05 START tl=600 cwd=$ABS $ABS/.venv/bin/python $ABS/runs_mini/v5rt_1101/r3/E/train_tracker_seq_E_v1.py --out $ABS/runs_mini/v5rt_1101/models/E_tracker_seq_v1.json
+2026-11-02 01:32:10 END rc=0 secs=185 $ABS/.venv/bin/python $ABS/runs_mini/v5rt_1101/r3/E/train_tracker_seq_E_v1.py --out $ABS/runs_mini/v5rt_1101/models/E_tracker_seq_v1.json

@@ -1,0 +1,49 @@
+{
+ "spec": "rt:r1_A_prior_v1",
+ "L": 0.05,
+ "seed": "seed1",
+ "split": "val",
+ "headline": {
+  "fresh_clash_per100": 1.3388442337369328,
+  "attack_miss_per100": 27.60868540626457,
+  "attacks_per100": 71.80135779789732,
+  "harsh_fresh": 0.003731999074725538,
+  "harsh_bleed": 0.025815362254498646
+ },
+ "rows": {
+  "bach": {
+   "fresh_clash_per100": 1.3916500994035785,
+   "attack_miss_per100": 29.92047713717694,
+   "attacks_per100": 87.57455268389663,
+   "harsh_fresh": 0.003147482014388489,
+   "harsh_bleed": 0.024190647482014396,
+   "notes": 1006
+  },
+  "folk": {
+   "fresh_clash_per100": 1.6337644656228727,
+   "attack_miss_per100": 24.747818553128287,
+   "attacks_per100": 73.7669410235782,
+   "harsh_fresh": 0.004798479503345702,
+   "harsh_bleed": 0.027469555330051378,
+   "notes": 16159
+  },
+  "pop": {
+   "fresh_clash_per100": 1.2181789786037795,
+   "attack_miss_per100": 28.471029205060127,
+   "attacks_per100": 62.915820709042634,
+   "harsh_fresh": 0.0031046197336771866,
+   "harsh_bleed": 0.025427133186203797,
+   "notes": 12806
+  },
+  "pop909": {
+   "fresh_clash_per100": 1.111783391317501,
+   "attack_miss_per100": 27.295416729692935,
+   "attacks_per100": 62.94811677507185,
+   "harsh_fresh": 0.0038774150474907743,
+   "harsh_bleed": 0.026174113019725012,
+   "notes": 13222
+  }
+ },
+ "fresh_beats": 0.25,
+ "bench": "/Users/san/claude_sandbox/music/duet_v0/futures/v5_rt/bench_rt.py"
+}

@@ -1,0 +1,52 @@
+{
+ "source": "laptop (M4 MacBook), duet_v0/.venv python 3.11.11, run in mini_bundle_1101 copy on 2026-11-01; identical to laptop results/nd_*.json",
+ "metric": "rescore_nd.py headline_nd = mean over bach, folk, pop, pop909 of music_nd (val split)",
+ "tolerance_on_mini": 0.003,
+ "systems": {
+  "third_below": {
+   "headline_nd": 0.5054,
+   "music_nd": {
+    "bach": 0.5429,
+    "folk": 0.4903,
+    "pop": 0.5121,
+    "pop909": 0.4763
+   },
+   "double": {
+    "bach": 0.0135,
+    "folk": 0.0129,
+    "pop": 0.014,
+    "pop909": 0.0133
+   }
+  },
+  "m1_filter_v5lo": {
+   "headline_nd": 0.6206,
+   "music_nd": {
+    "bach": 0.6655,
+    "folk": 0.6766,
+    "pop": 0.5601,
+    "pop909": 0.5804
+   },
+   "double": {
+    "bach": 0.0481,
+    "folk": 0.0406,
+    "pop": 0.0266,
+    "pop909": 0.0344
+   }
+  },
+  "m3_seq_v5": {
+   "headline_nd": 0.6104,
+   "music_nd": {
+    "bach": 0.6241,
+    "folk": 0.6805,
+    "pop": 0.5713,
+    "pop909": 0.5655
+   },
+   "double": {
+    "bach": 0.1844,
+    "folk": 0.1177,
+    "pop": 0.0999,
+    "pop909": 0.0865
+   }
+  }
+ }
+}

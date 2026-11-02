@@ -1,0 +1,2 @@
+2026-11-01 16:06:49 START tl=600 cwd=$ABS/futures/v3_nolatency $ABS/.venv/bin/python $ABS/runs_mini/v4_1101/r4/B/check_belief.py
+2026-11-01 16:07:33 END rc=0 secs=44 $ABS/.venv/bin/python $ABS/runs_mini/v4_1101/r4/B/check_belief.py

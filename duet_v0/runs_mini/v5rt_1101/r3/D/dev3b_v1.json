@@ -1,0 +1,337 @@
+{
+ "note": "idea D dev runs; val only, tuned on val, no test split",
+ "lib": "r3_D_lib_v2",
+ "mode": "bench",
+ "rows": [
+  {
+   "name": "D_tau0.3",
+   "seed": "seed1",
+   "headline": {
+    "rt_nd": 0.6331658488381866,
+    "harsh": 0.03303269038358799,
+    "fresh_per100": 1.5270527298259278,
+    "on_time_right": 0.2905918659536416,
+    "us_mean": 145.11245023315522
+   },
+   "rows": {
+    "bach": {
+     "rt_nd": 0.6794514388489165,
+     "harsh": 0.03525179856115101,
+     "fresh_per100": 2.1868787276341948,
+     "on_time_right": 0.2355864811133201
+    },
+    "folk": {
+     "rt_nd": 0.6801075522011079,
+     "harsh": 0.03768313070507084,
+     "fresh_per100": 1.5038059285846896,
+     "on_time_right": 0.3107865585741692
+    },
+    "pop": {
+     "rt_nd": 0.5673518982319365,
+     "harsh": 0.03282664220001523,
+     "fresh_per100": 1.1166640637201313,
+     "on_time_right": 0.27807277838513195
+    },
+    "pop909": {
+     "rt_nd": 0.6057525060707857,
+     "harsh": 0.026369190068114896,
+     "fresh_per100": 1.3008621993646952,
+     "on_time_right": 0.3379216457419452
+    }
+   },
+   "d_vs_reactive": {
+    "rt_nd": 0.032399723044901574,
+    "harsh": -0.021069718671355583
+   },
+   "secs": 19.0,
+   "songs_shifted": {
+    "bach": 0,
+    "folk": 5,
+    "pop": 34,
+    "pop909": 4
+   },
+   "checks": {
+    "rt_nd +0.005": true,
+    "harsh <= reactive": true,
+    "us < 2000": true,
+    "fresh <= reactive": true,
+    "bach harsh": true,
+    "bach rt_nd": true,
+    "bach fresh": true,
+    "folk harsh": true,
+    "folk rt_nd": true,
+    "folk fresh": true,
+    "pop harsh": true,
+    "pop rt_nd": true,
+    "pop fresh": true,
+    "pop909 harsh": true,
+    "pop909 rt_nd": true,
+    "pop909 fresh": true
+   }
+  },
+  {
+   "name": "D_tau0.4",
+   "seed": "seed1",
+   "headline": {
+    "rt_nd": 0.6344444941981501,
+    "harsh": 0.03327382204225169,
+    "fresh_per100": 1.580892542234904,
+    "on_time_right": 0.2903779848254064,
+    "us_mean": 146.43803946591967
+   },
+   "rows": {
+    "bach": {
+     "rt_nd": 0.6816097122302113,
+     "harsh": 0.035161870503597044,
+     "fresh_per100": 2.1868787276341948,
+     "on_time_right": 0.2345924453280318
+    },
+    "folk": {
+     "rt_nd": 0.6815555957492032,
+     "harsh": 0.03793657701749417,
+     "fresh_per100": 1.5656909462219197,
+     "on_time_right": 0.3109103286094437
+    },
+    "pop": {
+     "rt_nd": 0.5680115059389318,
+     "harsh": 0.033064696109306804,
+     "fresh_per100": 1.1869436201780414,
+     "on_time_right": 0.27854130876151806
+    },
+    "pop909": {
+     "rt_nd": 0.6066011628742539,
+     "harsh": 0.026932144538608743,
+     "fresh_per100": 1.3840568749054607,
+     "on_time_right": 0.33746785660263195
+    }
+   },
+   "d_vs_reactive": {
+    "rt_nd": 0.033678368404865044,
+    "harsh": -0.020828587012691885
+   },
+   "secs": 19.3,
+   "songs_shifted": {
+    "bach": 0,
+    "folk": 5,
+    "pop": 34,
+    "pop909": 4
+   },
+   "checks": {
+    "rt_nd +0.005": true,
+    "harsh <= reactive": true,
+    "us < 2000": true,
+    "fresh <= reactive": true,
+    "bach harsh": true,
+    "bach rt_nd": true,
+    "bach fresh": true,
+    "folk harsh": true,
+    "folk rt_nd": true,
+    "folk fresh": true,
+    "pop harsh": true,
+    "pop rt_nd": true,
+    "pop fresh": true,
+    "pop909 harsh": true,
+    "pop909 rt_nd": true,
+    "pop909 fresh": true
+   }
+  },
+  {
+   "name": "D_tau0.5",
+   "seed": "seed1",
+   "headline": {
+    "rt_nd": 0.634549644187943,
+    "harsh": 0.03374307416023984,
+    "fresh_per100": 1.6728683970798834,
+    "on_time_right": 0.2900990296826706,
+    "us_mean": 146.02003662872707
+   },
+   "rows": {
+    "bach": {
+     "rt_nd": 0.6812499999999955,
+     "harsh": 0.03552158273381287,
+     "fresh_per100": 2.286282306163022,
+     "on_time_right": 0.23359840954274355
+    },
+    "folk": {
+     "rt_nd": 0.6824318397985583,
+     "harsh": 0.03859800988451205,
+     "fresh_per100": 1.6585184726777646,
+     "on_time_right": 0.31109598366235536
+    },
+    "pop": {
+     "rt_nd": 0.5677784114860839,
+     "harsh": 0.03327795273638051,
+     "fresh_per100": 1.241605497423083,
+     "on_time_right": 0.27838513196938935
+    },
+    "pop909": {
+     "rt_nd": 0.6067383254671345,
+     "harsh": 0.027574751286253932,
+     "fresh_per100": 1.5050673120556648,
+     "on_time_right": 0.3373165935561942
+    }
+   },
+   "d_vs_reactive": {
+    "rt_nd": 0.033783518394657985,
+    "harsh": -0.020359334894703734
+   },
+   "secs": 19.4,
+   "songs_shifted": {
+    "bach": 0,
+    "folk": 5,
+    "pop": 34,
+    "pop909": 4
+   },
+   "checks": {
+    "rt_nd +0.005": true,
+    "harsh <= reactive": true,
+    "us < 2000": true,
+    "fresh <= reactive": true,
+    "bach harsh": true,
+    "bach rt_nd": true,
+    "bach fresh": true,
+    "folk harsh": true,
+    "folk rt_nd": true,
+    "folk fresh": true,
+    "pop harsh": true,
+    "pop rt_nd": true,
+    "pop fresh": true,
+    "pop909 harsh": true,
+    "pop909 rt_nd": true,
+    "pop909 fresh": true
+   }
+  },
+  {
+   "name": "D_safe",
+   "seed": "seed1",
+   "headline": {
+    "rt_nd": 0.6290381909416685,
+    "harsh": 0.03365835545532586,
+    "fresh_per100": 1.1420103678429232,
+    "on_time_right": 0.27459341108819135,
+    "us_mean": 135.45876430468525
+   },
+   "rows": {
+    "bach": {
+     "rt_nd": 0.6868255395683404,
+     "harsh": 0.03624100719424452,
+     "fresh_per100": 1.5904572564612327,
+     "on_time_right": 0.22365805168986083
+    },
+    "folk": {
+     "rt_nd": 0.6732985025383473,
+     "harsh": 0.038477468375077026,
+     "fresh_per100": 1.2315118509808776,
+     "on_time_right": 0.2937062937062937
+    },
+    "pop": {
+     "rt_nd": 0.5661715475983653,
+     "harsh": 0.03321347980261404,
+     "fresh_per100": 0.9292519131657035,
+     "on_time_right": 0.269483054818054
+    },
+    "pop909": {
+     "rt_nd": 0.5898571740616205,
+     "harsh": 0.026701466449367862,
+     "fresh_per100": 0.8168204507638784,
+     "on_time_right": 0.31152624413855695
+    }
+   },
+   "d_vs_reactive": {
+    "rt_nd": 0.02827206514838343,
+    "harsh": -0.020444053599617713
+   },
+   "secs": 17.7,
+   "songs_shifted": {
+    "bach": 0,
+    "folk": 5,
+    "pop": 34,
+    "pop909": 4
+   },
+   "checks": {
+    "rt_nd +0.005": true,
+    "harsh <= reactive": true,
+    "us < 2000": true,
+    "fresh <= reactive": true,
+    "bach harsh": true,
+    "bach rt_nd": true,
+    "bach fresh": true,
+    "folk harsh": true,
+    "folk rt_nd": true,
+    "folk fresh": true,
+    "pop harsh": true,
+    "pop rt_nd": true,
+    "pop fresh": true,
+    "pop909 harsh": true,
+    "pop909 rt_nd": true,
+    "pop909 fresh": true
+   }
+  },
+  {
+   "name": "D_L4hear_probe",
+   "seed": "seed1",
+   "headline": {
+    "rt_nd": 0.6328225076986511,
+    "harsh": 0.03260175818105893,
+    "fresh_per100": 1.645942952934482,
+    "on_time_right": 0.29017539227656663,
+    "us_mean": 140.77478442578652
+   },
+   "rows": {
+    "bach": {
+     "rt_nd": 0.6790017985611465,
+     "harsh": 0.03453237410071934,
+     "fresh_per100": 2.3856858846918487,
+     "on_time_right": 0.23359840954274355
+    },
+    "folk": {
+     "rt_nd": 0.6789423176717188,
+     "harsh": 0.03732459695379167,
+     "fresh_per100": 1.5904449532768117,
+     "on_time_right": 0.3109722136270809
+    },
+    "pop": {
+     "rt_nd": 0.5679718302873832,
+     "harsh": 0.03259850720361082,
+     "fresh_per100": 1.3899734499453382,
+     "on_time_right": 0.2776042480087459
+    },
+    "pop909": {
+     "rt_nd": 0.6053740842743557,
+     "harsh": 0.025951554466113903,
+     "fresh_per100": 1.2176675238239298,
+     "on_time_right": 0.33852669792769624
+    }
+   },
+   "d_vs_reactive": {
+    "rt_nd": 0.03205638190536608,
+    "harsh": -0.02150065087388464
+   },
+   "secs": 18.2,
+   "songs_shifted": {
+    "bach": 0,
+    "folk": 5,
+    "pop": 34,
+    "pop909": 4
+   },
+   "checks": {
+    "rt_nd +0.005": true,
+    "harsh <= reactive": true,
+    "us < 2000": true,
+    "fresh <= reactive": true,
+    "bach harsh": true,
+    "bach rt_nd": true,
+    "bach fresh": true,
+    "folk harsh": true,
+    "folk rt_nd": true,
+    "folk fresh": true,
+    "pop harsh": true,
+    "pop rt_nd": true,
+    "pop fresh": true,
+    "pop909 harsh": true,
+    "pop909 rt_nd": true,
+    "pop909 fresh": true
+   }
+  }
+ ]
+}

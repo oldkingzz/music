@@ -1,0 +1,16 @@
+2026-11-01 20:56:29 START tl=300 cwd=$ABS .venv/bin/python -c 
+import sys; sys.argv=['x']; sys.path.insert(0,'futures/v4_selfiter'); sys.path.insert(0,'futures/panel')
+import numpy as np, soundfile as sf, live_bench3 as L
+from countin import CountIn
+for f in ['test_her_v11_countin.wav','twinkle_C_80bpm_countin.wav']:
+  x,sr=sf.read('futures/live_test/phone/'+f,dtype='float32',always_2d=True); x=x.mean(1)
+  ci=CountIn(sr); B=480
+  for b in
+2026-11-01 20:56:35 END rc=0 secs=6 .venv/bin/python -c 
+import sys; sys.argv=['x']; sys.path.insert(0,'futures/v4_selfiter'); sys.path.insert(0,'futures/panel')
+import numpy as np, soundfile as sf, live_bench3 as L
+from countin import CountIn
+for f in ['test_her_v11_countin.wav','twinkle_C_80bpm_countin.wav']:
+  x,sr=sf.read('futures/live_test/phone/'+f,dtype='float32',always_2d=True); x=x.mean(1)
+  ci=CountIn(sr); B=480
+  for b in

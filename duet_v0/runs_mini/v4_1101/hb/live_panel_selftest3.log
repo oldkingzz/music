@@ -1,0 +1,2 @@
+2026-11-01 21:05:39 START tl=600 cwd=$ABS .venv/bin/python futures/v4_selfiter/live_panel.py --selftest
+2026-11-01 21:05:45 END rc=0 secs=6 .venv/bin/python futures/v4_selfiter/live_panel.py --selftest

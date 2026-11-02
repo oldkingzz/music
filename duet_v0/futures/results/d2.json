@@ -1,0 +1,123 @@
+{
+ "id": "d2",
+ "title_zh": "她自己的合唱团",
+ "updated": "2026-10-30T11:33:40-04:00",
+ "summary_zh": "用她自己的录音做 TD-PSOLA 移调（保共振峰、跟着她自己的音高曲线和颤音走），按 D1 的 satb.py 和弦排出三个声部；测试集 vocadito 21-40（未参与调参）上对输出重新测音高：不冲突 97.0%、平行五/八度 0 处，30 秒录音板子估计 10.1 秒。没做到的：输出端和 D1 和弦音级完全一致的只占 82%（计划层 99.9%，差距主要是自动识别的音和她实际唱的音级不一致），“听起来是同一个人”只有代理指标，还要真人听 A/B。",
+ "acceptance": [
+  {
+   "line": "A2.1",
+   "text_zh": "移调不超过 7 个半音时，听者觉得是“同一个人”而不是机器（需要真人；给代理指标和 A/B 文件）",
+   "measured": "代理指标（验证集 6 段×12 秒）：频谱包络距离 PSOLA 3.0 dB（下移 1-7 半音）/ 2.5 dB（上移） vs 相位声码器 9.2 dB；F1/F2 偏移中位数 PSOLA 28/38 Hz vs 相位声码器 98/388 Hz；音高误差中位数 5.4 音分；下移 8-12 半音时包络距离 3.4 dB；A/B 用到的移调（-3/-5/-7/+3）包络距离 PSOLA 2.9/2.9/3.1/2.6 dB vs 相位声码器 8.8/9.6/10.1/7.9 dB；合唱混音里比原声多出来的频谱突变：去掉乐句开头错开进入后 28.3 次/分钟；验证集上同一指标 8.6 次/分钟，不加人味的版本 1.9 次/分钟",
+   "threshold": "真人听辨（D2 建议的口径，验收页没给数字）：<= 7 半音各对“同一个人”均分 >= 4/5 且“像机器”均分 <= 2/5",
+   "status": "needs_human",
+   "evidence": "futures/d2_self_choir/out/proxies.json; futures/d2_self_choir/ab/INSTRUCTIONS.md"
+  },
+  {
+   "line": "A2.2",
+   "text_zh": "三个声部用和 D1 一样的和声，并且通过同样的不冲突标准（>= 95%，零平行五/八度）",
+   "measured": "测试集 vocadito 21-40（未参与调参），738 个和弦片段，输出端（对每个移调声部重新测音高，对照她的标注音符）：不冲突 97.0%（各声部 98.4%, 98.7%, 98.0%；逐帧对照她的标注 F0 95.3%）；与 D1 和弦同音级：计划层 99.9%，输出端实测 82.0%（按时间）；平行五/八度 0 处（D1 原排法 0）；声部范围/与她同度违规 0；为避开平行有 36 个声部-片段休止；和声计划：satb.py (D1)（satb.py md5 a2ad3409）；若用标注音符代替自动识别：不冲突 98.0%、输出同音级 94.1%；验证集 97.2% 不冲突；参照：巴赫圣咏测试集 53 首（符号层），巴赫自己的 A/T/B 不冲突 73.8%，D2 按 D1 计划重排 100.0%、平行 0 处",
+   "threshold": "不冲突 >= 95%，平行五/八度 = 0（同 A1.2）；和声 = D1 的和弦（计划层 >= 99%；输出端同音级比例照实报告，没有给门槛）",
+   "status": "pass",
+   "evidence": "futures/d2_self_choir/out/choir_test_psola_human_detected.json; futures/d2_self_choir/out/bach_ref.json"
+  },
+  {
+   "line": "A2.3",
+   "text_zh": "30 秒录音在板子上 30 秒内处理完",
+   "measured": "10.1 s 板子估计（E 核 5.05 s ×2，三次 5.41, 3.76, 5.05 s；M4 1.16 s），30.0 s 的 ECD 女高音录音，整条链：测音高、识别音符、D1 和声、排声部、三声部移调、混音",
+   "threshold": "<= 30 s on the board",
+   "status": "needs_hardware",
+   "evidence": "futures/d2_self_choir/out/timing_ecore_psola.json; futures/d2_self_choir/out/timing_m4_psola.json"
+  }
+ ],
+ "demos": [
+  {
+   "file": "futures/d2_self_choir/demo/v11_original.mp3",
+   "label_zh": "vocadito 11：原声（她自己）",
+   "source": "vocadito (Bittner et al.), CC BY 4.0",
+   "page_safe": true
+  },
+  {
+   "file": "futures/d2_self_choir/demo/v11_choir.mp3",
+   "label_zh": "vocadito 11：她自己的合唱团：原声 + 三个移调声部",
+   "source": "vocadito (Bittner et al.), CC BY 4.0",
+   "page_safe": true
+  },
+  {
+   "file": "futures/d2_self_choir/demo/v11_choir_plain.mp3",
+   "label_zh": "vocadito 11：合唱（不加人味：无错开进入、颤音不变）",
+   "source": "vocadito (Bittner et al.), CC BY 4.0",
+   "page_safe": true
+  },
+  {
+   "file": "futures/d2_self_choir/demo/v11_voices_only.mp3",
+   "label_zh": "vocadito 11：只有三个移调声部（去掉原声）",
+   "source": "vocadito (Bittner et al.), CC BY 4.0",
+   "page_safe": true
+  },
+  {
+   "file": "futures/d2_self_choir/demo/v11_voice1.mp3",
+   "label_zh": "vocadito 11：第1声部单独",
+   "source": "vocadito (Bittner et al.), CC BY 4.0",
+   "page_safe": true
+  },
+  {
+   "file": "futures/d2_self_choir/demo/v11_voice2.mp3",
+   "label_zh": "vocadito 11：第2声部单独",
+   "source": "vocadito (Bittner et al.), CC BY 4.0",
+   "page_safe": true
+  },
+  {
+   "file": "futures/d2_self_choir/demo/v11_voice3.mp3",
+   "label_zh": "vocadito 11：第3声部单独",
+   "source": "vocadito (Bittner et al.), CC BY 4.0",
+   "page_safe": true
+  },
+  {
+   "file": "futures/d2_self_choir/demo/v7_original.mp3",
+   "label_zh": "vocadito 7：原声（她自己）",
+   "source": "vocadito (Bittner et al.), CC BY 4.0",
+   "page_safe": true
+  },
+  {
+   "file": "futures/d2_self_choir/demo/v7_choir.mp3",
+   "label_zh": "vocadito 7：她自己的合唱团：原声 + 三个移调声部",
+   "source": "vocadito (Bittner et al.), CC BY 4.0",
+   "page_safe": true
+  },
+  {
+   "file": "futures/d2_self_choir/demo/v12_original.mp3",
+   "label_zh": "vocadito 12：原声（她自己）",
+   "source": "vocadito (Bittner et al.), CC BY 4.0",
+   "page_safe": true
+  },
+  {
+   "file": "futures/d2_self_choir/demo/v12_choir.mp3",
+   "label_zh": "vocadito 12：她自己的合唱团：原声 + 三个移调声部",
+   "source": "vocadito (Bittner et al.), CC BY 4.0",
+   "page_safe": true
+  }
+ ],
+ "local_only": [
+  "futures/d2_self_choir/local_only/ecd_S1_take1_choir.wav",
+  "futures/d2_self_choir/local_only/ecd_S1_take1_original.wav",
+  "futures/d2_self_choir/local_only/ecd_S1_take1_voice1.wav",
+  "futures/d2_self_choir/local_only/ecd_S1_take1_voice2.wav",
+  "futures/d2_self_choir/local_only/ecd_S1_take1_voice3.wav"
+ ],
+ "how_to_run": "cd futures/d2_self_choir && ../../.venv/bin/python run_all.py",
+ "caveats_zh": [
+  "“同一个人”只有代理指标（包络、共振峰、音高误差、咔嗒声），没有真人听过；A/B 文件在 futures/d2_self_choir/ab/。",
+  "不冲突是在输出音频上重新测音高得到的，每个片段取中位数；逐帧更严格的口径更低（见 measured）。",
+  "测试集（vocadito 21-40）不参与调参；所有调参（声部代价、颤音、错开进入、交叉淡化、清音音量）只看验证集 vocadito 1-20。",
+  "输出端和 D1 和弦音级一致只有 82%：她唱的音（标注）和自动识别的音级不同时，D1 的和弦是按错的音排的；换成标注音符后是 94%。",
+  "三个声部都是她声音的移调副本，跟着她的音高走，所以和她的音程永远是计划的音程；冲突几乎都出在她自己跑调/滑音、音符边界附近和极短的音上。",
+  "错开进入（12/22/30 ms，只在每个乐句开头）代替了整体延时：整体延时 14-31 ms 在早期版本上让验证集不冲突从约 96% 掉到约 94%，因为她换音时声部还停在旧音上。",
+  "计时时机器上还有其他 builder 在跑（load average 11-38），E 核三次计时在 3.8-5.4 s 之间波动；板子估计按 BRIEF 用 E 核中位数 ×2，没有在真板子上跑过。",
+  "测试集跑了两次：第一次之后发现合唱里三个声部的辅音/爆破音是同相叠加的（验证集 demo 检查发现），把移调声部里的清音降到 0.3 倍后重跑；第一次不冲突 97.0%、同音级 82.2%，第二次几乎一样。两次之间没有按测试集调任何参数。",
+  "pyworld 装上了但 import 需要一个 pkg_resources 替身（没装 setuptools）；最终用的是 numpy 写的 TD-PSOLA，WORLD 只做对照。",
+  "下移 8-12 半音时 PSOLA 颗粒之间有空隙，可能有嗡嗡声；这一档没放进 A/B。WORLD（pyworld）包络和音准略好，但咔嗒/突变是 PSOLA 的 2-4 倍、慢 3 倍，所以没选。",
+  "vocadito 是手机/电脑录的业余歌手，混响和底噪也一起被移调复制了三份。",
+  "咔嗒/突变代理指标在测试集上明显比验证集差（28 vs 9 次/分钟，分散在多数片段里），原因没查清；这个指标本身也没用真人校准过。",
+  "demo 的三段（vocadito 11、7、12）是从验证集里挑的干净、分数高的片段，不代表平均水平。"
+ ]
+}

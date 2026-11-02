@@ -1,0 +1,24 @@
+{
+ "round": 1,
+ "written": "2026-11-01 22:16 EST",
+ "ABS": "/Users/san/claude_sandbox/music/duet_v0",
+ "run": "v5rt_1101",
+ "phase_1_bench": {
+  "status": "done (work finished on disk 22:13; the agent was stopped by the orchestrator while writing its final report, so its result was assembled from the files)",
+  "bench": "futures/v5_rt/bench_rt.py, sha256 f1eb524aa939b5ba54704532ac7b5eb536659ceaaef32c3701934f9cf7d3e772 (= BENCH_SHA.txt), frozen",
+  "sanity": "reactive r2_mix_v2 / m1_filter_v5lo at L = 0 reproduce bench3 music_nd exactly (max abs diff 0.0); seed2 reproduces runs_mini/v4_1101/seed2; oracle = reactive at L = 0",
+  "baselines_L0.1": {"reactive_r2_mix_v2": {"rt_nd": 0.600766125793285, "harsh": 0.054102409054943575, "seed2_rt_nd": 0.6034694958749114},
+                     "reactive_m1_filter_v5lo": 0.5801, "reactive_third_below": 0.4652, "oracle_r2_mix_v2": 0.6305,
+                     "r0_predict_live_v1": {"rt_nd": 0.5941, "harsh": 0.0482, "keep": false}},
+  "latency_cost": "reactive r2_mix_v2: 0.6444 at L = 0 -> 0.6226 / 0.6008 / 0.5791 at 30 / 60 / 90 ms"
+ },
+ "added_rule": {
+  "what": "fresh clashes: Duet STARTS a note that is harsh (2nd, tritone, 7th) against her true note; per 100 of her notes; runs_mini/v5rt_1101/tools/attack_metric.py (orchestrator; bench_rt.simulate unchanged)",
+  "why": "harsh TIME rated the hand-built look-ahead r0 as less harsh than reactive (0.048 vs 0.054), but Vincent heard r0 as clearly worse; split by origin, r0 has 4.9 fresh clashes per 100 notes vs reactive 1.8 (bach 9.7 vs 2.1): fresh wrong attacks are what the ear punishes. The bench agent's own diagnostic agrees (attack_harsh r0 0.035 vs reactive 0.0 of notes).",
+  "keep_rule_addition": "fresh clashes per 100 notes (headline, L = 0.1, seed 1) <= reactive's 1.8100634866373206, no dataset above reactive + 1.0; also enforced in the workflow's champion selection"
+ },
+ "workflow": {"stopped_runs": ["w4jgcru67 (no-sound rule added before any work)", "w4ecls4pt (bench finished on disk; stopped to add the fresh-clash rule)"],
+              "running": "wyhb6g79g / wf_5a1249e6-6f2: round 1 ideas A (melody prior), B (conservative), C (learned joint forecaster) started 22:15, then round 2, verify, integrate"},
+ "no_sound": "Vincent is asleep: every agent prompt forbids opening sound devices or playing audio; the live test page server was stopped at 21:47",
+ "checks_before_round_1": "22:15 checksums 10/10 OK, env knobs empty, 103.3 GB free, runs_mini 76M"
+}

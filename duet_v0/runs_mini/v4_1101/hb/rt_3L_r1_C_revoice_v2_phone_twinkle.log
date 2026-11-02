@@ -1,0 +1,2 @@
+2026-11-02 01:06:12 START tl=600 cwd=$ABS $ABS/.venv/bin/python $ABS/futures/v5_rt/live_bench_rt.py rt:r1_C_revoice_v2 --voice phone_twinkle --out $ABS/runs_mini/v5rt_1101/live_bench/L_rt_r1_C_revoice_v2_phone_twinkle.json
+2026-11-02 01:06:15 END rc=0 secs=3 $ABS/.venv/bin/python $ABS/futures/v5_rt/live_bench_rt.py rt:r1_C_revoice_v2 --voice phone_twinkle --out $ABS/runs_mini/v5rt_1101/live_bench/L_rt_r1_C_revoice_v2_phone_twinkle.json

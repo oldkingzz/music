@@ -1,0 +1,2 @@
+2026-11-01 16:03:30 START tl=600 cwd=$ABS/futures/v3_nolatency $ABS/.venv/bin/python $ABS/futures/v3_nolatency/bench3.py --system r4_cover_fit_v1 --note v4 r4 E4b expected chord-tone share over covered beats, per-style HMM forecast with own tables, per-beat 0.5 GRU mix, 32 on/off-beat lengths
+2026-11-01 16:03:44 END rc=0 secs=14 $ABS/.venv/bin/python $ABS/futures/v3_nolatency/bench3.py --system r4_cover_fit_v1 --note v4 r4 E4b expected chord-tone share over covered beats, per-style HMM forecast with own tables, per-beat 0.5 GRU mix, 32 on/off-beat lengths

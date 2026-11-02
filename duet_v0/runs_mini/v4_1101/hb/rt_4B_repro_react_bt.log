@@ -1,0 +1,2 @@
+2026-11-02 04:35:08 START tl=600 cwd=$ABS $ABS/.venv/bin/python $ABS/futures/v5_rt/live_bench_rt_v2.py reactive:r2_mix_v2 --voice sung --lat bt --out $ABS/runs_mini/v5rt_1101/live_bench/L4_v2repro_reactive_r2_mix_v2_sung_bt.json
+2026-11-02 04:35:28 END rc=0 secs=20 $ABS/.venv/bin/python $ABS/futures/v5_rt/live_bench_rt_v2.py reactive:r2_mix_v2 --voice sung --lat bt --out $ABS/runs_mini/v5rt_1101/live_bench/L4_v2repro_reactive_r2_mix_v2_sung_bt.json

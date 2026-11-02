@@ -1,0 +1,1 @@
+{"id": "d3", "updated": "2026-10-30T11:27:28-04:00", "stage": "final", "done": true, "note": "A3.1 fail (real 56.6% test), A3.2 pass (synthetic), A3.3 fail 4/5 at 52 ms (5/5 at 15 ms)"}

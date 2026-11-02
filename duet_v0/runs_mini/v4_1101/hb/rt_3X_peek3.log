@@ -1,0 +1,18 @@
+2026-11-02 03:19:20 START tl=60 cwd=$ABS $ABS/.venv/bin/python -c 
+import json
+for ln in open('$ABS/runs_mini/v5rt_1101/r3/X/dev_log_X_v2.jsonl'):
+    r = json.loads(ln)
+    if r['lib'] != 'r3_X_lib_v3': continue
+    print(r['spec']['tag'], 'mean %.4f' % r['mean_live'])
+    for v in ('sung', 'sung_low'):
+        st = r['live'][v]['stats']
+        print('  ', v, {k: st[k] for k in sorted(st) if k.startswith(('trk', 'doubt'))}, 'hit', roun
+2026-11-02 03:19:20 END rc=0 secs=0 $ABS/.venv/bin/python -c 
+import json
+for ln in open('$ABS/runs_mini/v5rt_1101/r3/X/dev_log_X_v2.jsonl'):
+    r = json.loads(ln)
+    if r['lib'] != 'r3_X_lib_v3': continue
+    print(r['spec']['tag'], 'mean %.4f' % r['mean_live'])
+    for v in ('sung', 'sung_low'):
+        st = r['live'][v]['stats']
+        print('  ', v, {k: st[k] for k in sorted(st) if k.startswith(('trk', 'doubt'))}, 'hit', roun

@@ -1,0 +1,434 @@
+{
+ "what": "verifier re-check of latcal_v1 (C1) on synthetic recordings; nothing played",
+ "code": {
+  "latcal_v1.py": "0482fc8043b2d00312f0bbfc8b326f685e73725bb3446017039b3acc710f0a4e",
+  "latcal_selftest_v1.py": "b0785677fb014950abae4b2900dba5817ea9b3cd2ea30bc7d2b0b7ad46b58351",
+  "this": "b98d32b637e1e4a2f6b5d2313610df6115284ca4cbb4ab43eba5b0d498c138c8"
+ },
+ "A": {
+  "c1_pass": true,
+  "required": 20,
+  "required_ok_within": 20,
+  "max_abs_err_ms": 9.3,
+  "refused": 3,
+  "refuse_why": [
+   "没听到你唱：看电平条有没有动，跟着高的嘀声每下唱一个短“哒”，再测一次。",
+   "没听到你唱：看电平条有没有动，跟着高的嘀声每下唱一个短“哒”，再测一次。",
+   "没听到你唱：看电平条有没有动，跟着高的嘀声每下唱一个短“哒”，再测一次。"
+  ],
+  "extra": [
+   [
+    20,
+    {
+     "low": true,
+     "missing": 5
+    },
+    true,
+    -7.3
+   ],
+   [
+    20,
+    {
+     "early": 4
+    },
+    true,
+    -1.2
+   ],
+   [
+    60,
+    {
+     "low": true,
+     "missing": 5
+    },
+    true,
+    -5.3
+   ],
+   [
+    60,
+    {
+     "early": 4
+    },
+    true,
+    8.5
+   ],
+   [
+    160,
+    {
+     "low": true,
+     "missing": 5
+    },
+    true,
+    0.7
+   ],
+   [
+    160,
+    {
+     "early": 4
+    },
+    true,
+    -6.8
+   ],
+   [
+    330,
+    {
+     "low": true,
+     "missing": 5
+    },
+    true,
+    -5.1
+   ],
+   [
+    330,
+    {
+     "early": 4
+    },
+    true,
+    -14.5
+   ]
+  ],
+  "same_as_page_agent_file": true,
+  "mismatches": [],
+  "errs_ms": [
+   [
+    "main",
+    20,
+    0,
+    8.4
+   ],
+   [
+    "main",
+    20,
+    1,
+    4.5
+   ],
+   [
+    "main",
+    20,
+    2,
+    -7.3
+   ],
+   [
+    "main",
+    60,
+    0,
+    4.1
+   ],
+   [
+    "main",
+    60,
+    1,
+    -9.3
+   ],
+   [
+    "main",
+    60,
+    2,
+    -0.5
+   ],
+   [
+    "main",
+    160,
+    0,
+    3.8
+   ],
+   [
+    "main",
+    160,
+    1,
+    3.2
+   ],
+   [
+    "main",
+    160,
+    2,
+    7.9
+   ],
+   [
+    "main",
+    330,
+    0,
+    2.9
+   ],
+   [
+    "main",
+    330,
+    1,
+    -7.7
+   ],
+   [
+    "main",
+    330,
+    2,
+    -1.4
+   ],
+   [
+    "missing",
+    20,
+    0,
+    0.6
+   ],
+   [
+    "low",
+    20,
+    0,
+    -8.7
+   ],
+   [
+    "missing",
+    60,
+    0,
+    -0.4
+   ],
+   [
+    "low",
+    60,
+    0,
+    -6.3
+   ],
+   [
+    "missing",
+    160,
+    0,
+    -3.7
+   ],
+   [
+    "low",
+    160,
+    0,
+    -2.1
+   ],
+   [
+    "missing",
+    330,
+    0,
+    6.9
+   ],
+   [
+    "low",
+    330,
+    0,
+    0.7
+   ]
+  ]
+ },
+ "B": {
+  "normal": {
+   "n": 100,
+   "ok": 100,
+   "ok_and_within_15ms": 96,
+   "mean_err_ms": 0.43,
+   "max_abs_err_ms": 20.0,
+   "refused_why": [],
+   "fails": [
+    [
+     20,
+     119,
+     true,
+     -17.3
+    ],
+    [
+     20,
+     122,
+     true,
+     -20.0
+    ],
+    [
+     160,
+     117,
+     true,
+     17.6
+    ],
+    [
+     330,
+     123,
+     true,
+     16.5
+    ]
+   ]
+  },
+  "low": {
+   "n": 100,
+   "ok": 100,
+   "ok_and_within_15ms": 99,
+   "mean_err_ms": 1.36,
+   "max_abs_err_ms": 16.8,
+   "refused_why": [],
+   "fails": [
+    [
+     330,
+     116,
+     true,
+     16.8
+    ]
+   ]
+  },
+  "missing": {
+   "n": 100,
+   "ok": 100,
+   "ok_and_within_15ms": 97,
+   "mean_err_ms": -0.24,
+   "max_abs_err_ms": 22.4,
+   "refused_why": [],
+   "fails": [
+    [
+     60,
+     106,
+     true,
+     16.2
+    ],
+    [
+     60,
+     107,
+     true,
+     -15.5
+    ],
+    [
+     60,
+     114,
+     true,
+     -22.4
+    ]
+   ]
+  },
+  "between_120_250_450": {
+   "n": 30,
+   "ok": 30,
+   "ok_and_within_15ms": 30,
+   "mean_err_ms": 0.74,
+   "max_abs_err_ms": 14.2,
+   "refused_why": [],
+   "fails": []
+  },
+  "refuse_silent": {
+   "n": 10,
+   "refused": 10,
+   "why": [
+    "没听到你唱：看电平条有没有动，跟着高的嘀声每下唱一个短“哒”，再测一次。"
+   ]
+  },
+  "refuse_no_response": {
+   "n": 10,
+   "refused": 10,
+   "why": [
+    "没听到你唱：看电平条有没有动，跟着高的嘀声每下唱一个短“哒”，再测一次。"
+   ]
+  },
+  "refuse_no_response_bleed": {
+   "n": 10,
+   "refused": 10,
+   "why": [
+    "没听到你唱：看电平条有没有动，跟着高的嘀声每下唱一个短“哒”，再测一次。"
+   ]
+  }
+ },
+ "C": {
+  "lp7k_normal": {
+   "n": 30,
+   "ok": 30,
+   "ok_and_within_15ms": 30,
+   "mean_err_ms": 0.88,
+   "max_abs_err_ms": 10.2,
+   "refused_why": [],
+   "fails": []
+  },
+  "lp7k_low": {
+   "n": 30,
+   "ok": 30,
+   "ok_and_within_15ms": 30,
+   "mean_err_ms": 1.63,
+   "max_abs_err_ms": 13.9,
+   "refused_why": [],
+   "fails": []
+  },
+  "lp3k5_normal": {
+   "n": 30,
+   "ok": 30,
+   "ok_and_within_15ms": 30,
+   "mean_err_ms": 6.65,
+   "max_abs_err_ms": 14.9,
+   "refused_why": [],
+   "fails": []
+  },
+  "lp3k5_low": {
+   "n": 30,
+   "ok": 30,
+   "ok_and_within_15ms": 29,
+   "mean_err_ms": 3.04,
+   "max_abs_err_ms": 17.5,
+   "refused_why": [],
+   "fails": [
+    [
+     60,
+     101,
+     true,
+     17.5,
+     ""
+    ]
+   ]
+  },
+  "gate_normal": {
+   "n": 30,
+   "ok": 30,
+   "ok_and_within_15ms": 30,
+   "mean_err_ms": 0.76,
+   "max_abs_err_ms": 9.8,
+   "refused_why": [],
+   "fails": []
+  },
+  "gate_low": {
+   "n": 30,
+   "ok": 30,
+   "ok_and_within_15ms": 30,
+   "mean_err_ms": 1.61,
+   "max_abs_err_ms": 13.8,
+   "refused_why": [],
+   "fails": []
+  },
+  "drop_normal": {
+   "n": 30,
+   "ok": 30,
+   "ok_and_within_15ms": 30,
+   "mean_err_ms": 0.76,
+   "max_abs_err_ms": 9.8,
+   "refused_why": [],
+   "fails": []
+  },
+  "drop_low": {
+   "n": 30,
+   "ok": 30,
+   "ok_and_within_15ms": 30,
+   "mean_err_ms": 1.61,
+   "max_abs_err_ms": 13.8,
+   "refused_why": [],
+   "fails": []
+  },
+  "quiet_normal": {
+   "n": 30,
+   "ok": 30,
+   "ok_and_within_15ms": 30,
+   "mean_err_ms": 0.76,
+   "max_abs_err_ms": 9.8,
+   "refused_why": [],
+   "fails": []
+  },
+  "quiet_low": {
+   "n": 30,
+   "ok": 30,
+   "ok_and_within_15ms": 30,
+   "mean_err_ms": 1.61,
+   "max_abs_err_ms": 13.8,
+   "refused_why": [],
+   "fails": []
+  },
+  "offset40_normal": {
+   "n": 30,
+   "ok": 30,
+   "ok_and_within_15ms": 29,
+   "mean_err_ms": -1.02,
+   "max_abs_err_ms": 16.5,
+   "refused_why": [],
+   "note": "err measured against the device round trip + 40 ms"
+  }
+ },
+ "secs": 17.9
+}

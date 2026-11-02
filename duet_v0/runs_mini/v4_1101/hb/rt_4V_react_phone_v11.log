@@ -1,0 +1,2 @@
+2026-11-02 07:13:10 START tl=600 cwd=$ABS $ABS/.venv/bin/python $ABS/futures/v5_rt/live_bench_rt_v2.py reactive:r2_mix_v2 --voice phone_v11 --out $ABS/runs_mini/v5rt_1101/live_bench/VER4_reactive_r2_mix_v2_phone_v11.json
+2026-11-02 07:13:12 END rc=0 secs=2 $ABS/.venv/bin/python $ABS/futures/v5_rt/live_bench_rt_v2.py reactive:r2_mix_v2 --voice phone_v11 --out $ABS/runs_mini/v5rt_1101/live_bench/VER4_reactive_r2_mix_v2_phone_v11.json

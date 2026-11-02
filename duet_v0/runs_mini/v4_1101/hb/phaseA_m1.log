@@ -1,0 +1,10 @@
+2026-11-01 11:39:08 START tl=600 cwd=$ABS/runs_mini/v4_1101/nd/third_below/runs_mini/v4_1101/nd/m1_filter_v5lo $ABS/.venv/bin/python $ABS/futures/v3_nolatency/rescore_nd.py m1_filter_v5lo
+2026-11-01 11:39:11 END rc=0 secs=3 $ABS/.venv/bin/python $ABS/futures/v3_nolatency/rescore_nd.py m1_filter_v5lo
+2026-11-01 11:39:56 START tl=600 cwd=$ABS/runs_mini/v4_1101/nd/m1_filter_v5lo $ABS/.venv/bin/python $ABS/futures/v3_nolatency/rescore_nd.py m1_filter_v5lo
+2026-11-01 11:39:59 END rc=0 secs=3 $ABS/.venv/bin/python $ABS/futures/v3_nolatency/rescore_nd.py m1_filter_v5lo
+2026-11-01 11:40:30 START tl=600 cwd=$ABS/futures/v3_nolatency $ABS/.venv/bin/python $ABS/futures/v3_nolatency/bench3.py --system m1_filter_v5lo --note v4 mini Phase A reproduce (champion baseline)
+2026-11-01 11:40:33 END rc=0 secs=3 $ABS/.venv/bin/python $ABS/futures/v3_nolatency/bench3.py --system m1_filter_v5lo --note v4 mini Phase A reproduce (champion baseline)
+2026-11-01 11:40:52 START tl=600 cwd=$ABS/runs_mini/v4_1101/seed2 $ABS/.venv/bin/python $ABS/futures/v4_selfiter/seed2.py m1_filter_v5lo
+2026-11-01 11:40:55 END rc=0 secs=3 $ABS/.venv/bin/python $ABS/futures/v4_selfiter/seed2.py m1_filter_v5lo
+2026-11-01 11:41:37 START tl=600 cwd=$ABS/runs_mini/v4_1101/review $ABS/.venv/bin/python $ABS/runs_mini/v4_1101/tools/review.py m1_filter_v5lo
+2026-11-01 11:41:42 END rc=0 secs=5 $ABS/.venv/bin/python $ABS/runs_mini/v4_1101/tools/review.py m1_filter_v5lo

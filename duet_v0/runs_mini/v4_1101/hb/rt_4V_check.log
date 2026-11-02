@@ -1,0 +1,2 @@
+2026-11-02 07:18:22 START tl=600 cwd=$ABS $ABS/.venv/bin/python $ABS/runs_mini/v5rt_1101/verify/VER4_check_v1.py --out $ABS/runs_mini/v5rt_1101/verify/VER4_check_v1.json
+2026-11-02 07:18:23 END rc=1 secs=0 $ABS/.venv/bin/python $ABS/runs_mini/v5rt_1101/verify/VER4_check_v1.py --out $ABS/runs_mini/v5rt_1101/verify/VER4_check_v1.json

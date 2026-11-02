@@ -1,0 +1,14 @@
+2026-11-01 21:22:52 START tl=300 cwd=$ABS .venv/bin/python -c 
+import sys,json,glob,os,numpy as np,soundfile as sf
+sys.path.insert(0,'.')
+from dsp import SR
+runs=[d for d in sorted(glob.glob('runs_mini/live/2*_r2_mix_v2'))[::-1] if '文件' in json.load(open(d+'/notes.json')).get('in','')]
+d=runs[0]; s=json.load(open(d+'/notes.json')); print('run',d,'Lo ms',round(s['Lo']*1000,1))
+x,_=sf.read(d+'/run.wav',dtype='float32',always_2d=True); her=x
+2026-11-01 21:22:52 END rc=0 secs=0 .venv/bin/python -c 
+import sys,json,glob,os,numpy as np,soundfile as sf
+sys.path.insert(0,'.')
+from dsp import SR
+runs=[d for d in sorted(glob.glob('runs_mini/live/2*_r2_mix_v2'))[::-1] if '文件' in json.load(open(d+'/notes.json')).get('in','')]
+d=runs[0]; s=json.load(open(d+'/notes.json')); print('run',d,'Lo ms',round(s['Lo']*1000,1))
+x,_=sf.read(d+'/run.wav',dtype='float32',always_2d=True); her=x

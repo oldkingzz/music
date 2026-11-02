@@ -1,0 +1,146 @@
+{
+ "note": "val only (17 val Bach chorales); systems tuned on val; no test split",
+ "rt_r3_X_regtrkst_v1|clean": {
+  "above_other": 0,
+  "above_plan": 1,
+  "att_other": 668,
+  "att_plan": 78,
+  "attacks_other": 711,
+  "attacks_plan": 79,
+  "fresh_other": 8,
+  "fresh_plan": 6,
+  "stumbles_other": 15,
+  "stumbles_plan": 9,
+  "wrong_other": 216,
+  "wrong_plan": 39,
+  "check_fresh_total": [
+   14,
+   14
+  ],
+  "check_stumbles_total": [
+   24,
+   24
+  ],
+  "check_wrong_total": [
+   255,
+   255
+  ],
+  "notes": 1006
+ },
+ "rt_r3_X_regtrkst_v1|sung": {
+  "above_other": 0,
+  "above_plan": 1,
+  "att_other": 713,
+  "att_plan": 60,
+  "attacks_other": 760,
+  "attacks_plan": 64,
+  "fresh_other": 17,
+  "fresh_plan": 3,
+  "stumbles_other": 28,
+  "stumbles_plan": 5,
+  "wrong_other": 263,
+  "wrong_plan": 27,
+  "check_fresh_total": [
+   20,
+   20
+  ],
+  "check_stumbles_total": [
+   33,
+   33
+  ],
+  "check_wrong_total": [
+   290,
+   290
+  ],
+  "notes": 1006
+ },
+ "rt_r3_X_regtrkst_v1|sung_low": {
+  "above_other": 142,
+  "above_plan": 11,
+  "att_other": 704,
+  "att_plan": 69,
+  "attacks_other": 748,
+  "attacks_plan": 70,
+  "fresh_other": 11,
+  "stumbles_other": 31,
+  "stumbles_plan": 8,
+  "wrong_other": 237,
+  "wrong_plan": 30,
+  "check_fresh_total": [
+   11,
+   11
+  ],
+  "check_stumbles_total": [
+   39,
+   39
+  ],
+  "check_wrong_total": [
+   267,
+   267
+  ],
+  "notes": 1006
+ },
+ "reactive_r2_mix_v2|clean": {
+  "above_other": 0,
+  "att_other": 721,
+  "attacks_other": 767,
+  "fresh_other": 9,
+  "stumbles_other": 3,
+  "wrong_other": 219,
+  "check_fresh_total": [
+   9,
+   9
+  ],
+  "check_stumbles_total": [
+   3,
+   3
+  ],
+  "check_wrong_total": [
+   219,
+   219
+  ],
+  "notes": 1006
+ },
+ "reactive_r2_mix_v2|sung": {
+  "above_other": 0,
+  "att_other": 875,
+  "attacks_other": 926,
+  "fresh_other": 51,
+  "stumbles_other": 38,
+  "wrong_other": 353,
+  "check_fresh_total": [
+   51,
+   51
+  ],
+  "check_stumbles_total": [
+   38,
+   38
+  ],
+  "check_wrong_total": [
+   353,
+   353
+  ],
+  "notes": 1006
+ },
+ "reactive_r2_mix_v2|sung_low": {
+  "above_other": 0,
+  "att_other": 582,
+  "attacks_other": 615,
+  "fresh_other": 38,
+  "stumbles_other": 27,
+  "wrong_other": 243,
+  "check_fresh_total": [
+   38,
+   38
+  ],
+  "check_stumbles_total": [
+   27,
+   27
+  ],
+  "check_wrong_total": [
+   243,
+   243
+  ],
+  "notes": 1006
+ }
+}

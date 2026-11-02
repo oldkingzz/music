@@ -1,0 +1,4 @@
+2026-11-02 00:55:00 START tl=600 cwd=$ABS $ABS/.venv/bin/python $ABS/runs_mini/v5rt_1101/tools/LB_peek_v1.py $ABS/runs_mini/v5rt_1101/live_bench/S_smoke_reactive_clean_2songs.json 40
+2026-11-02 00:55:00 END rc=0 secs=0 $ABS/.venv/bin/python $ABS/runs_mini/v5rt_1101/tools/LB_peek_v1.py $ABS/runs_mini/v5rt_1101/live_bench/S_smoke_reactive_clean_2songs.json 40
+2026-11-02 00:57:45 START tl=600 cwd=$ABS $ABS/.venv/bin/python $ABS/runs_mini/v5rt_1101/tools/LB_peek_v1.py $ABS/runs_mini/v5rt_1101/live_bench/L_reactive_r2_mix_v2_sung_wired.json 45
+2026-11-02 00:57:45 END rc=0 secs=0 $ABS/.venv/bin/python $ABS/runs_mini/v5rt_1101/tools/LB_peek_v1.py $ABS/runs_mini/v5rt_1101/live_bench/L_reactive_r2_mix_v2_sung_wired.json 45

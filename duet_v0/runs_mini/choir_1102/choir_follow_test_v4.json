@@ -1,0 +1,328 @@
+{
+ "results": {
+  "a twinkle C, page tempo": {
+   "song": "twinkle",
+   "shift": 0,
+   "expect_shift": 0,
+   "tuning": 0.01,
+   "low": false,
+   "tempo": 80.0,
+   "in_at_beat": 4.33,
+   "timing_median_ms": -16,
+   "timing_p90_abs_err_ms": 33,
+   "n_chords": 43,
+   "harsh_share": 0.004,
+   "matched": 24,
+   "relocations": 0
+  },
+  "b twinkle A2 like Vincent: narrow intervals, 30 c flat, 88 bpm, 1 beat late": {
+   "song": "twinkle",
+   "shift": -3,
+   "expect_shift": -3,
+   "tuning": -0.3,
+   "low": true,
+   "tempo": 87.8,
+   "in_at_beat": 6.35,
+   "timing_median_ms": -6,
+   "timing_p90_abs_err_ms": 21838,
+   "n_chords": 47,
+   "harsh_share": 0.284,
+   "matched": 2,
+   "relocations": 1
+  },
+  "c v11 in G an octave low, 90 bpm vs page 100": {
+   "song": "v11",
+   "shift": -2,
+   "expect_shift": -2,
+   "tuning": -0.01,
+   "low": true,
+   "tempo": 89.3,
+   "in_at_beat": 3.61,
+   "timing_median_ms": -14,
+   "timing_p90_abs_err_ms": 36,
+   "n_chords": 30,
+   "harsh_share": 0.007,
+   "matched": 20,
+   "relocations": 0
+  },
+  "d twinkle D with 3 click-like junk notes first": {
+   "song": "twinkle",
+   "shift": 2,
+   "expect_shift": 2,
+   "tuning": -0.02,
+   "low": false,
+   "tempo": 80.2,
+   "in_at_beat": 4.33,
+   "timing_median_ms": -12,
+   "timing_p90_abs_err_ms": 30,
+   "n_chords": 43,
+   "harsh_share": 0.004,
+   "matched": 24,
+   "relocations": 0
+  },
+  "e twinkle F slowing from 84 to 68 bpm": {
+   "song": "twinkle",
+   "shift": 5,
+   "expect_shift": 5,
+   "tuning": 0.01,
+   "low": true,
+   "tempo": 69.6,
+   "in_at_beat": 4.4,
+   "timing_median_ms": -57,
+   "timing_p90_abs_err_ms": 31,
+   "n_chords": 43,
+   "harsh_share": 0.012,
+   "matched": 24,
+   "relocations": 0
+  },
+  "f twinkle E, AirPods both ways (Li 150, Lo 180)": {
+   "song": "twinkle",
+   "shift": 4,
+   "expect_shift": 4,
+   "tuning": 0.01,
+   "low": true,
+   "tempo": 80.0,
+   "in_at_beat": 4.56,
+   "timing_median_ms": -16,
+   "timing_p90_abs_err_ms": 38,
+   "n_chords": 43,
+   "harsh_share": 0.004,
+   "matched": 24,
+   "relocations": 0
+  },
+  "replay 095417_r2_mix_v2": {
+   "song": "twinkle",
+   "shift": -3,
+   "tuning": -0.6,
+   "low": true,
+   "tempo": 74.6,
+   "id_time_s": 7.94,
+   "matched": 20,
+   "relocations": 0,
+   "pred_err_median_abs_ms": 85,
+   "pred_err_ms": [
+    52.0,
+    -132.0,
+    242.9,
+    126.0,
+    157.4,
+    -12.5,
+    89.1,
+    -74.9,
+    -42.8,
+    -39.2,
+    -42.6,
+    10.3,
+    81.5,
+    170.0,
+    -281.5,
+    725.4
+   ],
+   "her_first_notes": [
+    [
+     3.94,
+     44.71
+    ],
+    [
+     4.62,
+     44.73
+    ],
+    [
+     5.3,
+     50.82
+    ],
+    [
+     5.92,
+     51.12
+    ],
+    [
+     6.58,
+     52.49
+    ],
+    [
+     7.24,
+     52.86
+    ],
+    [
+     7.94,
+     50.68
+    ],
+    [
+     9.23,
+     48.03
+    ],
+    [
+     9.32,
+     49.26
+    ],
+    [
+     9.85,
+     49.33
+    ],
+    [
+     10.4,
+     47.69
+    ],
+    [
+     11.94,
+     45.38
+    ]
+   ]
+  },
+  "replay 094919_r2_mix_v2": {
+   "song": "twinkle",
+   "shift": 0,
+   "tuning": -0.09,
+   "low": false,
+   "tempo": 79.9,
+   "id_time_s": 7.34,
+   "matched": 17,
+   "relocations": 0,
+   "pred_err_median_abs_ms": 9,
+   "pred_err_ms": [
+    -30.0,
+    33.5,
+    -30.0,
+    -7.4,
+    0.7,
+    14.0,
+    -8.4,
+    8.3,
+    0.2,
+    -11.8,
+    8.7,
+    -8.5,
+    19.5,
+    -8.2
+   ],
+   "her_first_notes": [
+    [
+     1.31,
+     78.23
+    ],
+    [
+     2.07,
+     83.07
+    ],
+    [
+     2.81,
+     83.17
+    ],
+    [
+     3.57,
+     83.16
+    ],
+    [
+     4.32,
+     59.97
+    ],
+    [
+     5.84,
+     66.84
+    ],
+    [
+     7.34,
+     69.14
+    ],
+    [
+     8.82,
+     66.95
+    ],
+    [
+     10.36,
+     65.07
+    ],
+    [
+     11.83,
+     64.02
+    ],
+    [
+     13.33,
+     61.98
+    ],
+    [
+     14.83,
+     59.92
+    ]
+   ]
+  },
+  "replay 095341_r2_mix_v2": {
+   "song": "twinkle",
+   "shift": 0,
+   "tuning": -0.04,
+   "low": false,
+   "tempo": 85.9,
+   "id_time_s": 8.47,
+   "matched": 16,
+   "relocations": 0,
+   "pred_err_median_abs_ms": 20,
+   "pred_err_ms": [
+    -20.0,
+    -7.2,
+    -0.5,
+    31.3,
+    -21.5,
+    -8.6,
+    -11.9,
+    22.3,
+    -6.9,
+    7.3,
+    -21.6,
+    31.8,
+    -689.0
+   ],
+   "her_first_notes": [
+    [
+     3.21,
+     83.05
+    ],
+    [
+     4.02,
+     83.01
+    ],
+    [
+     4.7,
+     83.08
+    ],
+    [
+     5.45,
+     59.97
+    ],
+    [
+     6.97,
+     66.84
+    ],
+    [
+     8.47,
+     69.14
+    ],
+    [
+     9.96,
+     66.96
+    ],
+    [
+     11.46,
+     65.09
+    ],
+    [
+     12.96,
+     64.04
+    ],
+    [
+     14.49,
+     61.97
+    ],
+    [
+     15.97,
+     59.92
+    ],
+    [
+     17.47,
+     67.01
+    ]
+   ]
+  }
+ },
+ "pass": false,
+ "n": 20
+}

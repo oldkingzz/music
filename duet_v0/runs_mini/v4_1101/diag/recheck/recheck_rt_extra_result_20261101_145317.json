@@ -1,0 +1,80 @@
+{
+ "per_ds": {
+  "bach": {
+   "share_I": 0.3071570576540755,
+   "share_most_common": 0.3071570576540755,
+   "most_common": 0,
+   "rt_acc_clean_melody": 0.5149105367793241,
+   "music_nd_clean_melody": 0.70818345323741,
+   "beat_acc_filter_end_of_beat": 0.4847122302158273,
+   "beat_acc_smooth": 0.41097122302158273,
+   "beat_acc_filter_sounding": 0.4847122302158273,
+   "beat_acc_smooth_sounding": 0.41097122302158273,
+   "labelled_beats": 1112,
+   "chord_change_rate_per_beat": 0.7383348581884721,
+   "notes": 1006
+  },
+  "folk": {
+   "share_I": 0.42954390742001364,
+   "share_most_common": 0.42954390742001364,
+   "most_common": 0,
+   "rt_acc_clean_melody": 0.6001609010458568,
+   "music_nd_clean_melody": 0.7290520410582739,
+   "beat_acc_filter_end_of_beat": 0.5833641746854182,
+   "beat_acc_smooth": 0.6162102146558105,
+   "beat_acc_filter_sounding": 0.5830941579483381,
+   "beat_acc_smooth_sounding": 0.6162392371076753,
+   "labelled_beats": 10808,
+   "chord_change_rate_per_beat": 0.33734382230448867,
+   "notes": 16159
+  },
+  "pop": {
+   "share_I": 0.24839918788068094,
+   "share_most_common": 0.24839918788068094,
+   "most_common": 0,
+   "rt_acc_clean_melody": 0.37263782601905354,
+   "music_nd_clean_melody": 0.6054752399137054,
+   "beat_acc_filter_end_of_beat": 0.3791923911229768,
+   "beat_acc_smooth": 0.3720173535791757,
+   "beat_acc_filter_sounding": 0.37838862559241704,
+   "beat_acc_smooth_sounding": 0.36796208530805685,
+   "labelled_beats": 11986,
+   "chord_change_rate_per_beat": 0.26431570109151975,
+   "notes": 12806
+  },
+  "pop909": {
+   "share_I": 0.21146573891998185,
+   "share_most_common": 0.22190288912418696,
+   "most_common": 4,
+   "rt_acc_clean_melody": 0.35387989714112844,
+   "music_nd_clean_melody": 0.6294712862113455,
+   "beat_acc_filter_end_of_beat": 0.3686471009305655,
+   "beat_acc_smooth": 0.3835898353614889,
+   "beat_acc_filter_sounding": 0.38130609718353453,
+   "beat_acc_smooth_sounding": 0.4003920354895285,
+   "labelled_beats": 11176,
+   "chord_change_rate_per_beat": 0.31306609272710967,
+   "notes": 13222
+  }
+ },
+ "mean": {
+  "share_I": 0.299141472968688,
+  "share_most_common": 0.30175076051973926,
+  "rt_acc_clean_melody": 0.4603972902463407,
+  "music_nd_clean_melody": 0.6680455051051837,
+  "beat_acc_filter_end_of_beat": 0.45397897423869693,
+  "beat_acc_smooth": 0.4456971566545144,
+  "beat_acc_filter_sounding": 0.45687527773502923,
+  "beat_acc_smooth_sounding": 0.44889114523171086,
+  "chord_change_rate_per_beat": 0.41326511857789755
+ },
+ "A_self_prob": {
+  "0": 0.17064529990851654,
+  "1": 0.7704162578106976,
+  "2": 0.5098094346773748,
+  "3": 0.8229538986317927,
+  "4": 0.17572213681373045,
+  "5": 0.6563125868631764
+ },
+ "secs": 3.17573881149292
+}

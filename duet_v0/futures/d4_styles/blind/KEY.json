@@ -1,0 +1,62 @@
+{
+ "clip_658": {
+  "melody": "folk_ashover_35",
+  "style": "bach",
+  "play_order": 1
+ },
+ "clip_325": {
+  "melody": "vocadito_12",
+  "style": "bach",
+  "play_order": 2
+ },
+ "clip_673": {
+  "melody": "bach_test_bwv267",
+  "style": "pop",
+  "play_order": 3
+ },
+ "clip_441": {
+  "melody": "pop909_063",
+  "style": "pop",
+  "play_order": 4
+ },
+ "clip_986": {
+  "melody": "folk_ashover_35",
+  "style": "jazz",
+  "play_order": 5
+ },
+ "clip_521": {
+  "melody": "vocadito_12",
+  "style": "pop",
+  "play_order": 6
+ },
+ "clip_138": {
+  "melody": "pop909_063",
+  "style": "bach",
+  "play_order": 7
+ },
+ "clip_851": {
+  "melody": "bach_test_bwv267",
+  "style": "bach",
+  "play_order": 8
+ },
+ "clip_912": {
+  "melody": "pop909_063",
+  "style": "jazz",
+  "play_order": 9
+ },
+ "clip_629": {
+  "melody": "bach_test_bwv267",
+  "style": "jazz",
+  "play_order": 10
+ },
+ "clip_705": {
+  "melody": "folk_ashover_35",
+  "style": "pop",
+  "play_order": 11
+ },
+ "clip_966": {
+  "melody": "vocadito_12",
+  "style": "jazz",
+  "play_order": 12
+ }
+}

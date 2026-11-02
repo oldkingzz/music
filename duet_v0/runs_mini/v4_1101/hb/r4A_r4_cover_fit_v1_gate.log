@@ -1,0 +1,2 @@
+2026-11-01 16:03:47 START tl=120 cwd=$ABS $ABS/.venv/bin/python $ABS/runs_mini/v4_1101/tools/keep.py r4_cover_fit_v1 r3_style_mix_v3 --gate
+2026-11-01 16:03:47 END rc=0 secs=0 $ABS/.venv/bin/python $ABS/runs_mini/v4_1101/tools/keep.py r4_cover_fit_v1 r3_style_mix_v3 --gate

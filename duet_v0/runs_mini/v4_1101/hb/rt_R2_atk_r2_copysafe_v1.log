@@ -1,0 +1,2 @@
+2026-11-01 23:30:40 START tl=600 cwd=$ABS $ABS/.venv/bin/python $ABS/runs_mini/v5rt_1101/tools/attack_metric.py rt:r2_copysafe_v1 --L 0.1 --out $ABS/runs_mini/v5rt_1101/attack/R2_rt_r2_copysafe_v1_L0.1.json
+2026-11-01 23:31:01 END rc=0 secs=21 $ABS/.venv/bin/python $ABS/runs_mini/v5rt_1101/tools/attack_metric.py rt:r2_copysafe_v1 --L 0.1 --out $ABS/runs_mini/v5rt_1101/attack/R2_rt_r2_copysafe_v1_L0.1.json

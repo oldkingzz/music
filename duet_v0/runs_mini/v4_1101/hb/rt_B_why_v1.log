@@ -1,0 +1,2 @@
+2026-11-01 22:50:15 START tl=600 cwd=$ABS $ABS/.venv/bin/python $ABS/runs_mini/v5rt_1101/r1/B/why_v1.py $ABS/runs_mini/v5rt_1101/r1/B/why_cons_v1.json
+2026-11-01 22:50:43 END rc=0 secs=29 $ABS/.venv/bin/python $ABS/runs_mini/v5rt_1101/r1/B/why_v1.py $ABS/runs_mini/v5rt_1101/r1/B/why_cons_v1.json

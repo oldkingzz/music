@@ -1,0 +1,177 @@
+{
+ "system": "r1_B_cons_v1 (offline replay)",
+ "L": 0.1,
+ "seed": "seed1",
+ "split": "val",
+ "P": {
+  "LW": 0.1,
+  "WH": 0.4,
+  "LAM": 1.0,
+  "MU": 2.0,
+  "KAP": 0.05,
+  "RHO": 0.08,
+  "TAU": 0.5,
+  "PMIN": 0.0,
+  "BELOW": 1,
+  "WS": 0.0,
+  "SIL": 0,
+  "KS": 0.0,
+  "SUSP": 0.7,
+  "LAMH": 1.0,
+  "MUH": 1.0,
+  "KSH": 0.0,
+  "SILH": 1,
+  "ROBH": 1,
+  "MARGH": 0.0
+ },
+ "rows": {
+  "bach": {
+   "first_ontime": {
+    "d_hit": 0.0016187050359712236,
+    "d_harsh": -0.0008992805755395715,
+    "notes": 25
+   },
+   "first_same": {
+    "d_hit": 0.0,
+    "d_harsh": 0.0,
+    "notes": 875
+   },
+   "first_silent": {
+    "d_hit": -8.992805755395811e-05,
+    "d_harsh": 0.0,
+    "notes": 4
+   },
+   "first_stumble": {
+    "d_hit": 0.0019784172661870625,
+    "d_harsh": -0.003327338129496399,
+    "notes": 102
+   },
+   "rest_hearalt": {
+    "d_hit": -0.0007194244604316409,
+    "d_harsh": -0.0022482014388489143,
+    "notes": 61
+   },
+   "rest_midmove": {
+    "d_hit": 0.018884892086330936,
+    "d_harsh": -0.0004496402877697842,
+    "notes": 49
+   },
+   "rest_same": {
+    "d_hit": 0.0,
+    "d_harsh": 0.0,
+    "notes": 896
+   }
+  },
+  "folk": {
+   "first_ontime": {
+    "d_hit": 0.0016968535558940883,
+    "d_harsh": -0.0010848735849158923,
+    "notes": 268
+   },
+   "first_same": {
+    "d_hit": 0.0,
+    "d_harsh": 0.0,
+    "notes": 14878
+   },
+   "first_silent": {
+    "d_hit": -6.490696661889973e-05,
+    "d_harsh": -0.00013908635704050053,
+    "notes": 58
+   },
+   "first_stumble": {
+    "d_hit": 0.0005285281567539022,
+    "d_harsh": -0.0010292390420997002,
+    "notes": 970
+   },
+   "rest_hearalt": {
+    "d_hit": 0.0018745747648478707,
+    "d_harsh": -0.005617543667733694,
+    "notes": 804
+   },
+   "rest_midmove": {
+    "d_hit": 0.007526117999835888,
+    "d_harsh": -1.5453977855008198e-05,
+    "notes": 273
+   },
+   "rest_same": {
+    "d_hit": 0.0,
+    "d_harsh": 0.0,
+    "notes": 15097
+   }
+  },
+  "pop": {
+   "first_ontime": {
+    "d_hit": 0.0007141617278746288,
+    "d_harsh": -0.00041659434126019973,
+    "notes": 149
+   },
+   "first_same": {
+    "d_hit": 0.0,
+    "d_harsh": 0.0,
+    "notes": 11996
+   },
+   "first_silent": {
+    "d_hit": -0.0001091080417586241,
+    "d_harsh": -8.927021598432903e-05,
+    "notes": 43
+   },
+   "first_stumble": {
+    "d_hit": -1.9837825774293834e-05,
+    "d_harsh": -0.0003769186897116089,
+    "notes": 778
+   },
+   "rest_hearalt": {
+    "d_hit": 0.0024549309395690195,
+    "d_harsh": -0.003858457113100401,
+    "notes": 683
+   },
+   "rest_midmove": {
+    "d_hit": 0.001264661393111315,
+    "d_harsh": 0.00012398641108934461,
+    "notes": 182
+   },
+   "rest_same": {
+    "d_hit": 0.0,
+    "d_harsh": 0.0,
+    "notes": 12101
+   }
+  },
+  "pop909": {
+   "first_ontime": {
+    "d_hit": 0.001040978353342489,
+    "d_harsh": -0.0009080408581891106,
+    "notes": 167
+   },
+   "first_same": {
+    "d_hit": 0.0,
+    "d_harsh": 1.3704012627972684e-05,
+    "notes": 12279
+   },
+   "first_silent": {
+    "d_hit": -0.00014695992094339362,
+    "d_harsh": -0.00019594656125786252,
+    "notes": 47
+   },
+   "first_stumble": {
+    "d_hit": 0.0003628930314495401,
+    "d_harsh": -0.0008922181733675333,
+    "notes": 761
+   },
+   "rest_hearalt": {
+    "d_hit": 0.0025185868784678785,
+    "d_harsh": -0.005054515027607102,
+    "notes": 584
+   },
+   "rest_midmove": {
+    "d_hit": 0.004484237054386272,
+    "d_harsh": -0.00030519901581920297,
+    "notes": 242
+   },
+   "rest_same": {
+    "d_hit": 0.0,
+    "d_harsh": 0.0,
+    "notes": 12225
+   }
+  }
+ }
+}

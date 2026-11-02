@@ -1,0 +1,2 @@
+2026-11-01 23:16:40 START tl=3600 cwd=$ABS $ABS/.venv/bin/python $ABS/runs_mini/v5rt_1101/r2/train_copy_v1.py
+2026-11-01 23:17:00 END rc=0 secs=20 $ABS/.venv/bin/python $ABS/runs_mini/v5rt_1101/r2/train_copy_v1.py

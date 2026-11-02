@@ -1,0 +1,2 @@
+2026-11-02 02:12:07 START tl=600 cwd=$ABS $ABS/.venv/bin/python $ABS/runs_mini/v5rt_1101/r3/E/diag_fresh_E_v3.py {"free": true, "eps_u": 0.1, "mel_w": 1.0, "sil_v": -0.1, "hold_trk": true} --voice sung --out $ABS/runs_mini/v5rt_1101/r3/E/D_trkB_sung_v1.json
+2026-11-02 02:12:26 END rc=0 secs=20 $ABS/.venv/bin/python $ABS/runs_mini/v5rt_1101/r3/E/diag_fresh_E_v3.py {"free": true, "eps_u": 0.1, "mel_w": 1.0, "sil_v": -0.1, "hold_trk": true} --voice sung --out $ABS/runs_mini/v5rt_1101/r3/E/D_trkB_sung_v1.json

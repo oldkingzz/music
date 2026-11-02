@@ -1,0 +1,8 @@
+# scratch / diagnostic runs made while developing (regenerable; not part of the record)
+runs/dev_*/
+runs/try_*/
+runs/tmp/
+runs/demo_*/
+cache/try_*
+cache/ecd_*
+cache/dcs_LI_Full_S1_Take01.*

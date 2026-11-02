@@ -1,0 +1,65 @@
+{
+ "assumptions": {
+  "singer_1m_db": 80.0,
+  "machine_1m_db": 77.0,
+  "room_m3": 40.0,
+  "rt60_s": 0.3,
+  "speaker_Q": 2.0,
+  "critical_distance_m": 0.9308061022576077,
+  "cardioid_rear_rejection_db": 15.0,
+  "cardioid_ree_db": -4.8,
+  "aec_erle_db": 25.0
+ },
+ "configs": [
+  {
+   "config": "A: omni mic on the Duet board, 5 cm from its speaker",
+   "singer_m": 1.0,
+   "speaker_m": 0.05,
+   "angle_deg": 90,
+   "cardioid": false,
+   "bleed_db": 19.7,
+   "bleed_after_aec_db": -5.3,
+   "echo_direct_minus_reverb_db": 25.4
+  },
+  {
+   "config": "B: cardioid on the far face of the box, 15 cm from speaker (rear)",
+   "singer_m": 1.0,
+   "speaker_m": 0.15,
+   "angle_deg": 180,
+   "cardioid": true,
+   "bleed_db": -1.9,
+   "bleed_after_aec_db": -26.9,
+   "echo_direct_minus_reverb_db": 5.7
+  },
+  {
+   "config": "C: omni on a stand 20 cm from her mouth, speaker 1 m away",
+   "singer_m": 0.2,
+   "speaker_m": 1.0,
+   "angle_deg": 180,
+   "cardioid": false,
+   "bleed_db": -13.8,
+   "bleed_after_aec_db": -38.8,
+   "echo_direct_minus_reverb_db": -0.6
+  },
+  {
+   "config": "D: cardioid on a stand 20 cm from her mouth, speaker 1 m behind it",
+   "singer_m": 0.2,
+   "speaker_m": 1.0,
+   "angle_deg": 180,
+   "cardioid": true,
+   "bleed_db": -20.9,
+   "bleed_after_aec_db": -45.9,
+   "echo_direct_minus_reverb_db": -10.8
+  },
+  {
+   "config": "E: cardioid headset 5 cm from her mouth, speaker 1 m behind",
+   "singer_m": 0.05,
+   "speaker_m": 1.0,
+   "angle_deg": 180,
+   "cardioid": true,
+   "bleed_db": -32.9,
+   "bleed_after_aec_db": -57.9,
+   "echo_direct_minus_reverb_db": -10.8
+  }
+ ]
+}

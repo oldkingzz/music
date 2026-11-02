@@ -1,0 +1,33 @@
+Collecting torch==2.15.0
+  Downloading torch-2.15.0-cp311-cp311-macosx_14_0_arm64.whl.metadata (36 kB)
+Collecting filelock (from torch==2.15.0)
+  Downloading filelock-4.2.6-py3-none-any.whl.metadata (2.0 kB)
+Requirement already satisfied: typing-extensions>=4.13.0 in ./.venv/lib/python3.11/site-packages (from torch==2.15.0) (4.16.0)
+Requirement already satisfied: setuptools>=77.0.3 in ./.venv/lib/python3.11/site-packages (from torch==2.15.0) (84.2.1)
+Collecting sympy>=1.13.3 (from torch==2.15.0)
+  Downloading sympy-1.14.0-py3-none-any.whl.metadata (12 kB)
+Collecting networkx>=2.5.1 (from torch==2.15.0)
+  Downloading networkx-3.6.1-py3-none-any.whl.metadata (6.8 kB)
+Collecting jinja2 (from torch==2.15.0)
+  Downloading jinja2-3.1.6-py3-none-any.whl.metadata (2.9 kB)
+Collecting fsspec>=0.8.5 (from torch==2.15.0)
+  Downloading fsspec-2026.9.0-py3-none-any.whl.metadata (10 kB)
+Collecting mpmath<1.4,>=1.1.0 (from sympy>=1.13.3->torch==2.15.0)
+  Downloading mpmath-1.3.0-py3-none-any.whl.metadata (8.6 kB)
+Collecting MarkupSafe>=2.0 (from jinja2->torch==2.15.0)
+  Downloading markupsafe-3.0.4-cp311-cp311-macosx_11_0_arm64.whl.metadata (2.7 kB)
+Downloading torch-2.15.0-cp311-cp311-macosx_14_0_arm64.whl (138.5 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 138.5/138.5 MB 50.6 MB/s  0:00:02
+Downloading fsspec-2026.9.0-py3-none-any.whl (221 kB)
+Downloading networkx-3.6.1-py3-none-any.whl (2.1 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.1/2.1 MB 59.9 MB/s  0:00:00
+Downloading sympy-1.14.0-py3-none-any.whl (6.3 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 6.3/6.3 MB 64.7 MB/s  0:00:00
+Downloading mpmath-1.3.0-py3-none-any.whl (536 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 536.2/536.2 kB 18.2 MB/s  0:00:00
+Downloading filelock-4.2.6-py3-none-any.whl (164 kB)
+Downloading jinja2-3.1.6-py3-none-any.whl (134 kB)
+Downloading markupsafe-3.0.4-cp311-cp311-macosx_11_0_arm64.whl (12 kB)
+Installing collected packages: mpmath, sympy, networkx, MarkupSafe, fsspec, filelock, jinja2, torch
+
+Successfully installed MarkupSafe-3.0.4 filelock-4.2.6 fsspec-2026.9.0 jinja2-3.1.6 mpmath-1.3.0 networkx-3.6.1 sympy-1.14.0 torch-2.15.0

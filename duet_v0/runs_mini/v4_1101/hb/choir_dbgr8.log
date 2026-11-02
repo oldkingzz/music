@@ -1,0 +1,2 @@
+2026-11-02 12:43:27 START tl=300 cwd=$ABS .venv/bin/python runs_mini/choir_1102/debug_replay_v3.py 124132_r2_mix_v2 80
+2026-11-02 12:43:28 END rc=0 secs=0 .venv/bin/python runs_mini/choir_1102/debug_replay_v3.py 124132_r2_mix_v2 80

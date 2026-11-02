@@ -1,0 +1,2 @@
+2026-11-01 23:31:02 START tl=600 cwd=$ABS $ABS/.venv/bin/python $ABS/futures/v5_rt/bench_rt.py rt:r2_copyhmbold_v1 --L 0.1 --seed2 --out $ABS/runs_mini/v5rt_1101/scores/R2_rt_r2_copyhmbold_v1_L0.1_seed2.json
+2026-11-01 23:31:24 END rc=0 secs=22 $ABS/.venv/bin/python $ABS/futures/v5_rt/bench_rt.py rt:r2_copyhmbold_v1 --L 0.1 --seed2 --out $ABS/runs_mini/v5rt_1101/scores/R2_rt_r2_copyhmbold_v1_L0.1_seed2.json

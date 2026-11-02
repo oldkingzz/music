@@ -1,0 +1,315 @@
+"""m5_policy_v9 (= v1 + previous-bar vectors, extra memory key (pos, last beat note, current note), wd 0.1):
+m5_policy_v1: bench-v2 'policy' adapted to zero latency (D = 0, current note known), new target.
+
+History used (all tonic-relative, built causally note by note; DUET_HIST = N limits it to the last N beats):
+  ctx   the longest pitch class of each of the last 7 finished beats (what she just sang)
+  part  the notes already sung in the current beat before this one, previous note pc + its length
+  hist  the pitch-class time histogram of the song so far (which notes this song uses: key colour)
+  mem   per-song memory: what she sang on beats that followed the same context EARLIER IN THIS SONG
+        (same bar position; same last 1 / 2 / 3 beat notes; same bar position + same beat note as now)
+  plus the present: her current heard note (pc one-hot, register), bar position, onset fraction.
+An MLP (numpy at run time) has two heads: val[c] = P(Duet pc c is consonant with her TRUE note AND a
+tone of the TRUE chord), time-weighted over the beats her note covers (BCE, soft target), and an aux
+chord head (7 triads, used only as a training signal). Duet then sings h in the alto range below her:
+  val[h pc] - wd*[h pc == her pc] - vl*|h - h_prev| - vb*[|leap| > 7] - vp*[parallel 5th/8ve].
+DUET_DROP=ctx,hist,mem zeroes a feature group (ablation; retrains a separate cached model).
+"""
+import hashlib
+import json
+import math
+import os
+import random
+
+import numpy as np
+
+from theory import ALTO, ALTO_MID, CONSONANT, CT
+
+HERE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+MDIR = os.path.join(HERE, 'models_m5')
+P = dict(hid=256, epochs=10, lr=2e-3, cap=90000, aug=3, ens=2, drop=0.1, ctx=7, tag='v9',
+         wd=0.6, vl=0.006, vb=0.1, vp=0.3, vc=0.002, budget=-1.0, wlo=0.0, whi=0.6)
+P.update(json.loads(os.environ.get('DUET_M5', '{}')))
+HIST = int(os.environ.get('DUET_HIST', '4'))
+HIST = None if HIST < 0 else HIST
+DROP = tuple(sorted(x for x in os.environ.get('DUET_DROP', '').split(',') if x))
+CONS = np.array([1.0 if i in CONSONANT else 0.0 for i in range(12)])
+CTM = np.array([[1.0 if c in CT[z] else 0.0 for c in range(12)] for z in range(7)])   # 7 x 12
+NOISE = 0.10
+
+
+def noisy(sop, rng, p=NOISE):
+    out = []
+    for on, off, m in sop:
+        if rng.random() < p:
+            pc = (m + rng.randint(1, 11)) % 12
+            m = min((m + d for d in range(-6, 7) if (m + d) % 12 == pc), key=lambda x: abs(x - m))
+        out.append([on, off, m])
+    return out
+
+
+def _oh(i, n=13):
+    v = np.zeros(n)
+    v[i if i is not None and i >= 0 else n - 1] = 1.0
+    return v
+
+
+class NoteState:
+    """Streaming features at each of her note onsets. feed(onset, midi, prev_dur) in order."""
+
+    def __init__(self, t, pos, M, ctx=7, hist=None):
+        self.t, self.pos, self.M, self.ctx, self.N = t, pos, M, ctx, hist
+        self.notes = []                  # [on, off, midi] of finished notes (off known)
+        self.cur = None
+        self.done = 0                    # beats finalized
+        self.V, self.o = [], []
+        self.hsum = np.zeros(12)
+        self.mem = {}                    # key -> [vec sum, count, [(j, vec)]]
+
+    def _vec(self, j, end):
+        v = np.zeros(12)
+        best, bl = -1, 0.0
+        for on, off, m in reversed(self.notes[-40:]):
+            ov = min(off, end) - max(on, j)
+            if ov > 1e-9:
+                pc = (m - self.t) % 12
+                v[pc] += ov
+                if ov > bl + 1e-9:
+                    best, bl = pc, ov
+            elif off <= j and on < j - 8:
+                break
+        return v, best
+
+    def _keys(self, j, o, now):
+        p = self.pos[j] if j < len(self.pos) else 0
+        a = o[j - 1] if j >= 1 else -2
+        b = o[j - 2] if j >= 2 else -2
+        c = o[j - 3] if j >= 3 else -2
+        return [(0, p), (1, a), (2, b, a), (3, p, c, b, a), (4, p, now), (5, p, a, now)]
+
+    def feed(self, onset, midi, prev_dur):
+        if self.cur is not None:
+            on, m = self.cur
+            self.notes.append([on, on + (prev_dur if prev_dur is not None else onset - on), m])
+        self.cur = (onset, midi)
+        k = int(math.floor(onset))
+        N = self.N
+        while self.done < k:
+            j = self.done
+            v, b = self._vec(j, j + 1)
+            self.V.append(v)
+            self.o.append(b)
+            self.hsum += v
+            if v.sum() > 0:
+                vn = v / v.sum()
+                for key in self._keys(j, self.o, b):
+                    e = self.mem.setdefault(key, [np.zeros(12), 0.0, []])
+                    e[0] += vn
+                    e[1] += 1
+                    if N is not None:
+                        e[2].append((j, vn))
+            self.done += 1
+        lo = -10 ** 9 if N is None else k - N            # history window: beats j >= lo
+        cpc = (midi - self.t) % 12
+        pv, _ = self._vec(k, onset) if N is None or N >= 1 else (np.zeros(12), -1)
+        f = []
+        # ctx: last ctx finished beat notes
+        ctxv = [_oh(self.o[k - i] if (k - i >= 0 and k - i >= lo) else -1) for i in range(1, self.ctx + 1)]
+        # part: earlier notes in this beat, previous note
+        prev_pc, pd = -1, 0.0
+        if self.notes and (N is None or N >= 1):
+            prev_pc = (self.notes[-1][2] - self.t) % 12
+            pd = min(self.notes[-1][1] - self.notes[-1][0], 4.0)
+        part = [pv / pv.sum() if pv.sum() > 0 else pv, _oh(prev_pc), np.array([pd])]
+        M = max(int(self.M), 1)
+        pb = self.V[k - M] if k - M >= 0 and k - M >= lo else np.zeros(12)
+        bar = sum((self.V[j] for j in range(max(0, k - M, lo), k)), np.zeros(12))
+        part += [pb / pb.sum() if pb.sum() > 0 else pb, bar / bar.sum() if bar.sum() > 0 else bar]
+        if 'ctx' in DROP:
+            part[-2:] = [np.zeros(12), np.zeros(12)]
+        # hist
+        if N is None:
+            hv = self.hsum.copy()
+        else:
+            hv = sum((self.V[j] for j in range(max(0, lo), k)), np.zeros(12))
+        histv = [hv / hv.sum() if hv.sum() > 0 else hv, np.array([math.log1p(hv.sum()) / 5.0])]
+        # mem
+        o = list(self.o)
+        memv = []
+        for key in self._keys(k, o + [cpc], cpc):
+            e = self.mem.get(key)
+            if e is not None and N is not None:
+                vs = [v for j, v in e[2] if j >= lo]
+                e = [sum(vs, np.zeros(12)), float(len(vs))] if vs else None
+            if e is None or e[1] == 0:
+                memv.append(np.zeros(13))
+            else:
+                memv.append(np.concatenate([e[0] / e[1], [math.log1p(e[1]) / 3.0]]))
+        p = self.pos[k] if k < len(self.pos) else 0
+        posv = np.zeros(7)
+        posv[min(p, 3)] = 1.0
+        posv[4] = float(p == 0)
+        posv[5] = float(self.M == 3)
+        posv[6] = onset - k
+        now = [_oh(cpc), np.array([(midi - 67) / 12.0]), posv]
+        if 'ctx' in DROP:
+            ctxv = [np.zeros_like(x) for x in ctxv]
+        if 'hist' in DROP:
+            histv = [np.zeros_like(x) for x in histv]
+        if 'mem' in DROP:
+            memv = [np.zeros_like(x) for x in memv]
+        return np.concatenate(now + ctxv + part + histv + memv).astype(np.float32)
+
+
+def _targets(s, i, notes):
+    """Soft target per candidate pc c for her TRUE note i: time share of covered labeled beats where c is
+    consonant with her and a tone of the true chord; also the chord time shares (aux)."""
+    on, off, m = notes[i]
+    t = s['tonic']
+    T, Z, w = np.zeros(12), np.zeros(7), 0.0
+    for k in range(int(on), int(math.ceil(off))):
+        if k >= len(s['beats']):
+            break
+        ov = min(off, k + 1) - max(on, k)
+        z = s['beats'][k]['z']
+        if ov <= 1e-9 or z < 0:
+            continue
+        cons = CONS[(m - t - np.arange(12)) % 12]
+        T += ov * cons * CTM[z]
+        Z[z] += ov
+        w += ov
+    return (T / w, Z / w, w) if w > 0 else (None, None, 0.0)
+
+
+def make_rows(train):
+    rng = random.Random(5160)
+    X, T, Z, W = [], [], [], []
+    for name, songs in train.items():
+        tot = sum(len(s.get('sop', [])) for s in songs)
+        aug = max(1, min(int(P['aug']), int(P['cap']) // max(tot, 1)))
+        used = 0
+        for s in songs:
+            if used >= P['cap']:
+                break
+            if s.get('K', 0) < 2 or not s.get('sop'):
+                continue
+            notes = sorted(s['sop'], key=lambda n: n[0])
+            pos = [b['pos'] for b in s['beats']]
+            for a in range(aug):
+                hn = noisy(notes, rng)
+                st = NoteState(s['tonic'], pos, s['M'], int(P['ctx']), HIST)
+                prev = None
+                for i, (on, off, m) in enumerate(hn):
+                    x = st.feed(float(on), int(m), None if prev is None else float(prev[1] - prev[0]))
+                    prev = (on, off)
+                    tt, zz, w = _targets(s, i, notes)
+                    if w > 0:
+                        X.append(x); T.append(tt); Z.append(zz); W.append(min(w, 4.0))
+                        used += 1
+    return [np.stack(a).astype(np.float32) for a in (X, T, Z)] + [np.array(W, np.float32)]
+
+
+def train_model(X, T, Z, W, seed=0):
+    import torch
+    torch.manual_seed(seed)
+    dev = torch.device('mps' if torch.backends.mps.is_available() else 'cpu')
+    h = int(P['hid'])
+    net = torch.nn.Sequential(torch.nn.Linear(X.shape[1], h), torch.nn.GELU(), torch.nn.Dropout(P['drop']),
+                              torch.nn.Linear(h, h), torch.nn.GELU(), torch.nn.Dropout(P['drop']),
+                              torch.nn.Linear(h, 19)).to(dev)
+    opt = torch.optim.AdamW(net.parameters(), lr=P['lr'], weight_decay=1e-4)
+    n, E, B = len(X), int(P['epochs']), 1024
+    sched = torch.optim.lr_scheduler.OneCycleLR(opt, P['lr'], total_steps=E * ((n + B - 1) // B))
+    Xd, Td, Zd, Wd = (torch.tensor(a).to(dev) for a in (X, T, Z, W))
+    for ep in range(E):
+        net.train()
+        perm = torch.randperm(n, device=dev)
+        for i in range(0, n, B):
+            b = perm[i:i + B]
+            out = net(Xd[b])
+            lv = torch.nn.functional.binary_cross_entropy_with_logits(out[:, :12], Td[b], reduction='none').mean(1)
+            lz = -(Zd[b] * torch.log_softmax(out[:, 12:], 1)).sum(1)
+            loss = ((2.0 * lv + 0.3 * lz) * Wd[b]).sum() / Wd[b].sum()
+            opt.zero_grad(); loss.backward(); opt.step(); sched.step()
+    net.eval().cpu()
+    return [(m.weight.detach().numpy().T.copy(), m.bias.detach().numpy().copy())
+            for m in net if isinstance(m, torch.nn.Linear)]
+
+
+def _gelu(a):
+    return 0.5 * a * (1 + np.tanh(0.7978845608 * (a + 0.044715 * a ** 3)))
+
+
+class System:
+    def __init__(self, train):
+        sig = {n: len(v) for n, v in sorted(train.items())}
+        sig['P'] = {k: P[k] for k in ('hid', 'epochs', 'lr', 'cap', 'aug', 'ens', 'drop', 'ctx', 'tag')}
+        sig['hist'], sig['drop'] = HIST, DROP
+        fp = hashlib.md5(json.dumps(sig, sort_keys=True).encode()).hexdigest()[:12]
+        path = os.path.join(MDIR, f'm5_{fp}.npz')
+        E = int(P['ens'])
+        if os.path.exists(path):
+            z = np.load(path)
+            Ws = [[(z[f'W{e}_{i}'], z[f'b{e}_{i}']) for i in range(3)] for e in range(E)]
+        else:
+            X, T, Z, W = make_rows(train)
+            Ws = [train_model(X, T, Z, W, seed=e) for e in range(E)]
+            os.makedirs(MDIR, exist_ok=True)
+            np.savez(path, **{f'W{e}_{i}': w for e, Wl in enumerate(Ws) for i, (w, _) in enumerate(Wl)},
+                     **{f'b{e}_{i}': b for e, Wl in enumerate(Ws) for i, (_, b) in enumerate(Wl)})
+            json.dump({'sig': sig, 'rows': len(X)}, open(path[:-4] + '.json', 'w'))
+        h = Ws[0][1][0].shape[0]
+        W0 = np.concatenate([Wl[0][0] for Wl in Ws], 1)
+        b0 = np.concatenate([Wl[0][1] for Wl in Ws])
+        W1 = np.zeros((h * E, h * E), np.float32)
+        W2 = np.zeros((h * E, 12 * E), np.float32)
+        for e, Wl in enumerate(Ws):
+            W1[e * h:(e + 1) * h, e * h:(e + 1) * h] = Wl[1][0]
+            W2[e * h:(e + 1) * h, e * 12:(e + 1) * 12] = Wl[2][0][:, :12]
+        b1 = np.concatenate([Wl[1][1] for Wl in Ws])
+        b2 = np.concatenate([Wl[2][1][:12] for Wl in Ws])
+        self.W = [(W0, b0), (W1, b1), (W2, b2)]
+        self.H = np.arange(ALTO[0], ALTO[1] + 1)
+
+    def val(self, x):
+        (W0, b0), (W1, b1), (W2, b2) = self.W
+        a = _gelu(x @ W0 + b0)
+        a = _gelu(a @ W1 + b1)
+        o = (a @ W2 + b2).reshape(-1, 12)
+        return (1.0 / (1.0 + np.exp(-o))).mean(0)
+
+    def start(self, meta):
+        self.t = meta['tonic']
+        self.st = NoteState(self.t, meta['pos'], meta['M'], int(P['ctx']), HIST)
+        self.hp, self.mp = None, None
+        self.nd, self.nn = 0, 0
+        self.hpc = (self.H - self.t) % 12
+
+    def step(self, i, onset, midi, prev_dur):
+        x = self.st.feed(onset, midi, prev_dur)
+        v = self.val(x)
+        H = self.H
+        wd = P['wd']
+        if P['budget'] >= 0:                     # doubling budget: Duet's own past choices in this song
+            wd = P['wlo'] if (self.nd + 1) / (self.nn + 1) <= P['budget'] else P['whi']
+        sc = v[self.hpc] - wd * (self.hpc == (midi - self.t) % 12) - P['vc'] * np.abs(H - ALTO_MID)
+        if self.hp is not None:
+            dh = H - self.hp
+            sc = sc - P['vl'] * np.abs(dh) - P['vb'] * (np.abs(dh) > 7)
+            dm = midi - self.mp
+            if dm != 0:
+                i0 = (self.mp - self.hp) % 12
+                i1 = (midi - H) % 12
+                par = (dh != 0) & ((dh > 0) == (dm > 0)) & ((i1 == 0) | (i1 == 7)) & (i1 == i0)
+                sc = sc - P['vp'] * par
+        ok = H <= midi - 1
+        if ok.any():
+            sc = np.where(ok, sc, -np.inf)
+        h = int(H[int(np.argmax(sc))])
+        self.hp, self.mp = h, midi
+        self.nn += 1
+        self.nd += int((h - midi) % 12 == 0)
+        return h
+
+
+def build(train):
+    return System(train)

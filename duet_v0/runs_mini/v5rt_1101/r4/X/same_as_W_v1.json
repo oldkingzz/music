@@ -1,0 +1,1555 @@
+{
+ "note": "val only, tuned on val (no test split); W = r3_X_regtrkst_v1; W's wired / v11 / L0.1 files are round 3's (R3X_), its micbt_cal / bt_cal / L0.5 files phase 1's (L4_)",
+ "systems": {
+  "r4_G_ehedgesafe_v1": {
+   "sung@wired": {
+    "same": true,
+    "first_diffs": [],
+    "files": [
+     "live_bench/R4G_rt_r4_G_ehedgesafe_v1_sung_wired.json",
+     "live_bench/R3X_rt_r3_X_regtrkst_v1_sung_wired.json"
+    ]
+   },
+   "sung@micbt_cal": {
+    "same": true,
+    "first_diffs": [],
+    "files": [
+     "live_bench/R4G_rt_r4_G_ehedgesafe_v1_sung_micbt_cal.json",
+     "live_bench/L4_rt_r3_X_regtrkst_v1_sung_micbt_cal.json"
+    ]
+   },
+   "sung@bt_cal": {
+    "same": false,
+    "first_diffs": [
+     "/decision_counts/dropped_unstarted (missing on one side)",
+     "/decision_counts/hear_enter: 39 vs 48",
+     "/decision_counts/hear_keep: 646 vs 531",
+     "/decision_counts/hear_reenter: 7 vs 5",
+     "/decision_counts/hear_rest: 1 vs 2",
+     "/decision_counts/hear_silence: 16 vs 27",
+     "/decision_counts/hear_switch: 596 vs 692",
+     "/decision_counts/plan_enter: 6 vs 10"
+    ],
+    "files": [
+     "live_bench/R4G_rt_r4_G_ehedgesafe_v1_sung_bt_cal.json",
+     "live_bench/L4_rt_r3_X_regtrkst_v1_sung_bt_cal.json"
+    ]
+   },
+   "sung_low@wired": {
+    "same": true,
+    "first_diffs": [],
+    "files": [
+     "live_bench/R4G_rt_r4_G_ehedgesafe_v1_sung_low_wired.json",
+     "live_bench/R3X_rt_r3_X_regtrkst_v1_sung_low_wired.json"
+    ]
+   },
+   "sung_low@micbt_cal": {
+    "same": true,
+    "first_diffs": [],
+    "files": [
+     "live_bench/R4G_rt_r4_G_ehedgesafe_v1_sung_low_micbt_cal.json",
+     "live_bench/L4_rt_r3_X_regtrkst_v1_sung_low_micbt_cal.json"
+    ]
+   },
+   "sung_low@bt_cal": {
+    "same": false,
+    "first_diffs": [
+     "/decision_counts/dropped_unstarted (missing on one side)",
+     "/decision_counts/hear_enter: 34 vs 41",
+     "/decision_counts/hear_idle (missing on one side)",
+     "/decision_counts/hear_keep: 644 vs 534",
+     "/decision_counts/hear_reenter: 6 vs 5",
+     "/decision_counts/hear_silence: 7 vs 14",
+     "/decision_counts/hear_switch: 613 vs 709",
+     "/decision_counts/plan_enter: 3 vs 4"
+    ],
+    "files": [
+     "live_bench/R4G_rt_r4_G_ehedgesafe_v1_sung_low_bt_cal.json",
+     "live_bench/L4_rt_r3_X_regtrkst_v1_sung_low_bt_cal.json"
+    ]
+   },
+   "phone_v11": {
+    "same": true,
+    "first_diffs": [],
+    "files": [
+     "live_bench/R4G_rt_r4_G_ehedgesafe_v1_phone_v11.json",
+     "live_bench/R3X_rt_r3_X_regtrkst_v1_phone_v11.json"
+    ]
+   },
+   "bench_rt L0.1": {
+    "same": false,
+    "first_diffs": [
+     "/time: '2026-11-02 06:06:39' vs '2026-11-02 03:30:45'"
+    ],
+    "files": [
+     "scores/R4G_rt_r4_G_ehedgesafe_v1_L0.1.json",
+     "scores/R3X_rt_r3_X_regtrkst_v1_L0.1.json"
+    ]
+   },
+   "bench_rt L0.1 seed2": {
+    "same": false,
+    "first_diffs": [
+     "/time: '2026-11-02 06:07:02' vs '2026-11-02 03:31:05'"
+    ],
+    "files": [
+     "scores/R4G_rt_r4_G_ehedgesafe_v1_L0.1_seed2.json",
+     "scores/R3X_rt_r3_X_regtrkst_v1_L0.1_seed2.json"
+    ]
+   },
+   "attack L0.1": {
+    "same": true,
+    "first_diffs": [],
+    "files": [
+     "attack/R4G_rt_r4_G_ehedgesafe_v1_L0.1.json",
+     "attack/R3X_rt_r3_X_regtrkst_v1_L0.1.json"
+    ]
+   },
+   "bench_rt L0.5": {
+    "same": false,
+    "first_diffs": [
+     "/headline/changes: 0.529842726453835 vs 0.6000959510692516",
+     "/headline/double: 0.0715744335082755 vs 0.07378546287871379",
+     "/headline/harsh: 0.10938421625365405 vs 0.12324260545127937",
+     "/headline/harsh_first: 0.17502354807999074 vs 0.20399492461419405",
+     "/headline/late_entry: 0.009719270136134512 vs 0.01512307168025877",
+     "/headline/nd_first: 0.36927342574046046 vs 0.3343094236435682",
+     "/headline/on_time_right: 0.2676838047472254 vs 0.24146974366227814",
+     "/headline/rt_nd: 0.4839877491296957 vs 0.469652807915357"
+    ],
+    "files": [
+     "scores/R4G_rt_r4_G_ehedgesafe_v1_L0.5.json",
+     "scores/L4_rt_r3_X_regtrkst_v1_L0.5.json"
+    ]
+   },
+   "bench_rt L0.5 seed2": {
+    "same": false,
+    "first_diffs": [
+     "/headline/changes: 0.5377211838732743 vs 0.5997234356457132",
+     "/headline/double: 0.07013530987476156 vs 0.07327130129374657",
+     "/headline/harsh: 0.11089194564116817 vs 0.122148249739178",
+     "/headline/harsh_first: 0.18029463924414346 vs 0.2041672365263474",
+     "/headline/late_entry: 0.008929901378966727 vs 0.01437936269354931",
+     "/headline/nd_first: 0.3676858977451615 vs 0.3381317715133102",
+     "/headline/on_time_right: 0.26087939910908714 vs 0.24351850259689586",
+     "/headline/rt_nd: 0.4846707817489625 vs 0.4733308741959769"
+    ],
+    "files": [
+     "scores/R4G_rt_r4_G_ehedgesafe_v1_L0.5_seed2.json",
+     "scores/L4_rt_r3_X_regtrkst_v1_L0.5_seed2.json"
+    ]
+   },
+   "attack L0.5": {
+    "same": false,
+    "first_diffs": [
+     "/headline/attack_miss_per100: 26.048389401149958 vs 31.004569025857055",
+     "/headline/attacks_per100: 53.0645484874851 vs 61.06390757509268",
+     "/headline/fresh_clash_per100: 4.860589109095606 vs 6.910640213885911",
+     "/headline/harsh_bleed: 0.09381320245011915 vs 0.10114415905541349",
+     "/headline/harsh_fresh: 0.015571013803534806 vs 0.022098446395865806",
+     "/rows/bach/attack_miss_per100: 23.45924453280318 vs 27.13717693836978",
+     "/rows/bach/attacks_per100: 62.72365805168986 vs 72.56461232604374",
+     "/rows/bach/fresh_clash_per100: 2.783300198807157 vs 5.069582504970179"
+    ],
+    "files": [
+     "attack/R4G_rt_r4_G_ehedgesafe_v1_L0.5.json",
+     "attack/L4_rt_r3_X_regtrkst_v1_L0.5.json"
+    ]
+   }
+  },
+  "r4_G_ehedge_v1": {
+   "sung@wired": {
+    "same": true,
+    "first_diffs": [],
+    "files": [
+     "live_bench/R4G_rt_r4_G_ehedge_v1_sung_wired.json",
+     "live_bench/R3X_rt_r3_X_regtrkst_v1_sung_wired.json"
+    ]
+   },
+   "sung@micbt_cal": {
+    "same": true,
+    "first_diffs": [],
+    "files": [
+     "live_bench/R4G_rt_r4_G_ehedge_v1_sung_micbt_cal.json",
+     "live_bench/L4_rt_r3_X_regtrkst_v1_sung_micbt_cal.json"
+    ]
+   },
+   "sung@bt_cal": {
+    "same": false,
+    "first_diffs": [
+     "/decision_counts/dropped_unstarted (missing on one side)",
+     "/decision_counts/hear_enter: 39 vs 48",
+     "/decision_counts/hear_keep: 642 vs 531",
+     "/decision_counts/hear_reenter: 6 vs 5",
+     "/decision_counts/hear_silence: 15 vs 27",
+     "/decision_counts/hear_switch: 601 vs 692",
+     "/decision_counts/plan_enter: 6 vs 10",
+     "/decision_counts/plan_idle: 95 vs 110"
+    ],
+    "files": [
+     "live_bench/R4G_rt_r4_G_ehedge_v1_sung_bt_cal.json",
+     "live_bench/L4_rt_r3_X_regtrkst_v1_sung_bt_cal.json"
+    ]
+   },
+   "sung_low@wired": {
+    "same": true,
+    "first_diffs": [],
+    "files": [
+     "live_bench/R4G_rt_r4_G_ehedge_v1_sung_low_wired.json",
+     "live_bench/R3X_rt_r3_X_regtrkst_v1_sung_low_wired.json"
+    ]
+   },
+   "sung_low@micbt_cal": {
+    "same": true,
+    "first_diffs": [],
+    "files": [
+     "live_bench/R4G_rt_r4_G_ehedge_v1_sung_low_micbt_cal.json",
+     "live_bench/L4_rt_r3_X_regtrkst_v1_sung_low_micbt_cal.json"
+    ]
+   },
+   "sung_low@bt_cal": {
+    "same": false,
+    "first_diffs": [
+     "/decision_counts/dropped_unstarted (missing on one side)",
+     "/decision_counts/hear_enter: 34 vs 41",
+     "/decision_counts/hear_idle (missing on one side)",
+     "/decision_counts/hear_keep: 651 vs 534",
+     "/decision_counts/hear_reenter: 6 vs 5",
+     "/decision_counts/hear_silence: 7 vs 14",
+     "/decision_counts/hear_switch: 606 vs 709",
+     "/decision_counts/plan_enter: 3 vs 4"
+    ],
+    "files": [
+     "live_bench/R4G_rt_r4_G_ehedge_v1_sung_low_bt_cal.json",
+     "live_bench/L4_rt_r3_X_regtrkst_v1_sung_low_bt_cal.json"
+    ]
+   },
+   "phone_v11": {
+    "same": true,
+    "first_diffs": [],
+    "files": [
+     "live_bench/R4G_rt_r4_G_ehedge_v1_phone_v11.json",
+     "live_bench/R3X_rt_r3_X_regtrkst_v1_phone_v11.json"
+    ]
+   },
+   "bench_rt L0.1": {
+    "same": false,
+    "first_diffs": [
+     "/time: '2026-11-02 06:01:06' vs '2026-11-02 03:30:45'"
+    ],
+    "files": [
+     "scores/R4G_rt_r4_G_ehedge_v1_L0.1.json",
+     "scores/R3X_rt_r3_X_regtrkst_v1_L0.1.json"
+    ]
+   },
+   "bench_rt L0.1 seed2": {
+    "same": false,
+    "first_diffs": [
+     "/time: '2026-11-02 06:01:29' vs '2026-11-02 03:31:05'"
+    ],
+    "files": [
+     "scores/R4G_rt_r4_G_ehedge_v1_L0.1_seed2.json",
+     "scores/R3X_rt_r3_X_regtrkst_v1_L0.1_seed2.json"
+    ]
+   },
+   "attack L0.1": {
+    "same": true,
+    "first_diffs": [],
+    "files": [
+     "attack/R4G_rt_r4_G_ehedge_v1_L0.1.json",
+     "attack/R3X_rt_r3_X_regtrkst_v1_L0.1.json"
+    ]
+   },
+   "bench_rt L0.5": {
+    "same": false,
+    "first_diffs": [
+     "/headline/changes: 0.529962070998474 vs 0.6000959510692516",
+     "/headline/double: 0.07198533642954148 vs 0.07378546287871379",
+     "/headline/harsh: 0.11122495147450698 vs 0.12324260545127937",
+     "/headline/harsh_first: 0.17840920883508615 vs 0.20399492461419405",
+     "/headline/late_entry: 0.009688327627315897 vs 0.01512307168025877",
+     "/headline/nd_first: 0.3677237203662435 vs 0.3343094236435682",
+     "/headline/on_time_right: 0.2669346045301084 vs 0.24146974366227814",
+     "/headline/rt_nd: 0.48335264421234947 vs 0.469652807915357"
+    ],
+    "files": [
+     "scores/R4G_rt_r4_G_ehedge_v1_L0.5.json",
+     "scores/L4_rt_r3_X_regtrkst_v1_L0.5.json"
+    ]
+   },
+   "bench_rt L0.5 seed2": {
+    "same": false,
+    "first_diffs": [
+     "/headline/changes: 0.5377521016929137 vs 0.5997234356457132",
+     "/headline/double: 0.07066006121840737 vs 0.07327130129374657",
+     "/headline/harsh: 0.11258594945687456 vs 0.122148249739178",
+     "/headline/harsh_first: 0.18295517077224688 vs 0.2041672365263474",
+     "/headline/late_entry: 0.008672795371168635 vs 0.01437936269354931",
+     "/headline/nd_first: 0.3663292210505318 vs 0.3381317715133102",
+     "/headline/on_time_right: 0.2616589504257056 vs 0.24351850259689586",
+     "/headline/rt_nd: 0.4840630784270635 vs 0.4733308741959769"
+    ],
+    "files": [
+     "scores/R4G_rt_r4_G_ehedge_v1_L0.5_seed2.json",
+     "scores/L4_rt_r3_X_regtrkst_v1_L0.5_seed2.json"
+    ]
+   },
+   "attack L0.5": {
+    "same": false,
+    "first_diffs": [
+     "/headline/attack_miss_per100: 25.84985060146913 vs 31.004569025857055",
+     "/headline/attacks_per100: 53.05438153646161 vs 61.06390757509268",
+     "/headline/fresh_clash_per100: 4.869061692819834 vs 6.910640213885911",
+     "/headline/harsh_bleed: 0.09561804244583563 vs 0.10114415905541349",
+     "/headline/harsh_fresh: 0.015606909028671248 vs 0.022098446395865806",
+     "/rows/bach/attack_miss_per100: 23.061630218687874 vs 27.13717693836978",
+     "/rows/bach/attacks_per100: 63.220675944334 vs 72.56461232604374",
+     "/rows/bach/fresh_clash_per100: 2.783300198807157 vs 5.069582504970179"
+    ],
+    "files": [
+     "attack/R4G_rt_r4_G_ehedge_v1_L0.5.json",
+     "attack/L4_rt_r3_X_regtrkst_v1_L0.5.json"
+    ]
+   }
+  },
+  "r4_G_hedge_v1": {
+   "sung@wired": {
+    "same": true,
+    "first_diffs": [],
+    "files": [
+     "live_bench/R4G_rt_r4_G_hedge_v1_sung_wired.json",
+     "live_bench/R3X_rt_r3_X_regtrkst_v1_sung_wired.json"
+    ]
+   },
+   "sung@micbt_cal": {
+    "same": true,
+    "first_diffs": [],
+    "files": [
+     "live_bench/R4G_rt_r4_G_hedge_v1_sung_micbt_cal.json",
+     "live_bench/L4_rt_r3_X_regtrkst_v1_sung_micbt_cal.json"
+    ]
+   },
+   "sung@bt_cal": {
+    "same": false,
+    "first_diffs": [
+     "/decision_counts/hear_enter: 46 vs 48",
+     "/decision_counts/hear_keep: 629 vs 531",
+     "/decision_counts/hear_reenter: 6 vs 5",
+     "/decision_counts/hear_silence: 25 vs 27",
+     "/decision_counts/hear_switch: 597 vs 692",
+     "/decision_counts/plan_enter: 9 vs 10",
+     "/decision_counts/plan_idle: 111 vs 110",
+     "/decision_counts/plan_keep: 2190 vs 2197"
+    ],
+    "files": [
+     "live_bench/R4G_rt_r4_G_hedge_v1_sung_bt_cal.json",
+     "live_bench/L4_rt_r3_X_regtrkst_v1_sung_bt_cal.json"
+    ]
+   },
+   "sung_low@wired": {
+    "same": true,
+    "first_diffs": [],
+    "files": [
+     "live_bench/R4G_rt_r4_G_hedge_v1_sung_low_wired.json",
+     "live_bench/R3X_rt_r3_X_regtrkst_v1_sung_low_wired.json"
+    ]
+   },
+   "sung_low@micbt_cal": {
+    "same": true,
+    "first_diffs": [],
+    "files": [
+     "live_bench/R4G_rt_r4_G_hedge_v1_sung_low_micbt_cal.json",
+     "live_bench/L4_rt_r3_X_regtrkst_v1_sung_low_micbt_cal.json"
+    ]
+   },
+   "sung_low@bt_cal": {
+    "same": false,
+    "first_diffs": [
+     "/decision_counts/hear_enter: 40 vs 41",
+     "/decision_counts/hear_keep: 632 vs 534",
+     "/decision_counts/hear_reenter: 6 vs 5",
+     "/decision_counts/hear_switch: 611 vs 709",
+     "/decision_counts/plan_keep: 2214 vs 2202",
+     "/decision_counts/plan_switch: 83 vs 95",
+     "/headline/attacks_per100: 69.4831013916501 vs 80.41749502982107",
+     "/headline/changes: 0.07852882703777336 vs 0.10834990059642147"
+    ],
+    "files": [
+     "live_bench/R4G_rt_r4_G_hedge_v1_sung_low_bt_cal.json",
+     "live_bench/L4_rt_r3_X_regtrkst_v1_sung_low_bt_cal.json"
+    ]
+   },
+   "phone_v11": {
+    "same": true,
+    "first_diffs": [],
+    "files": [
+     "live_bench/R4G_rt_r4_G_hedge_v1_phone_v11.json",
+     "live_bench/R3X_rt_r3_X_regtrkst_v1_phone_v11.json"
+    ]
+   },
+   "bench_rt L0.1": {
+    "same": false,
+    "first_diffs": [
+     "/time: '2026-11-02 06:11:19' vs '2026-11-02 03:30:45'"
+    ],
+    "files": [
+     "scores/R4G_rt_r4_G_hedge_v1_L0.1.json",
+     "scores/R3X_rt_r3_X_regtrkst_v1_L0.1.json"
+    ]
+   },
+   "bench_rt L0.1 seed2": {
+    "same": false,
+    "first_diffs": [
+     "/time: '2026-11-02 06:11:42' vs '2026-11-02 03:31:05'"
+    ],
+    "files": [
+     "scores/R4G_rt_r4_G_hedge_v1_L0.1_seed2.json",
+     "scores/R3X_rt_r3_X_regtrkst_v1_L0.1_seed2.json"
+    ]
+   },
+   "attack L0.1": {
+    "same": true,
+    "first_diffs": [],
+    "files": [
+     "attack/R4G_rt_r4_G_hedge_v1_L0.1.json",
+     "attack/R3X_rt_r3_X_regtrkst_v1_L0.1.json"
+    ]
+   },
+   "bench_rt L0.5": {
+    "same": false,
+    "first_diffs": [
+     "/headline/changes: 0.5310517458406253 vs 0.6000959510692516",
+     "/headline/double: 0.07328433316172181 vs 0.07378546287871379",
+     "/headline/harsh: 0.1116802472002395 vs 0.12324260545127937",
+     "/headline/harsh_first: 0.18112200753825433 vs 0.20399492461419405",
+     "/headline/late_entry: 0.013049402373863907 vs 0.01512307168025877",
+     "/headline/nd_first: 0.36317009835312003 vs 0.3343094236435682",
+     "/headline/on_time_right: 0.26185480274082445 vs 0.24146974366227814",
+     "/headline/rt_nd: 0.4805784790229085 vs 0.469652807915357"
+    ],
+    "files": [
+     "scores/R4G_rt_r4_G_hedge_v1_L0.5.json",
+     "scores/L4_rt_r3_X_regtrkst_v1_L0.5.json"
+    ]
+   },
+   "bench_rt L0.5 seed2": {
+    "same": false,
+    "first_diffs": [
+     "/headline/changes: 0.5356657789527794 vs 0.5997234356457132",
+     "/headline/double: 0.07094313599786517 vs 0.07327130129374657",
+     "/headline/harsh: 0.11133421317816956 vs 0.122148249739178",
+     "/headline/harsh_first: 0.18223936732795096 vs 0.2041672365263474",
+     "/headline/late_entry: 0.013782385401151379 vs 0.01437936269354931",
+     "/headline/nd_first: 0.3627632777522065 vs 0.3381317715133102",
+     "/headline/on_time_right: 0.25732702532020363 vs 0.24351850259689586",
+     "/headline/rt_nd: 0.48205558684002003 vs 0.4733308741959769"
+    ],
+    "files": [
+     "scores/R4G_rt_r4_G_hedge_v1_L0.5_seed2.json",
+     "scores/L4_rt_r3_X_regtrkst_v1_L0.5_seed2.json"
+    ]
+   },
+   "attack L0.5": {
+    "same": false,
+    "first_diffs": [
+     "/headline/attack_miss_per100: 26.074643183294715 vs 31.004569025857055",
+     "/headline/attacks_per100: 53.51070334247363 vs 61.06390757509268",
+     "/headline/fresh_clash_per100: 4.91258914580484 vs 6.910640213885911",
+     "/headline/harsh_bleed: 0.09594970718812701 vs 0.10114415905541349",
+     "/headline/harsh_fresh: 0.015730540012112406 vs 0.022098446395865806",
+     "/rows/bach/attack_miss_per100: 23.26043737574553 vs 27.13717693836978",
+     "/rows/bach/attacks_per100: 63.916500994035786 vs 72.56461232604374",
+     "/rows/bach/fresh_clash_per100: 2.8827037773359843 vs 5.069582504970179"
+    ],
+    "files": [
+     "attack/R4G_rt_r4_G_hedge_v1_L0.5.json",
+     "attack/L4_rt_r3_X_regtrkst_v1_L0.5.json"
+    ]
+   }
+  },
+  "r4_H_lagk15hd_v1": {
+   "sung@wired": {
+    "same": true,
+    "first_diffs": [],
+    "files": [
+     "live_bench/R4H_rt_r4_H_lagk15hd_v1_sung_wired.json",
+     "live_bench/R3X_rt_r3_X_regtrkst_v1_sung_wired.json"
+    ]
+   },
+   "sung@micbt_cal": {
+    "same": true,
+    "first_diffs": [],
+    "files": [
+     "live_bench/R4H_rt_r4_H_lagk15hd_v1_sung_micbt_cal.json",
+     "live_bench/L4_rt_r3_X_regtrkst_v1_sung_micbt_cal.json"
+    ]
+   },
+   "sung@bt_cal": {
+    "same": false,
+    "first_diffs": [
+     "/decision_counts/dropped_unstarted (missing on one side)",
+     "/decision_counts/hear_enter: 45 vs 48",
+     "/decision_counts/hear_idle: 2 vs 1",
+     "/decision_counts/hear_keep: 649 vs 531",
+     "/decision_counts/hear_reenter: 8 vs 5",
+     "/decision_counts/hear_rest: 1 vs 2",
+     "/decision_counts/hear_silence: 21 vs 27",
+     "/decision_counts/hear_switch: 580 vs 692"
+    ],
+    "files": [
+     "live_bench/R4H_rt_r4_H_lagk15hd_v1_sung_bt_cal.json",
+     "live_bench/L4_rt_r3_X_regtrkst_v1_sung_bt_cal.json"
+    ]
+   },
+   "sung_low@wired": {
+    "same": true,
+    "first_diffs": [],
+    "files": [
+     "live_bench/R4H_rt_r4_H_lagk15hd_v1_sung_low_wired.json",
+     "live_bench/R3X_rt_r3_X_regtrkst_v1_sung_low_wired.json"
+    ]
+   },
+   "sung_low@micbt_cal": {
+    "same": true,
+    "first_diffs": [],
+    "files": [
+     "live_bench/R4H_rt_r4_H_lagk15hd_v1_sung_low_micbt_cal.json",
+     "live_bench/L4_rt_r3_X_regtrkst_v1_sung_low_micbt_cal.json"
+    ]
+   },
+   "sung_low@bt_cal": {
+    "same": false,
+    "first_diffs": [
+     "/decision_counts/dropped_unstarted (missing on one side)",
+     "/decision_counts/hear_enter: 35 vs 41",
+     "/decision_counts/hear_keep: 663 vs 534",
+     "/decision_counts/hear_reenter: 7 vs 5",
+     "/decision_counts/hear_rest: 1 vs 2",
+     "/decision_counts/hear_silence: 10 vs 14",
+     "/decision_counts/hear_switch: 589 vs 709",
+     "/decision_counts/plan_idle: 84 vs 97"
+    ],
+    "files": [
+     "live_bench/R4H_rt_r4_H_lagk15hd_v1_sung_low_bt_cal.json",
+     "live_bench/L4_rt_r3_X_regtrkst_v1_sung_low_bt_cal.json"
+    ]
+   },
+   "phone_v11": {
+    "same": true,
+    "first_diffs": [],
+    "files": [
+     "live_bench/R4H_rt_r4_H_lagk15hd_v1_phone_v11.json",
+     "live_bench/R3X_rt_r3_X_regtrkst_v1_phone_v11.json"
+    ]
+   },
+   "bench_rt L0.1": {
+    "same": false,
+    "first_diffs": [
+     "/time: '2026-11-02 05:54:22' vs '2026-11-02 03:30:45'"
+    ],
+    "files": [
+     "scores/R4H_rt_r4_H_lagk15hd_v1_L0.1.json",
+     "scores/R3X_rt_r3_X_regtrkst_v1_L0.1.json"
+    ]
+   },
+   "bench_rt L0.1 seed2": {
+    "same": false,
+    "first_diffs": [
+     "/time: '2026-11-02 05:54:44' vs '2026-11-02 03:31:05'"
+    ],
+    "files": [
+     "scores/R4H_rt_r4_H_lagk15hd_v1_L0.1_seed2.json",
+     "scores/R3X_rt_r3_X_regtrkst_v1_L0.1_seed2.json"
+    ]
+   },
+   "attack L0.1": {
+    "same": true,
+    "first_diffs": [],
+    "files": [
+     "attack/R4H_rt_r4_H_lagk15hd_v1_L0.1.json",
+     "attack/R3X_rt_r3_X_regtrkst_v1_L0.1.json"
+    ]
+   },
+   "bench_rt L0.5": {
+    "same": false,
+    "first_diffs": [
+     "/headline/changes: 0.5742070242957845 vs 0.6000959510692516",
+     "/headline/double: 0.06899298093623318 vs 0.07378546287871379",
+     "/headline/harsh: 0.09881826503339539 vs 0.12324260545127937",
+     "/headline/harsh_first: 0.15734126822128455 vs 0.20399492461419405",
+     "/headline/late_entry: 0.010124133435978955 vs 0.01512307168025877",
+     "/headline/nd_first: 0.37851663720880374 vs 0.3343094236435682",
+     "/headline/on_time_right: 0.26583327277318924 vs 0.24146974366227814",
+     "/headline/rt_nd: 0.48931883353220695 vs 0.469652807915357"
+    ],
+    "files": [
+     "scores/R4H_rt_r4_H_lagk15hd_v1_L0.5.json",
+     "scores/L4_rt_r3_X_regtrkst_v1_L0.5.json"
+    ]
+   },
+   "bench_rt L0.5 seed2": {
+    "same": false,
+    "first_diffs": [
+     "/headline/changes: 0.57900897495629 vs 0.5997234356457132",
+     "/headline/double: 0.06748475910635318 vs 0.07327130129374657",
+     "/headline/harsh: 0.09811584006969065 vs 0.122148249739178",
+     "/headline/harsh_first: 0.15740923621709743 vs 0.2041672365263474",
+     "/headline/late_entry: 0.009983143648430823 vs 0.01437936269354931",
+     "/headline/nd_first: 0.3808936236884908 vs 0.3381317715133102",
+     "/headline/on_time_right: 0.26393840411862446 vs 0.24351850259689586",
+     "/headline/rt_nd: 0.48829381197025257 vs 0.4733308741959769"
+    ],
+    "files": [
+     "scores/R4H_rt_r4_H_lagk15hd_v1_L0.5_seed2.json",
+     "scores/L4_rt_r3_X_regtrkst_v1_L0.5_seed2.json"
+    ]
+   },
+   "attack L0.5": {
+    "same": false,
+    "first_diffs": [
+     "/headline/attack_miss_per100: 33.454487719579156 vs 31.004569025857055",
+     "/headline/attacks_per100: 63.58020845170746 vs 61.06390757509268",
+     "/headline/fresh_clash_per100: 6.410961083463863 vs 6.910640213885911",
+     "/headline/harsh_bleed: 0.07871656090796149 vs 0.10114415905541349",
+     "/headline/harsh_fresh: 0.020101704125433852 vs 0.022098446395865806",
+     "/rows/bach/attack_miss_per100: 36.97813121272366 vs 27.13717693836978",
+     "/rows/bach/attacks_per100: 81.90854870775348 vs 72.56461232604374",
+     "/rows/bach/fresh_clash_per100: 5.566600397614314 vs 5.069582504970179"
+    ],
+    "files": [
+     "attack/R4H_rt_r4_H_lagk15hd_v1_L0.5.json",
+     "attack/L4_rt_r3_X_regtrkst_v1_L0.5.json"
+    ]
+   }
+  },
+  "r4_H_lagk15_v1": {
+   "sung@wired": {
+    "same": true,
+    "first_diffs": [],
+    "files": [
+     "live_bench/R4H_rt_r4_H_lagk15_v1_sung_wired.json",
+     "live_bench/R3X_rt_r3_X_regtrkst_v1_sung_wired.json"
+    ]
+   },
+   "sung@micbt_cal": {
+    "same": true,
+    "first_diffs": [],
+    "files": [
+     "live_bench/R4H_rt_r4_H_lagk15_v1_sung_micbt_cal.json",
+     "live_bench/L4_rt_r3_X_regtrkst_v1_sung_micbt_cal.json"
+    ]
+   },
+   "sung@bt_cal": {
+    "same": false,
+    "first_diffs": [
+     "/decision_counts/dropped_unstarted (missing on one side)",
+     "/decision_counts/hear_enter: 45 vs 48",
+     "/decision_counts/hear_idle: 2 vs 1",
+     "/decision_counts/hear_keep: 637 vs 531",
+     "/decision_counts/hear_reenter: 8 vs 5",
+     "/decision_counts/hear_rest: 1 vs 2",
+     "/decision_counts/hear_silence: 21 vs 27",
+     "/decision_counts/hear_switch: 592 vs 692"
+    ],
+    "files": [
+     "live_bench/R4H_rt_r4_H_lagk15_v1_sung_bt_cal.json",
+     "live_bench/L4_rt_r3_X_regtrkst_v1_sung_bt_cal.json"
+    ]
+   },
+   "sung_low@wired": {
+    "same": true,
+    "first_diffs": [],
+    "files": [
+     "live_bench/R4H_rt_r4_H_lagk15_v1_sung_low_wired.json",
+     "live_bench/R3X_rt_r3_X_regtrkst_v1_sung_low_wired.json"
+    ]
+   },
+   "sung_low@micbt_cal": {
+    "same": true,
+    "first_diffs": [],
+    "files": [
+     "live_bench/R4H_rt_r4_H_lagk15_v1_sung_low_micbt_cal.json",
+     "live_bench/L4_rt_r3_X_regtrkst_v1_sung_low_micbt_cal.json"
+    ]
+   },
+   "sung_low@bt_cal": {
+    "same": false,
+    "first_diffs": [
+     "/decision_counts/dropped_unstarted (missing on one side)",
+     "/decision_counts/hear_enter: 36 vs 41",
+     "/decision_counts/hear_keep: 648 vs 534",
+     "/decision_counts/hear_reenter: 7 vs 5",
+     "/decision_counts/hear_rest: 1 vs 2",
+     "/decision_counts/hear_silence: 11 vs 14",
+     "/decision_counts/hear_switch: 602 vs 709",
+     "/decision_counts/plan_idle: 86 vs 97"
+    ],
+    "files": [
+     "live_bench/R4H_rt_r4_H_lagk15_v1_sung_low_bt_cal.json",
+     "live_bench/L4_rt_r3_X_regtrkst_v1_sung_low_bt_cal.json"
+    ]
+   },
+   "phone_v11": {
+    "same": true,
+    "first_diffs": [],
+    "files": [
+     "live_bench/R4H_rt_r4_H_lagk15_v1_phone_v11.json",
+     "live_bench/R3X_rt_r3_X_regtrkst_v1_phone_v11.json"
+    ]
+   },
+   "bench_rt L0.1": {
+    "same": false,
+    "first_diffs": [
+     "/time: '2026-11-02 05:55:28' vs '2026-11-02 03:30:45'"
+    ],
+    "files": [
+     "scores/R4H_rt_r4_H_lagk15_v1_L0.1.json",
+     "scores/R3X_rt_r3_X_regtrkst_v1_L0.1.json"
+    ]
+   },
+   "bench_rt L0.1 seed2": {
+    "same": false,
+    "first_diffs": [
+     "/time: '2026-11-02 05:55:50' vs '2026-11-02 03:31:05'"
+    ],
+    "files": [
+     "scores/R4H_rt_r4_H_lagk15_v1_L0.1_seed2.json",
+     "scores/R3X_rt_r3_X_regtrkst_v1_L0.1_seed2.json"
+    ]
+   },
+   "attack L0.1": {
+    "same": true,
+    "first_diffs": [],
+    "files": [
+     "attack/R4H_rt_r4_H_lagk15_v1_L0.1.json",
+     "attack/R3X_rt_r3_X_regtrkst_v1_L0.1.json"
+    ]
+   },
+   "bench_rt L0.5": {
+    "same": false,
+    "first_diffs": [
+     "/headline/changes: 0.584415787852467 vs 0.6000959510692516",
+     "/headline/double: 0.07387447438069344 vs 0.07378546287871379",
+     "/headline/harsh: 0.10657505535085841 vs 0.12324260545127937",
+     "/headline/harsh_first: 0.1699126541844601 vs 0.20399492461419405",
+     "/headline/late_entry: 0.010279696009896278 vs 0.01512307168025877",
+     "/headline/nd_first: 0.3635918548088356 vs 0.3343094236435682",
+     "/headline/on_time_right: 0.2617596052065948 vs 0.24146974366227814",
+     "/headline/rt_nd: 0.48048691608465 vs 0.469652807915357"
+    ],
+    "files": [
+     "scores/R4H_rt_r4_H_lagk15_v1_L0.5.json",
+     "scores/L4_rt_r3_X_regtrkst_v1_L0.5.json"
+    ]
+   },
+   "bench_rt L0.5 seed2": {
+    "same": false,
+    "first_diffs": [
+     "/headline/changes: 0.5861739541316633 vs 0.5997234356457132",
+     "/headline/double: 0.07199009151949592 vs 0.07327130129374657",
+     "/headline/harsh: 0.10629955350544257 vs 0.122148249739178",
+     "/headline/harsh_first: 0.17123175115057193 vs 0.2041672365263474",
+     "/headline/late_entry: 0.01028985136297946 vs 0.01437936269354931",
+     "/headline/nd_first: 0.36595663120265803 vs 0.3381317715133102",
+     "/headline/on_time_right: 0.26313908210353415 vs 0.24351850259689586",
+     "/headline/rt_nd: 0.4815587582479064 vs 0.4733308741959769"
+    ],
+    "files": [
+     "scores/R4H_rt_r4_H_lagk15_v1_L0.5_seed2.json",
+     "scores/L4_rt_r3_X_regtrkst_v1_L0.5_seed2.json"
+    ]
+   },
+   "attack L0.5": {
+    "same": false,
+    "first_diffs": [
+     "/headline/attack_miss_per100: 35.84539985409307 vs 31.004569025857055",
+     "/headline/attacks_per100: 67.17150767580469 vs 61.06390757509268",
+     "/headline/fresh_clash_per100: 7.580385677351064 vs 6.910640213885911",
+     "/headline/harsh_bleed: 0.08297901947826733 vs 0.10114415905541349",
+     "/headline/harsh_fresh: 0.02359603587259094 vs 0.022098446395865806",
+     "/rows/bach/attack_miss_per100: 41.94831013916501 vs 27.13717693836978",
+     "/rows/bach/attacks_per100: 91.84890656063618 vs 72.56461232604374",
+     "/rows/bach/fresh_clash_per100: 7.256461232604374 vs 5.069582504970179"
+    ],
+    "files": [
+     "attack/R4H_rt_r4_H_lagk15_v1_L0.5.json",
+     "attack/L4_rt_r3_X_regtrkst_v1_L0.5.json"
+    ]
+   }
+  },
+  "r4_H_lagk15hq_v1": {
+   "sung@wired": {
+    "same": true,
+    "first_diffs": [],
+    "files": [
+     "live_bench/R4H_rt_r4_H_lagk15hq_v1_sung_wired.json",
+     "live_bench/R3X_rt_r3_X_regtrkst_v1_sung_wired.json"
+    ]
+   },
+   "sung@micbt_cal": {
+    "same": true,
+    "first_diffs": [],
+    "files": [
+     "live_bench/R4H_rt_r4_H_lagk15hq_v1_sung_micbt_cal.json",
+     "live_bench/L4_rt_r3_X_regtrkst_v1_sung_micbt_cal.json"
+    ]
+   },
+   "sung@bt_cal": {
+    "same": false,
+    "first_diffs": [
+     "/decision_counts/dropped_unstarted (missing on one side)",
+     "/decision_counts/hear_enter: 45 vs 48",
+     "/decision_counts/hear_idle: 2 vs 1",
+     "/decision_counts/hear_keep: 645 vs 531",
+     "/decision_counts/hear_reenter: 8 vs 5",
+     "/decision_counts/hear_rest: 1 vs 2",
+     "/decision_counts/hear_silence: 21 vs 27",
+     "/decision_counts/hear_switch: 584 vs 692"
+    ],
+    "files": [
+     "live_bench/R4H_rt_r4_H_lagk15hq_v1_sung_bt_cal.json",
+     "live_bench/L4_rt_r3_X_regtrkst_v1_sung_bt_cal.json"
+    ]
+   },
+   "sung_low@wired": {
+    "same": true,
+    "first_diffs": [],
+    "files": [
+     "live_bench/R4H_rt_r4_H_lagk15hq_v1_sung_low_wired.json",
+     "live_bench/R3X_rt_r3_X_regtrkst_v1_sung_low_wired.json"
+    ]
+   },
+   "sung_low@micbt_cal": {
+    "same": true,
+    "first_diffs": [],
+    "files": [
+     "live_bench/R4H_rt_r4_H_lagk15hq_v1_sung_low_micbt_cal.json",
+     "live_bench/L4_rt_r3_X_regtrkst_v1_sung_low_micbt_cal.json"
+    ]
+   },
+   "sung_low@bt_cal": {
+    "same": false,
+    "first_diffs": [
+     "/decision_counts/dropped_unstarted (missing on one side)",
+     "/decision_counts/hear_enter: 35 vs 41",
+     "/decision_counts/hear_keep: 658 vs 534",
+     "/decision_counts/hear_reenter: 7 vs 5",
+     "/decision_counts/hear_rest: 1 vs 2",
+     "/decision_counts/hear_silence: 10 vs 14",
+     "/decision_counts/hear_switch: 594 vs 709",
+     "/decision_counts/plan_idle: 84 vs 97"
+    ],
+    "files": [
+     "live_bench/R4H_rt_r4_H_lagk15hq_v1_sung_low_bt_cal.json",
+     "live_bench/L4_rt_r3_X_regtrkst_v1_sung_low_bt_cal.json"
+    ]
+   },
+   "phone_v11": {
+    "same": true,
+    "first_diffs": [],
+    "files": [
+     "live_bench/R4H_rt_r4_H_lagk15hq_v1_phone_v11.json",
+     "live_bench/R3X_rt_r3_X_regtrkst_v1_phone_v11.json"
+    ]
+   },
+   "bench_rt L0.1": {
+    "same": false,
+    "first_diffs": [
+     "/time: '2026-11-02 05:56:42' vs '2026-11-02 03:30:45'"
+    ],
+    "files": [
+     "scores/R4H_rt_r4_H_lagk15hq_v1_L0.1.json",
+     "scores/R3X_rt_r3_X_regtrkst_v1_L0.1.json"
+    ]
+   },
+   "bench_rt L0.1 seed2": {
+    "same": false,
+    "first_diffs": [
+     "/time: '2026-11-02 05:57:04' vs '2026-11-02 03:31:05'"
+    ],
+    "files": [
+     "scores/R4H_rt_r4_H_lagk15hq_v1_L0.1_seed2.json",
+     "scores/R3X_rt_r3_X_regtrkst_v1_L0.1_seed2.json"
+    ]
+   },
+   "attack L0.1": {
+    "same": true,
+    "first_diffs": [],
+    "files": [
+     "attack/R4H_rt_r4_H_lagk15hq_v1_L0.1.json",
+     "attack/R3X_rt_r3_X_regtrkst_v1_L0.1.json"
+    ]
+   },
+   "bench_rt L0.5": {
+    "same": false,
+    "first_diffs": [
+     "/headline/changes: 0.5751630556961106 vs 0.6000959510692516",
+     "/headline/double: 0.06935207976718044 vs 0.07378546287871379",
+     "/headline/harsh: 0.10061875202436973 vs 0.12324260545127937",
+     "/headline/harsh_first: 0.15962943065592378 vs 0.20399492461419405",
+     "/headline/late_entry: 0.010260788129091558 vs 0.01512307168025877",
+     "/headline/nd_first: 0.3747810262955871 vs 0.3343094236435682",
+     "/headline/on_time_right: 0.26664767692514757 vs 0.24146974366227814",
+     "/headline/rt_nd: 0.48677720260610075 vs 0.469652807915357"
+    ],
+    "files": [
+     "scores/R4H_rt_r4_H_lagk15hq_v1_L0.5.json",
+     "scores/L4_rt_r3_X_regtrkst_v1_L0.5.json"
+    ]
+   },
+   "bench_rt L0.5 seed2": {
+    "same": false,
+    "first_diffs": [
+     "/headline/changes: 0.5814792140775082 vs 0.5997234356457132",
+     "/headline/double: 0.06849196357507836 vs 0.07327130129374657",
+     "/headline/harsh: 0.10103726849513477 vs 0.122148249739178",
+     "/headline/harsh_first: 0.16248836211964063 vs 0.2041672365263474",
+     "/headline/late_entry: 0.010099047806104605 vs 0.01437936269354931",
+     "/headline/nd_first: 0.3755896368582738 vs 0.3381317715133102",
+     "/headline/on_time_right: 0.26457957724325853 vs 0.24351850259689586",
+     "/headline/rt_nd: 0.48593355251256926 vs 0.4733308741959769"
+    ],
+    "files": [
+     "scores/R4H_rt_r4_H_lagk15hq_v1_L0.5_seed2.json",
+     "scores/L4_rt_r3_X_regtrkst_v1_L0.5_seed2.json"
+    ]
+   },
+   "attack L0.5": {
+    "same": false,
+    "first_diffs": [
+     "/headline/attack_miss_per100: 34.24978718655116 vs 31.004569025857055",
+     "/headline/attacks_per100: 64.95848821353961 vs 61.06390757509268",
+     "/headline/fresh_clash_per100: 6.747782004851558 vs 6.910640213885911",
+     "/headline/harsh_bleed: 0.07949439510273659 vs 0.10114415905541349",
+     "/headline/harsh_fresh: 0.021124356921633072 vs 0.022098446395865806",
+     "/rows/bach/attack_miss_per100: 39.562624254473164 vs 27.13717693836978",
+     "/rows/bach/attacks_per100: 86.58051689860835 vs 72.56461232604374",
+     "/rows/bach/fresh_clash_per100: 5.964214711729622 vs 5.069582504970179"
+    ],
+    "files": [
+     "attack/R4H_rt_r4_H_lagk15hq_v1_L0.5.json",
+     "attack/L4_rt_r3_X_regtrkst_v1_L0.5.json"
+    ]
+   }
+  },
+  "r4_H_lagk2hd_v1": {
+   "sung@wired": {
+    "same": true,
+    "first_diffs": [],
+    "files": [
+     "live_bench/R4H_rt_r4_H_lagk2hd_v1_sung_wired.json",
+     "live_bench/R3X_rt_r3_X_regtrkst_v1_sung_wired.json"
+    ]
+   },
+   "sung@micbt_cal": {
+    "same": true,
+    "first_diffs": [],
+    "files": [
+     "live_bench/R4H_rt_r4_H_lagk2hd_v1_sung_micbt_cal.json",
+     "live_bench/L4_rt_r3_X_regtrkst_v1_sung_micbt_cal.json"
+    ]
+   },
+   "sung@bt_cal": {
+    "same": false,
+    "first_diffs": [
+     "/decision_counts/dropped_unstarted (missing on one side)",
+     "/decision_counts/hear_enter: 47 vs 48",
+     "/decision_counts/hear_idle: 2 vs 1",
+     "/decision_counts/hear_keep: 637 vs 531",
+     "/decision_counts/hear_reenter: 7 vs 5",
+     "/decision_counts/hear_rest: 1 vs 2",
+     "/decision_counts/hear_silence: 22 vs 27",
+     "/decision_counts/hear_switch: 590 vs 692"
+    ],
+    "files": [
+     "live_bench/R4H_rt_r4_H_lagk2hd_v1_sung_bt_cal.json",
+     "live_bench/L4_rt_r3_X_regtrkst_v1_sung_bt_cal.json"
+    ]
+   },
+   "sung_low@wired": {
+    "same": true,
+    "first_diffs": [],
+    "files": [
+     "live_bench/R4H_rt_r4_H_lagk2hd_v1_sung_low_wired.json",
+     "live_bench/R3X_rt_r3_X_regtrkst_v1_sung_low_wired.json"
+    ]
+   },
+   "sung_low@micbt_cal": {
+    "same": true,
+    "first_diffs": [],
+    "files": [
+     "live_bench/R4H_rt_r4_H_lagk2hd_v1_sung_low_micbt_cal.json",
+     "live_bench/L4_rt_r3_X_regtrkst_v1_sung_low_micbt_cal.json"
+    ]
+   },
+   "sung_low@bt_cal": {
+    "same": false,
+    "first_diffs": [
+     "/decision_counts/dropped_unstarted (missing on one side)",
+     "/decision_counts/hear_enter: 36 vs 41",
+     "/decision_counts/hear_keep: 639 vs 534",
+     "/decision_counts/hear_reenter: 7 vs 5",
+     "/decision_counts/hear_rest: 1 vs 2",
+     "/decision_counts/hear_silence: 10 vs 14",
+     "/decision_counts/hear_switch: 612 vs 709",
+     "/decision_counts/plan_enter: 3 vs 4"
+    ],
+    "files": [
+     "live_bench/R4H_rt_r4_H_lagk2hd_v1_sung_low_bt_cal.json",
+     "live_bench/L4_rt_r3_X_regtrkst_v1_sung_low_bt_cal.json"
+    ]
+   },
+   "phone_v11": {
+    "same": true,
+    "first_diffs": [],
+    "files": [
+     "live_bench/R4H_rt_r4_H_lagk2hd_v1_phone_v11.json",
+     "live_bench/R3X_rt_r3_X_regtrkst_v1_phone_v11.json"
+    ]
+   },
+   "bench_rt L0.1": {
+    "same": false,
+    "first_diffs": [
+     "/time: '2026-11-02 05:57:46' vs '2026-11-02 03:30:45'"
+    ],
+    "files": [
+     "scores/R4H_rt_r4_H_lagk2hd_v1_L0.1.json",
+     "scores/R3X_rt_r3_X_regtrkst_v1_L0.1.json"
+    ]
+   },
+   "bench_rt L0.1 seed2": {
+    "same": false,
+    "first_diffs": [
+     "/time: '2026-11-02 05:58:08' vs '2026-11-02 03:31:05'"
+    ],
+    "files": [
+     "scores/R4H_rt_r4_H_lagk2hd_v1_L0.1_seed2.json",
+     "scores/R3X_rt_r3_X_regtrkst_v1_L0.1_seed2.json"
+    ]
+   },
+   "attack L0.1": {
+    "same": true,
+    "first_diffs": [],
+    "files": [
+     "attack/R4H_rt_r4_H_lagk2hd_v1_L0.1.json",
+     "attack/R3X_rt_r3_X_regtrkst_v1_L0.1.json"
+    ]
+   },
+   "bench_rt L0.5": {
+    "same": false,
+    "first_diffs": [
+     "/headline/changes: 0.5716413942941476 vs 0.6000959510692516",
+     "/headline/double: 0.06914224141677622 vs 0.07378546287871379",
+     "/headline/harsh: 0.09930674594355596 vs 0.12324260545127937",
+     "/headline/harsh_first: 0.1582883034778335 vs 0.20399492461419405",
+     "/headline/late_entry: 0.010417212550752385 vs 0.01512307168025877",
+     "/headline/nd_first: 0.37816358392675686 vs 0.3343094236435682",
+     "/headline/on_time_right: 0.26699343669846265 vs 0.24146974366227814",
+     "/headline/rt_nd: 0.48954496063010916 vs 0.469652807915357"
+    ],
+    "files": [
+     "scores/R4H_rt_r4_H_lagk2hd_v1_L0.5.json",
+     "scores/L4_rt_r3_X_regtrkst_v1_L0.5.json"
+    ]
+   },
+   "bench_rt L0.5 seed2": {
+    "same": false,
+    "first_diffs": [
+     "/headline/changes: 0.5777730428932615 vs 0.5997234356457132",
+     "/headline/double: 0.06734053291666925 vs 0.07327130129374657",
+     "/headline/harsh: 0.09913185156132934 vs 0.122148249739178",
+     "/headline/harsh_first: 0.15945125668770915 vs 0.2041672365263474",
+     "/headline/late_entry: 0.010818922295058502 vs 0.01437936269354931",
+     "/headline/nd_first: 0.37934778822398174 vs 0.3381317715133102",
+     "/headline/on_time_right: 0.2638271700342945 vs 0.24351850259689586",
+     "/headline/rt_nd: 0.48873412472700933 vs 0.4733308741959769"
+    ],
+    "files": [
+     "scores/R4H_rt_r4_H_lagk2hd_v1_L0.5_seed2.json",
+     "scores/L4_rt_r3_X_regtrkst_v1_L0.5_seed2.json"
+    ]
+   },
+   "attack L0.5": {
+    "same": false,
+    "first_diffs": [
+     "/headline/attack_miss_per100: 32.313020436108815 vs 31.004569025857055",
+     "/headline/attacks_per100: 62.17036278690994 vs 61.06390757509268",
+     "/headline/fresh_clash_per100: 6.091297726608353 vs 6.910640213885911",
+     "/headline/harsh_bleed: 0.08005997817798774 vs 0.10114415905541349",
+     "/headline/harsh_fresh: 0.01924676776556818 vs 0.022098446395865806",
+     "/rows/bach/attack_miss_per100: 34.39363817097416 vs 27.13717693836978",
+     "/rows/bach/attacks_per100: 78.52882703777335 vs 72.56461232604374",
+     "/rows/bach/fresh_clash_per100: 4.870775347912525 vs 5.069582504970179"
+    ],
+    "files": [
+     "attack/R4H_rt_r4_H_lagk2hd_v1_L0.5.json",
+     "attack/L4_rt_r3_X_regtrkst_v1_L0.5.json"
+    ]
+   }
+  },
+  "r4_X_hgsafe_v1": {
+   "sung@wired": {
+    "same": true,
+    "first_diffs": [],
+    "files": [
+     "live_bench/R4X_rt_r4_X_hgsafe_v1_sung_wired.json",
+     "live_bench/R3X_rt_r3_X_regtrkst_v1_sung_wired.json"
+    ]
+   },
+   "sung@micbt_cal": {
+    "same": true,
+    "first_diffs": [],
+    "files": [
+     "live_bench/R4X_rt_r4_X_hgsafe_v1_sung_micbt_cal.json",
+     "live_bench/L4_rt_r3_X_regtrkst_v1_sung_micbt_cal.json"
+    ]
+   },
+   "sung@bt_cal": {
+    "same": false,
+    "first_diffs": [
+     "/decision_counts/dropped_unstarted (missing on one side)",
+     "/decision_counts/hear_enter: 37 vs 48",
+     "/decision_counts/hear_idle: 2 vs 1",
+     "/decision_counts/hear_keep: 696 vs 531",
+     "/decision_counts/hear_reenter: 8 vs 5",
+     "/decision_counts/hear_rest: 1 vs 2",
+     "/decision_counts/hear_silence: 12 vs 27",
+     "/decision_counts/hear_switch: 550 vs 692"
+    ],
+    "files": [
+     "live_bench/R4X_rt_r4_X_hgsafe_v1_sung_bt_cal.json",
+     "live_bench/L4_rt_r3_X_regtrkst_v1_sung_bt_cal.json"
+    ]
+   },
+   "sung_low@wired": {
+    "same": true,
+    "first_diffs": [],
+    "files": [
+     "live_bench/R4X_rt_r4_X_hgsafe_v1_sung_low_wired.json",
+     "live_bench/R3X_rt_r3_X_regtrkst_v1_sung_low_wired.json"
+    ]
+   },
+   "sung_low@micbt_cal": {
+    "same": true,
+    "first_diffs": [],
+    "files": [
+     "live_bench/R4X_rt_r4_X_hgsafe_v1_sung_low_micbt_cal.json",
+     "live_bench/L4_rt_r3_X_regtrkst_v1_sung_low_micbt_cal.json"
+    ]
+   },
+   "sung_low@bt_cal": {
+    "same": false,
+    "first_diffs": [
+     "/decision_counts/dropped_unstarted (missing on one side)",
+     "/decision_counts/hear_enter: 30 vs 41",
+     "/decision_counts/hear_idle (missing on one side)",
+     "/decision_counts/hear_keep: 708 vs 534",
+     "/decision_counts/hear_reenter: 7 vs 5",
+     "/decision_counts/hear_rest: 1 vs 2",
+     "/decision_counts/hear_silence: 4 vs 14",
+     "/decision_counts/hear_switch: 556 vs 709"
+    ],
+    "files": [
+     "live_bench/R4X_rt_r4_X_hgsafe_v1_sung_low_bt_cal.json",
+     "live_bench/L4_rt_r3_X_regtrkst_v1_sung_low_bt_cal.json"
+    ]
+   },
+   "phone_v11": {
+    "same": true,
+    "first_diffs": [],
+    "files": [
+     "live_bench/R4X_rt_r4_X_hgsafe_v1_phone_v11.json",
+     "live_bench/R3X_rt_r3_X_regtrkst_v1_phone_v11.json"
+    ]
+   },
+   "bench_rt L0.1": {
+    "same": false,
+    "first_diffs": [
+     "/time: '2026-11-02 06:26:18' vs '2026-11-02 03:30:45'"
+    ],
+    "files": [
+     "scores/R4X_rt_r4_X_hgsafe_v1_L0.1.json",
+     "scores/R3X_rt_r3_X_regtrkst_v1_L0.1.json"
+    ]
+   },
+   "bench_rt L0.1 seed2": {
+    "same": false,
+    "first_diffs": [
+     "/time: '2026-11-02 06:26:41' vs '2026-11-02 03:31:05'"
+    ],
+    "files": [
+     "scores/R4X_rt_r4_X_hgsafe_v1_L0.1_seed2.json",
+     "scores/R3X_rt_r3_X_regtrkst_v1_L0.1_seed2.json"
+    ]
+   },
+   "attack L0.1": {
+    "same": true,
+    "first_diffs": [],
+    "files": [
+     "attack/R4X_rt_r4_X_hgsafe_v1_L0.1.json",
+     "attack/R3X_rt_r3_X_regtrkst_v1_L0.1.json"
+    ]
+   },
+   "bench_rt L0.5": {
+    "same": false,
+    "first_diffs": [
+     "/headline/changes: 0.5304613829856264 vs 0.6000959510692516",
+     "/headline/double: 0.07240875373043561 vs 0.07378546287871379",
+     "/headline/harsh: 0.09971103507581336 vs 0.12324260545127937",
+     "/headline/harsh_first: 0.15626897162146078 vs 0.20399492461419405",
+     "/headline/late_entry: 0.006743298898517061 vs 0.01512307168025877",
+     "/headline/nd_first: 0.387819195670728 vs 0.3343094236435682",
+     "/headline/on_time_right: 0.27679941516232465 vs 0.24146974366227814",
+     "/headline/rt_nd: 0.49040392052114107 vs 0.469652807915357"
+    ],
+    "files": [
+     "scores/R4X_rt_r4_X_hgsafe_v1_L0.5.json",
+     "scores/L4_rt_r3_X_regtrkst_v1_L0.5.json"
+    ]
+   },
+   "bench_rt L0.5 seed2": {
+    "same": false,
+    "first_diffs": [
+     "/headline/changes: 0.5345714681593997 vs 0.5997234356457132",
+     "/headline/double: 0.07005670428324878 vs 0.07327130129374657",
+     "/headline/harsh: 0.10106434752559405 vs 0.122148249739178",
+     "/headline/harsh_first: 0.15972255142161534 vs 0.2041672365263474",
+     "/headline/late_entry: 0.006641859559040366 vs 0.01437936269354931",
+     "/headline/nd_first: 0.38914406193701034 vs 0.3381317715133102",
+     "/headline/on_time_right: 0.27552226334462165 vs 0.24351850259689586",
+     "/headline/rt_nd: 0.49163242444000066 vs 0.4733308741959769"
+    ],
+    "files": [
+     "scores/R4X_rt_r4_X_hgsafe_v1_L0.5_seed2.json",
+     "scores/L4_rt_r3_X_regtrkst_v1_L0.5_seed2.json"
+    ]
+   },
+   "attack L0.5": {
+    "same": false,
+    "first_diffs": [
+     "/headline/attack_miss_per100: 29.7099092276597 vs 31.004569025857055",
+     "/headline/attacks_per100: 58.00738563137029 vs 61.06390757509268",
+     "/headline/fresh_clash_per100: 5.3571578458022575 vs 6.910640213885911",
+     "/headline/harsh_bleed: 0.08295453008189865 vs 0.10114415905541349",
+     "/headline/harsh_fresh: 0.01675650499391461 vs 0.022098446395865806",
+     "/rows/bach/attack_miss_per100: 34.89065606361829 vs 27.13717693836978",
+     "/rows/bach/attacks_per100: 79.02584493041749 vs 72.56461232604374",
+     "/rows/bach/fresh_clash_per100: 4.174950298210735 vs 5.069582504970179"
+    ],
+    "files": [
+     "attack/R4X_rt_r4_X_hgsafe_v1_L0.5.json",
+     "attack/L4_rt_r3_X_regtrkst_v1_L0.5.json"
+    ]
+   }
+  },
+  "r4_X_hdgsafe_v1": {
+   "sung@wired": {
+    "same": true,
+    "first_diffs": [],
+    "files": [
+     "live_bench/R4X_rt_r4_X_hdgsafe_v1_sung_wired.json",
+     "live_bench/R3X_rt_r3_X_regtrkst_v1_sung_wired.json"
+    ]
+   },
+   "sung@micbt_cal": {
+    "same": true,
+    "first_diffs": [],
+    "files": [
+     "live_bench/R4X_rt_r4_X_hdgsafe_v1_sung_micbt_cal.json",
+     "live_bench/L4_rt_r3_X_regtrkst_v1_sung_micbt_cal.json"
+    ]
+   },
+   "sung@bt_cal": {
+    "same": false,
+    "first_diffs": [
+     "/decision_counts/dropped_unstarted (missing on one side)",
+     "/decision_counts/hear_enter: 38 vs 48",
+     "/decision_counts/hear_idle: 2 vs 1",
+     "/decision_counts/hear_keep: 696 vs 531",
+     "/decision_counts/hear_reenter: 8 vs 5",
+     "/decision_counts/hear_rest: 1 vs 2",
+     "/decision_counts/hear_silence: 14 vs 27",
+     "/decision_counts/hear_switch: 547 vs 692"
+    ],
+    "files": [
+     "live_bench/R4X_rt_r4_X_hdgsafe_v1_sung_bt_cal.json",
+     "live_bench/L4_rt_r3_X_regtrkst_v1_sung_bt_cal.json"
+    ]
+   },
+   "sung_low@wired": {
+    "same": true,
+    "first_diffs": [],
+    "files": [
+     "live_bench/R4X_rt_r4_X_hdgsafe_v1_sung_low_wired.json",
+     "live_bench/R3X_rt_r3_X_regtrkst_v1_sung_low_wired.json"
+    ]
+   },
+   "sung_low@micbt_cal": {
+    "same": true,
+    "first_diffs": [],
+    "files": [
+     "live_bench/R4X_rt_r4_X_hdgsafe_v1_sung_low_micbt_cal.json",
+     "live_bench/L4_rt_r3_X_regtrkst_v1_sung_low_micbt_cal.json"
+    ]
+   },
+   "sung_low@bt_cal": {
+    "same": false,
+    "first_diffs": [
+     "/decision_counts/dropped_unstarted (missing on one side)",
+     "/decision_counts/hear_enter: 30 vs 41",
+     "/decision_counts/hear_idle (missing on one side)",
+     "/decision_counts/hear_keep: 709 vs 534",
+     "/decision_counts/hear_reenter: 7 vs 5",
+     "/decision_counts/hear_rest: 1 vs 2",
+     "/decision_counts/hear_silence: 5 vs 14",
+     "/decision_counts/hear_switch: 554 vs 709"
+    ],
+    "files": [
+     "live_bench/R4X_rt_r4_X_hdgsafe_v1_sung_low_bt_cal.json",
+     "live_bench/L4_rt_r3_X_regtrkst_v1_sung_low_bt_cal.json"
+    ]
+   },
+   "phone_v11": {
+    "same": true,
+    "first_diffs": [],
+    "files": [
+     "live_bench/R4X_rt_r4_X_hdgsafe_v1_phone_v11.json",
+     "live_bench/R3X_rt_r3_X_regtrkst_v1_phone_v11.json"
+    ]
+   },
+   "bench_rt L0.1": {
+    "same": false,
+    "first_diffs": [
+     "/time: '2026-11-02 06:31:00' vs '2026-11-02 03:30:45'"
+    ],
+    "files": [
+     "scores/R4X_rt_r4_X_hdgsafe_v1_L0.1.json",
+     "scores/R3X_rt_r3_X_regtrkst_v1_L0.1.json"
+    ]
+   },
+   "bench_rt L0.1 seed2": {
+    "same": false,
+    "first_diffs": [
+     "/time: '2026-11-02 06:31:23' vs '2026-11-02 03:31:05'"
+    ],
+    "files": [
+     "scores/R4X_rt_r4_X_hdgsafe_v1_L0.1_seed2.json",
+     "scores/R3X_rt_r3_X_regtrkst_v1_L0.1_seed2.json"
+    ]
+   },
+   "attack L0.1": {
+    "same": true,
+    "first_diffs": [],
+    "files": [
+     "attack/R4X_rt_r4_X_hdgsafe_v1_L0.1.json",
+     "attack/R3X_rt_r3_X_regtrkst_v1_L0.1.json"
+    ]
+   },
+   "bench_rt L0.5": {
+    "same": false,
+    "first_diffs": [
+     "/headline/changes: 0.5316684222465209 vs 0.6000959510692516",
+     "/headline/double: 0.06893410656036324 vs 0.07378546287871379",
+     "/headline/harsh: 0.09754566129858655 vs 0.12324260545127937",
+     "/headline/harsh_first: 0.1534824198265794 vs 0.20399492461419405",
+     "/headline/late_entry: 0.007287840144862953 vs 0.01512307168025877",
+     "/headline/nd_first: 0.39189202898958647 vs 0.3343094236435682",
+     "/headline/on_time_right: 0.27531012265690136 vs 0.24146974366227814",
+     "/headline/rt_nd: 0.49407460143763215 vs 0.469652807915357"
+    ],
+    "files": [
+     "scores/R4X_rt_r4_X_hdgsafe_v1_L0.5.json",
+     "scores/L4_rt_r3_X_regtrkst_v1_L0.5.json"
+    ]
+   },
+   "bench_rt L0.5 seed2": {
+    "same": false,
+    "first_diffs": [
+     "/headline/changes: 0.5360160744708501 vs 0.5997234356457132",
+     "/headline/double: 0.06792859784007664 vs 0.07327130129374657",
+     "/headline/harsh: 0.0984265264497372 vs 0.122148249739178",
+     "/headline/harsh_first: 0.155922783053358 vs 0.2041672365263474",
+     "/headline/late_entry: 0.007138275164590582 vs 0.01437936269354931",
+     "/headline/nd_first: 0.3915005102432336 vs 0.3381317715133102",
+     "/headline/on_time_right: 0.2744197048145558 vs 0.24351850259689586",
+     "/headline/rt_nd: 0.4938919558000458 vs 0.4733308741959769"
+    ],
+    "files": [
+     "scores/R4X_rt_r4_X_hdgsafe_v1_L0.5_seed2.json",
+     "scores/L4_rt_r3_X_regtrkst_v1_L0.5_seed2.json"
+    ]
+   },
+   "attack L0.5": {
+    "same": false,
+    "first_diffs": [
+     "/headline/attack_miss_per100: 29.932472298335945 vs 31.004569025857055",
+     "/headline/attacks_per100: 59.14955616155798 vs 61.06390757509268",
+     "/headline/fresh_clash_per100: 5.3625822448478235 vs 6.910640213885911",
+     "/headline/harsh_bleed: 0.0809764140741066 vs 0.10114415905541349",
+     "/headline/harsh_fresh: 0.016569247224479906 vs 0.022098446395865806",
+     "/rows/bach/attack_miss_per100: 36.48111332007952 vs 27.13717693836978",
+     "/rows/bach/attacks_per100: 82.7037773359841 vs 72.56461232604374",
+     "/rows/bach/harsh_bleed: 0.08071043165467626 vs 0.12904676258992806"
+    ],
+    "files": [
+     "attack/R4X_rt_r4_X_hdgsafe_v1_L0.5.json",
+     "attack/L4_rt_r3_X_regtrkst_v1_L0.5.json"
+    ]
+   }
+  },
+  "r4_X_hgeh_v1": {
+   "sung@wired": {
+    "same": true,
+    "first_diffs": [],
+    "files": [
+     "live_bench/R4X_rt_r4_X_hgeh_v1_sung_wired.json",
+     "live_bench/R3X_rt_r3_X_regtrkst_v1_sung_wired.json"
+    ]
+   },
+   "sung@micbt_cal": {
+    "same": true,
+    "first_diffs": [],
+    "files": [
+     "live_bench/R4X_rt_r4_X_hgeh_v1_sung_micbt_cal.json",
+     "live_bench/L4_rt_r3_X_regtrkst_v1_sung_micbt_cal.json"
+    ]
+   },
+   "sung@bt_cal": {
+    "same": false,
+    "first_diffs": [
+     "/decision_counts/dropped_unstarted (missing on one side)",
+     "/decision_counts/hear_enter: 36 vs 48",
+     "/decision_counts/hear_idle: 2 vs 1",
+     "/decision_counts/hear_keep: 711 vs 531",
+     "/decision_counts/hear_reenter: 8 vs 5",
+     "/decision_counts/hear_rest: 1 vs 2",
+     "/decision_counts/hear_silence: 11 vs 27",
+     "/decision_counts/hear_switch: 537 vs 692"
+    ],
+    "files": [
+     "live_bench/R4X_rt_r4_X_hgeh_v1_sung_bt_cal.json",
+     "live_bench/L4_rt_r3_X_regtrkst_v1_sung_bt_cal.json"
+    ]
+   },
+   "sung_low@wired": {
+    "same": true,
+    "first_diffs": [],
+    "files": [
+     "live_bench/R4X_rt_r4_X_hgeh_v1_sung_low_wired.json",
+     "live_bench/R3X_rt_r3_X_regtrkst_v1_sung_low_wired.json"
+    ]
+   },
+   "sung_low@micbt_cal": {
+    "same": true,
+    "first_diffs": [],
+    "files": [
+     "live_bench/R4X_rt_r4_X_hgeh_v1_sung_low_micbt_cal.json",
+     "live_bench/L4_rt_r3_X_regtrkst_v1_sung_low_micbt_cal.json"
+    ]
+   },
+   "sung_low@bt_cal": {
+    "same": false,
+    "first_diffs": [
+     "/decision_counts/dropped_unstarted (missing on one side)",
+     "/decision_counts/hear_enter: 30 vs 41",
+     "/decision_counts/hear_idle (missing on one side)",
+     "/decision_counts/hear_keep: 725 vs 534",
+     "/decision_counts/hear_reenter: 7 vs 5",
+     "/decision_counts/hear_rest: 1 vs 2",
+     "/decision_counts/hear_silence: 4 vs 14",
+     "/decision_counts/hear_switch: 539 vs 709"
+    ],
+    "files": [
+     "live_bench/R4X_rt_r4_X_hgeh_v1_sung_low_bt_cal.json",
+     "live_bench/L4_rt_r3_X_regtrkst_v1_sung_low_bt_cal.json"
+    ]
+   },
+   "phone_v11": {
+    "same": true,
+    "first_diffs": [],
+    "files": [
+     "live_bench/R4X_rt_r4_X_hgeh_v1_phone_v11.json",
+     "live_bench/R3X_rt_r3_X_regtrkst_v1_phone_v11.json"
+    ]
+   },
+   "bench_rt L0.1": {
+    "same": false,
+    "first_diffs": [
+     "/time: '2026-11-02 06:35:40' vs '2026-11-02 03:30:45'"
+    ],
+    "files": [
+     "scores/R4X_rt_r4_X_hgeh_v1_L0.1.json",
+     "scores/R3X_rt_r3_X_regtrkst_v1_L0.1.json"
+    ]
+   },
+   "bench_rt L0.1 seed2": {
+    "same": false,
+    "first_diffs": [
+     "/time: '2026-11-02 06:36:03' vs '2026-11-02 03:31:05'"
+    ],
+    "files": [
+     "scores/R4X_rt_r4_X_hgeh_v1_L0.1_seed2.json",
+     "scores/R3X_rt_r3_X_regtrkst_v1_L0.1_seed2.json"
+    ]
+   },
+   "attack L0.1": {
+    "same": true,
+    "first_diffs": [],
+    "files": [
+     "attack/R4X_rt_r4_X_hgeh_v1_L0.1.json",
+     "attack/R3X_rt_r3_X_regtrkst_v1_L0.1.json"
+    ]
+   },
+   "bench_rt L0.5": {
+    "same": false,
+    "first_diffs": [
+     "/headline/changes: 0.5230637325104044 vs 0.6000959510692516",
+     "/headline/double: 0.07206803558402321 vs 0.07378546287871379",
+     "/headline/harsh: 0.10039590501878962 vs 0.12324260545127937",
+     "/headline/harsh_first: 0.15698391750643176 vs 0.20399492461419405",
+     "/headline/late_entry: 0.006311721495854468 vs 0.01512307168025877",
+     "/headline/nd_first: 0.387188198827937 vs 0.3343094236435682",
+     "/headline/on_time_right: 0.2821501710296996 vs 0.24146974366227814",
+     "/headline/rt_nd: 0.49051362412193195 vs 0.469652807915357"
+    ],
+    "files": [
+     "scores/R4X_rt_r4_X_hgeh_v1_L0.5.json",
+     "scores/L4_rt_r3_X_regtrkst_v1_L0.5.json"
+    ]
+   },
+   "bench_rt L0.5 seed2": {
+    "same": false,
+    "first_diffs": [
+     "/headline/changes: 0.5309843204232703 vs 0.5997234356457132",
+     "/headline/double: 0.07020130839473407 vs 0.07327130129374657",
+     "/headline/harsh: 0.10221024950846073 vs 0.122148249739178",
+     "/headline/harsh_first: 0.1614020631801879 vs 0.2041672365263474",
+     "/headline/late_entry: 0.0060938816862990625 vs 0.01437936269354931",
+     "/headline/nd_first: 0.3869304064885225 vs 0.3381317715133102",
+     "/headline/on_time_right: 0.2794340259939451 vs 0.24351850259689586",
+     "/headline/rt_nd: 0.4911127661512886 vs 0.4733308741959769"
+    ],
+    "files": [
+     "scores/R4X_rt_r4_X_hgeh_v1_L0.5_seed2.json",
+     "scores/L4_rt_r3_X_regtrkst_v1_L0.5_seed2.json"
+    ]
+   },
+   "attack L0.5": {
+    "same": false,
+    "first_diffs": [
+     "/headline/attack_miss_per100: 29.71601044555158 vs 31.004569025857055",
+     "/headline/attacks_per100: 57.951884354486076 vs 61.06390757509268",
+     "/headline/fresh_clash_per100: 5.42174153955189 vs 6.910640213885911",
+     "/headline/harsh_bleed: 0.08346569545358887 vs 0.10114415905541349",
+     "/headline/harsh_fresh: 0.016930209565200655 vs 0.022098446395865806",
+     "/rows/bach/attack_miss_per100: 35.089463220675945 vs 27.13717693836978",
+     "/rows/bach/attacks_per100: 79.52286282306163 vs 72.56461232604374",
+     "/rows/bach/fresh_clash_per100: 4.3737574552683895 vs 5.069582504970179"
+    ],
+    "files": [
+     "attack/R4X_rt_r4_X_hgeh_v1_L0.5.json",
+     "attack/L4_rt_r3_X_regtrkst_v1_L0.5.json"
+    ]
+   }
+  }
+ }
+}

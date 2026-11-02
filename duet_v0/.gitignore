@@ -1,0 +1,12 @@
+.venv/
+__pycache__/
+outputs/
+data/external/
+*.pyc
+live/runs/
+live/demo/*.wav
+*.wav
+!eval/figures/*.wav
+
+# raw recordings of our singer (Voice Memos .m4a etc.) stay out of git
+data/raw/

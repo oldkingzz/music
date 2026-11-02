@@ -1,0 +1,92 @@
+{
+ "check": "r3 A faithfulness: r3_cover_fit_v1 with ahead 0 vs r2_mix_v2 (val, tuned on val)",
+ "songs_per_dataset_first40": {
+  "bach": 17,
+  "folk": 40,
+  "pop": 40,
+  "pop909": 40
+ },
+ "paths": {
+  "mix": {
+   "songs": 137,
+   "notes": 20811,
+   "songs_differing": 0,
+   "notes_differing": 0,
+   "identical": true,
+   "first_differences": []
+  },
+  "hmm": {
+   "songs": 137,
+   "notes": 20811,
+   "songs_differing": 0,
+   "notes_differing": 0,
+   "identical": true,
+   "first_differences": []
+  }
+ },
+ "own_AHEAD_notes_changed_first40": 1426,
+ "reproduction_ahead0_all_val": {
+  "all_val_vs_r2_mix_v2": {
+   "songs": 527,
+   "notes": 46310,
+   "songs_differing": 0,
+   "notes_differing": 0,
+   "identical": true,
+   "first_differences": []
+  },
+  "nd_recomputed": {
+   "bach": {
+    "music_nd": 0.685251798561151,
+    "double": 0.055305755395683456
+   },
+   "folk": {
+    "music_nd": 0.7125780357578692,
+    "double": 0.05361778869190362
+   },
+   "pop": {
+    "music_nd": 0.5907704515585092,
+    "double": 0.022168770302774816
+   },
+   "pop909": {
+    "music_nd": 0.589111572902715,
+    "double": 0.03611186128707759
+   },
+   "headline_nd": 0.6444279646950611
+  },
+  "nd_recorded_r2_mix_v2": {
+   "bach": {
+    "music_nd": 0.685251798561151,
+    "double": 0.055305755395683456
+   },
+   "folk": {
+    "music_nd": 0.7125780357578692,
+    "double": 0.05361778869190362
+   },
+   "pop": {
+    "music_nd": 0.5907704515585092,
+    "double": 0.022168770302774816
+   },
+   "pop909": {
+    "music_nd": 0.589111572902715,
+    "double": 0.03611186128707759
+   },
+   "headline_nd": 0.6444279646950611
+  },
+  "music_nd_diff": {
+   "bach": 0.0,
+   "folk": 0.0,
+   "pop": 0.0,
+   "pop909": 0.0,
+   "headline_nd": 0.0
+  },
+  "double_diff": {
+   "bach": 0.0,
+   "folk": 0.0,
+   "pop": 0.0,
+   "pop909": 0.0
+  },
+  "exact": true
+ },
+ "all_ok": true,
+ "secs": 30.1
+}

@@ -1,0 +1,4 @@
+2026-11-01 11:39:06 START tl=600 cwd=$ABS/runs_mini/v4_1101/nd/third_below $ABS/.venv/bin/python $ABS/futures/v3_nolatency/rescore_nd.py third_below
+2026-11-01 11:39:08 END rc=0 secs=2 $ABS/.venv/bin/python $ABS/futures/v3_nolatency/rescore_nd.py third_below
+2026-11-01 11:40:33 START tl=600 cwd=$ABS/futures/v3_nolatency $ABS/.venv/bin/python $ABS/futures/v3_nolatency/bench3.py --system third_below --note v4 mini Phase A reproduce
+2026-11-01 11:40:35 END rc=0 secs=2 $ABS/.venv/bin/python $ABS/futures/v3_nolatency/bench3.py --system third_below --note v4 mini Phase A reproduce

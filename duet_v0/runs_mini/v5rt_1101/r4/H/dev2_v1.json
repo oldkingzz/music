@@ -1,0 +1,274 @@
+{
+ "lib": "r4_H_lib_v2",
+ "cells": [
+  [
+   "sung",
+   "bt_cal"
+  ],
+  [
+   "sung_low",
+   "bt_cal"
+  ]
+ ],
+ "cfgs": [
+  {
+   "name": "k0_lk2",
+   "core": {
+    "kappa_st_L": 0.0,
+    "late_keep": 2
+   }
+  },
+  {
+   "name": "k0_lk1",
+   "core": {
+    "kappa_st_L": 0.0,
+    "late_keep": 1
+   }
+  },
+  {
+   "name": "k0_lk2_kap2",
+   "core": {
+    "kappa_st_L": 0.0,
+    "late_keep": 2,
+    "kappa_L": 2.0
+   }
+  },
+  {
+   "name": "k0_lk2_hed05",
+   "core": {
+    "kappa_st_L": 0.0,
+    "late_keep": 2,
+    "hedge_L": 0.5
+   }
+  },
+  {
+   "name": "k3_lk2",
+   "core": {
+    "late_keep": 2
+   }
+  }
+ ],
+ "rows": [
+  {
+   "name": "k0_lk2",
+   "voice": "sung",
+   "lat": "bt_cal",
+   "stats": {
+    "lag_plan": 2385,
+    "lag_attack": 364,
+    "lag_sil": 0,
+    "plan_attack": 2,
+    "late_keep": 69,
+    "late_switch": 0
+   },
+   "lag_songs": 18,
+   "secs": 21.1,
+   "rt_nd_live": 0.4738992035721308,
+   "harsh": 0.11550645703029762,
+   "fresh_per100": 7.5546719681908545,
+   "stumbles_per100": 1.6898608349900597,
+   "first_100ms_hit": 0.31179593586738646,
+   "on_time_right": 0.2912524850894632,
+   "attacks_per100": 91.84890656063618
+  },
+  {
+   "name": "k0_lk2",
+   "voice": "sung_low",
+   "lat": "bt_cal",
+   "stats": {
+    "lag_plan": 2385,
+    "lag_attack": 374,
+    "lag_sil": 0,
+    "plan_attack": 1,
+    "late_keep": 75,
+    "late_switch": 0
+   },
+   "lag_songs": 18,
+   "secs": 24.3,
+   "rt_nd_live": 0.4894949820025832,
+   "harsh": 0.09680434308827476,
+   "fresh_per100": 5.864811133200795,
+   "stumbles_per100": 1.5904572564612327,
+   "first_100ms_hit": 0.3196846293825045,
+   "on_time_right": 0.30119284294234594,
+   "attacks_per100": 92.04771371769384
+  },
+  {
+   "name": "k0_lk1",
+   "voice": "sung",
+   "lat": "bt_cal",
+   "stats": {
+    "lag_plan": 2385,
+    "lag_attack": 360,
+    "lag_sil": 0,
+    "plan_attack": 2,
+    "late_keep": 44,
+    "late_switch": 12
+   },
+   "lag_songs": 18,
+   "secs": 20.9,
+   "rt_nd_live": 0.4729367854839628,
+   "harsh": 0.11706181259900603,
+   "fresh_per100": 8.05168986083499,
+   "stumbles_per100": 2.783300198807157,
+   "first_100ms_hit": 0.31123799329591406,
+   "on_time_right": 0.28727634194831014,
+   "attacks_per100": 93.24055666003976
+  },
+  {
+   "name": "k0_lk1",
+   "voice": "sung_low",
+   "lat": "bt_cal",
+   "stats": {
+    "lag_plan": 2385,
+    "lag_attack": 370,
+    "lag_sil": 0,
+    "plan_attack": 1,
+    "late_keep": 48,
+    "late_switch": 14
+   },
+   "lag_songs": 18,
+   "secs": 24.2,
+   "rt_nd_live": 0.4895794697303161,
+   "harsh": 0.097523759203146,
+   "fresh_per100": 6.262425447316104,
+   "stumbles_per100": 2.68389662027833,
+   "first_100ms_hit": 0.31953065829063676,
+   "on_time_right": 0.29721669980119286,
+   "attacks_per100": 93.43936381709742
+  },
+  {
+   "name": "k0_lk2_kap2",
+   "voice": "sung",
+   "lat": "bt_cal",
+   "stats": {
+    "lag_plan": 2385,
+    "lag_attack": 264,
+    "lag_sil": 0,
+    "plan_attack": 2,
+    "late_keep": 52,
+    "late_switch": 0
+   },
+   "lag_songs": 18,
+   "secs": 20.7,
+   "rt_nd_live": 0.47115222978086024,
+   "harsh": 0.1265340809247432,
+   "fresh_per100": 6.958250497017892,
+   "stumbles_per100": 1.1928429423459244,
+   "first_100ms_hit": 0.2936359947642401,
+   "on_time_right": 0.27236580516898606,
+   "attacks_per100": 86.28230616302187
+  },
+  {
+   "name": "k0_lk2_kap2",
+   "voice": "sung_low",
+   "lat": "bt_cal",
+   "stats": {
+    "lag_plan": 2385,
+    "lag_attack": 261,
+    "lag_sil": 0,
+    "plan_attack": 1,
+    "late_keep": 53,
+    "late_switch": 0
+   },
+   "lag_songs": 18,
+   "secs": 22.9,
+   "rt_nd_live": 0.49232392868399244,
+   "harsh": 0.10739737473725922,
+   "fresh_per100": 5.566600397614314,
+   "stumbles_per100": 1.3916500994035785,
+   "first_100ms_hit": 0.31015401195759046,
+   "on_time_right": 0.28727634194831014,
+   "attacks_per100": 87.37574552683897
+  },
+  {
+   "name": "k0_lk2_hed05",
+   "voice": "sung",
+   "lat": "bt_cal",
+   "stats": {
+    "lag_plan": 2385,
+    "lag_attack": 290,
+    "lag_sil": 0,
+    "plan_attack": 2,
+    "late_keep": 58,
+    "late_switch": 0
+   },
+   "lag_songs": 18,
+   "secs": 20.5,
+   "rt_nd_live": 0.4708273338977421,
+   "harsh": 0.11146765561221482,
+   "fresh_per100": 6.461232604373757,
+   "stumbles_per100": 1.5904572564612327,
+   "first_100ms_hit": 0.3112465856596286,
+   "on_time_right": 0.28727634194831014,
+   "attacks_per100": 83.99602385685884
+  },
+  {
+   "name": "k0_lk2_hed05",
+   "voice": "sung_low",
+   "lat": "bt_cal",
+   "stats": {
+    "lag_plan": 2385,
+    "lag_attack": 282,
+    "lag_sil": 0,
+    "plan_attack": 1,
+    "late_keep": 60,
+    "late_switch": 0
+   },
+   "lag_songs": 18,
+   "secs": 24.5,
+   "rt_nd_live": 0.48509463628066607,
+   "harsh": 0.09297891592405234,
+   "fresh_per100": 4.572564612326044,
+   "stumbles_per100": 1.3916500994035785,
+   "first_100ms_hit": 0.32078283291264226,
+   "on_time_right": 0.2982107355864811,
+   "attacks_per100": 82.50497017892644
+  },
+  {
+   "name": "k3_lk2",
+   "voice": "sung",
+   "lat": "bt_cal",
+   "stats": {
+    "lag_plan": 2385,
+    "lag_attack": 193,
+    "lag_sil": 0,
+    "plan_attack": 2,
+    "late_keep": 46,
+    "late_switch": 0
+   },
+   "lag_songs": 18,
+   "secs": 20.4,
+   "rt_nd_live": 0.46476570338048684,
+   "harsh": 0.13600541134810124,
+   "fresh_per100": 7.057654075546719,
+   "stumbles_per100": 0.9940357852882704,
+   "first_100ms_hit": 0.28103935684153974,
+   "on_time_right": 0.26043737574552683,
+   "attacks_per100": 81.41153081510934
+  },
+  {
+   "name": "k3_lk2",
+   "voice": "sung_low",
+   "lat": "bt_cal",
+   "stats": {
+    "lag_plan": 2385,
+    "lag_attack": 198,
+    "lag_sil": 0,
+    "plan_attack": 1,
+    "late_keep": 46,
+    "late_switch": 0
+   },
+   "lag_songs": 18,
+   "secs": 24.3,
+   "rt_nd_live": 0.48496932478543875,
+   "harsh": 0.11625148847242271,
+   "fresh_per100": 5.566600397614314,
+   "stumbles_per100": 1.3916500994035785,
+   "first_100ms_hit": 0.2951161783873718,
+   "on_time_right": 0.27435387673956263,
+   "attacks_per100": 82.7037773359841
+  }
+ ],
+ "note": "val only, tuned on val (no test split)"
+}

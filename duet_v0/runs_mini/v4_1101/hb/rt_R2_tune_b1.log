@@ -1,0 +1,2 @@
+2026-11-01 23:17:32 START tl=600 cwd=$ABS $ABS/.venv/bin/python $ABS/runs_mini/v5rt_1101/r2/tune_R2_v1.py --tag s1b {"w_next":0.35} {"w_dyn":1.0} {"w_dyn":0.5}
+2026-11-01 23:18:25 END rc=0 secs=53 $ABS/.venv/bin/python $ABS/runs_mini/v5rt_1101/r2/tune_R2_v1.py --tag s1b {"w_next":0.35} {"w_dyn":1.0} {"w_dyn":0.5}

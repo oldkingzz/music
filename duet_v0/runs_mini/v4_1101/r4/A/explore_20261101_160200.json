@@ -1,0 +1,394 @@
+{
+ "what": "E4 settings on all val songs (tuned on val), vs r3_style_mix_v3",
+ "champion_nd": {
+  "bach": {
+   "music_nd": 0.7027877697841727,
+   "double": 0.03507194244604316
+  },
+  "folk": {
+   "music_nd": 0.7178401369149711,
+   "double": 0.0430085906121881
+  },
+  "pop": {
+   "music_nd": 0.5963498400575297,
+   "double": 0.018176407865697918
+  },
+  "pop909": {
+   "music_nd": 0.5959414250086184,
+   "double": 0.031683762922491775
+  },
+  "headline_nd": 0.653229792941323
+ },
+ "champion_parts": {
+  "bach": {
+   "onset_beat": 0.5822841726618705,
+   "later_same_chord": 0.09802158273381295,
+   "later_chord_changed": 0.022482014388489208
+  },
+  "folk": {
+   "onset_beat": 0.6528868072498153,
+   "later_same_chord": 0.06396427118801716,
+   "later_chord_changed": 0.0009890584771385048
+  },
+  "pop": {
+   "onset_beat": 0.42083467651945344,
+   "later_same_chord": 0.12835073275968953,
+   "later_chord_changed": 0.04716443077838669
+  },
+  "pop909": {
+   "onset_beat": 0.4190736048274192,
+   "later_same_chord": 0.13496690144167056,
+   "later_chord_changed": 0.041900918739540285
+  }
+ },
+ "configs": {
+  "beat_p32w128_a8": {
+   "cls": "cover",
+   "cfg": {
+    "mix": "beat",
+    "ndur": 32,
+    "window": 128,
+    "ahead": 8
+   },
+   "nd": {
+    "bach": {
+     "music_nd": 0.7027877697841727,
+     "double": 0.03507194244604316
+    },
+    "folk": {
+     "music_nd": 0.7168278973783259,
+     "double": 0.043255855277834834
+    },
+    "pop": {
+     "music_nd": 0.5973417313462445,
+     "double": 0.018077218736826443
+    },
+    "pop909": {
+     "music_nd": 0.5949358027629229,
+     "double": 0.03056825139591083
+    },
+    "headline_nd": 0.6529733003179164
+   },
+   "notes_changed": 818,
+   "delta": {
+    "bach": 0.0,
+    "folk": -0.0010122395366451986,
+    "pop": 0.0009918912887147968,
+    "pop909": -0.0010056222456954478
+   },
+   "delta_headline": -0.00025649262340654566,
+   "delta_parts": {
+    "bach": {
+     "onset_beat": -0.0008992805755395628,
+     "later_same_chord": -0.0017985611510791394,
+     "later_chord_changed": 0.0026978417266187056
+    },
+    "folk": {
+     "onset_beat": -0.0008422451311704826,
+     "later_same_chord": -0.00016999440547474376,
+     "later_chord_changed": 0.0
+    },
+    "pop": {
+     "onset_beat": -0.0006447293376645735,
+     "later_same_chord": 4.959456443573429e-05,
+     "later_chord_changed": 0.0015870260619436083
+    },
+    "pop909": {
+     "onset_beat": -0.0003931055418635032,
+     "later_same_chord": -0.00019512603503252235,
+     "later_chord_changed": -0.0004173906687994361
+    }
+   }
+  },
+  "cover_p32w128_a8": {
+   "cls": "cover",
+   "cfg": {
+    "mix": "cover",
+    "ndur": 32,
+    "window": 128,
+    "ahead": 8
+   },
+   "nd": {
+    "bach": {
+     "music_nd": 0.7036870503597122,
+     "double": 0.03507194244604316
+    },
+    "folk": {
+     "music_nd": 0.7165497246642448,
+     "double": 0.043255855277834834
+    },
+    "pop": {
+     "music_nd": 0.5971433530885015,
+     "double": 0.018077218736826443
+    },
+    "pop909": {
+     "music_nd": 0.5946777533884062,
+     "double": 0.030690717996697
+    },
+    "headline_nd": 0.6530144703752162
+   },
+   "notes_changed": 848,
+   "delta": {
+    "bach": 0.0008992805755395628,
+    "folk": -0.0012904122507262361,
+    "pop": 0.0007935130309718597,
+    "pop909": -0.0012636716202121256
+   },
+   "delta_headline": -0.00021532256610679035,
+   "delta_parts": {
+    "bach": {
+     "onset_beat": 0.0,
+     "later_same_chord": -0.0017985611510791394,
+     "later_chord_changed": 0.0026978417266187056
+    },
+    "folk": {
+     "onset_beat": -0.0012131420832784956,
+     "later_same_chord": -0.00026271864350173313,
+     "later_chord_changed": 0.00018544847605399934
+    },
+    "pop": {
+     "onset_beat": -0.0008431075954075107,
+     "later_same_chord": -0.00014878369330720287,
+     "later_chord_changed": 0.0017854043196865593
+    },
+    "pop909": {
+     "onset_beat": -0.0005288352755147829,
+     "later_same_chord": -0.00019512603503252235,
+     "later_chord_changed": -0.00053971030966464
+    }
+   }
+  },
+  "beat_p32w128_a2": {
+   "cls": "cover",
+   "cfg": {
+    "mix": "beat",
+    "ndur": 32,
+    "window": 128,
+    "ahead": 2
+   },
+   "nd": {
+    "bach": {
+     "music_nd": 0.7018884892086331,
+     "double": 0.03507194244604316
+    },
+    "folk": {
+     "music_nd": 0.7167351731402989,
+     "double": 0.043255855277834834
+    },
+    "pop": {
+     "music_nd": 0.5973913259106802,
+     "double": 0.018077218736826443
+    },
+    "pop909": {
+     "music_nd": 0.595518155942981,
+     "double": 0.030577179211108144
+    },
+    "headline_nd": 0.6528832860506483
+   },
+   "notes_changed": 737,
+   "delta": {
+    "bach": -0.0008992805755395628,
+    "folk": -0.001104963774672174,
+    "pop": 0.0010414858531505589,
+    "pop909": -0.0004232690656373883
+   },
+   "delta_headline": -0.00034650689067472484,
+   "delta_parts": {
+    "bach": {
+     "onset_beat": -0.0017985611510791255,
+     "later_same_chord": -0.0017985611510791394,
+     "later_chord_changed": 0.0026978417266187056
+    },
+    "folk": {
+     "onset_beat": -0.0009349693691974581,
+     "later_same_chord": -0.00016999440547474376,
+     "later_chord_changed": 0.0
+    },
+    "pop": {
+     "onset_beat": -0.0005951347732288115,
+     "later_same_chord": 4.959456443573429e-05,
+     "later_chord_changed": 0.0015870260619436083
+    },
+    "pop909": {
+     "onset_beat": 1.712083078991844e-05,
+     "later_same_chord": -1.3471326086478275e-05,
+     "later_chord_changed": -0.00042691857034059255
+    }
+   }
+  },
+  "beat_p16w64_a8": {
+   "cls": "cover",
+   "cfg": {
+    "mix": "beat",
+    "ndur": 16,
+    "window": 64,
+    "ahead": 8
+   },
+   "nd": {
+    "bach": {
+     "music_nd": 0.7009892086330936,
+     "double": 0.03597122302158273
+    },
+    "folk": {
+     "music_nd": 0.7169669837353664,
+     "double": 0.04320949315882134
+    },
+    "pop": {
+     "music_nd": 0.5977136905795125,
+     "double": 0.018027624172390705
+    },
+    "pop909": {
+     "music_nd": 0.5951402607529351,
+     "double": 0.030549379292729686
+    },
+    "headline_nd": 0.6527025359252269
+   },
+   "notes_changed": 823,
+   "delta": {
+    "bach": -0.0017985611510791255,
+    "folk": -0.0008731531796046799,
+    "pop": 0.0013638505219828456,
+    "pop909": -0.0008011642556832177
+   },
+   "delta_headline": -0.0005272570160961276,
+   "delta_parts": {
+    "bach": {
+     "onset_beat": -0.0026978417266186883,
+     "later_same_chord": -0.0017985611510791394,
+     "later_chord_changed": 0.0026978417266187056
+    },
+    "folk": {
+     "onset_beat": -0.0009349693691974581,
+     "later_same_chord": -0.00012363228646124214,
+     "later_chord_changed": 0.00018544847605399934
+    },
+    "pop": {
+     "onset_beat": -0.00032236466883228676,
+     "later_same_chord": -9.918912887146858e-05,
+     "later_chord_changed": 0.0017854043196865593
+    },
+    "pop909": {
+     "onset_beat": -0.0005756052703550507,
+     "later_same_chord": 0.0003755438313108317,
+     "later_chord_changed": -0.0006011028166387489
+    }
+   }
+  },
+  "beat_any16_a8": {
+   "cls": "any",
+   "cfg": {
+    "mix": "beat",
+    "ndur": 16,
+    "ahead": 8
+   },
+   "nd": {
+    "bach": {
+     "music_nd": 0.7023381294964028,
+     "double": 0.03597122302158273
+    },
+    "folk": {
+     "music_nd": 0.7166269949244168,
+     "double": 0.04337948756429608
+    },
+    "pop": {
+     "music_nd": 0.5980608525305626,
+     "double": 0.018002826890172838
+    },
+    "pop909": {
+     "music_nd": 0.5951568427306816,
+     "double": 0.030524628792710805
+    },
+    "headline_nd": 0.653045704920516
+   },
+   "notes_changed": 988,
+   "delta": {
+    "bach": -0.0004496402877698369,
+    "folk": -0.001213141990554223,
+    "pop": 0.001711012473032958,
+    "pop909": -0.0007845822779367628
+   },
+   "delta_headline": -0.00018408802080704945,
+   "delta_parts": {
+    "bach": {
+     "onset_beat": -0.0013489208633092886,
+     "later_same_chord": -0.0017985611510791394,
+     "later_chord_changed": 0.0026978417266187056
+    },
+    "folk": {
+     "onset_beat": -0.0012749581801471122,
+     "later_same_chord": -0.00012363228646124214,
+     "later_chord_changed": 0.00018544847605399934
+    },
+    "pop": {
+     "onset_beat": -0.0005455402087931049,
+     "later_same_chord": 7.439184665361531e-05,
+     "later_chord_changed": 0.0021821608351724683
+    },
+    "pop909": {
+     "onset_beat": -0.0005590232926084848,
+     "later_same_chord": 0.0003755438313108317,
+     "later_chord_changed": -0.0006011028166387489
+    }
+   }
+  },
+  "beat_pooledA_p32w128_a8": {
+   "cls": "pooled",
+   "cfg": {
+    "mix": "beat",
+    "ndur": 32,
+    "window": 128,
+    "ahead": 8
+   },
+   "nd": {
+    "bach": {
+     "music_nd": 0.7018884892086331,
+     "double": 0.03507194244604316
+    },
+    "folk": {
+     "music_nd": 0.7168278973783259,
+     "double": 0.043255855277834834
+    },
+    "pop": {
+     "music_nd": 0.5980112579661269,
+     "double": 0.01775485406799415
+    },
+    "pop909": {
+     "music_nd": 0.5950587714767723,
+     "double": 0.030722363366340148
+    },
+    "headline_nd": 0.6529466040074645
+   },
+   "notes_changed": 925,
+   "delta": {
+    "bach": -0.0008992805755395628,
+    "folk": -0.0010122395366451986,
+    "pop": 0.0016614179085971958,
+    "pop909": -0.0008826535318460227
+   },
+   "delta_headline": -0.0002831889338584803,
+   "delta_parts": {
+    "bach": {
+     "onset_beat": -0.0017985611510791255,
+     "later_same_chord": -0.0017985611510791394,
+     "later_chord_changed": 0.0026978417266187056
+    },
+    "folk": {
+     "onset_beat": -0.0008422451311704826,
+     "later_same_chord": -0.00016999440547474376,
+     "later_chord_changed": 0.0
+    },
+    "pop": {
+     "onset_beat": -0.0010166885709326223,
+     "later_same_chord": 0.0,
+     "later_chord_changed": 0.002678106479529846
+    },
+    "pop909": {
+     "onset_beat": -0.00047938326211743876,
+     "later_same_chord": -1.4757225394734785e-05,
+     "later_chord_changed": -0.0003885130443340573
+    }
+   }
+  }
+ },
+ "secs": 72.7
+}

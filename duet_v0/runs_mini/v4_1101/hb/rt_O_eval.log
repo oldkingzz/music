@@ -1,0 +1,2 @@
+2026-11-02 00:31:07 START tl=600 cwd=$ABS .venv/bin/python $ABS/futures/v4_selfiter/live_rt_eval_v2.py --out $ABS/runs_mini/v5rt_1101/live/O_live_rt_eval_v2_repro.json
+2026-11-02 00:31:13 END rc=0 secs=6 .venv/bin/python $ABS/futures/v4_selfiter/live_rt_eval_v2.py --out $ABS/runs_mini/v5rt_1101/live/O_live_rt_eval_v2_repro.json

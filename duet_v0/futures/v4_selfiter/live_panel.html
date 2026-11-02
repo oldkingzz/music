@@ -1,0 +1,282 @@
+<!doctype html>
+<html lang="zh">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Duet 实时测试</title>
+<style>
+/* Layout: controls and verdicts on the left, the live note feed (her note -> Duet's note) on the right */
+:root{
+  --bg:#f2f4f1;--card:#ffffff;--fg:#1c2320;--muted:#5b6862;--line:#d3dbd6;
+  --accent:#2b5e88;--soft:#e3ecf4;--ok:#2d774a;--ok-soft:#e2f1e7;--bad:#ad3f2b;--bad-soft:#f7e4df;--warn:#93650f;--warn-soft:#f6ecd7;
+  --body:-apple-system,"PingFang SC","Noto Sans SC",system-ui,sans-serif;--mono:ui-monospace,"SF Mono",Menlo,monospace;
+}
+@media (prefers-color-scheme:dark){:root{
+  --bg:#111513;--card:#19201c;--fg:#e3e9e5;--muted:#99a69f;--line:#2c3631;
+  --accent:#86afd8;--soft:#1d2b38;--ok:#71c38f;--ok-soft:#18301f;--bad:#e8826d;--bad-soft:#3a1f19;--warn:#dcae57;--warn-soft:#33290f;color-scheme:dark}}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+body{margin:0;background:var(--bg);color:var(--fg);font:15px/1.6 var(--body)}
+.wrap{max-width:1040px;margin:0 auto;padding:20px max(16px,env(safe-area-inset-left,0px)) 48px;display:grid;grid-template-columns:minmax(0,360px) minmax(0,1fr);gap:16px;align-items:start}
+@media (max-width:780px){.wrap{grid-template-columns:minmax(0,1fr)}}
+header{grid-column:1/-1;display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 16px}
+h1{font-size:1.45rem;margin:0}
+.sub{color:var(--muted);font-size:.88rem}
+.col{display:flex;flex-direction:column;gap:16px;min-width:0}
+.card{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:16px;display:flex;flex-direction:column;gap:12px;min-width:0}
+h2{font-size:.8rem;letter-spacing:.06em;color:var(--muted);margin:0;font-weight:600}
+label{font-size:.85rem;color:var(--muted);display:flex;flex-direction:column;gap:4px}
+select,input[type=text]{font:inherit;color:var(--fg);background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:7px 9px;width:100%}
+.sys{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+.sys button{font:inherit;text-align:left;padding:8px 10px;border-radius:6px;border:1px solid var(--line);background:var(--bg);color:var(--fg);cursor:pointer}
+.sys button[aria-pressed=true]{border-color:var(--accent);background:var(--soft);color:var(--accent);font-weight:600}
+.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.big{font:inherit;font-weight:600;font-size:1rem;border-radius:6px;padding:10px 22px;cursor:pointer;border:1px solid var(--accent)}
+.go{background:var(--accent);color:var(--card)}
+.stop{background:transparent;color:var(--bad);border-color:var(--bad)}
+button:disabled{opacity:.45;cursor:default}
+button:focus-visible,select:focus-visible,input:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.state{font-weight:600}
+.state.run{color:var(--ok)}.state.wait{color:var(--warn)}.state.err{color:var(--bad)}
+.hint{font-size:.85rem;color:var(--muted);margin:0}
+.err{color:var(--bad);font-size:.9rem;margin:0}
+.meter{height:8px;background:var(--bg);border:1px solid var(--line);border-radius:4px;overflow:hidden}
+.meter i{display:block;height:100%;width:0;background:var(--ok);transition:width .1s linear}
+.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}
+.stats div{border-top:2px solid var(--line);padding-top:4px;min-width:0}
+.stats b{display:block;font-family:var(--mono);font-size:1.25rem;font-variant-numeric:tabular-nums}
+.stats span{font-size:.75rem;color:var(--muted)}
+.feed{font-family:var(--mono);font-size:.92rem;font-variant-numeric:tabular-nums;max-height:56vh;overflow:auto;border-top:1px solid var(--line)}
+.feed table{border-collapse:collapse;width:100%}
+.feed td{padding:3px 6px;border-bottom:1px solid var(--line);white-space:nowrap}
+.feed td.k{width:100%;color:var(--muted);font-family:var(--body);font-size:.8rem}
+.tag{display:inline-block;padding:0 7px;border-radius:999px;font-size:.78rem;font-family:var(--body)}
+.cons{background:var(--ok-soft);color:var(--ok)}.clash{background:var(--bad-soft);color:var(--bad)}
+.double{background:var(--warn-soft);color:var(--warn)}.silent{background:var(--bg);color:var(--muted)}
+.vbtn{display:grid;grid-template-columns:repeat(4,1fr);gap:6px}
+.vbtn button{font:inherit;font-weight:600;padding:9px 0;border-radius:6px;border:1px solid var(--line);background:var(--bg);color:var(--fg);cursor:pointer}
+.vbtn button[data-v="好"]{border-color:var(--ok);color:var(--ok)}
+.vbtn button[data-v="差"]{border-color:var(--bad);color:var(--bad)}
+.hist{border-collapse:collapse;width:100%;font-size:.85rem}
+.hist td,.hist th{padding:5px 6px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+.hist th{color:var(--muted);font-weight:500;font-size:.78rem}
+.histwrap{overflow-x:auto}
+audio{width:100%}
+.empty{color:var(--muted);font-size:.9rem;padding:12px 0;font-family:var(--body)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>Duet 实时测试</h1>
+    <span class="sub">手机外放旋律 → 麦克风 → Duet 当场配和声 → 你的耳机</span>
+  </header>
+
+  <div class="col">
+    <section class="card">
+      <h2>这一轮</h2>
+      <label for="song">手机放的是哪个文件（调和速度跟着它走）<select id="song"></select></label>
+      <div class="row">
+        <label for="key" style="flex:1">调<select id="key"></select></label>
+        <label for="bpm" style="flex:1">速度（拍/分）<input type="text" id="bpm" inputmode="decimal"></label>
+      </div>
+      <label for="mode">Duet 怎么跟<select id="mode">
+        <option value="reactive">被动：听到你的音再配（会晚 70 ms 左右）</option>
+        <option value="predict">预判（试验，猜错时会先错后改）：每拍提前出声，听到你后不对就改</option>
+      </select></label>
+      <label style="flex-direction:row;align-items:center;gap:8px"><input type="checkbox" id="click"> 跟 Duet 的节拍器唱（先打 4 拍，之后每拍一下）</label>
+      <div class="sys" id="sys" role="group" aria-label="系统"></div>
+      <label for="input">输入<select id="input">
+        <option value="file">直接用文件（不开麦，耳机音质正常）</option>
+        <option value="mic">麦克风（手机外放）</option>
+      </select></label>
+      <label for="in" id="inlab">麦克风<select id="in"></select></label>
+      <label for="out">耳机（Duet 只从这里出声）<select id="out"></select></label>
+      <label for="mon">在耳机里也听到麦克风：<span id="monv">0</span><input id="mon" type="range" min="0" max="1" step="0.1" value="0"></label>
+      <div class="row">
+        <button class="big go" id="start">开始</button>
+        <button class="big stop" id="stop" disabled>停止</button>
+      </div>
+      <p class="state" id="state">正在连接…</p>
+      <p class="err" id="err" hidden></p>
+      <p class="hint" id="steps">点“开始”后马上用手机外放上面选的那个文件。开头的嘀声会被忽略，她的第一个音就是第 1 拍。唱完会自己停。</p>
+    </section>
+
+    <section class="card" id="vcard" hidden>
+      <h2>这一轮配得怎么样？</h2>
+      <p class="hint" id="vwho"></p>
+      <audio id="vaudio" controls preload="none"></audio>
+      <div class="vbtn" id="vbtn"></div>
+      <label for="vnote">备注（可不填）<input type="text" id="vnote" placeholder="比如：第二句总唱同一个音"></label>
+    </section>
+
+    <section class="card">
+      <h2>记录</h2>
+      <div class="histwrap"><table class="hist"><thead><tr><th>时间</th><th>系统</th><th>评价</th><th>备注</th></tr></thead><tbody id="hist"></tbody></table></div>
+      <p class="hint">每一轮存在 runs_mini/live/，评价追加在 RUNS.jsonl。</p>
+    </section>
+  </div>
+
+  <div class="col">
+    <section class="card">
+      <h2>正在听</h2>
+      <div class="meter" aria-label="麦克风电平"><i id="lvl"></i></div>
+      <div class="stats">
+        <div><b id="pitch">—</b><span>现在听到</span></div>
+        <div><b id="beat">—</b><span id="beatl">第几拍</span></div>
+        <div><b id="n">0</b><span>她的音</span></div>
+        <div><b id="ms">—</b><span>听到延迟（ms）</span></div>
+      </div>
+      <div class="feed" id="feed"><p class="empty">还没开始。点“开始”，再放手机。</p></div>
+      <p class="hint"><span class="tag cons">协和</span> 三度/五度/六度　<span class="tag double">同音</span> 唱了她的同音或八度　<span class="tag clash">冲突</span> 和她不协和（按听到的音算）</p>
+    </section>
+  </div>
+</div>
+
+<script>
+const $ = s => document.querySelector(s);
+const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+let pick = "r2_mix_v2", S = null, lastRows = "", lastHist = "";
+const KIND = {cons:"协和", double:"同音", clash:"冲突", silent:"不唱"};
+const ACT = {kept:'<span class="tag cons">准时</span>', corrected:'<span class="tag double">改音</span>', late:'<span class="tag silent">晚</span>', first:'<span class="tag silent">晚</span>'};
+
+async function api(path, body){
+  const r = await fetch(path, body === undefined ? {} : {method:"POST", headers:{"Content-Type":"application/json"}, body:JSON.stringify(body)});
+  const j = await r.json().catch(() => ({error:"服务器没有回应"}));
+  if (!r.ok) throw new Error(j.error || r.statusText);
+  return j;
+}
+function showErr(e){ const el = $("#err"); el.textContent = e ? String(e.message || e) : ""; el.hidden = !e; }
+
+function renderSys(){
+  const opts = Object.entries((S && S.choices) || {"r2_mix_v2":"新模型 r2_mix_v2","m1_filter_v5lo":"老模型 m1","third_below":"三度下方（基线）"});
+  opts.push(["blind", "盲测（随机，评价后揭晓）"]);
+  $("#sys").innerHTML = opts.map(([k, v]) => `<button data-k="${k}" aria-pressed="${k === pick}">${esc(v)}</button>`).join("");
+  $("#sys").querySelectorAll("button").forEach(b => b.onclick = () => { pick = b.dataset.k; renderSys(); });
+}
+
+async function loadDevices(){
+  try {
+    const d = await api("/api/devices");
+    const fill = (sel, list, prefer) => {
+      const keep = sel.value;
+      sel.innerHTML = list.map(n => `<option>${esc(n)}</option>`).join("");
+      const pref = list.find(n => n === keep) || list.find(n => prefer.test(n)) || list.find(n => !/扬声器|speaker|VG278/i.test(n)) || list[0];
+      if (pref) sel.value = pref;
+    };
+    fill($("#in"), d.in, /iphone|usb|airpods/i); fill($("#out"), d.out, /外置耳机|headphones|耳机/i);
+    if (!d.in.length) showErr("没有找到麦克风。接好后刷新页面。");
+  } catch(e){ showErr(e); }
+}
+
+let songsFilled = false;
+function fillSongs(){
+  if (songsFilled || !S || !S.songs) return;
+  songsFilled = true;
+  const ss = $("#song"), ks = $("#key");
+  ss.innerHTML = Object.entries(S.songs).map(([k, v]) => `<option value="${k}">${esc(v.label)}${v.file ? " · " + esc(v.file.split("/").pop()) : ""}</option>`).join("");
+  ks.innerHTML = S.keys.map(k => `<option>${esc(k)}</option>`).join("");
+  const sync = () => {
+    const v = S.songs[ss.value];
+    ks.value = v.key; $("#bpm").value = v.bpm;
+    if (ss.value === "free"){ $("#click").checked = true; $("#input").value = "mic"; syncInput(); }
+  };
+  ss.onchange = sync; sync();
+}
+
+function render(){
+  if (!S) return;
+  fillSongs();
+  $("#beatl").textContent = "第几拍 / " + (S.K || (S.song && S.song.beats) || "—");
+  const st = $("#state");
+  const busy = S.state === "running";
+  $("#start").disabled = busy || S.state === "await" || !S.models_ready;
+  $("#stop").disabled = !busy;
+  if (!S.models_ready) { st.textContent = "模型加载中（十几秒）…"; st.className = "state wait"; }
+  else if (S.models_err) { st.textContent = "模型加载失败"; st.className = "state err"; showErr(S.models_err); }
+  else if (busy) { st.textContent = S.synced ? "在配和声：跟着手机唱到底，或点停止" : "麦克风已开：现在用手机外放"; st.className = "state run"; }
+  else if (S.state === "await") { st.textContent = "这一轮结束了，请打分"; st.className = "state wait"; }
+  else { st.textContent = "就绪：选好系统，点开始"; st.className = "state"; }
+  if (S.msg) showErr(S.msg);
+
+  const db = S.db == null ? -80 : S.db;
+  $("#lvl").style.width = Math.max(0, Math.min(100, (db + 60) / 60 * 100)) + "%";
+  $("#pitch").textContent = S.pitch || "—";
+  $("#beat").textContent = S.beat == null ? "—" : Math.max(0, S.beat).toFixed(1);
+  $("#n").textContent = S.n ?? 0;
+  const rows = S.rows || [];
+  $("#ms").textContent = rows.length ? Math.round(rows.reduce((a, r) => a + r.ms, 0) / rows.length) : "—";
+  const key = JSON.stringify(rows);
+  if (key !== lastRows){
+    lastRows = key;
+    const f = $("#feed");
+    f.innerHTML = rows.length ? "<table>" + rows.slice().reverse().map(r =>
+      `<tr><td>${esc(r.pos)}</td><td>她 ${esc(r.her)}</td><td>→</td><td>Duet ${esc(r.duet)}</td><td class="k"><span class="tag ${r.kind}">${KIND[r.kind]}</span> ${ACT[r.act] || ""}</td></tr>`).join("") + "</table>"
+      : `<p class="empty">${busy ? "在等她的第一个音…（看上面的电平条有没有动）" : "还没开始。点“开始”，再放手机。"}</p>`;
+  }
+
+  const vc = $("#vcard");
+  if (S.state === "await" && S.last){
+    vc.hidden = false;
+    $("#vwho").textContent = (S.last.blind ? "盲测：评价后揭晓是哪个系统。" : "系统：" + (S.choices[S.last.system] || S.last.system) + "。")
+      + ` 她的音 ${S.last.notes_answered} 个，Duet 唱了 ${S.last.sung} 个。`;
+    const src = `/rec/${S.last.run}/run.wav`;
+    if ($("#vaudio").dataset.src !== src){ $("#vaudio").dataset.src = src; $("#vaudio").src = src; }
+    if (!$("#vbtn").children.length){
+      $("#vbtn").innerHTML = S.verdicts.map(v => `<button data-v="${v}">${v}</button>`).join("");
+      $("#vbtn").querySelectorAll("button").forEach(b => b.onclick = () => verdict(b.dataset.v));
+    }
+  } else { vc.hidden = true; $("#vbtn").innerHTML = ""; }
+}
+
+async function loadHist(){
+  try {
+    const h = await api("/api/runs");
+    const key = JSON.stringify(h);
+    if (key === lastHist) return;
+    lastHist = key;
+    $("#hist").innerHTML = h.length ? h.map(r => `<tr><td class="mono">${esc((r.started || "").slice(11, 16))}</td><td>${esc(r.label)}${r.blind ? "（盲测）" : ""}<br><span class="hint">${esc(r.song || "")} · ${esc(r.key || "")} 大调</span></td><td>${esc(r.verdict)}</td><td>${esc(r.note)}${r.has_wav ? ` <a href="/rec/${esc(r.run)}/run.wav" target="_blank">录音</a>` : ""}</td></tr>`).join("")
+      : `<tr><td colspan="4" class="empty">还没有记录。</td></tr>`;
+  } catch(e){}
+}
+
+async function verdict(v){
+  try {
+    const r = await api("/api/verdict", {run: S.last.run, verdict: v, note: $("#vnote").value});
+    $("#vnote").value = "";
+    if (r.blind) alertLine(`盲测揭晓：这一轮是 ${S.choices[r.system] || r.system}`);
+    await poll(); loadHist();
+  } catch(e){ showErr(e); }
+}
+function alertLine(t){ showErr(""); const p = $("#steps"); p.textContent = t; p.style.color = "var(--accent)"; }
+
+$("#start").onclick = async () => {
+  showErr(""); $("#steps").style.color = "";
+  try { S = await api("/api/start", {system: pick, song: $("#song").value, key: $("#key").value, bpm: $("#bpm").value,
+          mode: $("#mode").value, click: $("#click").checked, input: $("#input").value, in: $("#in").value, out: $("#out").value,
+          monitor: $("#mon").value}); render(); }
+  catch(e){ showErr(e); }
+};
+$("#stop").onclick = async () => { try { await api("/api/stop", {}); } catch(e){ showErr(e); } };
+$("#mon").oninput = () => { $("#monv").textContent = $("#mon").value; };
+function syncInput(){
+  const file = $("#input").value === "file";
+  $("#inlab").hidden = file;
+  $("#mon").closest("label").hidden = file;
+  $("#steps").style.color = "";
+  $("#steps").textContent = file
+    ? "点“开始”：手机文件直接送进 Duet，你在耳机里同时听到旋律和 Duet 的实时和声。不用手机，也不开麦。"
+    : "点“开始”后马上用手机外放上面选的那个文件。开头的嘀声会被忽略，她的第一个音就是第 1 拍。唱完会自己停。";
+}
+$("#input").onchange = syncInput; syncInput();
+
+async function poll(){
+  try { S = await api("/api/state"); render(); if (S.state !== "running") loadHist(); }
+  catch(e){ $("#state").textContent = "连不上测试服务（终端里还开着吗？）"; $("#state").className = "state err"; }
+}
+renderSys(); loadDevices(); loadHist(); poll();
+setInterval(poll, 300);
+setInterval(() => { if (!S || S.state !== "running") loadDevices(); }, 3000);   // headphones and mics come and go
+</script>
+</body>
+</html>

@@ -1,0 +1,2 @@
+2026-11-01 16:03:31 START tl=600 cwd=$ABS/futures/v3_nolatency $ABS/.venv/bin/python $ABS/runs_mini/v4_1101/r4/B/check_why.py
+2026-11-01 16:04:00 END rc=0 secs=29 $ABS/.venv/bin/python $ABS/runs_mini/v4_1101/r4/B/check_why.py

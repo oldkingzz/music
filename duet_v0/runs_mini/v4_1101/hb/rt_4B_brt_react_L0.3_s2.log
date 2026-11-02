@@ -1,0 +1,2 @@
+2026-11-02 04:48:02 START tl=600 cwd=$ABS $ABS/.venv/bin/python $ABS/futures/v5_rt/bench_rt.py reactive:r2_mix_v2 --L 0.3 --seed2 --out $ABS/runs_mini/v5rt_1101/scores/L4_reactive_r2_mix_v2_L0.3_seed2.json
+2026-11-02 04:48:12 END rc=0 secs=10 $ABS/.venv/bin/python $ABS/futures/v5_rt/bench_rt.py reactive:r2_mix_v2 --L 0.3 --seed2 --out $ABS/runs_mini/v5rt_1101/scores/L4_reactive_r2_mix_v2_L0.3_seed2.json

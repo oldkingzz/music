@@ -1,0 +1,61 @@
+{
+ "spec": "reactive:r2_mix_v2",
+ "L": 0.1,
+ "seed": "seed1",
+ "split": "val",
+ "W_beats": 0.05,
+ "bench_sha256": "f1eb524aa939b5ba54704532ac7b5eb536659ceaaef32c3701934f9cf7d3e772",
+ "headline": {
+  "attacks_per_note": 0.6697738199390713,
+  "stumble": 1.5471254409307506e-05,
+  "attack_harsh": 0.0,
+  "held_harsh": 0.25934829380778396,
+  "harsh_first_fresh": 0.0,
+  "harsh_first_held": 0.2594076693366644
+ },
+ "rows": {
+  "bach": {
+   "attacks_per_note": 0.7842942345924453,
+   "stumble": 0.0,
+   "attack_harsh": 0.0,
+   "held_harsh": 0.3866799204771372,
+   "harsh_first_fresh": 0.0,
+   "harsh_first_held": 0.38667992047714334,
+   "notes": 1006
+  },
+  "folk": {
+   "attacks_per_note": 0.680363883903707,
+   "stumble": 6.188501763723002e-05,
+   "attack_harsh": 0.0,
+   "held_harsh": 0.25205767683643787,
+   "harsh_first_fresh": 0.0,
+   "harsh_first_held": 0.25205767683651087,
+   "notes": 16159
+  },
+  "pop": {
+   "attacks_per_note": 0.5992503513977823,
+   "stumble": 0.0,
+   "attack_harsh": 0.0,
+   "held_harsh": 0.19717320006247072,
+   "harsh_first_fresh": 0.0,
+   "harsh_first_held": 0.19717320006247352,
+   "notes": 12806
+  },
+  "pop909": {
+   "attacks_per_note": 0.6151868098623506,
+   "stumble": 0.0,
+   "attack_harsh": 0.0,
+   "held_harsh": 0.20148237785509,
+   "harsh_first_fresh": 0.0,
+   "harsh_first_held": 0.2017198799705299,
+   "notes": 13222
+  }
+ },
+ "definitions": {
+  "attacks_per_note": "Duet note attacks (changes to a note >= 0) in [onset - W, onset + L], per her note",
+  "stumble": "share of her notes where Duet attacks a note in [onset - W, onset] AND changes again in (onset, onset + L]: a wrong-then-corrected start",
+  "attack_harsh": "share of her notes where the note sounding just after her onset was attacked in [onset - W, onset] and is a 2nd/tritone/7th against her true note",
+  "held_harsh": "share of her notes where the note sounding just after her onset was held over from before onset - W and is a 2nd/tritone/7th against her true note",
+  "harsh_first_fresh / harsh_first_held": "bench_rt's harsh_first split by whether the sounding note was attacked with her onset (fresh) or held over"
+ }
+}

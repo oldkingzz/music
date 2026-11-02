@@ -1,0 +1,25 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(cd:*)",
+      "Bash(mkdir:*)",
+      "Bash(ls:*)",
+      "Bash(cat:*)",
+      "Bash(date:*)",
+      "Bash(df:*)",
+      "Bash(du:*)",
+      "Bash(diskutil info:*)",
+      "Bash(shasum:*)",
+      "Bash(env:*)",
+      "Bash(grep:*)",
+      "Bash(/Users/san/claude_sandbox/music/duet_v0/.venv/bin/python:*)",
+      "Bash(.venv/bin/python:*)",
+      "Write",
+      "Edit"
+    ],
+    "deny": [
+      "Bash(rm:*)",
+      "Bash(git:*)"
+    ]
+  }
+}

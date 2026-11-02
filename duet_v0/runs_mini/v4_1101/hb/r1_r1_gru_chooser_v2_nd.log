@@ -1,0 +1,2 @@
+2026-11-01 14:47:41 START tl=600 cwd=$ABS/runs_mini/v4_1101/nd/r1_gru_chooser_v2 $ABS/.venv/bin/python $ABS/futures/v3_nolatency/rescore_nd.py r1_gru_chooser_v2
+2026-11-01 14:47:47 END rc=0 secs=6 $ABS/.venv/bin/python $ABS/futures/v3_nolatency/rescore_nd.py r1_gru_chooser_v2

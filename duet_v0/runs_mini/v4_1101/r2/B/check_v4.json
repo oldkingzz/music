@@ -1,0 +1,36 @@
+{
+ "w_big_file": 0.8,
+ "alpha_v3": 0.85,
+ "alpha_v4": 0.85,
+ "songs_per_dataset": 100,
+ "bach": {
+  "songs": 100,
+  "notes": 4924,
+  "wbig04_same_as_v3": 4924,
+  "wbig04_a0_same_as_m1": 4924,
+  "file_v4_diff_vs_v3": 46
+ },
+ "folk": {
+  "songs": 100,
+  "notes": 10530,
+  "wbig04_same_as_v3": 10530,
+  "wbig04_a0_same_as_m1": 10530,
+  "file_v4_diff_vs_v3": 189
+ },
+ "pop": {
+  "songs": 100,
+  "notes": 3815,
+  "wbig04_same_as_v3": 3815,
+  "wbig04_a0_same_as_m1": 3815,
+  "file_v4_diff_vs_v3": 24
+ },
+ "pop909": {
+  "songs": 100,
+  "notes": 33872,
+  "wbig04_same_as_v3": 33872,
+  "wbig04_a0_same_as_m1": 33872,
+  "file_v4_diff_vs_v3": 650
+ },
+ "all_ok": true,
+ "secs": 34.4
+}

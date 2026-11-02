@@ -1,0 +1,611 @@
+{
+ "what": "derived numbers for report_drafts (differences, means of 4, shares); val only, tuned on val",
+ "src": {
+  "music_nd": "runs_mini/v4_1101/nd/<name>/results/nd_<name>.json; m4_oracle: futures/v3_nolatency/results/nd_m4_oracle.json",
+  "seed2": "runs_mini/v4_1101/seed2/<name>.json",
+  "bench3_last_val_row": "futures/v3_nolatency/leaderboard_v3.jsonl (last val row per system; line numbers given)",
+  "diag_rt": "runs_mini/v4_1101/diag/diag_rt_v1.json (headline = mean of 4; told = told the onset chord, past = told the previous beat chord, smooth = offline HMM)",
+  "champs": "runs_mini/v4_1101/diag/diag_champs_v1.json table_4dp",
+  "recheck": "runs_mini/v4_1101/diag/recheck/recheck_rt_extra_result_20261101_145317.json, recheck_rt_result_20261101_145137.json",
+  "why_d": "runs_mini/v4_1101/diag/why/why_d_v1.json (perfect lock-on ceiling: mean over the 4 datasets computed here)",
+  "why_b": "runs_mini/v4_1101/diag/why/why_b_v1.json confusions_m1_rt (chord order I ii iii IV V vi vii)",
+  "tweaks": "runs_mini/v4_1101/diag/why/why_a_v1.json, why_b_v1.json, why_e_v1.json, why_f_v1.json (rt head music_nd)",
+  "r3C": "runs_mini/v4_1101/r3/C/diag_20261101_153920.json, ablate_20261101_154122.json",
+  "r4A": "runs_mini/v4_1101/r4/A/calib_20261101_160528.json calibration_val (implied_change[0] = own_pooled table)",
+  "r4B": "runs_mini/v4_1101/r4/B/check_why_20261101_160400.json",
+  "r4B_belief": "runs_mini/v4_1101/r4/B/check_belief_20261101_160733.json (mean of 4 computed here)",
+  "r3A": "runs_mini/v4_1101/r3/A/where_20261101_154310.json",
+  "clip_context": "runs_mini/v4_1101/phaseD/A/clip_context.json (champion = r2_mix_v2, 17 Bach val songs)"
+ },
+ "music_nd": {
+  "m1_filter_v5lo": {
+   "bach": 0.6655,
+   "folk": 0.6766,
+   "pop": 0.5601,
+   "pop909": 0.5804,
+   "headline": 0.6206
+  },
+  "r2_mix_v2": {
+   "bach": 0.6853,
+   "folk": 0.7126,
+   "pop": 0.5908,
+   "pop909": 0.5891,
+   "headline": 0.6444
+  },
+  "r3_style_mix_v3": {
+   "bach": 0.7028,
+   "folk": 0.7178,
+   "pop": 0.5963,
+   "pop909": 0.5959,
+   "headline": 0.6532
+  },
+  "third_below": {
+   "bach": 0.5429,
+   "folk": 0.4903,
+   "pop": 0.5121,
+   "pop909": 0.4763,
+   "headline": 0.5054
+  },
+  "m3_seq_v5": {
+   "bach": 0.6241,
+   "folk": 0.6805,
+   "pop": 0.5713,
+   "pop909": 0.5655,
+   "headline": 0.6104
+  },
+  "m4_oracle": {
+   "bach": 0.8871,
+   "folk": 0.8784,
+   "pop": 0.7889,
+   "pop909": 0.8009,
+   "headline": 0.8388
+  }
+ },
+ "double": {
+  "m1_filter_v5lo": {
+   "bach": 0.0481,
+   "folk": 0.0406,
+   "pop": 0.0266,
+   "pop909": 0.0344
+  },
+  "r2_mix_v2": {
+   "bach": 0.0553,
+   "folk": 0.0536,
+   "pop": 0.0222,
+   "pop909": 0.0361
+  },
+  "r3_style_mix_v3": {
+   "bach": 0.0351,
+   "folk": 0.043,
+   "pop": 0.0182,
+   "pop909": 0.0317
+  },
+  "third_below": {
+   "bach": 0.0135,
+   "folk": 0.0129,
+   "pop": 0.014,
+   "pop909": 0.0133
+  },
+  "m3_seq_v5": {
+   "bach": 0.1844,
+   "folk": 0.1177,
+   "pop": 0.0999,
+   "pop909": 0.0865
+  },
+  "m4_oracle": {
+   "bach": 0.036,
+   "folk": 0.0397,
+   "pop": 0.0246,
+   "pop909": 0.0393
+  }
+ },
+ "double_max": {
+  "m1_filter_v5lo": 0.0481,
+  "r2_mix_v2": 0.0553,
+  "r3_style_mix_v3": 0.043,
+  "third_below": 0.014,
+  "m3_seq_v5": 0.1844,
+  "m4_oracle": 0.0397
+ },
+ "diff": {
+  "r2_mix_v2-m1": {
+   "bach": 0.0198,
+   "folk": 0.0359,
+   "pop": 0.0307,
+   "pop909": 0.0087,
+   "headline": 0.0238
+  },
+  "r3_style_mix_v3-m1": {
+   "bach": 0.0373,
+   "folk": 0.0412,
+   "pop": 0.0363,
+   "pop909": 0.0156,
+   "headline": 0.0326
+  },
+  "r3_style_mix_v3-r2_mix_v2": {
+   "bach": 0.0175,
+   "folk": 0.0053,
+   "pop": 0.0056,
+   "pop909": 0.0068,
+   "headline": 0.0088
+  },
+  "m4_oracle-m1": {
+   "bach": 0.2217,
+   "folk": 0.2017,
+   "pop": 0.2288,
+   "pop909": 0.2206,
+   "headline": 0.2182
+  },
+  "m4_oracle-r2_mix_v2": {
+   "bach": 0.2019,
+   "folk": 0.1658,
+   "pop": 0.1981,
+   "pop909": 0.2118,
+   "headline": 0.1944
+  }
+ },
+ "seed2": {
+  "m1_filter_v5lo": {
+   "bach": 0.6637,
+   "folk": 0.6735,
+   "pop": 0.5628,
+   "pop909": 0.5831,
+   "headline": 0.620792
+  },
+  "r2_mix_v2": {
+   "bach": 0.6875,
+   "folk": 0.7109,
+   "pop": 0.5905,
+   "pop909": 0.5991,
+   "headline": 0.647007
+  },
+  "r3_style_mix_v3": {
+   "bach": 0.6987,
+   "folk": 0.7139,
+   "pop": 0.5963,
+   "pop909": 0.6021,
+   "headline": 0.652734
+  }
+ },
+ "seed2_diff": {
+  "r2_mix_v2-m1": 0.0262,
+  "r3_style_mix_v3-r2_mix_v2": 0.0057,
+  "r3_style_mix_v3-m1": 0.0319
+ },
+ "bench3_last_val_row": {
+  "m1_filter_v5lo": {
+   "line": 169,
+   "headline_music_raw": 0.654,
+   "flags": [],
+   "big": {
+    "bach": 0.0028,
+    "folk": 0.0095,
+    "pop": 0.0112,
+    "pop909": 0.0072
+   },
+   "par": {
+    "bach": 0.001,
+    "folk": 0.0035,
+    "pop": 0.003,
+    "pop909": 0.0039
+   },
+   "us_per_note_max": 13.5
+  },
+  "r2_mix_v2": {
+   "line": 175,
+   "headline_music_raw": 0.6815,
+   "flags": [],
+   "big": {
+    "bach": 0.0051,
+    "folk": 0.0185,
+    "pop": 0.0074,
+    "pop909": 0.0116
+   },
+   "par": {
+    "bach": 0.001,
+    "folk": 0.0045,
+    "pop": 0.0042,
+    "pop909": 0.0044
+   },
+   "us_per_note_max": 154.5
+  },
+  "r3_style_mix_v3": {
+   "line": 187,
+   "headline_music_raw": 0.6815,
+   "flags": [],
+   "big": {
+    "bach": 0.0039,
+    "folk": 0.0161,
+    "pop": 0.0056,
+    "pop909": 0.0101
+   },
+   "par": {
+    "bach": 0.0,
+    "folk": 0.0045,
+    "pop": 0.0046,
+    "pop909": 0.004
+   },
+   "us_per_note_max": 180.5
+  }
+ },
+ "same_chooser_music_nd": {
+  "rt": 0.6206,
+  "past": 0.7026,
+  "smooth": 0.6229,
+  "told": 0.8403
+ },
+ "m1_miss_share_mean4": {
+  "onset_beat_unlabelled": 0.0005,
+  "held_into_new_chord": 0.0257,
+  "no_good_note_below": 0.0687,
+  "misheard": 0.0641,
+  "wrong_chord_guess": 0.2011,
+  "right_chord_still_missed": 0.0193
+ },
+ "m1_miss_share_sum_plus_nd": 1.0,
+ "told_onset_miss_share_mean4": {
+  "onset_beat_unlabelled": 0.0005,
+  "held_into_new_chord": 0.0367,
+  "no_good_note_below": 0.0687,
+  "misheard": 0.051,
+  "wrong_chord_guess": 0.0,
+  "right_chord_still_missed": 0.0027
+ },
+ "no_good_below_but_above_ok_mean4": 0.0422,
+ "top1_acc_mean4": {
+  "rt": 0.4335,
+  "gru": 0.4841,
+  "smooth": 0.4327,
+  "past": 0.6403
+ },
+ "top1_acc_by_dataset": {
+  "rt": {
+   "bach": 0.4712,
+   "folk": 0.5714,
+   "pop": 0.3571,
+   "pop909": 0.3344
+  },
+  "gru": {
+   "bach": 0.5298,
+   "folk": 0.6544,
+   "pop": 0.3662,
+   "pop909": 0.3862
+  },
+  "smooth": {
+   "bach": 0.3817,
+   "folk": 0.6225,
+   "pop": 0.3519,
+   "pop909": 0.3745
+  },
+  "past": {
+   "bach": 0.4006,
+   "folk": 0.751,
+   "pop": 0.7382,
+   "pop909": 0.6712
+  }
+ },
+ "lockon_mean4": {
+  "rt": [
+   0.4337,
+   0.4123,
+   0.4469,
+   0.437
+  ],
+  "gru": [
+   0.4567,
+   0.4683,
+   0.4893,
+   0.5183
+  ],
+  "smooth": [
+   0.4296,
+   0.447,
+   0.4364,
+   0.4775
+  ],
+  "past": [
+   0.3917,
+   0.6537,
+   0.8353,
+   0.8791
+  ]
+ },
+ "acc_changed_vs_same_mean4": {
+  "rt": {
+   "chord_changed": 0.4319,
+   "chord_same": 0.4363
+  },
+  "gru": {
+   "chord_changed": 0.4552,
+   "chord_same": 0.4897
+  },
+  "past": {
+   "chord_changed": 0.3886,
+   "chord_same": 0.7958
+  }
+ },
+ "acc_misheard_vs_heard_right_mean4": {
+  "rt": {
+   "heard_right": 0.4497,
+   "misheard": 0.2848
+  },
+  "gru": {
+   "heard_right": 0.4987,
+   "misheard": 0.3501
+  }
+ },
+ "champs_table_4dp": {
+  "m1_filter_v5lo": {
+   "music_nd": 0.6206,
+   "acc": 0.4335,
+   "n1": 0.4337,
+   "n2": 0.4123,
+   "n3": 0.4469,
+   "n4+": 0.437,
+   "p_top": 0.4508,
+   "wrong_chord_guess": 0.2011,
+   "double": 0.0481
+  },
+  "r1_gru_chooser_v1": {
+   "music_nd": 0.644,
+   "acc": 0.4841,
+   "n1": 0.4567,
+   "n2": 0.4683,
+   "n3": 0.4893,
+   "n4+": 0.5183,
+   "p_top": 0.5279,
+   "wrong_chord_guess": 0.1763,
+   "double": 0.0504
+  },
+  "r2_mix_v2": {
+   "music_nd": 0.6444,
+   "acc": 0.4913,
+   "n1": 0.468,
+   "n2": 0.4767,
+   "n3": 0.5113,
+   "n4+": 0.521,
+   "p_top": 0.5041,
+   "wrong_chord_guess": 0.1714,
+   "double": 0.0553
+  },
+  "r3_style_mix_v3": {
+   "music_nd": 0.6532,
+   "acc": 0.4916,
+   "n1": 0.4642,
+   "n2": 0.4821,
+   "n3": 0.5121,
+   "n4+": 0.5378,
+   "p_top": 0.4584,
+   "wrong_chord_guess": 0.1685,
+   "double": 0.043
+  }
+ },
+ "champs_acc_by_dataset": {
+  "m1_filter_v5lo": {
+   "bach": 0.4712,
+   "folk": 0.5714,
+   "pop": 0.3571,
+   "pop909": 0.3344
+  },
+  "r1_gru_chooser_v1": {
+   "bach": 0.5298,
+   "folk": 0.6544,
+   "pop": 0.3662,
+   "pop909": 0.3862
+  },
+  "r2_mix_v2": {
+   "bach": 0.5388,
+   "folk": 0.6534,
+   "pop": 0.3697,
+   "pop909": 0.4032
+  },
+  "r3_style_mix_v3": {
+   "bach": 0.5328,
+   "folk": 0.6503,
+   "pop": 0.377,
+   "pop909": 0.4062
+  }
+ },
+ "always_I_acc_mean4": 0.2991,
+ "always_I_by_dataset": {
+  "bach": 0.3072,
+  "folk": 0.4295,
+  "pop": 0.2484,
+  "pop909": 0.2115
+ },
+ "m1_clean_melody": {
+  "music_nd_mean4": 0.668,
+  "top1_acc_mean4": 0.4604
+ },
+ "held_note_crosses_chord_change_time_share": {
+  "bach": 0.0477,
+  "folk": 0.0038,
+  "pop": 0.0871,
+  "pop909": 0.0788
+ },
+ "why_d": {
+  "unique_best_all_spans": {
+   "bach": 0.0126,
+   "folk": 0.2246,
+   "pop": 0.1099,
+   "pop909": 0.138
+  },
+  "mean_triads_tied_all_spans": {
+   "bach": 3.12,
+   "folk": 2.33,
+   "pop": 2.49,
+   "pop909": 2.02
+  },
+  "true_among_best_all_spans": {
+   "bach": 0.9571,
+   "folk": 0.8106,
+   "pop": 0.656,
+   "pop909": 0.6417
+  },
+  "perfect_lockon_ceiling_mean4_by_note_index": [
+   0.446,
+   0.43,
+   0.4729,
+   0.5008
+  ],
+  "m1_argmax_flip_rate_within_span": {
+   "bach": 0.3598,
+   "folk": 0.3875,
+   "pop": 0.3663,
+   "pop909": 0.3938
+  }
+ },
+ "why_b_I_share": {
+  "bach": {
+   "guess_I": 0.417,
+   "true_I": 0.307
+  },
+  "folk": {
+   "guess_I": 0.485,
+   "true_I": 0.43
+  },
+  "pop": {
+   "guess_I": 0.488,
+   "true_I": 0.248
+  },
+  "pop909": {
+   "guess_I": 0.438,
+   "true_I": 0.211
+  }
+ },
+ "m1_tweaks_rt_music_nd": {
+  "why_a T_bal0": 0.6177,
+  "why_a T_sticky70": 0.6193,
+  "why_a T_sticky85": 0.6114,
+  "why_a T_sticky95": 0.6062,
+  "why_a T_dsA_oracle": 0.6187,
+  "why_a E_lam1.0": 0.6233,
+  "why_b MIX4_tables_lam1.5": 0.6114,
+  "why_b MIX4_tables_lam1.0": 0.6216,
+  "why_e DUR_pooled_lam1.5": 0.6139,
+  "why_e DUR_pooled_lam1.0": 0.6212,
+  "why_e DUR_ORACLE_ds_lam1.5": 0.6154,
+  "why_f POP3_lam1.0_pitch0": 0.6292
+ },
+ "r3C_mean4": {
+  "pooled_hmm m1_filter_v5lo": {
+   "top1_acc": 0.4335,
+   "mean_top_prob": 0.4508
+  },
+  "style_hmm r2_style_hmm_v1": {
+   "top1_acc": 0.443,
+   "mean_top_prob": 0.3827
+  },
+  "gru3 r1_gru_chooser_v1": {
+   "top1_acc": 0.4842,
+   "mean_top_prob": 0.5279
+  },
+  "champion r2_mix_v2 (pooled, a 0.7)": {
+   "top1_acc": 0.4913,
+   "mean_top_prob": 0.5041
+  },
+  "r3_style_mix_v3 (style, a 0.5)": {
+   "top1_acc": 0.4916,
+   "mean_top_prob": 0.4584
+  },
+  "r3_style_mix_v1 (style, a 0.7)": {
+   "top1_acc": 0.4919,
+   "mean_top_prob": 0.4881
+  }
+ },
+ "r3C_ablation_headline": {
+  "A pooled lam 1.5, a 0.5": 0.642759,
+  "B pooled lam 1.0, a 0.5": 0.649741,
+  "C styles v1 lam 1.0, a 0.5": 0.65323,
+  "D pooled lam 1.0, a 0.7": 0.647667,
+  "E styles v1 pooled lam 1.5, a 0.5": 0.648018
+ },
+ "r4A_calibration_val": {
+  "bach": {
+   "held_actual": 0.2613,
+   "held_implied_pooled": 0.2185,
+   "all_actual": 0.7369,
+   "all_implied_pooled": 0.3811,
+   "held_boundaries": 199,
+   "all_boundaries": 1144
+  },
+  "folk": {
+   "held_actual": 0.0359,
+   "held_implied_pooled": 0.2221,
+   "all_actual": 0.3338,
+   "all_implied_pooled": 0.3811,
+   "held_boundaries": 1170,
+   "all_boundaries": 11170
+  },
+  "pop": {
+   "held_actual": 0.1901,
+   "held_implied_pooled": 0.3244,
+   "all_actual": 0.2539,
+   "all_implied_pooled": 0.3517,
+   "held_boundaries": 4303,
+   "all_boundaries": 12750
+  },
+  "pop909": {
+   "held_actual": 0.2842,
+   "held_implied_pooled": 0.3365,
+   "all_actual": 0.3114,
+   "all_implied_pooled": 0.3657,
+   "held_boundaries": 5425,
+   "all_boundaries": 11269
+  }
+ },
+ "r4B_mishearing": {
+  "bach": {
+   "cost_total": 0.0553,
+   "cost_belief": 0.01034,
+   "cost_choice": 0.04496,
+   "belief_share": 0.187,
+   "misheard_in_scale_share": 0.55
+  },
+  "folk": {
+   "cost_total": 0.05158,
+   "cost_belief": 0.00855,
+   "cost_choice": 0.04303,
+   "belief_share": 0.166,
+   "misheard_in_scale_share": 0.533
+  },
+  "pop": {
+   "cost_total": 0.04116,
+   "cost_belief": 0.00553,
+   "cost_choice": 0.03563,
+   "belief_share": 0.134,
+   "misheard_in_scale_share": 0.53
+  },
+  "pop909": {
+   "cost_total": 0.05646,
+   "cost_belief": 0.01337,
+   "cost_choice": 0.04309,
+   "belief_share": 0.237,
+   "misheard_in_scale_share": 0.533
+  }
+ },
+ "r4B_top1_true_notes_vs_heard": {
+  "heard_mean4": 0.4916,
+  "true_notes_mean4": 0.5173
+ },
+ "r3A_time_share_later_chord_changed": {
+  "bach": 0.0477,
+  "folk": 0.0038,
+  "pop": 0.0871,
+  "pop909": 0.0788
+ },
+ "clip_context": {
+  "song_level": {
+   "champion_better": 9,
+   "tie": 1,
+   "m1_better": 7,
+   "mean_diff": 0.0118
+  },
+  "clip_level": {
+   "champion_better": 6,
+   "tie": 1,
+   "m1_better": 10,
+   "mean_diff": -0.0021
+  }
+ }
+}

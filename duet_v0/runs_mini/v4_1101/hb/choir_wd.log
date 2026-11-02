@@ -1,0 +1,2 @@
+2026-11-02 11:31:41 START tl=300 cwd=$ABS .venv/bin/python runs_mini/choir_1102/watchdog_test_v1.py
+2026-11-02 11:31:45 END rc=0 secs=5 .venv/bin/python runs_mini/choir_1102/watchdog_test_v1.py

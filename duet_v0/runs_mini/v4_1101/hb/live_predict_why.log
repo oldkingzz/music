@@ -1,0 +1,16 @@
+2026-11-01 21:28:48 START tl=600 cwd=$ABS .venv/bin/python -c 
+import sys; sys.argv=['x']; sys.path.insert(0,'futures/v4_selfiter')
+import numpy as np, soundfile as sf, live_predict as LP, live_bench3 as LB, bench3
+from songs import twinkle
+from theory import CT
+nm=lambda q:'-' if q is None or q<0 else ['C','C#','D','Eb','E','F','F#','G','Ab','A','Bb','B'][q%12]+str(q//12-1)
+sysm=LB.build('r2_mix_v2', bench3.train_sets())
+x,sr=sf.read('fu
+2026-11-01 21:28:51 END rc=0 secs=3 .venv/bin/python -c 
+import sys; sys.argv=['x']; sys.path.insert(0,'futures/v4_selfiter')
+import numpy as np, soundfile as sf, live_predict as LP, live_bench3 as LB, bench3
+from songs import twinkle
+from theory import CT
+nm=lambda q:'-' if q is None or q<0 else ['C','C#','D','Eb','E','F','F#','G','Ab','A','Bb','B'][q%12]+str(q//12-1)
+sysm=LB.build('r2_mix_v2', bench3.train_sets())
+x,sr=sf.read('fu

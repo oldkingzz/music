@@ -1,0 +1,2 @@
+2026-11-01 23:17:32 START tl=600 cwd=$ABS $ABS/.venv/bin/python $ABS/runs_mini/v5rt_1101/r2/tune_R2_v1.py --tag s1c {"copy":true} {"copy":true,"copy_rhy":1.0} {"copy":true,"copy_rhy":1.0,"w_next":0.2}
+2026-11-01 23:18:24 END rc=0 secs=52 $ABS/.venv/bin/python $ABS/runs_mini/v5rt_1101/r2/tune_R2_v1.py --tag s1c {"copy":true} {"copy":true,"copy_rhy":1.0} {"copy":true,"copy_rhy":1.0,"w_next":0.2}

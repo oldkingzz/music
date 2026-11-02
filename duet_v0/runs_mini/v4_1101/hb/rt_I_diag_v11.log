@@ -1,0 +1,2 @@
+2026-11-02 00:25:16 START tl=600 cwd=$ABS $ABS/.venv/bin/python $ABS/runs_mini/v5rt_1101/live/diag_v11_v1.py --out $ABS/runs_mini/v5rt_1101/live/I_diag_v11_v1.json
+2026-11-02 00:25:19 END rc=0 secs=4 $ABS/.venv/bin/python $ABS/runs_mini/v5rt_1101/live/diag_v11_v1.py --out $ABS/runs_mini/v5rt_1101/live/I_diag_v11_v1.json

@@ -1,0 +1,2 @@
+2026-11-01 22:37:17 START tl=900 cwd=$ABS $ABS/.venv/bin/python $ABS/runs_mini/v5rt_1101/r1/A/tune_A_v2.py {} {"hold_win": "half"} {"post_hold": false} {"kappa_hold": 1} {"kappa_hold": 0.5} {"kappa_hold": 1, "kappa": 4} {"kappa_hold": 1, "mu": 0.15} {"kappa_hold": 1, "mu_old": 0.05}
+2026-11-01 22:39:02 END rc=0 secs=106 $ABS/.venv/bin/python $ABS/runs_mini/v5rt_1101/r1/A/tune_A_v2.py {} {"hold_win": "half"} {"post_hold": false} {"kappa_hold": 1} {"kappa_hold": 0.5} {"kappa_hold": 1, "kappa": 4} {"kappa_hold": 1, "mu": 0.15} {"kappa_hold": 1, "mu_old": 0.05}

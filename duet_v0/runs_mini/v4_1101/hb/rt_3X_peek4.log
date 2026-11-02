@@ -1,0 +1,12 @@
+2026-11-02 03:40:15 START tl=60 cwd=$ABS $ABS/.venv/bin/python -c 
+import json
+t = json.load(open('$ABS/runs_mini/v5rt_1101/r3/X/table_v1.json'))
+b = t['reactive']['g1']
+print('reactive ds', {d: round(b['ds_rt_nd'][d], 4) for d in b['ds_rt_nd']}, 'harsh', {d: round(b['ds_harsh'][d], 4) for d in b['ds_harsh']}, 'fresh', {d: round(b['ds_fresh'][d], 2) for d in b['ds_fresh']})
+for n in ('r3_X_regtrkdk_v1', 'r3_X_regtrkst_v1', 'r3_X_regtrkst
+2026-11-02 03:40:15 END rc=0 secs=0 $ABS/.venv/bin/python -c 
+import json
+t = json.load(open('$ABS/runs_mini/v5rt_1101/r3/X/table_v1.json'))
+b = t['reactive']['g1']
+print('reactive ds', {d: round(b['ds_rt_nd'][d], 4) for d in b['ds_rt_nd']}, 'harsh', {d: round(b['ds_harsh'][d], 4) for d in b['ds_harsh']}, 'fresh', {d: round(b['ds_fresh'][d], 2) for d in b['ds_fresh']})
+for n in ('r3_X_regtrkdk_v1', 'r3_X_regtrkst_v1', 'r3_X_regtrkst

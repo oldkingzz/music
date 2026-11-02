@@ -1,0 +1,2411 @@
+{
+ "what": "Phase D, agent X: consistent REAL-TIME chord-guess numbers for the cards (v4_1101; reads the bundle, edits nothing).",
+ "notes": "val only (the bundle has no test split); everything was tuned on val. Headline = mean over bach, folk, pop, pop909 (double: max over the 4, as diag_rt.py; chord_acc notes: sum). Definitions: runs_mini/v4_1101/tools/diag_rt.py; p_top (mean max belief) is new here.",
+ "reproduces_all_nd": true,
+ "one_belief_per_note_all": true,
+ "crosscheck_diag_rt_v1": {
+  "compared": 393,
+  "exactly_equal": 393,
+  "max_abs_diff": 0.0,
+  "worst": "r1_gru_chooser_v1 pop909 other_beat p_true",
+  "all_within_tolerance": true
+ },
+ "crosscheck_r3C_diag": {
+  "compared": 56,
+  "exactly_equal": 16,
+  "max_abs_diff": 6.892581099487982e-05,
+  "worst": "r1_gru_chooser_v1 mean4 top1_acc",
+  "all_within_tolerance": true
+ },
+ "sha256_12": {
+  "m1_filter_v5lo": "70bae2a359cc",
+  "r1_gru_chooser_v1": "2d26a11f22fe",
+  "r2_mix_v2": "b481d9156f3c",
+  "r3_style_mix_v3": "b79ea9bf01c4",
+  "r2_style_hmm_v1": "a37e0f1b3168",
+  "m3_seq_v4": "bd62540fa354",
+  "m3_seq_v1": "aa33a758523c",
+  "diag_rt": "2c68b0d46c9d",
+  "diag_champs": "1c98b4477e8f"
+ },
+ "sha_matches_state": {
+  "r1_gru_chooser_v1": true,
+  "r2_mix_v2": true,
+  "r3_style_mix_v3": true,
+  "r2_style_hmm_v1": true,
+  "diag_rt": true
+ },
+ "table_4dp": {
+  "m1_filter_v5lo": {
+   "headline": {
+    "music_nd": 0.6206,
+    "double": 0.0481,
+    "acc": 0.4335,
+    "chg": 0.4319,
+    "same": 0.4363,
+    "n1": 0.4337,
+    "n2": 0.4123,
+    "n3": 0.4469,
+    "n4+": 0.437,
+    "p_true": 0.3,
+    "p_top": 0.4508,
+    "onset_beat_unlabelled": 0.0005,
+    "held_into_new_chord": 0.0257,
+    "no_good_note_below": 0.0687,
+    "misheard": 0.0641,
+    "wrong_chord_guess": 0.2011,
+    "right_chord_still_missed": 0.0193
+   },
+   "bach": {
+    "music_nd": 0.6655,
+    "double": 0.0481,
+    "acc": 0.4712,
+    "chg": 0.4681,
+    "same": 0.482,
+    "n1": 0.4697,
+    "n2": 0.469,
+    "n3": 0.5102,
+    "n4+": 0.45,
+    "p_true": 0.312,
+    "p_top": 0.4556,
+    "onset_beat_unlabelled": 0.0,
+    "held_into_new_chord": 0.0238,
+    "no_good_note_below": 0.0207,
+    "misheard": 0.0647,
+    "wrong_chord_guess": 0.2068,
+    "right_chord_still_missed": 0.0184
+   },
+   "folk": {
+    "music_nd": 0.6766,
+    "double": 0.0406,
+    "acc": 0.5714,
+    "chg": 0.5546,
+    "same": 0.5765,
+    "n1": 0.5546,
+    "n2": 0.4892,
+    "n3": 0.578,
+    "n4+": 0.6202,
+    "p_true": 0.3689,
+    "p_top": 0.4759,
+    "onset_beat_unlabelled": 0.0,
+    "held_into_new_chord": 0.0025,
+    "no_good_note_below": 0.0503,
+    "misheard": 0.0663,
+    "wrong_chord_guess": 0.1781,
+    "right_chord_still_missed": 0.0262
+   },
+   "pop": {
+    "music_nd": 0.5601,
+    "double": 0.0266,
+    "acc": 0.3571,
+    "chg": 0.3771,
+    "same": 0.3504,
+    "n1": 0.3803,
+    "n2": 0.357,
+    "n3": 0.3628,
+    "n4+": 0.3418,
+    "p_true": 0.2607,
+    "p_top": 0.4469,
+    "onset_beat_unlabelled": 0.0014,
+    "held_into_new_chord": 0.0425,
+    "no_good_note_below": 0.1184,
+    "misheard": 0.0582,
+    "wrong_chord_guess": 0.207,
+    "right_chord_still_missed": 0.0124
+   },
+   "pop909": {
+    "music_nd": 0.5804,
+    "double": 0.0344,
+    "acc": 0.3344,
+    "chg": 0.3276,
+    "same": 0.3364,
+    "n1": 0.3301,
+    "n2": 0.3342,
+    "n3": 0.3367,
+    "n4+": 0.336,
+    "p_true": 0.2583,
+    "p_top": 0.4247,
+    "onset_beat_unlabelled": 0.0005,
+    "held_into_new_chord": 0.0339,
+    "no_good_note_below": 0.0855,
+    "misheard": 0.0671,
+    "wrong_chord_guess": 0.2127,
+    "right_chord_still_missed": 0.02
+   }
+  },
+  "r1_gru_chooser_v1": {
+   "headline": {
+    "music_nd": 0.644,
+    "double": 0.0504,
+    "acc": 0.4841,
+    "chg": 0.4552,
+    "same": 0.4897,
+    "n1": 0.4567,
+    "n2": 0.4683,
+    "n3": 0.4893,
+    "n4+": 0.5183,
+    "p_true": 0.3737,
+    "p_top": 0.5279,
+    "onset_beat_unlabelled": 0.0002,
+    "held_into_new_chord": 0.0251,
+    "no_good_note_below": 0.0687,
+    "misheard": 0.0639,
+    "wrong_chord_guess": 0.1763,
+    "right_chord_still_missed": 0.0218
+   },
+   "bach": {
+    "music_nd": 0.6915,
+    "double": 0.0486,
+    "acc": 0.5298,
+    "chg": 0.5332,
+    "same": 0.518,
+    "n1": 0.5341,
+    "n2": 0.5034,
+    "n3": 0.5102,
+    "n4+": 0.6,
+    "p_true": 0.4056,
+    "p_top": 0.5538,
+    "onset_beat_unlabelled": 0.0,
+    "held_into_new_chord": 0.0225,
+    "no_good_note_below": 0.0207,
+    "misheard": 0.0688,
+    "wrong_chord_guess": 0.17,
+    "right_chord_still_missed": 0.0265
+   },
+   "folk": {
+    "music_nd": 0.7134,
+    "double": 0.0504,
+    "acc": 0.6544,
+    "chg": 0.5775,
+    "same": 0.6768,
+    "n1": 0.5771,
+    "n2": 0.6029,
+    "n3": 0.6523,
+    "n4+": 0.7246,
+    "p_true": 0.5261,
+    "p_top": 0.6555,
+    "onset_beat_unlabelled": 0.0,
+    "held_into_new_chord": 0.0028,
+    "no_good_note_below": 0.0503,
+    "misheard": 0.064,
+    "wrong_chord_guess": 0.1445,
+    "right_chord_still_missed": 0.025
+   },
+   "pop": {
+    "music_nd": 0.5903,
+    "double": 0.0195,
+    "acc": 0.3662,
+    "chg": 0.3554,
+    "same": 0.3685,
+    "n1": 0.3586,
+    "n2": 0.3724,
+    "n3": 0.3858,
+    "n4+": 0.3596,
+    "p_true": 0.2458,
+    "p_top": 0.3747,
+    "onset_beat_unlabelled": 0.0004,
+    "held_into_new_chord": 0.0373,
+    "no_good_note_below": 0.1184,
+    "misheard": 0.0551,
+    "wrong_chord_guess": 0.1759,
+    "right_chord_still_missed": 0.0225
+   },
+   "pop909": {
+    "music_nd": 0.5808,
+    "double": 0.0342,
+    "acc": 0.3862,
+    "chg": 0.3548,
+    "same": 0.3956,
+    "n1": 0.3569,
+    "n2": 0.3945,
+    "n3": 0.409,
+    "n4+": 0.389,
+    "p_true": 0.3174,
+    "p_top": 0.5277,
+    "onset_beat_unlabelled": 0.0003,
+    "held_into_new_chord": 0.0376,
+    "no_good_note_below": 0.0855,
+    "misheard": 0.0678,
+    "wrong_chord_guess": 0.2147,
+    "right_chord_still_missed": 0.0132
+   }
+  },
+  "r2_mix_v2": {
+   "headline": {
+    "music_nd": 0.6444,
+    "double": 0.0553,
+    "acc": 0.4913,
+    "chg": 0.4668,
+    "same": 0.5008,
+    "n1": 0.468,
+    "n2": 0.4767,
+    "n3": 0.5113,
+    "n4+": 0.521,
+    "p_true": 0.3635,
+    "p_top": 0.5041,
+    "onset_beat_unlabelled": 0.0004,
+    "held_into_new_chord": 0.0255,
+    "no_good_note_below": 0.0687,
+    "misheard": 0.0643,
+    "wrong_chord_guess": 0.1714,
+    "right_chord_still_missed": 0.0252
+   },
+   "bach": {
+    "music_nd": 0.6853,
+    "double": 0.0553,
+    "acc": 0.5388,
+    "chg": 0.5357,
+    "same": 0.5495,
+    "n1": 0.5366,
+    "n2": 0.531,
+    "n3": 0.5714,
+    "n4+": 0.6,
+    "p_true": 0.389,
+    "p_top": 0.5219,
+    "onset_beat_unlabelled": 0.0,
+    "held_into_new_chord": 0.0229,
+    "no_good_note_below": 0.0207,
+    "misheard": 0.0692,
+    "wrong_chord_guess": 0.1664,
+    "right_chord_still_missed": 0.0355
+   },
+   "folk": {
+    "music_nd": 0.7126,
+    "double": 0.0536,
+    "acc": 0.6534,
+    "chg": 0.5805,
+    "same": 0.6747,
+    "n1": 0.5801,
+    "n2": 0.5984,
+    "n3": 0.659,
+    "n4+": 0.7202,
+    "p_true": 0.501,
+    "p_top": 0.6164,
+    "onset_beat_unlabelled": 0.0,
+    "held_into_new_chord": 0.003,
+    "no_good_note_below": 0.0503,
+    "misheard": 0.0641,
+    "wrong_chord_guess": 0.1419,
+    "right_chord_still_missed": 0.0282
+   },
+   "pop": {
+    "music_nd": 0.5908,
+    "double": 0.0222,
+    "acc": 0.3697,
+    "chg": 0.3768,
+    "same": 0.367,
+    "n1": 0.3793,
+    "n2": 0.372,
+    "n3": 0.3892,
+    "n4+": 0.3556,
+    "p_true": 0.253,
+    "p_top": 0.392,
+    "onset_beat_unlabelled": 0.001,
+    "held_into_new_chord": 0.0384,
+    "no_good_note_below": 0.1184,
+    "misheard": 0.0558,
+    "wrong_chord_guess": 0.1748,
+    "right_chord_still_missed": 0.0208
+   },
+   "pop909": {
+    "music_nd": 0.5891,
+    "double": 0.0361,
+    "acc": 0.4032,
+    "chg": 0.3744,
+    "same": 0.4119,
+    "n1": 0.3761,
+    "n2": 0.4053,
+    "n3": 0.4255,
+    "n4+": 0.4081,
+    "p_true": 0.3111,
+    "p_top": 0.4862,
+    "onset_beat_unlabelled": 0.0005,
+    "held_into_new_chord": 0.0377,
+    "no_good_note_below": 0.0855,
+    "misheard": 0.0681,
+    "wrong_chord_guess": 0.2027,
+    "right_chord_still_missed": 0.0165
+   }
+  },
+  "r3_style_mix_v3": {
+   "headline": {
+    "music_nd": 0.6532,
+    "double": 0.043,
+    "acc": 0.4916,
+    "chg": 0.4627,
+    "same": 0.5078,
+    "n1": 0.4642,
+    "n2": 0.4821,
+    "n3": 0.5121,
+    "n4+": 0.5378,
+    "p_true": 0.3397,
+    "p_top": 0.4584,
+    "onset_beat_unlabelled": 0.0005,
+    "held_into_new_chord": 0.0257,
+    "no_good_note_below": 0.0687,
+    "misheard": 0.0628,
+    "wrong_chord_guess": 0.1685,
+    "right_chord_still_missed": 0.0205
+   },
+   "bach": {
+    "music_nd": 0.7028,
+    "double": 0.0351,
+    "acc": 0.5328,
+    "chg": 0.523,
+    "same": 0.5676,
+    "n1": 0.524,
+    "n2": 0.5517,
+    "n3": 0.5714,
+    "n4+": 0.65,
+    "p_true": 0.3602,
+    "p_top": 0.4768,
+    "onset_beat_unlabelled": 0.0,
+    "held_into_new_chord": 0.0252,
+    "no_good_note_below": 0.0207,
+    "misheard": 0.0647,
+    "wrong_chord_guess": 0.1664,
+    "right_chord_still_missed": 0.0202
+   },
+   "folk": {
+    "music_nd": 0.7178,
+    "double": 0.043,
+    "acc": 0.6503,
+    "chg": 0.5827,
+    "same": 0.67,
+    "n1": 0.5823,
+    "n2": 0.5894,
+    "n3": 0.6553,
+    "n4+": 0.7173,
+    "p_true": 0.462,
+    "p_top": 0.5615,
+    "onset_beat_unlabelled": 0.0,
+    "held_into_new_chord": 0.0028,
+    "no_good_note_below": 0.0503,
+    "misheard": 0.0641,
+    "wrong_chord_guess": 0.1403,
+    "right_chord_still_missed": 0.0246
+   },
+   "pop": {
+    "music_nd": 0.5963,
+    "double": 0.0182,
+    "acc": 0.377,
+    "chg": 0.3673,
+    "same": 0.379,
+    "n1": 0.3708,
+    "n2": 0.3787,
+    "n3": 0.3901,
+    "n4+": 0.3745,
+    "p_true": 0.2458,
+    "p_top": 0.3662,
+    "onset_beat_unlabelled": 0.0013,
+    "held_into_new_chord": 0.0387,
+    "no_good_note_below": 0.1184,
+    "misheard": 0.0551,
+    "wrong_chord_guess": 0.1702,
+    "right_chord_still_missed": 0.02
+   },
+   "pop909": {
+    "music_nd": 0.5959,
+    "double": 0.0317,
+    "acc": 0.4062,
+    "chg": 0.3777,
+    "same": 0.4147,
+    "n1": 0.3797,
+    "n2": 0.4087,
+    "n3": 0.4315,
+    "n4+": 0.4093,
+    "p_true": 0.2908,
+    "p_top": 0.4291,
+    "onset_beat_unlabelled": 0.0007,
+    "held_into_new_chord": 0.0362,
+    "no_good_note_below": 0.0855,
+    "misheard": 0.0674,
+    "wrong_chord_guess": 0.1971,
+    "right_chord_still_missed": 0.0172
+   }
+  }
+ },
+ "systems": {
+  "m1_filter_v5lo": {
+   "class": "Filter",
+   "secs": 2.7,
+   "notes_fed": 46310,
+   "belief_calls": 46310,
+   "one_belief_per_note": true,
+   "belief_dtype": "float64",
+   "nd_check": {
+    "bach": {
+     "music_nd": [
+      0.6654676258992805,
+      0.6654676258992805
+     ],
+     "double": [
+      0.048111510791366906,
+      0.048111510791366906
+     ],
+     "equal": true
+    },
+    "folk": {
+     "music_nd": [
+      0.6766319389882062,
+      0.6766319389882062
+     ],
+     "double": [
+      0.040605488061483286,
+      0.040605488061483286
+     ],
+     "equal": true
+    },
+    "pop": {
+     "music_nd": [
+      0.5600714161727874,
+      0.5600714161727874
+     ],
+     "double": [
+      0.026557889255337613,
+      0.026557889255337613
+     ],
+     "equal": true
+    },
+    "pop909": {
+     "music_nd": [
+      0.5803795205667619,
+      0.5803795205667619
+     ],
+     "double": [
+      0.03439100959947078,
+      0.03439100959947078
+     ],
+     "equal": true
+    },
+    "headline_nd": {
+     "music_nd": [
+      0.620637625406759,
+      0.620637625406759
+     ],
+     "equal": true
+    },
+    "all_equal": true
+   },
+   "headline_mean_of_4": {
+    "music_nd": 0.620637625406759,
+    "double": 0.048111510791366906,
+    "miss_share": {
+     "onset_beat_unlabelled": 0.00048610226908642467,
+     "held_into_new_chord": 0.025667121175383778,
+     "no_good_note_below": 0.06873081083743585,
+     "misheard": 0.06406844635091534,
+     "wrong_chord_guess": 0.2011481684742787,
+     "right_chord_still_missed": 0.01926172548613797
+    },
+    "no_good_below_but_above_ok_share": 0.042194313608149424,
+    "chord_acc": {
+     "all": {
+      "acc": 0.4335211036104323,
+      "p_true": 0.2999659277931842,
+      "p_top": 0.4507857694258372,
+      "notes": 43193
+     },
+     "chord_changed": {
+      "acc": 0.4318537790301589,
+      "p_true": 0.29526680791862026,
+      "p_top": 0.4578754232981022,
+      "notes": 10278
+     },
+     "chord_same": {
+      "acc": 0.436308321156619,
+      "p_true": 0.3061771131097374,
+      "p_top": 0.44822051496342696,
+      "notes": 32827
+     },
+     "downbeat": {
+      "acc": 0.45845503559519263,
+      "p_true": 0.30342313086681494,
+      "p_top": 0.4359532649379343,
+      "notes": 12752
+     },
+     "heard_right": {
+      "acc": 0.4497490428597439,
+      "p_true": 0.3090321608691691,
+      "p_top": 0.4550128144171601,
+      "notes": 38844
+     },
+     "misheard": {
+      "acc": 0.2847519170841716,
+      "p_true": 0.21708703433599402,
+      "p_top": 0.4127076565809207,
+      "notes": 4349
+     },
+     "note_1_in_chord": {
+      "acc": 0.4336578768228562,
+      "p_true": 0.2960761663100216,
+      "p_top": 0.45797180090895045,
+      "notes": 10442
+     },
+     "note_2_in_chord": {
+      "acc": 0.41234405900560017,
+      "p_true": 0.2944038230702352,
+      "p_top": 0.44080032387503326,
+      "notes": 8686
+     },
+     "note_3_in_chord": {
+      "acc": 0.44691065367688587,
+      "p_true": 0.31106483098738835,
+      "p_top": 0.455749322158884,
+      "notes": 7107
+     },
+     "note_4_in_chord": {
+      "acc": 0.43699569614683126,
+      "p_true": 0.30991455517254823,
+      "p_top": 0.4494009706854588,
+      "notes": 16958
+     },
+     "other_beat": {
+      "acc": 0.4220461240804767,
+      "p_true": 0.2980302041211412,
+      "p_top": 0.4565077563167434,
+      "notes": 30441
+     }
+    }
+   },
+   "datasets": {
+    "bach": {
+     "notes_scored": 1006,
+     "music_nd": 0.6654676258992805,
+     "double": 0.048111510791366906,
+     "miss_share": {
+      "onset_beat_unlabelled": 0.0,
+      "held_into_new_chord": 0.023830935251798562,
+      "no_good_note_below": 0.02068345323741007,
+      "misheard": 0.06474820143884892,
+      "wrong_chord_guess": 0.2068345323741007,
+      "right_chord_still_missed": 0.01843525179856115
+     },
+     "no_good_below_but_above_ok_share": 0.01618705035971223,
+     "chord_acc": {
+      "all": {
+       "notes": 1006,
+       "acc": 0.4711729622266402,
+       "p_true": 0.31199989867356126,
+       "p_top": 0.4556280472002881
+      },
+      "chord_changed": {
+       "notes": 784,
+       "acc": 0.46811224489795916,
+       "p_true": 0.30590835059870325,
+       "p_top": 0.45619128808830617
+      },
+      "chord_same": {
+       "notes": 222,
+       "acc": 0.481981981981982,
+       "p_true": 0.3335123927757596,
+       "p_top": 0.4536389442444053
+      },
+      "downbeat": {
+       "notes": 318,
+       "acc": 0.5754716981132075,
+       "p_true": 0.3558077743365822,
+       "p_top": 0.46019947146312873
+      },
+      "heard_right": {
+       "notes": 909,
+       "acc": 0.506050605060506,
+       "p_true": 0.3294156825373836,
+       "p_top": 0.45882763785601305
+      },
+      "misheard": {
+       "notes": 97,
+       "acc": 0.14432989690721648,
+       "p_true": 0.1487942540115539,
+       "p_top": 0.425644254354371
+      },
+      "note_1_in_chord": {
+       "notes": 792,
+       "acc": 0.4696969696969697,
+       "p_true": 0.30699075306499096,
+       "p_top": 0.45657172874305857
+      },
+      "note_2_in_chord": {
+       "notes": 145,
+       "acc": 0.4689655172413793,
+       "p_true": 0.32553021735672694,
+       "p_top": 0.4487907558546618
+      },
+      "note_3_in_chord": {
+       "notes": 49,
+       "acc": 0.5102040816326531,
+       "p_true": 0.3445387194349645,
+       "p_top": 0.4606543895600124
+      },
+      "note_4_in_chord": {
+       "notes": 20,
+       "acc": 0.45,
+       "p_true": 0.33254714345452424,
+       "p_top": 0.4555140815810441
+      },
+      "other_beat": {
+       "notes": 688,
+       "acc": 0.42296511627906974,
+       "p_true": 0.29175149102698933,
+       "p_top": 0.45351509238112625
+      }
+     },
+     "buckets_plus_nd_minus_1": 0.0
+    },
+    "folk": {
+     "notes_scored": 16159,
+     "music_nd": 0.6766319389882062,
+     "double": 0.040605488061483286,
+     "miss_share": {
+      "onset_beat_unlabelled": 0.0,
+      "held_into_new_chord": 0.002457192214991255,
+      "no_good_note_below": 0.05034926987201498,
+      "misheard": 0.06625919422470074,
+      "wrong_chord_guess": 0.17807690015081903,
+      "right_chord_still_missed": 0.02622550454926776
+     },
+     "no_good_below_but_above_ok_share": 0.014665885255157246,
+     "chord_acc": {
+      "all": {
+       "notes": 16159,
+       "acc": 0.5714462528621821,
+       "p_true": 0.36886399222533583,
+       "p_top": 0.47588485222397275
+      },
+      "chord_changed": {
+       "notes": 3628,
+       "acc": 0.5545755237045203,
+       "p_true": 0.3572797845182697,
+       "p_top": 0.48408873245315254
+      },
+      "chord_same": {
+       "notes": 12528,
+       "acc": 0.5764687100893997,
+       "p_true": 0.37227931263132097,
+       "p_top": 0.4735259340429769
+      },
+      "downbeat": {
+       "notes": 5384,
+       "acc": 0.5858098068350669,
+       "p_true": 0.36437704184265585,
+       "p_top": 0.4640435477348521
+      },
+      "first_or_after_unlabelled": {
+       "notes": 3,
+       "acc": 0.0,
+       "p_true": 0.11565449723973338,
+       "p_top": 0.40550135224723444
+      },
+      "heard_right": {
+       "notes": 14536,
+       "acc": 0.5881260319207485,
+       "p_true": 0.379017243509474,
+       "p_top": 0.48127435821644965
+      },
+      "misheard": {
+       "notes": 1623,
+       "acc": 0.42205791743684534,
+       "p_true": 0.2779288963126889,
+       "p_top": 0.42761506842443914
+      },
+      "note_1_in_chord": {
+       "notes": 3637,
+       "acc": 0.5545779488589497,
+       "p_true": 0.35714356881536785,
+       "p_top": 0.48400347185652687
+      },
+      "note_2_in_chord": {
+       "notes": 3334,
+       "acc": 0.4892021595680864,
+       "p_true": 0.33422871388949216,
+       "p_top": 0.4575572055041418
+      },
+      "note_3_in_chord": {
+       "notes": 2666,
+       "acc": 0.578019504876219,
+       "p_true": 0.3695729017936936,
+       "p_top": 0.47886525801612745
+      },
+      "note_4_in_chord": {
+       "notes": 6522,
+       "acc": 0.6202085249923336,
+       "p_true": 0.3928154250687144,
+       "p_top": 0.4795081568419489
+      },
+      "other_beat": {
+       "notes": 10775,
+       "acc": 0.5642691415313225,
+       "p_true": 0.37110600993859333,
+       "p_top": 0.48180165810512526
+      }
+     },
+     "buckets_plus_nd_minus_1": 0.0
+    },
+    "pop": {
+     "notes_scored": 12806,
+     "music_nd": 0.5600714161727874,
+     "double": 0.026557889255337613,
+     "miss_share": {
+      "onset_beat_unlabelled": 0.0014382423686363974,
+      "held_into_new_chord": 0.042477744439209465,
+      "no_good_note_below": 0.11843181987254196,
+      "misheard": 0.05819922136533836,
+      "wrong_chord_guess": 0.2069829146725519,
+      "right_chord_still_missed": 0.01239864110893446
+     },
+     "no_good_below_but_above_ok_share": 0.08986535075755697,
+     "chord_acc": {
+      "all": {
+       "notes": 12806,
+       "acc": 0.3570982352022489,
+       "p_true": 0.2607450906206116,
+       "p_top": 0.4469173170128109
+      },
+      "chord_changed": {
+       "notes": 2853,
+       "acc": 0.37714686295127936,
+       "p_true": 0.26153056060537017,
+       "p_top": 0.44806717242777605
+      },
+      "chord_same": {
+       "notes": 9877,
+       "acc": 0.3504100435354865,
+       "p_true": 0.2601358924735548,
+       "p_top": 0.4465151462031872
+      },
+      "downbeat": {
+       "notes": 3220,
+       "acc": 0.38167701863354037,
+       "p_true": 0.2589084376526437,
+       "p_top": 0.41706910617601356
+      },
+      "first_or_after_unlabelled": {
+       "notes": 76,
+       "acc": 0.47368421052631576,
+       "p_true": 0.31043067261995977,
+       "p_top": 0.4560186800100947
+      },
+      "heard_right": {
+       "notes": 11516,
+       "acc": 0.36340743313650575,
+       "p_true": 0.2646008043076887,
+       "p_top": 0.45130704573860214
+      },
+      "misheard": {
+       "notes": 1290,
+       "acc": 0.30077519379844964,
+       "p_true": 0.22632462641876325,
+       "p_top": 0.40772963018629527
+      },
+      "note_1_in_chord": {
+       "notes": 2953,
+       "acc": 0.3802912292583813,
+       "p_true": 0.2629664283750582,
+       "p_top": 0.4480751964577329
+      },
+      "note_2_in_chord": {
+       "notes": 2535,
+       "acc": 0.35700197238658776,
+       "p_true": 0.263097166658634,
+       "p_top": 0.44525910684770686
+      },
+      "note_3_in_chord": {
+       "notes": 2084,
+       "acc": 0.362763915547025,
+       "p_true": 0.2656263460026717,
+       "p_top": 0.4522632377602162
+      },
+      "note_4_in_chord": {
+       "notes": 5234,
+       "acc": 0.34180359189912113,
+       "p_true": 0.2564090838644999,
+       "p_top": 0.44493860970102905
+      },
+      "other_beat": {
+       "notes": 9586,
+       "acc": 0.3488420613394534,
+       "p_true": 0.26136203434655003,
+       "p_top": 0.45694352595235976
+      }
+     },
+     "buckets_plus_nd_minus_1": 0.0
+    },
+    "pop909": {
+     "notes_scored": 13222,
+     "music_nd": 0.5803795205667619,
+     "double": 0.03439100959947078,
+     "miss_share": {
+      "onset_beat_unlabelled": 0.0005061667077093014,
+      "held_into_new_chord": 0.03390261279553584,
+      "no_good_note_below": 0.08545870036777635,
+      "misheard": 0.06706716837477333,
+      "wrong_chord_guess": 0.2126983266996431,
+      "right_chord_still_missed": 0.01998750448778851
+     },
+     "no_good_below_but_above_ok_share": 0.04805896806017125,
+     "chord_acc": {
+      "all": {
+       "notes": 13222,
+       "acc": 0.334366964150658,
+       "p_true": 0.25825472965322815,
+       "p_top": 0.4247128612662772
+      },
+      "chord_changed": {
+       "notes": 3013,
+       "acc": 0.3275804845668769,
+       "p_true": 0.25634853595213786,
+       "p_top": 0.443154500223174
+      },
+      "chord_same": {
+       "notes": 10200,
+       "acc": 0.33637254901960784,
+       "p_true": 0.25878085455831423,
+       "p_top": 0.4192020353631386
+      },
+      "downbeat": {
+       "notes": 3830,
+       "acc": 0.2908616187989556,
+       "p_true": 0.23459926963537792,
+       "p_top": 0.4025009343777427
+      },
+      "first_or_after_unlabelled": {
+       "notes": 9,
+       "acc": 0.3333333333333333,
+       "p_true": 0.3001311284867802,
+       "p_top": 0.4964646429205589
+      },
+      "heard_right": {
+       "notes": 11883,
+       "acc": 0.3414121013212152,
+       "p_true": 0.26309491312213024,
+       "p_top": 0.4286422158575759
+      },
+      "misheard": {
+       "notes": 1339,
+       "acc": 0.27184466019417475,
+       "p_true": 0.21530036060097002,
+       "p_top": 0.38984167335857745
+      },
+      "note_1_in_chord": {
+       "notes": 3060,
+       "acc": 0.3300653594771242,
+       "p_true": 0.25720391498466944,
+       "p_top": 0.4432368065784836
+      },
+      "note_2_in_chord": {
+       "notes": 2672,
+       "acc": 0.3342065868263473,
+       "p_true": 0.2547591943760878,
+       "p_top": 0.4115942272936224
+      },
+      "note_3_in_chord": {
+       "notes": 2308,
+       "acc": 0.33665511265164644,
+       "p_true": 0.2645213567182236,
+       "p_top": 0.4312144032991798
+      },
+      "note_4_in_chord": {
+       "notes": 5182,
+       "acc": 0.3359706676958703,
+       "p_true": 0.25788656830245443,
+       "p_top": 0.41764303461781316
+      },
+      "other_beat": {
+       "notes": 9392,
+       "acc": 0.35210817717206133,
+       "p_true": 0.26790128117243206,
+       "p_top": 0.4337707488283622
+      }
+     },
+     "buckets_plus_nd_minus_1": -1.1657341758564144e-14
+    }
+   }
+  },
+  "r1_gru_chooser_v1": {
+   "class": "G",
+   "secs": 8.0,
+   "notes_fed": 46310,
+   "belief_calls": 46310,
+   "one_belief_per_note": true,
+   "belief_dtype": "float32",
+   "nd_check": {
+    "bach": {
+     "music_nd": [
+      0.6915467625899281,
+      0.6915467625899281
+     ],
+     "double": [
+      0.048561151079136694,
+      0.048561151079136694
+     ],
+     "equal": true
+    },
+    "folk": {
+     "music_nd": [
+      0.7133816455735053,
+      0.7133816455735053
+     ],
+     "double": [
+      0.050426530117969263,
+      0.050426530117969263
+     ],
+     "equal": true
+    },
+    "pop": {
+     "music_nd": [
+      0.5902745059141518,
+      0.5902745059141518
+     ],
+     "double": [
+      0.019465866541027103,
+      0.019465866541027103
+     ],
+     "equal": true
+    },
+    "pop909": {
+     "music_nd": [
+      0.5808102845883659,
+      0.5808102845883659
+     ],
+     "double": [
+      0.03423731401548406,
+      0.03423731401548406
+     ],
+     "equal": true
+    },
+    "headline_nd": {
+     "music_nd": [
+      0.6440032996664877,
+      0.6440032996664877
+     ],
+     "equal": true
+    },
+    "all_equal": true
+   },
+   "headline_mean_of_4": {
+    "music_nd": 0.6440032996664877,
+    "double": 0.050426530117969263,
+    "miss_share": {
+     "onset_beat_unlabelled": 0.0001740315302769216,
+     "held_into_new_chord": 0.025051160972428328,
+     "no_good_note_below": 0.06873081083743585,
+     "misheard": 0.06394214732441093,
+     "wrong_chord_guess": 0.17628566433643425,
+     "right_chord_still_missed": 0.021812885332522684
+    },
+    "no_good_below_but_above_ok_share": 0.042194313608149424,
+    "chord_acc": {
+     "all": {
+      "acc": 0.48413107418900514,
+      "p_true": 0.37373081691427806,
+      "p_top": 0.5279080173297365,
+      "notes": 43193
+     },
+     "chord_changed": {
+      "acc": 0.4552069110736302,
+      "p_true": 0.35069000906019865,
+      "p_top": 0.5194145169185873,
+      "notes": 10278
+     },
+     "chord_same": {
+      "acc": 0.489735791948624,
+      "p_true": 0.3771025633754546,
+      "p_top": 0.5253508469921988,
+      "notes": 32827
+     },
+     "downbeat": {
+      "acc": 0.5091311087724683,
+      "p_true": 0.3887036030276353,
+      "p_top": 0.5380603471247787,
+      "notes": 12752
+     },
+     "heard_right": {
+      "acc": 0.49874244963118897,
+      "p_true": 0.3834930170411881,
+      "p_top": 0.5330958189023605,
+      "notes": 38844
+     },
+     "misheard": {
+      "acc": 0.3500682074991518,
+      "p_true": 0.2842626435169787,
+      "p_top": 0.4804896101106766,
+      "notes": 4349
+     },
+     "note_1_in_chord": {
+      "acc": 0.4566740029261056,
+      "p_true": 0.3518496295195495,
+      "p_top": 0.5200024680095383,
+      "notes": 10442
+     },
+     "note_2_in_chord": {
+      "acc": 0.4682938413981901,
+      "p_true": 0.36092625452080196,
+      "p_top": 0.5213297854598312,
+      "notes": 8686
+     },
+     "note_3_in_chord": {
+      "acc": 0.4893252076179988,
+      "p_true": 0.37997001272836345,
+      "p_top": 0.5331466995367371,
+      "notes": 7107
+     },
+     "note_4_in_chord": {
+      "acc": 0.5183088396221671,
+      "p_true": 0.3831294810020139,
+      "p_top": 0.5166454804161351,
+      "notes": 16958
+     },
+     "other_beat": {
+      "acc": 0.47341927822994495,
+      "p_true": 0.3671381210605189,
+      "p_top": 0.5234818172034528,
+      "notes": 30441
+     }
+    }
+   },
+   "datasets": {
+    "bach": {
+     "notes_scored": 1006,
+     "music_nd": 0.6915467625899281,
+     "double": 0.048561151079136694,
+     "miss_share": {
+      "onset_beat_unlabelled": 0.0,
+      "held_into_new_chord": 0.022482014388489208,
+      "no_good_note_below": 0.02068345323741007,
+      "misheard": 0.06879496402877698,
+      "wrong_chord_guess": 0.16996402877697842,
+      "right_chord_still_missed": 0.026528776978417268
+     },
+     "no_good_below_but_above_ok_share": 0.01618705035971223,
+     "chord_acc": {
+      "all": {
+       "notes": 1006,
+       "acc": 0.5298210735586482,
+       "p_true": 0.4056345909478297,
+       "p_top": 0.5538011417237239
+      },
+      "chord_changed": {
+       "notes": 784,
+       "acc": 0.5331632653061225,
+       "p_true": 0.40963421229151914,
+       "p_top": 0.5599257784458448
+      },
+      "chord_same": {
+       "notes": 222,
+       "acc": 0.5180180180180181,
+       "p_true": 0.39150980205840413,
+       "p_top": 0.5321717940203778
+      },
+      "downbeat": {
+       "notes": 318,
+       "acc": 0.60062893081761,
+       "p_true": 0.4457842321352925,
+       "p_top": 0.5798246139812769
+      },
+      "heard_right": {
+       "notes": 909,
+       "acc": 0.5621562156215621,
+       "p_true": 0.42622190711397895,
+       "p_top": 0.5636050433608959
+      },
+      "misheard": {
+       "notes": 97,
+       "acc": 0.2268041237113402,
+       "p_true": 0.21270809202999855,
+       "p_top": 0.4619274655568231
+      },
+      "note_1_in_chord": {
+       "notes": 792,
+       "acc": 0.5340909090909091,
+       "p_true": 0.4101371369777351,
+       "p_top": 0.5597970956052193
+      },
+      "note_2_in_chord": {
+       "notes": 145,
+       "acc": 0.503448275862069,
+       "p_true": 0.3844604264860491,
+       "p_top": 0.5308770342119808
+      },
+      "note_3_in_chord": {
+       "notes": 49,
+       "acc": 0.5102040816326531,
+       "p_true": 0.4028669772479607,
+       "p_top": 0.5479092902066757
+      },
+      "note_4_in_chord": {
+       "notes": 20,
+       "acc": 0.6,
+       "p_true": 0.38762711407616735,
+       "p_top": 0.496996183693409
+      },
+      "other_beat": {
+       "notes": 688,
+       "acc": 0.49709302325581395,
+       "p_true": 0.38707705330595016,
+       "p_top": 0.5417728507674711
+      }
+     },
+     "buckets_plus_nd_minus_1": 0.0
+    },
+    "folk": {
+     "notes_scored": 16159,
+     "music_nd": 0.7133816455735053,
+     "double": 0.050426530117969263,
+     "miss_share": {
+      "onset_beat_unlabelled": 0.0,
+      "held_into_new_chord": 0.0027817270480857536,
+      "no_good_note_below": 0.05034926987201498,
+      "misheard": 0.06397972405318138,
+      "wrong_chord_guess": 0.14451072468690593,
+      "right_chord_still_missed": 0.024996908766306964
+     },
+     "no_good_below_but_above_ok_share": 0.014665885255157246,
+     "chord_acc": {
+      "all": {
+       "notes": 16159,
+       "acc": 0.6543721764960703,
+       "p_true": 0.5261052829479492,
+       "p_top": 0.6554529394347433
+      },
+      "chord_changed": {
+       "notes": 3628,
+       "acc": 0.5774531422271224,
+       "p_true": 0.46461609269914544,
+       "p_top": 0.6318308062227125
+      },
+      "chord_same": {
+       "notes": 12528,
+       "acc": 0.6768039591315453,
+       "p_true": 0.5439969166740886,
+       "p_top": 0.6623488876880604
+      },
+      "downbeat": {
+       "notes": 5384,
+       "acc": 0.6558320950965825,
+       "p_true": 0.5309955079400672,
+       "p_top": 0.6603636789795725
+      },
+      "first_or_after_unlabelled": {
+       "notes": 3,
+       "acc": 0.0,
+       "p_true": 0.17157025014360747,
+       "p_top": 0.4250061313311259
+      },
+      "heard_right": {
+       "notes": 14536,
+       "acc": 0.6695101816180518,
+       "p_true": 0.5379601846421461,
+       "p_top": 0.6618236557826047
+      },
+      "misheard": {
+       "notes": 1623,
+       "acc": 0.51879235982748,
+       "p_true": 0.41992977399733566,
+       "p_top": 0.598395186611259
+      },
+      "note_1_in_chord": {
+       "notes": 3637,
+       "acc": 0.5771240032994226,
+       "p_true": 0.4645521653129551,
+       "p_top": 0.6316870754200055
+      },
+      "note_2_in_chord": {
+       "notes": 3334,
+       "acc": 0.6028794241151769,
+       "p_true": 0.4918236263592093,
+       "p_top": 0.6451379269066512
+      },
+      "note_3_in_chord": {
+       "notes": 2666,
+       "acc": 0.6522880720180045,
+       "p_true": 0.5304799487262022,
+       "p_top": 0.665164103710553
+      },
+      "note_4_in_chord": {
+       "notes": 6522,
+       "acc": 0.7246243483593989,
+       "p_true": 0.5761667476735717,
+       "p_top": 0.6700093232481364
+      },
+      "other_beat": {
+       "notes": 10775,
+       "acc": 0.6536426914153132,
+       "p_true": 0.5236617589240454,
+       "p_top": 0.6529991647981436
+      }
+     },
+     "buckets_plus_nd_minus_1": 2.220446049250313e-16
+    },
+    "pop": {
+     "notes_scored": 12806,
+     "music_nd": 0.5902745059141518,
+     "double": 0.019465866541027103,
+     "miss_share": {
+      "onset_beat_unlabelled": 0.0003967565154859027,
+      "held_into_new_chord": 0.037319909737892724,
+      "no_good_note_below": 0.11843181987254196,
+      "misheard": 0.05514915565254048,
+      "wrong_chord_guess": 0.17593671733578,
+      "right_chord_still_missed": 0.02249113497160711
+     },
+     "no_good_below_but_above_ok_share": 0.08986535075755697,
+     "chord_acc": {
+      "all": {
+       "notes": 12806,
+       "acc": 0.36615648914571297,
+       "p_true": 0.24582286699946998,
+       "p_top": 0.3746517124935908
+      },
+      "chord_changed": {
+       "notes": 2853,
+       "acc": 0.35541535226077814,
+       "p_true": 0.23887009450853558,
+       "p_top": 0.3744491163760037
+      },
+      "chord_same": {
+       "notes": 9877,
+       "acc": 0.36853295535081504,
+       "p_true": 0.24727521345317516,
+       "p_top": 0.3742636170668605
+      },
+      "downbeat": {
+       "notes": 3220,
+       "acc": 0.39285714285714285,
+       "p_true": 0.2553730670852053,
+       "p_top": 0.38470514572185016
+      },
+      "first_or_after_unlabelled": {
+       "notes": 76,
+       "acc": 0.4605263157894737,
+       "p_true": 0.3180785774388106,
+       "p_top": 0.4326941500368871
+      },
+      "heard_right": {
+       "notes": 11516,
+       "acc": 0.3714831538728725,
+       "p_true": 0.24849116218910722,
+       "p_top": 0.37706841169473154
+      },
+      "misheard": {
+       "notes": 1290,
+       "acc": 0.3186046511627907,
+       "p_true": 0.22200264420577817,
+       "p_top": 0.35307752024526745
+      },
+      "note_1_in_chord": {
+       "notes": 2953,
+       "acc": 0.3586183542160515,
+       "p_true": 0.24118344437250067,
+       "p_top": 0.37600398121185313
+      },
+      "note_2_in_chord": {
+       "notes": 2535,
+       "acc": 0.37238658777120315,
+       "p_true": 0.24706113825589363,
+       "p_top": 0.3747357635279379
+      },
+      "note_3_in_chord": {
+       "notes": 2084,
+       "acc": 0.3857965451055662,
+       "p_true": 0.2503443633980652,
+       "p_top": 0.3785403880671439
+      },
+      "note_4_in_chord": {
+       "notes": 5234,
+       "acc": 0.35957202904088653,
+       "p_true": 0.24604036774225446,
+       "p_top": 0.3722997218951224
+      },
+      "other_beat": {
+       "notes": 9586,
+       "acc": 0.3571875651992489,
+       "p_true": 0.24261489242445772,
+       "p_top": 0.3712746986197127
+      }
+     },
+     "buckets_plus_nd_minus_1": 0.0
+    },
+    "pop909": {
+     "notes_scored": 13222,
+     "music_nd": 0.5808102845883659,
+     "double": 0.03423731401548406,
+     "miss_share": {
+      "onset_beat_unlabelled": 0.00029936960562178375,
+      "held_into_new_chord": 0.037620992715245626,
+      "no_good_note_below": 0.08545870036777635,
+      "misheard": 0.06784474556314492,
+      "wrong_chord_guess": 0.2147311865460727,
+      "right_chord_still_missed": 0.01323472061375939
+     },
+     "no_good_below_but_above_ok_share": 0.04805896806017125,
+     "chord_acc": {
+      "all": {
+       "notes": 13222,
+       "acc": 0.38617455755558916,
+       "p_true": 0.3173605267618634,
+       "p_top": 0.5277262756668878
+      },
+      "chord_changed": {
+       "notes": 3013,
+       "acc": 0.3547958845004978,
+       "p_true": 0.28963963674159443,
+       "p_top": 0.5114523666297879
+      },
+      "chord_same": {
+       "notes": 10200,
+       "acc": 0.39558823529411763,
+       "p_true": 0.32562832131615055,
+       "p_top": 0.5326190891934961
+      },
+      "downbeat": {
+       "notes": 3830,
+       "acc": 0.3872062663185379,
+       "p_true": 0.3226616049499762,
+       "p_top": 0.527347949816415
+      },
+      "first_or_after_unlabelled": {
+       "notes": 9,
+       "acc": 0.2222222222222222,
+       "p_true": 0.2275313242442078,
+       "p_top": 0.4306807153754764
+      },
+      "heard_right": {
+       "notes": 11883,
+       "acc": 0.3918202474122696,
+       "p_true": 0.32129881421952006,
+       "p_top": 0.5298861647712094
+      },
+      "misheard": {
+       "notes": 1339,
+       "acc": 0.33607169529499625,
+       "p_true": 0.2824100638348026,
+       "p_top": 0.5085582680293568
+      },
+      "note_1_in_chord": {
+       "notes": 3060,
+       "acc": 0.3568627450980392,
+       "p_true": 0.2915257714150072,
+       "p_top": 0.5125217198010753
+      },
+      "note_2_in_chord": {
+       "notes": 2672,
+       "acc": 0.3944610778443114,
+       "p_true": 0.32035982698205573,
+       "p_top": 0.5345684171927546
+      },
+      "note_3_in_chord": {
+       "notes": 2308,
+       "acc": 0.4090121317157712,
+       "p_true": 0.33618876154122573,
+       "p_top": 0.5409730161625756
+      },
+      "note_4_in_chord": {
+       "notes": 5182,
+       "acc": 0.38903898108838286,
+       "p_true": 0.32268369451606205,
+       "p_top": 0.5272766928278724
+      },
+      "other_beat": {
+       "notes": 9392,
+       "acc": 0.38575383304940375,
+       "p_true": 0.31519877958762227,
+       "p_top": 0.5278805546284839
+      }
+     },
+     "buckets_plus_nd_minus_1": -1.3322676295501878e-14
+    }
+   }
+  },
+  "r2_mix_v2": {
+   "class": "Mix",
+   "secs": 8.3,
+   "notes_fed": 46310,
+   "belief_calls": 46310,
+   "one_belief_per_note": true,
+   "belief_dtype": "float64",
+   "nd_check": {
+    "bach": {
+     "music_nd": [
+      0.685251798561151,
+      0.685251798561151
+     ],
+     "double": [
+      0.055305755395683456,
+      0.055305755395683456
+     ],
+     "equal": true
+    },
+    "folk": {
+     "music_nd": [
+      0.7125780357578692,
+      0.7125780357578692
+     ],
+     "double": [
+      0.05361778869190362,
+      0.05361778869190362
+     ],
+     "equal": true
+    },
+    "pop": {
+     "music_nd": [
+      0.5907704515585092,
+      0.5907704515585092
+     ],
+     "double": [
+      0.022168770302774816,
+      0.022168770302774816
+     ],
+     "equal": true
+    },
+    "pop909": {
+     "music_nd": [
+      0.589111572902715,
+      0.589111572902715
+     ],
+     "double": [
+      0.03611186128707759,
+      0.03611186128707759
+     ],
+     "equal": true
+    },
+    "headline_nd": {
+     "music_nd": [
+      0.6444279646950611,
+      0.6444279646950611
+     ],
+     "equal": true
+    },
+    "all_equal": true
+   },
+   "headline_mean_of_4": {
+    "music_nd": 0.6444279646950611,
+    "double": 0.055305755395683456,
+    "miss_share": {
+     "onset_beat_unlabelled": 0.0003752818748052831,
+     "held_into_new_chord": 0.025496689504700933,
+     "no_good_note_below": 0.06873081083743585,
+     "misheard": 0.06430219846111077,
+     "wrong_chord_guess": 0.17143104894684913,
+     "right_chord_still_missed": 0.025236005680033535
+    },
+    "no_good_below_but_above_ok_share": 0.042194313608149424,
+    "chord_acc": {
+     "all": {
+      "acc": 0.491287875625566,
+      "p_true": 0.36351737182407073,
+      "p_top": 0.5041251226812182,
+      "notes": 43193
+     },
+     "chord_changed": {
+      "acc": 0.4668433632106858,
+      "p_true": 0.3436904196853581,
+      "p_top": 0.4992641071020027,
+      "notes": 10278
+     },
+     "chord_same": {
+      "acc": 0.5007887945389013,
+      "p_true": 0.3682286901353913,
+      "p_top": 0.49991615992947586,
+      "notes": 32827
+     },
+     "downbeat": {
+      "acc": 0.5172945964912502,
+      "p_true": 0.37513065165411974,
+      "p_top": 0.5101053358679081,
+      "notes": 12752
+     },
+     "heard_right": {
+      "acc": 0.5067554228732709,
+      "p_true": 0.37360715222194246,
+      "p_top": 0.5095396951678816,
+      "notes": 38844
+     },
+     "misheard": {
+      "acc": 0.34949684238430556,
+      "p_true": 0.2711275114712865,
+      "p_top": 0.4547756702702129,
+      "notes": 4349
+     },
+     "note_1_in_chord": {
+      "acc": 0.46804593493091345,
+      "p_true": 0.3448064479662157,
+      "p_top": 0.4997582017051047,
+      "notes": 10442
+     },
+     "note_2_in_chord": {
+      "acc": 0.4766803221012419,
+      "p_true": 0.35267110180548905,
+      "p_top": 0.4936843825207908,
+      "notes": 8686
+     },
+     "note_3_in_chord": {
+      "acc": 0.5112751011844151,
+      "p_true": 0.3725735027946505,
+      "p_top": 0.51022517474932,
+      "notes": 7107
+     },
+     "note_4_in_chord": {
+      "acc": 0.5209703086902924,
+      "p_true": 0.37372571720809694,
+      "p_top": 0.49420519087199943,
+      "notes": 16958
+     },
+     "other_beat": {
+      "acc": 0.48007132657276447,
+      "p_true": 0.35827226885942076,
+      "p_top": 0.5012478313709492,
+      "notes": 30441
+     }
+    }
+   },
+   "datasets": {
+    "bach": {
+     "notes_scored": 1006,
+     "music_nd": 0.685251798561151,
+     "double": 0.055305755395683456,
+     "miss_share": {
+      "onset_beat_unlabelled": 0.0,
+      "held_into_new_chord": 0.022931654676258992,
+      "no_good_note_below": 0.02068345323741007,
+      "misheard": 0.06924460431654676,
+      "wrong_chord_guess": 0.16636690647482014,
+      "right_chord_still_missed": 0.03552158273381295
+     },
+     "no_good_below_but_above_ok_share": 0.01618705035971223,
+     "chord_acc": {
+      "all": {
+       "notes": 1006,
+       "acc": 0.5387673956262425,
+       "p_true": 0.3889501911307324,
+       "p_top": 0.5218547912098538
+      },
+      "chord_changed": {
+       "notes": 784,
+       "acc": 0.5357142857142857,
+       "p_true": 0.3901392015063055,
+       "p_top": 0.5287223093784328
+      },
+      "chord_same": {
+       "notes": 222,
+       "acc": 0.5495495495495496,
+       "p_true": 0.38475116349807953,
+       "p_top": 0.49760193425415344
+      },
+      "downbeat": {
+       "notes": 318,
+       "acc": 0.6226415094339622,
+       "p_true": 0.43076522825060565,
+       "p_top": 0.5499959199560027
+      },
+      "heard_right": {
+       "notes": 909,
+       "acc": 0.5720572057205721,
+       "p_true": 0.4095677249167937,
+       "p_top": 0.5308878481707929
+      },
+      "misheard": {
+       "notes": 97,
+       "acc": 0.2268041237113402,
+       "p_true": 0.19574051884691918,
+       "p_top": 0.4372048038130136
+      },
+      "note_1_in_chord": {
+       "notes": 792,
+       "acc": 0.5366161616161617,
+       "p_true": 0.3908319864308595,
+       "p_top": 0.5284548115328005
+      },
+      "note_2_in_chord": {
+       "notes": 145,
+       "acc": 0.5310344827586206,
+       "p_true": 0.37672548821391727,
+       "p_top": 0.49332569562616035
+      },
+      "note_3_in_chord": {
+       "notes": 49,
+       "acc": 0.5714285714285714,
+       "p_true": 0.39746663525503273,
+       "p_top": 0.5195315186086782
+      },
+      "note_4_in_chord": {
+       "notes": 20,
+       "acc": 0.6,
+       "p_true": 0.38219490528808364,
+       "p_top": 0.47302194727584146
+      },
+      "other_beat": {
+       "notes": 688,
+       "acc": 0.5,
+       "p_true": 0.36962289199683823,
+       "p_top": 0.5088476997254427
+      }
+     },
+     "buckets_plus_nd_minus_1": 0.0
+    },
+    "folk": {
+     "notes_scored": 16159,
+     "music_nd": 0.7125780357578692,
+     "double": 0.05361778869190362,
+     "miss_share": {
+      "onset_beat_unlabelled": 0.0,
+      "held_into_new_chord": 0.002967175524139753,
+      "no_good_note_below": 0.05034926987201498,
+      "misheard": 0.06405699412790489,
+      "wrong_chord_guess": 0.14186035654331203,
+      "right_chord_still_missed": 0.028188168174759422
+     },
+     "no_good_below_but_above_ok_share": 0.014665885255157246,
+     "chord_acc": {
+      "all": {
+       "notes": 16159,
+       "acc": 0.6534439012315119,
+       "p_true": 0.5010123771175287,
+       "p_top": 0.6164324331866247
+      },
+      "chord_changed": {
+       "notes": 3628,
+       "acc": 0.5804851157662624,
+       "p_true": 0.4490907281117295,
+       "p_top": 0.6008144747244479
+      },
+      "chord_same": {
+       "notes": 12528,
+       "acc": 0.6747286079182631,
+       "p_true": 0.5161370095231528,
+       "p_top": 0.6209987102204305
+      },
+      "downbeat": {
+       "notes": 5384,
+       "acc": 0.6545319465081724,
+       "p_true": 0.5027408797825824,
+       "p_top": 0.6177595389996152
+      },
+      "first_or_after_unlabelled": {
+       "notes": 3,
+       "acc": 0.0,
+       "p_true": 0.13112831557781354,
+       "p_top": 0.43497730694969966
+      },
+      "heard_right": {
+       "notes": 14536,
+       "acc": 0.6691662080352229,
+       "p_true": 0.513107148597936,
+       "p_top": 0.6230819256061735
+      },
+      "misheard": {
+       "notes": 1623,
+       "acc": 0.5126309303758472,
+       "p_true": 0.3926885334704607,
+       "p_top": 0.5568778910975644
+      },
+      "note_1_in_chord": {
+       "notes": 3637,
+       "acc": 0.5801484740170471,
+       "p_true": 0.44896596652019893,
+       "p_top": 0.6006888163594136
+      },
+      "note_2_in_chord": {
+       "notes": 3334,
+       "acc": 0.598380323935213,
+       "p_true": 0.46578751744279545,
+       "p_top": 0.6001126920310662
+      },
+      "note_3_in_chord": {
+       "notes": 2666,
+       "acc": 0.659039759939985,
+       "p_true": 0.5059595445258757,
+       "p_top": 0.6271470683781685
+      },
+      "note_4_in_chord": {
+       "notes": 6522,
+       "acc": 0.7201778595522845,
+       "p_true": 0.5460205539325285,
+       "p_top": 0.6291745880459613
+      },
+      "other_beat": {
+       "notes": 10775,
+       "acc": 0.6529002320185615,
+       "p_true": 0.5001486872475861,
+       "p_top": 0.6157693113585883
+      }
+     },
+     "buckets_plus_nd_minus_1": 2.220446049250313e-16
+    },
+    "pop": {
+     "notes_scored": 12806,
+     "music_nd": 0.5907704515585092,
+     "double": 0.022168770302774816,
+     "miss_share": {
+      "onset_beat_unlabelled": 0.0010414858531504947,
+      "held_into_new_chord": 0.03838619287326109,
+      "no_good_note_below": 0.11843181987254196,
+      "misheard": 0.055843479554640814,
+      "wrong_chord_guess": 0.17477124507154015,
+      "right_chord_still_missed": 0.02075532521635629
+     },
+     "no_good_below_but_above_ok_share": 0.08986535075755697,
+     "chord_acc": {
+      "all": {
+       "notes": 12806,
+       "acc": 0.3697485553646728,
+       "p_true": 0.2530452695476034,
+       "p_top": 0.39199018202096414
+      },
+      "chord_changed": {
+       "notes": 2853,
+       "acc": 0.3767963547143358,
+       "p_true": 0.24815067833026344,
+       "p_top": 0.39298568191635963
+      },
+      "chord_same": {
+       "notes": 9877,
+       "acc": 0.36701427558975397,
+       "p_true": 0.25392499695479925,
+       "p_top": 0.39131679673153313
+      },
+      "downbeat": {
+       "notes": 3220,
+       "acc": 0.40062111801242234,
+       "p_true": 0.25856899394044774,
+       "p_top": 0.3905832553653147
+      },
+      "first_or_after_unlabelled": {
+       "notes": 76,
+       "acc": 0.4605263157894737,
+       "p_true": 0.32245581089240033,
+       "p_top": 0.44213314652279945
+      },
+      "heard_right": {
+       "notes": 11516,
+       "acc": 0.3750434178534213,
+       "p_true": 0.25616322382525053,
+       "p_top": 0.39505817362658263
+      },
+      "misheard": {
+       "notes": 1290,
+       "acc": 0.32248062015503876,
+       "p_true": 0.22521088081784893,
+       "p_top": 0.36460181664863067
+      },
+      "note_1_in_chord": {
+       "notes": 2953,
+       "acc": 0.37927531324077207,
+       "p_true": 0.2503209177624926,
+       "p_top": 0.394269567906919
+      },
+      "note_2_in_chord": {
+       "notes": 2535,
+       "acc": 0.37199211045364894,
+       "p_true": 0.25529025182442505,
+       "p_top": 0.3908674925057894
+      },
+      "note_3_in_chord": {
+       "notes": 2084,
+       "acc": 0.38915547024952013,
+       "p_true": 0.258169528433588,
+       "p_top": 0.39605667659067983
+      },
+      "note_4_in_chord": {
+       "notes": 5234,
+       "acc": 0.35555980129919756,
+       "p_true": 0.2514547126563733,
+       "p_top": 0.3896287790244848
+      },
+      "other_beat": {
+       "notes": 9586,
+       "acc": 0.3593782599624452,
+       "p_true": 0.25118981445215655,
+       "p_top": 0.39246277787232864
+      }
+     },
+     "buckets_plus_nd_minus_1": 0.0
+    },
+    "pop909": {
+     "notes_scored": 13222,
+     "music_nd": 0.589111572902715,
+     "double": 0.03611186128707759,
+     "miss_share": {
+      "onset_beat_unlabelled": 0.0004596416460706378,
+      "held_into_new_chord": 0.03770173494514391,
+      "no_good_note_below": 0.08545870036777635,
+      "misheard": 0.0680637158453506,
+      "wrong_chord_guess": 0.20272568769772417,
+      "right_chord_still_missed": 0.016478946595205494
+     },
+     "no_good_below_but_above_ok_share": 0.04805896806017125,
+     "chord_acc": {
+      "all": {
+       "notes": 13222,
+       "acc": 0.4031916502798366,
+       "p_true": 0.3110616495004183,
+       "p_top": 0.48622308430743066
+      },
+      "chord_changed": {
+       "notes": 3013,
+       "acc": 0.3743776966478593,
+       "p_true": 0.287381070793134,
+       "p_top": 0.4745339623887704
+      },
+      "chord_same": {
+       "notes": 10200,
+       "acc": 0.4118627450980392,
+       "p_true": 0.31810159056553355,
+       "p_top": 0.48974719851178633
+      },
+      "downbeat": {
+       "notes": 3830,
+       "acc": 0.39138381201044387,
+       "p_true": 0.3084475046428432,
+       "p_top": 0.48208262915069955
+      },
+      "first_or_after_unlabelled": {
+       "notes": 9,
+       "acc": 0.2222222222222222,
+       "p_true": 0.26019329181900874,
+       "p_top": 0.40548524614130704
+      },
+      "heard_right": {
+       "notes": 11883,
+       "acc": 0.41075485988386773,
+       "p_true": 0.31559051154778944,
+       "p_top": 0.4891308332679773
+      },
+      "misheard": {
+       "notes": 1339,
+       "acc": 0.33607169529499625,
+       "p_true": 0.2708701127499172,
+       "p_top": 0.4604181695216429
+      },
+      "note_1_in_chord": {
+       "notes": 3060,
+       "acc": 0.3761437908496732,
+       "p_true": 0.2891069211513118,
+       "p_top": 0.4756196110212856
+      },
+      "note_2_in_chord": {
+       "notes": 2672,
+       "acc": 0.40531437125748504,
+       "p_true": 0.3128811497408184,
+       "p_top": 0.49043164992014715
+      },
+      "note_3_in_chord": {
+       "notes": 2308,
+       "acc": 0.4254766031195841,
+       "p_true": 0.32869830296410546,
+       "p_top": 0.4981654354197538
+      },
+      "note_4_in_chord": {
+       "notes": 5182,
+       "acc": 0.40814357390968736,
+       "p_true": 0.31523269695540246,
+       "p_top": 0.48499544914171044
+      },
+      "other_beat": {
+       "notes": 9392,
+       "acc": 0.4080068143100511,
+       "p_true": 0.31212768174110217,
+       "p_top": 0.4879115365274373
+      }
+     },
+     "buckets_plus_nd_minus_1": -1.3766765505351941e-14
+    }
+   }
+  },
+  "r3_style_mix_v3": {
+   "class": "StyleMix",
+   "secs": 11.5,
+   "notes_fed": 46310,
+   "belief_calls": 46310,
+   "one_belief_per_note": true,
+   "belief_dtype": "float64",
+   "nd_check": {
+    "bach": {
+     "music_nd": [
+      0.7027877697841727,
+      0.7027877697841727
+     ],
+     "double": [
+      0.03507194244604316,
+      0.03507194244604316
+     ],
+     "equal": true
+    },
+    "folk": {
+     "music_nd": [
+      0.7178401369149711,
+      0.7178401369149711
+     ],
+     "double": [
+      0.0430085906121881,
+      0.0430085906121881
+     ],
+     "equal": true
+    },
+    "pop": {
+     "music_nd": [
+      0.5963498400575297,
+      0.5963498400575297
+     ],
+     "double": [
+      0.018176407865697918,
+      0.018176407865697918
+     ],
+     "equal": true
+    },
+    "pop909": {
+     "music_nd": [
+      0.5959414250086184,
+      0.5959414250086184
+     ],
+     "double": [
+      0.031683762922491775,
+      0.031683762922491775
+     ],
+     "equal": true
+    },
+    "headline_nd": {
+     "music_nd": [
+      0.653229792941323,
+      0.653229792941323
+     ],
+     "equal": true
+    },
+    "all_equal": true
+   },
+   "headline_mean_of_4": {
+    "music_nd": 0.653229792941323,
+    "double": 0.0430085906121881,
+    "miss_share": {
+     "onset_beat_unlabelled": 0.0004985083807430385,
+     "held_into_new_chord": 0.02570396404242622,
+     "no_good_note_below": 0.06873081083743585,
+     "misheard": 0.06284356820615702,
+     "wrong_chord_guess": 0.16850004121175435,
+     "right_chord_still_missed": 0.020493314380157137
+    },
+    "no_good_below_but_above_ok_share": 0.042194313608149424,
+    "chord_acc": {
+     "all": {
+      "acc": 0.49157965841344364,
+      "p_true": 0.33970745724762264,
+      "p_top": 0.4583911298886704,
+      "notes": 43193
+     },
+     "chord_changed": {
+      "acc": 0.46266966282017424,
+      "p_true": 0.3209442067710888,
+      "p_top": 0.4530056556969503,
+      "notes": 10278
+     },
+     "chord_same": {
+      "acc": 0.5078134575130164,
+      "p_true": 0.3458653586081081,
+      "p_top": 0.45571170794252885,
+      "notes": 32827
+     },
+     "downbeat": {
+      "acc": 0.5148974916304291,
+      "p_true": 0.3476468220757423,
+      "p_top": 0.4595974822941706,
+      "notes": 12752
+     },
+     "heard_right": {
+      "acc": 0.5065837997238558,
+      "p_true": 0.34854316425142673,
+      "p_top": 0.46311361050559574,
+      "notes": 38844
+     },
+     "misheard": {
+      "acc": 0.35411446170353456,
+      "p_true": 0.2587986193770053,
+      "p_top": 0.41539774087075987,
+      "notes": 4349
+     },
+     "note_1_in_chord": {
+      "acc": 0.4642214741482937,
+      "p_true": 0.3219182094509244,
+      "p_top": 0.45338897514207793,
+      "notes": 10442
+     },
+     "note_2_in_chord": {
+      "acc": 0.4821217802722323,
+      "p_true": 0.3307507471231136,
+      "p_top": 0.4483973587736597,
+      "notes": 8686
+     },
+     "note_3_in_chord": {
+      "acc": 0.5120937544467787,
+      "p_true": 0.34961423202976516,
+      "p_top": 0.4655526520704882,
+      "notes": 7107
+     },
+     "note_4_in_chord": {
+      "acc": 0.537760164997999,
+      "p_true": 0.3515883572656308,
+      "p_top": 0.4523347592405568,
+      "notes": 16958
+     },
+     "other_beat": {
+      "acc": 0.4813135426517313,
+      "p_true": 0.33597539073677607,
+      "p_top": 0.4574853806588526,
+      "notes": 30441
+     }
+    }
+   },
+   "datasets": {
+    "bach": {
+     "notes_scored": 1006,
+     "music_nd": 0.7027877697841727,
+     "double": 0.03507194244604316,
+     "miss_share": {
+      "onset_beat_unlabelled": 0.0,
+      "held_into_new_chord": 0.025179856115107913,
+      "no_good_note_below": 0.02068345323741007,
+      "misheard": 0.06474820143884892,
+      "wrong_chord_guess": 0.16636690647482014,
+      "right_chord_still_missed": 0.020233812949640287
+     },
+     "no_good_below_but_above_ok_share": 0.01618705035971223,
+     "chord_acc": {
+      "all": {
+       "notes": 1006,
+       "acc": 0.532803180914513,
+       "p_true": 0.36016957358445223,
+       "p_top": 0.47678152539578456
+      },
+      "chord_changed": {
+       "notes": 784,
+       "acc": 0.5229591836734694,
+       "p_true": 0.35922296023011213,
+       "p_top": 0.4819795089125757
+      },
+      "chord_same": {
+       "notes": 222,
+       "acc": 0.5675675675675675,
+       "p_true": 0.3635125684934726,
+       "p_top": 0.4584246827058573
+      },
+      "downbeat": {
+       "notes": 318,
+       "acc": 0.6163522012578616,
+       "p_true": 0.3987792521358579,
+       "p_top": 0.5001297899964746
+      },
+      "heard_right": {
+       "notes": 909,
+       "acc": 0.5643564356435643,
+       "p_true": 0.378248211469755,
+       "p_top": 0.48422835169146505
+      },
+      "misheard": {
+       "notes": 97,
+       "acc": 0.23711340206185566,
+       "p_true": 0.1907522350510476,
+       "p_top": 0.40699631815069254
+      },
+      "note_1_in_chord": {
+       "notes": 792,
+       "acc": 0.523989898989899,
+       "p_true": 0.3600666518529376,
+       "p_top": 0.48182718748675324
+      },
+      "note_2_in_chord": {
+       "notes": 145,
+       "acc": 0.5517241379310345,
+       "p_true": 0.3555544112937114,
+       "p_top": 0.45292407998173717
+      },
+      "note_3_in_chord": {
+       "notes": 49,
+       "acc": 0.5714285714285714,
+       "p_true": 0.37464024704635107,
+       "p_top": 0.4806034114309214
+      },
+      "note_4_in_chord": {
+       "notes": 20,
+       "acc": 0.65,
+       "p_true": 0.3622520507786393,
+       "p_top": 0.44057616505919694
+      },
+      "other_beat": {
+       "notes": 688,
+       "acc": 0.4941860465116279,
+       "p_true": 0.34232382099819175,
+       "p_top": 0.4659897403041871
+      }
+     },
+     "buckets_plus_nd_minus_1": 0.0
+    },
+    "folk": {
+     "notes_scored": 16159,
+     "music_nd": 0.7178401369149711,
+     "double": 0.0430085906121881,
+     "miss_share": {
+      "onset_beat_unlabelled": 0.0,
+      "held_into_new_chord": 0.0027817270480857536,
+      "no_good_note_below": 0.05034926987201498,
+      "misheard": 0.06407244764213872,
+      "wrong_chord_guess": 0.14034586031554885,
+      "right_chord_still_missed": 0.024610558207240906
+     },
+     "no_good_below_but_above_ok_share": 0.014665885255157246,
+     "chord_acc": {
+      "all": {
+       "notes": 16159,
+       "acc": 0.6502877653320132,
+       "p_true": 0.4619804816042441,
+       "p_top": 0.5614991846358722
+      },
+      "chord_changed": {
+       "notes": 3628,
+       "acc": 0.5826901874310915,
+       "p_true": 0.4172728220074261,
+       "p_top": 0.5494082546439267
+      },
+      "chord_same": {
+       "notes": 12528,
+       "acc": 0.6700191570881227,
+       "p_true": 0.4750061656203338,
+       "p_top": 0.5650388217009544
+      },
+      "downbeat": {
+       "notes": 5384,
+       "acc": 0.6524888558692422,
+       "p_true": 0.4610172095216053,
+       "p_top": 0.5599432512897877
+      },
+      "first_or_after_unlabelled": {
+       "notes": 3,
+       "acc": 0.0,
+       "p_true": 0.13318703615755714,
+       "p_top": 0.40193947112252126
+      },
+      "heard_right": {
+       "notes": 14536,
+       "acc": 0.6659328563566318,
+       "p_true": 0.4726409356617558,
+       "p_top": 0.5675483490363524
+      },
+      "misheard": {
+       "notes": 1623,
+       "acc": 0.5101663585951941,
+       "p_true": 0.3665027488993723,
+       "p_top": 0.5073213326794124
+      },
+      "note_1_in_chord": {
+       "notes": 3637,
+       "acc": 0.5823480890844103,
+       "p_true": 0.41714095571993487,
+       "p_top": 0.5492828086535462
+      },
+      "note_2_in_chord": {
+       "notes": 3334,
+       "acc": 0.589382123575285,
+       "p_true": 0.42956690045669554,
+       "p_top": 0.5450304068795921
+      },
+      "note_3_in_chord": {
+       "notes": 2666,
+       "acc": 0.6552888222055514,
+       "p_true": 0.4663321918115868,
+       "p_top": 0.5707299656089432
+      },
+      "note_4_in_chord": {
+       "notes": 6522,
+       "acc": 0.7172646427476235,
+       "p_true": 0.501776031400986,
+       "p_top": 0.5729571120221023
+      },
+      "other_beat": {
+       "notes": 10775,
+       "acc": 0.6491879350348028,
+       "p_true": 0.46246180474975734,
+       "p_top": 0.5622766459013351
+      }
+     },
+     "buckets_plus_nd_minus_1": 2.220446049250313e-16
+    },
+    "pop": {
+     "notes_scored": 12806,
+     "music_nd": 0.5963498400575297,
+     "double": 0.018176407865697918,
+     "miss_share": {
+      "onset_beat_unlabelled": 0.001289458675329184,
+      "held_into_new_chord": 0.03865896297765765,
+      "no_good_note_below": 0.11843181987254196,
+      "misheard": 0.05512435837032261,
+      "wrong_chord_guess": 0.1701837478612344,
+      "right_chord_still_missed": 0.01996181218538448
+     },
+     "no_good_below_but_above_ok_share": 0.08986535075755697,
+     "chord_acc": {
+      "all": {
+       "notes": 12806,
+       "acc": 0.37701077619865686,
+       "p_true": 0.24583958652755367,
+       "p_top": 0.36616799237450864
+      },
+      "chord_changed": {
+       "notes": 2853,
+       "acc": 0.3673326323168594,
+       "p_true": 0.23714065081283175,
+       "p_top": 0.36295871598576157
+      },
+      "chord_same": {
+       "notes": 9877,
+       "acc": 0.3789612230434342,
+       "p_true": 0.24795458046917,
+       "p_top": 0.3668225143393874
+      },
+      "downbeat": {
+       "notes": 3220,
+       "acc": 0.4009316770186335,
+       "p_true": 0.2463221035436401,
+       "p_top": 0.3588276219756377
+      },
+      "first_or_after_unlabelled": {
+       "notes": 76,
+       "acc": 0.4868421052631579,
+       "p_true": 0.2975273290637473,
+       "p_top": 0.4015805198746994
+      },
+      "heard_right": {
+       "notes": 11516,
+       "acc": 0.3825981243487322,
+       "p_true": 0.24841009474103073,
+       "p_top": 0.36886521701534863
+      },
+      "misheard": {
+       "notes": 1290,
+       "acc": 0.3271317829457364,
+       "p_true": 0.22289232095669664,
+       "p_top": 0.34208951255753095
+      },
+      "note_1_in_chord": {
+       "notes": 2953,
+       "acc": 0.370809346427362,
+       "p_true": 0.23890707371052713,
+       "p_top": 0.36394703105427256
+      },
+      "note_2_in_chord": {
+       "notes": 2535,
+       "acc": 0.378698224852071,
+       "p_true": 0.24615050256086454,
+       "p_top": 0.3647248646439068
+      },
+      "note_3_in_chord": {
+       "notes": 2084,
+       "acc": 0.3901151631477927,
+       "p_true": 0.25058965792022986,
+       "p_top": 0.3697865307762282
+      },
+      "note_4_in_chord": {
+       "notes": 5234,
+       "acc": 0.37447458922430266,
+       "p_true": 0.24770897694060043,
+       "p_top": 0.36667922537920145
+      },
+      "other_beat": {
+       "notes": 9586,
+       "acc": 0.3689755894012101,
+       "p_true": 0.24567750591084098,
+       "p_top": 0.3686336707267306
+      }
+     },
+     "buckets_plus_nd_minus_1": 0.0
+    },
+    "pop909": {
+     "notes_scored": 13222,
+     "music_nd": 0.5959414250086184,
+     "double": 0.031683762922491775,
+     "miss_share": {
+      "onset_beat_unlabelled": 0.00070457484764297,
+      "held_into_new_chord": 0.03619531002885358,
+      "no_good_note_below": 0.08545870036777635,
+      "misheard": 0.06742926537331784,
+      "wrong_chord_guess": 0.19710365019541404,
+      "right_chord_still_missed": 0.01716707417836287
+     },
+     "no_good_below_but_above_ok_share": 0.04805896806017125,
+     "chord_acc": {
+      "all": {
+       "notes": 13222,
+       "acc": 0.4062169112085917,
+       "p_true": 0.2908401872742406,
+       "p_top": 0.42911581714851615
+      },
+      "chord_changed": {
+       "notes": 3013,
+       "acc": 0.3776966478592765,
+       "p_true": 0.27014039403398526,
+       "p_top": 0.41767614324553687
+      },
+      "chord_same": {
+       "notes": 10200,
+       "acc": 0.4147058823529412,
+       "p_true": 0.29698811984945594,
+       "p_top": 0.43256081302391647
+      },
+      "downbeat": {
+       "notes": 3830,
+       "acc": 0.3898172323759791,
+       "p_true": 0.2844687231018661,
+       "p_top": 0.4194892659147822
+      },
+      "first_or_after_unlabelled": {
+       "notes": 9,
+       "acc": 0.3333333333333333,
+       "p_true": 0.2530140501282163,
+       "p_top": 0.3545357661032976
+      },
+      "heard_right": {
+       "notes": 11883,
+       "acc": 0.413447782546495,
+       "p_true": 0.2948734151331653,
+       "p_top": 0.431812524279217
+      },
+      "misheard": {
+       "notes": 1339,
+       "acc": 0.34204630321135177,
+       "p_true": 0.25504717260090465,
+       "p_top": 0.40518380009540345
+      },
+      "note_1_in_chord": {
+       "notes": 3060,
+       "acc": 0.37973856209150325,
+       "p_true": 0.27155815652029813,
+       "p_top": 0.41849887337373987
+      },
+      "note_2_in_chord": {
+       "notes": 2672,
+       "acc": 0.4086826347305389,
+       "p_true": 0.2917311741811828,
+       "p_top": 0.43091008358940275
+      },
+      "note_3_in_chord": {
+       "notes": 2308,
+       "acc": 0.43154246100519933,
+       "p_true": 0.306894831340893,
+       "p_top": 0.44109070046586
+      },
+      "note_4_in_chord": {
+       "notes": 5182,
+       "acc": 0.40930142802006947,
+       "p_true": 0.29461636994229745,
+       "p_top": 0.4291265345017265
+      },
+      "other_beat": {
+       "notes": 9392,
+       "acc": 0.4129045996592845,
+       "p_true": 0.29343843128831415,
+       "p_top": 0.4330414657031576
+      }
+     },
+     "buckets_plus_nd_minus_1": -1.3988810110276972e-14
+    }
+   }
+  }
+ },
+ "secs": 31.4
+}

@@ -1,0 +1,440 @@
+{
+ "seed": 1102,
+ "bpm": 80,
+ "beats_max": 16,
+ "pairs": [
+  {
+   "pair": 1,
+   "group": "m1_vs_m3",
+   "song": "bach/bwv140.7",
+   "beats": 16,
+   "repeat_of": null,
+   "L": {
+    "system": "m3_seq_v5",
+    "variant": "reattack",
+    "clip_nd": 0.2273,
+    "clip_double": 0.4091,
+    "song_nd": 0.6,
+    "song_double": 0.25,
+    "seconds": 13.0,
+    "n_held": 14
+   },
+   "R": {
+    "system": "m1_filter_v5lo",
+    "variant": "reattack",
+    "clip_nd": 0.5455,
+    "clip_double": 0.1818,
+    "song_nd": 0.675,
+    "song_double": 0.05,
+    "seconds": 13.0,
+    "n_held": 14
+   }
+  },
+  {
+   "pair": 2,
+   "group": "tied_vs_reattack",
+   "song": "twinkle",
+   "beats": 16,
+   "repeat_of": null,
+   "L": {
+    "system": "m1_filter_v5lo",
+    "variant": "reattack",
+    "clip_nd": 0.6667,
+    "clip_double": 0.0,
+    "song_nd": 0.7045,
+    "song_double": 0.0455,
+    "seconds": 13.0,
+    "n_held": 14
+   },
+   "R": {
+    "system": "m1_filter_v5lo",
+    "variant": "tied",
+    "clip_nd": 0.6667,
+    "clip_double": 0.0,
+    "song_nd": 0.7045,
+    "song_double": 0.0455,
+    "seconds": 13.0,
+    "n_held": 14
+   }
+  },
+  {
+   "pair": 3,
+   "group": "m1_vs_third_below",
+   "song": "bach/bwv245.40",
+   "beats": 16,
+   "repeat_of": null,
+   "L": {
+    "system": "m1_filter_v5lo",
+    "variant": "reattack",
+    "clip_nd": 0.6667,
+    "clip_double": 0.0,
+    "song_nd": 0.6481,
+    "song_double": 0.0278,
+    "seconds": 13.0,
+    "n_held": 18
+   },
+   "R": {
+    "system": "third_below",
+    "variant": "reattack",
+    "clip_nd": 0.9167,
+    "clip_double": 0.0,
+    "song_nd": 0.5463,
+    "song_double": 0.0463,
+    "seconds": 13.0,
+    "n_held": 18
+   }
+  },
+  {
+   "pair": 4,
+   "group": "oracle_vs_m1",
+   "song": "bach/bwv349",
+   "beats": 16,
+   "repeat_of": null,
+   "L": {
+    "system": "m4_oracle",
+    "variant": "reattack",
+    "clip_nd": 1.0,
+    "clip_double": 0.0,
+    "song_nd": 0.9091,
+    "song_double": 0.0,
+    "seconds": 13.0,
+    "n_held": 12
+   },
+   "R": {
+    "system": "m1_filter_v5lo",
+    "variant": "reattack",
+    "clip_nd": 0.5833,
+    "clip_double": 0.0833,
+    "song_nd": 0.6023,
+    "song_double": 0.1591,
+    "seconds": 13.0,
+    "n_held": 12
+   }
+  },
+  {
+   "pair": 5,
+   "group": "m1_vs_third_below",
+   "song": "twinkle",
+   "beats": 16,
+   "repeat_of": null,
+   "L": {
+    "system": "m1_filter_v5lo",
+    "variant": "reattack",
+    "clip_nd": 0.6667,
+    "clip_double": 0.0,
+    "song_nd": 0.7045,
+    "song_double": 0.0455,
+    "seconds": 13.0,
+    "n_held": 14
+   },
+   "R": {
+    "system": "third_below",
+    "variant": "reattack",
+    "clip_nd": 0.5833,
+    "clip_double": 0.0,
+    "song_nd": 0.6591,
+    "song_double": 0.0,
+    "seconds": 13.0,
+    "n_held": 14
+   }
+  },
+  {
+   "pair": 6,
+   "group": "m1_vs_third_below",
+   "song": "bach/bwv294",
+   "beats": 16,
+   "repeat_of": null,
+   "L": {
+    "system": "third_below",
+    "variant": "reattack",
+    "clip_nd": 0.5417,
+    "clip_double": 0.0,
+    "song_nd": 0.4583,
+    "song_double": 0.0,
+    "seconds": 13.0,
+    "n_held": 16
+   },
+   "R": {
+    "system": "m1_filter_v5lo",
+    "variant": "reattack",
+    "clip_nd": 0.7083,
+    "clip_double": 0.0417,
+    "song_nd": 0.7417,
+    "song_double": 0.0083,
+    "seconds": 13.0,
+    "n_held": 16
+   }
+  },
+  {
+   "pair": 7,
+   "group": "oracle_vs_m1",
+   "song": "bach/bwv328",
+   "beats": 16,
+   "repeat_of": null,
+   "L": {
+    "system": "m4_oracle",
+    "variant": "reattack",
+    "clip_nd": 0.9091,
+    "clip_double": 0.0909,
+    "song_nd": 0.9043,
+    "song_double": 0.0213,
+    "seconds": 13.0,
+    "n_held": 12
+   },
+   "R": {
+    "system": "m1_filter_v5lo",
+    "variant": "reattack",
+    "clip_nd": 0.8182,
+    "clip_double": 0.0909,
+    "song_nd": 0.5931,
+    "song_double": 0.0479,
+    "seconds": 13.0,
+    "n_held": 12
+   }
+  },
+  {
+   "pair": 8,
+   "group": "m1_vs_third_below",
+   "song": "bach/bwv346",
+   "beats": 16,
+   "repeat_of": null,
+   "L": {
+    "system": "m1_filter_v5lo",
+    "variant": "reattack",
+    "clip_nd": 0.5833,
+    "clip_double": 0.0833,
+    "song_nd": 0.6091,
+    "song_double": 0.0545,
+    "seconds": 13.0,
+    "n_held": 16
+   },
+   "R": {
+    "system": "third_below",
+    "variant": "reattack",
+    "clip_nd": 0.25,
+    "clip_double": 0.0,
+    "song_nd": 0.5,
+    "song_double": 0.0,
+    "seconds": 13.0,
+    "n_held": 16
+   }
+  },
+  {
+   "pair": 9,
+   "group": "tied_vs_reattack",
+   "song": "bach/bwv296",
+   "beats": 16,
+   "repeat_of": null,
+   "L": {
+    "system": "m1_filter_v5lo",
+    "variant": "reattack",
+    "clip_nd": 0.4545,
+    "clip_double": 0.0,
+    "song_nd": 0.5625,
+    "song_double": 0.0208,
+    "seconds": 12.2,
+    "n_held": 11
+   },
+   "R": {
+    "system": "m1_filter_v5lo",
+    "variant": "tied",
+    "clip_nd": 0.4545,
+    "clip_double": 0.0,
+    "song_nd": 0.5625,
+    "song_double": 0.0208,
+    "seconds": 12.2,
+    "n_held": 11
+   }
+  },
+  {
+   "pair": 10,
+   "group": "tied_vs_reattack",
+   "song": "bach/bwv399",
+   "beats": 16,
+   "repeat_of": null,
+   "L": {
+    "system": "m1_filter_v5lo",
+    "variant": "reattack",
+    "clip_nd": 0.6458,
+    "clip_double": 0.0,
+    "song_nd": 0.7045,
+    "song_double": 0.0909,
+    "seconds": 13.0,
+    "n_held": 16
+   },
+   "R": {
+    "system": "m1_filter_v5lo",
+    "variant": "tied",
+    "clip_nd": 0.6458,
+    "clip_double": 0.0,
+    "song_nd": 0.7045,
+    "song_double": 0.0909,
+    "seconds": 13.0,
+    "n_held": 16
+   }
+  },
+  {
+   "pair": 11,
+   "group": "oracle_vs_m1",
+   "song": "bach/bwv264",
+   "beats": 16,
+   "repeat_of": null,
+   "L": {
+    "system": "m4_oracle",
+    "variant": "reattack",
+    "clip_nd": 0.9,
+    "clip_double": 0.1,
+    "song_nd": 0.9394,
+    "song_double": 0.0606,
+    "seconds": 12.2,
+    "n_held": 12
+   },
+   "R": {
+    "system": "m1_filter_v5lo",
+    "variant": "reattack",
+    "clip_nd": 0.9,
+    "clip_double": 0.0,
+    "song_nd": 0.9394,
+    "song_double": 0.0,
+    "seconds": 12.2,
+    "n_held": 12
+   }
+  },
+  {
+   "pair": 12,
+   "group": "m1_vs_m3",
+   "song": "twinkle",
+   "beats": 16,
+   "repeat_of": null,
+   "L": {
+    "system": "m1_filter_v5lo",
+    "variant": "reattack",
+    "clip_nd": 0.6667,
+    "clip_double": 0.0,
+    "song_nd": 0.7045,
+    "song_double": 0.0455,
+    "seconds": 13.0,
+    "n_held": 14
+   },
+   "R": {
+    "system": "m3_seq_v5",
+    "variant": "reattack",
+    "clip_nd": 0.4167,
+    "clip_double": 0.25,
+    "song_nd": 0.5909,
+    "song_double": 0.2045,
+    "seconds": 13.0,
+    "n_held": 14
+   }
+  },
+  {
+   "pair": 13,
+   "group": "m1_vs_m3",
+   "song": "bach/bwv282",
+   "beats": 16,
+   "repeat_of": null,
+   "L": {
+    "system": "m3_seq_v5",
+    "variant": "reattack",
+    "clip_nd": 0.9091,
+    "clip_double": 0.0,
+    "song_nd": 0.5784,
+    "song_double": 0.1373,
+    "seconds": 13.0,
+    "n_held": 8
+   },
+   "R": {
+    "system": "m1_filter_v5lo",
+    "variant": "reattack",
+    "clip_nd": 0.7273,
+    "clip_double": 0.2727,
+    "song_nd": 0.7255,
+    "song_double": 0.0784,
+    "seconds": 13.0,
+    "n_held": 8
+   }
+  },
+  {
+   "pair": 14,
+   "group": "m1_vs_m3",
+   "song": "bach/bwv291",
+   "beats": 16,
+   "repeat_of": null,
+   "L": {
+    "system": "m3_seq_v5",
+    "variant": "reattack",
+    "clip_nd": 0.4583,
+    "clip_double": 0.25,
+    "song_nd": 0.6538,
+    "song_double": 0.1538,
+    "seconds": 13.0,
+    "n_held": 16
+   },
+   "R": {
+    "system": "m1_filter_v5lo",
+    "variant": "reattack",
+    "clip_nd": 0.7083,
+    "clip_double": 0.0833,
+    "song_nd": 0.6795,
+    "song_double": 0.0256,
+    "seconds": 13.0,
+    "n_held": 16
+   }
+  },
+  {
+   "pair": 15,
+   "group": "oracle_vs_m1",
+   "song": "bach/bwv299",
+   "beats": 16,
+   "repeat_of": null,
+   "L": {
+    "system": "m4_oracle",
+    "variant": "reattack",
+    "clip_nd": 1.0,
+    "clip_double": 0.0,
+    "song_nd": 0.8864,
+    "song_double": 0.0568,
+    "seconds": 13.0,
+    "n_held": 16
+   },
+   "R": {
+    "system": "m1_filter_v5lo",
+    "variant": "reattack",
+    "clip_nd": 0.9167,
+    "clip_double": 0.0833,
+    "song_nd": 0.7614,
+    "song_double": 0.0341,
+    "seconds": 13.0,
+    "n_held": 16
+   }
+  },
+  {
+   "pair": 16,
+   "group": "oracle_vs_m1",
+   "song": "bach/bwv264",
+   "beats": 16,
+   "repeat_of": 11,
+   "L": {
+    "system": "m1_filter_v5lo",
+    "variant": "reattack",
+    "clip_nd": 0.9,
+    "clip_double": 0.0,
+    "song_nd": 0.9394,
+    "song_double": 0.0,
+    "seconds": 12.2,
+    "n_held": 12
+   },
+   "R": {
+    "system": "m4_oracle",
+    "variant": "reattack",
+    "clip_nd": 0.9,
+    "clip_double": 0.1,
+    "song_nd": 0.9394,
+    "song_double": 0.0606,
+    "seconds": 12.2,
+    "n_held": 12
+   }
+  }
+ ],
+ "code": "L1-<16 letters L/R = preferred side per pair>[-<pair><L|R><tags c=clashing b=boring j=jumpy r=robotic> joined by .]"
+}

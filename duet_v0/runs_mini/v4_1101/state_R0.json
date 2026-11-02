@@ -1,0 +1,71 @@
+{
+ "round": 0,
+ "phase": "A done (setup); Phase B listening page built, waiting for Vincent",
+ "written": "2026-11-01 11:53 EST",
+ "ABS": "/Users/san/claude_sandbox/music/duet_v0",
+ "run": "v4_1101",
+ "machine": {"cpu": "Apple M4 (4 performance + 6 efficiency cores)", "ram_gb": 16, "macos": "27.0.1", "free_disk_gb_at_start": 104.5},
+ "environment": {
+  "homebrew": "installed 2026-11-01 ~11:35 by Vincent with the official installer (password typed by Vincent); /opt/homebrew had an unfinished install from 2026-08-16",
+  "python": "3.11.18 (Homebrew python@3.11), venv at ABS/.venv",
+  "lame": "/opt/homebrew/bin/lame -> Cellar/lame/4.0",
+  "pip": "requirements-lock.txt installed exactly as pinned (no unpinned fallbacks); torch==2.15.0 added; logs runs_mini/v4_1101/setup_pip_lock.log, setup_pip_torch.log",
+  "versions_check": "torch 2.15.0, numpy 2.4.6 (as PROGRAM expects)",
+  "env_knobs": "env | grep -E '^(M1_|M3_|DUET_HIST)' empty"
+ },
+ "checksums": "futures/v4_selfiter/CHECKSUMS.sha256: all 10 OK (11:12 and 11:38)",
+ "disk": "104.5 GB free at 11:38; runs_mini 108K at 11:53",
+ "reproduce_vs_EXPECTED": {
+  "third_below": {"headline_nd": 0.5054033611561961, "expected": 0.5054, "ok": true,
+   "music_nd": {"bach": 0.5429406474820144, "folk": 0.4902690869692081, "pop": 0.5120638777989932, "pop909": 0.47633983237456845},
+   "double": {"bach": 0.013489208633093525, "folk": 0.012927303844942, "pop": 0.01403526173531381, "pop909": 0.013268288709034895},
+   "bench3": {"headline_music": 0.5164, "flags": ["ROUGH"], "big": {"bach": 0.0178, "folk": 0.0985, "pop": 0.0621, "pop909": 0.1076}, "par": {"bach": 0.001, "folk": 0.0003, "pop": 0.0002, "pop909": 0.0004}}},
+  "m1_filter_v5lo": {"headline_nd": 0.620637625406759, "expected": 0.6206, "ok": true,
+   "music_nd": {"bach": 0.6654676258992805, "folk": 0.6766319389882062, "pop": 0.5600714161727874, "pop909": 0.5803795205667619},
+   "double": {"bach": 0.048111510791366906, "folk": 0.040605488061483286, "pop": 0.026557889255337613, "pop909": 0.03439100959947078},
+   "bench3": {"headline_music": 0.654, "flags": [], "big": {"bach": 0.0028, "folk": 0.0095, "pop": 0.0112, "pop909": 0.0072}, "par": {"bach": 0.001, "folk": 0.0035, "pop": 0.003, "pop909": 0.0039}, "us_per_note_max": 13.5}},
+  "m3_seq_v5": {"headline_nd": 0.6103567510689187, "expected": 0.6104, "ok": true,
+   "music_nd": {"bach": 0.6241007194244604, "folk": 0.6805031806547691, "pop": 0.5712797877352642, "pop909": 0.5655433164611813},
+   "double": {"bach": 0.1843525179856115, "folk": 0.11771341424092477, "pop": 0.09985865549135815, "pop909": 0.08654631400269831},
+   "bench3": {"headline_music": 0.7199, "flags": [], "big": {"bach": 0.0302, "folk": 0.0488, "pop": 0.0554, "pop909": 0.0703}, "par": {"bach": 0.003, "folk": 0.0043, "pop": 0.0037, "pop909": 0.0055}, "us_per_note_max": 145.5}}
+ },
+ "seed2": {
+  "script": "futures/v4_selfiter/seed2.py",
+  "sha256": "c21331bbffa9bd7660736e4275493ad551228f03281367447264fc112b93ad74",
+  "what": "bench.heard copied with seed ^ 5161 (instead of ^ 5160), assigned to bench3.B2.heard before build; music_nd exactly as rescore_nd.py; writes runs_mini/v4_1101/seed2/<name>.json, refuses if it exists",
+  "m1_filter_v5lo": {"headline_nd": 0.6207916780068529, "music_nd": {"bach": 0.6636690647482014, "folk": 0.6735308290511391, "pop": 0.5628487117811888, "pop909": 0.5831181064468822}}
+ },
+ "tools": {
+  "runs_mini/v4_1101/tools/hbrun.py": {"sha256": "1d4b721ead9f0c46eed15e2779367d027ec6d19195bcaf85237561c120b6a53e", "what": "heartbeat wrapper: START/END line in hb/<label>.log around tl.py <sec> <cmd>"},
+  "runs_mini/v4_1101/tools/keep.py": {"sha256": "423cb76ed818a5f63d185c2b03a2372db3a996e3838d4972c85f28040758e481", "what": "§4.2 keep rule from files only (--gate = numeric part before review)"},
+  "runs_mini/v4_1101/tools/review.py": {"sha256": "5536f4823a4fc0f8fcd4b916defb58fdd3c41876bda6a98a82e203d8919373a9", "what": "reviewer (a) causality probe 24 val songs x 3 cuts, (b) cheat grep over import closure, (d) range"},
+  "runs_mini/v4_1101/tools/selftest.py": {"sha256": "409cb391ed1fdc935b67d5154f7e2596a218345f4e774dd5a6ad3459a001a2c4", "what": "negative tests"},
+  "runs_mini/v4_1101/tools/legacy_systems.sha256": {"sha256": "d8eea498546c3e99bd7854b9e60e4fac4d079624008d2ea3e597bb2a42d12426", "what": "sha256 of the 72 files in futures/v3_nolatency/systems before the loop"}
+ },
+ "tool_validation": {
+  "selftest": "all must-fail cases failed: stack-peeking cheat caught by (a) 72/72; m4_oracle fails (b) on 'val', eval_sets, json.load, split; always-above system fails (d) at 0.827; keep m3_seq_v5 vs m1 fails 11 checks; keep m1 vs itself fails the +0.005/+0.003 checks",
+  "review_m1_filter_v5lo": {"ok_abd": true, "a_checks": 72, "a_mismatches": 0, "b_ok": true, "b_hits": "3 legacy os.environ knob reads, allowed", "d_out_of_alto": 0, "d_above_share": 0.0}
+ },
+ "settings_json": {
+  "written_to": ["ABS/.claude/settings.json", "/Users/san/claude_sandbox/music/.claude/settings.json"],
+  "why_two": "Vincent chose 'write both': the session was started in music/, not duet_v0/, and Claude Code reads project settings from the start directory",
+  "test_workflow": {"id": "wa6gajo9l", "result": "1 agent scored third_below via hbrun + rescore_nd in runs_mini/v4_1101/test_wf/try1, headline 0.505, START/END heartbeat lines written, zero prompts or refusals"},
+  "auto_mode": "already on for this session"
+ },
+ "champion": {"name": "m1_filter_v5lo", "headline_nd": 0.620637625406759, "presentable": true},
+ "ideas": [],
+ "dead_ideas": [],
+ "variants_scored_in_loop": 0,
+ "loop": {"started": null, "limit_hours": 10, "hard_stop": "2026-11-02 10:00 EST", "max_rounds": 8},
+ "interpretations": [
+  "(b) cheat grep: the E1 recipe imports legacy m1_filter_v5lo.py / m3_seq_v4.py / m3_seq_v1.py, which read os.environ for the M1_*, M3_*, DUET_HIST knobs and torch.load their own m3_seq_*.pt. In legacy files (sha256 unchanged since Phase A) only those env-knob reads and checkpoint loads are allowed, and only while the environment check is empty; in any new file every banned token fails. Extra banned tokens added: inspect, _getframe, f_locals, f_back, globals(), gc., traceback, importlib, __import__, pickle, np.load, getenv, read_text/read_bytes.",
+  "'append one hb line before and after every command' is implemented by running every agent Bash command through tools/hbrun.py (START line, the command under tl.py, END line with exit code).",
+  "Phase B 'higher-music_nd side' = the side whose 12 s clip scores higher music_nd; within 0.01 the side whose system ranks higher overall. Fixed in decode_listen.py before any answer; in the v2 set every comparison pair has clip order = overall order, so the two readings agree.",
+  "Phase B v2: v1 (listen/ab.html, key.json, audio/) was never shown; it drew bwv264 for an oracle-vs-m1 pair and its repeat where the sides differ in 1 of 12 notes (a coin flip). v2 (listen/v2/) uses a neutral rule: the two systems differ in >= 3 clip notes; tied clips have >= 2 ties."
+ ],
+ "incidents": [
+  "11:39 three nd runs launched as parallel Bash calls: the shell skipped the leading 'cd ABS' of calls 2 and 3, so their relative mkdir/cd nested m1 and m3 outputs inside nd/third_below/. Nothing overwritten. Re-run sequentially with absolute paths into the right folders (identical numbers). Lesson in every agent prompt: absolute paths only after the leading cd.",
+  "Stray files to show Vincent (not deleted): runs_mini/v4_1101/nd/third_below/runs_mini/v4_1101/nd/m1_filter_v5lo/results/nd_m1_filter_v5lo.json and runs_mini/v4_1101/nd/third_below/runs_mini/v4_1101/nd/m1_filter_v5lo/runs_mini/v4_1101/nd/m3_seq_v5/results/nd_m3_seq_v5.json"
+ ],
+ "phase_b": {"page": "futures/v4_selfiter/listen/v2/ab.html", "key": "futures/v4_selfiter/listen/v2/key.json", "code_prefix": "L2-", "decoder": "futures/v4_selfiter/listen/decode_listen.py", "result": "futures/v4_selfiter/listen/result.json (after decoding)"}
+}

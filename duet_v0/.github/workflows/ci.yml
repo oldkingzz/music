@@ -1,0 +1,168 @@
+# Duet CI: everything that can be checked without datasets, audio devices or a board.
+# Written 2026-10-16. It has NOT run on a real GitHub runner yet: the YAML was checked with actionlint 1.7.12
+# and each job's commands were run on the team MacBook (docs/COLLABORATION.md, section 8).
+#
+# Jobs                                  approx. minutes per run (Linux runner, warm caches)
+#   health    size limits, never-commit paths, Markdown links          < 1
+#   secrets   gitleaks over the full history                            < 1
+#   python    dataset-free unit/integration tests (scripts/ci/python_tests.sh)   3-4
+#   firmware  host C++ tests (ASan/UBSan) + arduino-cli ESP32-S3 compile           2-3 (8-10 cold)
+#   kicad     kicad-cli ERC + netlist export (docker kicad/kicad:10.0.6), PCB DRC is informational  2-3
+#   netlist   the exported netlist against the PLAN.md pin map                     < 1
+# GitHub Free gives 2,000 Linux minutes per month for private repos, so about 130-200 runs at 10-15 billed minutes each.
+#
+# GitLab equivalent: docs/COLLABORATION.md, section 8 (same commands as .gitlab-ci.yml jobs).
+
+name: ci
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  PYTHON_VERSION: "3.11"
+  ESP32_CORE: "esp32:esp32@3.3.12"
+  ESP32_INDEX: "https://espressif.github.io/arduino-esp32/package_esp32_index.json"
+  FQBN: "esp32:esp32:m5stack_stamp_s3"
+  GITLEAKS_VERSION: "8.30.1"
+
+jobs:
+  health:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - name: Size limits, never-commit paths, Markdown links
+        run: python3 scripts/check_repo_health.py --json health.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: health-report
+          path: health.json
+          retention-days: 7
+
+  secrets:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Install gitleaks (release tarball, checksum verified)
+        run: |
+          set -euo pipefail
+          base="https://github.com/gitleaks/gitleaks/releases/download/v${GITLEAKS_VERSION}"
+          tgz="gitleaks_${GITLEAKS_VERSION}_linux_x64.tar.gz"
+          curl -sSfL -o "$RUNNER_TEMP/$tgz" "$base/$tgz"
+          curl -sSfL -o "$RUNNER_TEMP/sums.txt" "$base/gitleaks_${GITLEAKS_VERSION}_checksums.txt"
+          (cd "$RUNNER_TEMP" && grep " $tgz\$" sums.txt | sha256sum -c -)
+          mkdir -p "$RUNNER_TEMP/gitleaks"
+          tar -xzf "$RUNNER_TEMP/$tgz" -C "$RUNNER_TEMP/gitleaks" gitleaks
+          echo "$RUNNER_TEMP/gitleaks" >> "$GITHUB_PATH"
+      - name: Scan the full git history
+        run: gitleaks git --no-banner --redact --config scripts/ci/gitleaks.toml .
+
+  python:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+          cache: pip
+          cache-dependency-path: scripts/ci/requirements-ci.txt
+      - name: Install Python packages
+        run: python -m pip install -r scripts/ci/requirements-ci.txt
+      - name: Dataset-free tests
+        run: PY=python bash scripts/ci/python_tests.sh
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: live-test-report
+          path: |
+            live/tests/report.json
+            live/tests/last_run.txt
+          if-no-files-found: ignore
+          retention-days: 7
+
+  firmware:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+      - name: Host C++ tests (protocol, jitter buffer, upsampler; ASan + UBSan)
+        # The script calls "c++" with -Werror. On the Mac that is clang; use clang here too, because gcc
+        # may warn about different things and fail the build.
+        run: |
+          mkdir -p "$RUNNER_TEMP/cxx"
+          ln -sf "$(command -v clang++)" "$RUNNER_TEMP/cxx/c++"
+          PATH="$RUNNER_TEMP/cxx:$PATH" sh firmware/host_tests/build_and_test.sh
+      - uses: arduino/setup-arduino-cli@v2
+      - name: Cache the ESP32 Arduino core (about 1.6 GB unpacked)
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.arduino15/packages
+            ~/.arduino15/staging
+          key: arduino-${{ runner.os }}-${{ env.ESP32_CORE }}
+      - name: Install the ESP32 core
+        run: |
+          arduino-cli core update-index --additional-urls "$ESP32_INDEX"
+          arduino-cli core install "$ESP32_CORE" --additional-urls "$ESP32_INDEX"
+      - name: Compile firmware/duet_io for the M5Stamp S3 (no upload)
+        run: |
+          arduino-cli compile -b "$FQBN" --warnings all --build-path "$RUNNER_TEMP/build" \
+            --additional-urls "$ESP32_INDEX" firmware/duet_io | tee "$RUNNER_TEMP/compile.txt"
+          grep -E "Sketch uses|Global variables use" "$RUNNER_TEMP/compile.txt"
+
+  kicad:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    container:
+      image: kicad/kicad:10.0.6
+      options: --user root
+    steps:
+      - uses: actions/checkout@v4
+      - name: Schematic ERC (must be 0 violations)
+        run: |
+          mkdir -p ci-out
+          kicad-cli sch erc --exit-code-violations --format json -o ci-out/erc.json hardware/kicad/duet.kicad_sch
+      - name: Export the netlist
+        run: kicad-cli sch export netlist -o ci-out/duet.net hardware/kicad/duet.kicad_sch
+      - name: PCB DRC with schematic parity (informational; the board is work in progress)
+        continue-on-error: true
+        run: |
+          kicad-cli pcb drc --schematic-parity --exit-code-violations --format json \
+            -o ci-out/drc.json hardware/kicad/duet.kicad_pcb
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: kicad-out
+          path: ci-out/
+          retention-days: 7
+
+  netlist:
+    needs: kicad
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          name: kicad-out
+          path: ci-out
+      - name: Fresh netlist against the PLAN.md pin map and the design model
+        run: python3 hardware/scripts/check_netlist.py --netlist ci-out/duet.net --report ci-out/pinmap_check.txt

@@ -1,0 +1,2 @@
+2026-11-01 11:50:00 START tl=600 cwd=$ABS/runs_mini/v4_1101/test_wf/try1/nd/third_below $ABS/.venv/bin/python $ABS/futures/v3_nolatency/rescore_nd.py third_below
+2026-11-01 11:50:02 END rc=0 secs=2 $ABS/.venv/bin/python $ABS/futures/v3_nolatency/rescore_nd.py third_below

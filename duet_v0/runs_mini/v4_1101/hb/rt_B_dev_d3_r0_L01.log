@@ -1,0 +1,2 @@
+2026-11-01 22:05:49 START tl=600 cwd=$ABS $ABS/.venv/bin/python $ABS/runs_mini/v5rt_1101/drafts/bench_rt_d3.py rt:r0_predict_live_v1 --L 0.1 --out $ABS/runs_mini/v5rt_1101/scores/dev/d3_rt_r0_predict_live_v1_L0.1.json
+2026-11-01 22:06:00 END rc=0 secs=11 $ABS/.venv/bin/python $ABS/runs_mini/v5rt_1101/drafts/bench_rt_d3.py rt:r0_predict_live_v1 --L 0.1 --out $ABS/runs_mini/v5rt_1101/scores/dev/d3_rt_r0_predict_live_v1_L0.1.json

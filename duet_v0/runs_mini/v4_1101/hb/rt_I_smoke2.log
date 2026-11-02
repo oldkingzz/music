@@ -1,0 +1,2 @@
+2026-11-02 00:22:49 START tl=600 cwd=$ABS $ABS/.venv/bin/python $ABS/futures/v4_selfiter/live_rt_eval_v2.py --smoke --out $ABS/runs_mini/v5rt_1101/live/I_smoke_v2.json
+2026-11-02 00:22:54 END rc=0 secs=5 $ABS/.venv/bin/python $ABS/futures/v4_selfiter/live_rt_eval_v2.py --smoke --out $ABS/runs_mini/v5rt_1101/live/I_smoke_v2.json

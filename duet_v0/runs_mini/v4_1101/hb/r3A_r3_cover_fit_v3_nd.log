@@ -1,0 +1,2 @@
+2026-11-01 15:41:03 START tl=600 cwd=$ABS/runs_mini/v4_1101/nd/r3_cover_fit_v3 $ABS/.venv/bin/python $ABS/futures/v3_nolatency/rescore_nd.py r3_cover_fit_v3
+2026-11-01 15:41:16 END rc=0 secs=12 $ABS/.venv/bin/python $ABS/futures/v3_nolatency/rescore_nd.py r3_cover_fit_v3

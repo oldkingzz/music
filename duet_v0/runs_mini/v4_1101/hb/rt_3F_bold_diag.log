@@ -1,0 +1,2 @@
+2026-11-02 02:30:47 START tl=600 cwd=$ABS $ABS/.venv/bin/python $ABS/runs_mini/v5rt_1101/tools/diag_attacks_v1.py rt:r3_F_bold_v1 0.1 $ABS/runs_mini/v5rt_1101/diag/R3F_attacks_rt_r3_F_bold_v1_L0.1.json
+2026-11-02 02:31:08 END rc=0 secs=21 $ABS/.venv/bin/python $ABS/runs_mini/v5rt_1101/tools/diag_attacks_v1.py rt:r3_F_bold_v1 0.1 $ABS/runs_mini/v5rt_1101/diag/R3F_attacks_rt_r3_F_bold_v1_L0.1.json

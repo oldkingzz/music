@@ -1,0 +1,104 @@
+{
+ "what": "ablation of r3_style_mix_v3 (val, tuned on val); A and C are sanity reproductions",
+ "configs": {
+  "A pooled lam 1.5, a 0.5": {
+   "bach": {
+    "music_nd": 0.68548,
+    "double": 0.05531
+   },
+   "folk": {
+    "music_nd": 0.71251,
+    "double": 0.05253
+   },
+   "pop": {
+    "music_nd": 0.58095,
+    "double": 0.02336
+   },
+   "pop909": {
+    "music_nd": 0.5921,
+    "double": 0.03557
+   },
+   "headline_nd": 0.642759,
+   "reproduces_r2_mix_v1": true
+  },
+  "B pooled lam 1.0, a 0.5": {
+   "bach": {
+    "music_nd": 0.69964,
+    "double": 0.03957
+   },
+   "folk": {
+    "music_nd": 0.7177,
+    "double": 0.04305
+   },
+   "pop": {
+    "music_nd": 0.58673,
+    "double": 0.01917
+   },
+   "pop909": {
+    "music_nd": 0.5949,
+    "double": 0.03308
+   },
+   "headline_nd": 0.649741
+  },
+  "C styles v1 lam 1.0, a 0.5": {
+   "bach": {
+    "music_nd": 0.70279,
+    "double": 0.03507
+   },
+   "folk": {
+    "music_nd": 0.71784,
+    "double": 0.04301
+   },
+   "pop": {
+    "music_nd": 0.59635,
+    "double": 0.01818
+   },
+   "pop909": {
+    "music_nd": 0.59594,
+    "double": 0.03168
+   },
+   "headline_nd": 0.65323,
+   "reproduces_r3_style_mix_v3": true
+  },
+  "D pooled lam 1.0, a 0.7": {
+   "bach": {
+    "music_nd": 0.68975,
+    "double": 0.05036
+   },
+   "folk": {
+    "music_nd": 0.71682,
+    "double": 0.04769
+   },
+   "pop": {
+    "music_nd": 0.59429,
+    "double": 0.01989
+   },
+   "pop909": {
+    "music_nd": 0.58981,
+    "double": 0.03393
+   },
+   "headline_nd": 0.647667
+  },
+  "E styles v1 pooled lam 1.5, a 0.5": {
+   "bach": {
+    "music_nd": 0.68862,
+    "double": 0.05081
+   },
+   "folk": {
+    "music_nd": 0.71232,
+    "double": 0.0523
+   },
+   "pop": {
+    "music_nd": 0.59506,
+    "double": 0.01872
+   },
+   "pop909": {
+    "music_nd": 0.59606,
+    "double": 0.03148
+   },
+   "headline_nd": 0.648018
+  }
+ },
+ "m1_P_unchanged": true,
+ "secs": 42.3
+}

@@ -1,0 +1,2 @@
+2026-11-01 22:07:15 START tl=600 cwd=$ABS $ABS/.venv/bin/python $ABS/futures/v5_rt/bench_rt.py reactive:third_below --L 0.1 --out $ABS/runs_mini/v5rt_1101/scores/B_reactive_third_below_L0.1.json
+2026-11-01 22:07:16 END rc=0 secs=2 $ABS/.venv/bin/python $ABS/futures/v5_rt/bench_rt.py reactive:third_below --L 0.1 --out $ABS/runs_mini/v5rt_1101/scores/B_reactive_third_below_L0.1.json

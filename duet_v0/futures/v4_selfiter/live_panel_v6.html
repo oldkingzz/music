@@ -1,0 +1,392 @@
+<!doctype html>
+<html lang="zh">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Duet 实时测试 v6</title>
+<style>
+/* Layout: controls, latency calibration and verdicts on the left, the live note feed (her note -> Duet's note) on the right */
+:root{
+  --bg:#f2f4f1;--card:#ffffff;--fg:#1c2320;--muted:#5b6862;--line:#d3dbd6;
+  --accent:#2b5e88;--soft:#e3ecf4;--ok:#2d774a;--ok-soft:#e2f1e7;--bad:#ad3f2b;--bad-soft:#f7e4df;--warn:#93650f;--warn-soft:#f6ecd7;
+  --body:-apple-system,"PingFang SC","Noto Sans SC",system-ui,sans-serif;--mono:ui-monospace,"SF Mono",Menlo,monospace;
+}
+@media (prefers-color-scheme:dark){:root{
+  --bg:#111513;--card:#19201c;--fg:#e3e9e5;--muted:#99a69f;--line:#2c3631;
+  --accent:#86afd8;--soft:#1d2b38;--ok:#71c38f;--ok-soft:#18301f;--bad:#e8826d;--bad-soft:#3a1f19;--warn:#dcae57;--warn-soft:#33290f;color-scheme:dark}}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+body{margin:0;background:var(--bg);color:var(--fg);font:15px/1.6 var(--body)}
+.wrap{max-width:1040px;margin:0 auto;padding:20px max(16px,env(safe-area-inset-left,0px)) 48px;display:grid;grid-template-columns:minmax(0,360px) minmax(0,1fr);gap:16px;align-items:start}
+@media (max-width:780px){.wrap{grid-template-columns:minmax(0,1fr)}}
+header{grid-column:1/-1;display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 16px}
+h1{font-size:1.45rem;margin:0}
+.sub{color:var(--muted);font-size:.88rem}
+.col{display:flex;flex-direction:column;gap:16px;min-width:0}
+.card{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:16px;display:flex;flex-direction:column;gap:12px;min-width:0}
+h2{font-size:.8rem;letter-spacing:.06em;color:var(--muted);margin:0;font-weight:600}
+label{font-size:.85rem;color:var(--muted);display:flex;flex-direction:column;gap:4px}
+select,input[type=text]{font:inherit;color:var(--fg);background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:7px 9px;width:100%}
+.sys{display:grid;grid-template-columns:1fr;gap:6px}
+.sys button{font:inherit;text-align:left;padding:8px 10px;border-radius:6px;border:1px solid var(--line);background:var(--bg);color:var(--fg);cursor:pointer}
+.sys button[aria-pressed=true]{border-color:var(--accent);background:var(--soft);color:var(--accent);font-weight:600}
+.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.big{font:inherit;font-weight:600;font-size:1rem;border-radius:6px;padding:10px 22px;cursor:pointer;border:1px solid var(--accent)}
+.go{background:var(--accent);color:var(--card)}
+.stop{background:transparent;color:var(--bad);border-color:var(--bad)}
+.cal{font:inherit;font-weight:600;border-radius:6px;padding:8px 18px;cursor:pointer;border:1px solid var(--accent);background:var(--soft);color:var(--accent)}
+.calbox{border:1px solid var(--line);border-radius:6px;padding:10px 12px;display:flex;flex-direction:column;gap:8px;background:var(--bg)}
+.calbox h3{font-size:.85rem;margin:0;font-weight:600}
+button:disabled{opacity:.45;cursor:default}
+button:focus-visible,select:focus-visible,input:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.state{font-weight:600;margin:0}
+.state.run{color:var(--ok)}.state.wait{color:var(--warn)}.state.err{color:var(--bad)}
+.hint{font-size:.85rem;color:var(--muted);margin:0}
+.note{font-size:.85rem;margin:0;padding:8px 10px;border-radius:6px;background:var(--warn-soft);color:var(--warn)}
+.err{color:var(--bad);font-size:.9rem;margin:0}
+.meter{height:8px;background:var(--bg);border:1px solid var(--line);border-radius:4px;overflow:hidden}
+.meter i{display:block;height:100%;width:0;background:var(--ok);transition:width .1s linear}
+.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}
+.stats div{border-top:2px solid var(--line);padding-top:4px;min-width:0}
+.stats b{display:block;font-family:var(--mono);font-size:1.25rem;font-variant-numeric:tabular-nums}
+.stats span{font-size:.75rem;color:var(--muted)}
+.feed{font-family:var(--mono);font-size:.92rem;font-variant-numeric:tabular-nums;max-height:56vh;overflow:auto;border-top:1px solid var(--line)}
+.feed table{border-collapse:collapse;width:100%}
+.feed td{padding:3px 6px;border-bottom:1px solid var(--line);white-space:nowrap}
+.feed td.k{width:100%;color:var(--muted);font-family:var(--body);font-size:.8rem}
+.tag{display:inline-block;padding:0 7px;border-radius:999px;font-size:.78rem;font-family:var(--body)}
+.cons{background:var(--ok-soft);color:var(--ok)}.clash{background:var(--bad-soft);color:var(--bad)}
+.double{background:var(--warn-soft);color:var(--warn)}.silent{background:var(--bg);color:var(--muted)}
+.vbtn{display:grid;grid-template-columns:repeat(4,1fr);gap:6px}
+.vbtn button{font:inherit;font-weight:600;padding:9px 0;border-radius:6px;border:1px solid var(--line);background:var(--bg);color:var(--fg);cursor:pointer}
+.vbtn button[data-v="好"]{border-color:var(--ok);color:var(--ok)}
+.vbtn button[data-v="差"]{border-color:var(--bad);color:var(--bad)}
+.hist{border-collapse:collapse;width:100%;font-size:.85rem}
+.hist td,.hist th{padding:5px 6px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+.hist th{color:var(--muted);font-weight:500;font-size:.78rem}
+.histwrap{overflow-x:auto}
+audio{width:100%}
+.empty{color:var(--muted);font-size:.9rem;padding:12px 0;font-family:var(--body)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>Duet 实时测试 v6</h1>
+    <span class="sub">你唱或手机放 → 麦克风 → Duet 当场配和声 → 你的耳机　·　用麦克风时先“测延迟”</span>
+  </header>
+
+  <div class="col">
+    <section class="card">
+      <h2>这一轮</h2>
+      <label for="song">唱什么（调和速度跟着它走）<select id="song"></select></label>
+      <div class="row">
+        <label for="key" style="flex:1">调<select id="key"></select></label>
+        <label for="bpm" style="flex:1">速度（拍/分）<input type="text" id="bpm" inputmode="decimal"></label>
+      </div>
+      <label for="mode">Duet 怎么跟<select id="mode">
+        <option value="choir">合唱排练：你唱旋律，Duet 按谱唱另外三个声部</option>
+        <option value="rt">实时预判（新）：每半拍提前定好，听到你后再修正</option>
+        <option value="reactive">被动：听到你的音再配（会晚 70 ms 左右）</option>
+        <option value="predict">旧预判（10 月 31 日那版，会先错后改）</option>
+      </select></label>
+      <p class="hint" id="modehint"></p>
+      <label style="flex-direction:row;align-items:center;gap:8px"><input type="checkbox" id="click"> 跟 Duet 的节拍器唱（先打 4 拍，之后每拍一下）</label>
+      <div class="sys" id="sys" role="group" aria-label="系统"></div>
+      <p class="hint" id="pickwhy"></p>
+      <label for="input">输入<select id="input">
+        <option value="file">直接用文件（不开麦，耳机音质正常）</option>
+        <option value="mic">麦克风（你唱，或手机外放）</option>
+      </select></label>
+      <label for="in" id="inlab">麦克风<select id="in"></select></label>
+      <label for="out">耳机（Duet 只从这里出声）<select id="out"></select></label>
+      <p class="note" id="btnote" hidden>蓝牙麦克风（AirPods 等）比声卡报的多出 100 ms 左右的延迟：一定先“测延迟”。耳机最好用有线的：蓝牙耳机还会再晚约 150 ms，测了也只能让拍点对上，Duet 的声音还是会晚。</p>
+      <div class="calbox" id="calbox" hidden>
+        <h3>测延迟（换了麦克风或耳机要重测）</h3>
+        <p class="hint">戴好耳机，点“测延迟”：先响 4 下预备拍（只听），接着 8 下高一点的嘀声，每下唱一个短的“哒”。约 8 秒。</p>
+        <div class="row"><button class="cal" id="calgo">测延迟</button></div>
+        <p class="state" id="calstate"></p>
+        <p class="hint" id="caluse"></p>
+      </div>
+      <label for="mon">在耳机里也听到麦克风：<span id="monv">0</span><input id="mon" type="range" min="0" max="1" step="0.1" value="0"></label>
+      <div class="row">
+        <button class="big go" id="start">开始</button>
+        <button class="big stop" id="stop" disabled>停止</button>
+      </div>
+      <p class="state" id="state">正在连接…</p>
+      <p class="err" id="err" hidden></p>
+      <p class="hint" id="steps"></p>
+    </section>
+
+    <section class="card" id="vcard" hidden>
+      <h2>这一轮配得怎么样？</h2>
+      <p class="hint" id="vwho"></p>
+      <audio id="vaudio" controls preload="none"></audio>
+      <div class="vbtn" id="vbtn"></div>
+      <label for="vnote">备注（可不填）<input type="text" id="vnote" placeholder="比如：第二句总先错后改"></label>
+    </section>
+
+    <section class="card">
+      <h2>记录</h2>
+      <div class="histwrap"><table class="hist"><thead><tr><th>时间</th><th>系统</th><th>评价</th><th>备注</th></tr></thead><tbody id="hist"></tbody></table></div>
+      <p class="hint">每一轮存在 runs_mini/live/，评价追加在 RUNS.jsonl；每次测延迟追加在 latcal_log.jsonl。</p>
+    </section>
+  </div>
+
+  <div class="col">
+    <section class="card">
+      <h2>正在听</h2>
+      <div class="meter" aria-label="麦克风电平"><i id="lvl"></i></div>
+      <div class="stats">
+        <div><b id="pitch">—</b><span>现在听到</span></div>
+        <div><b id="beat">—</b><span id="beatl">第几拍</span></div>
+        <div><b id="n">0</b><span>你的音</span></div>
+        <div><b id="ms">—</b><span>听到延迟（ms）</span></div>
+      </div>
+      <p class="hint" id="latnow"></p>
+      <div class="feed" id="feed"><p class="empty">还没开始。</p></div>
+      <p class="hint"><span class="tag cons">协和</span> 三度/五度/六度　<span class="tag double">同音</span> 唱了你的同音或八度　<span class="tag clash">冲突</span> 和你不协和（按听到的音算）</p>
+      <p class="hint"><span class="tag cons">准时</span> 你开口时 Duet 已经在唱这个音　<span class="tag double">改音</span> 提前出的音听到你后改了　<span class="tag silent">晚</span> 听到你后才进</p>
+    </section>
+  </div>
+</div>
+
+<script>
+const $ = s => document.querySelector(s);
+const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+let pick = null, S = null, lastRows = "", lastHist = "", lastSys = "";
+const KIND = {cons:"协和", double:"同音", clash:"冲突", silent:"不唱"};
+const ON = '<span class="tag cons">准时</span>', FIX = '<span class="tag double">改音</span>', LATE = '<span class="tag silent">晚</span>';
+const ACT = {kept:ON, keep:ON, same:ON, corrected:FIX, switch:FIX, silence:FIX, late:LATE, first:LATE, enter:LATE, reenter:LATE};
+const MODEHINT = {
+  rt: "你开口前就把和声音定好，大多数时候准时出声；拿不准时宁可晚一点，也不先唱错再改。用麦克风时先“测延迟”，Duet 才知道你的音落在哪一拍。",
+  reactive: "听到你的音才配，音总是对的，但每个音都晚（有线约 70 ms，蓝牙更多）。",
+  choir: "选 Twinkle 或 v11，用麦克风。先响 4 下节拍定速度；Duet 等你开口才唱，从你的第一个音起按谱同时唱中音、次中音、低音（第一个和弦会晚一点进，之后都按拍子准时）；你停 3 拍它就停。勾上节拍器会一直打拍子，跟着唱更稳。",
+  predict: "每拍提前猜，猜错时先错后改（你说过难听），只留作对照。",
+};
+
+async function api(path, body){
+  const r = await fetch(path, body === undefined ? {} : {method:"POST", headers:{"Content-Type":"application/json"}, body:JSON.stringify(body)});
+  const j = await r.json().catch(() => ({error:"服务器没有回应"}));
+  if (!r.ok) throw new Error(j.error || r.statusText);
+  return j;
+}
+function showErr(e){ const el = $("#err"); el.textContent = e ? String(e.message || e) : ""; el.hidden = !e; }
+const mic = () => $("#input").value === "mic";
+const busyNow = () => S && (S.state === "running" || S.state === "calibrating");
+
+/* the calibration of the selected microphone + headphones (kept by the server for this page session) */
+function calFor(){
+  if (!S || !S.cals || !mic()) return null;
+  return S.cals.find(c => c.in === $("#in").value && c.out === $("#out").value) || null;
+}
+/* what the rt choice "auto" runs on these devices: the same rule as the server's pick_rt */
+function autoPick(){
+  const bl = S && S.by_latency, c = calFor(), def = S ? S.rt_default : null;
+  if (!bl) return {name: def, why: ""};
+  const thr = Number(bl.threshold_ms);
+  if (!c) return {name: def, why: `还没测延迟：用默认版（测出来 ≥ ${thr} 毫秒才换大延迟版）`};
+  if (c.rt_ms >= thr) return {name: bl.system, why: `来回延迟 ${Math.round(c.rt_ms)} 毫秒 ≥ ${thr}：用大延迟版`};
+  return {name: def, why: `来回延迟 ${Math.round(c.rt_ms)} 毫秒 < ${thr}：用默认版`};
+}
+function rtLabel(n){ return (S && S.rt_labels && S.rt_labels[n]) || n || ""; }
+
+function sysOptions(){
+  if ($("#mode").value === "choir") return [["r2_mix_v2", "四部合唱谱（Duet 唱 A / T / B）"]];
+  const rt = $("#mode").value === "rt";
+  if (!rt){
+    const list = Object.entries((S && S.choices) || {});
+    list.push(["blind", "盲测（随机，评价后揭晓）"]);
+    return list;
+  }
+  const ap = autoPick();
+  const list = [["auto", "推荐（按测出的延迟自动选）：" + rtLabel(ap.name)]];
+  Object.entries((S && S.rt_choices) || {}).forEach(e => list.push(e));
+  list.push(["blind", "盲测：被动 和 推荐的实时预判 随机一个（评价后揭晓）"]);
+  return list;
+}
+function renderSys(){
+  const opts = sysOptions();
+  if (!opts.some(([k]) => k === pick)) pick = $("#mode").value === "rt" ? "auto" : "r2_mix_v2";
+  $("#sys").innerHTML = opts.map(([k, v]) => `<button data-k="${k}" aria-pressed="${k === pick}">${esc(v)}</button>`).join("");
+  $("#sys").querySelectorAll("button").forEach(b => b.onclick = () => { pick = b.dataset.k; renderSys(); });
+  $("#modehint").textContent = MODEHINT[$("#mode").value] || "";
+  const ap = autoPick();
+  $("#pickwhy").textContent = ($("#mode").value === "rt" && (pick === "auto" || pick === "blind") && ap.why) ? ap.why : "";
+}
+$("#mode").onchange = () => { pick = null; renderSys(); };
+
+async function loadDevices(){
+  try {
+    const d = await api("/api/devices");
+    const fill = (sel, list, prefer) => {
+      const keep = sel.value;
+      sel.innerHTML = list.map(n => `<option>${esc(n)}</option>`).join("");
+      const pref = list.find(n => n === keep) || list.find(n => prefer.test(n)) || list.find(n => !/扬声器|speaker|VG278/i.test(n)) || list[0];
+      if (pref) sel.value = pref;
+    };
+    fill($("#in"), d.in, /usb|iphone|airpods/i); fill($("#out"), d.out, /外置耳机|headphones|耳机/i);
+    if (!d.in.length) showErr("没有找到麦克风。接好后刷新页面。");
+    syncBt(); render();
+  } catch(e){ showErr(e); }
+}
+function syncBt(){
+  const bt = /airpods|bluetooth|蓝牙|beats|buds/i;
+  $("#btnote").hidden = !(bt.test($("#out").value || "") || (mic() && bt.test($("#in").value || "")));
+}
+$("#in").onchange = () => { syncBt(); render(); };
+$("#out").onchange = () => { syncBt(); render(); };
+
+let songsFilled = false;
+function fillSongs(){
+  if (songsFilled || !S || !S.songs) return;
+  songsFilled = true;
+  const ss = $("#song"), ks = $("#key");
+  ss.innerHTML = Object.entries(S.songs).map(([k, v]) => `<option value="${k}">${esc(v.label)}${v.file ? " · " + esc(v.file.split("/").pop()) : ""}</option>`).join("");
+  ks.innerHTML = S.keys.map(k => `<option>${esc(k)}</option>`).join("");
+  const sync = () => {
+    const v = S.songs[ss.value];
+    ks.value = v.key; $("#bpm").value = v.bpm;
+    if (ss.value === "free"){ $("#click").checked = true; $("#input").value = "mic"; syncInput(); }
+  };
+  ss.onchange = sync; sync();
+}
+
+function renderCal(){
+  const m = mic();
+  $("#calbox").hidden = !m;
+  $("#calgo").disabled = !S || S.state !== "idle";
+  $("#calgo").textContent = (S && S.cal_last) ? "再测一次" : "测延迟";
+  const cs = $("#calstate");
+  if (S && S.state === "calibrating" && S.cal){
+    const c = S.cal;
+    cs.textContent = c.phase === "count" ? `预备拍 ${c.k}/${c.of}：先听，不唱`
+      : c.phase === "sing" ? `每下唱一个短“哒”：${c.k}/${c.of}`
+      : c.phase === "tail" ? "听完了，在算…" : "开始了：戴好耳机，准备听嘀声";
+    cs.className = "state run";
+  } else if (S && S.cal_last && S.cal_last.in === $("#in").value && S.cal_last.out === $("#out").value){
+    const r = S.cal_last;
+    cs.textContent = r.ok ? `来回延迟约 ${Math.round(r.rt_ms)} 毫秒（8 下里用了 ${r.n_used} 下）`
+      : "没测成：" + r.why + (calFor() ? `（仍用上次的 ${Math.round(calFor().rt_ms)} 毫秒）` : "");
+    cs.className = r.ok ? "state" : "state err";
+  } else { cs.textContent = ""; cs.className = "state"; }
+  const c = calFor();
+  $("#caluse").textContent = !m ? "" : c
+    ? `用这对麦克风和耳机时，告诉 Duet 来回延迟 ${Math.round(c.rt_ms)} 毫秒（${c.when} 测的）。`
+    : "这对麦克风和耳机还没测：先点“测延迟”，不然 Duet 只能用声卡报的延迟，你的音可能被放到错的拍上。";
+}
+
+function latText(l){
+  if (!l) return "";
+  if (l.source === "file") return `这一轮：直接用文件，没有麦克风延迟（耳机 ${l.Lo_ms} ms）。`;
+  if (l.source === "calibrated") return `这一轮告诉 Duet：麦克风 ${l.Li_ms} ms + 耳机 ${l.Lo_ms} ms = 测出的来回 ${Math.round(l.rt_ms)} 毫秒（${l.cal_when} 测的）。`;
+  return `这一轮告诉 Duet：麦克风 ${l.Li_ms} ms + 耳机 ${l.Lo_ms} ms（声卡报的，没测延迟，可能不准）。`;
+}
+
+function render(){
+  if (!S) return;
+  fillSongs();
+  const sk = JSON.stringify([$("#mode").value, $("#in").value, $("#out").value, $("#input").value, S.cals, S.by_latency, S.rt_choices, S.rt_default]);
+  if (pick === null || !$("#sys").children.length || sk !== lastSys){ lastSys = sk; renderSys(); }
+  $("#beatl").textContent = "第几拍 / " + (S.K || (S.song && S.song.beats) || "—");
+  const st = $("#state");
+  const busy = S.state === "running", cal = S.state === "calibrating";
+  $("#start").disabled = busy || cal || S.state === "await" || !S.models_ready;
+  $("#stop").disabled = !(busy || cal);
+  if (cal) { st.textContent = "正在测延迟：跟着高的嘀声，每下唱一个短“哒”"; st.className = "state run"; }
+  else if (!S.models_ready) { st.textContent = "模型加载中（约半分钟）…"; st.className = "state wait"; }
+  else if (S.models_err) { st.textContent = "模型加载失败"; st.className = "state err"; showErr(S.models_err); }
+  else if (busy) { st.textContent = S.synced ? "在配和声：唱到底，或点停止" : "已开始：现在开口唱（或放手机）"; st.className = "state run"; }
+  else if (S.state === "await") { st.textContent = "这一轮结束了，请打分"; st.className = "state wait"; }
+  else { st.textContent = "就绪：选好系统，点开始"; st.className = "state"; }
+  if (S.msg) showErr(S.msg);
+  renderCal();
+
+  const db = S.db == null ? -80 : S.db;
+  $("#lvl").style.width = Math.max(0, Math.min(100, (db + 60) / 60 * 100)) + "%";
+  $("#pitch").textContent = S.pitch || "—";
+  $("#beat").textContent = S.beat == null ? "—" : Math.max(0, S.beat).toFixed(1);
+  $("#n").textContent = S.n ?? 0;
+  $("#latnow").textContent = cal ? "" : latText(S.lat);
+  const rows = S.rows || [];
+  $("#ms").textContent = rows.length ? Math.round(rows.reduce((a, r) => a + r.ms, 0) / rows.length) : "—";
+  const key = JSON.stringify(rows) + (cal ? "cal" : "");
+  if (key !== lastRows){
+    lastRows = key;
+    const f = $("#feed");
+    f.innerHTML = rows.length ? "<table>" + rows.slice().reverse().map(r =>
+      `<tr><td>${esc(r.pos)}</td><td>你 ${esc(r.her)}</td><td>→</td><td>Duet ${esc(r.duet)}</td><td class="k"><span class="tag ${r.kind}">${KIND[r.kind]}</span> ${ACT[r.act] || ""}</td></tr>`).join("") + "</table>"
+      : `<p class="empty">${cal ? "在测延迟，不配和声。" : busy ? "在等第一个音…（看上面的电平条有没有动）" : "还没开始。"}</p>`;
+  }
+
+  const vc = $("#vcard");
+  if (S.state === "await" && S.last){
+    vc.hidden = false;
+    $("#vwho").textContent = (S.last.blind ? "盲测：评价后揭晓是哪个系统。" : "系统：" + (S.last.label || S.last.system) + "。")
+      + ` 你的音 ${S.last.notes_answered} 个，Duet 唱了 ${S.last.sung} 个。`;
+    const src = `/rec/${S.last.run}/run.wav`;
+    if ($("#vaudio").dataset.src !== src){ $("#vaudio").dataset.src = src; $("#vaudio").src = src; }
+    if (!$("#vbtn").children.length){
+      $("#vbtn").innerHTML = S.verdicts.map(v => `<button data-v="${v}">${v}</button>`).join("");
+      $("#vbtn").querySelectorAll("button").forEach(b => b.onclick = () => verdict(b.dataset.v));
+    }
+  } else { vc.hidden = true; $("#vbtn").innerHTML = ""; }
+}
+
+async function loadHist(){
+  try {
+    const h = await api("/api/runs");
+    const key = JSON.stringify(h);
+    if (key === lastHist) return;
+    lastHist = key;
+    $("#hist").innerHTML = h.length ? h.map(r => `<tr><td class="mono">${esc((r.started || "").slice(11, 16))}</td><td>${esc(r.label)}${r.blind ? "（盲测）" : ""}<br><span class="hint">${esc(r.song || "")} · ${esc(r.key || "")} 大调${r.lat_source === "calibrated" ? " · 已测延迟" : ""}</span></td><td>${esc(r.verdict)}</td><td>${esc(r.note)}${r.has_wav ? ` <a href="/rec/${esc(r.run)}/run.wav" target="_blank">录音</a>` : ""}</td></tr>`).join("")
+      : `<tr><td colspan="4" class="empty">还没有记录。</td></tr>`;
+  } catch(e){}
+}
+
+async function verdict(v){
+  try {
+    const r = await api("/api/verdict", {run: S.last.run, verdict: v, note: $("#vnote").value});
+    $("#vnote").value = "";
+    if (r.blind) alertLine(`盲测揭晓：这一轮是 ${r.label || r.system}`);
+    await poll(); loadHist();
+  } catch(e){ showErr(e); }
+}
+function alertLine(t){ showErr(""); const p = $("#steps"); p.textContent = t; p.style.color = "var(--accent)"; }
+
+$("#start").onclick = async () => {
+  showErr(""); $("#steps").style.color = "";
+  try { S = await api("/api/start", {system: pick, song: $("#song").value, key: $("#key").value, bpm: $("#bpm").value,
+          mode: $("#mode").value, click: $("#click").checked, input: $("#input").value, in: $("#in").value, out: $("#out").value,
+          monitor: $("#mon").value}); render(); }
+  catch(e){ showErr(e); }
+};
+$("#calgo").onclick = async () => {
+  showErr("");
+  try { S = await api("/api/calibrate", {input: $("#input").value, in: $("#in").value, out: $("#out").value}); render(); }
+  catch(e){ showErr(e); }
+};
+$("#stop").onclick = async () => { try { await api("/api/stop", {}); } catch(e){ showErr(e); } };
+$("#mon").oninput = () => { $("#monv").textContent = $("#mon").value; };
+function syncInput(){
+  const file = $("#input").value === "file";
+  $("#inlab").hidden = file;
+  $("#mon").closest("label").hidden = file;
+  $("#steps").style.color = "";
+  $("#steps").textContent = file
+    ? "点“开始”：手机文件直接送进 Duet，你在耳机里同时听到旋律和 Duet 的实时和声。不开麦。"
+    : "自己唱：先“测延迟”，再选“我自己唱”、调和速度，点“开始”，听 4 下嘀声后开口。放手机：点“开始”后马上外放，她的第一个音就是第 1 拍。唱完或点停止。";
+  syncBt(); render();
+}
+$("#input").onchange = syncInput; syncInput();
+
+async function poll(){
+  try { S = await api("/api/state"); render(); if (!busyNow()) loadHist(); }
+  catch(e){ $("#state").textContent = "连不上测试服务（终端里还开着吗？）"; $("#state").className = "state err"; }
+}
+loadDevices(); loadHist(); poll();
+setInterval(poll, 300);
+setInterval(() => { if (!busyNow()) loadDevices(); }, 3000);   // headphones and mics come and go (never while a stream is open)
+</script>
+</body>
+</html>

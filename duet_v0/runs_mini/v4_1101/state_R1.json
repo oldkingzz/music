@@ -1,0 +1,41 @@
+{
+ "round": 1,
+ "written": "2026-11-01 15:10 EST",
+ "ABS": "/Users/san/claude_sandbox/music/duet_v0",
+ "run": "v4_1101",
+ "phase_b": {
+  "result": "futures/v4_selfiter/listen/result.json",
+  "summary": "No forced choices. Vincent (14:30): every clip is acceptable; all the problems are in Duet's real-time chord guess; the static parts are fine. music_nd kept; renders stay re-attacked; double ceiling stays 0.08."
+ },
+ "loop": {"started": "2026-11-01 14:45 EST", "limit_hours": 10, "ends_by": "2026-11-02 00:45 EST (10 h) or 2026-11-02 10:00 EST, whichever first", "max_rounds": 8,
+  "consecutive_rounds_without_keep": 1},
+ "checks_before_round_1": "14:43 checksums 10/10 OK, env knobs empty, 104.0 GB free, runs_mini 168K",
+ "checks_after_round_1": "15:07 all hb logs START=END, every rc 0, no stale START (no ALERTS_1.md); 104.0 GB free; runs_mini 612K",
+ "workflow_round_1": {"id": "wfmyojayk", "run_id": "wf_1e1a8d76-80e", "agents": 3, "minutes": 19},
+ "diagnosis": {
+  "script": "runs_mini/v4_1101/tools/diag_rt.py (sha 2c68b0d46c9d), result runs_mini/v4_1101/diag/diag_rt_v1.json",
+  "same_chooser_different_chord_knowledge_music_nd": {"real_time_hmm_m1": 0.6206, "offline_hmm_whole_song_not_causal": 0.6229, "told_previous_beat_chord": 0.7026, "told_onset_chord": 0.8403},
+  "m1_missed_time_by_cause": {"wrong_chord_guess": 0.201, "no_good_note_below_her": 0.069, "misheard": 0.064, "held_into_new_chord": 0.026, "right_chord_still_missed": 0.019, "below_but_above_would_fit": 0.042},
+  "onset_chord_accuracy": {"hmm_real_time": 0.434, "gru_ensemble": 0.484, "hmm_offline": 0.433, "told_previous_chord": 0.640, "by_dataset_hmm": {"bach": 0.471, "folk": 0.571, "pop": 0.357, "pop909": 0.334}, "always_I": 0.299},
+  "lock_on": "HMM accuracy for the 1st/2nd/3rd/4th+ note under the same chord 0.43/0.41/0.45/0.44 (flat); told previous chord 0.39/0.65/0.84/0.88",
+  "independent_recheck": "runs_mini/v4_1101/diag/recheck/recheck_rt.py: every number reproduced (rt acc 0.4335, index curve 0.434/0.412/0.447/0.437, told 0.8403, offline 0.6229 / acc 0.4327, m1 sanity 0.620637625406759). Extra: clean (unmisheard) melody would give m1 0.668; held notes cross a chord change in 4.8/0.4/8.7/7.9 % of scored time (bach/folk/pop/pop909).",
+  "why_no_lock_on": "runs_mini/v4_1101/diag/why/ (why_lib.py sha e3c039184bd5, why_f.py sha a1bb7dca13d0, why_a..f_v1.json). (1) Her melody under one chord does not single it out: the labelled chord is the unique best-covering triad in 1/22/11/14 % of spans, 2-3 triads tie; a perfect lock-on ceiling over her pitch classes is only 0.45/0.43/0.47/0.50. (2) So the belief falls back on chord frequency (guesses I on 42-49 % of notes vs 21-43 % true) and flips on 36-39 % of consecutive notes under one chord. (3) The pooled harmonic-rhythm table is a real mismatch but second order: stickier tables, a duration prior, bal=0, adaptive tables all 0.606-0.622; per-corpus tables even with the corpus known 0.619. (4) Per-style emission + tables help a little: style-aware HMM (pooled, pop, pop909; style inferred online from rhythm; lam 1.0) 0.6292 [bach .658 folk .682 pop .588 pop909 .589], about 16 style variants tried on val. (5) lam 1.0 alone 0.6233. (6) cur_w is right.",
+  "diagnostic_configurations_evaluated_on_val": "about 40 (analysis only, not candidates)"
+ },
+ "champion": {"name": "m1_filter_v5lo", "headline_nd": 0.620637625406759, "presentable": true, "seed2": 0.6207916780068529},
+ "ideas": [
+  {"id": "E1", "round": 1, "attempt": 1, "verdict": "fail: keep rule, folk big 0.02119 > champion + 0.01 = 0.01949 (only failed check)",
+   "variants": [
+    {"name": "r1_gru_chooser_v1", "sha": "2d26a11f22fe", "what": "3-GRU average (full 96, big 128, s1 96) as chord belief + m1 chooser", "headline_nd": 0.6440, "music_nd": {"bach": 0.6916, "folk": 0.7134, "pop": 0.5903, "pop909": 0.5808}, "double_max": 0.0504, "big": {"bach": 0.0050, "folk": 0.0212, "pop": 0.0064, "pop909": 0.0138}, "par_max": 0.0051, "us_per_note": 150, "reproduces_laptop_0644": true},
+    {"name": "r1_gru_chooser_v2", "sha": "ef8aede496f4", "what": "'full' GRU alone + m1 chooser", "headline_nd": 0.6331, "music_nd": {"bach": 0.6745, "folk": 0.7001, "pop": 0.5815, "pop909": 0.5763}, "big_folk": 0.0206, "note": "0.011 below v1, outside the 0.005 single-GRU preference window"}
+   ]}
+ ],
+ "dead_ideas": [],
+ "variants_scored_in_loop": 2,
+ "interpretations_added": [
+  "An idea is dead after two failed attempts, so E1 gets one more attempt in round 2 with one chooser weight VALUE changed (w_big, the leap penalty). Reading of §4.3: 'keeps its 6 w_* weights; may swap one weight' allows changing one weight's value; flagged for Vincent.",
+  "E3 as written (chord-duration prior from the meter, steady rate) measured no gain in the round-1 analysis (0.6139 / 0.6212; adaptive tables 0.6114 / 0.6216). Round 2 implements E3 as the analysis redesigned it: chords change at a steady rate that depends on the song's style, inferred online from her rhythm (style-aware HMM).",
+  "Changing lam (the HMM's evidence weight) keeps the guesser 'the HMM'."
+ ],
+ "next": "Round 2 (3 implementers in parallel, then reviewers): A = E1 second attempt with w_big 0.6/0.8/1.0; B = E2 mix b_HMM^(1-a) b_GRU^a, a = 0.5/0.7/0.85; C = E3 style-aware HMM (lam 1.0; v2 pooled lam 1.5). Then E4 and E5 on top of the champion."
+}

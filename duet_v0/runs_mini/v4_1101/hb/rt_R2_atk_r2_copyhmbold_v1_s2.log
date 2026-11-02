@@ -1,0 +1,2 @@
+2026-11-01 23:34:00 START tl=600 cwd=$ABS $ABS/.venv/bin/python $ABS/runs_mini/v5rt_1101/tools/attack_metric.py rt:r2_copyhmbold_v1 --L 0.1 --seed2 --out $ABS/runs_mini/v5rt_1101/attack/R2_rt_r2_copyhmbold_v1_L0.1_seed2.json
+2026-11-01 23:34:22 END rc=0 secs=22 $ABS/.venv/bin/python $ABS/runs_mini/v5rt_1101/tools/attack_metric.py rt:r2_copyhmbold_v1 --L 0.1 --seed2 --out $ABS/runs_mini/v5rt_1101/attack/R2_rt_r2_copyhmbold_v1_L0.1_seed2.json

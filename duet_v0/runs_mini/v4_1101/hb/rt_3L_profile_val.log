@@ -1,0 +1,2 @@
+2026-11-02 01:13:16 START tl=600 cwd=$ABS $ABS/.venv/bin/python $ABS/runs_mini/v5rt_1101/tools/LB_tracker_profile_v1.py --split val --n 17 --out $ABS/runs_mini/v5rt_1101/models/LB_tracker_profile_val_v1.json
+2026-11-02 01:13:47 END rc=0 secs=31 $ABS/.venv/bin/python $ABS/runs_mini/v5rt_1101/tools/LB_tracker_profile_v1.py --split val --n 17 --out $ABS/runs_mini/v5rt_1101/models/LB_tracker_profile_val_v1.json

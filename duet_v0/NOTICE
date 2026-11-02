@@ -1,0 +1,56 @@
+Duet (MEAM/IPD 5160 final project, University of Pennsylvania, Fall 2026)
+=========================================================================
+
+Copyright 2026 the Duet team members. No open-source licence has been chosen yet: until the team adds a
+LICENSE file, the team's own code and documents are "all rights reserved" and shared only with the team
+and the course staff. The third-party material below keeps its own licence, whatever licence the team
+picks later. Details and the per-file audit: docs/REPO_AUDIT.md, section 6.
+
+Third-party material in this repository
+---------------------------------------
+
+1. Dagstuhl ChoirSet (DCS) v1.2.3, CC BY-NC 4.0 (non-commercial use, with attribution).
+   https://zenodo.org/records/4618287, DOI 10.5281/zenodo.4618287
+   S. Rosenzweig, H. Cuesta, C. Weiss, F. Scherbaum, E. Gomez, M. Mueller, "Dagstuhl ChoirSet: A Multitrack
+   Dataset for MIR Research on Choral Singing," TISMIR 3(1):98-110, 2020. https://doi.org/10.5334/tismir.48
+   Files derived from it (changed: features extracted, notes re-timed or combined with Duet's output):
+     live/cache/dcs_LI_FullChoir_S1_DYN_Take01.json, .npz, _notes.csv   (pitch track and aligned notes, one take)
+     live/demo/dcs_locus_iste_S1_take02.mid
+     media/demo/tebe_poem_S1_take02*.mid                               (melody track = DCS aligned notes)
+     media/data/frozen_notes.json                                       (per-note timing errors; also ECD)
+     media/figures/fig_b_losses_by_level_tebe_poem.*, fig_c_timeline_real_take.*
+     data/figures/dcs_example_LI_QuartetA_Take01.png, dcs_take_to_take_timing.png
+     data/sanity/*, data/scripts/selections/dcs_*                       (inventory, listings, statistics)
+     eval/results/*, eval/figures/*                                     (per-take and pooled statistics)
+   No DCS audio is committed. The demo wav files that contain DCS audio (media/demo/tebe_poem_*.wav) are
+   git-ignored and are for course presentations only (media/demo/CREDITS.md).
+
+2. ESMUC Choir Dataset (ECD) v1.0.0, CC BY 4.0.
+   https://zenodo.org/records/5848990, DOI 10.5281/zenodo.5848990
+   H. Cuesta, E. Gomez, ESMUC Choir Dataset v1.0.0, Zenodo, 2022.
+   Used for: per-take and per-note timing statistics in eval/results/, media/data/frozen_notes.json,
+   data/sanity/, data/figures/ecd_example_DG_take1.png, media/figures/fig_a_*, fig_b_*_seele_christi.*, fig_d_*.
+   No ECD audio and no score is committed.
+
+3. vocadito, CC BY 4.0. https://zenodo.org/records/5578807
+   R. M. Bittner et al., "vocadito: A dataset of solo vocals with f0, note, and lyric annotations,"
+   arXiv:2110.05580, 2021. Used for the annotation-agreement statistics (data/sanity/,
+   data/figures/human_asynchrony_vs_annotator_agreement.png). No vocadito audio is committed.
+
+4. Bach chorales from the music21 corpus (music21 10.5.0; software BSD-3-Clause; corpus terms in
+   music21/corpus/license.txt: "Some encodings ... may not be used for commercial uses or have other
+   restrictions"). The compositions are in the public domain. harmony/data/bach_satb.json and the trained
+   parameters in harmony/params/ are derived from these encodings.
+
+5. Inter and Inter Tight fonts (media/tools/fonts/*.ttf), SIL Open Font License 1.1.
+   Copyright 2016 / 2022 The Inter Project Authors (https://github.com/rsms/inter,
+   https://github.com/rsms/inter-tight). Licence text: https://openfontlicense.org
+
+6. KiCad standard library footprints and symbols, embedded in hardware/kicad/*.kicad_pcb and *.kicad_sch,
+   CC BY-SA 4.0 with the KiCad library exception (designs and generated files that use the libraries are not
+   bound by the licence). https://www.kicad.org/libraries/license/
+
+Not in this repository (on purpose)
+-----------------------------------
+Dataset audio, course slides and handouts, manufacturer datasheets and SPICE models (for example TI's
+OPA2377 datasheet and model), and our own singer recordings. They are linked or kept on the team drive.

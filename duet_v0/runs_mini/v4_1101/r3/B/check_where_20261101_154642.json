@@ -1,0 +1,298 @@
+{
+ "what": "One-off diagnostic, v4 round 3, implementer B (E5); not a system, not a scored variant; ALL val songs (val, tuned on val).",
+ "variants": {
+  "r3_true_cons_v1": {
+   "bach": {
+    "notes": 1073,
+    "heard_out_of_scale_share": 0.0615,
+    "misheard_share": 0.0932,
+    "cascade": {
+     "changed_notes": 17,
+     "won": 0.0018,
+     "lost": 0.0027,
+     "net": -0.0009
+    },
+    "heard_right|in_scale": {
+     "changed_notes": 5,
+     "won": 0.0,
+     "lost": 0.0018,
+     "net": -0.0018
+    },
+    "heard_right|out_of_scale": {
+     "changed_notes": 6,
+     "won": 0.0,
+     "lost": 0.0018,
+     "net": -0.0018
+    },
+    "misheard|in_scale": {
+     "changed_notes": 1,
+     "won": 0.0,
+     "lost": 0.0,
+     "net": 0.0
+    },
+    "misheard|out_of_scale": {
+     "changed_notes": 19,
+     "won": 0.00495,
+     "lost": 0.0018,
+     "net": 0.00315
+    },
+    "total_net": -0.00135
+   },
+   "folk": {
+    "notes": 17326,
+    "heard_out_of_scale_share": 0.063,
+    "misheard_share": 0.1002,
+    "cascade": {
+     "changed_notes": 961,
+     "won": 0.00242,
+     "lost": 0.00415,
+     "net": -0.00173
+    },
+    "heard_right|in_scale": {
+     "changed_notes": 375,
+     "won": 0.00266,
+     "lost": 0.00122,
+     "net": 0.00144
+    },
+    "heard_right|out_of_scale": {
+     "changed_notes": 115,
+     "won": 0.00022,
+     "lost": 0.00346,
+     "net": -0.00325
+    },
+    "misheard|in_scale": {
+     "changed_notes": 18,
+     "won": 0.00028,
+     "lost": 0.00019,
+     "net": 9e-05
+    },
+    "misheard|out_of_scale": {
+     "changed_notes": 334,
+     "won": 0.00578,
+     "lost": 0.00395,
+     "net": 0.00183
+    },
+    "total_net": -0.00162
+   },
+   "pop": {
+    "notes": 14388,
+    "heard_out_of_scale_share": 0.0645,
+    "misheard_share": 0.1013,
+    "cascade": {
+     "changed_notes": 320,
+     "won": 0.00325,
+     "lost": 0.00441,
+     "net": -0.00117
+    },
+    "heard_right|in_scale": {
+     "changed_notes": 126,
+     "won": 0.00154,
+     "lost": 0.00099,
+     "net": 0.00055
+    },
+    "heard_right|out_of_scale": {
+     "changed_notes": 83,
+     "won": 0.0,
+     "lost": 0.00285,
+     "net": -0.00285
+    },
+    "misheard|in_scale": {
+     "changed_notes": 17,
+     "won": 7e-05,
+     "lost": 5e-05,
+     "net": 2e-05
+    },
+    "misheard|out_of_scale": {
+     "changed_notes": 269,
+     "won": 0.00506,
+     "lost": 0.00243,
+     "net": 0.00263
+    },
+    "total_net": -0.00082
+   },
+   "pop909": {
+    "notes": 13523,
+    "heard_out_of_scale_share": 0.0479,
+    "misheard_share": 0.1011,
+    "cascade": {
+     "changed_notes": 420,
+     "won": 0.0027,
+     "lost": 0.00237,
+     "net": 0.00033
+    },
+    "heard_right|in_scale": {
+     "changed_notes": 198,
+     "won": 0.0008,
+     "lost": 0.0016,
+     "net": -0.00081
+    },
+    "heard_right|out_of_scale": {
+     "changed_notes": 2,
+     "won": 0.0,
+     "lost": 0.0,
+     "net": 0.0
+    },
+    "misheard|in_scale": {
+     "changed_notes": 24,
+     "won": 0.00071,
+     "lost": 0.0,
+     "net": 0.00071
+    },
+    "misheard|out_of_scale": {
+     "changed_notes": 231,
+     "won": 0.00505,
+     "lost": 0.00221,
+     "net": 0.00284
+    },
+    "total_net": 0.00307
+   }
+  },
+  "r3_true_cons_v4": {
+   "bach": {
+    "notes": 1073,
+    "heard_out_of_scale_share": 0.0615,
+    "misheard_share": 0.0932,
+    "cascade": {
+     "changed_notes": 15,
+     "won": 0.0018,
+     "lost": 0.0027,
+     "net": -0.0009
+    },
+    "heard_right|in_scale": {
+     "changed_notes": 5,
+     "won": 0.0,
+     "lost": 0.0018,
+     "net": -0.0018
+    },
+    "heard_right|out_of_scale": {
+     "changed_notes": 4,
+     "won": 0.0,
+     "lost": 0.00135,
+     "net": -0.00135
+    },
+    "misheard|in_scale": {
+     "changed_notes": 1,
+     "won": 0.0,
+     "lost": 0.0,
+     "net": 0.0
+    },
+    "misheard|out_of_scale": {
+     "changed_notes": 19,
+     "won": 0.00405,
+     "lost": 0.0018,
+     "net": 0.00225
+    },
+    "total_net": -0.0018
+   },
+   "folk": {
+    "notes": 17326,
+    "heard_out_of_scale_share": 0.063,
+    "misheard_share": 0.1002,
+    "cascade": {
+     "changed_notes": 887,
+     "won": 0.00223,
+     "lost": 0.00362,
+     "net": -0.00138
+    },
+    "heard_right|in_scale": {
+     "changed_notes": 377,
+     "won": 0.00266,
+     "lost": 0.00131,
+     "net": 0.00134
+    },
+    "heard_right|out_of_scale": {
+     "changed_notes": 70,
+     "won": 0.0,
+     "lost": 0.00204,
+     "net": -0.00204
+    },
+    "misheard|in_scale": {
+     "changed_notes": 18,
+     "won": 0.00028,
+     "lost": 0.00019,
+     "net": 9e-05
+    },
+    "misheard|out_of_scale": {
+     "changed_notes": 310,
+     "won": 0.00533,
+     "lost": 0.00353,
+     "net": 0.0018
+    },
+    "total_net": -0.00019
+   },
+   "pop": {
+    "notes": 14388,
+    "heard_out_of_scale_share": 0.0645,
+    "misheard_share": 0.1013,
+    "cascade": {
+     "changed_notes": 290,
+     "won": 0.00295,
+     "lost": 0.0035,
+     "net": -0.00055
+    },
+    "heard_right|in_scale": {
+     "changed_notes": 127,
+     "won": 0.00154,
+     "lost": 0.00109,
+     "net": 0.00045
+    },
+    "heard_right|out_of_scale": {
+     "changed_notes": 52,
+     "won": 0.0,
+     "lost": 0.00203,
+     "net": -0.00203
+    },
+    "misheard|in_scale": {
+     "changed_notes": 17,
+     "won": 7e-05,
+     "lost": 5e-05,
+     "net": 2e-05
+    },
+    "misheard|out_of_scale": {
+     "changed_notes": 262,
+     "won": 0.00498,
+     "lost": 0.00233,
+     "net": 0.00265
+    },
+    "total_net": 0.00054
+   },
+   "pop909": {
+    "notes": 13523,
+    "heard_out_of_scale_share": 0.0479,
+    "misheard_share": 0.1011,
+    "cascade": {
+     "changed_notes": 417,
+     "won": 0.00276,
+     "lost": 0.00237,
+     "net": 0.00039
+    },
+    "heard_right|in_scale": {
+     "changed_notes": 198,
+     "won": 0.0008,
+     "lost": 0.0016,
+     "net": -0.00081
+    },
+    "heard_right|out_of_scale": {
+     "changed_notes": 2,
+     "won": 0.0,
+     "lost": 0.0,
+     "net": 0.0
+    },
+    "misheard|in_scale": {
+     "changed_notes": 25,
+     "won": 0.00071,
+     "lost": 0.0,
+     "net": 0.00071
+    },
+    "misheard|out_of_scale": {
+     "changed_notes": 226,
+     "won": 0.00493,
+     "lost": 0.00221,
+     "net": 0.00272
+    },
+    "total_net": 0.00301
+   }
+  }
+ },
+ "secs": 27.9
+}

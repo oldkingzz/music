@@ -1,0 +1,284 @@
+[
+ {
+  "set": "hmm-like (2 templates)",
+  "features": [
+   "iv|mode,deg",
+   "dh|ds"
+  ],
+  "sigma": 0.1,
+  "W": 783,
+  "val_acc": 0.3402323892519971,
+  "train_nll_per_pos": 2.071545724627509,
+  "iters": 13,
+  "seconds": 7.978638648986816
+ },
+ {
+  "set": "hmm-like (2 templates)",
+  "features": [
+   "iv|mode,deg",
+   "dh|ds"
+  ],
+  "sigma": 0.3,
+  "W": 783,
+  "val_acc": 0.3416848220769789,
+  "train_nll_per_pos": 1.6678052425988341,
+  "iters": 36,
+  "seconds": 20.804481983184814
+ },
+ {
+  "set": "no lookahead",
+  "features": [
+   "iv|mode,deg",
+   "ivpc|mode,end,deg",
+   "ivpc|mode,len",
+   "register",
+   "ivpc|mode,start,deg",
+   "dh|ds",
+   "ivpc,ivpc|dir",
+   "hdeg,hdeg|mode",
+   "iv,iv",
+   "dh|mode,hdeg"
+  ],
+  "sigma": 0.1,
+  "W": 3677,
+  "val_acc": 0.36673928830791575,
+  "train_nll_per_pos": 1.6629815065978464,
+  "iters": 31,
+  "seconds": 24.177812099456787
+ },
+ {
+  "set": "no lookahead",
+  "features": [
+   "iv|mode,deg",
+   "ivpc|mode,end,deg",
+   "ivpc|mode,len",
+   "register",
+   "ivpc|mode,start,deg",
+   "dh|ds",
+   "ivpc,ivpc|dir",
+   "hdeg,hdeg|mode",
+   "iv,iv",
+   "dh|mode,hdeg"
+  ],
+  "sigma": 0.3,
+  "W": 3677,
+  "val_acc": 0.37509077705156135,
+  "train_nll_per_pos": 1.3718964164571343,
+  "iters": 96,
+  "seconds": 68.3419861793518
+ },
+ {
+  "set": "no phrase flags",
+  "features": [
+   "iv|mode,deg",
+   "ivpc|mode,len",
+   "register",
+   "ivpc|mode,deg,nextdeg",
+   "dh|ds",
+   "ivpc,ivpc|dir",
+   "hdeg,hdeg|mode",
+   "iv,iv",
+   "dh|mode,hdeg"
+  ],
+  "sigma": 0.1,
+  "W": 6269,
+  "val_acc": 0.3681917211328976,
+  "train_nll_per_pos": 1.6762256158485225,
+  "iters": 30,
+  "seconds": 21.058048009872437
+ },
+ {
+  "set": "no phrase flags",
+  "features": [
+   "iv|mode,deg",
+   "ivpc|mode,len",
+   "register",
+   "ivpc|mode,deg,nextdeg",
+   "dh|ds",
+   "ivpc,ivpc|dir",
+   "hdeg,hdeg|mode",
+   "iv,iv",
+   "dh|mode,hdeg"
+  ],
+  "sigma": 0.3,
+  "W": 6269,
+  "val_acc": 0.3747276688453159,
+  "train_nll_per_pos": 1.3783401463551668,
+  "iters": 86,
+  "seconds": 56.55751609802246
+ },
+ {
+  "set": "unary only",
+  "features": [
+   "iv|mode,deg",
+   "ivpc|mode,end,deg",
+   "ivpc|mode,len",
+   "register",
+   "ivpc|mode,deg,nextdeg",
+   "ivpc|mode,start,deg"
+  ],
+  "sigma": 0.1,
+  "W": 5437,
+  "val_acc": 0.34967320261437906,
+  "train_nll_per_pos": 2.0405857269063965,
+  "iters": 23,
+  "seconds": 9.65576696395874
+ },
+ {
+  "set": "unary only",
+  "features": [
+   "iv|mode,deg",
+   "ivpc|mode,end,deg",
+   "ivpc|mode,len",
+   "register",
+   "ivpc|mode,deg,nextdeg",
+   "ivpc|mode,start,deg"
+  ],
+  "sigma": 0.3,
+  "W": 5437,
+  "val_acc": 0.35911401597676107,
+  "train_nll_per_pos": 1.7648232018441654,
+  "iters": 62,
+  "seconds": 26.268287897109985
+ },
+ {
+  "set": "default (11)",
+  "features": [
+   "iv|mode,deg",
+   "ivpc|mode,end,deg",
+   "ivpc|mode,len",
+   "register",
+   "ivpc|mode,deg,nextdeg",
+   "ivpc|mode,start,deg",
+   "dh|ds",
+   "ivpc,ivpc|dir",
+   "hdeg,hdeg|mode",
+   "iv,iv",
+   "dh|mode,hdeg"
+  ],
+  "sigma": 0.1,
+  "W": 7421,
+  "val_acc": 0.3732752360203341,
+  "train_nll_per_pos": 1.6524482776487261,
+  "iters": 36,
+  "seconds": 22.912932872772217
+ },
+ {
+  "set": "default (11)",
+  "features": [
+   "iv|mode,deg",
+   "ivpc|mode,end,deg",
+   "ivpc|mode,len",
+   "register",
+   "ivpc|mode,deg,nextdeg",
+   "ivpc|mode,start,deg",
+   "dh|ds",
+   "ivpc,ivpc|dir",
+   "hdeg,hdeg|mode",
+   "iv,iv",
+   "dh|mode,hdeg"
+  ],
+  "sigma": 0.3,
+  "W": 7421,
+  "val_acc": 0.37400145243282495,
+  "train_nll_per_pos": 1.349264329608518,
+  "iters": 88,
+  "seconds": 33.95945715904236
+ },
+ {
+  "set": "default + prevdeg",
+  "features": [
+   "iv|mode,deg",
+   "ivpc|mode,end,deg",
+   "ivpc|mode,len",
+   "register",
+   "ivpc|mode,deg,nextdeg",
+   "ivpc|mode,start,deg",
+   "dh|ds",
+   "ivpc,ivpc|dir",
+   "hdeg,hdeg|mode",
+   "iv,iv",
+   "dh|mode,hdeg",
+   "ivpc|mode,prevdeg,deg"
+  ],
+  "sigma": 0.1,
+  "W": 11165,
+  "val_acc": 0.3681917211328976,
+  "train_nll_per_pos": 1.6411695689740362,
+  "iters": 35,
+  "seconds": 12.194661140441895
+ },
+ {
+  "set": "default + prevdeg",
+  "features": [
+   "iv|mode,deg",
+   "ivpc|mode,end,deg",
+   "ivpc|mode,len",
+   "register",
+   "ivpc|mode,deg,nextdeg",
+   "ivpc|mode,start,deg",
+   "dh|ds",
+   "ivpc,ivpc|dir",
+   "hdeg,hdeg|mode",
+   "iv,iv",
+   "dh|mode,hdeg",
+   "ivpc|mode,prevdeg,deg"
+  ],
+  "sigma": 0.3,
+  "W": 11165,
+  "val_acc": 0.38816267247639796,
+  "train_nll_per_pos": 1.3261264642960338,
+  "iters": 97,
+  "seconds": 33.84567975997925
+ },
+ {
+  "set": "all (14)",
+  "features": [
+   "iv|mode,deg",
+   "ivpc|mode,end,deg",
+   "ivpc|mode,len",
+   "register",
+   "ivpc|mode,deg,nextdeg",
+   "ivpc|mode,start,deg",
+   "ivpc|mode,prevdeg,deg",
+   "iv|mode,len",
+   "dh|ds",
+   "ivpc,ivpc|dir",
+   "hdeg,hdeg|mode",
+   "iv,iv",
+   "dh|mode,hdeg",
+   "ivpc,ivpc|ds"
+  ],
+  "sigma": 0.1,
+  "W": 13427,
+  "val_acc": 0.3794480755265069,
+  "train_nll_per_pos": 1.6038466393294502,
+  "iters": 37,
+  "seconds": 13.22285008430481
+ },
+ {
+  "set": "all (14)",
+  "features": [
+   "iv|mode,deg",
+   "ivpc|mode,end,deg",
+   "ivpc|mode,len",
+   "register",
+   "ivpc|mode,deg,nextdeg",
+   "ivpc|mode,start,deg",
+   "ivpc|mode,prevdeg,deg",
+   "iv|mode,len",
+   "dh|ds",
+   "ivpc,ivpc|dir",
+   "hdeg,hdeg|mode",
+   "iv,iv",
+   "dh|mode,hdeg",
+   "ivpc,ivpc|ds"
+  ],
+  "sigma": 0.3,
+  "W": 13427,
+  "val_acc": 0.3852578068264343,
+  "train_nll_per_pos": 1.2967561379047619,
+  "iters": 101,
+  "seconds": 30.661495208740234
+ }
+]

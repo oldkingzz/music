@@ -1,0 +1,44 @@
+[
+ {
+  "id": 37,
+  "tonic": 2,
+  "sound_check_erle_db": -0.8885711080302404,
+  "score": {
+   "good": 0.0,
+   "harsh": 0.0,
+   "fourth": 0.0,
+   "silent": 1.0
+  },
+  "gate_release_s_to_-40dBFS": 0.0,
+  "tail_max_dbfs": -48.9,
+  "mic_peak_dbfs": -33.4,
+  "out_peak_dbfs": -39.3,
+  "max_peak_to_median_db": 64.8,
+  "mic_level_last_vs_first_s_db": 2.3,
+  "compute_ms_mean_p99": [
+   0.173,
+   0.288
+  ]
+ },
+ {
+  "id": 2,
+  "tonic": 0,
+  "sound_check_erle_db": -0.6104653659584673,
+  "score": {
+   "good": 0.0,
+   "harsh": 0.0,
+   "fourth": 0.0,
+   "silent": 1.0
+  },
+  "gate_release_s_to_-40dBFS": 0.0,
+  "tail_max_dbfs": -47.2,
+  "mic_peak_dbfs": -33.3,
+  "out_peak_dbfs": -37.8,
+  "max_peak_to_median_db": 62.1,
+  "mic_level_last_vs_first_s_db": 1.2,
+  "compute_ms_mean_p99": [
+   0.163,
+   0.229
+  ]
+ }
+]

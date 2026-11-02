@@ -1,0 +1,2 @@
+2026-11-02 06:58:59 START tl=600 cwd=$ABS $ABS/.venv/bin/python $ABS/runs_mini/v5rt_1101/tools/attack_metric.py reactive:r2_mix_v2 --L 0.5 --out $ABS/runs_mini/v5rt_1101/attack/VER4_reactive_r2_mix_v2_L0.5.json
+2026-11-02 06:59:09 END rc=0 secs=10 $ABS/.venv/bin/python $ABS/runs_mini/v5rt_1101/tools/attack_metric.py reactive:r2_mix_v2 --L 0.5 --out $ABS/runs_mini/v5rt_1101/attack/VER4_reactive_r2_mix_v2_L0.5.json

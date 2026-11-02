@@ -1,0 +1,18 @@
+2026-11-01 20:39:41 START tl=300 cwd=$ABS .venv/bin/python -c 
+import sys; sys.argv=['x']; sys.path.insert(0,'futures/v4_selfiter')
+import numpy as np, soundfile as sf, live_bench3 as L
+x,sr=sf.read('futures/live_test/phone/twinkle_C_80bpm_countin.wav',dtype='float32',always_2d=True); x=x.mean(1)
+class S:
+  def start(s,m): pass
+  def step(s,i,o,m,p): return -1
+e=L.Bench3Duet(S(),'probe',0,4,48,80.0,log=lambda s:None)
+for b in range(len(x)
+2026-11-01 20:39:41 END rc=0 secs=0 .venv/bin/python -c 
+import sys; sys.argv=['x']; sys.path.insert(0,'futures/v4_selfiter')
+import numpy as np, soundfile as sf, live_bench3 as L
+x,sr=sf.read('futures/live_test/phone/twinkle_C_80bpm_countin.wav',dtype='float32',always_2d=True); x=x.mean(1)
+class S:
+  def start(s,m): pass
+  def step(s,i,o,m,p): return -1
+e=L.Bench3Duet(S(),'probe',0,4,48,80.0,log=lambda s:None)
+for b in range(len(x)

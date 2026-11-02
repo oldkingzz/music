@@ -1,0 +1,89 @@
+{
+ "note": "val only; systems tuned on val; no test split",
+ "b_phone_twinkle": {
+  "reactive_r2_mix_v2": {
+   "exact (live_bench_rt)": {
+    "rt_nd_live": 0.6503030303030303,
+    "harsh": 0.05303030303030331
+   },
+   "exact, Duet +10 ms": {
+    "rt_nd_live": 0.6457575757575754,
+    "harsh": 0.05757575757575773
+   },
+   "exact, her notes -30 ms": {
+    "rt_nd_live": 0.6472065285624606,
+    "harsh": 0.05398618957941016
+   },
+   "exact, both": {
+    "rt_nd_live": 0.6424984306340236,
+    "harsh": 0.05869428750784696
+   },
+   "sampled (live_rt_eval_v2.truth)": {
+    "rt_nd_live": 0.6377903327055869,
+    "harsh": 0.06340238543628374
+   }
+  },
+  "rt_r2_copyhmbold_v1": {
+   "exact (live_bench_rt)": {
+    "rt_nd_live": 0.8053030303030304,
+    "harsh": 0.008030303030303094
+   },
+   "exact, Duet +10 ms": {
+    "rt_nd_live": 0.802272727272727,
+    "harsh": 0.008939393939394046
+   },
+   "exact, her notes -30 ms": {
+    "rt_nd_live": 0.8025737602008789,
+    "harsh": 0.007846829880728183
+   },
+   "exact, both": {
+    "rt_nd_live": 0.7984934086628999,
+    "harsh": 0.009102322661644784
+   },
+   "sampled (live_rt_eval_v2.truth)": {
+    "rt_nd_live": 0.7962962962962963,
+    "harsh": 0.010357815442561206
+   }
+  }
+ },
+ "c_clean_vs_bench_rt": {
+  "L_live": 0.08085,
+  "detect_ms_median": 43.9,
+  "rows": {
+   "bench_rt: L 0.1, synthetic 10 % mishearing, true pos": {
+    "rt_nd": 0.6451438848920807,
+    "harsh": 0.060341726618704725,
+    "L": 0.1
+   },
+   "no mishearing (true pitches)": {
+    "rt_nd": 0.7032374100719361,
+    "harsh": 0.035521582733812736,
+    "L": 0.1
+   },
+   "pos = k % M (no pickup on the page)": {
+    "rt_nd": 0.6334532374100668,
+    "harsh": 0.057374100719424274,
+    "L": 0.1
+   },
+   "L = live lag 0.081 beat (44 ms + Lo 10 ms at 90 bpm)": {
+    "rt_nd": 0.6528245503597063,
+    "harsh": 0.05412486510791328,
+    "L": 0.08085
+   },
+   "live tracker pitches (clean) instead of synthetic": {
+    "rt_nd": 0.64694244604316,
+    "harsh": 0.059982014388488894,
+    "L": 0.1
+   },
+   "all live-like: L 0.081, tracker pitches, pos = k % M": {
+    "rt_nd": 0.6537563399280518,
+    "harsh": 0.051593525179855784,
+    "L": 0.08085
+   },
+   "live bench clean (RTDuet, exact)": {
+    "rt_nd": 0.6494032494963738,
+    "harsh": 0.05223303260856025
+   }
+  }
+ }
+}

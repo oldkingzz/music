@@ -1,0 +1,2 @@
+2026-11-02 07:13:32 START tl=60 cwd=$ABS /usr/bin/grep -E "(pick|use|top_k1)"|"band" $ABS/runs_mini/v5rt_1101/r4/X/table_v1.json
+2026-11-02 07:13:32 END rc=0 secs=0 /usr/bin/grep -E "(pick|use|top_k1)"|"band" $ABS/runs_mini/v5rt_1101/r4/X/table_v1.json

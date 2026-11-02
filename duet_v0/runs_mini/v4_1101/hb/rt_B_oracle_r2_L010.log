@@ -1,0 +1,2 @@
+2026-11-01 22:07:16 START tl=600 cwd=$ABS $ABS/.venv/bin/python $ABS/futures/v5_rt/bench_rt.py oracle:r2_mix_v2 --L 0.1 --out $ABS/runs_mini/v5rt_1101/scores/B_oracle_r2_mix_v2_L0.1.json
+2026-11-01 22:07:27 END rc=0 secs=11 $ABS/.venv/bin/python $ABS/futures/v5_rt/bench_rt.py oracle:r2_mix_v2 --L 0.1 --out $ABS/runs_mini/v5rt_1101/scores/B_oracle_r2_mix_v2_L0.1.json

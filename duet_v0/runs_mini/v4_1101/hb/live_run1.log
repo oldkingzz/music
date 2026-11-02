@@ -1,0 +1,1 @@
+2026-11-01 20:51:25 START tl=600 cwd=$ABS .venv/bin/python futures/v4_selfiter/live_bench3.py --system r2_mix_v2 --song twinkle --in AirPods --out AirPods

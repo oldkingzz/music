@@ -1,0 +1,113 @@
+{
+ "L": 0.1,
+ "seed": "seed1",
+ "split": "val",
+ "rows": {
+  "bach": {
+   "songs": 17,
+   "songs_counted": 17,
+   "champion_better": 15,
+   "equal": 0,
+   "reactive_better": 2,
+   "median_song_delta_nd": 0.031818181818181746,
+   "rt_nd": [
+    0.6790017985611514,
+    0.6451438848920866
+   ],
+   "fresh_clashes": [
+    23,
+    21
+   ],
+   "notes": 1006,
+   "songs_more_fresh": 3,
+   "songs_fewer_fresh": 4
+  },
+  "folk": {
+   "songs": 170,
+   "songs_counted": 170,
+   "champion_better": 129,
+   "equal": 3,
+   "reactive_better": 38,
+   "median_song_delta_nd": 0.030116302149810426,
+   "rt_nd": [
+    0.6796872026311954,
+    0.6521681946832782
+   ],
+   "fresh_clashes": [
+    252,
+    287
+   ],
+   "notes": 16159,
+   "songs_more_fresh": 51,
+   "songs_fewer_fresh": 69
+  },
+  "pop": {
+   "songs": 300,
+   "songs_counted": 300,
+   "champion_better": 163,
+   "equal": 15,
+   "reactive_better": 122,
+   "median_song_delta_nd": 0.004796245421245515,
+   "rt_nd": [
+    0.5675403575768095,
+    0.5594068490093485
+   ],
+   "fresh_clashes": [
+    135,
+    199
+   ],
+   "notes": 12806,
+   "songs_more_fresh": 40,
+   "songs_fewer_fresh": 84
+  },
+  "pop909": {
+   "songs": 40,
+   "songs_counted": 40,
+   "champion_better": 38,
+   "equal": 0,
+   "reactive_better": 2,
+   "median_song_delta_nd": 0.05916877009917329,
+   "rt_nd": [
+    0.5999648079975981,
+    0.5463455745885527
+   ],
+   "fresh_clashes": [
+    169,
+    241
+   ],
+   "notes": 13222,
+   "songs_more_fresh": 8,
+   "songs_fewer_fresh": 28
+  }
+ },
+ "headline_delta": {
+  "rt_nd": 0.030782415898372106,
+  "harsh": -0.02281977753215484,
+  "fresh_per100": -0.2655257766650942
+ },
+ "bootstrap": {
+  "rt_nd": {
+   "p2.5": 0.02494571263587018,
+   "p50": 0.03087346670463713,
+   "p97.5": 0.03664583528196239,
+   "share_rt_nd_delta_ge_0.005": 1.0
+  },
+  "harsh": {
+   "p2.5": -0.025424719256053982,
+   "p50": -0.022780572006531226,
+   "p97.5": -0.020234284991513866,
+   "share_le_0": 1.0
+  },
+  "fresh_per100": {
+   "p2.5": -0.6286271178650135,
+   "p50": -0.27523973386490674,
+   "p97.5": 0.04601502009298529,
+   "share_le_0": 0.9425
+  },
+  "bach_fresh_per100_delta": {
+   "p2.5": -1.180663703155982,
+   "p97.5": 1.4212190594991285,
+   "share_gt_1.0": 0.11
+  }
+ }
+}

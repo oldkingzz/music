@@ -1,0 +1,2 @@
+2026-11-02 04:00:34 START tl=600 cwd=$ABS $ABS/.venv/bin/python $ABS/runs_mini/v5rt_1101/verify/VER3_live_probe_v1.py reactive:r2_mix_v2 --out $ABS/runs_mini/v5rt_1101/verify/VER3_live_probe_reactive_r2_mix_v2.json
+2026-11-02 04:02:54 END rc=0 secs=140 $ABS/.venv/bin/python $ABS/runs_mini/v5rt_1101/verify/VER3_live_probe_v1.py reactive:r2_mix_v2 --out $ABS/runs_mini/v5rt_1101/verify/VER3_live_probe_reactive_r2_mix_v2.json

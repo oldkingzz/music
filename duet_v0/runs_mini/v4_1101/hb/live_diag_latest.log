@@ -1,0 +1,16 @@
+2026-11-01 20:59:30 START tl=300 cwd=$ABS .venv/bin/python -c 
+import sys,json,numpy as np,soundfile as sf
+sys.path.insert(0,'.')
+from follow import FeatureTracker
+from dsp import HOP
+R='runs_mini/live/205816_r2_mix_v2'; s=json.load(open(R+'/notes.json'))
+print('system',s['system'],'song',s.get('song'),'key',s.get('key'),'answered',s['notes_answered'],'sung',s['sung'],'sec',s.get('seconds'),'in',s.get('in'))
+f={'twinkle':'twinkle_C_80bpm_
+2026-11-01 20:59:31 END rc=0 secs=0 .venv/bin/python -c 
+import sys,json,numpy as np,soundfile as sf
+sys.path.insert(0,'.')
+from follow import FeatureTracker
+from dsp import HOP
+R='runs_mini/live/205816_r2_mix_v2'; s=json.load(open(R+'/notes.json'))
+print('system',s['system'],'song',s.get('song'),'key',s.get('key'),'answered',s['notes_answered'],'sung',s['sung'],'sec',s.get('seconds'),'in',s.get('in'))
+f={'twinkle':'twinkle_C_80bpm_

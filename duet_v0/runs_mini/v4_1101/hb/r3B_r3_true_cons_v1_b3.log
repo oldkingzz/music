@@ -1,0 +1,2 @@
+2026-11-01 15:38:01 START tl=600 cwd=$ABS/futures/v3_nolatency $ABS/.venv/bin/python $ABS/futures/v3_nolatency/bench3.py --system r3_true_cons_v1 --note v4 r3 E5 champion belief + m1 robust chooser: P(chord tone and consonant with TRUE note), all notes
+2026-11-01 15:38:13 END rc=0 secs=12 $ABS/.venv/bin/python $ABS/futures/v3_nolatency/bench3.py --system r3_true_cons_v1 --note v4 r3 E5 champion belief + m1 robust chooser: P(chord tone and consonant with TRUE note), all notes

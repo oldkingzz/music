@@ -1,0 +1,206 @@
+{
+ "check": "r3 C faithfulness: r3_style_mix_v<k> at a = 0 vs its r2_style_hmm file, at a = 1 vs r1_gru_chooser_v1 (val, tuned on val)",
+ "songs_per_dataset_first40": {
+  "bach": 17,
+  "folk": 40,
+  "pop": 40,
+  "pop909": 40
+ },
+ "songs_per_dataset_all": {
+  "bach": 17,
+  "folk": 170,
+  "pop": 300,
+  "pop909": 40
+ },
+ "variants": {
+  "r3_style_mix_v1": {
+   "file_ALPHA": 0.7,
+   "subclasses": "r2_style_hmm_v1",
+   "is_subclass": true,
+   "first40": {
+    "bach": {
+     "songs": 17,
+     "notes": 1073,
+     "a0_notes_differing_vs_style": 0,
+     "a1_notes_differing_vs_r1": 0,
+     "a0_max_belief_diff_vs_style": 2.220446049250313e-16,
+     "a1_max_belief_diff_vs_r1": 2.220446049250313e-16,
+     "a0_belief_calls": 1073,
+     "a0_gru_calls": 1073,
+     "own_alpha_notes_differing_vs_style": 468,
+     "own_alpha_notes_differing_vs_r1": 150,
+     "ok": true
+    },
+    "folk": {
+     "songs": 40,
+     "notes": 4198,
+     "a0_notes_differing_vs_style": 0,
+     "a1_notes_differing_vs_r1": 0,
+     "a0_max_belief_diff_vs_style": 2.220446049250313e-16,
+     "a1_max_belief_diff_vs_r1": 3.3306690738754696e-16,
+     "a0_belief_calls": 4198,
+     "a0_gru_calls": 4198,
+     "own_alpha_notes_differing_vs_style": 1674,
+     "own_alpha_notes_differing_vs_r1": 496,
+     "ok": true
+    },
+    "pop": {
+     "songs": 40,
+     "notes": 2017,
+     "a0_notes_differing_vs_style": 0,
+     "a1_notes_differing_vs_r1": 0,
+     "a0_max_belief_diff_vs_style": 3.3306690738754696e-16,
+     "a1_max_belief_diff_vs_r1": 2.220446049250313e-16,
+     "a0_belief_calls": 2017,
+     "a0_gru_calls": 2017,
+     "own_alpha_notes_differing_vs_style": 323,
+     "own_alpha_notes_differing_vs_r1": 136,
+     "ok": true
+    },
+    "pop909": {
+     "songs": 40,
+     "notes": 13523,
+     "a0_notes_differing_vs_style": 0,
+     "a1_notes_differing_vs_r1": 0,
+     "a0_max_belief_diff_vs_style": 2.220446049250313e-16,
+     "a1_max_belief_diff_vs_r1": 3.3306690738754696e-16,
+     "a0_belief_calls": 13523,
+     "a0_gru_calls": 13523,
+     "own_alpha_notes_differing_vs_style": 5520,
+     "own_alpha_notes_differing_vs_r1": 1586,
+     "ok": true
+    }
+   },
+   "all_a0_vs_r2_style_hmm_v1": {
+    "music_nd_diff": {
+     "bach": 0.0,
+     "folk": 0.0,
+     "pop": 0.0,
+     "pop909": 0.0,
+     "headline_nd": 0.0
+    },
+    "double_diff": {
+     "bach": 0.0,
+     "folk": 0.0,
+     "pop": 0.0,
+     "pop909": 0.0
+    },
+    "exact": true,
+    "notes_differing_vs_style": 0
+   },
+   "all_a1_vs_r1_gru_chooser_v1": {
+    "music_nd_diff": {
+     "bach": 0.0,
+     "folk": 0.0,
+     "pop": 0.0,
+     "pop909": 0.0,
+     "headline_nd": 0.0
+    },
+    "double_diff": {
+     "bach": 0.0,
+     "folk": 0.0,
+     "pop": 0.0,
+     "pop909": 0.0
+    },
+    "exact": true,
+    "notes_differing_vs_r1": 0
+   }
+  },
+  "r3_style_mix_v2": {
+   "file_ALPHA": 0.7,
+   "subclasses": "r2_style_hmm_v3",
+   "is_subclass": true,
+   "first40": {
+    "bach": {
+     "songs": 17,
+     "notes": 1073,
+     "a0_notes_differing_vs_style": 0,
+     "a1_notes_differing_vs_r1": 0,
+     "a0_max_belief_diff_vs_style": 2.220446049250313e-16,
+     "a1_max_belief_diff_vs_r1": 2.220446049250313e-16,
+     "a0_belief_calls": 1073,
+     "a0_gru_calls": 1073,
+     "own_alpha_notes_differing_vs_style": 460,
+     "own_alpha_notes_differing_vs_r1": 139,
+     "ok": true
+    },
+    "folk": {
+     "songs": 40,
+     "notes": 4198,
+     "a0_notes_differing_vs_style": 0,
+     "a1_notes_differing_vs_r1": 0,
+     "a0_max_belief_diff_vs_style": 3.3306690738754696e-16,
+     "a1_max_belief_diff_vs_r1": 3.3306690738754696e-16,
+     "a0_belief_calls": 4198,
+     "a0_gru_calls": 4198,
+     "own_alpha_notes_differing_vs_style": 1437,
+     "own_alpha_notes_differing_vs_r1": 490,
+     "ok": true
+    },
+    "pop": {
+     "songs": 40,
+     "notes": 2017,
+     "a0_notes_differing_vs_style": 0,
+     "a1_notes_differing_vs_r1": 0,
+     "a0_max_belief_diff_vs_style": 3.3306690738754696e-16,
+     "a1_max_belief_diff_vs_r1": 2.220446049250313e-16,
+     "a0_belief_calls": 2017,
+     "a0_gru_calls": 2017,
+     "own_alpha_notes_differing_vs_style": 341,
+     "own_alpha_notes_differing_vs_r1": 198,
+     "ok": true
+    },
+    "pop909": {
+     "songs": 40,
+     "notes": 13523,
+     "a0_notes_differing_vs_style": 0,
+     "a1_notes_differing_vs_r1": 0,
+     "a0_max_belief_diff_vs_style": 2.220446049250313e-16,
+     "a1_max_belief_diff_vs_r1": 3.3306690738754696e-16,
+     "a0_belief_calls": 13523,
+     "a0_gru_calls": 13523,
+     "own_alpha_notes_differing_vs_style": 5516,
+     "own_alpha_notes_differing_vs_r1": 1590,
+     "ok": true
+    }
+   },
+   "all_a0_vs_r2_style_hmm_v3": {
+    "music_nd_diff": {
+     "bach": 0.0,
+     "folk": 0.0,
+     "pop": 0.0,
+     "pop909": 0.0,
+     "headline_nd": 0.0
+    },
+    "double_diff": {
+     "bach": 0.0,
+     "folk": 0.0,
+     "pop": 0.0,
+     "pop909": 0.0
+    },
+    "exact": true,
+    "notes_differing_vs_style": 0
+   },
+   "all_a1_vs_r1_gru_chooser_v1": {
+    "music_nd_diff": {
+     "bach": 0.0,
+     "folk": 0.0,
+     "pop": 0.0,
+     "pop909": 0.0,
+     "headline_nd": 0.0
+    },
+    "double_diff": {
+     "bach": 0.0,
+     "folk": 0.0,
+     "pop": 0.0,
+     "pop909": 0.0
+    },
+    "exact": true,
+    "notes_differing_vs_r1": 0
+   }
+  }
+ },
+ "m1_P_unchanged": true,
+ "all_ok": true,
+ "secs": 77.9
+}

@@ -1,0 +1,2 @@
+2026-11-01 20:30:14 START tl=60 cwd=$ABS .venv/bin/python -c import sounddevice as sd;print(sd.query_devices());print('default',sd.default.device)
+2026-11-01 20:30:14 END rc=0 secs=0 .venv/bin/python -c import sounddevice as sd;print(sd.query_devices());print('default',sd.default.device)

@@ -1,0 +1,635 @@
+{
+ "spec": "rt:r2_copyhmbold_v1",
+ "seed": 20261101,
+ "split": "val",
+ "bench_sha256": "f1eb524aa939b5ba54704532ac7b5eb536659ceaaef32c3701934f9cf7d3e772",
+ "tests": {
+  "T1_cut_L0.1": {
+   "cases": 144,
+   "inp_mismatch": 0,
+   "dec_mismatch": 0,
+   "decisions": 29476,
+   "nonnull_decisions": 8052,
+   "by_ds": {
+    "bach": [
+     36,
+     0
+    ],
+    "folk": [
+     36,
+     0
+    ],
+    "pop": [
+     36,
+     0
+    ],
+    "pop909": [
+     36,
+     0
+    ]
+   },
+   "dec_mismatch_incl_c": 0,
+   "inp_mismatch_incl_c": 0,
+   "errors_after_cut": 0,
+   "cuts_onset": 48,
+   "future_notes_changed": 6515,
+   "cuts_grid": 48,
+   "cuts_offgrid": 48
+  },
+  "T2_latency_cut_L0.05": {
+   "cases": 144,
+   "inp_mismatch": 0,
+   "dec_mismatch": 0,
+   "decisions": 29566,
+   "nonnull_decisions": 8068,
+   "by_ds": {
+    "bach": [
+     36,
+     0
+    ],
+    "folk": [
+     36,
+     0
+    ],
+    "pop": [
+     36,
+     0
+    ],
+    "pop909": [
+     36,
+     0
+    ]
+   },
+   "errors_after_cut": 0,
+   "cuts_onset": 48,
+   "notes_replaced": 6530,
+   "replaced_started_before_c": 27,
+   "cuts_grid": 48,
+   "cuts_offgrid": 48
+  },
+  "T2_latency_cut_L0.1": {
+   "cases": 144,
+   "inp_mismatch": 0,
+   "dec_mismatch": 0,
+   "decisions": 29556,
+   "nonnull_decisions": 8066,
+   "by_ds": {
+    "bach": [
+     36,
+     0
+    ],
+    "folk": [
+     36,
+     0
+    ],
+    "pop": [
+     36,
+     0
+    ],
+    "pop909": [
+     36,
+     0
+    ]
+   },
+   "errors_after_cut": 0,
+   "cuts_onset": 48,
+   "notes_replaced": 6529,
+   "replaced_started_before_c": 30,
+   "cuts_grid": 48,
+   "cuts_offgrid": 48
+  },
+  "T2_latency_cut_L0.15": {
+   "cases": 144,
+   "inp_mismatch": 0,
+   "dec_mismatch": 0,
+   "decisions": 29558,
+   "nonnull_decisions": 8062,
+   "by_ds": {
+    "bach": [
+     36,
+     0
+    ],
+    "folk": [
+     36,
+     0
+    ],
+    "pop": [
+     36,
+     0
+    ],
+    "pop909": [
+     36,
+     0
+    ]
+   },
+   "errors_after_cut": 0,
+   "cuts_onset": 48,
+   "notes_replaced": 6557,
+   "replaced_started_before_c": 24,
+   "cuts_grid": 48,
+   "cuts_offgrid": 48
+  },
+  "T3_plan_q_L0.1": {
+   "cases": 863,
+   "inp_mismatch": 0,
+   "dec_mismatch": 0,
+   "decisions": 170971,
+   "nonnull_decisions": 47380,
+   "by_ds": {
+    "bach": [
+     228,
+     0
+    ],
+    "folk": [
+     225,
+     0
+    ],
+    "pop": [
+     182,
+     0
+    ],
+    "pop909": [
+     228,
+     0
+    ]
+   },
+   "plan_q_attack_in_orig": 106,
+   "q_with_note_starting_in_(q-L,q+0.01]": 671,
+   "ties_onset_plus_L_eq_q": 0,
+   "pitches_changed": 65087,
+   "errors": 0
+  },
+  "T3_plan_q_L0.05": {
+   "cases": 240,
+   "inp_mismatch": 0,
+   "dec_mismatch": 0,
+   "decisions": 46390,
+   "nonnull_decisions": 13086,
+   "by_ds": {
+    "bach": [
+     60,
+     0
+    ],
+    "folk": [
+     60,
+     0
+    ],
+    "pop": [
+     60,
+     0
+    ],
+    "pop909": [
+     60,
+     0
+    ]
+   },
+   "plan_q_attack_in_orig": 31,
+   "q_with_note_starting_in_(q-L,q+0.01]": 192,
+   "ties_onset_plus_L_eq_q": 0,
+   "pitches_changed": 16857,
+   "errors": 0
+  },
+  "T3_plan_q_L0.15": {
+   "cases": 240,
+   "inp_mismatch": 0,
+   "dec_mismatch": 0,
+   "decisions": 42456,
+   "nonnull_decisions": 11756,
+   "by_ds": {
+    "bach": [
+     60,
+     0
+    ],
+    "folk": [
+     60,
+     0
+    ],
+    "pop": [
+     60,
+     0
+    ],
+    "pop909": [
+     60,
+     0
+    ]
+   },
+   "plan_q_attack_in_orig": 29,
+   "q_with_note_starting_in_(q-L,q+0.01]": 192,
+   "ties_onset_plus_L_eq_q": 0,
+   "pitches_changed": 18661,
+   "errors": 0
+  },
+  "T4_history": {
+   "songs": 24,
+   "A_again_identical": 24,
+   "B_fresh_reverse_identical": 24
+  },
+  "T6_power": {
+   "toy_memo_T4_detects": true,
+   "toy_memo_T1_detects": true,
+   "toy_peek_trips_T5": true,
+   "toy_peek_hits": 2
+  },
+  "T5_tripwires": {
+   "run_hits_from_system_or_bench": {},
+   "run_hits_from_probe_toys": {
+    "os.environ['HOME'] @ runs_mini/v5rt_1101/verify/causal_probe.py:321 (caller <frozen _collections_abc>)": 1,
+    "bench.heard @ runs_mini/v5rt_1101/verify/causal_probe.py:322 (caller runs_mini/v5rt_1101/verify/causal_probe.py)": 1
+   }
+  }
+ },
+ "fail_examples": [],
+ "static": {
+  "futures/v5_rt/rt_systems/r2_copyhmbold_v1.py": {
+   "imports": [
+    "rt_systems.r2_lib_v1:Prior,load_copy_tab",
+    "rt_systems:r2_lib_v3",
+    "systems:r2_mix_v2"
+   ],
+   "names": {}
+  },
+  "futures/v5_rt/rt_systems/r2_lib_v3.py": {
+   "imports": [
+    "numpy",
+    "rt_systems.r2_lib_v1:Prior,load_copy_tab",
+    "rt_systems:r2_lib_v2",
+    "systems:r2_mix_v2"
+   ],
+   "names": {
+    "load": [
+     70
+    ]
+   }
+  },
+  "futures/v5_rt/rt_systems/r2_lib_v2.py": {
+   "imports": [
+    "numpy",
+    "rt_systems.r2_lib_v1:DV,E_ALL,GOODV,HARSHV,HV,Prior,load_copy_tab",
+    "rt_systems:r2_lib_v1",
+    "systems:m1_filter_v5lo",
+    "systems:r2_mix_v2",
+    "theory:ALTO,ALTO_MID"
+   ],
+   "names": {}
+  },
+  "futures/v5_rt/rt_systems/r2_lib_v1.py": {
+   "imports": [
+    "numpy",
+    "rt_systems.r1_A_core_v2:DV,GOODV,HARSHV,HV,Prior",
+    "rt_systems:r1_A_core_v3",
+    "systems:m1_filter_v5lo",
+    "systems:r2_mix_v2",
+    "theory:ALTO,ALTO_MID,CONSONANT"
+   ],
+   "names": {
+    "load": [
+     128
+    ],
+    "heard": [
+     176,
+     188,
+     216,
+     227,
+     174,
+     186,
+     173,
+     175,
+     175,
+     176,
+     176,
+     196,
+     216,
+     196
+    ]
+   }
+  },
+  "futures/v5_rt/rt_systems/r1_A_core_v3.py": {
+   "imports": [
+    "numpy",
+    "rt_systems.r1_A_core_v2:DV,GOODV,HARSHV,HV,MIS,Prior",
+    "rt_systems:r1_A_core_v2",
+    "systems:m1_filter_v5lo",
+    "systems:r2_mix_v2",
+    "theory:ALTO,ALTO_MID"
+   ],
+   "names": {
+    "heard": [
+     31,
+     35
+    ]
+   }
+  },
+  "futures/v5_rt/rt_systems/r1_A_core_v2.py": {
+   "imports": [
+    "collections:Counter",
+    "numpy",
+    "systems:m1_filter_v5lo",
+    "systems:r2_mix_v2",
+    "theory:ALTO,ALTO_MID,CONSONANT"
+   ],
+   "names": {
+    "load": [
+     41
+    ],
+    "heard": [
+     85,
+     97,
+     112,
+     122,
+     77,
+     95,
+     82,
+     84,
+     84,
+     85,
+     85,
+     105,
+     112,
+     78,
+     105
+    ]
+   }
+  },
+  "futures/v3_nolatency/systems/r2_mix_v2.py": {
+   "imports": [
+    "numpy",
+    "systems.m3_seq_v4:V3,Ens,_load",
+    "systems:m1_filter_v5lo",
+    "torch"
+   ],
+   "names": {}
+  },
+  "futures/v3_nolatency/systems/m1_filter_v5lo.py": {
+   "imports": [
+    "numpy",
+    "os",
+    "theory:ALTO,ALTO_MID,CONSONANT,CT,MAJOR"
+   ],
+   "names": {
+    "sop": [
+     39
+    ],
+    "environ": [
+     28,
+     29,
+     93
+    ]
+   }
+  },
+  "futures/v3_nolatency/systems/m3_seq_v4.py": {
+   "imports": [
+    "numpy",
+    "os",
+    "systems:m3_seq_v1",
+    "torch"
+   ],
+   "names": {
+    "load": [
+     29
+    ],
+    "environ": [
+     36
+    ]
+   }
+  },
+  "futures/v3_nolatency/systems/m3_seq_v1.py": {
+   "imports": [
+    "math",
+    "numpy",
+    "os",
+    "random",
+    "theory:ALTO,ALTO_MID,CONSONANT,CT",
+    "time",
+    "torch",
+    "torch.nn"
+   ],
+   "names": {
+    "load": [
+     181
+    ],
+    "environ": [
+     191,
+     194,
+     196,
+     195,
+     180,
+     184,
+     185,
+     185
+    ]
+   }
+  }
+ },
+ "songs": [
+  {
+   "ds": "bach",
+   "idx": 0,
+   "id": "bach/bwv269",
+   "notes": 46,
+   "K": 63
+  },
+  {
+   "ds": "bach",
+   "idx": 2,
+   "id": "bach/bwv308",
+   "notes": 45,
+   "K": 40
+  },
+  {
+   "ds": "bach",
+   "idx": 3,
+   "id": "bach/bwv291",
+   "notes": 39,
+   "K": 44
+  },
+  {
+   "ds": "bach",
+   "idx": 6,
+   "id": "bach/bwv371",
+   "notes": 132,
+   "K": 160
+  },
+  {
+   "ds": "bach",
+   "idx": 11,
+   "id": "bach/bwv328",
+   "notes": 185,
+   "K": 193
+  },
+  {
+   "ds": "bach",
+   "idx": 13,
+   "id": "bach/bwv346",
+   "notes": 55,
+   "K": 61
+  },
+  {
+   "ds": "folk",
+   "idx": 12,
+   "id": 12,
+   "notes": 100,
+   "K": 64
+  },
+  {
+   "ds": "folk",
+   "idx": 32,
+   "id": 32,
+   "notes": 76,
+   "K": 33
+  },
+  {
+   "ds": "folk",
+   "idx": 56,
+   "id": 56,
+   "notes": 119,
+   "K": 64
+  },
+  {
+   "ds": "folk",
+   "idx": 70,
+   "id": 70,
+   "notes": 28,
+   "K": 32
+  },
+  {
+   "ds": "folk",
+   "idx": 84,
+   "id": 84,
+   "notes": 143,
+   "K": 128
+  },
+  {
+   "ds": "folk",
+   "idx": 166,
+   "id": 166,
+   "notes": 118,
+   "K": 101
+  },
+  {
+   "ds": "pop",
+   "idx": 46,
+   "id": 46,
+   "notes": 24,
+   "K": 28
+  },
+  {
+   "ds": "pop",
+   "idx": 69,
+   "id": 69,
+   "notes": 52,
+   "K": 52
+  },
+  {
+   "ds": "pop",
+   "idx": 72,
+   "id": 72,
+   "notes": 35,
+   "K": 32
+  },
+  {
+   "ds": "pop",
+   "idx": 228,
+   "id": 228,
+   "notes": 38,
+   "K": 32
+  },
+  {
+   "ds": "pop",
+   "idx": 250,
+   "id": 250,
+   "notes": 17,
+   "K": 28
+  },
+  {
+   "ds": "pop",
+   "idx": 286,
+   "id": 286,
+   "notes": 23,
+   "K": 32
+  },
+  {
+   "ds": "pop909",
+   "idx": 0,
+   "id": 0,
+   "notes": 422,
+   "K": 255
+  },
+  {
+   "ds": "pop909",
+   "idx": 1,
+   "id": 1,
+   "notes": 385,
+   "K": 345
+  },
+  {
+   "ds": "pop909",
+   "idx": 22,
+   "id": 22,
+   "notes": 388,
+   "K": 277
+  },
+  {
+   "ds": "pop909",
+   "idx": 24,
+   "id": 24,
+   "notes": 312,
+   "K": 283
+  },
+  {
+   "ds": "pop909",
+   "idx": 31,
+   "id": 31,
+   "notes": 362,
+   "K": 260
+  },
+  {
+   "ds": "pop909",
+   "idx": 39,
+   "id": 39,
+   "notes": 319,
+   "K": 272
+  }
+ ],
+ "sop_sorted_all": true,
+ "orig_decisions_L0.1": 9221,
+ "orig_nonnull_L0.1": 2594,
+ "orig_plan_attacks_L0.1": 698,
+ "build_reads": {
+  "os.environ['M1_NOISE'] @ futures/v3_nolatency/systems/m1_filter_v5lo.py:28 (caller <frozen _collections_abc>)": 1,
+  "os.environ['M1_ROBUST'] @ futures/v3_nolatency/systems/m1_filter_v5lo.py:28 (caller <frozen _collections_abc>)": 1,
+  "os.environ['M1_BAL'] @ futures/v3_nolatency/systems/m1_filter_v5lo.py:28 (caller <frozen _collections_abc>)": 1,
+  "os.environ['M1_LOOK'] @ futures/v3_nolatency/systems/m1_filter_v5lo.py:28 (caller <frozen _collections_abc>)": 1,
+  "os.environ['M1_LAM'] @ futures/v3_nolatency/systems/m1_filter_v5lo.py:28 (caller <frozen _collections_abc>)": 1,
+  "os.environ['M1_KAPPA'] @ futures/v3_nolatency/systems/m1_filter_v5lo.py:28 (caller <frozen _collections_abc>)": 1,
+  "os.environ['M1_W_STEP'] @ futures/v3_nolatency/systems/m1_filter_v5lo.py:28 (caller <frozen _collections_abc>)": 1,
+  "os.environ['M1_W_BIG'] @ futures/v3_nolatency/systems/m1_filter_v5lo.py:28 (caller <frozen _collections_abc>)": 1,
+  "os.environ['M1_W_PAR'] @ futures/v3_nolatency/systems/m1_filter_v5lo.py:28 (caller <frozen _collections_abc>)": 1,
+  "os.environ['M1_W_MID'] @ futures/v3_nolatency/systems/m1_filter_v5lo.py:28 (caller <frozen _collections_abc>)": 1,
+  "os.environ['M1_W_OCT'] @ futures/v3_nolatency/systems/m1_filter_v5lo.py:28 (caller <frozen _collections_abc>)": 1,
+  "os.environ['M1_W_UNIS'] @ futures/v3_nolatency/systems/m1_filter_v5lo.py:28 (caller <frozen _collections_abc>)": 1,
+  "os.environ['M1_ORDER2'] @ futures/v3_nolatency/systems/m1_filter_v5lo.py:28 (caller <frozen _collections_abc>)": 1,
+  "os.environ['M1_CUR_W'] @ futures/v3_nolatency/systems/m1_filter_v5lo.py:28 (caller <frozen _collections_abc>)": 1,
+  "os.environ['M1_BELOW'] @ futures/v3_nolatency/systems/m1_filter_v5lo.py:28 (caller <frozen _collections_abc>)": 1,
+  "os.environ['M1_W_CONS'] @ futures/v3_nolatency/systems/m1_filter_v5lo.py:28 (caller <frozen _collections_abc>)": 1,
+  "torch.load @ futures/v3_nolatency/systems/m3_seq_v4.py:29 (caller futures/v3_nolatency/systems/m3_seq_v4.py)": 6,
+  "os.environ['TORCH_FORCE_WEIGHTS_ONLY_LOAD'] @ .venv/lib/python3.11/site-packages/torch/serialization.py:1487 (caller <frozen _collections_abc>)": 6,
+  "os.environ['TORCH_FORCE_NO_WEIGHTS_ONLY_LOAD'] @ .venv/lib/python3.11/site-packages/torch/serialization.py:1490 (caller <frozen _collections_abc>)": 6,
+  "builtins.open @ .venv/lib/python3.11/site-packages/torch/serialization.py:777 (caller .venv/lib/python3.11/site-packages/torch/serialization.py)": 6,
+  "os.environ['TORCH_SERIALIZATION_DEBUG'] @ .venv/lib/python3.11/site-packages/torch/serialization.py:2063 (caller <frozen _collections_abc>)": 6,
+  "os.environ['DUET_HIST'] @ futures/v3_nolatency/systems/m1_filter_v5lo.py:93 (caller <frozen _collections_abc>)": 4,
+  "numpy.load @ futures/v5_rt/rt_systems/r1_A_core_v2.py:41 (caller futures/v5_rt/rt_systems/r1_A_core_v2.py)": 2,
+  "builtins.open @ .venv/lib/python3.11/site-packages/numpy/lib/_npyio_impl.py:454 (caller .venv/lib/python3.11/site-packages/numpy/lib/_npyio_impl.py)": 6,
+  "numpy.load @ futures/v5_rt/rt_systems/r2_lib_v1.py:128 (caller futures/v5_rt/rt_systems/r2_lib_v1.py)": 2,
+  "numpy.load @ futures/v5_rt/rt_systems/r2_lib_v3.py:70 (caller futures/v5_rt/rt_systems/r2_lib_v3.py)": 2
+ },
+ "build_files": [
+  "futures/v3_nolatency/systems/m3_seq_big.pt",
+  "futures/v3_nolatency/systems/m3_seq_full.pt",
+  "futures/v3_nolatency/systems/m3_seq_s1.pt",
+  "runs_mini/v5rt_1101/models/A_prior_v2.npz",
+  "runs_mini/v5rt_1101/models/R2_copy_v1.npz",
+  "runs_mini/v5rt_1101/models/R2_hm_v1.npz"
+ ],
+ "secs": 73.4,
+ "causal_ok": true
+}

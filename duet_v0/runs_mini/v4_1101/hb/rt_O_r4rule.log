@@ -1,0 +1,2 @@
+2026-11-02 07:39:44 START tl=300 cwd=$ABS .venv/bin/python runs_mini/v5rt_1101/tools/r4_rule_orch_v1.py --out $ABS/runs_mini/v5rt_1101/verify/r4_rule_orch_v1.json
+2026-11-02 07:39:44 END rc=0 secs=0 .venv/bin/python runs_mini/v5rt_1101/tools/r4_rule_orch_v1.py --out $ABS/runs_mini/v5rt_1101/verify/r4_rule_orch_v1.json

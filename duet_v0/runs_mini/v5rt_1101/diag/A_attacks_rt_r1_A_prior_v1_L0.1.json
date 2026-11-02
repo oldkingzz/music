@@ -1,0 +1,61 @@
+{
+ "spec": "rt:r1_A_prior_v1",
+ "L": 0.1,
+ "seed": "seed1",
+ "split": "val",
+ "W_beats": 0.05,
+ "bench_sha256": "f1eb524aa939b5ba54704532ac7b5eb536659ceaaef32c3701934f9cf7d3e772",
+ "headline": {
+  "attacks_per_note": 0.6892473194377348,
+  "stumble": 0.026225658779875934,
+  "attack_harsh": 0.002603983623056635,
+  "held_harsh": 0.21261193290729513,
+  "harsh_first_fresh": 0.002605545117368273,
+  "harsh_first_held": 0.21262072369268215
+ },
+ "rows": {
+  "bach": {
+   "attacks_per_note": 0.81610337972167,
+   "stumble": 0.042743538767395624,
+   "attack_harsh": 0.0,
+   "held_harsh": 0.2922465208747515,
+   "harsh_first_fresh": 0.0,
+   "harsh_first_held": 0.2922465208747556,
+   "notes": 1006
+  },
+  "folk": {
+   "attacks_per_note": 0.7006002846710812,
+   "stumble": 0.026858097654557832,
+   "attack_harsh": 0.004579491305155022,
+   "held_harsh": 0.2042205582028591,
+   "harsh_first_fresh": 0.004579491305156089,
+   "harsh_first_held": 0.20422055820291016,
+   "notes": 16159
+  },
+  "pop": {
+   "attacks_per_note": 0.6083086053412463,
+   "stumble": 0.013821646103389037,
+   "attack_harsh": 0.002811182258316414,
+   "held_harsh": 0.1810869904732157,
+   "harsh_first_fresh": 0.002811182258316585,
+   "harsh_first_held": 0.1810869904732185,
+   "notes": 12806
+  },
+  "pop909": {
+   "attacks_per_note": 0.6319770080169415,
+   "stumble": 0.021479352594161245,
+   "attack_harsh": 0.003025260928755105,
+   "held_harsh": 0.17289366207835427,
+   "harsh_first_fresh": 0.0030315069060004177,
+   "harsh_first_held": 0.17292882521984432,
+   "notes": 13222
+  }
+ },
+ "definitions": {
+  "attacks_per_note": "Duet note attacks (changes to a note >= 0) in [onset - W, onset + L], per her note",
+  "stumble": "share of her notes where Duet attacks a note in [onset - W, onset] AND changes again in (onset, onset + L]: a wrong-then-corrected start",
+  "attack_harsh": "share of her notes where the note sounding just after her onset was attacked in [onset - W, onset] and is a 2nd/tritone/7th against her true note",
+  "held_harsh": "share of her notes where the note sounding just after her onset was held over from before onset - W and is a 2nd/tritone/7th against her true note",
+  "harsh_first_fresh / harsh_first_held": "bench_rt's harsh_first split by whether the sounding note was attacked with her onset (fresh) or held over"
+ }
+}

@@ -1,0 +1,67 @@
+{
+ "bpm": 117.6,
+ "grid_fit": 0.68,
+ "key": "A major",
+ "bach": {
+  "no_clash": 1.0,
+  "chords": [
+   "I",
+   "vi",
+   "V6",
+   "I",
+   "I",
+   "I",
+   "II",
+   "V",
+   "IV6",
+   "I64",
+   "V",
+   "V",
+   "ii",
+   "ii",
+   "VI",
+   "III6"
+  ]
+ },
+ "pop": {
+  "no_clash": 0.975,
+  "chords": [
+   "I",
+   "I",
+   "I",
+   "I",
+   "I",
+   "I",
+   "V",
+   "ii",
+   "IV",
+   "I",
+   "I",
+   "V",
+   "V",
+   "vi",
+   "vi"
+  ]
+ },
+ "jazz": {
+  "no_clash": 1.0,
+  "chords": [
+   "Amaj7",
+   "A",
+   "Amaj7",
+   "A",
+   "A",
+   "Gbm7",
+   "B7",
+   "E7",
+   "Bm7",
+   "D",
+   "Amaj7",
+   "Gbm7",
+   "B7",
+   "E",
+   "E",
+   "Gbm7"
+  ]
+ }
+}

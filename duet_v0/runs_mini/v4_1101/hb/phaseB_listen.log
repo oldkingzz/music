@@ -1,0 +1,4 @@
+2026-11-01 11:50:06 START tl=600 cwd=$ABS/futures/v4_selfiter/listen $ABS/.venv/bin/python $ABS/futures/v4_selfiter/listen/make_listen.py
+2026-11-01 11:50:16 END rc=0 secs=10 $ABS/.venv/bin/python $ABS/futures/v4_selfiter/listen/make_listen.py
+2026-11-01 11:52:15 START tl=600 cwd=$ABS/futures/v4_selfiter/listen $ABS/.venv/bin/python $ABS/futures/v4_selfiter/listen/make_listen_v2.py
+2026-11-01 11:52:24 END rc=0 secs=9 $ABS/.venv/bin/python $ABS/futures/v4_selfiter/listen/make_listen_v2.py

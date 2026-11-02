@@ -1,0 +1,2 @@
+2026-11-01 14:47:21 START tl=600 cwd=$ABS/futures/v3_nolatency $ABS/.venv/bin/python $ABS/futures/v3_nolatency/bench3.py --system r1_gru_chooser_v1 --note v4 r1 E1 m1 no-copy chooser + 3-GRU avg chord guess (full96 big128 s1 96)
+2026-11-01 14:47:31 END rc=0 secs=10 $ABS/.venv/bin/python $ABS/futures/v3_nolatency/bench3.py --system r1_gru_chooser_v1 --note v4 r1 E1 m1 no-copy chooser + 3-GRU avg chord guess (full96 big128 s1 96)

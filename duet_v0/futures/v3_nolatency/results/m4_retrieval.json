@@ -1,0 +1,156 @@
+{
+ "label": "m4_retrieval",
+ "best_system": "m4_retrieval_v4",
+ "headline": 0.678,
+ "rows": {
+  "bach": {
+   "music": 0.7244,
+   "cons": 0.9577,
+   "fit": 0.7271,
+   "harsh": 0.0261,
+   "double": 0.2055,
+   "leap": 4.0257,
+   "big": 0.0128,
+   "par": 0.002,
+   "us_per_note": 106.1488
+  },
+  "folk": {
+   "music": 0.7436,
+   "cons": 0.9585,
+   "fit": 0.7603,
+   "harsh": 0.0265,
+   "double": 0.2078,
+   "leap": 3.9789,
+   "big": 0.0164,
+   "par": 0.0068,
+   "us_per_note": 131.2029
+  },
+  "pop": {
+   "music": 0.6211,
+   "cons": 0.952,
+   "fit": 0.638,
+   "harsh": 0.0305,
+   "double": 0.1311,
+   "leap": 3.6796,
+   "big": 0.0128,
+   "par": 0.0054,
+   "us_per_note": 131.0776
+  },
+  "pop909": {
+   "music": 0.6228,
+   "cons": 0.9515,
+   "fit": 0.636,
+   "harsh": 0.0346,
+   "double": 0.1812,
+   "leap": 3.9694,
+   "big": 0.0117,
+   "par": 0.0078,
+   "us_per_note": 95.8469
+  }
+ },
+ "flags": [],
+ "history_use": "At each of her notes Duet looks up her current note, where it falls in the bar, and her previous 3 notes (with whether each was short or long) in an index of every note of the training songs, and reads off which chords were playing in those same situations; if the exact 4-note pattern is rare it falls back smoothly to shorter patterns. It also remembers what it concluded the last times the same note-pair came at the same bar position earlier in this song, because songs repeat. Knowing the likely chord, it picks the note below her that is consonant with her and most likely in the chord, while avoiding big jumps, parallel fifths/octaves and echoing her.",
+ "history_ablation_headline_by_DUET_HIST_beats": {
+  "0": 0.661,
+  "1": 0.6765,
+  "2": 0.6824,
+  "4": 0.6781,
+  "8": 0.6774,
+  "all": 0.678
+ },
+ "ceiling": {
+  "name": "m4_oracle",
+  "headline": 0.8734,
+  "rows": {
+   "bach": {
+    "music": 0.9227,
+    "cons": 0.9586,
+    "fit": 0.9478,
+    "harsh": 0.02,
+    "double": 0.036,
+    "leap": 2.7959,
+    "big": 0.0082,
+    "par": 0.003,
+    "us_per_note": 103.6755
+   },
+   "folk": {
+    "music": 0.9181,
+    "cons": 0.9282,
+    "fit": 0.9838,
+    "harsh": 0.0427,
+    "double": 0.04,
+    "leap": 3.5419,
+    "big": 0.0413,
+    "par": 0.0035,
+    "us_per_note": 116.2453
+   },
+   "pop": {
+    "music": 0.813,
+    "cons": 0.869,
+    "fit": 0.9123,
+    "harsh": 0.0741,
+    "double": 0.0265,
+    "leap": 3.488,
+    "big": 0.0405,
+    "par": 0.0086,
+    "us_per_note": 72.7516
+   },
+   "pop909": {
+    "music": 0.8397,
+    "cons": 0.8895,
+    "fit": 0.9247,
+    "harsh": 0.0598,
+    "double": 0.0406,
+    "leap": 3.5396,
+    "big": 0.0385,
+    "par": 0.0072,
+    "us_per_note": 81.6616
+   }
+  },
+  "flags": [],
+  "note": "CEILING, NOT A METHOD, NOT CAUSAL: told the true chord of each note's beat, same planner. Also found that oracle_chord's lookup key (tonic, K, first 16 bar positions) collides between eval songs (badly on pop: 0.528); m4_oracle disambiguates by matching note onsets, so the real ceiling is ~0.873, not 0.718."
+ },
+ "other_systems": [
+  {
+   "name": "m4_retrieval_v1",
+   "headline": 0.6753,
+   "note": "pitch-class-only query (no note lengths); first version 0.640 with nmax4/beta1/uni.15, tuned to ~0.671-0.675"
+  },
+  {
+   "name": "m4_retrieval_v3",
+   "headline": 0.6821,
+   "note": "adds short/medium/long tag to each past note in the query; leap cost 0.02"
+  },
+  {
+   "name": "m4_retrieval_v2",
+   "headline": 0.6372,
+   "note": "v1 + note-to-note chord continuity filter (product of experts); no gain (0.631-0.637 vs 0.640)"
+  },
+  {
+   "name": "m4_retrieval_v5",
+   "headline": 0.68,
+   "note": "v4 + second query 'pitch classes sung so far in this bar'; 0.676-0.680, no real gain, doubling up to 0.239"
+  },
+  {
+   "name": "m4_retrieval_v3 (no voice-leading costs)",
+   "headline": 0.6963,
+   "note": "ablation: +0.02 music but DOUBLING and ROUGH (big leaps 11-14%) -- the planner costs ~0.02 music to sound smooth"
+  },
+  {
+   "name": "m4_oracle",
+   "headline": 0.8734,
+   "note": "CEILING (non-causal, told the true chord), not a method"
+  }
+ ],
+ "what_failed": "Chord-continuity filter on top of retrieval (v2) did not help: the previous notes in the query already carry that information. Longer queries (6 notes) hurt (0.620): exact long patterns are rare and over-specific; strong backoff (beta 10) and 2-3 notes work best. Most of the gain over third_below comes from the current note + bar position + planner (DUET_HIST=0 already 0.661); history beyond ~2 beats adds nothing (0.682 at 2 beats vs 0.678 all). Lowering the unison penalty raises music but pushes double toward the 25% DOUBLING flag (folk 0.236-0.30), so uni=0.1 keeps a margin (max double 0.208). A second query on the set of pitch classes sung so far in the bar (v5) gave no real gain (0.676-0.680) and more doubling.",
+ "files": [
+  "/Users/wangzesen/work/claude_sandbox/MEAM5160/project/duet_v0/futures/v3_nolatency/systems/m4_retrieval_v4.py",
+  "/Users/wangzesen/work/claude_sandbox/MEAM5160/project/duet_v0/futures/v3_nolatency/systems/m4_retrieval_v5.py",
+  "/Users/wangzesen/work/claude_sandbox/MEAM5160/project/duet_v0/futures/v3_nolatency/systems/m4_retrieval_v3.py",
+  "/Users/wangzesen/work/claude_sandbox/MEAM5160/project/duet_v0/futures/v3_nolatency/systems/m4_retrieval_v2.py",
+  "/Users/wangzesen/work/claude_sandbox/MEAM5160/project/duet_v0/futures/v3_nolatency/systems/m4_retrieval_v1.py",
+  "/Users/wangzesen/work/claude_sandbox/MEAM5160/project/duet_v0/futures/v3_nolatency/systems/m4_oracle.py",
+  "/Users/wangzesen/work/claude_sandbox/MEAM5160/project/duet_v0/futures/v3_nolatency/runs/"
+ ],
+ "notes": "Best ablation point DUET_HIST=2 gives 0.682 (vs 0.678 with all history), within noise. Planner cost: no voice-leading costs gives 0.696 but DOUBLING+ROUGH. m4_oracle is a CEILING, not a method. I appended one line to hb/ALERTS_2.md (supervisor file) about the oracle_chord lookup collision bug. Early sweep logs of v1 went to /tmp/m4_*.txt by mistake (later runs in runs/)."
+}

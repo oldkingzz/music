@@ -1,0 +1,16 @@
+2026-11-01 20:57:43 START tl=3600 cwd=/Users/san/claude_sandbox/music $ABS/.venv/bin/python $ABS/futures/v4_selfiter/live_panel.py
+2026-11-01 21:00:41 START tl=3600 cwd=/Users/san/claude_sandbox/music $ABS/.venv/bin/python $ABS/futures/v4_selfiter/live_panel.py
+2026-11-01 21:00:41 END rc=1 secs=0 $ABS/.venv/bin/python $ABS/futures/v4_selfiter/live_panel.py
+2026-11-01 21:00:41 START tl=3600 cwd=/Users/san/claude_sandbox/music $ABS/.venv/bin/python $ABS/futures/v4_selfiter/live_panel.py
+2026-11-01 21:00:41 END rc=1 secs=0 $ABS/.venv/bin/python $ABS/futures/v4_selfiter/live_panel.py
+2026-11-01 21:00:41 START tl=3600 cwd=/Users/san/claude_sandbox/music $ABS/.venv/bin/python $ABS/futures/v4_selfiter/live_panel.py
+2026-11-01 21:00:41 END rc=1 secs=0 $ABS/.venv/bin/python $ABS/futures/v4_selfiter/live_panel.py
+2026-11-01 21:00:51 START tl=3600 cwd=/Users/san/claude_sandbox/music $ABS/.venv/bin/python $ABS/futures/v4_selfiter/live_panel.py
+2026-11-01 21:06:02 END rc=0 secs=311 $ABS/.venv/bin/python $ABS/futures/v4_selfiter/live_panel.py
+2026-11-01 21:06:03 START tl=3600 cwd=/Users/san/claude_sandbox/music $ABS/.venv/bin/python $ABS/futures/v4_selfiter/live_panel.py
+2026-11-01 21:18:06 END rc=0 secs=723 $ABS/.venv/bin/python $ABS/futures/v4_selfiter/live_panel.py
+2026-11-01 21:18:07 START tl=3600 cwd=/Users/san/claude_sandbox/music $ABS/.venv/bin/python $ABS/futures/v4_selfiter/live_panel.py
+2026-11-01 21:32:01 END rc=0 secs=834 $ABS/.venv/bin/python $ABS/futures/v4_selfiter/live_panel.py
+2026-11-01 21:32:02 START tl=3600 cwd=/Users/san/claude_sandbox/music $ABS/.venv/bin/python $ABS/futures/v4_selfiter/live_panel.py
+2026-11-01 21:36:12 END rc=0 secs=250 $ABS/.venv/bin/python $ABS/futures/v4_selfiter/live_panel.py
+2026-11-01 21:36:13 START tl=3600 cwd=/Users/san/claude_sandbox/music $ABS/.venv/bin/python $ABS/futures/v4_selfiter/live_panel.py

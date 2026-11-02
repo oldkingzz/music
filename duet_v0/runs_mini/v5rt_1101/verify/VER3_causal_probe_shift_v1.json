@@ -1,0 +1,971 @@
+{
+ "spec": "rt:r3_X_regtrkst_v1",
+ "phase": "shift",
+ "shifts": [
+  -12,
+  -24
+ ],
+ "L": 0.1,
+ "seed": 20261101,
+ "split": "val",
+ "tests": {
+  "T1_cut_shift-12": {
+   "cases": 144,
+   "inp_mismatch": 0,
+   "dec_mismatch": 0,
+   "errors_after_cut": 0,
+   "decisions": 29484,
+   "nonnull": 6996,
+   "dec_mismatch_incl_c": 0
+  },
+  "T1_cut_shift-24": {
+   "cases": 144,
+   "inp_mismatch": 0,
+   "dec_mismatch": 0,
+   "errors_after_cut": 0,
+   "decisions": 29480,
+   "nonnull": 6992,
+   "dec_mismatch_incl_c": 0
+  },
+  "T2_latency_cut_shift-12": {
+   "cases": 144,
+   "inp_mismatch": 0,
+   "dec_mismatch": 0,
+   "errors_after_cut": 0,
+   "decisions": 29562,
+   "nonnull": 7000
+  },
+  "T2_latency_cut_shift-24": {
+   "cases": 144,
+   "inp_mismatch": 0,
+   "dec_mismatch": 0,
+   "errors_after_cut": 0,
+   "decisions": 29560,
+   "nonnull": 6998
+  },
+  "T3_plan_q_shift-12": {
+   "cases": 312,
+   "inp_mismatch": 0,
+   "dec_mismatch": 0,
+   "plan_q_attack_in_orig": 14,
+   "pitches_changed": 20121,
+   "errors": 0
+  },
+  "T3_plan_q_shift-24": {
+   "cases": 312,
+   "inp_mismatch": 0,
+   "dec_mismatch": 0,
+   "plan_q_attack_in_orig": 6,
+   "pitches_changed": 20304,
+   "errors": 0
+  },
+  "T4_history_shift": {
+   "songs": 48,
+   "A_again_identical": 48,
+   "B_fresh_reverse_identical": 48
+  },
+  "T5_tripwires_shift": {
+   "run_hits": {}
+  }
+ },
+ "fail_examples": [],
+ "reg": {
+  "0|bach|0": {
+   "s": [],
+   "resync": 0,
+   "first": [
+    1,
+    0.0
+   ]
+  },
+  "0|bach|2": {
+   "s": [],
+   "resync": 0,
+   "first": [
+    1,
+    0.0
+   ]
+  },
+  "0|bach|3": {
+   "s": [],
+   "resync": 0,
+   "first": [
+    1,
+    0.0
+   ]
+  },
+  "0|bach|6": {
+   "s": [],
+   "resync": 0,
+   "first": [
+    1,
+    0.0
+   ]
+  },
+  "0|bach|11": {
+   "s": [],
+   "resync": 0,
+   "first": [
+    1,
+    0.0
+   ]
+  },
+  "0|bach|13": {
+   "s": [],
+   "resync": 0,
+   "first": [
+    1,
+    0.0
+   ]
+  },
+  "0|folk|12": {
+   "s": [],
+   "resync": 0,
+   "first": [
+    1,
+    0.0
+   ]
+  },
+  "0|folk|32": {
+   "s": [],
+   "resync": 0,
+   "first": [
+    1,
+    0.666667
+   ]
+  },
+  "0|folk|56": {
+   "s": [],
+   "resync": 0,
+   "first": [
+    1,
+    0.0
+   ]
+  },
+  "0|folk|70": {
+   "s": [],
+   "resync": 0,
+   "first": [
+    1,
+    0.0
+   ]
+  },
+  "0|folk|84": {
+   "s": [],
+   "resync": 0,
+   "first": [
+    1,
+    0.0
+   ]
+  },
+  "0|folk|166": {
+   "s": [],
+   "resync": 0,
+   "first": [
+    1,
+    0.0
+   ]
+  },
+  "0|pop|46": {
+   "s": [],
+   "resync": 0,
+   "first": [
+    1,
+    0.0
+   ]
+  },
+  "0|pop|69": {
+   "s": [],
+   "resync": 0,
+   "first": [
+    1,
+    2.5
+   ]
+  },
+  "0|pop|72": {
+   "s": [
+    [
+     1,
+     12
+    ]
+   ],
+   "resync": 0,
+   "first": [
+    1,
+    0.0
+   ]
+  },
+  "0|pop|228": {
+   "s": [],
+   "resync": 0,
+   "first": [
+    1,
+    0.0
+   ]
+  },
+  "0|pop|250": {
+   "s": [],
+   "resync": 0,
+   "first": [
+    1,
+    0.0
+   ]
+  },
+  "0|pop|286": {
+   "s": [],
+   "resync": 0,
+   "first": [
+    1,
+    0.0
+   ]
+  },
+  "0|pop909|0": {
+   "s": [],
+   "resync": 0,
+   "first": [
+    1,
+    0.5003
+   ]
+  },
+  "0|pop909|1": {
+   "s": [],
+   "resync": 0,
+   "first": [
+    1,
+    0.0002
+   ]
+  },
+  "0|pop909|22": {
+   "s": [],
+   "resync": 0,
+   "first": [
+    1,
+    0.6674
+   ]
+  },
+  "0|pop909|24": {
+   "s": [
+    [
+     1,
+     24
+    ]
+   ],
+   "resync": 0,
+   "first": [
+    1,
+    0.5006
+   ]
+  },
+  "0|pop909|31": {
+   "s": [
+    [
+     1,
+     12
+    ]
+   ],
+   "resync": 0,
+   "first": [
+    1,
+    0.0003
+   ]
+  },
+  "0|pop909|39": {
+   "s": [],
+   "resync": 0,
+   "first": [
+    1,
+    0.5009
+   ]
+  },
+  "-12|bach|0": {
+   "s": [
+    [
+     1,
+     12
+    ]
+   ],
+   "resync": 0,
+   "first": [
+    1,
+    0.0
+   ]
+  },
+  "-12|bach|2": {
+   "s": [
+    [
+     1,
+     12
+    ]
+   ],
+   "resync": 0,
+   "first": [
+    1,
+    0.0
+   ]
+  },
+  "-12|bach|3": {
+   "s": [
+    [
+     1,
+     12
+    ]
+   ],
+   "resync": 0,
+   "first": [
+    1,
+    0.0
+   ]
+  },
+  "-12|bach|6": {
+   "s": [
+    [
+     1,
+     12
+    ]
+   ],
+   "resync": 0,
+   "first": [
+    1,
+    0.0
+   ]
+  },
+  "-12|bach|11": {
+   "s": [
+    [
+     1,
+     12
+    ]
+   ],
+   "resync": 0,
+   "first": [
+    1,
+    0.0
+   ]
+  },
+  "-12|bach|13": {
+   "s": [
+    [
+     1,
+     12
+    ]
+   ],
+   "resync": 0,
+   "first": [
+    1,
+    0.0
+   ]
+  },
+  "-12|folk|12": {
+   "s": [
+    [
+     1,
+     12
+    ]
+   ],
+   "resync": 0,
+   "first": [
+    1,
+    0.0
+   ]
+  },
+  "-12|folk|32": {
+   "s": [
+    [
+     1,
+     12
+    ],
+    [
+     3,
+     0
+    ]
+   ],
+   "resync": 1,
+   "first": [
+    1,
+    0.666667
+   ]
+  },
+  "-12|folk|56": {
+   "s": [
+    [
+     1,
+     12
+    ]
+   ],
+   "resync": 0,
+   "first": [
+    1,
+    0.0
+   ]
+  },
+  "-12|folk|70": {
+   "s": [
+    [
+     1,
+     12
+    ]
+   ],
+   "resync": 0,
+   "first": [
+    1,
+    0.0
+   ]
+  },
+  "-12|folk|84": {
+   "s": [
+    [
+     1,
+     12
+    ]
+   ],
+   "resync": 0,
+   "first": [
+    1,
+    0.0
+   ]
+  },
+  "-12|folk|166": {
+   "s": [
+    [
+     1,
+     12
+    ]
+   ],
+   "resync": 0,
+   "first": [
+    1,
+    0.0
+   ]
+  },
+  "-12|pop|46": {
+   "s": [
+    [
+     1,
+     12
+    ]
+   ],
+   "resync": 0,
+   "first": [
+    1,
+    0.0
+   ]
+  },
+  "-12|pop|69": {
+   "s": [
+    [
+     1,
+     12
+    ]
+   ],
+   "resync": 0,
+   "first": [
+    1,
+    2.5
+   ]
+  },
+  "-12|pop|72": {
+   "s": [
+    [
+     1,
+     24
+    ]
+   ],
+   "resync": 0,
+   "first": [
+    1,
+    0.0
+   ]
+  },
+  "-12|pop|228": {
+   "s": [
+    [
+     1,
+     12
+    ]
+   ],
+   "resync": 0,
+   "first": [
+    1,
+    0.0
+   ]
+  },
+  "-12|pop|250": {
+   "s": [
+    [
+     1,
+     12
+    ]
+   ],
+   "resync": 0,
+   "first": [
+    1,
+    0.0
+   ]
+  },
+  "-12|pop|286": {
+   "s": [
+    [
+     1,
+     12
+    ]
+   ],
+   "resync": 0,
+   "first": [
+    1,
+    0.0
+   ]
+  },
+  "-12|pop909|0": {
+   "s": [],
+   "resync": 0,
+   "first": [
+    1,
+    0.5003
+   ]
+  },
+  "-12|pop909|1": {
+   "s": [
+    [
+     1,
+     12
+    ]
+   ],
+   "resync": 0,
+   "first": [
+    1,
+    0.0002
+   ]
+  },
+  "-12|pop909|22": {
+   "s": [
+    [
+     1,
+     12
+    ],
+    [
+     3,
+     0
+    ]
+   ],
+   "resync": 1,
+   "first": [
+    1,
+    0.6674
+   ]
+  },
+  "-12|pop909|24": {
+   "s": [
+    [
+     1,
+     36
+    ]
+   ],
+   "resync": 0,
+   "first": [
+    1,
+    0.5006
+   ]
+  },
+  "-12|pop909|31": {
+   "s": [
+    [
+     1,
+     24
+    ]
+   ],
+   "resync": 0,
+   "first": [
+    1,
+    0.0003
+   ]
+  },
+  "-12|pop909|39": {
+   "s": [
+    [
+     1,
+     12
+    ]
+   ],
+   "resync": 0,
+   "first": [
+    1,
+    0.5009
+   ]
+  },
+  "-24|bach|0": {
+   "s": [
+    [
+     1,
+     24
+    ]
+   ],
+   "resync": 0,
+   "first": [
+    1,
+    0.0
+   ]
+  },
+  "-24|bach|2": {
+   "s": [
+    [
+     1,
+     24
+    ]
+   ],
+   "resync": 0,
+   "first": [
+    1,
+    0.0
+   ]
+  },
+  "-24|bach|3": {
+   "s": [
+    [
+     1,
+     24
+    ]
+   ],
+   "resync": 0,
+   "first": [
+    1,
+    0.0
+   ]
+  },
+  "-24|bach|6": {
+   "s": [
+    [
+     1,
+     24
+    ]
+   ],
+   "resync": 0,
+   "first": [
+    1,
+    0.0
+   ]
+  },
+  "-24|bach|11": {
+   "s": [
+    [
+     1,
+     24
+    ]
+   ],
+   "resync": 0,
+   "first": [
+    1,
+    0.0
+   ]
+  },
+  "-24|bach|13": {
+   "s": [
+    [
+     1,
+     24
+    ]
+   ],
+   "resync": 0,
+   "first": [
+    1,
+    0.0
+   ]
+  },
+  "-24|folk|12": {
+   "s": [
+    [
+     1,
+     24
+    ]
+   ],
+   "resync": 0,
+   "first": [
+    1,
+    0.0
+   ]
+  },
+  "-24|folk|32": {
+   "s": [
+    [
+     1,
+     24
+    ],
+    [
+     3,
+     12
+    ]
+   ],
+   "resync": 1,
+   "first": [
+    1,
+    0.666667
+   ]
+  },
+  "-24|folk|56": {
+   "s": [
+    [
+     1,
+     24
+    ]
+   ],
+   "resync": 0,
+   "first": [
+    1,
+    0.0
+   ]
+  },
+  "-24|folk|70": {
+   "s": [
+    [
+     1,
+     24
+    ]
+   ],
+   "resync": 0,
+   "first": [
+    1,
+    0.0
+   ]
+  },
+  "-24|folk|84": {
+   "s": [
+    [
+     1,
+     24
+    ]
+   ],
+   "resync": 0,
+   "first": [
+    1,
+    0.0
+   ]
+  },
+  "-24|folk|166": {
+   "s": [
+    [
+     1,
+     24
+    ]
+   ],
+   "resync": 0,
+   "first": [
+    1,
+    0.0
+   ]
+  },
+  "-24|pop|46": {
+   "s": [
+    [
+     1,
+     24
+    ]
+   ],
+   "resync": 0,
+   "first": [
+    1,
+    0.0
+   ]
+  },
+  "-24|pop|69": {
+   "s": [
+    [
+     1,
+     24
+    ]
+   ],
+   "resync": 0,
+   "first": [
+    1,
+    2.5
+   ]
+  },
+  "-24|pop|72": {
+   "s": [
+    [
+     1,
+     36
+    ]
+   ],
+   "resync": 0,
+   "first": [
+    1,
+    0.0
+   ]
+  },
+  "-24|pop|228": {
+   "s": [
+    [
+     1,
+     24
+    ]
+   ],
+   "resync": 0,
+   "first": [
+    1,
+    0.0
+   ]
+  },
+  "-24|pop|250": {
+   "s": [
+    [
+     1,
+     24
+    ]
+   ],
+   "resync": 0,
+   "first": [
+    1,
+    0.0
+   ]
+  },
+  "-24|pop|286": {
+   "s": [
+    [
+     1,
+     24
+    ]
+   ],
+   "resync": 0,
+   "first": [
+    1,
+    0.0
+   ]
+  },
+  "-24|pop909|0": {
+   "s": [
+    [
+     1,
+     12
+    ]
+   ],
+   "resync": 0,
+   "first": [
+    1,
+    0.5003
+   ]
+  },
+  "-24|pop909|1": {
+   "s": [
+    [
+     1,
+     24
+    ]
+   ],
+   "resync": 0,
+   "first": [
+    1,
+    0.0002
+   ]
+  },
+  "-24|pop909|22": {
+   "s": [
+    [
+     1,
+     24
+    ],
+    [
+     3,
+     12
+    ]
+   ],
+   "resync": 1,
+   "first": [
+    1,
+    0.6674
+   ]
+  },
+  "-24|pop909|24": {
+   "s": [
+    [
+     1,
+     48
+    ]
+   ],
+   "resync": 0,
+   "first": [
+    1,
+    0.5006
+   ]
+  },
+  "-24|pop909|31": {
+   "s": [
+    [
+     1,
+     36
+    ]
+   ],
+   "resync": 0,
+   "first": [
+    1,
+    0.0003
+   ]
+  },
+  "-24|pop909|39": {
+   "s": [
+    [
+     1,
+     24
+    ]
+   ],
+   "resync": 0,
+   "first": [
+    1,
+    0.5009
+   ]
+  }
+ },
+ "orig_decisions": 18442,
+ "orig_nonnull": 4419,
+ "build_reads": {
+  "os.environ['M1_NOISE'] @ futures/v3_nolatency/systems/m1_filter_v5lo.py:28 (caller <frozen _collections_abc>)": 1,
+  "os.environ['M1_ROBUST'] @ futures/v3_nolatency/systems/m1_filter_v5lo.py:28 (caller <frozen _collections_abc>)": 1,
+  "os.environ['M1_BAL'] @ futures/v3_nolatency/systems/m1_filter_v5lo.py:28 (caller <frozen _collections_abc>)": 1,
+  "os.environ['M1_LOOK'] @ futures/v3_nolatency/systems/m1_filter_v5lo.py:28 (caller <frozen _collections_abc>)": 1,
+  "os.environ['M1_LAM'] @ futures/v3_nolatency/systems/m1_filter_v5lo.py:28 (caller <frozen _collections_abc>)": 1,
+  "os.environ['M1_KAPPA'] @ futures/v3_nolatency/systems/m1_filter_v5lo.py:28 (caller <frozen _collections_abc>)": 1,
+  "os.environ['M1_W_STEP'] @ futures/v3_nolatency/systems/m1_filter_v5lo.py:28 (caller <frozen _collections_abc>)": 1,
+  "os.environ['M1_W_BIG'] @ futures/v3_nolatency/systems/m1_filter_v5lo.py:28 (caller <frozen _collections_abc>)": 1,
+  "os.environ['M1_W_PAR'] @ futures/v3_nolatency/systems/m1_filter_v5lo.py:28 (caller <frozen _collections_abc>)": 1,
+  "os.environ['M1_W_MID'] @ futures/v3_nolatency/systems/m1_filter_v5lo.py:28 (caller <frozen _collections_abc>)": 1,
+  "os.environ['M1_W_OCT'] @ futures/v3_nolatency/systems/m1_filter_v5lo.py:28 (caller <frozen _collections_abc>)": 1,
+  "os.environ['M1_W_UNIS'] @ futures/v3_nolatency/systems/m1_filter_v5lo.py:28 (caller <frozen _collections_abc>)": 1,
+  "os.environ['M1_ORDER2'] @ futures/v3_nolatency/systems/m1_filter_v5lo.py:28 (caller <frozen _collections_abc>)": 1,
+  "os.environ['M1_CUR_W'] @ futures/v3_nolatency/systems/m1_filter_v5lo.py:28 (caller <frozen _collections_abc>)": 1,
+  "os.environ['M1_BELOW'] @ futures/v3_nolatency/systems/m1_filter_v5lo.py:28 (caller <frozen _collections_abc>)": 1,
+  "os.environ['M1_W_CONS'] @ futures/v3_nolatency/systems/m1_filter_v5lo.py:28 (caller <frozen _collections_abc>)": 1,
+  "torch.load @ futures/v3_nolatency/systems/m3_seq_v4.py:29 (caller futures/v3_nolatency/systems/m3_seq_v4.py)": 6,
+  "os.environ['TORCH_FORCE_WEIGHTS_ONLY_LOAD'] @ .venv/lib/python3.11/site-packages/torch/serialization.py:1487 (caller <frozen _collections_abc>)": 6,
+  "os.environ['TORCH_FORCE_NO_WEIGHTS_ONLY_LOAD'] @ .venv/lib/python3.11/site-packages/torch/serialization.py:1490 (caller <frozen _collections_abc>)": 6,
+  "builtins.open @ .venv/lib/python3.11/site-packages/torch/serialization.py:777 (caller .venv/lib/python3.11/site-packages/torch/serialization.py)": 6,
+  "os.environ['TORCH_SERIALIZATION_DEBUG'] @ .venv/lib/python3.11/site-packages/torch/serialization.py:2063 (caller <frozen _collections_abc>)": 6,
+  "os.environ['DUET_HIST'] @ futures/v3_nolatency/systems/m1_filter_v5lo.py:93 (caller <frozen _collections_abc>)": 4,
+  "numpy.load @ futures/v5_rt/rt_systems/r1_A_core_v2.py:41 (caller futures/v5_rt/rt_systems/r1_A_core_v2.py)": 2,
+  "builtins.open @ .venv/lib/python3.11/site-packages/numpy/lib/_npyio_impl.py:454 (caller .venv/lib/python3.11/site-packages/numpy/lib/_npyio_impl.py)": 8,
+  "numpy.load @ futures/v5_rt/rt_systems/r2_lib_v1.py:128 (caller futures/v5_rt/rt_systems/r2_lib_v1.py)": 2,
+  "numpy.load @ futures/v5_rt/rt_systems/r2_lib_v3.py:70 (caller futures/v5_rt/rt_systems/r2_lib_v3.py)": 2,
+  "numpy.load @ futures/v5_rt/rt_systems/r3_E_lib_v2.py:55 (caller futures/v5_rt/rt_systems/r3_E_lib_v2.py)": 2
+ },
+ "build_files": [
+  "futures/v3_nolatency/systems/m3_seq_big.pt",
+  "futures/v3_nolatency/systems/m3_seq_full.pt",
+  "futures/v3_nolatency/systems/m3_seq_s1.pt",
+  "runs_mini/v5rt_1101/models/A_prior_v2.npz",
+  "runs_mini/v5rt_1101/models/E_trk_tab_v1.npz",
+  "runs_mini/v5rt_1101/models/R2_copy_v1.npz",
+  "runs_mini/v5rt_1101/models/R2_hm_v1.npz"
+ ],
+ "reg_summary": {
+  "songs_with_nonzero_shift": {
+   "0": 3,
+   "-12": 23,
+   "-24": 24
+  },
+  "songs_with_replay": {
+   "0": 0,
+   "-12": 2,
+   "-24": 2
+  },
+  "songs_per_shift": 24
+ },
+ "causal_ok_shift": true,
+ "secs": 61.5
+}

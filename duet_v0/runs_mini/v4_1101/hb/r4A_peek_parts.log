@@ -1,0 +1,2 @@
+2026-11-01 16:02:38 START tl=60 cwd=$ABS $ABS/.venv/bin/python -c import json; r=json.load(open('$ABS/runs_mini/v4_1101/r4/A/explore_20261101_160200.json')); print({d: {p: round(v, 5) for p, v in x.items()} for d, x in r['champion_parts'].items()})
+2026-11-01 16:02:38 END rc=0 secs=0 $ABS/.venv/bin/python -c import json; r=json.load(open('$ABS/runs_mini/v4_1101/r4/A/explore_20261101_160200.json')); print({d: {p: round(v, 5) for p, v in x.items()} for d, x in r['champion_parts'].items()})

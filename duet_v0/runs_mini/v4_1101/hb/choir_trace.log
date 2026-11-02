@@ -1,0 +1,2 @@
+2026-11-02 12:10:10 START tl=300 cwd=$ABS/runs_mini/choir_1102 $ABS/.venv/bin/python v11_trace_v1.py 114908_r2_mix_v2
+2026-11-02 12:10:16 END rc=1 secs=6 $ABS/.venv/bin/python v11_trace_v1.py 114908_r2_mix_v2

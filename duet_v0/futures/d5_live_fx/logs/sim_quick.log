@@ -1,0 +1,4 @@
+60.0 0.6 0.0 guard {'narrowband_longest_s': 0.3, 'runaway_longest_s': 0.05, 'howl': False} rel40 0.016 rel30 0.281 fa 1 0.0 erle 13.708708412099039 peak -3.0 20.6
+60.0 0.6 12.0 guard {'narrowband_longest_s': 0.36, 'runaway_longest_s': 0.2, 'howl': False} rel40 0.111 rel30 0.301 fa 0 0.0 erle 15.95891093360283 peak -3.0 20.5
+60.0 0.6 0.0 noguard {'narrowband_longest_s': 0.16, 'runaway_longest_s': 0.05, 'howl': False} rel40 0.015 rel30 0.217 fa 0 0.0 erle None peak -3.1 19.6
+60.0 0.6 12.0 noguard {'narrowband_longest_s': 1.22, 'runaway_longest_s': 0.8, 'howl': True} rel40 0.374 rel30 0.377 fa 1 0.33 erle None peak -3.0 19.6

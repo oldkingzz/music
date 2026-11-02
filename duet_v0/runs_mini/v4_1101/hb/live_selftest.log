@@ -1,0 +1,2 @@
+2026-11-01 20:36:47 START tl=600 cwd=$ABS .venv/bin/python duet_beat/live_mic.py --selftest
+2026-11-01 20:36:48 END rc=1 secs=1 .venv/bin/python duet_beat/live_mic.py --selftest

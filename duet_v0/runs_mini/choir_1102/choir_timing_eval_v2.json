@@ -1,0 +1,134 @@
+{
+ "113335_r2_mix_v2 | now": {
+  "song": "v11",
+  "chords": 20,
+  "chord_median_ms": -39,
+  "chord_med_abs_from_target": 130,
+  "chord_p90_abs_from_target": 249,
+  "detect_median_ms": 45,
+  "detect_med_abs_ms": 15,
+  "n_detect": 18,
+  "tempo": 115.4
+ },
+ "113335_r2_mix_v2 | calm (phase 0.5, tempo 0.4)": {
+  "song": "v11",
+  "chords": 20,
+  "chord_median_ms": -95,
+  "chord_med_abs_from_target": 107,
+  "chord_p90_abs_from_target": 176,
+  "detect_median_ms": 40,
+  "detect_med_abs_ms": 20,
+  "n_detect": 17,
+  "tempo": 116.9
+ },
+ "113335_r2_mix_v2 | calmer (phase 0.35, tempo 0.3)": {
+  "song": "v11",
+  "chords": 20,
+  "chord_median_ms": -110,
+  "chord_med_abs_from_target": 129,
+  "chord_p90_abs_from_target": 153,
+  "detect_median_ms": 40,
+  "detect_med_abs_ms": 20,
+  "n_detect": 17,
+  "tempo": 118.0
+ },
+ "114908_r2_mix_v2 | now": {
+  "song": "v11",
+  "chords": 20,
+  "chord_median_ms": -60,
+  "chord_med_abs_from_target": 105,
+  "chord_p90_abs_from_target": 190,
+  "detect_median_ms": 50,
+  "detect_med_abs_ms": 30,
+  "n_detect": 18,
+  "tempo": 111.9
+ },
+ "114908_r2_mix_v2 | calm (phase 0.5, tempo 0.4)": {
+  "song": "v11",
+  "chords": 20,
+  "chord_median_ms": -87,
+  "chord_med_abs_from_target": 69,
+  "chord_p90_abs_from_target": 143,
+  "detect_median_ms": 50,
+  "detect_med_abs_ms": 30,
+  "n_detect": 18,
+  "tempo": 113.9
+ },
+ "114908_r2_mix_v2 | calmer (phase 0.35, tempo 0.3)": {
+  "song": "v11",
+  "chords": 20,
+  "chord_median_ms": -74,
+  "chord_med_abs_from_target": 46,
+  "chord_p90_abs_from_target": 133,
+  "detect_median_ms": 50,
+  "detect_med_abs_ms": 30,
+  "n_detect": 18,
+  "tempo": 115.6
+ },
+ "113217_r2_mix_v2 | now": {
+  "song": "twinkle",
+  "chords": 0,
+  "chord_median_ms": null,
+  "chord_med_abs_from_target": null,
+  "chord_p90_abs_from_target": null,
+  "detect_median_ms": 820,
+  "detect_med_abs_ms": 50,
+  "n_detect": 2,
+  "tempo": 80.0
+ },
+ "113217_r2_mix_v2 | calm (phase 0.5, tempo 0.4)": {
+  "song": "twinkle",
+  "chords": 0,
+  "chord_median_ms": null,
+  "chord_med_abs_from_target": null,
+  "chord_p90_abs_from_target": null,
+  "detect_median_ms": 820,
+  "detect_med_abs_ms": 50,
+  "n_detect": 2,
+  "tempo": 80.1
+ },
+ "113217_r2_mix_v2 | calmer (phase 0.35, tempo 0.3)": {
+  "song": "twinkle",
+  "chords": 0,
+  "chord_median_ms": null,
+  "chord_med_abs_from_target": null,
+  "chord_p90_abs_from_target": null,
+  "detect_median_ms": 820,
+  "detect_med_abs_ms": 50,
+  "n_detect": 2,
+  "tempo": 80.1
+ },
+ "114844_r2_mix_v2 | now": {
+  "song": "twinkle",
+  "chords": 2,
+  "chord_median_ms": 3072,
+  "chord_med_abs_from_target": 3107,
+  "chord_p90_abs_from_target": 3107,
+  "detect_median_ms": 2675,
+  "detect_med_abs_ms": 315,
+  "n_detect": 2,
+  "tempo": 79.9
+ },
+ "114844_r2_mix_v2 | calm (phase 0.5, tempo 0.4)": {
+  "song": "twinkle",
+  "chords": 2,
+  "chord_median_ms": 3055,
+  "chord_med_abs_from_target": 3090,
+  "chord_p90_abs_from_target": 3090,
+  "detect_median_ms": 2675,
+  "detect_med_abs_ms": 315,
+  "n_detect": 2,
+  "tempo": 79.9
+ },
+ "114844_r2_mix_v2 | calmer (phase 0.35, tempo 0.3)": {
+  "song": "twinkle",
+  "chords": 2,
+  "chord_median_ms": 3046,
+  "chord_med_abs_from_target": 3081,
+  "chord_p90_abs_from_target": 3081,
+  "detect_median_ms": 2675,
+  "detect_med_abs_ms": 315,
+  "n_detect": 2,
+  "tempo": 79.9
+ }
+}

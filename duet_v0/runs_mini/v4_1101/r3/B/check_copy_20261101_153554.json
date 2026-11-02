@@ -1,0 +1,235 @@
+{
+ "check": "r3 B: r3_true_cons_v<k> with E5 off vs r2_mix_v2 (first 40 val songs per dataset; val, tuned on val)",
+ "songs": {
+  "bach": 17,
+  "folk": 40,
+  "pop": 40,
+  "pop909": 40
+ },
+ "variants": {
+  "r3_true_cons_v1": {
+   "file_MODE": "all",
+   "off": {
+    "bach": {
+     "notes": 1073,
+     "notes_differing_vs_champion": 0,
+     "gru_calls": 1073
+    },
+    "folk": {
+     "notes": 4198,
+     "notes_differing_vs_champion": 0,
+     "gru_calls": 4198
+    },
+    "pop": {
+     "notes": 2017,
+     "notes_differing_vs_champion": 0,
+     "gru_calls": 2017
+    },
+    "pop909": {
+     "notes": 13523,
+     "notes_differing_vs_champion": 0,
+     "gru_calls": 13523
+    }
+   },
+   "own": {
+    "bach": {
+     "notes": 1073,
+     "changed": 48,
+     "changed_misheard": 22,
+     "changed_heard_out_of_scale": 26,
+     "misheard": 100,
+     "heard_out_of_scale": 66,
+     "nd_time": 760.5,
+     "nd_time_champion": 762.0,
+     "scored_time": 1112.0,
+     "won_misheard": 5.5,
+     "lost_misheard": 3.0,
+     "won_heard_right": 2.0,
+     "lost_heard_right": 6.0,
+     "won_out_of_scale": 5.5,
+     "lost_out_of_scale": 4.0,
+     "gru_calls": 1073,
+     "music_nd_subset": 0.684,
+     "music_nd_subset_champion": 0.685,
+     "delta_subset": -0.001
+    },
+    "folk": {
+     "notes": 4198,
+     "changed": 457,
+     "changed_misheard": 113,
+     "changed_heard_out_of_scale": 139,
+     "misheard": 414,
+     "heard_out_of_scale": 291,
+     "nd_time": 1536.25,
+     "nd_time_champion": 1539.75,
+     "scored_time": 2118.333,
+     "won_misheard": 17.0,
+     "lost_misheard": 8.583,
+     "won_heard_right": 9.083,
+     "lost_heard_right": 21.0,
+     "won_out_of_scale": 17.333,
+     "lost_out_of_scale": 15.917,
+     "gru_calls": 4198,
+     "music_nd_subset": 0.725,
+     "music_nd_subset_champion": 0.727,
+     "delta_subset": -0.002
+    },
+    "pop": {
+     "notes": 2017,
+     "changed": 135,
+     "changed_misheard": 43,
+     "changed_heard_out_of_scale": 65,
+     "misheard": 216,
+     "heard_out_of_scale": 128,
+     "nd_time": 684.0,
+     "nd_time_champion": 694.0,
+     "scored_time": 1162.0,
+     "won_misheard": 6.5,
+     "lost_misheard": 4.0,
+     "won_heard_right": 4.0,
+     "lost_heard_right": 16.5,
+     "won_out_of_scale": 6.5,
+     "lost_out_of_scale": 10.75,
+     "gru_calls": 2017,
+     "music_nd_subset": 0.589,
+     "music_nd_subset_champion": 0.597,
+     "delta_subset": -0.009
+    },
+    "pop909": {
+     "notes": 13523,
+     "changed": 875,
+     "changed_misheard": 311,
+     "changed_heard_out_of_scale": 263,
+     "misheard": 1367,
+     "heard_out_of_scale": 648,
+     "nd_time": 4835.546,
+     "nd_time_champion": 4810.386,
+     "scored_time": 8165.492,
+     "won_misheard": 51.063,
+     "lost_misheard": 19.591,
+     "won_heard_right": 24.571,
+     "lost_heard_right": 30.883,
+     "won_out_of_scale": 44.874,
+     "lost_out_of_scale": 19.349,
+     "gru_calls": 13523,
+     "music_nd_subset": 0.592,
+     "music_nd_subset_champion": 0.589,
+     "delta_subset": 0.003
+    }
+   }
+  },
+  "r3_true_cons_v2": {
+   "file_MODE": "out_of_scale",
+   "off": {
+    "bach": {
+     "notes": 1073,
+     "notes_differing_vs_champion": 0,
+     "gru_calls": 1073
+    },
+    "folk": {
+     "notes": 4198,
+     "notes_differing_vs_champion": 0,
+     "gru_calls": 4198
+    },
+    "pop": {
+     "notes": 2017,
+     "notes_differing_vs_champion": 0,
+     "gru_calls": 2017
+    },
+    "pop909": {
+     "notes": 13523,
+     "notes_differing_vs_champion": 0,
+     "gru_calls": 13523
+    }
+   },
+   "own": {
+    "bach": {
+     "notes": 1073,
+     "changed": 37,
+     "changed_misheard": 21,
+     "changed_heard_out_of_scale": 26,
+     "misheard": 100,
+     "heard_out_of_scale": 66,
+     "nd_time": 760.5,
+     "nd_time_champion": 762.0,
+     "scored_time": 1112.0,
+     "won_misheard": 5.5,
+     "lost_misheard": 3.0,
+     "won_heard_right": 0.0,
+     "lost_heard_right": 4.0,
+     "won_out_of_scale": 5.5,
+     "lost_out_of_scale": 4.0,
+     "gru_calls": 1073,
+     "music_nd_subset": 0.684,
+     "music_nd_subset_champion": 0.685,
+     "delta_subset": -0.001
+    },
+    "folk": {
+     "notes": 4198,
+     "changed": 252,
+     "changed_misheard": 100,
+     "changed_heard_out_of_scale": 136,
+     "misheard": 414,
+     "heard_out_of_scale": 291,
+     "nd_time": 1538.083,
+     "nd_time_champion": 1539.75,
+     "scored_time": 2118.333,
+     "won_misheard": 16.333,
+     "lost_misheard": 7.75,
+     "won_heard_right": 3.583,
+     "lost_heard_right": 13.833,
+     "won_out_of_scale": 17.667,
+     "lost_out_of_scale": 15.917,
+     "gru_calls": 4198,
+     "music_nd_subset": 0.726,
+     "music_nd_subset_champion": 0.727,
+     "delta_subset": -0.001
+    },
+    "pop": {
+     "notes": 2017,
+     "changed": 119,
+     "changed_misheard": 42,
+     "changed_heard_out_of_scale": 64,
+     "misheard": 216,
+     "heard_out_of_scale": 128,
+     "nd_time": 683.75,
+     "nd_time_champion": 694.0,
+     "scored_time": 1162.0,
+     "won_misheard": 6.5,
+     "lost_misheard": 2.5,
+     "won_heard_right": 1.75,
+     "lost_heard_right": 16.0,
+     "won_out_of_scale": 6.5,
+     "lost_out_of_scale": 9.25,
+     "gru_calls": 2017,
+     "music_nd_subset": 0.588,
+     "music_nd_subset_champion": 0.597,
+     "delta_subset": -0.009
+    },
+    "pop909": {
+     "notes": 13523,
+     "changed": 514,
+     "changed_misheard": 275,
+     "changed_heard_out_of_scale": 263,
+     "misheard": 1367,
+     "heard_out_of_scale": 648,
+     "nd_time": 4831.102,
+     "nd_time_champion": 4810.386,
+     "scored_time": 8165.492,
+     "won_misheard": 45.955,
+     "lost_misheard": 18.997,
+     "won_heard_right": 10.009,
+     "lost_heard_right": 16.251,
+     "won_out_of_scale": 45.788,
+     "lost_out_of_scale": 18.997,
+     "gru_calls": 13523,
+     "music_nd_subset": 0.592,
+     "music_nd_subset_champion": 0.589,
+     "delta_subset": 0.003
+    }
+   }
+  }
+ },
+ "all_ok": true,
+ "secs": 20.8
+}

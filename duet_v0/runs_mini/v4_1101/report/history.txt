@@ -1,0 +1,55 @@
+Duet v4 history ablation in music_nd (PROGRAM §5.5): how much of her past melody does the real-time chord guess need?
+Mac mini run v4_1101, Phase D, 2026-11-01.  val only, tuned on val (this bundle has no test split).
+
+music_nd = share of her singing time (from beat 4) where Duet is consonant with her AND on a tone of the true chord AND not her note/octave;
+headline = mean of bach (17 val songs), folk (170), pop (300), pop909 (40).  double = share of time Duet sings her note or its octave.
+H = how many beats of her past melody the chord guesser may use.  Only the chord guess is limited; the chooser is unchanged and always
+remembers Duet's own previous note for voice leading (that is Duet's line, not her melody).
+  HMM: the filter is re-run over beats k-H .. k-1 plus the current beat k, starting from the song-start chord prior; H=0 = the current beat only
+       (her current note plus any earlier note inside the same beat).
+  GRU: each of the 3 GRUs is re-run from an empty state over the notes that started in the last H beats; H=0 = her current note only.
+  whole song = the unchanged systems (running HMM filter; GRU hidden state carried through the song).
+Files: m3_seq_v5h0/h4/h16 are the legacy wrappers that set DUET_HIST inside their own process (the outside environment was empty);
+rD_hist_m1_h*_v1 and rD_hist_mix_h*_v1 are new constant-only wrappers (filter.H = H; GRU ensemble built with hist = H). Scored with
+rescore_nd (runs_mini/v4_1101/nd/<name>/) and bench3 (one leaderboard row each).
+
+m1_filter_v5lo (HMM chord filter + no-copy chooser; the old Tuesday model)
+  window                     system               headline  bach   folk   pop    pop909   double max
+  current note only (H=0)    rD_hist_m1_h0_v1     0.6101  0.6641 0.6592 0.5605 0.5566   0.019
+  last 4 beats (H=4)         rD_hist_m1_h4_v1     0.6203  0.6668 0.6785 0.5586 0.5773   0.045
+  last 16 beats (H=16)       rD_hist_m1_h16_v1    0.6206  0.6655 0.6766 0.5601 0.5804   0.048
+  whole song                 m1_filter_v5lo       0.6206  0.6655 0.6766 0.5601 0.5804   0.048
+  history gain (whole song - current note): headline +0.0105; bach +0.0013, folk +0.0174, pop -0.0005, pop909 +0.0237
+
+m3_seq_v5 (3-GRU average + its own chooser, which copies her up to 0.18)
+  window                     system               headline  bach   folk   pop    pop909   double max
+  current note only (H=0)    m3_seq_v5h0          0.5766  0.6432 0.6200 0.5362 0.5072   0.115
+  last 4 beats (H=4)         m3_seq_v5h4          0.5978  0.6205 0.6560 0.5538 0.5607   0.140
+  last 16 beats (H=16)       m3_seq_v5h16         0.6023  0.6138 0.6691 0.5633 0.5630   0.170
+  whole song                 m3_seq_v5            0.6104  0.6241 0.6805 0.5713 0.5655   0.184
+  history gain (whole song - current note): headline +0.0337; bach -0.0191, folk +0.0605, pop +0.0351, pop909 +0.0584
+
+r2_mix_v2 (presentable champion: b_HMM^0.3 * b_GRU^0.7, then m1_filter_v5lo's chooser)
+  window                     system               headline  bach   folk   pop    pop909   double max
+  current note only (H=0)    rD_hist_mix_h0_v1    0.6114  0.6625 0.6573 0.5663 0.5595   0.020
+  last 4 beats (H=4)         rD_hist_mix_h4_v1    0.6344  0.6839 0.6947 0.5756 0.5836   0.038
+  last 16 beats (H=16)       rD_hist_mix_h16_v1   0.6422  0.6853 0.7105 0.5900 0.5832   0.058
+  whole song                 r2_mix_v2            0.6444  0.6853 0.7126 0.5908 0.5891   0.055
+  history gain (whole song - current note): headline +0.0330; bach +0.0227, folk +0.0553, pop +0.0245, pop909 +0.0296
+
+What it shows:
+- HMM (m1_filter_v5lo): her past melody is worth only +0.0105, almost all of it inside the last 4 beats. With 16 beats the scores equal the whole-song filter's
+  (music_nd and double identical to every digit; bench3 rows identical except folk leap 3.6051 vs 3.6053):
+  the filter forgets notes older than about 16 beats on its own. pop gains nothing from history.
+- With no history the champion is no better than the HMM (H=0: 0.6114 vs 0.6101). Its whole gain over m1_filter_v5lo (+0.0238)
+  comes from the GRUs remembering more of her melody (champion minus HMM at the same window: +0.0013 at H=0, +0.0141 at 4 beats, +0.0216 at 16 beats, +0.0238 for the whole song).
+- m3_seq_v5 gains +0.0337 in music_nd, but on bach it LOSES with more history (0.6432 -> 0.6241): the surer its chord guess, the more its own chooser
+  copies her (bach double 0.077 -> 0.184), and music_nd counts copying as a miss.
+
+Old laptop numbers, m3_seq_v5, raw music, copying counted (bench3 headline, not music_nd): 0.658 / 0.674 / 0.695 / 0.710 / 0.720 for
+current note / last 1 beat / last 4 beats / last 16 beats / whole song.  The mini reproduces them (raw music, copying counted):
+0.6581 / (H=1 not re-run) / 0.6951 / 0.7095 / 0.7199. In music_nd the same ladder is 0.5766 / 0.5978 / 0.6023 / 0.6104.
+
+repeat memory (prior from 4/8/16 bars ago) ≈ +0.004, not used
+
+val only, tuned on val.

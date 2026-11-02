@@ -1,0 +1,2 @@
+2026-11-01 22:05:32 START tl=600 cwd=$ABS $ABS/.venv/bin/python $ABS/runs_mini/v5rt_1101/tools/check_r0_port_v1.py $ABS/runs_mini/v5rt_1101/drafts/bench_rt_d3.py 40
+2026-11-01 22:05:39 END rc=0 secs=7 $ABS/.venv/bin/python $ABS/runs_mini/v5rt_1101/tools/check_r0_port_v1.py $ABS/runs_mini/v5rt_1101/drafts/bench_rt_d3.py 40

@@ -1,0 +1,2 @@
+2026-11-02 01:16:36 START tl=600 cwd=$ABS $ABS/.venv/bin/python $ABS/runs_mini/v5rt_1101/tools/LB_pos_effect_v1.py --out $ABS/runs_mini/v5rt_1101/live_bench/LB_pos_effect_v1.json
+2026-11-02 01:16:58 END rc=0 secs=23 $ABS/.venv/bin/python $ABS/runs_mini/v5rt_1101/tools/LB_pos_effect_v1.py --out $ABS/runs_mini/v5rt_1101/live_bench/LB_pos_effect_v1.json

@@ -1,0 +1,31 @@
+literal bach {'good': 0.9377, 'harsh': 0.0431, 'fourth': 0.0191, 'silent': 0.0001, 'not_good': 0.0623, 'time_s': 708.0}
+literal folk {'good': 0.9275, 'harsh': 0.0476, 'fourth': 0.0248, 'silent': 0.0, 'not_good': 0.0725, 'time_s': 6869.7}
+literal pop909 {'good': 0.94, 'harsh': 0.0377, 'fourth': 0.0201, 'silent': 0.0021, 'not_good': 0.06, 'time_s': 6147.0241}
+literal pop {'good': 0.934, 'harsh': 0.0448, 'fourth': 0.0208, 'silent': 0.0004, 'not_good': 0.066, 'time_s': 6716.4}
+literal bach_lag_x5 {'good': 0.8683, 'harsh': 0.0867, 'fourth': 0.0445, 'silent': 0.0005, 'not_good': 0.1317, 'time_s': 708.0}
+shifter bach {'good': 0.9981, 'harsh': 0.0012, 'fourth': 0.0006, 'silent': 0.0001, 'not_good': 0.0019, 'time_s': 708.0}
+shifter folk {'good': 0.9973, 'harsh': 0.0017, 'fourth': 0.001, 'silent': 0.0, 'not_good': 0.0027, 'time_s': 6869.7}
+shifter pop909 {'good': 0.9968, 'harsh': 0.0007, 'fourth': 0.0004, 'silent': 0.0021, 'not_good': 0.0032, 'time_s': 6147.0241}
+shifter pop {'good': 0.9978, 'harsh': 0.0012, 'fourth': 0.0006, 'silent': 0.0004, 'not_good': 0.0022, 'time_s': 6716.4}
+shifter bach_lag_x5 {'good': 0.9905, 'harsh': 0.0059, 'fourth': 0.0032, 'silent': 0.0005, 'not_good': 0.0095, 'time_s': 708.0}
+audio all {'good': 0.7545, 'harsh': 0.0585, 'fourth': 0.0685, 'silent': 0.1184, 'not_good': 0.2455, 'time_s': 552.37}
+audio her voiced {'good': 0.7701, 'harsh': 0.0591, 'fourth': 0.0697, 'silent': 0.1011, 'not_good': 0.2299, 'time_s': 540.4}
+audio sounding {'good': 0.7867, 'harsh': 0.0469, 'fourth': 0.0479, 'silent': 0.1184, 'not_good': 0.2133, 'time_s': 552.37}
+audio unambiguous {'good': 0.7902, 'harsh': 0.049, 'fourth': 0.0545, 'silent': 0.1064, 'not_good': 0.2098, 'time_s': 409.12}
+audio cores {'good': 0.8641, 'harsh': 0.0368, 'fourth': 0.0499, 'silent': 0.0491, 'not_good': 0.1359, 'time_s': 317.01}
+audio ideal follower {'good': 0.8576, 'harsh': 0.0617, 'fourth': 0.0591, 'silent': 0.0217, 'not_good': 0.1424, 'time_s': 552.37}
+audio female {'good': 0.7931, 'harsh': 0.0501, 'fourth': 0.0716, 'silent': 0.0851, 'not_good': 0.2069}
+audio male {'good': 0.6971, 'harsh': 0.0711, 'fourth': 0.0639, 'silent': 0.1679, 'not_good': 0.3029}
+audio_follow_mode all {'good': 0.7606, 'harsh': 0.0577, 'fourth': 0.0635, 'silent': 0.1182, 'not_good': 0.2394, 'time_s': 552.37}
+audio_follow_mode her voiced {'good': 0.7763, 'harsh': 0.0583, 'fourth': 0.0646, 'silent': 0.1009, 'not_good': 0.2237, 'time_s': 540.4}
+audio_follow_mode sounding {'good': 0.7883, 'harsh': 0.0465, 'fourth': 0.047, 'silent': 0.1182, 'not_good': 0.2117, 'time_s': 552.37}
+audio_follow_mode unambiguous {'good': 0.7937, 'harsh': 0.0484, 'fourth': 0.0515, 'silent': 0.1064, 'not_good': 0.2063, 'time_s': 409.12}
+audio_follow_mode cores {'good': 0.8702, 'harsh': 0.0368, 'fourth': 0.0431, 'silent': 0.0499, 'not_good': 0.1298, 'time_s': 317.01}
+audio_follow_mode ideal follower {'good': 0.8576, 'harsh': 0.0617, 'fourth': 0.0591, 'silent': 0.0217, 'not_good': 0.1424, 'time_s': 552.37}
+audio_follow_mode female {'good': 0.7988, 'harsh': 0.0498, 'fourth': 0.0665, 'silent': 0.0848, 'not_good': 0.2012}
+audio_follow_mode male {'good': 0.7037, 'harsh': 0.0694, 'fourth': 0.059, 'silent': 0.1679, 'not_good': 0.2963}
+worst 26 male 48 0.454 0.114 0.369
+worst 35 male 47 0.558 0.077 0.329
+worst 23 male 48 0.592 0.067 0.285
+worst 30 male 56 0.6 0.07 0.281
+worst 21 male 50 0.648 0.069 0.21

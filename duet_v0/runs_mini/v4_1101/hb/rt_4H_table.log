@@ -1,0 +1,2 @@
+2026-11-02 05:59:39 START tl=600 cwd=$ABS $ABS/.venv/bin/python $ABS/runs_mini/v5rt_1101/r4/H/table_H_v1.py --out $ABS/runs_mini/v5rt_1101/r4/H/table_H_v1.json
+2026-11-02 05:59:39 END rc=1 secs=0 $ABS/.venv/bin/python $ABS/runs_mini/v5rt_1101/r4/H/table_H_v1.py --out $ABS/runs_mini/v5rt_1101/r4/H/table_H_v1.json

@@ -1,0 +1,2 @@
+2026-11-01 16:05:52 START tl=600 cwd=$ABS/futures/v3_nolatency $ABS/.venv/bin/python $ABS/futures/v3_nolatency/bench3.py --system r4_true_cons_v2 --note v4 r4 E5b belief side + r3_true_cons_v4 choice side (expected consonance with her true note)
+2026-11-01 16:06:06 END rc=0 secs=14 $ABS/.venv/bin/python $ABS/futures/v3_nolatency/bench3.py --system r4_true_cons_v2 --note v4 r4 E5b belief side + r3_true_cons_v4 choice side (expected consonance with her true note)

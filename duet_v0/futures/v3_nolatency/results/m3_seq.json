@@ -1,0 +1,165 @@
+{
+ "label": "m3_seq",
+ "best_system": "m3_seq_v5",
+ "headline": 0.7199,
+ "rows": {
+  "bach": {
+   "music": 0.8026,
+   "cons": 0.9568,
+   "fit": 0.8107,
+   "harsh": 0.0261,
+   "double": 0.1844,
+   "leap": 3.5729,
+   "big": 0.0302,
+   "par": 0.003,
+   "us_per_note": 131.8449
+  },
+  "folk": {
+   "music": 0.7885,
+   "cons": 0.9584,
+   "fit": 0.8077,
+   "harsh": 0.026,
+   "double": 0.1177,
+   "leap": 4.0374,
+   "big": 0.0488,
+   "par": 0.0043,
+   "us_per_note": 129.4301
+  },
+  "pop": {
+   "music": 0.6506,
+   "cons": 0.9582,
+   "fit": 0.6697,
+   "harsh": 0.0217,
+   "double": 0.1005,
+   "leap": 4.0264,
+   "big": 0.0554,
+   "par": 0.0037,
+   "us_per_note": 130.9259
+  },
+  "pop909": {
+   "music": 0.6381,
+   "cons": 0.9553,
+   "fit": 0.6582,
+   "harsh": 0.0256,
+   "double": 0.0862,
+   "leap": 4.1864,
+   "big": 0.0703,
+   "par": 0.0055,
+   "us_per_note": 130.9902
+  }
+ },
+ "flags": [],
+ "history_ablation_v5": {
+  "0 beats (current note only)": 0.6581,
+  "4 beats (1 bar)": 0.6951,
+  "16 beats (4 bars)": 0.7095,
+  "all": 0.7199,
+  "single-GRU v3 same order": [
+   0.659,
+   0.6811,
+   0.6964,
+   0.7075
+  ]
+ },
+ "history_use": "A small recurrent network (GRU) listens to every note she has sung so far - which scale step it was, how high, how long the previous note lasted, and where it fell in the bar - and keeps a running summary of it, from which it guesses which of the 7 chords the song is on right now; Duet then sings the chord tone nearest its own last note that sounds good against her current note. The past helps because a single note fits two or three chords, but the notes leading up to it (and how the song has been moving through its chords) pin down which one is meant: cutting the memory to just the current note drops the score from 0.720 to 0.658, one bar of memory gives 0.695, four bars 0.709, and the whole song 0.720. So most of the gain comes from the last bar or two, and the rest of the song still adds a little (likely the song's habits, such as which chords it uses on which beat).",
+ "other_systems": [
+  {
+   "name": "m3_seq_v4",
+   "headline": 0.7142,
+   "flags": [],
+   "note": "ensemble of 2 GRUs, v3 weights"
+  },
+  {
+   "name": "m3_seq_v5h16",
+   "headline": 0.7095,
+   "flags": [],
+   "note": "v5, DUET_HIST=16 beats (4 bars)"
+  },
+  {
+   "name": "m3_seq_v3",
+   "headline": 0.7075,
+   "flags": [],
+   "note": "v1 GRU + voice-leading weights tuned on val (weaker doubling penalty, step cost 0.015)"
+  },
+  {
+   "name": "m3_seq_v3h16",
+   "headline": 0.6964,
+   "flags": [],
+   "note": "v3, DUET_HIST=16 beats"
+  },
+  {
+   "name": "m3_seq_v5h4",
+   "headline": 0.6951,
+   "flags": [],
+   "note": "v5, DUET_HIST=4 beats (1 bar)"
+  },
+  {
+   "name": "m3_seq_s1",
+   "headline": 0.6927,
+   "flags": [],
+   "note": "second 96-unit GRU, seed 1, v3 weights"
+  },
+  {
+   "name": "m3_seq_v3h4",
+   "headline": 0.6811,
+   "flags": [],
+   "note": "v3, DUET_HIST=4 beats"
+  },
+  {
+   "name": "m3_seq_v1",
+   "headline": 0.6777,
+   "flags": [],
+   "note": "single GRU (96 units, 150 s training), hand-set voice-leading weights, full history"
+  },
+  {
+   "name": "m3_seq_v2",
+   "headline": 0.6731,
+   "flags": [],
+   "note": "wider GRU (128 units, 270 s), v1 weights: no better than v1"
+  },
+  {
+   "name": "m3_seq_h16",
+   "headline": 0.6696,
+   "flags": [],
+   "note": "v1, DUET_HIST=16 beats (4 bars)"
+  },
+  {
+   "name": "m3_seq_h4",
+   "headline": 0.6608,
+   "flags": [],
+   "note": "v1, DUET_HIST=4 beats (1 bar of 4/4)"
+  },
+  {
+   "name": "m3_seq_v3h0",
+   "headline": 0.659,
+   "flags": [],
+   "note": "v3, DUET_HIST=0"
+  },
+  {
+   "name": "m3_seq_v5h0",
+   "headline": 0.6581,
+   "flags": [],
+   "note": "v5 (best), DUET_HIST=0 beats"
+  },
+  {
+   "name": "m3_seq_h0",
+   "headline": 0.6317,
+   "flags": [],
+   "note": "v1, DUET_HIST=0 (current note only)"
+  }
+ ],
+ "what_failed": "A wider GRU trained longer (m3_seq_v2, 128 units, 270 s) did not beat the 96-unit one (0.673 vs 0.678 with the same decision weights). The hand-set decision weights were too strict on doubling her note; re-tuning on val (doubling penalty 0.35 -> 0.2, allowing Duet above her) gave +0.03, but going lower (0.15) pushed doubling to 0.244, right at the 25% DOUBLING line, so it was not used. Windowed history is implemented by re-running the GRU from an empty state over the last H beats, with nets trained on whole songs (not on crops), so the short-window numbers may slightly understate what a net trained for that window could do.",
+ "files": [
+  "/Users/wangzesen/work/claude_sandbox/MEAM5160/project/duet_v0/futures/v3_nolatency/systems/m3_seq_v1.py",
+  "/Users/wangzesen/work/claude_sandbox/MEAM5160/project/duet_v0/futures/v3_nolatency/systems/m3_seq_v3.py",
+  "/Users/wangzesen/work/claude_sandbox/MEAM5160/project/duet_v0/futures/v3_nolatency/systems/m3_seq_v4.py",
+  "/Users/wangzesen/work/claude_sandbox/MEAM5160/project/duet_v0/futures/v3_nolatency/systems/m3_seq_v5.py",
+  "/Users/wangzesen/work/claude_sandbox/MEAM5160/project/duet_v0/futures/v3_nolatency/systems/m3_seq_v5h0.py",
+  "/Users/wangzesen/work/claude_sandbox/MEAM5160/project/duet_v0/futures/v3_nolatency/systems/m3_seq_v5h4.py",
+  "/Users/wangzesen/work/claude_sandbox/MEAM5160/project/duet_v0/futures/v3_nolatency/systems/m3_seq_v5h16.py",
+  "/Users/wangzesen/work/claude_sandbox/MEAM5160/project/duet_v0/futures/v3_nolatency/systems/m3_seq_full.pt",
+  "/Users/wangzesen/work/claude_sandbox/MEAM5160/project/duet_v0/futures/v3_nolatency/systems/m3_seq_big.pt",
+  "/Users/wangzesen/work/claude_sandbox/MEAM5160/project/duet_v0/futures/v3_nolatency/systems/m3_seq_s1.pt",
+  "/Users/wangzesen/work/claude_sandbox/MEAM5160/project/duet_v0/futures/v3_nolatency/tune/m3_tune.py"
+ ]
+}

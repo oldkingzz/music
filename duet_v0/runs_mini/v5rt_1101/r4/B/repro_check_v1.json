@@ -1,0 +1,83 @@
+{
+ "ok": true,
+ "live_bench_rt_v2_sha256": "ffeb1ab0b6585719afcb6baf974cf1fc0a373852822eb12b32875572ed442946",
+ "pairs": [
+  {
+   "v1": "L_reactive_r2_mix_v2_sung_wired.json",
+   "v2": "L4_v2repro_reactive_r2_mix_v2_sung_wired.json",
+   "digest_v1": "888e91653d63856f0b34971811a7efb7cb9c104596e1c1b5c11d49a9078f098f",
+   "digest_v2": "888e91653d63856f0b34971811a7efb7cb9c104596e1c1b5c11d49a9078f098f",
+   "same_digest": true,
+   "differing_fields": [],
+   "code_ok": true,
+   "code_v2": {
+    "live_bench_rt.py": "46b43f91bf4bfa03f04c07ecdb543368394b6279f198cc8a21c435a8ab2bd8fd",
+    "voice_v1.py": "ed395a5acb7c4a1dbf341c22f41b3b772f74feaeb492880ff93ae8799220e2f9",
+    "bench_rt.py": "f1eb524aa939b5ba54704532ac7b5eb536659ceaaef32c3701934f9cf7d3e772",
+    "live_bench_rt_v2.py": "ffeb1ab0b6585719afcb6baf974cf1fc0a373852822eb12b32875572ed442946"
+   },
+   "rt_nd_live": [
+    0.5936451194275247,
+    0.5936451194275247
+   ]
+  },
+  {
+   "v1": "L_reactive_r2_mix_v2_sung_bt.json",
+   "v2": "L4_v2repro_reactive_r2_mix_v2_sung_bt.json",
+   "digest_v1": "8462b8dfb5823160c24b79dbfd655040ee9438b87a653915d69bee8d8c82337a",
+   "digest_v2": "8462b8dfb5823160c24b79dbfd655040ee9438b87a653915d69bee8d8c82337a",
+   "same_digest": true,
+   "differing_fields": [],
+   "code_ok": true,
+   "code_v2": {
+    "live_bench_rt.py": "46b43f91bf4bfa03f04c07ecdb543368394b6279f198cc8a21c435a8ab2bd8fd",
+    "voice_v1.py": "ed395a5acb7c4a1dbf341c22f41b3b772f74feaeb492880ff93ae8799220e2f9",
+    "bench_rt.py": "f1eb524aa939b5ba54704532ac7b5eb536659ceaaef32c3701934f9cf7d3e772",
+    "live_bench_rt_v2.py": "ffeb1ab0b6585719afcb6baf974cf1fc0a373852822eb12b32875572ed442946"
+   },
+   "rt_nd_live": [
+    0.41391592894691015,
+    0.41391592894691015
+   ]
+  },
+  {
+   "v1": "R3X_rt_r3_X_regtrkst_v1_sung_wired.json",
+   "v2": "L4_v2repro_rt_r3_X_regtrkst_v1_sung_wired.json",
+   "digest_v1": "0c357dc0169b77f94f310138e5521d8ead46a83d90516d07ca832bb9a4413f8e",
+   "digest_v2": "0c357dc0169b77f94f310138e5521d8ead46a83d90516d07ca832bb9a4413f8e",
+   "same_digest": true,
+   "differing_fields": [],
+   "code_ok": true,
+   "code_v2": {
+    "live_bench_rt.py": "46b43f91bf4bfa03f04c07ecdb543368394b6279f198cc8a21c435a8ab2bd8fd",
+    "voice_v1.py": "ed395a5acb7c4a1dbf341c22f41b3b772f74feaeb492880ff93ae8799220e2f9",
+    "bench_rt.py": "f1eb524aa939b5ba54704532ac7b5eb536659ceaaef32c3701934f9cf7d3e772",
+    "live_bench_rt_v2.py": "ffeb1ab0b6585719afcb6baf974cf1fc0a373852822eb12b32875572ed442946"
+   },
+   "rt_nd_live": [
+    0.6070752376469969,
+    0.6070752376469969
+   ]
+  },
+  {
+   "v1": "R3X_rt_r3_X_regtrkst_v1_sung_bt.json",
+   "v2": "L4_v2repro_rt_r3_X_regtrkst_v1_sung_bt.json",
+   "digest_v1": "5122a7fc4bd7ac4184aa1c5fbbc53e6abd8d7b52153bb47f5c67415083aadfbf",
+   "digest_v2": "5122a7fc4bd7ac4184aa1c5fbbc53e6abd8d7b52153bb47f5c67415083aadfbf",
+   "same_digest": true,
+   "differing_fields": [],
+   "code_ok": true,
+   "code_v2": {
+    "live_bench_rt.py": "46b43f91bf4bfa03f04c07ecdb543368394b6279f198cc8a21c435a8ab2bd8fd",
+    "voice_v1.py": "ed395a5acb7c4a1dbf341c22f41b3b772f74feaeb492880ff93ae8799220e2f9",
+    "bench_rt.py": "f1eb524aa939b5ba54704532ac7b5eb536659ceaaef32c3701934f9cf7d3e772",
+    "live_bench_rt_v2.py": "ffeb1ab0b6585719afcb6baf974cf1fc0a373852822eb12b32875572ed442946"
+   },
+   "rt_nd_live": [
+    0.41511265950259435,
+    0.41511265950259435
+   ]
+  }
+ ],
+ "note": "v2 = thin wrapper around frozen v1; val only, no test split"
+}

@@ -1,0 +1,696 @@
+{
+ "cfg": {
+  "lam": 2.0,
+  "kappa": 1.0,
+  "kappa_hold": 0.25,
+  "mu": 0.05,
+  "mu_old": -1.0,
+  "beta": 1.0,
+  "theta": 0.0,
+  "theta_sil": 0.0,
+  "nu": 1.0,
+  "w_x": 0.3,
+  "gamma": 0.0,
+  "min_cov": 0.0,
+  "silence": false,
+  "hold_win": "beat",
+  "post_hold": true,
+  "pan_floor": 0.0,
+  "hear_tau": 0.2,
+  "lam_h": 1.0,
+  "kappa_h": 1.0,
+  "hear_sil": false,
+  "w_next": 0.0,
+  "w_dyn": 1.0,
+  "lam_n": 1.0,
+  "hx": 0.0,
+  "hedge_post": 0,
+  "copy": true,
+  "copy_rhy": 1.0,
+  "copy_p": 1.0,
+  "hm_mode": "lr",
+  "hm_rho": 1.0,
+  "hm_min": 6,
+  "hm_bar": 0,
+  "hm_lag": 8,
+  "hm_plan": 1,
+  "trk": true,
+  "eps_u": 0.1,
+  "mel_w": 1.0,
+  "tau_t": 0.15,
+  "p_min": 0.1,
+  "harsh_max": 0.2,
+  "kappa_t": 1.0,
+  "lam_t": 1.0,
+  "sil_v": -0.2,
+  "above_att": false,
+  "free": true,
+  "frag_copy": 2.0,
+  "hold_trk": true
+ },
+ "voice": "sung",
+ "note": "val only, systems tuned on val; no test split",
+ "metrics": {
+  "rt_nd_live": 0.6136018801480846,
+  "harsh": 0.0507306612382075,
+  "double": 0.029916983858616145,
+  "first_100ms_hit": 0.3273234410129311,
+  "first_100ms_harsh": 0.20138962906558813,
+  "on_time_right": 0.1878727634194831,
+  "changes": 0.6371769383697813,
+  "late_entry": 0.020874751491053677,
+  "fresh_per100": 2.584493041749503,
+  "fresh": 26,
+  "wrong_att_per100": 35.288270377733596,
+  "attacks_per100": 86.18290258449304,
+  "attacks_in_rest": 1,
+  "stumbles_per100": 9.940357852882704,
+  "stumbles_own_per100": 8.648111332007952,
+  "blips": 2,
+  "blips_on_her": 2,
+  "notes": 1006,
+  "counted_beats": 1111.8478685671187
+ },
+ "agg": {
+  "att": {
+   "hear_switch": 503,
+   "plan_attack": 158,
+   "trk_attack": 62,
+   "trk_react": 140,
+   "reenter": 3,
+   "hear_enter": 1
+  },
+  "wrong": {
+   "hear_switch": 162,
+   "plan_attack": 95,
+   "trk_attack": 25,
+   "trk_react": 72,
+   "reenter": 0,
+   "hear_enter": 1
+  },
+  "att_by_tracker": {
+   "hear_switch:wrong": 30,
+   "hear_switch:right": 457,
+   "hear_switch:split": 16,
+   "trk_attack:split": 14,
+   "trk_react:split": 34,
+   "trk_react:right": 67,
+   "trk_attack:wrong": 30,
+   "trk_attack:right": 18,
+   "trk_react:wrong": 39,
+   "reenter:right": 2,
+   "hear_enter:right": 1,
+   "reenter:wrong": 1
+  },
+  "fresh": {
+   "hear_switch": 6,
+   "trk_react": 12,
+   "plan_attack": 7,
+   "trk_attack": 1
+  },
+  "fresh_by_tracker": {
+   "hear_switch:wrong": 6,
+   "trk_react:wrong": 10,
+   "trk_react:split": 2,
+   "trk_attack:split": 1
+  },
+  "fresh_above": {
+   "hear_switch": 0,
+   "trk_react": 0,
+   "plan_attack": 0,
+   "trk_attack": 0
+  },
+  "wrong_by_tracker": {
+   "hear_switch:wrong": 22,
+   "hear_switch:right": 135,
+   "trk_react:split": 25,
+   "trk_react:right": 19,
+   "trk_react:wrong": 28,
+   "hear_switch:split": 5,
+   "trk_attack:wrong": 12,
+   "trk_attack:split": 9,
+   "trk_attack:right": 4,
+   "hear_enter:right": 1
+  },
+  "stumble": {
+   "hear_switch": 34,
+   "trk_react": 10,
+   "plan_attack": 51,
+   "trk_attack": 4,
+   "hear_enter": 1
+  },
+  "time": {
+   "hear_switch": 472.0699999996432,
+   "plan_attack": 109.4949999999729,
+   "trk_attack": 56.250000000010324,
+   "trk_react": 95.71999999998543,
+   "silent": 3.944999999999938,
+   "reenter": 6.089999999999892,
+   "hear_enter": 0.2050000000000001
+  },
+  "harsh_t": {
+   "hear_switch": 19.135000000000478,
+   "plan_attack": 5.034999999999915,
+   "trk_react": 9.810000000000134,
+   "trk_attack": 4.149999999999934,
+   "reenter": 0.075
+  },
+  "hit_t": {
+   "hear_switch": 312.2949999997885,
+   "plan_attack": 59.06000000001176,
+   "trk_attack": 30.13499999999829,
+   "trk_react": 48.99000000000661,
+   "reenter": 5.019999999999915
+  },
+  "hear_calls": {
+   "hear_enter:wrong": 5,
+   "hear_switch:right": 474,
+   "hear_same:right": 246,
+   "hear_switch:wrong": 34,
+   "hear_kept_plan:right": 10,
+   "trk_keep:split": 161,
+   "trk_keep:wrong": 49,
+   "hear_switch:split": 17,
+   "trk_attack:split": 18,
+   "trk_react:split": 34,
+   "hear_same:wrong": 19,
+   "trk_sil:wrong": 4,
+   "trk_react:right": 69,
+   "trk_attack:wrong": 34,
+   "trk_attack:right": 19,
+   "trk_react:wrong": 41,
+   "trk_keep:right": 52,
+   "hear_enter:right": 13,
+   "hear_same:split": 12,
+   "reenter:right": 2,
+   "hear_kept_plan:wrong": 1,
+   "reenter:wrong": 1
+  },
+  "att_rest": {
+   "plan_attack": 1
+  }
+ },
+ "fresh_details": [
+  {
+   "song": "bach/bwv269",
+   "beat": 4.1,
+   "her_true": 71,
+   "duet": 57,
+   "iv": 2,
+   "src": "hear_switch",
+   "terr": 1,
+   "frag": 0,
+   "above": false,
+   "call": {
+    "kind": "hear",
+    "i": 3,
+    "onset": 4.0,
+    "midi": 72,
+    "r": 57
+   }
+  },
+  {
+   "song": "bach/bwv269",
+   "beat": 55.1,
+   "her_true": 74,
+   "duet": 64,
+   "iv": 10,
+   "src": "hear_switch",
+   "terr": -2,
+   "frag": 0,
+   "above": false,
+   "call": {
+    "kind": "hear",
+    "i": 78,
+    "onset": 55.0,
+    "midi": 72,
+    "r": 64
+   }
+  },
+  {
+   "song": "bach/bwv415",
+   "beat": 24.14,
+   "her_true": 73,
+   "duet": 62,
+   "iv": 11,
+   "src": "hear_switch",
+   "terr": -2,
+   "frag": 0,
+   "above": false,
+   "call": {
+    "kind": "hear",
+    "i": 23,
+    "onset": 24.0,
+    "midi": 71,
+    "r": 62
+   }
+  },
+  {
+   "song": "bach/bwv415",
+   "beat": 33.065,
+   "her_true": 66,
+   "duet": 64,
+   "iv": 2,
+   "src": "trk_react",
+   "terr": 2,
+   "frag": 0,
+   "above": false,
+   "call": {
+    "kind": "hear",
+    "i": 30,
+    "onset": 33.0,
+    "midi": 68,
+    "r": 64
+   }
+  },
+  {
+   "song": "bach/bwv415",
+   "beat": 38.462,
+   "her_true": 66,
+   "duet": 64,
+   "iv": 2,
+   "src": "plan_attack",
+   "terr": null,
+   "frag": null,
+   "above": false,
+   "call": {
+    "kind": "plan",
+    "q": 38.5,
+    "r": 64,
+    "last": [
+     38.0,
+     null,
+     67
+    ]
+   }
+  },
+  {
+   "song": "bach/bwv308",
+   "beat": 17.105,
+   "her_true": 67,
+   "duet": 65,
+   "iv": 2,
+   "src": "trk_react",
+   "terr": 2,
+   "frag": 0,
+   "above": false,
+   "call": {
+    "kind": "hear",
+    "i": 19,
+    "onset": 17.0,
+    "midi": 69,
+    "r": 65
+   }
+  },
+  {
+   "song": "bach/bwv291",
+   "beat": 6.11,
+   "her_true": 72,
+   "duet": 62,
+   "iv": 10,
+   "src": "trk_react",
+   "terr": -2,
+   "frag": 0,
+   "above": false,
+   "call": {
+    "kind": "hear",
+    "i": 5,
+    "onset": 6.0,
+    "midi": 70,
+    "r": 62
+   }
+  },
+  {
+   "song": "bach/bwv245.40",
+   "beat": 71.12,
+   "her_true": 74,
+   "duet": 72,
+   "iv": 2,
+   "src": "trk_react",
+   "terr": 2,
+   "frag": 0,
+   "above": false,
+   "call": {
+    "kind": "hear",
+    "i": 101,
+    "onset": 71.0,
+    "midi": 76,
+    "r": 72
+   }
+  },
+  {
+   "song": "bach/bwv245.26",
+   "beat": 24.08,
+   "her_true": 74,
+   "duet": 56,
+   "iv": 6,
+   "src": "hear_switch",
+   "terr": -2,
+   "frag": 0,
+   "above": false,
+   "call": {
+    "kind": "hear",
+    "i": 23,
+    "onset": 24.0,
+    "midi": 72,
+    "r": 56
+   }
+  },
+  {
+   "song": "bach/bwv245.26",
+   "beat": 24.463,
+   "her_true": 74,
+   "duet": 63,
+   "iv": 11,
+   "src": "plan_attack",
+   "terr": null,
+   "frag": null,
+   "above": false,
+   "call": {
+    "kind": "plan",
+    "q": 24.5,
+    "r": 63,
+    "last": [
+     24.0,
+     null,
+     72
+    ]
+   }
+  },
+  {
+   "song": "bach/bwv371",
+   "beat": 68.975,
+   "her_true": 69,
+   "duet": 59,
+   "iv": 10,
+   "src": "trk_react",
+   "terr": -1,
+   "frag": 4,
+   "above": false,
+   "call": {
+    "kind": "hear",
+    "i": 74,
+    "onset": 68.852,
+    "midi": 66,
+    "r": 59
+   }
+  },
+  {
+   "song": "bach/bwv294",
+   "beat": 55.963,
+   "her_true": 65,
+   "duet": 55,
+   "iv": 10,
+   "src": "plan_attack",
+   "terr": null,
+   "frag": null,
+   "above": false,
+   "call": {
+    "kind": "plan",
+    "q": 56.0,
+    "r": 55,
+    "last": [
+     55.0,
+     null,
+     62
+    ]
+   }
+  },
+  {
+   "song": "bach/bwv294",
+   "beat": 59.135,
+   "her_true": 64,
+   "duet": 54,
+   "iv": 10,
+   "src": "hear_switch",
+   "terr": -2,
+   "frag": 0,
+   "above": false,
+   "call": {
+    "kind": "hear",
+    "i": 63,
+    "onset": 59.0,
+    "midi": 62,
+    "r": 54
+   }
+  },
+  {
+   "song": "bach/bwv294",
+   "beat": 59.963,
+   "her_true": 66,
+   "duet": 55,
+   "iv": 11,
+   "src": "plan_attack",
+   "terr": null,
+   "frag": null,
+   "above": false,
+   "call": {
+    "kind": "plan",
+    "q": 60.0,
+    "r": 55,
+    "last": [
+     59.0,
+     null,
+     62
+    ]
+   }
+  },
+  {
+   "song": "bach/bwv328",
+   "beat": 63.965,
+   "her_true": 71,
+   "duet": 65,
+   "iv": 6,
+   "src": "trk_attack",
+   "terr": 0,
+   "frag": 2,
+   "above": false,
+   "call": {
+    "kind": "hear",
+    "i": 66,
+    "onset": 63.75,
+    "midi": 69,
+    "r": 65
+   }
+  },
+  {
+   "song": "bach/bwv328",
+   "beat": 83.12,
+   "her_true": 64,
+   "duet": 62,
+   "iv": 2,
+   "src": "trk_react",
+   "terr": 2,
+   "frag": 0,
+   "above": false,
+   "call": {
+    "kind": "hear",
+    "i": 90,
+    "onset": 83.0,
+    "midi": 66,
+    "r": 62
+   }
+  },
+  {
+   "song": "bach/bwv328",
+   "beat": 85.1,
+   "her_true": 62,
+   "duet": 60,
+   "iv": 2,
+   "src": "trk_react",
+   "terr": 1,
+   "frag": 0,
+   "above": false,
+   "call": {
+    "kind": "hear",
+    "i": 92,
+    "onset": 85.0,
+    "midi": 63,
+    "r": 60
+   }
+  },
+  {
+   "song": "bach/bwv328",
+   "beat": 153.963,
+   "her_true": 71,
+   "duet": 60,
+   "iv": 11,
+   "src": "plan_attack",
+   "terr": null,
+   "frag": null,
+   "above": false,
+   "call": {
+    "kind": "plan",
+    "q": 154.0,
+    "r": 60,
+    "last": [
+     153.0,
+     null,
+     71
+    ]
+   }
+  },
+  {
+   "song": "bach/bwv328",
+   "beat": 163.055,
+   "her_true": 64,
+   "duet": 62,
+   "iv": 2,
+   "src": "trk_react",
+   "terr": 2,
+   "frag": 0,
+   "above": false,
+   "call": {
+    "kind": "hear",
+    "i": 191,
+    "onset": 163.0,
+    "midi": 66,
+    "r": 62
+   }
+  },
+  {
+   "song": "bach/bwv328",
+   "beat": 165.963,
+   "her_true": 65,
+   "duet": 55,
+   "iv": 10,
+   "src": "plan_attack",
+   "terr": null,
+   "frag": null,
+   "above": false,
+   "call": {
+    "kind": "plan",
+    "q": 166.0,
+    "r": 55,
+    "last": [
+     165.0,
+     null,
+     62
+    ]
+   }
+  },
+  {
+   "song": "bach/bwv328",
+   "beat": 180.463,
+   "her_true": 67,
+   "duet": 57,
+   "iv": 10,
+   "src": "plan_attack",
+   "terr": null,
+   "frag": null,
+   "above": false,
+   "call": {
+    "kind": "plan",
+    "q": 180.5,
+    "r": 57,
+    "last": [
+     180.0,
+     null,
+     66
+    ]
+   }
+  },
+  {
+   "song": "bach/bwv299",
+   "beat": 9.095,
+   "her_true": 75,
+   "duet": 65,
+   "iv": 10,
+   "src": "trk_react",
+   "terr": -3,
+   "frag": 0,
+   "above": false,
+   "call": {
+    "kind": "hear",
+    "i": 11,
+    "onset": 9.0,
+    "midi": 72,
+    "r": 65
+   }
+  },
+  {
+   "song": "bach/bwv299",
+   "beat": 29.57,
+   "her_true": 75,
+   "duet": 62,
+   "iv": 1,
+   "src": "trk_react",
+   "terr": 2,
+   "frag": 0,
+   "above": false,
+   "call": {
+    "kind": "hear",
+    "i": 39,
+    "onset": 29.5,
+    "midi": 77,
+    "r": 62
+   }
+  },
+  {
+   "song": "bach/bwv299",
+   "beat": 30.575,
+   "her_true": 71,
+   "duet": 65,
+   "iv": 6,
+   "src": "hear_switch",
+   "terr": 1,
+   "frag": 0,
+   "above": false,
+   "call": {
+    "kind": "hear",
+    "i": 41,
+    "onset": 30.5,
+    "midi": 72,
+    "r": 65
+   }
+  },
+  {
+   "song": "bach/bwv346",
+   "beat": 44.96,
+   "her_true": 71,
+   "duet": 57,
+   "iv": 2,
+   "src": "trk_react",
+   "terr": 0,
+   "frag": 2,
+   "above": false,
+   "call": {
+    "kind": "hear",
+    "i": 54,
+    "onset": 44.75,
+    "midi": 72,
+    "r": 57
+   }
+  },
+  {
+   "song": "bach/bwv282",
+   "beat": 10.115,
+   "her_true": 71,
+   "duet": 69,
+   "iv": 2,
+   "src": "trk_react",
+   "terr": 2,
+   "frag": 0,
+   "above": false,
+   "call": {
+    "kind": "hear",
+    "i": 6,
+    "onset": 10.0,
+    "midi": 73,
+    "r": 69
+   }
+  }
+ ],
+ "stats": {
+  "hear_enter": 18,
+  "hear_switch": 525,
+  "hear_same": 278,
+  "plan_attack": 163,
+  "hedge_moved": 79,
+  "hear_kept_plan": 11,
+  "trk_keep": 264,
+  "trk_attack": 71,
+  "trk_react": 144,
+  "trk_sil": 4
+ }
+}

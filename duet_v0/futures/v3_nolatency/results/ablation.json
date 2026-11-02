@@ -1,0 +1,301 @@
+{
+ "systems": {
+  "m3_seq_v5": {
+   "hist": {
+    "0": 0.6581,
+    "1": 0.6744,
+    "4": 0.6951,
+    "16": 0.7095,
+    "-1": 0.7199
+   },
+   "hist_rows": {
+    "-1": {
+     "bach": 0.8026,
+     "folk": 0.7885,
+     "pop": 0.6506,
+     "pop909": 0.6381
+    },
+    "0": {
+     "bach": 0.7196,
+     "folk": 0.7022,
+     "pop": 0.6088,
+     "pop909": 0.6017
+    },
+    "1": {
+     "bach": 0.7349,
+     "folk": 0.7362,
+     "pop": 0.6246,
+     "pop909": 0.602
+    },
+    "4": {
+     "bach": 0.7567,
+     "folk": 0.7536,
+     "pop": 0.644,
+     "pop909": 0.6261
+    },
+    "16": {
+     "bach": 0.7792,
+     "folk": 0.7773,
+     "pop": 0.6476,
+     "pop909": 0.6337
+    }
+   },
+   "hist_flags": {
+    "-1": [],
+    "0": [],
+    "1": [],
+    "4": [],
+    "16": []
+   },
+   "hist_double": {
+    "-1": 0.184,
+    "0": 0.114,
+    "1": 0.115,
+    "4": 0.14,
+    "16": 0.17
+   },
+   "rows_at_all": {
+    "bach": {
+     "music": 0.8026,
+     "cons": 0.9568,
+     "fit": 0.8107,
+     "harsh": 0.0261,
+     "double": 0.1844,
+     "inkey": 1.0,
+     "leap": 3.5729,
+     "big": 0.0302,
+     "par": 0.003,
+     "us_per_note": 193.7874,
+     "songs": 17
+    },
+    "folk": {
+     "music": 0.7885,
+     "cons": 0.9584,
+     "fit": 0.8077,
+     "harsh": 0.026,
+     "double": 0.1177,
+     "inkey": 0.9999,
+     "leap": 4.0374,
+     "big": 0.0488,
+     "par": 0.0043,
+     "us_per_note": 183.7835,
+     "songs": 170
+    },
+    "pop": {
+     "music": 0.6506,
+     "cons": 0.9582,
+     "fit": 0.6697,
+     "harsh": 0.0217,
+     "double": 0.1005,
+     "inkey": 1.0,
+     "leap": 4.0264,
+     "big": 0.0554,
+     "par": 0.0037,
+     "us_per_note": 185.4081,
+     "songs": 300
+    },
+    "pop909": {
+     "music": 0.6381,
+     "cons": 0.9553,
+     "fit": 0.6582,
+     "harsh": 0.0256,
+     "double": 0.0862,
+     "inkey": 0.9999,
+     "leap": 4.1864,
+     "big": 0.0703,
+     "par": 0.0055,
+     "us_per_note": 184.8269,
+     "songs": 40
+    }
+   }
+  },
+  "m3_seq_v4": {
+   "hist": {
+    "0": 0.6581,
+    "1": 0.669,
+    "4": 0.698,
+    "16": 0.7053,
+    "-1": 0.7142
+   },
+   "hist_rows": {
+    "-1": {
+     "bach": 0.7893,
+     "folk": 0.7857,
+     "pop": 0.6431,
+     "pop909": 0.6386
+    },
+    "0": {
+     "bach": 0.7223,
+     "folk": 0.6999,
+     "pop": 0.6065,
+     "pop909": 0.6035
+    },
+    "1": {
+     "bach": 0.7282,
+     "folk": 0.7335,
+     "pop": 0.6166,
+     "pop909": 0.5978
+    },
+    "4": {
+     "bach": 0.7723,
+     "folk": 0.7527,
+     "pop": 0.6382,
+     "pop909": 0.629
+    },
+    "16": {
+     "bach": 0.7732,
+     "folk": 0.7745,
+     "pop": 0.6401,
+     "pop909": 0.6335
+    }
+   },
+   "hist_flags": {
+    "-1": [],
+    "0": [],
+    "1": [],
+    "4": [],
+    "16": []
+   },
+   "hist_double": {
+    "-1": 0.177,
+    "0": 0.11,
+    "1": 0.108,
+    "4": 0.139,
+    "16": 0.169
+   },
+   "rows_at_all": {
+    "bach": {
+     "music": 0.7893,
+     "cons": 0.96,
+     "fit": 0.7947,
+     "harsh": 0.0261,
+     "double": 0.1767,
+     "inkey": 0.9998,
+     "leap": 3.3596,
+     "big": 0.0285,
+     "par": 0.004,
+     "us_per_note": 149.0577,
+     "songs": 17
+    },
+    "folk": {
+     "music": 0.7857,
+     "cons": 0.9567,
+     "fit": 0.8054,
+     "harsh": 0.0272,
+     "double": 0.127,
+     "inkey": 0.9998,
+     "leap": 3.8697,
+     "big": 0.0417,
+     "par": 0.0038,
+     "us_per_note": 129.2157,
+     "songs": 170
+    },
+    "pop": {
+     "music": 0.6431,
+     "cons": 0.9592,
+     "fit": 0.6615,
+     "harsh": 0.021,
+     "double": 0.1042,
+     "inkey": 1.0,
+     "leap": 3.7857,
+     "big": 0.0399,
+     "par": 0.0044,
+     "us_per_note": 131.4889,
+     "songs": 300
+    },
+    "pop909": {
+     "music": 0.6386,
+     "cons": 0.9553,
+     "fit": 0.6587,
+     "harsh": 0.0249,
+     "double": 0.0866,
+     "inkey": 0.9998,
+     "leap": 3.9885,
+     "big": 0.0572,
+     "par": 0.006,
+     "us_per_note": 128.9567,
+     "songs": 40
+    }
+   }
+  }
+ },
+ "context_m5_policy_v9_retrained_history_ablation_from_board": {
+  "m5_policy_v9": {
+   "headline": 0.7137,
+   "flags": []
+  },
+  "m5_policy_v9h0": {
+   "headline": 0.6912,
+   "flags": [
+    "DOUBLING"
+   ]
+  },
+  "m5_policy_v9nohist": {
+   "headline": 0.7121,
+   "flags": []
+  },
+  "m5_policy_v9h4": {
+   "headline": 0.7088,
+   "flags": [
+    "DOUBLING"
+   ]
+  },
+  "m5_policy_v9h16": {
+   "headline": 0.7084,
+   "flags": [
+    "DOUBLING"
+   ]
+  }
+ },
+ "notes": "Ran exactly 10 bench3 runs (val split, all 4 datasets bach/folk/pop/pop909, nothing skipped): m3_seq_v5 and m3_seq_v4, each with DUET_HIST = 0, 1, 4, 16, -1, via tl.py 600; all exited 0, no timeouts, each ~1-2 min, run in parallel. Systems chosen = top two causal, unflagged on --board: m3_seq_v5 (0.720) and m3_seq_v4 (0.714; m5_policy_v9 0.7137 is a hair behind). Both are the same family (GRU chord-probability ensemble + voice-leading choice), so this is one family's history curve, not two independent ones. Both systems honour DUET_HIST (read in build()); it is an INFERENCE-TIME window: the GRUs were trained on full history and, with H>=0, are re-run from an empty state over only notes that started in the last H beats (H=0 = current note only). Duet's own previous note is still used by the voice-leading cost at every H, so H=0 is 'no melody history', not 'no memory'. Result: history is worth ~6 points of the headline. m3_seq_v5: 0.658 (H=0) -> 0.674 (1) -> 0.695 (4) -> 0.709 (16) -> 0.720 (all); m3_seq_v4: 0.658 -> 0.669 -> 0.698 -> 0.705 -> 0.714. Monotone; most of the gain arrives within 4 beats (about one bar), but 16 beats -> full song still adds ~1 point, so long-range context (key/phrase memory) matters a little. Gains are largest on bach/folk (~+8 pts) and smallest on pop (~+4). Caveat: doubling (worst dataset) RISES with history, 0.11 at H=0 -> 0.14 at H=4 -> 0.17 at H=16 -> 0.18 at all (both systems), so part of the music gain comes with more unison/octave with her; all runs stay under the 0.25 DOUBLING flag and none is flagged. A matched-doubling comparison was not run here. Truncation at inference is a mismatch with training, so H=0..16 slightly understate what a model trained with that window would do; the board's m5_policy_v9 retrained ablation (context field) shows the same shape (h0 0.691 -> h4 0.709 -> h16 0.708 -> all 0.714) but those h-variants are DOUBLING-flagged. Scores are fixed per run (deterministic noise seed), single run each, no error bars; differences under ~0.005 should not be trusted. Demos: best system = m3_seq_v5. Her line = clean formant 'ah' voice, louder, panned left; Duet = clarinet-like odd-harmonic reed, softer (~0.4x), panned right, held until her next onset. Duet hears her notes with the bench's 10% mishearing, exactly like bench3.run_song. Twinkle full (48 beats, 100 bpm, 29.8 s); Bach val chorales bwv415 (48 beats, 84 bpm, 35.3 s) and bwv308 (40 beats, 80 bpm, 31.0 s), both full length (no cut needed). 'music' per demo is bench3's headline metric on that song alone (one song = noisy). m3_seq_v5 doubles her ~20-23% of the time in these demos vs 0-2% for third_below - audible as unisons/octaves. No pop/Hooktheory audio rendered. Script: make_demos3.py; metadata also in audio/demos.json. I have not listened to the files; check by ear.",
+ "audio": [
+  {
+   "file": "/Users/wangzesen/work/claude_sandbox/MEAM5160/project/duet_v0/futures/v3_nolatency/audio/twinkle_third_below.mp3",
+   "song": "twinkle",
+   "system": "third_below",
+   "music": 0.6591,
+   "double": 0.0,
+   "seconds": 29.8
+  },
+  {
+   "file": "/Users/wangzesen/work/claude_sandbox/MEAM5160/project/duet_v0/futures/v3_nolatency/audio/bwv415_third_below.mp3",
+   "song": "bwv415",
+   "system": "third_below",
+   "music": 0.5,
+   "double": 0.0227,
+   "seconds": 35.3
+  },
+  {
+   "file": "/Users/wangzesen/work/claude_sandbox/MEAM5160/project/duet_v0/futures/v3_nolatency/audio/bwv308_third_below.mp3",
+   "song": "bwv308",
+   "system": "third_below",
+   "music": 0.5556,
+   "double": 0.0,
+   "seconds": 31.0
+  },
+  {
+   "file": "/Users/wangzesen/work/claude_sandbox/MEAM5160/project/duet_v0/futures/v3_nolatency/audio/twinkle_m3_seq_v5.mp3",
+   "song": "twinkle",
+   "system": "m3_seq_v5",
+   "music": 0.7955,
+   "double": 0.2045,
+   "seconds": 29.8
+  },
+  {
+   "file": "/Users/wangzesen/work/claude_sandbox/MEAM5160/project/duet_v0/futures/v3_nolatency/audio/bwv415_m3_seq_v5.mp3",
+   "song": "bwv415",
+   "system": "m3_seq_v5",
+   "music": 0.8068,
+   "double": 0.2273,
+   "seconds": 35.3
+  },
+  {
+   "file": "/Users/wangzesen/work/claude_sandbox/MEAM5160/project/duet_v0/futures/v3_nolatency/audio/bwv308_m3_seq_v5.mp3",
+   "song": "bwv308",
+   "system": "m3_seq_v5",
+   "music": 0.9167,
+   "double": 0.2222,
+   "seconds": 31.0
+  }
+ ]
+}

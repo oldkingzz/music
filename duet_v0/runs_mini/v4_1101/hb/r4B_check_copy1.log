@@ -1,0 +1,2 @@
+2026-11-01 16:00:30 START tl=600 cwd=$ABS/futures/v3_nolatency $ABS/.venv/bin/python $ABS/runs_mini/v4_1101/r4/B/check_copy.py
+2026-11-01 16:02:12 END rc=0 secs=102 $ABS/.venv/bin/python $ABS/runs_mini/v4_1101/r4/B/check_copy.py

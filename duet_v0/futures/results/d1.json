@@ -1,0 +1,65 @@
+{
+ "id": "d1",
+ "title_zh": "录一遍，配一遍",
+ "updated": "2026-10-30T11:15:41-04:00",
+ "summary_zh": "她唱完后约 2.5 秒（板子估算）就能放出她的原声加 Duet 的中音、次中音、低音四部合唱；巴赫测试集上 100% 不冲突、零平行五八度，40 位真人歌手录音端到端 96% 不冲突、零平行。不足：真人录音要靠\"音高闸门\"把与她实测音高冲突的声部临时静音（全体静音约占她演唱时间的 5%）才过线，和弦与巴赫原作一致率只有三分之一，盲听还没有真人做。",
+ "acceptance": [
+  {
+   "line": "A1.1",
+   "text_zh": "她唱完到开始播放 <= 5 秒，全部在板子上算",
+   "measured": "2.4 s board estimate, batch from her finished recording (1.13 s M4, 1.19 s E-core) on 20 s / 8 bars; streaming variant 0.33 s board estimate; measured while other builders loaded the Mac (load average ~30 on 10 cores)",
+   "threshold": "<= 5 s",
+   "status": "needs_hardware",
+   "evidence": "futures/d1_record_harmonize/results/timing_m4.json, futures/d1_record_harmonize/results/timing_ecore.json"
+  },
+  {
+   "line": "A1.2",
+   "text_zh": "不冲突 >= 95%，且平行五度/八度为零",
+   "measured": "(a) symbolic, 53 test chorales, true soprano: no-clash 100.0% (Bach 73.8%), parallel 5ths/8ves 0/0 (Bach 68/19); (b) end to end on 40 vocadito real singers vs her annotated notes: no-clash 96.0% (worst track 88.7%), parallels 0/0, Duet sounding 91.4% of her time (tracks 21-40, never used for tuning: 96.1%); without the pitch gate 88.7%; transcription on vocadito: note F1 0.59 (onset 50 ms + pitch 50 cents), onset F1 0.73, precision 0.73, recall 0.50, right pitch 80.0% of her time",
+   "threshold": ">= 95% and 0 parallels",
+   "status": "pass",
+   "evidence": "futures/d1_record_harmonize/results/sym_test.json, futures/d1_record_harmonize/results/vocadito_gate.json"
+  },
+  {
+   "line": "A1.3",
+   "text_zh": "盲听：把 Duet 的和声与巴赫原作混在一起，听众接近一半的时候分不出来",
+   "measured": "blind kit ready (10 pairs, needs listeners). Proxies on test: Duet chord = Bach's chord 33.5%, bass pc = Bach's 42.8%, same note as Bach A/T/B 33.7%/26.1%/29.6%; mean leap A/T/B Duet 1.3/1.6/2.8 vs Bach 1.6/2.0/3.3 st; held notes A Duet 46.7% vs Bach 38.4%; chord sets used Duet 86 vs Bach 164; hidden outer 5/8 Duet 16 vs Bach 15; key from melody 83.0%; shipped CRF alto same note as Bach 31.5% vs Duet alto 33.7%",
+   "threshold": "listeners correct close to 50%",
+   "status": "needs_human",
+   "evidence": "futures/d1_record_harmonize/blind/INSTRUCTIONS.md, futures/d1_record_harmonize/blind/KEY.json, futures/d1_record_harmonize/results/sym_test.json"
+  }
+ ],
+ "demos": [
+  {
+   "file": "futures/d1_record_harmonize/demo/d1_vocadito1_choir.mp3",
+   "label_zh": "真人歌手（vocadito 第 1 首前 20 秒）+ Duet 三个声部",
+   "source": "vocadito (Bittner et al.), CC BY 4.0",
+   "page_safe": true
+  },
+  {
+   "file": "futures/d1_record_harmonize/demo/d1_bach_choir.mp3",
+   "label_zh": "巴赫众赞歌旋律（测试集）由合成歌手唱 + Duet 三个声部",
+   "source": "Bach chorale (public domain), synthetic singer",
+   "page_safe": true
+  },
+  {
+   "file": "futures/d1_record_harmonize/demo/d1_folk_choir.mp3",
+   "label_zh": "英国民谣旋律由合成歌手唱 + Duet 三个声部",
+   "source": "Nottingham Music Database (GPL-3.0), synthetic singer",
+   "page_safe": true
+  }
+ ],
+ "local_only": [
+  "futures/d1_record_harmonize/local_only/ecd_S1_choir.wav"
+ ],
+ "how_to_run": ".venv/bin/python futures/d1_record_harmonize/run.py IN.wav -o OUTDIR",
+ "caveats_zh": [
+  "A1.1 只是板子估算（M4 能效核单线程 x2），没有在 Radxa 板子上实测；HARDWARE_TEST.md 写了测法。",
+  "真人录音端到端的 >=95% 不冲突靠\"音高闸门\"：她实测音高和某个声部构成刺耳音程时把那个声部静音，所以 Duet 只在她 91.4% 的演唱时间里有声音；不加闸门只有 88.7%。",
+  "真人录音逐首看：40 首里 29 首单独达到 95%，最差一首 88.7%。",
+  "扒谱(transcription)是主要误差来源：vocadito 上音符 F1 0.59（起音 50 ms + 音高 50 音分），召回只有 0.50，短音常被并进邻音。",
+  "和弦与巴赫完全一致的比例只有 33.5%（测试集）：为了不冲突，模型几乎不用和她的音构成刺耳音程的七和弦与经过音（巴赫自己在同样标准下的不冲突率只有 73.8%），声部也比巴赫更少跳进、更多保持，所以盲听很可能听得出来。",
+  "时间测量时 Mac 正被其他 4 个任务占满（负载约 30），数字偏保守；板子估算按 BRIEF 用能效核时间 x2。",
+  "符号评测和盲听都只在旋律每个音开始时取一个和弦（巴赫内声部在旋律音中间的经过音不算）。"
+ ]
+}

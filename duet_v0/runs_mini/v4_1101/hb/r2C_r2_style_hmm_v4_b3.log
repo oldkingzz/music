@@ -1,0 +1,2 @@
+2026-11-01 15:18:11 START tl=600 cwd=$ABS/futures/v3_nolatency $ABS/.venv/bin/python $ABS/futures/v3_nolatency/bench3.py --system r2_style_hmm_v4 --note v4 r2 E3 style-aware HMM: pooled(bach rhythm, lam 1.5)+folk+pop+pop909(lam 1.0) HMMs mixed by meter/rhythm style posterior
+2026-11-01 15:18:17 END rc=0 secs=6 $ABS/.venv/bin/python $ABS/futures/v3_nolatency/bench3.py --system r2_style_hmm_v4 --note v4 r2 E3 style-aware HMM: pooled(bach rhythm, lam 1.5)+folk+pop+pop909(lam 1.0) HMMs mixed by meter/rhythm style posterior

@@ -1,0 +1,2 @@
+2026-11-02 07:23:17 START tl=600 cwd=$ABS $ABS/.venv/bin/python $ABS/futures/v5_rt/live_bench_rt_v2.py rt:r3_X_regtrkst_v1 --voice sung_low --lat micbt --out $ABS/runs_mini/v5rt_1101/live_bench/VER4_rt_r3_X_regtrkst_v1_sung_low_micbt.json
+2026-11-02 07:23:39 END rc=0 secs=23 $ABS/.venv/bin/python $ABS/futures/v5_rt/live_bench_rt_v2.py rt:r3_X_regtrkst_v1 --voice sung_low --lat micbt --out $ABS/runs_mini/v5rt_1101/live_bench/VER4_rt_r3_X_regtrkst_v1_sung_low_micbt.json

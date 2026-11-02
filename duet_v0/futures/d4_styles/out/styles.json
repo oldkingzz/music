@@ -1,0 +1,836 @@
+{
+ "melodies": {
+  "bach_test_bwv267": {
+   "source": "Bach chorale bach/bwv267 soprano (music21 corpus, test split), synthetic singer",
+   "licence": "public domain",
+   "tonic": 7,
+   "mode": "major",
+   "beat_s": 0.7894736842105263,
+   "K": 32,
+   "seconds": 25.263157894736842,
+   "bach": {
+    "no_clash_harsh": 1.0,
+    "no_clash_avoid": 1.0,
+    "per_voice_harsh": {
+     "A": 1.0,
+     "T": 1.0,
+     "B": 1.0
+    },
+    "per_voice_avoid": {
+     "A": 1.0,
+     "T": 1.0,
+     "B": 1.0
+    },
+    "chords": [
+     "I",
+     "VI6",
+     "v64",
+     "ii",
+     "I",
+     "IV6",
+     "I",
+     "IV6",
+     "I",
+     "IV6",
+     "I64",
+     "V",
+     "I",
+     "IV6",
+     "I",
+     "IV6",
+     "I64",
+     "V42",
+     "I6",
+     "V",
+     "I6",
+     "IV",
+     "viio6",
+     "I",
+     "IV6",
+     "I64",
+     "V",
+     "I",
+     "V",
+     "I6",
+     "IV",
+     "viio64",
+     "I",
+     "ii42",
+     "I7",
+     "IV",
+     "I",
+     "II",
+     "V"
+    ],
+    "chord_src": "satb",
+    "key": "G major"
+   },
+   "pop": {
+    "no_clash_harsh": 0.7458935285968731,
+    "no_clash_avoid": 0.9855531367504453,
+    "per_voice_harsh": {
+     "bass": 0.8939244013457353,
+     "piano": 0.77656837522264
+    },
+    "per_voice_avoid": {
+     "bass": 1.0,
+     "piano": 0.9855531367504453
+    },
+    "chords": [
+     "I",
+     "IV",
+     "I",
+     "ii",
+     "V",
+     "I",
+     "IV",
+     "I",
+     "I",
+     "I",
+     "V",
+     "V",
+     "I",
+     "I",
+     "I",
+     "IV",
+     "I",
+     "IV",
+     "I",
+     "V"
+    ],
+    "chord_src": "bigru",
+    "key": null
+   },
+   "jazz": {
+    "no_clash_harsh": 0.7829012467840887,
+    "no_clash_avoid": 0.9738769048090243,
+    "per_voice_harsh": {
+     "comp": 0.8450425489808034,
+     "bass": 0.865228577082921
+    },
+    "per_voice_avoid": {
+     "comp": 0.9738769048090243,
+     "bass": 1.0
+    },
+    "chords": [
+     "G7:secondary_dominant",
+     "C:triad",
+     "Gmaj7:diatonic7",
+     "Am7:diatonic7",
+     "Am7:ii_of_ii-V",
+     "D7:V_of_ii-V",
+     "Gmaj7:diatonic7",
+     "C:triad",
+     "Gmaj7:diatonic7",
+     "G:triad",
+     "A7:secondary_dominant",
+     "D7:diatonic7",
+     "Am7:ii_of_ii-V",
+     "D7:V_of_ii-V",
+     "Gmaj7:diatonic7",
+     "G:triad",
+     "Gmaj7:diatonic7",
+     "C:triad",
+     "Gmaj7:diatonic7",
+     "D7:secondary_dominant",
+     "Gmaj7:diatonic7",
+     "D7:diatonic7"
+    ],
+    "chord_src": "bigru",
+    "key": null
+   }
+  },
+  "folk_ashover_35": {
+   "source": "Nottingham folk nottingham/ashover.abc#35 (test split), synthetic singer",
+   "licence": "GPL (Nottingham dataset)",
+   "tonic": 9,
+   "mode": "major",
+   "beat_s": 0.6,
+   "K": 32,
+   "seconds": 19.2,
+   "bach": {
+    "no_clash_harsh": 1.0,
+    "no_clash_avoid": 1.0,
+    "per_voice_harsh": {
+     "A": 1.0,
+     "T": 1.0,
+     "B": 1.0
+    },
+    "per_voice_avoid": {
+     "A": 1.0,
+     "T": 1.0,
+     "B": 1.0
+    },
+    "chords": [
+     "I",
+     "I6",
+     "IV",
+     "I",
+     "I",
+     "V6",
+     "I",
+     "I6",
+     "iii",
+     "V",
+     "V",
+     "II6",
+     "V",
+     "V",
+     "IV6",
+     "I64",
+     "V7",
+     "I",
+     "I6",
+     "IV",
+     "I",
+     "I",
+     "V6",
+     "I",
+     "IV6",
+     "V6",
+     "I",
+     "I6",
+     "V",
+     "III6",
+     "vi",
+     "I6",
+     "IV",
+     "I",
+     "I",
+     "V6",
+     "I",
+     "IV",
+     "V",
+     "I",
+     "V6",
+     "I",
+     "vi",
+     "V6",
+     "I",
+     "vi",
+     "V6",
+     "V64",
+     "II",
+     "V",
+     "IV6",
+     "I",
+     "vi",
+     "iii",
+     "vi",
+     "vi",
+     "V6",
+     "I",
+     "I",
+     "I",
+     "I6",
+     "V",
+     "III6",
+     "vi"
+    ],
+    "chord_src": "satb",
+    "key": "A major"
+   },
+   "pop": {
+    "no_clash_harsh": 0.9109375,
+    "no_clash_avoid": 1.0,
+    "per_voice_harsh": {
+     "bass": 0.925,
+     "piano": 0.9416666666666667
+    },
+    "per_voice_avoid": {
+     "bass": 1.0,
+     "piano": 1.0
+    },
+    "chords": [
+     "I",
+     "I",
+     "V",
+     "V",
+     "I",
+     "V",
+     "I",
+     "I",
+     "I",
+     "I",
+     "I",
+     "V",
+     "I",
+     "I",
+     "I",
+     "I"
+    ],
+    "chord_src": "bigru",
+    "key": null
+   },
+   "jazz": {
+    "no_clash_harsh": 0.8682291666666666,
+    "no_clash_avoid": 1.0,
+    "per_voice_harsh": {
+     "comp": 0.9328125,
+     "bass": 0.9328125
+    },
+    "per_voice_avoid": {
+     "comp": 1.0,
+     "bass": 1.0
+    },
+    "chords": [
+     "A:triad",
+     "Gbm7:ii_of_ii-V",
+     "B7:V_of_ii-V",
+     "E7:diatonic7",
+     "Bm7:ii_of_ii-V",
+     "E7:V_of_ii-V",
+     "A:triad",
+     "E7:secondary_dominant",
+     "Amaj7:diatonic7",
+     "A:triad",
+     "Amaj7:diatonic7",
+     "A:triad",
+     "A:triad",
+     "Bm7:ii_of_ii-V",
+     "E7:V_of_ii-V",
+     "A:triad",
+     "A:triad",
+     "Amaj7:diatonic7",
+     "A:triad"
+    ],
+    "chord_src": "bigru",
+    "key": null
+   }
+  },
+  "pop909_063": {
+   "source": "POP909 pop909/063 melody, bars from beat 3 (test split), synthetic singer",
+   "licence": "MIT",
+   "tonic": 7,
+   "mode": "major",
+   "beat_s": 0.8333333333333334,
+   "K": 32,
+   "seconds": 26.44266666666667,
+   "bach": {
+    "no_clash_harsh": 1.0,
+    "no_clash_avoid": 1.0,
+    "per_voice_harsh": {
+     "A": 1.0,
+     "T": 1.0,
+     "B": 1.0
+    },
+    "per_voice_avoid": {
+     "A": 1.0,
+     "T": 1.0,
+     "B": 1.0
+    },
+    "chords": [
+     "ii",
+     "VI",
+     "VI",
+     "ii",
+     "ii",
+     "ii",
+     "V",
+     "I",
+     "ii6",
+     "IV42",
+     "III",
+     "III",
+     "vi",
+     "IV",
+     "V",
+     "V",
+     "V",
+     "V",
+     "I",
+     "IV",
+     "ii",
+     "V",
+     "V",
+     "V",
+     "V",
+     "I",
+     "IV",
+     "ii",
+     "VI",
+     "I",
+     "V",
+     "V",
+     "iii",
+     "IV6",
+     "IV",
+     "ii",
+     "ii"
+    ],
+    "chord_src": "satb",
+    "key": "G major"
+   },
+   "pop": {
+    "no_clash_harsh": 0.8184498736310025,
+    "no_clash_avoid": 0.9502948609941028,
+    "per_voice_harsh": {
+     "bass": 0.8955349620893007,
+     "piano": 0.8209772535804549
+    },
+    "per_voice_avoid": {
+     "bass": 1.0,
+     "piano": 0.9502948609941028
+    },
+    "chords": [
+     "IV",
+     "IV",
+     "I",
+     "I",
+     "I",
+     "I",
+     "I",
+     "I",
+     "IV",
+     "I",
+     "I",
+     "V",
+     "V",
+     "V",
+     "V",
+     "IV"
+    ],
+    "chord_src": "bigru",
+    "key": null
+   },
+   "jazz": {
+    "no_clash_harsh": 0.7999157540016849,
+    "no_clash_avoid": 0.9553496208930076,
+    "per_voice_harsh": {
+     "comp": 0.9039595619208087,
+     "bass": 0.8567818028643639
+    },
+    "per_voice_avoid": {
+     "comp": 0.9553496208930076,
+     "bass": 1.0
+    },
+    "chords": [
+     "C:triad",
+     "Ab7:tritone_sub",
+     "G:triad",
+     "G:triad",
+     "Gmaj7:diatonic7",
+     "Gmaj7:diatonic7",
+     "Gmaj7:diatonic7",
+     "Gmaj7:diatonic7",
+     "Am7:ii_of_ii-V",
+     "D7:V_of_ii-V",
+     "Gmaj7:diatonic7",
+     "Gmaj7:diatonic7",
+     "D7:diatonic7",
+     "D7:diatonic7",
+     "D7:diatonic7",
+     "G7:secondary_dominant",
+     "C:triad"
+    ],
+    "chord_src": "bigru",
+    "key": null
+   }
+  },
+  "vocadito_12": {
+   "source": "vocadito track 12 (Bittner et al.), notes from its A1 annotation; beat 0.480s by estimate_beat; pulse x key score 0.65",
+   "licence": "CC BY 4.0",
+   "tonic": 8,
+   "mode": "minor",
+   "beat_s": 0.48000000000000015,
+   "K": 32,
+   "seconds": 13.781043085,
+   "bach": {
+    "no_clash_harsh": 1.0,
+    "no_clash_avoid": 1.0,
+    "per_voice_harsh": {
+     "A": 1.0,
+     "T": 1.0,
+     "B": 1.0
+    },
+    "per_voice_avoid": {
+     "A": 1.0,
+     "T": 1.0,
+     "B": 1.0
+    },
+    "chords": [
+     "II",
+     "bIII",
+     "bVII",
+     "bIII6",
+     "bVII",
+     "I",
+     "iv6",
+     "i64",
+     "V",
+     "i6",
+     "viio6",
+     "i",
+     "bVII",
+     "bIII6",
+     "bVII",
+     "bIII6",
+     "bVI",
+     "iv",
+     "iv",
+     "I",
+     "iv",
+     "i",
+     "V",
+     "i",
+     "IV6",
+     "bVII",
+     "bIII"
+    ],
+    "chord_src": "satb",
+    "key": "Ab minor"
+   },
+   "pop": {
+    "no_clash_harsh": 0.7659665666523789,
+    "no_clash_avoid": 1.0,
+    "per_voice_harsh": {
+     "bass": 0.8182597513930562,
+     "piano": 0.7771110158594084
+    },
+    "per_voice_avoid": {
+     "bass": 1.0,
+     "piano": 1.0
+    },
+    "chords": [
+     "I",
+     "I",
+     "IV",
+     "ii",
+     "ii",
+     "IV",
+     "vi",
+     "I",
+     "I",
+     "I",
+     "vi",
+     "ii",
+     "vi",
+     "V",
+     "I",
+     "I"
+    ],
+    "chord_src": "bigru",
+    "key": null
+   },
+   "jazz": {
+    "no_clash_harsh": 0.7441063009001285,
+    "no_clash_avoid": 1.0,
+    "per_voice_harsh": {
+     "comp": 0.8761251607372482,
+     "bass": 0.853836262323189
+    },
+    "per_voice_avoid": {
+     "comp": 1.0,
+     "bass": 1.0
+    },
+    "chords": [
+     "Bmaj7:diatonic7",
+     "B:triad",
+     "Emaj7:diatonic7",
+     "Dbm7:diatonic7",
+     "Dbm7:diatonic7",
+     "Emaj7:diatonic7",
+     "Abm7:diatonic7",
+     "B:triad",
+     "B:triad",
+     "B:triad",
+     "Abm7:diatonic7",
+     "Bbm7:ii_of_ii-V",
+     "Eb7:V_of_ii-V",
+     "Abm7:diatonic7",
+     "Dbm7:ii_of_ii-V",
+     "Gb7:V_of_ii-V",
+     "B:triad",
+     "B:triad"
+    ],
+    "chord_src": "bigru",
+    "key": null
+   }
+  }
+ },
+ "stats": {
+  "bach": [
+   {
+    "onsets_per_s": 1.54375,
+    "swung_offbeat_share": 0.0,
+    "straight_eighth_share": 0.1794871794871795,
+    "seventh_chord_share": 0.02564102564102564,
+    "substitution_share": 0,
+    "chords": 39,
+    "chords_per_beat": 1.21875,
+    "mean_note_beats": 1.3150684931506849,
+    "voices_max": 3
+   },
+   {
+    "onsets_per_s": 3.385416666666667,
+    "swung_offbeat_share": 0.0,
+    "straight_eighth_share": 0.38461538461538464,
+    "seventh_chord_share": 0.014925373134328358,
+    "substitution_share": 0,
+    "chords": 67,
+    "chords_per_beat": 2.09375,
+    "mean_note_beats": 0.7111111111111111,
+    "voices_max": 3
+   },
+   {
+    "onsets_per_s": 1.3992537313432833,
+    "swung_offbeat_share": 0.0,
+    "straight_eighth_share": 0.40540540540540543,
+    "seventh_chord_share": 0.0,
+    "substitution_share": 0,
+    "chords": 37,
+    "chords_per_beat": 1.15625,
+    "mean_note_beats": 0.38839818181818203,
+    "voices_max": 3
+   },
+   {
+    "onsets_per_s": 1.9592130895656363,
+    "swung_offbeat_share": 0.1111111111111111,
+    "straight_eighth_share": 0.18518518518518517,
+    "seventh_chord_share": 0.0,
+    "substitution_share": 0,
+    "chords": 27,
+    "chords_per_beat": 0.84375,
+    "mean_note_beats": 1.0931284619092043,
+    "voices_max": 3
+   }
+  ],
+  "pop": [
+   {
+    "onsets_per_s": 1.7416666666666667,
+    "swung_offbeat_share": 0.0,
+    "straight_eighth_share": 0.2727272727272727,
+    "seventh_chord_share": 0,
+    "substitution_share": 0,
+    "chords": 20,
+    "chords_per_beat": 0.625,
+    "mean_note_beats": 0.9096666666666668,
+    "voices_max": 4
+   },
+   {
+    "onsets_per_s": 2.5,
+    "swung_offbeat_share": 0.0,
+    "straight_eighth_share": 0.3333333333333333,
+    "seventh_chord_share": 0,
+    "substitution_share": 0,
+    "chords": 16,
+    "chords_per_beat": 0.5,
+    "mean_note_beats": 0.8750000000000006,
+    "voices_max": 4
+   },
+   {
+    "onsets_per_s": 1.8152480839048,
+    "swung_offbeat_share": 0.0,
+    "straight_eighth_share": 0.3333333333333333,
+    "seventh_chord_share": 0,
+    "substitution_share": 0,
+    "chords": 16,
+    "chords_per_beat": 0.5,
+    "mean_note_beats": 0.886666666666667,
+    "voices_max": 4
+   },
+   {
+    "onsets_per_s": 3.4830454925611316,
+    "swung_offbeat_share": 0.0,
+    "straight_eighth_share": 0.3333333333333333,
+    "seventh_chord_share": 0,
+    "substitution_share": 0,
+    "chords": 16,
+    "chords_per_beat": 0.5,
+    "mean_note_beats": 0.8645833333333338,
+    "voices_max": 4
+   }
+  ],
+  "jazz": [
+   {
+    "onsets_per_s": 1.6624999999999999,
+    "swung_offbeat_share": 0.23809523809523808,
+    "straight_eighth_share": 0.0,
+    "seventh_chord_share": 0.7727272727272727,
+    "substitution_share": 0.3181818181818182,
+    "chords": 22,
+    "chords_per_beat": 0.6875,
+    "mean_note_beats": 0.732333333333334,
+    "voices_max": 5
+   },
+   {
+    "onsets_per_s": 2.1875,
+    "swung_offbeat_share": 0.23809523809523808,
+    "straight_eighth_share": 0.0,
+    "seventh_chord_share": 0.5789473684210527,
+    "substitution_share": 0.3684210526315789,
+    "chords": 19,
+    "chords_per_beat": 0.59375,
+    "mean_note_beats": 0.6928298611111113,
+    "voices_max": 5
+   },
+   {
+    "onsets_per_s": 1.6261597418313833,
+    "swung_offbeat_share": 0.2558139534883721,
+    "straight_eighth_share": 0.0,
+    "seventh_chord_share": 0.7647058823529411,
+    "substitution_share": 0.23529411764705882,
+    "chords": 17,
+    "chords_per_beat": 0.53125,
+    "mean_note_beats": 0.7469142857142861,
+    "voices_max": 7
+   },
+   {
+    "onsets_per_s": 3.04766480599099,
+    "swung_offbeat_share": 0.23809523809523808,
+    "straight_eighth_share": 0.0,
+    "seventh_chord_share": 0.6666666666666666,
+    "substitution_share": 0.2222222222222222,
+    "chords": 18,
+    "chords_per_beat": 0.5625,
+    "mean_note_beats": 0.698928571428572,
+    "voices_max": 5
+   }
+  ]
+ },
+ "bach_own_reference": {
+  "chorale": "bach/bwv267",
+  "no_clash_harsh": {
+   "all": 0.765625,
+   "per_voice": {
+    "A": 0.9375,
+    "T": 0.890625,
+    "B": 0.890625
+   },
+   "her_s": 32.0
+  },
+  "note": "Bach real A/T/B vs soprano, soprano-onset slices, same 32 beats (beat units)"
+ },
+ "robustness_30_test_melodies": {
+  "bach": {
+   "harsh": {
+    "mean": 1.0,
+    "min": 1.0,
+    "n": 30,
+    "share_ge_0.90": 1.0
+   },
+   "avoid": {
+    "mean": 1.0,
+    "min": 1.0,
+    "n": 30,
+    "share_ge_0.90": 1.0
+   }
+  },
+  "pop": {
+   "harsh": {
+    "mean": 0.8374052778548312,
+    "min": 0.6581329195758987,
+    "n": 30,
+    "share_ge_0.90": 0.2
+   },
+   "avoid": {
+    "mean": 0.9917377515601852,
+    "min": 0.9545777146912704,
+    "n": 30,
+    "share_ge_0.90": 1.0
+   }
+  },
+  "jazz": {
+   "harsh": {
+    "mean": 0.766241544189039,
+    "min": 0.4947269744551207,
+    "n": 30,
+    "share_ge_0.90": 0.03333333333333333
+   },
+   "avoid": {
+    "mean": 0.9954434722146057,
+    "min": 0.971007248187953,
+    "n": 30,
+    "share_ge_0.90": 1.0
+   }
+  }
+ },
+ "summary": {
+  "bach": {
+   "harsh": {
+    "mean": 1.0,
+    "min": 1.0
+   },
+   "avoid": {
+    "mean": 1.0,
+    "min": 1.0
+   },
+   "stats_mean": {
+    "onsets_per_s": 2.0719083718938966,
+    "swung_offbeat_share": 0.027777777777777776,
+    "straight_eighth_share": 0.2886732886732887,
+    "seventh_chord_share": 0.0101415996938385,
+    "substitution_share": 0.0,
+    "chords": 42.5,
+    "chords_per_beat": 1.328125,
+    "mean_note_beats": 0.8769265619972956,
+    "voices_max": 3.0
+   }
+  },
+  "pop": {
+   "harsh": {
+    "mean": 0.8092333951971553,
+    "min": 0.7458935285968731
+   },
+   "avoid": {
+    "mean": 0.9801703634060229,
+    "min": 0.9502948609941028
+   },
+   "stats_mean": {
+    "onsets_per_s": 2.38499006078315,
+    "swung_offbeat_share": 0.0,
+    "straight_eighth_share": 0.3181818181818181,
+    "seventh_chord_share": 0.0,
+    "substitution_share": 0.0,
+    "chords": 17.0,
+    "chords_per_beat": 0.53125,
+    "mean_note_beats": 0.8839791666666671,
+    "voices_max": 4.0
+   }
+  },
+  "jazz": {
+   "harsh": {
+    "mean": 0.8012461239423464,
+    "min": 0.7441063009001285
+   },
+   "avoid": {
+    "mean": 0.978265497107998,
+    "min": 0.9553496208930076
+   },
+   "stats_mean": {
+    "onsets_per_s": 2.1309561369555934,
+    "swung_offbeat_share": 0.24252491694352157,
+    "straight_eighth_share": 0.0,
+    "seventh_chord_share": 0.6957617975419833,
+    "substitution_share": 0.2860298026706696,
+    "chords": 19.0,
+    "chords_per_beat": 0.59375,
+    "mean_note_beats": 0.7177515128968258,
+    "voices_max": 5.5
+   }
+  }
+ },
+ "demos": [
+  {
+   "file": "futures/d4_styles/demo/folk_ashover_35_bach_pop_jazz.mp3",
+   "bytes": 832608,
+   "melody": "folk_ashover_35",
+   "source": "Nottingham folk nottingham/ashover.abc#35 (test split), synthetic singer",
+   "licence": "GPL (Nottingham dataset)"
+  },
+  {
+   "file": "futures/d4_styles/demo/vocadito_12_bach_pop_jazz.mp3",
+   "bytes": 671616,
+   "melody": "vocadito_12",
+   "source": "vocadito track 12 (Bittner et al.), notes from its A1 annotation; beat 0.480s by estimate_beat; pulse x key score 0.65",
+   "licence": "CC BY 4.0"
+  },
+  {
+   "file": "futures/d4_styles/demo/bach_test_bwv267_bach_pop_jazz.mp3",
+   "bytes": 1050912,
+   "melody": "bach_test_bwv267",
+   "source": "Bach chorale bach/bwv267 soprano (music21 corpus, test split), synthetic singer",
+   "licence": "public domain"
+  }
+ ]
+}

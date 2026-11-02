@@ -1,0 +1,2 @@
+2026-11-01 15:44:12 START tl=600 cwd=$ABS/futures/v3_nolatency $ABS/.venv/bin/python $ABS/futures/v3_nolatency/bench3.py --system r3_true_cons_v4 --note v4 r3 E5 robust chooser all notes, but trust an out-of-scale heard pc already heard on >=2 and >=3% of her earlier notes
+2026-11-01 15:44:24 END rc=0 secs=12 $ABS/.venv/bin/python $ABS/futures/v3_nolatency/bench3.py --system r3_true_cons_v4 --note v4 r3 E5 robust chooser all notes, but trust an out-of-scale heard pc already heard on >=2 and >=3% of her earlier notes

@@ -1,0 +1,56 @@
+{
+ "run": "v5rt_1101",
+ "round": 4,
+ "written": "2026-11-02 07:46 EST (clock read 07:43:07 just before writing)",
+ "ABS": "/Users/san/claude_sandbox/music/duet_v0",
+ "workflow": "round 4 = task wvpvko9j2 / run wf_dc2e554a-c39, about 04:33 -> 07:36, 6 agents (bench v2, tune G, tune H, page v3, select, verify), all returned",
+ "orchestrator_checks_07_43": {
+  "checksums": "10/10 OK",
+  "bench_rt.py": "f1eb524aa939b5ba54704532ac7b5eb536659ceaaef32c3701934f9cf7d3e772 (unchanged)",
+  "live benches": "shasum -c LIVE_BENCH_SHA.txt (v1) and LIVE_BENCH_V2_SHA.txt (live_bench_rt_v2.py ffeb1ab0...) OK",
+  "engine files": "no .py outside rt_systems/r4_* changed since state_R3; new: live_bench_rt_v2.py, latcal_v1.py, live_panel_v3.py (round 4), live_panel_v4.py (mine)",
+  "env": "no M1_* / M3_* / DUET_HIST",
+  "disk": "102.9 GB free; runs_mini 365 MB",
+  "rule": "runs_mini/v5rt_1101/tools/r4_rule_orch_v1.py on the files on disk -> verify/r4_rule_orch_v1.json: 10 systems pass K1-K4; top K1 0.5173 (r4_X_hdgsafe_v1); band of 6 within 0.003; pick r4_X_hgeh_v1 (fewest fresh + stumbles, 15.90); use 'single default' by the rule. Every number matches the select and verify agents."
+ },
+ "verify_agent": {
+  "verdict": "partial: shas, reproduction (42 files bit-identical), causal probe at L 0.1 / 0.5 incl. a 12-semitone-lower register (0 mismatches), K1-K5, C1, C2 and the page all hold",
+  "caveats": [
+   "Tempo: the rule only tested 90 bpm. With an AirPods mic + wired headphones (micbt_cal) the pick's lag modes switch on from about 110 bpm and it stumbles more than W: sung 3.48 / 7.06 / 8.65 vs 2.88 / 5.27 / 5.86 per 100 at 110 / 120 / 130 bpm (sung_low 3.58 / 6.96 / 7.46 vs 2.88 / 5.17 / 6.46), beyond K2's W + 1.0 at 120-130 bpm; rt_nd equal or a little higher and harsh lower there. With AirPods both ways (bt_cal) it beats W at 75 and 120 bpm on everything.",
+   "At micbt_cal at 90 bpm and at wired the pick is W, decision for decision; the whole K1 gain is at bt_cal, which G / H / X tuned on (in-sample).",
+   "Calibration: on 300 new-seed cases 8 accepted estimates miss by 15.5-22.4 ms (4 short, 4 long); a 3.5 kHz band limit reads 3-7 ms long; Bluetooth codec jitter, AirPods voice processing, the stream-to-stream offset between calibration and song, and whether a sung 'da' is timed like her song notes are not covered.",
+   "W's round-3 caveats carry over (v11 in-sample; Duet above a low voice about 20% of the time)."
+  ]
+ },
+ "results_val_only_tuned_on_val": {
+  "note": "live bench v2, 17 val Bach chorales at 90 bpm; columns rt_nd_live / harsh / fresh per 100 / stumbles per 100; micbt = AirPods mic + wired headphones (true Li 150 / Lo 10 ms), bt = AirPods both ways (150 / 180 ms); _cal = engine told the true round trip",
+  "reactive:r2_mix_v2": {"sung micbt": "0.4781/.1051/4.97/4.17", "sung micbt_cal": "0.5152/.1280/5.17/4.17", "sung bt": "0.4139/.1512/9.44/3.38", "sung bt_cal": "0.4416/.1894/8.95/2.98",
+   "low micbt_cal": "0.3411/.1028/4.67/3.38", "low bt_cal": "0.2871/.1493/8.05/2.49", "K1": 0.3963},
+  "W r3_X_regtrkst_v1": {"sung micbt": "0.4449/.1118/3.58/2.78", "sung micbt_cal": "0.5387/.1016/2.49/1.09", "sung bt": "0.4151/.1291/5.37/0.80", "sung bt_cal": "0.4497/.1596/7.06/0.70",
+   "low micbt_cal": "0.5584/.0864/1.59/1.49", "low bt_cal": "0.4642/.1448/6.06/0.80", "K1": 0.5028},
+  "r4_X_hgeh_v1 (rule pick)": {"sung micbt_cal": "= W", "low micbt_cal": "= W", "sung bt_cal": "0.4726/.1208/4.67/0.70", "low bt_cal": "0.4970/.0966/3.18/0.70",
+   "K1": 0.5167, "K4 bench_rt L0.5": "0.4905 vs reactive 0.4475, seed2 +0.0404", "wired": "= W (G1 17/17, G2, G3 pass)"},
+  "calibration (Q1, C2)": "W mean of the two voices: micbt 0.4571 -> micbt_cal 0.5486 (+0.09, also less harsh, fewer fresh clashes and stumbles); bt 0.4228 -> bt_cal 0.4570 (+0.034 but harsher and +0.8-1.7 fresh per 100). Calibration 25 ms short costs W 0.022 (micbt) / 0.0135 (bt); 25 ms long costs ~0.",
+  "biggest lever": "the output path: with the AirPods mic, wired headphones (micbt_cal) give W 0.549 vs 0.457 with AirPods both ways (bt_cal), larger than any system difference",
+  "calibration estimator (C1)": "20/20 required cases within +-15 ms (max 9.3 ms), 3/3 no-response recordings refused; reads 7-31 ms long in noisy rooms (safe direction)"
+ },
+ "deployment": {
+  "list": "futures/v4_selfiter/live_rt_systems_v3.json: default r3_X_regtrkst_v1 (W); by_latency {threshold_ms 250, system r4_X_hgeh_v1}; options W, r4_X_hgeh_v1, r3_X_regtrkstsafe_v1, r2_copyhm_v1.",
+  "deviation_1": "The rule's 'use' clause said r4_X_hgeh_v1 replaces W as the single default. I deploy it only at a calibrated round trip >= 250 ms, because the verifier's tempo probe shows K2's stumble cap broken at 120-130 bpm with an AirPods mic + wired headphones (where it brings no rt_nd gain at 90 bpm), while with AirPods both ways it is better than W at every tested tempo. 250 ms sits between the two tested round trips (160 / 330 ms); it is a judgment call, not pre-registered.",
+  "deviation_2": "Page v4 = futures/v4_selfiter/live_panel_v4.py, a 30-line wrapper of live_panel_v3.py (same HTML, port 8766) that tells the engine Li = max(0, RT + 20 ms - Lo) after a calibration, because a short round trip costs and a long one does not (numbers above and in its docstring). Not pre-registered; supported by the +-25 ms bench runs of W and of the pick.",
+  "selftest": "runs_mini/v5rt_1101/tools/panel_v4_selftest_v1.py offline (tripwire) -> verify/panel_v4_selftest_v1.json: 13/13 checks pass (list v3 loads and every system builds; calibration 159 ms for 160 and 334 ms for 330; 'auto' runs W at 159 ms with Li 169 ms and r4_X_hgeh_v1 at 334 ms; no margin without calibration; blind A/B arms reactive or r4_X_hgeh_v1; page / latcal / list files unchanged).",
+  "launch": "launch config 'duet-live-test-v4' added to both .claude/launch.json files (v1 and v2 entries kept). Start it only when Vincent asks."
+ },
+ "rule_notes": [
+  "Bench agent: one loop built hbrun labels with a colon; hbrun refused those runs before starting (nothing written); several hbrun runs chained inside single foreground Bash calls (one job at a time).",
+  "Page agent: ran node directly (not Python) for a syntax check; opened a static mock HTML file in the Browser pane (no server, nothing played); its selftest wrote run.wav files of the phone files (Twinkle and v11, Vincent's own recording) and a rendered Twinkle into runs_mini/live/selftest_v3/ (never played).",
+  "Select agent: labels with a space refused by hbrun before starting; passed Bash timeout 620000 (my brief asked for >= 620000, above the tool's 600000 maximum: my error); nothing moved to the background.",
+  "Verify agent: created verify/VER4_check_v2.py with cp -n (shell copy, not the Write tool), never edited or run; three /usr/bin/grep peeks through hbrun.",
+  "Orchestrator (me): one read-only system python3 -c to validate the two launch.json files after editing them; the round-4 brief's 620000 ms timeout instruction.",
+  "Nothing was deleted or overwritten; no frozen file was edited; no sound device was opened; nothing was played; the page server was never started."
+ ],
+ "next": [
+  "Vincent's morning test with page v4 (wired headphones for output; calibrate; 'auto').",
+  "Possible round 5: make the large-lag modes tempo-robust (no extra stumbles at 110-130 bpm with an AirPods mic), then revisit the threshold; tracker onset fix (3-frame median carries the old pitch) with a refit of E's table; a pickup / first-beat setting on the page."
+ ]
+}

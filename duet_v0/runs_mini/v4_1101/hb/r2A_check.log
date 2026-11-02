@@ -1,0 +1,2 @@
+2026-11-01 15:15:43 START tl=600 cwd=$ABS/runs_mini/v4_1101/r2/A $ABS/.venv/bin/python $ABS/runs_mini/v4_1101/r2/A/check_copy.py
+2026-11-01 15:16:21 END rc=0 secs=38 $ABS/.venv/bin/python $ABS/runs_mini/v4_1101/r2/A/check_copy.py

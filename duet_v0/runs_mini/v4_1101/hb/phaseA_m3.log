@@ -1,0 +1,6 @@
+2026-11-01 11:39:11 START tl=600 cwd=$ABS/runs_mini/v4_1101/nd/third_below/runs_mini/v4_1101/nd/m1_filter_v5lo/runs_mini/v4_1101/nd/m3_seq_v5 $ABS/.venv/bin/python $ABS/futures/v3_nolatency/rescore_nd.py m3_seq_v5
+2026-11-01 11:39:20 END rc=0 secs=9 $ABS/.venv/bin/python $ABS/futures/v3_nolatency/rescore_nd.py m3_seq_v5
+2026-11-01 11:40:02 START tl=600 cwd=$ABS/runs_mini/v4_1101/nd/m3_seq_v5 $ABS/.venv/bin/python $ABS/futures/v3_nolatency/rescore_nd.py m3_seq_v5
+2026-11-01 11:40:12 END rc=0 secs=9 $ABS/.venv/bin/python $ABS/futures/v3_nolatency/rescore_nd.py m3_seq_v5
+2026-11-01 11:40:35 START tl=600 cwd=$ABS/futures/v3_nolatency $ABS/.venv/bin/python $ABS/futures/v3_nolatency/bench3.py --system m3_seq_v5 --note v4 mini Phase A reproduce
+2026-11-01 11:40:44 END rc=0 secs=9 $ABS/.venv/bin/python $ABS/futures/v3_nolatency/bench3.py --system m3_seq_v5 --note v4 mini Phase A reproduce

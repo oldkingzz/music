@@ -1,0 +1,34 @@
+{
+ "round": 4,
+ "written": "2026-11-01 16:12 EST",
+ "ABS": "/Users/san/claude_sandbox/music/duet_v0",
+ "run": "v4_1101",
+ "loop": {"started": "2026-11-01 14:45 EST", "stopped": "2026-11-01 16:09 EST", "loop_time": "1 h 24 min", "rounds": 4,
+  "consecutive_rounds_without_keep": 1,
+  "stop_reason": "§4.4 has no untried idea left: E1 finished (2 attempts), E2 kept (round 2), E3 used and kept inside E2xE3 (round 3), E4 and E5 dead (failed twice: rounds 3 and 4). Wave 2 (E6, E7) is not triggered because wave 1 produced a presentable champion (r2_mix_v2). Skipped by §4.4: melody retrieval, repeat-phrase memory, new chord types. Limits not reached: 10 h, Monday 10:00, 8 rounds, checksum, disk."},
+ "checks_before_round_4": "15:53 checksums 10/10 OK, env knobs empty, 103.9 GB free",
+ "checks_after_round_4": "16:09 16 r4 hb logs, START=END, every rc 0, no stale START (no ALERTS_4.md); checksums 10/10 OK; env empty; 103.9 GB free; runs_mini 1.5M",
+ "workflow_round_4": {"id": "w8wda8287", "run_id": "wf_26162da5-d37", "agents": 2, "minutes": 13},
+ "champion": {"name": "r3_style_mix_v3", "sha": "b79ea9bf01c4", "headline_nd": 0.65323, "presentable": false,
+  "note": "best score, not presentable under the strict reading of §4.3 (style-aware HMM is more than 'the HMM'); Vincent may decide otherwise"},
+ "presentable_champion": {"name": "r2_mix_v2", "sha": "b481d9156f3c", "headline_nd": 0.644428, "seed2": 0.647007,
+  "music_nd": {"bach": 0.6853, "folk": 0.7126, "pop": 0.5908, "pop909": 0.5891},
+  "vs_m1": {"headline": 0.0238, "bach": 0.0198, "folk": 0.0359, "pop": 0.0308, "pop909": 0.0087},
+  "tuesday_model": "r2_mix_v2 if Vincent passes its quiz (>= 8/10 and all 5 numbers within +-0.01), else m1_filter_v5lo"},
+ "ideas_round_4": [
+  {"id": "E4", "attempt": 2, "verdict": "DEAD (failed twice)",
+   "variants": [{"name": "r4_cover_fit_v1", "sha": "062751081b47", "what": "HMM-side forecast with each style's own table, 0.5 GRU mix per covered beat, 32 on/off-beat lengths of the last 128", "headline_nd": 0.65297, "delta": -0.00026}],
+   "why": "folk's changed-under-held-note time is only 0.38 % of its scored time, so folk +0.003 is out of reach even for a perfect forecast; the champion's flatter 0.5/0.5 belief already hedges, the forecast adds noise at the onset beat",
+   "finding_for_later": "at beat boundaries her note is held across, the labelled chord changes far less often than the tables assume (folk 3.6 % vs 22 % implied; bach 26 % vs 74 % over all boundaries): an HMM whose transition depends on whether her note is held across the boundary could sharpen the folk/bach chord guess (r4/A/calib_20261101_160528.json). Not in §4.4; next step."},
+  {"id": "E5", "attempt": 2, "verdict": "DEAD (failed twice)",
+   "variants": [
+    {"name": "r4_true_cons_v1", "sha": "1ca046f4f97f", "what": "belief side: a suspect (out-of-scale, not repeated) heard note does not move this note's chord belief", "headline_nd": 0.65276, "delta": -0.0005},
+    {"name": "r4_true_cons_v2", "sha": "b4958d5f27e7", "what": "belief + choice side", "headline_nd": 0.64905, "delta": -0.0042, "note": "bach -0.017"}],
+   "why": "mishearing costs the champion 0.041-0.057 per dataset (clean vs heard melody), but feeding the chord belief her TRUE notes recovers only about 20 % of it (0.0055-0.0134): about 80 % is in the choice (Duet must be consonant with the pitch it heard). The belief damage comes from in-scale mishearings (55 % of them), which no single note can flag (r4/B/check_why_20261101_160400.json)."}
+ ],
+ "dead_ideas": ["E4", "E5"],
+ "variants_scored_in_loop": 28,
+ "variants_note": "28 scored candidates (round 1: 2, round 2: 11, round 3: 12, round 4: 3); unscored diagnostics and explorations: about 40 (round-1 analysis) + 27 (round 3) + 15 (round 4)",
+ "alerts": "none: every hb START has its END, every rc 0 (ALERTS_<R>.md not needed in any round)",
+ "next": "Phase D: report/ (MORNING.md, board.txt, audio/, CARD_m1_zh.md, CARD_new_zh.md for r2_mix_v2, history in music_nd, TEAM.md, QUIZ.md) + DIAGNOSIS_zh.md for Vincent's real-time chord-guess question; then the quiz."
+}

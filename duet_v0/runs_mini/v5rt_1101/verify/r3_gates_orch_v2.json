@@ -1,0 +1,1874 @@
+{
+ "reactive_bench": {
+  "rt_nd": 0.600766125793285,
+  "harsh": 0.054102409054943575,
+  "seed2": 0.6034694958749114,
+  "us": 59.58811665110595,
+  "on_time_right": 0.21907513239705292,
+  "fresh": 1.8100634866373206,
+  "miss": 24.82519033228052,
+  "ds_rt_nd": {
+   "bach": 0.6451438848920807,
+   "folk": 0.6521681946831972,
+   "pop": 0.5594068490093309,
+   "pop909": 0.5463455745885314
+  },
+  "ds_harsh": {
+   "bach": 0.060341726618704725,
+   "folk": 0.05787847030369909,
+   "pop": 0.04347459518436934,
+   "pop909": 0.054714844113001156
+  },
+  "ds_fresh": {
+   "bach": 2.0874751491053676,
+   "folk": 1.7761000061885017,
+   "pop": 1.5539590816804623,
+   "pop909": 1.8227197095749508
+  },
+  "files": [
+   "scores/B_reactive_r2_mix_v2_L0.1.json",
+   "scores/B_reactive_r2_mix_v2_L0.1_seed2.json",
+   "attack/reactive_r2_mix_v2_L0.1.json"
+  ]
+ },
+ "reactive_live": {
+  "sung_wired": {
+   "rt_nd_live": 0.5936451194275247,
+   "harsh": 0.0833604908808919,
+   "fresh_per100": 5.069582504970179,
+   "fresh": 51,
+   "stumbles_per100": 3.7773359840954273,
+   "on_time_right": 0.13817097415506957,
+   "late_entry": 0.018886679920477135,
+   "notes": 1006,
+   "digest": "888e91653d63856f0b34971811a7efb7cb9c104596e1c1b5c11d49a9078f098f"
+  },
+  "sung_low_wired": {
+   "rt_nd_live": 0.4012977048161021,
+   "harsh": 0.05156959122194172,
+   "fresh_per100": 3.7773359840954273,
+   "fresh": 38,
+   "stumbles_per100": 2.68389662027833,
+   "on_time_right": 0.12524850894632206,
+   "late_entry": 0.09443339960238568,
+   "notes": 1006,
+   "digest": "cae732d73ee1a36187a37483234579d48240e3a8f6ed88ed0f500a85cfb48901"
+  },
+  "phone_v11": {
+   "fresh_heard": 4,
+   "harsh_heard": 0.15520628683693516,
+   "digest": "d0728b13447f54b6e61de6837844ecb7e05170cc77d987927418571bc7075b4f"
+  },
+  "clean_wired": {
+   "rt_nd_live": 0.6494032494963738,
+   "harsh": 0.05223303260856025,
+   "fresh_per100": 0.8946322067594433,
+   "fresh": 9,
+   "stumbles_per100": 0.2982107355864811,
+   "on_time_right": 0.1779324055666004,
+   "late_entry": 0.018886679920477135,
+   "notes": 1006,
+   "digest": "2cfec072b60fb34ac5896eeb2ee4f250d22fc69591231390806ae27615444feb"
+  },
+  "sung_bt": {
+   "rt_nd_live": 0.41391592894691015,
+   "harsh": 0.15122802897406643,
+   "fresh_per100": 9.44333996023857,
+   "fresh": 95,
+   "stumbles_per100": 3.3797216699801194,
+   "on_time_right": 0.23956262425447317,
+   "late_entry": 0.0009940357852882703,
+   "notes": 1006,
+   "digest": "8462b8dfb5823160c24b79dbfd655040ee9438b87a653915d69bee8d8c82337a"
+  },
+  "phone_twinkle": {
+   "rt_nd_live": 0.6503030303030304,
+   "harsh": 0.053030303030302824,
+   "fresh": 1,
+   "stumbles_per100": 0.0,
+   "digest": "9c1bef5a85794a18bd8316713ffefa3fc13adb251d52b7f891f9581977f82b27"
+  }
+ },
+ "rows": {
+  "r1_A_prior_v1": {
+   "G1": true,
+   "G2": false,
+   "G3": false,
+   "failed": [
+    "sung_low harsh <= reactive",
+    "sung fresh <= reactive",
+    "sung_low fresh <= reactive",
+    "v11 fresh_heard <= reactive",
+    "v11 harsh_heard <= reactive + 0.005"
+   ],
+   "mean_live": 0.5574654737032798,
+   "live_fresh_count": 105,
+   "bench": {
+    "rt_nd": 0.6197905386506629,
+    "harsh": 0.04211033318120768,
+    "seed2": 0.622531238586265,
+    "fresh": 1.3388442337369328,
+    "us": 117.49325844715791,
+    "ds_rt_nd": {
+     "bach": 0.6844424460431604,
+     "folk": 0.663825176930805,
+     "pop": 0.5642671163240331,
+     "pop909": 0.5666274153046531
+    },
+    "ds_fresh": {
+     "bach": 1.3916500994035785,
+     "folk": 1.6337644656228727,
+     "pop": 1.2181789786037795,
+     "pop909": 1.111783391317501
+    }
+   },
+   "live": {
+    "sung_wired": {
+     "rt_nd_live": 0.607902498587481,
+     "harsh": 0.07522313121509626,
+     "fresh_per100": 5.467196819085487,
+     "fresh": 55,
+     "stumbles_per100": 14.512922465208748,
+     "on_time_right": 0.1550695825049702,
+     "late_entry": 0.016898608349900597,
+     "notes": 1006,
+     "digest": "bdc76b6f8ddb737634514b244edbac6ba43e4b3eac2b2703c3318f254673507c"
+    },
+    "sung_low_wired": {
+     "rt_nd_live": 0.5070284488190785,
+     "harsh": 0.05807935633142106,
+     "fresh_per100": 4.970178926441352,
+     "fresh": 50,
+     "stumbles_per100": 8.250497017892645,
+     "on_time_right": 0.12922465208747516,
+     "late_entry": 0.041749502982107355,
+     "notes": 1006,
+     "digest": "f756366fa009245ad6fd72f6982a8dbfc8da7d69ffc8828e777d1594ef851227"
+    },
+    "phone_v11": {
+     "fresh_heard": 6,
+     "harsh_heard": 0.1719056974459725,
+     "digest": "83d8638a88df8ecedd3713592b93f3a17475bb90692c39c015620e1f6b354273"
+    },
+    "clean_wired": {
+     "rt_nd_live": 0.6569560297882547,
+     "harsh": 0.04721106643243868,
+     "fresh_per100": 2.1868787276341948,
+     "fresh": 22,
+     "stumbles_per100": 8.648111332007952,
+     "on_time_right": 0.1918489065606362,
+     "late_entry": 0.016898608349900597,
+     "notes": 1006,
+     "digest": "1927370a16606a6b089251f8c2a3529f8e419dd5cef48199eeaf3281d8e0dae1"
+    },
+    "sung_bt": null,
+    "phone_twinkle": {
+     "rt_nd_live": 0.787878787878788,
+     "harsh": 0.013030303030302746,
+     "fresh": 0,
+     "stumbles_per100": 5.2631578947368425,
+     "digest": "3a0cea4c0c20fad9a7fd9832f71b038204273b2ba2d102ff26bb11e72e575377"
+    }
+   }
+  },
+  "r1_B_cons_v1": {
+   "G1": true,
+   "G2": false,
+   "G3": false,
+   "failed": [
+    "sung_low harsh <= reactive",
+    "sung fresh <= reactive",
+    "sung_low fresh <= reactive",
+    "v11 fresh_heard <= reactive",
+    "v11 harsh_heard <= reactive + 0.005"
+   ],
+   "mean_live": 0.5132404555702029,
+   "live_fresh_count": 103,
+   "bench": {
+    "rt_nd": 0.6122157190360247,
+    "harsh": 0.04740987739647329,
+    "seed2": 0.6146626734731551,
+    "fresh": 1.5610636387955108,
+    "us": 135.81827435197442,
+    "ds_rt_nd": {
+     "bach": 0.6668165467625848,
+     "folk": 0.6637293621939221,
+     "pop": 0.5637116572023522,
+     "pop909": 0.5546053099852395
+    },
+    "ds_fresh": {
+     "bach": 2.286282306163022,
+     "folk": 1.5223714338758587,
+     "pop": 1.210370138997345,
+     "pop909": 1.2252306761458176
+    }
+   },
+   "live": {
+    "sung_wired": {
+     "rt_nd_live": 0.6098671588074536,
+     "harsh": 0.07749405963755564,
+     "fresh_per100": 5.7654075546719685,
+     "fresh": 58,
+     "stumbles_per100": 12.027833001988071,
+     "on_time_right": 0.13817097415506957,
+     "late_entry": 0.02286282306163022,
+     "notes": 1006,
+     "digest": "854e6f6a6ec2b9bed75c46605d09a37657b9b324bdfc32459e13bf77642e1401"
+    },
+    "sung_low_wired": {
+     "rt_nd_live": 0.41661375233295234,
+     "harsh": 0.05315299786379246,
+     "fresh_per100": 4.473161033797217,
+     "fresh": 45,
+     "stumbles_per100": 5.069582504970179,
+     "on_time_right": 0.12226640159045726,
+     "late_entry": 0.11133200795228629,
+     "notes": 1006,
+     "digest": "5f5245e447ba6294b975f35bd059ea50c1e42fd16956d57e068e54900a360d35"
+    },
+    "phone_v11": {
+     "fresh_heard": 7,
+     "harsh_heard": 0.18467583497053044,
+     "digest": "0d82ae267d0b0171860ff4bc6fde018d0b608213c000af75635136e8171edc96"
+    },
+    "clean_wired": {
+     "rt_nd_live": 0.6615622535680198,
+     "harsh": 0.050957267463254415,
+     "fresh_per100": 1.4910536779324055,
+     "fresh": 15,
+     "stumbles_per100": 3.5785288270377733,
+     "on_time_right": 0.17594433399602386,
+     "late_entry": 0.018886679920477135,
+     "notes": 1006,
+     "digest": "0beab717e8301c5bda547bc8f1d2cd1f97b7eec008a40d4694e3274738f40f2e"
+    },
+    "sung_bt": null,
+    "phone_twinkle": {
+     "rt_nd_live": 0.6503030303030304,
+     "harsh": 0.025454545454545174,
+     "fresh": 0,
+     "stumbles_per100": 5.2631578947368425,
+     "digest": "0d8110855c5f8bcc78c85db7622d555339bec84d0587017579bb699f5bbae5f9"
+    }
+   }
+  },
+  "r1_C_revoice_v2": {
+   "G1": true,
+   "G2": true,
+   "G3": true,
+   "failed": [],
+   "mean_live": 0.5013984653916345,
+   "live_fresh_count": 88,
+   "bench": {
+    "rt_nd": 0.6071343451464697,
+    "harsh": 0.05289048894082007,
+    "seed2": 0.6083199762774643,
+    "fresh": 1.79833854198109,
+    "us": 90.53109287126318,
+    "ds_rt_nd": {
+     "bach": 0.6573741007194189,
+     "folk": 0.6549360131883031,
+     "pop": 0.5605871996429014,
+     "pop909": 0.5556400670352556
+    },
+    "ds_fresh": {
+     "bach": 2.0874751491053676,
+     "folk": 1.7884770097159477,
+     "pop": 1.5930032797126348,
+     "pop909": 1.72439872939041
+    }
+   },
+   "live": {
+    "sung_wired": {
+     "rt_nd_live": 0.6011147309188011,
+     "harsh": 0.082023014968763,
+     "fresh_per100": 4.970178926441352,
+     "fresh": 50,
+     "stumbles_per100": 4.174950298210735,
+     "on_time_right": 0.1411530815109344,
+     "late_entry": 0.018886679920477135,
+     "notes": 1006,
+     "digest": "6f41f13034d90eb92b5bc7a4c6ca1c709e49b0b14ad3f9850143e337093dc948"
+    },
+    "sung_low_wired": {
+     "rt_nd_live": 0.4016821998644678,
+     "harsh": 0.05156959122194172,
+     "fresh_per100": 3.7773359840954273,
+     "fresh": 38,
+     "stumbles_per100": 2.68389662027833,
+     "on_time_right": 0.1242544731610338,
+     "late_entry": 0.09443339960238568,
+     "notes": 1006,
+     "digest": "c69fd9190f32ede4d3f88f44c6b0d180f4d685fdf39f19a9bcbbb6656cdce48f"
+    },
+    "phone_v11": {
+     "fresh_heard": 4,
+     "harsh_heard": 0.15029469548133595,
+     "digest": "7f6198e8fa099ec1d66eb749d3768b1d9020e89b1a5825dbe5a88b9394040bb2"
+    },
+    "clean_wired": {
+     "rt_nd_live": 0.6524753813891382,
+     "harsh": 0.05107547895700706,
+     "fresh_per100": 0.9940357852882704,
+     "fresh": 10,
+     "stumbles_per100": 0.5964214711729622,
+     "on_time_right": 0.18190854870775347,
+     "late_entry": 0.018886679920477135,
+     "notes": 1006,
+     "digest": "bd9b2dd42cd9d6a41fbf226ce3e47e4fb00b8cad61e5fafca56ea0bdf81d7fcc"
+    },
+    "sung_bt": null,
+    "phone_twinkle": {
+     "rt_nd_live": 0.6503030303030304,
+     "harsh": 0.053030303030302824,
+     "fresh": 1,
+     "stumbles_per100": 0.0,
+     "digest": "4aeb384bb79ccb511dc23e291a1a9975a106bcb7cf3984b6c715cebe79e47bbe"
+    }
+   }
+  },
+  "r2_copy_v1": {
+   "G1": true,
+   "G2": false,
+   "G3": false,
+   "failed": [
+    "sung_low fresh <= reactive",
+    "v11 fresh_heard <= reactive",
+    "v11 harsh_heard <= reactive + 0.005"
+   ],
+   "mean_live": 0.5609686170599295,
+   "live_fresh_count": 94,
+   "bench": {
+    "rt_nd": 0.6286105148235086,
+    "harsh": 0.0326487006888421,
+    "seed2": 0.6313239763061098,
+    "fresh": 1.2773529913707855,
+    "us": 145.25241433201822,
+    "ds_rt_nd": {
+     "bach": 0.6862859712230167,
+     "folk": 0.6744761006394648,
+     "pop": 0.5670940064968707,
+     "pop909": 0.5865859809346823
+    },
+    "ds_fresh": {
+     "bach": 1.7892644135188867,
+     "folk": 1.3676588897827835,
+     "pop": 0.9995314696236139,
+     "pop909": 0.9529571925578582
+    }
+   },
+   "live": {
+    "sung_wired": {
+     "rt_nd_live": 0.6103496050962693,
+     "harsh": 0.06564890331043423,
+     "fresh_per100": 4.671968190854871,
+     "fresh": 47,
+     "stumbles_per100": 11.332007952286283,
+     "on_time_right": 0.18588469184890655,
+     "late_entry": 0.016898608349900597,
+     "notes": 1006,
+     "digest": "7c33837493cb280235f4f063b8d245daad0e957888e5bdcb12b825572c6208aa"
+    },
+    "sung_low_wired": {
+     "rt_nd_live": 0.5115876290235897,
+     "harsh": 0.050116024999534624,
+     "fresh_per100": 4.671968190854871,
+     "fresh": 47,
+     "stumbles_per100": 11.232604373757455,
+     "on_time_right": 0.13618290258449303,
+     "late_entry": 0.040755467196819085,
+     "notes": 1006,
+     "digest": "7c4d1d69e6688c8f33d549cdaa2ae56933662135b51d4f00166f1e94212b3b62"
+    },
+    "phone_v11": {
+     "fresh_heard": 6,
+     "harsh_heard": 0.1719056974459725,
+     "digest": "5c81e7ac9e3f5efc175487e81a9d53fd7b67a5303dba10def5d3b23e79450a46"
+    },
+    "clean_wired": {
+     "rt_nd_live": 0.6585116267039616,
+     "harsh": 0.04135475283162225,
+     "fresh_per100": 1.9880715705765408,
+     "fresh": 20,
+     "stumbles_per100": 7.852882703777336,
+     "on_time_right": 0.220675944333996,
+     "late_entry": 0.017892644135188866,
+     "notes": 1006,
+     "digest": "cc270f68f562ef844a0056959caa471d2b6ac18fa646c59824a19926bf0e3810"
+    },
+    "sung_bt": null,
+    "phone_twinkle": {
+     "rt_nd_live": 0.7927272727272728,
+     "harsh": 0.00757575757575765,
+     "fresh": 0,
+     "stumbles_per100": 10.526315789473685,
+     "digest": "3eba3f04a3310de87bc92f4e1f7a897a22a106fc91cc1dd74312757aed513688"
+    }
+   }
+  },
+  "r2_copyhm_v1": {
+   "G1": true,
+   "G2": false,
+   "G3": false,
+   "failed": [
+    "sung_low fresh <= reactive",
+    "v11 fresh_heard <= reactive",
+    "v11 harsh_heard <= reactive + 0.005"
+   ],
+   "mean_live": 0.5589219363227932,
+   "live_fresh_count": 95,
+   "bench": {
+    "rt_nd": 0.630798455262017,
+    "harsh": 0.03267968975430248,
+    "seed2": 0.6356719368331487,
+    "fresh": 1.418403245547931,
+    "us": 153.1165705572135,
+    "ds_rt_nd": {
+     "bach": 0.6794514388489163,
+     "folk": 0.6785034232541387,
+     "pop": 0.5672527091030655,
+     "pop909": 0.5979862498419478
+    },
+    "ds_fresh": {
+     "bach": 1.9880715705765408,
+     "folk": 1.4295439074200136,
+     "pop": 1.0307668280493518,
+     "pop909": 1.2252306761458176
+    }
+   },
+   "live": {
+    "sung_wired": {
+     "rt_nd_live": 0.605524189901755,
+     "harsh": 0.06535396076414997,
+     "fresh_per100": 4.7713717693836974,
+     "fresh": 48,
+     "stumbles_per100": 10.834990059642147,
+     "on_time_right": 0.1848906560636183,
+     "late_entry": 0.016898608349900597,
+     "notes": 1006,
+     "digest": "681cbbe3eb5f1d0eb9a02aa3516f06601ed9dcfd0ea5b845b7d2b0e68d87b40c"
+    },
+    "sung_low_wired": {
+     "rt_nd_live": 0.5123196827438313,
+     "harsh": 0.04998525412357563,
+     "fresh_per100": 4.671968190854871,
+     "fresh": 47,
+     "stumbles_per100": 11.530815109343937,
+     "on_time_right": 0.13618290258449303,
+     "late_entry": 0.039761431411530816,
+     "notes": 1006,
+     "digest": "1e3d2faaa88fed11e163a3b14f1a9383d8e23f0ec5a265f812fb527152affcc8"
+    },
+    "phone_v11": {
+     "fresh_heard": 6,
+     "harsh_heard": 0.1719056974459725,
+     "digest": "57bfbaa2ee80bd3a096c92b93f55c90057efa275bcda89102c0308991cf4ec18"
+    },
+    "clean_wired": {
+     "rt_nd_live": 0.6497355027440558,
+     "harsh": 0.04106222094974824,
+     "fresh_per100": 1.9880715705765408,
+     "fresh": 20,
+     "stumbles_per100": 8.151093439363818,
+     "on_time_right": 0.21570576540755468,
+     "late_entry": 0.017892644135188866,
+     "notes": 1006,
+     "digest": "6be8730fe34c72f9a7b0520f2d6b3c60986dc20855c365b25855f4fa876df229"
+    },
+    "sung_bt": {
+     "rt_nd_live": 0.4340964520426544,
+     "harsh": 0.13436003830074147,
+     "fresh_per100": 8.151093439363818,
+     "fresh": 82,
+     "stumbles_per100": 2.485089463220676,
+     "on_time_right": 0.25745526838966204,
+     "late_entry": 0.0009940357852882703,
+     "notes": 1006,
+     "digest": "a8e8aa45dd22a422512d0538b075abf949ca2a20fd2707c9f29095c2cac8682c"
+    },
+    "phone_twinkle": {
+     "rt_nd_live": 0.7966666666666664,
+     "harsh": 0.008030303030303176,
+     "fresh": 0,
+     "stumbles_per100": 7.894736842105263,
+     "digest": "6756fec459bfd9c8fbcb2c639ea8d2d0fe00da29eed7daf93eaa759c1c3b8378"
+    }
+   }
+  },
+  "r2_copyhmbold_v1": {
+   "G1": true,
+   "G2": false,
+   "G3": false,
+   "failed": [
+    "sung_low fresh <= reactive",
+    "v11 fresh_heard <= reactive",
+    "v11 harsh_heard <= reactive + 0.005"
+   ],
+   "mean_live": 0.5572632053527056,
+   "live_fresh_count": 97,
+   "bench": {
+    "rt_nd": 0.631548541691666,
+    "harsh": 0.031282631522787055,
+    "seed2": 0.6370552782288309,
+    "fresh": 1.5445377099722264,
+    "us": 152.1571661053347,
+    "ds_rt_nd": {
+     "bach": 0.6790017985611467,
+     "folk": 0.6796872026311344,
+     "pop": 0.5675403575767929,
+     "pop909": 0.5999648079975902
+    },
+    "ds_fresh": {
+     "bach": 2.286282306163022,
+     "folk": 1.5595024444581966,
+     "pop": 1.0541933468686553,
+     "pop909": 1.278172742399032
+    }
+   },
+   "live": {
+    "sung_wired": {
+     "rt_nd_live": 0.60181076465468,
+     "harsh": 0.06449924678268872,
+     "fresh_per100": 4.870775347912525,
+     "fresh": 49,
+     "stumbles_per100": 11.928429423459244,
+     "on_time_right": 0.18290258449304175,
+     "late_entry": 0.018886679920477135,
+     "notes": 1006,
+     "digest": "e8b905405eafe22000794f9fcd26f555fafdd6b278f9f50396a26e54c02b1504"
+    },
+    "sung_low_wired": {
+     "rt_nd_live": 0.5127156460507313,
+     "harsh": 0.0493146070138859,
+     "fresh_per100": 4.7713717693836974,
+     "fresh": 48,
+     "stumbles_per100": 13.320079522862823,
+     "on_time_right": 0.14015904572564614,
+     "late_entry": 0.036779324055666,
+     "notes": 1006,
+     "digest": "e6e99c4a6422c040cb4f7cebe6c790d97b05fa4d7d50b83e7450fb5d605e4a16"
+    },
+    "phone_v11": {
+     "fresh_heard": 6,
+     "harsh_heard": 0.1719056974459725,
+     "digest": "df7cda1e5bea531d464d2c3aa89ad46f09646cd7ccf6c65968eb5a2884b5b03b"
+    },
+    "clean_wired": {
+     "rt_nd_live": 0.6491168967832753,
+     "harsh": 0.0399763659557361,
+     "fresh_per100": 2.1868787276341948,
+     "fresh": 22,
+     "stumbles_per100": 9.44333996023857,
+     "on_time_right": 0.22266401590457258,
+     "late_entry": 0.017892644135188866,
+     "notes": 1006,
+     "digest": "7601432bff42b82b9d566be8033c274d9b48076475634f3e9bcb5a25b5757140"
+    },
+    "sung_bt": {
+     "rt_nd_live": 0.4358317795494421,
+     "harsh": 0.13329957284988536,
+     "fresh_per100": 8.548707753479125,
+     "fresh": 86,
+     "stumbles_per100": 2.584493041749503,
+     "on_time_right": 0.2584493041749503,
+     "late_entry": 0.0009940357852882703,
+     "notes": 1006,
+     "digest": "4f88a9bc8a5e91c2e0e1dade81d9179ab7ad61ee9aa8cb2c3a7cd298f00deae9"
+    },
+    "phone_twinkle": {
+     "rt_nd_live": 0.8053030303030299,
+     "harsh": 0.008030303030303176,
+     "fresh": 0,
+     "stumbles_per100": 7.894736842105263,
+     "digest": "792a2efbad274cfb5671a93de6a3bae4ce55c890d873dca3f4ae39354fe52866"
+    }
+   }
+  },
+  "r2_copysafe_v1": {
+   "G1": true,
+   "G2": false,
+   "G3": false,
+   "failed": [
+    "sung_low fresh <= reactive",
+    "v11 fresh_heard <= reactive",
+    "v11 harsh_heard <= reactive + 0.005"
+   ],
+   "mean_live": 0.5557550658708537,
+   "live_fresh_count": 91,
+   "bench": {
+    "rt_nd": 0.627023497837953,
+    "harsh": 0.033758254221422986,
+    "seed2": 0.6293653903294406,
+    "fresh": 1.1342629500576253,
+    "us": 145.5076489505023,
+    "ds_rt_nd": {
+     "bach": 0.6868255395683404,
+     "folk": 0.672803973577951,
+     "pop": 0.5652986832642967,
+     "pop909": 0.5831657949412243
+    },
+    "ds_fresh": {
+     "bach": 1.5904572564612327,
+     "folk": 1.2315118509808776,
+     "pop": 0.9058253943464001,
+     "pop909": 0.8092572984419906
+    }
+   },
+   "live": {
+    "sung_wired": {
+     "rt_nd_live": 0.6086336137600654,
+     "harsh": 0.06650161355425889,
+     "fresh_per100": 4.473161033797217,
+     "fresh": 45,
+     "stumbles_per100": 9.244532803180915,
+     "on_time_right": 0.17892644135188868,
+     "late_entry": 0.018886679920477135,
+     "notes": 1006,
+     "digest": "c27ed77f420b1fa15447ae41966b94ed9e041b4761a33a2834e6202f4c7f1604"
+    },
+    "sung_low_wired": {
+     "rt_nd_live": 0.5028765179816418,
+     "harsh": 0.05119751850389861,
+     "fresh_per100": 4.572564612326044,
+     "fresh": 46,
+     "stumbles_per100": 9.04572564612326,
+     "on_time_right": 0.13320079522862824,
+     "late_entry": 0.04771371769383698,
+     "notes": 1006,
+     "digest": "ec74015e2511c626adfb3d8ab33691af5193b2c754143df14dcd052656d749b1"
+    },
+    "phone_v11": {
+     "fresh_heard": 6,
+     "harsh_heard": 0.1719056974459725,
+     "digest": "f25c1d6201a189b003d7bbb599bb9c988cde0c5c707974fcd4d660aeaa089e99"
+    },
+    "clean_wired": {
+     "rt_nd_live": 0.6557033788965841,
+     "harsh": 0.041503841291321224,
+     "fresh_per100": 1.7892644135188867,
+     "fresh": 18,
+     "stumbles_per100": 5.566600397614314,
+     "on_time_right": 0.21769383697813122,
+     "late_entry": 0.017892644135188866,
+     "notes": 1006,
+     "digest": "e523e179d8767ff3d35ab87e009b48186402687e66aac02c94131ce201470cec"
+    },
+    "sung_bt": null,
+    "phone_twinkle": {
+     "rt_nd_live": 0.787878787878788,
+     "harsh": 0.010303030303030399,
+     "fresh": 0,
+     "stumbles_per100": 10.526315789473685,
+     "digest": "1ee381b428c629dce02a8c4d857ae23f789471c11dceb2bc1b438cf67623357c"
+    }
+   }
+  },
+  "r3_D_regguard_v1": {
+   "G1": true,
+   "G2": true,
+   "G3": true,
+   "failed": [],
+   "mean_live": 0.6210511954397535,
+   "live_fresh_count": 59,
+   "bench": {
+    "rt_nd": 0.6195663984492885,
+    "harsh": 0.030620666185523095,
+    "seed2": 0.6226723239670022,
+    "fresh": 1.1745968896797836,
+    "us": 138.94424247359822,
+    "ds_rt_nd": {
+     "bach": 0.6760341726618658,
+     "folk": 0.6628330272130272,
+     "pop": 0.5552905001611669,
+     "pop909": 0.5841078937610941
+    },
+    "ds_fresh": {
+     "bach": 1.6898608349900597,
+     "folk": 1.2624543597994926,
+     "pop": 0.9292519131657035,
+     "pop909": 0.8168204507638784
+    }
+   },
+   "live": {
+    "sung_wired": {
+     "rt_nd_live": 0.6000415840721873,
+     "harsh": 0.05455806129182896,
+     "fresh_per100": 3.6779324055666005,
+     "fresh": 37,
+     "stumbles_per100": 10.238568588469185,
+     "on_time_right": 0.18290258449304175,
+     "late_entry": 0.04771371769383698,
+     "notes": 1006,
+     "digest": "a46df959e101df8b5d774979f37e690ba1bfc379fdbabd48fe6836fb9aeee182"
+    },
+    "sung_low_wired": {
+     "rt_nd_live": 0.6420608068073196,
+     "harsh": 0.040437785323936486,
+     "fresh_per100": 2.1868787276341948,
+     "fresh": 22,
+     "stumbles_per100": 10.03976143141153,
+     "on_time_right": 0.20178926441351888,
+     "late_entry": 0.02485089463220676,
+     "notes": 1006,
+     "digest": "6481ad3bee49ca294e6fe964b7fa185d9d3d8be156580cbfe863cccb3cfb0f8a"
+    },
+    "phone_v11": {
+     "fresh_heard": 2,
+     "harsh_heard": 0.13064833005893908,
+     "digest": "686d14b998e86854814605c7e6ee2de9206e029cf32fbb26da69c129c4115f4a"
+    },
+    "clean_wired": null,
+    "sung_bt": null,
+    "phone_twinkle": {
+     "rt_nd_live": 0.7927272727272728,
+     "harsh": 0.00757575757575765,
+     "fresh": 0,
+     "stumbles_per100": 10.526315789473685,
+     "digest": "aa9e51b17c3d6729170f6dce70b25087034e1169fe62eef632056536ca41198d"
+    }
+   }
+  },
+  "r3_D_regguardsafe_v1": {
+   "G1": true,
+   "G2": true,
+   "G3": true,
+   "failed": [],
+   "mean_live": 0.6200175910895593,
+   "live_fresh_count": 55,
+   "bench": {
+    "rt_nd": 0.6177987236210195,
+    "harsh": 0.03173494686420934,
+    "seed2": 0.6200782148877404,
+    "fresh": 1.031727667363891,
+    "us": 140.10808188450238,
+    "ds_rt_nd": {
+     "bach": 0.6761241007194196,
+     "folk": 0.6608641826825515,
+     "pop": 0.5531678528033174,
+     "pop909": 0.5810387582787894
+    },
+    "ds_fresh": {
+     "bach": 1.4910536779324055,
+     "folk": 1.1201188192338636,
+     "pop": 0.8199281586756209,
+     "pop909": 0.6958100136136742
+    }
+   },
+   "live": {
+    "sung_wired": {
+     "rt_nd_live": 0.599078736107727,
+     "harsh": 0.05529648418597713,
+     "fresh_per100": 3.479125248508946,
+     "fresh": 35,
+     "stumbles_per100": 8.05168986083499,
+     "on_time_right": 0.17693836978131214,
+     "late_entry": 0.05168986083499006,
+     "notes": 1006,
+     "digest": "ecff7513aa3582fdf2c4eac2d1680f4db6dbadd4c7f6df2c93148dce60270d67"
+    },
+    "sung_low_wired": {
+     "rt_nd_live": 0.6409564460713916,
+     "harsh": 0.04159958682926696,
+     "fresh_per100": 1.9880715705765408,
+     "fresh": 20,
+     "stumbles_per100": 7.753479125248509,
+     "on_time_right": 0.19284294234592445,
+     "late_entry": 0.030815109343936383,
+     "notes": 1006,
+     "digest": "8dd8a7845b0c22f3a7e3581b4657f6df142a7dd92f6e152628f8ec4d7bd5923b"
+    },
+    "phone_v11": {
+     "fresh_heard": 2,
+     "harsh_heard": 0.13064833005893908,
+     "digest": "c4bd8ed0a5a9bc291722c8b6d5bf6996de53896214524573e160747125d0f4b1"
+    },
+    "clean_wired": null,
+    "sung_bt": {
+     "rt_nd_live": 0.4170604358921968,
+     "harsh": 0.11875004726633744,
+     "fresh_per100": 7.157057654075547,
+     "fresh": 72,
+     "stumbles_per100": 1.8886679920477136,
+     "on_time_right": 0.24652087475149106,
+     "late_entry": 0.017892644135188866,
+     "notes": 1006,
+     "digest": "a1406ae62b9c8d01ee397e89af79aa64af893a48047e209bfc20b51a64e07e73"
+    },
+    "phone_twinkle": {
+     "rt_nd_live": 0.787878787878788,
+     "harsh": 0.010303030303030399,
+     "fresh": 0,
+     "stumbles_per100": 10.526315789473685,
+     "digest": "642ff9f56517da07110bc873bc3f582153d546ff0935cf5dbbc56bea3f3988af"
+    }
+   }
+  },
+  "r3_D_reghm_v1": {
+   "G1": true,
+   "G2": true,
+   "G3": false,
+   "failed": [
+    "v11 fresh_heard <= reactive",
+    "v11 harsh_heard <= reactive + 0.005"
+   ],
+   "mean_live": 0.6229490021925769,
+   "live_fresh_count": 75,
+   "bench": {
+    "rt_nd": 0.6329274785859281,
+    "harsh": 0.032633994647942165,
+    "seed2": 0.6379142991706181,
+    "fresh": 1.4278206324164329,
+    "us": 150.1829626855683,
+    "ds_rt_nd": {
+     "bach": 0.6794514388489163,
+     "folk": 0.6789423176717188,
+     "pop": 0.5679420735487217,
+     "pop909": 0.6053740842743557
+    },
+    "ds_fresh": {
+     "bach": 1.9880715705765408,
+     "folk": 1.4357324091837367,
+     "pop": 1.0698110260815243,
+     "pop909": 1.2176675238239298
+    }
+   },
+   "live": {
+    "sung_wired": {
+     "rt_nd_live": 0.605524189901755,
+     "harsh": 0.06535396076414997,
+     "fresh_per100": 4.7713717693836974,
+     "fresh": 48,
+     "stumbles_per100": 10.834990059642147,
+     "on_time_right": 0.1848906560636183,
+     "late_entry": 0.016898608349900597,
+     "notes": 1006,
+     "digest": "faa7789122ccae385513ce8d4d479402180a05ca6cb66fa0d35bf1ca32303465"
+    },
+    "sung_low_wired": {
+     "rt_nd_live": 0.6403738144833987,
+     "harsh": 0.04271072358146061,
+     "fresh_per100": 2.68389662027833,
+     "fresh": 27,
+     "stumbles_per100": 10.73558648111332,
+     "on_time_right": 0.20278330019880716,
+     "late_entry": 0.015904572564612324,
+     "notes": 1006,
+     "digest": "2571e0c8d5e44844afdee7bc3b800252340d7eb4fe1f9049f1c548915e5614a2"
+    },
+    "phone_v11": {
+     "fresh_heard": 7,
+     "harsh_heard": 0.17976424361493124,
+     "digest": "78a92dbbf40585bd736e9d9a8748551cae7605d522b7086ba87e061fb186264f"
+    },
+    "clean_wired": null,
+    "sung_bt": null,
+    "phone_twinkle": {
+     "rt_nd_live": 0.7966666666666664,
+     "harsh": 0.008030303030303176,
+     "fresh": 0,
+     "stumbles_per100": 7.894736842105263,
+     "digest": "19a5f84e699877b167ab263eebcfdefce99438ad8f5c809a3c651b60b08c2fd2"
+    }
+   }
+  },
+  "r3_D_regsafe_v1": {
+   "G1": true,
+   "G2": true,
+   "G3": false,
+   "failed": [
+    "v11 fresh_heard <= reactive",
+    "v11 harsh_heard <= reactive + 0.005"
+   ],
+   "mean_live": 0.6276885888706921,
+   "live_fresh_count": 71,
+   "bench": {
+    "rt_nd": 0.6290381909416685,
+    "harsh": 0.03365835545532586,
+    "seed2": 0.6315375573535486,
+    "fresh": 1.1420103678429232,
+    "us": 144.4313786465431,
+    "ds_rt_nd": {
+     "bach": 0.6868255395683404,
+     "folk": 0.6732985025383473,
+     "pop": 0.5661715475983653,
+     "pop909": 0.5898571740616205
+    },
+    "ds_fresh": {
+     "bach": 1.5904572564612327,
+     "folk": 1.2315118509808776,
+     "pop": 0.9292519131657035,
+     "pop909": 0.8168204507638784
+    }
+   },
+   "live": {
+    "sung_wired": {
+     "rt_nd_live": 0.6086336137600654,
+     "harsh": 0.06650161355425889,
+     "fresh_per100": 4.473161033797217,
+     "fresh": 45,
+     "stumbles_per100": 9.244532803180915,
+     "on_time_right": 0.17892644135188868,
+     "late_entry": 0.018886679920477135,
+     "notes": 1006,
+     "digest": "6a705948f20991202e9b88f1d7b53a8d058c704ded0ff97e51c1ffd96f919e81"
+    },
+    "sung_low_wired": {
+     "rt_nd_live": 0.6467435639813188,
+     "harsh": 0.04385083187841825,
+     "fresh_per100": 2.584493041749503,
+     "fresh": 26,
+     "stumbles_per100": 8.648111332007952,
+     "on_time_right": 0.1908548707753479,
+     "late_entry": 0.017892644135188866,
+     "notes": 1006,
+     "digest": "2ea52115d3ede6792e822a6afd00c476046f364a857e93bd8d37bfd77d9b632d"
+    },
+    "phone_v11": {
+     "fresh_heard": 7,
+     "harsh_heard": 0.17976424361493124,
+     "digest": "78fdd9834945c7339d5ec251c3d1941d4eb61e67d100119bcd596746b993e80d"
+    },
+    "clean_wired": null,
+    "sung_bt": null,
+    "phone_twinkle": {
+     "rt_nd_live": 0.787878787878788,
+     "harsh": 0.010303030303030399,
+     "fresh": 0,
+     "stumbles_per100": 10.526315789473685,
+     "digest": "b92e281bec1024f8f7ed95c76fb7484c75b4a92b5d155ba0e7d797d269a7da55"
+    }
+   }
+  },
+  "r3_E_trk_v1": {
+   "G1": true,
+   "G2": true,
+   "G3": true,
+   "failed": [],
+   "mean_live": 0.5601516643928155,
+   "live_fresh_count": 53,
+   "bench": {
+    "rt_nd": 0.6232499766097813,
+    "harsh": 0.035355936541514074,
+    "seed2": 0.6300396655919847,
+    "fresh": 1.7613936593934478,
+    "us": 151.52563276761404,
+    "ds_rt_nd": {
+     "bach": 0.6734712230215785,
+     "folk": 0.6736446723470094,
+     "pop": 0.5592134302080337,
+     "pop909": 0.5866705808625037
+    },
+    "ds_fresh": {
+     "bach": 2.584493041749503,
+     "folk": 1.6585184726777646,
+     "pop": 1.3353115727002967,
+     "pop909": 1.467251550446226
+    }
+   },
+   "live": {
+    "sung_wired": {
+     "rt_nd_live": 0.6144382305131638,
+     "harsh": 0.05530229843891748,
+     "fresh_per100": 3.3797216699801194,
+     "fresh": 34,
+     "stumbles_per100": 10.43737574552684,
+     "on_time_right": 0.18886679920477137,
+     "late_entry": 0.016898608349900597,
+     "notes": 1006,
+     "digest": "00484e7209a2de617cfb1780be85ae33481f2f2487f638990aef93388fbe5b82"
+    },
+    "sung_low_wired": {
+     "rt_nd_live": 0.5058650982724672,
+     "harsh": 0.04093467361782282,
+     "fresh_per100": 1.8886679920477136,
+     "fresh": 19,
+     "stumbles_per100": 9.343936381709742,
+     "on_time_right": 0.14314115308151093,
+     "late_entry": 0.03777335984095427,
+     "notes": 1006,
+     "digest": "d5a023c199dd2826fe88f2f9c4d89048852cb926c8416daff6c51c048294e761"
+    },
+    "phone_v11": {
+     "fresh_heard": 2,
+     "harsh_heard": 0.12868369351669942,
+     "digest": "2dfd21754fe887cf5715c29d3b2b9aedbdfa3c31f80b1e291800aaaa63a9fb11"
+    },
+    "clean_wired": {
+     "rt_nd_live": 0.6472820438321659,
+     "harsh": 0.03966211667872567,
+     "fresh_per100": 1.9880715705765408,
+     "fresh": 20,
+     "stumbles_per100": 7.654075546719682,
+     "on_time_right": 0.21669980119284293,
+     "late_entry": 0.018886679920477135,
+     "notes": 1006,
+     "digest": "122b579311be189183286856a77f204e4089ec4cfb4330e2781c404f66e01daf"
+    },
+    "sung_bt": {
+     "rt_nd_live": 0.43314143386303006,
+     "harsh": 0.12311947664790966,
+     "fresh_per100": 8.449304174950298,
+     "fresh": 85,
+     "stumbles_per100": 1.9880715705765408,
+     "on_time_right": 0.27435387673956263,
+     "late_entry": 0.0009940357852882703,
+     "notes": 1006,
+     "digest": "43cdf5e2a70d233ba6e9d74283897454febd408d23d573521baa5e9dc0ace090"
+    },
+    "phone_twinkle": {
+     "rt_nd_live": 0.7966666666666664,
+     "harsh": 0.008030303030303176,
+     "fresh": 0,
+     "stumbles_per100": 7.894736842105263,
+     "digest": "14b806f3e949ef2ab889ade8333c9b2ef36d5e3a159e401b14804e9293b7aa0c"
+    }
+   }
+  },
+  "r3_E_trkhold_v1": {
+   "G1": true,
+   "G2": true,
+   "G3": true,
+   "failed": [],
+   "mean_live": 0.5570367630062227,
+   "live_fresh_count": 36,
+   "bench": {
+    "rt_nd": 0.6192930314399969,
+    "harsh": 0.03656787181188457,
+    "seed2": 0.6253564627902513,
+    "fresh": 1.747260396674382,
+    "us": 145.54028746152838,
+    "ds_rt_nd": {
+     "bach": 0.6719424460431612,
+     "folk": 0.6722321721320063,
+     "pop": 0.5567832965506827,
+     "pop909": 0.5762142110341376
+    },
+    "ds_fresh": {
+     "bach": 2.584493041749503,
+     "folk": 1.5966334550405348,
+     "pop": 1.2650320162423865,
+     "pop909": 1.5428830736651036
+    }
+   },
+   "live": {
+    "sung_wired": {
+     "rt_nd_live": 0.6123452613476316,
+     "harsh": 0.0506636395446306,
+     "fresh_per100": 2.286282306163022,
+     "fresh": 23,
+     "stumbles_per100": 9.642147117296222,
+     "on_time_right": 0.18886679920477137,
+     "late_entry": 0.020874751491053677,
+     "notes": 1006,
+     "digest": "b75e3cb248ac0c0b0f51efc5321d36b6f5f150f5e2e8c7b170aad7bf0007e09d"
+    },
+    "sung_low_wired": {
+     "rt_nd_live": 0.5017282646648139,
+     "harsh": 0.03711053578819915,
+     "fresh_per100": 1.2922465208747516,
+     "fresh": 13,
+     "stumbles_per100": 9.145129224652088,
+     "on_time_right": 0.13916500994035785,
+     "late_entry": 0.03777335984095427,
+     "notes": 1006,
+     "digest": "6d14d1f27fc336761e7c1f198e31527c24cdc3201840c49bdf89155c19881418"
+    },
+    "phone_v11": {
+     "fresh_heard": 2,
+     "harsh_heard": 0.1237721021611002,
+     "digest": "6f916335c30b13d3fc4f92092be8a9c351777ea79c00985bf927b58acad9f7c3"
+    },
+    "clean_wired": {
+     "rt_nd_live": 0.6476811326269392,
+     "harsh": 0.04039295634944686,
+     "fresh_per100": 2.0874751491053676,
+     "fresh": 21,
+     "stumbles_per100": 7.5546719681908545,
+     "on_time_right": 0.21769383697813122,
+     "late_entry": 0.020874751491053677,
+     "notes": 1006,
+     "digest": "47c289c0ed3be8af6af3feb044fad3d65d05bc2939efda12482128064b2ec572"
+    },
+    "sung_bt": null,
+    "phone_twinkle": {
+     "rt_nd_live": 0.8284848484848482,
+     "harsh": 0.010151515151515305,
+     "fresh": 0,
+     "stumbles_per100": 7.894736842105263,
+     "digest": "aef2c1fcc8f0888f49cd2d050df1a49576d2ff221c3c06dbca5fcfb6be6c0031"
+    }
+   }
+  },
+  "r3_E_trkholdk_v1": {
+   "G1": true,
+   "G2": true,
+   "G3": true,
+   "failed": [],
+   "mean_live": 0.5591186536638596,
+   "live_fresh_count": 38,
+   "bench": {
+    "rt_nd": 0.6196072397034209,
+    "harsh": 0.03660849650842776,
+    "seed2": 0.6250839878367508,
+    "fresh": 1.798128895858016,
+    "us": 142.03531831022593,
+    "ds_rt_nd": {
+     "bach": 0.6718525179856072,
+     "folk": 0.6725628887973258,
+     "pop": 0.5576065663203158,
+     "pop909": 0.5764069857104349
+    },
+    "ds_fresh": {
+     "bach": 2.68389662027833,
+     "folk": 1.6399529673865958,
+     "pop": 1.272840855848821,
+     "pop909": 1.5958251399183179
+    }
+   },
+   "live": {
+    "sung_wired": {
+     "rt_nd_live": 0.6136018801480846,
+     "harsh": 0.0507306612382075,
+     "fresh_per100": 2.584493041749503,
+     "fresh": 26,
+     "stumbles_per100": 9.940357852882704,
+     "on_time_right": 0.1878727634194831,
+     "late_entry": 0.020874751491053677,
+     "notes": 1006,
+     "digest": "747177b13c420dfc051d7097e992afc4f5feb58274f6c0a88ef11069321dc13b"
+    },
+    "sung_low_wired": {
+     "rt_nd_live": 0.5046354271796346,
+     "harsh": 0.03724103904281752,
+     "fresh_per100": 1.1928429423459244,
+     "fresh": 12,
+     "stumbles_per100": 9.542743538767395,
+     "on_time_right": 0.1411530815109344,
+     "late_entry": 0.03777335984095427,
+     "notes": 1006,
+     "digest": "807abb833befb01f4a171c6d1e08ab67205792109c8c71767095d720a9d56938"
+    },
+    "phone_v11": {
+     "fresh_heard": 2,
+     "harsh_heard": 0.1237721021611002,
+     "digest": "0dfdca41edd798c1187fbc5636ecd713ebb602c72ad611f5ee489c4ccb5ccdd8"
+    },
+    "clean_wired": {
+     "rt_nd_live": 0.6477868125525134,
+     "harsh": 0.04084265816040089,
+     "fresh_per100": 2.1868787276341948,
+     "fresh": 22,
+     "stumbles_per100": 7.5546719681908545,
+     "on_time_right": 0.21868787276341947,
+     "late_entry": 0.020874751491053677,
+     "notes": 1006,
+     "digest": "b30c67eae5beb49ef33900790adcad733c2686df9a0ad6856105fea5d60d04ba"
+    },
+    "sung_bt": {
+     "rt_nd_live": 0.42403985898118324,
+     "harsh": 0.12638471453718664,
+     "fresh_per100": 6.163021868787276,
+     "fresh": 62,
+     "stumbles_per100": 1.5904572564612327,
+     "on_time_right": 0.2584493041749503,
+     "late_entry": 0.0009940357852882703,
+     "notes": 1006,
+     "digest": "7f3f20dc7c682ba3b592ca65875d696858498eacb83f105a5a6cb9e8c82c3500"
+    },
+    "phone_twinkle": {
+     "rt_nd_live": 0.8284848484848482,
+     "harsh": 0.010151515151515305,
+     "fresh": 0,
+     "stumbles_per100": 7.894736842105263,
+     "digest": "d755b5bafcb5332f172c431cda74122487176e200d6ad6530c85b5f978837028"
+    }
+   }
+  },
+  "r3_E_trksafe_v1": {
+   "G1": true,
+   "G2": true,
+   "G3": true,
+   "failed": [],
+   "mean_live": 0.5520570626094146,
+   "live_fresh_count": 36,
+   "bench": {
+    "rt_nd": 0.6129659252214503,
+    "harsh": 0.03426736405525993,
+    "seed2": 0.6185846237452224,
+    "fresh": 1.5899769579470102,
+    "us": 147.33883753709685,
+    "ds_rt_nd": {
+     "bach": 0.6630395683453195,
+     "folk": 0.6621885921824309,
+     "pop": 0.5531876906290921,
+     "pop909": 0.5734478497289588
+    },
+    "ds_fresh": {
+     "bach": 2.3856858846918487,
+     "folk": 1.4666749180023517,
+     "pop": 1.0932375449008278,
+     "pop909": 1.4143094841930117
+    }
+   },
+   "live": {
+    "sung_wired": {
+     "rt_nd_live": 0.6077626677644572,
+     "harsh": 0.04851503887866732,
+     "fresh_per100": 2.286282306163022,
+     "fresh": 23,
+     "stumbles_per100": 9.74155069582505,
+     "on_time_right": 0.1908548707753479,
+     "late_entry": 0.03578528827037773,
+     "notes": 1006,
+     "digest": "485e05bfa1ebb861930dcd77b4c962547c45f7b47fb46218fa0445b6eff040e7"
+    },
+    "sung_low_wired": {
+     "rt_nd_live": 0.496351457454372,
+     "harsh": 0.036854736380880555,
+     "fresh_per100": 1.2922465208747516,
+     "fresh": 13,
+     "stumbles_per100": 8.250497017892645,
+     "on_time_right": 0.13817097415506957,
+     "late_entry": 0.040755467196819085,
+     "notes": 1006,
+     "digest": "d150fb432bf4a1f5de3263691725bf5ba3e537c5c0c0fbc2f1ec6a66d4680e0e"
+    },
+    "phone_v11": {
+     "fresh_heard": 1,
+     "harsh_heard": 0.11493123772102161,
+     "digest": "41bec33a29d965a2eb6036cb5c383b0d6d1a6e61c48f2ad0346d2c905564d665"
+    },
+    "clean_wired": {
+     "rt_nd_live": 0.6402045012412448,
+     "harsh": 0.03908169237595541,
+     "fresh_per100": 1.8886679920477136,
+     "fresh": 19,
+     "stumbles_per100": 7.5546719681908545,
+     "on_time_right": 0.21769383697813122,
+     "late_entry": 0.0268389662027833,
+     "notes": 1006,
+     "digest": "8cb1b6ac6692502f142c6270d071636234af61ff270b91c0c33b240838614f84"
+    },
+    "sung_bt": null,
+    "phone_twinkle": {
+     "rt_nd_live": 0.8387878787878784,
+     "harsh": 0.008030303030303176,
+     "fresh": 0,
+     "stumbles_per100": 5.2631578947368425,
+     "digest": "21f87d4a7fe2f16bbcc8c04abfea2c8677e87342ef52c19e6e7cbca8c1562342"
+    }
+   }
+  },
+  "r3_F_bold_v1": {
+   "G1": true,
+   "G2": true,
+   "G3": true,
+   "failed": [],
+   "mean_live": 0.5522511761953648,
+   "live_fresh_count": 79,
+   "bench": {
+    "rt_nd": 0.6167755732125021,
+    "harsh": 0.03829049612762712,
+    "seed2": 0.6224296845466826,
+    "fresh": 1.1586590349744155,
+    "us": 140.6273278048872,
+    "ds_rt_nd": {
+     "bach": 0.6686600719424411,
+     "folk": 0.6623817702436857,
+     "pop": 0.5579735660971402,
+     "pop909": 0.5780868845667411
+    },
+    "ds_fresh": {
+     "bach": 1.5904572564612327,
+     "folk": 1.2129463456897085,
+     "pop": 0.9917226300171794,
+     "pop909": 0.8395099077295417
+    }
+   },
+   "live": {
+    "sung_wired": {
+     "rt_nd_live": 0.6064552451926086,
+     "harsh": 0.07004058946494691,
+     "fresh_per100": 4.572564612326044,
+     "fresh": 46,
+     "stumbles_per100": 4.572564612326044,
+     "on_time_right": 0.1679920477137177,
+     "late_entry": 0.018886679920477135,
+     "notes": 1006,
+     "digest": "bd92931f27330aa190d54dafe4a6d84f69a79c8b89384116fc75ad7220bdf55f"
+    },
+    "sung_low_wired": {
+     "rt_nd_live": 0.49804710719812095,
+     "harsh": 0.050640229055979945,
+     "fresh_per100": 3.280318091451292,
+     "fresh": 33,
+     "stumbles_per100": 3.8767395626242545,
+     "on_time_right": 0.1341948310139165,
+     "late_entry": 0.042743538767395624,
+     "notes": 1006,
+     "digest": "3ea2cc7edd3da139db54864b4e8ac3cc4a2aac597b2abacbc2caddcff880298b"
+    },
+    "phone_v11": {
+     "fresh_heard": 4,
+     "harsh_heard": 0.1581532416502947,
+     "digest": "afa6bd281410018a7c460afa0b9b0ad64f3a6415ef1a49ec3dcf1fbac46a1df4"
+    },
+    "clean_wired": null,
+    "sung_bt": null,
+    "phone_twinkle": {
+     "rt_nd_live": 0.7866666666666664,
+     "harsh": 0.04227272727272744,
+     "fresh": 1,
+     "stumbles_per100": 0.0,
+     "digest": "9ac40061477dafc18032ea6a2c6341882444b1c35974dc287f766f33b0985038"
+    }
+   }
+  },
+  "r3_F_calm_v1": {
+   "G1": true,
+   "G2": true,
+   "G3": true,
+   "failed": [],
+   "mean_live": 0.5492154121966039,
+   "live_fresh_count": 77,
+   "bench": {
+    "rt_nd": 0.613903865493274,
+    "harsh": 0.039311724342651636,
+    "seed2": 0.6190902339588904,
+    "fresh": 1.130050239356799,
+    "us": 144.06040999363495,
+    "ds_rt_nd": {
+     "bach": 0.6648830935251749,
+     "folk": 0.6601965697450676,
+     "pop": 0.5565948372058269,
+     "pop909": 0.5739409614970266
+    },
+    "ds_fresh": {
+     "bach": 1.5904572564612327,
+     "folk": 1.1448728262887555,
+     "pop": 0.9604872715914415,
+     "pop909": 0.8243836030857662
+    }
+   },
+   "live": {
+    "sung_wired": {
+     "rt_nd_live": 0.6044776148298143,
+     "harsh": 0.07032850735864031,
+     "fresh_per100": 4.274353876739562,
+     "fresh": 43,
+     "stumbles_per100": 3.8767395626242545,
+     "on_time_right": 0.16699801192842942,
+     "late_entry": 0.018886679920477135,
+     "notes": 1006,
+     "digest": "026945598a3b8775f1d6fce1f5c2de1072091e8dc45d4133ce6bbcb7927b56f0"
+    },
+    "sung_low_wired": {
+     "rt_nd_live": 0.4939532095633934,
+     "harsh": 0.05083273511415296,
+     "fresh_per100": 3.3797216699801194,
+     "fresh": 34,
+     "stumbles_per100": 3.3797216699801194,
+     "on_time_right": 0.13518886679920478,
+     "late_entry": 0.0437375745526839,
+     "notes": 1006,
+     "digest": "3af935a195c0ed765d1364f4b12baa8027c6d066acb81c2bf76e125e19e3d5dd"
+    },
+    "phone_v11": {
+     "fresh_heard": 4,
+     "harsh_heard": 0.1581532416502947,
+     "digest": "9ce9c8f49c46f081da3bd029f43bd3e4300244b4d0d4a85653afe51b4a82fc62"
+    },
+    "clean_wired": null,
+    "sung_bt": null,
+    "phone_twinkle": {
+     "rt_nd_live": 0.761212121212121,
+     "harsh": 0.0404545454545455,
+     "fresh": 1,
+     "stumbles_per100": 0.0,
+     "digest": "187dccefea756812ed6d8b956d770a4f256e3046ebe8512fab7faa36dd38b4e3"
+    }
+   }
+  },
+  "r3_F_guard_v1": {
+   "G1": true,
+   "G2": true,
+   "G3": true,
+   "failed": [],
+   "mean_live": 0.5537285307590096,
+   "live_fresh_count": 79,
+   "bench": {
+    "rt_nd": 0.6162726386187145,
+    "harsh": 0.03850148409381429,
+    "seed2": 0.621255914082071,
+    "fresh": 1.149364491748187,
+    "us": 145.37569093565747,
+    "ds_rt_nd": {
+     "bach": 0.6683902877697794,
+     "folk": 0.661970692726616,
+     "pop": 0.5576462419718644,
+     "pop909": 0.5770833320065984
+    },
+    "ds_fresh": {
+     "bach": 1.5904572564612327,
+     "folk": 1.2067578439259856,
+     "pop": 0.968296111197876,
+     "pop909": 0.831946755407654
+    }
+   },
+   "live": {
+    "sung_wired": {
+     "rt_nd_live": 0.60681431355064,
+     "harsh": 0.07111718633263571,
+     "fresh_per100": 4.572564612326044,
+     "fresh": 46,
+     "stumbles_per100": 4.473161033797217,
+     "on_time_right": 0.16699801192842942,
+     "late_entry": 0.018886679920477135,
+     "notes": 1006,
+     "digest": "5e0cfdada06c071f1eaf083a2c95fdc776afa50f9b9203823f21462137afc928"
+    },
+    "sung_low_wired": {
+     "rt_nd_live": 0.5006427479673792,
+     "harsh": 0.05075095778967149,
+     "fresh_per100": 3.280318091451292,
+     "fresh": 33,
+     "stumbles_per100": 4.075546719681909,
+     "on_time_right": 0.13220675944333996,
+     "late_entry": 0.040755467196819085,
+     "notes": 1006,
+     "digest": "cace1627bb86ab0d2abeab7d6c64e15d0c8f0ba85bf781bdd8d112051df704fc"
+    },
+    "phone_v11": {
+     "fresh_heard": 4,
+     "harsh_heard": 0.1581532416502947,
+     "digest": "cb963c3d775935becadf36148a3d76a183d2ba93f1cd16a0fc2d30dc3918c2d6"
+    },
+    "clean_wired": null,
+    "sung_bt": null,
+    "phone_twinkle": {
+     "rt_nd_live": 0.798181818181818,
+     "harsh": 0.0404545454545455,
+     "fresh": 1,
+     "stumbles_per100": 0.0,
+     "digest": "c0ced9d2ab0bdb80f4aedb59d33b9586914fcd5208258e17072877d1ab929af1"
+    }
+   }
+  },
+  "r3_F_lowsafe_v1": {
+   "G1": true,
+   "G2": true,
+   "G3": true,
+   "failed": [],
+   "mean_live": 0.5387960816116573,
+   "live_fresh_count": 72,
+   "bench": {
+    "rt_nd": 0.6133995255747751,
+    "harsh": 0.03934782642715201,
+    "seed2": 0.6187448687910614,
+    "fresh": 1.1366438255811997,
+    "us": 144.28326127150032,
+    "ds_rt_nd": {
+     "bach": 0.6648830935251749,
+     "folk": 0.6600760282356327,
+     "pop": 0.5558409998264037,
+     "pop909": 0.572797980711889
+    },
+    "ds_fresh": {
+     "bach": 1.5904572564612327,
+     "folk": 1.1634383315799246,
+     "pop": 0.968296111197876,
+     "pop909": 0.8243836030857662
+    }
+   },
+   "live": {
+    "sung_wired": {
+     "rt_nd_live": 0.6035782112079062,
+     "harsh": 0.07032850735864031,
+     "fresh_per100": 4.274353876739562,
+     "fresh": 43,
+     "stumbles_per100": 3.8767395626242545,
+     "on_time_right": 0.16699801192842942,
+     "late_entry": 0.018886679920477135,
+     "notes": 1006,
+     "digest": "90d5e13bd367e3d5e218ffe9c1ed8904498524ede90581c3cadf0d400cb2d1fc"
+    },
+    "sung_low_wired": {
+     "rt_nd_live": 0.4740139520154084,
+     "harsh": 0.04806305195022822,
+     "fresh_per100": 2.8827037773359843,
+     "fresh": 29,
+     "stumbles_per100": 2.8827037773359843,
+     "on_time_right": 0.13817097415506957,
+     "late_entry": 0.05765407554671968,
+     "notes": 1006,
+     "digest": "cb23f0ed7f15a38ed0f6db21d5b4d64fc52479259c8c5af68058b61dd99a2dbf"
+    },
+    "phone_v11": {
+     "fresh_heard": 4,
+     "harsh_heard": 0.1581532416502947,
+     "digest": "163fac04a6d2ea2c9ac0ee5aed32762ec2a79e5ad4bf81ee2d65a5bcb11ba3ed"
+    },
+    "clean_wired": null,
+    "sung_bt": null,
+    "phone_twinkle": {
+     "rt_nd_live": 0.7039393939393938,
+     "harsh": 0.04227272727272736,
+     "fresh": 1,
+     "stumbles_per100": 0.0,
+     "digest": "a6cefb281c230022fd4be045e4406c1296bb36161a18d17844fa28e0f0513a81"
+    }
+   }
+  },
+  "r3_X_regtrkdk_v1": {
+   "G1": true,
+   "G2": true,
+   "G3": true,
+   "failed": [],
+   "mean_live": 0.6265546878901425,
+   "live_fresh_count": 42,
+   "bench": {
+    "rt_nd": 0.621004620333839,
+    "harsh": 0.03834550143784194,
+    "seed2": 0.6265729716899184,
+    "fresh": 1.6823097524864767,
+    "us": 142.77961041979532,
+    "ds_rt_nd": {
+     "bach": 0.6705935251798518,
+     "folk": 0.6708382180627492,
+     "pop": 0.559426686835107,
+     "pop909": 0.5831600512576479
+    },
+    "ds_fresh": {
+     "bach": 2.584493041749503,
+     "folk": 1.5656909462219197,
+     "pop": 1.2025612993909105,
+     "pop909": 1.376493722583573
+    }
+   },
+   "live": {
+    "sung_wired": {
+     "rt_nd_live": 0.6110185118823327,
+     "harsh": 0.05391089988221098,
+     "fresh_per100": 2.8827037773359843,
+     "fresh": 29,
+     "stumbles_per100": 10.03976143141153,
+     "on_time_right": 0.19483101391650098,
+     "late_entry": 0.018886679920477135,
+     "notes": 1006,
+     "digest": "55cce4819d5cbbc25fd31927a928e3fb49bb84e152931be318e23e5c74c19f18"
+    },
+    "sung_low_wired": {
+     "rt_nd_live": 0.6420908638979522,
+     "harsh": 0.035200078933399964,
+     "fresh_per100": 1.2922465208747516,
+     "fresh": 13,
+     "stumbles_per100": 10.139165009940358,
+     "on_time_right": 0.20278330019880716,
+     "late_entry": 0.015904572564612324,
+     "notes": 1006,
+     "digest": "386ed2f3a524650068009b9bf64234d6aa7203613d0a50a82cd50e5fe2499df2"
+    },
+    "phone_v11": {
+     "fresh_heard": 2,
+     "harsh_heard": 0.09135559921414538,
+     "digest": "1831cbef1fc6a7ad25be87295113a41a7317fbc15d0122375f54afad6f45223d"
+    },
+    "clean_wired": {
+     "rt_nd_live": 0.6476629021012678,
+     "harsh": 0.043387124781703604,
+     "fresh_per100": 2.1868787276341948,
+     "fresh": 22,
+     "stumbles_per100": 7.5546719681908545,
+     "on_time_right": 0.21868787276341947,
+     "late_entry": 0.017892644135188866,
+     "notes": 1006,
+     "digest": "d8872d2ee53cb511c6c138582ca84cb67cd5fc4f9dcb46eaa0dbae72e2adbde8"
+    },
+    "sung_bt": {
+     "rt_nd_live": 0.4217049031006427,
+     "harsh": 0.12896497053769151,
+     "fresh_per100": 6.262425447316104,
+     "fresh": 63,
+     "stumbles_per100": 1.6898608349900597,
+     "on_time_right": 0.25944333996023855,
+     "late_entry": 0.0009940357852882703,
+     "notes": 1006,
+     "digest": "bac7a4ee0c7fd4352e8eeab697ede7cf9f97f0f1e5602bdb1b7db73de3f64076"
+    },
+    "phone_twinkle": {
+     "rt_nd_live": 0.8284848484848482,
+     "harsh": 0.010151515151515305,
+     "fresh": 0,
+     "stumbles_per100": 7.894736842105263,
+     "digest": "66a9a719aeb289ef9a76c33071c1b4ed48854052c83aed2aa115a16584aa7700"
+    }
+   }
+  },
+  "r3_X_regtrkst_v1": {
+   "G1": true,
+   "G2": true,
+   "G3": true,
+   "failed": [],
+   "mean_live": 0.6240347540074722,
+   "live_fresh_count": 31,
+   "bench": {
+    "rt_nd": 0.6121068047721656,
+    "harsh": 0.03951152474073231,
+    "seed2": 0.6168699642120508,
+    "fresh": 1.144501197330628,
+    "us": 145.84694796258816,
+    "ds_rt_nd": {
+     "bach": 0.6604316546762543,
+     "folk": 0.6622550450475417,
+     "pop": 0.5533067175837375,
+     "pop909": 0.5724338017811289
+    },
+    "ds_fresh": {
+     "bach": 1.7892644135188867,
+     "folk": 1.1139303174701405,
+     "pop": 0.8277369982820553,
+     "pop909": 0.8470730600514295
+    }
+   },
+   "live": {
+    "sung_wired": {
+     "rt_nd_live": 0.6070752376469969,
+     "harsh": 0.05654961094778799,
+     "fresh_per100": 1.9880715705765408,
+     "fresh": 20,
+     "stumbles_per100": 3.280318091451292,
+     "on_time_right": 0.1779324055666004,
+     "late_entry": 0.03479125248508946,
+     "notes": 1006,
+     "digest": "0c357dc0169b77f94f310138e5521d8ead46a83d90516d07ca832bb9a4413f8e"
+    },
+    "sung_low_wired": {
+     "rt_nd_live": 0.6409942703679476,
+     "harsh": 0.03968077572207441,
+     "fresh_per100": 1.0934393638170974,
+     "fresh": 11,
+     "stumbles_per100": 3.8767395626242545,
+     "on_time_right": 0.18687872763419483,
+     "late_entry": 0.02286282306163022,
+     "notes": 1006,
+     "digest": "5b9354a1e3958e4b3c823f3d0acae12fa3bb1101d69867969df0a2e32c2e29ba"
+    },
+    "phone_v11": {
+     "fresh_heard": 2,
+     "harsh_heard": 0.09135559921414538,
+     "digest": "c8af571295028745ca4c6c522be626c4b232ba2645546f5a28b01aa66fbe03b0"
+    },
+    "clean_wired": {
+     "rt_nd_live": 0.6419461275665308,
+     "harsh": 0.04473986764326074,
+     "fresh_per100": 1.3916500994035785,
+     "fresh": 14,
+     "stumbles_per100": 2.3856858846918487,
+     "on_time_right": 0.19980119284294234,
+     "late_entry": 0.02485089463220676,
+     "notes": 1006,
+     "digest": "05af7813257ec4a429948b216b6cdd85d10ef1c6ed5beff08061438275f8f815"
+    },
+    "sung_bt": {
+     "rt_nd_live": 0.41511265950259435,
+     "harsh": 0.12912111682687802,
+     "fresh_per100": 5.36779324055666,
+     "fresh": 54,
+     "stumbles_per100": 0.7952286282306164,
+     "on_time_right": 0.24453280318091453,
+     "late_entry": 0.003976143141153081,
+     "notes": 1006,
+     "digest": "5122a7fc4bd7ac4184aa1c5fbbc53e6abd8d7b52153bb47f5c67415083aadfbf"
+    },
+    "phone_twinkle": {
+     "rt_nd_live": 0.7781818181818179,
+     "harsh": 0.016515151515151615,
+     "fresh": 0,
+     "stumbles_per100": 0.0,
+     "digest": "6cdcf4adea736011028baf3e78608d3efa8eb654ca1a92ef8e8b983bfa7e396d"
+    }
+   }
+  },
+  "r3_X_regtrkstfree_v1": {
+   "G1": true,
+   "G2": true,
+   "G3": false,
+   "failed": [
+    "v11 fresh_heard <= reactive"
+   ],
+   "mean_live": 0.6303805528104953,
+   "live_fresh_count": 34,
+   "bench": {
+    "rt_nd": 0.6160910437673994,
+    "harsh": 0.04046936081917525,
+    "seed2": 0.6224883607532669,
+    "fresh": 1.338606068616738,
+    "us": 145.57924725461288,
+    "ds_rt_nd": {
+     "bach": 0.6660971223021535,
+     "folk": 0.6672946065497887,
+     "pop": 0.5555731891784502,
+     "pop909": 0.5753992570392056
+    },
+    "ds_fresh": {
+     "bach": 1.9880715705765408,
+     "folk": 1.2377003527446004,
+     "pop": 1.0698110260815243,
+     "pop909": 1.0588413250642867
+    }
+   },
+   "live": {
+    "sung_wired": {
+     "rt_nd_live": 0.614277831150116,
+     "harsh": 0.056042394131626046,
+     "fresh_per100": 2.0874751491053676,
+     "fresh": 21,
+     "stumbles_per100": 3.280318091451292,
+     "on_time_right": 0.17594433399602386,
+     "late_entry": 0.02286282306163022,
+     "notes": 1006,
+     "digest": "7bac44aad6194e4ecc3748befc78f51fa8fbc09a2178bc8fb1015e80ec1f711f"
+    },
+    "sung_low_wired": {
+     "rt_nd_live": 0.6464832744708745,
+     "harsh": 0.039073817988850165,
+     "fresh_per100": 1.2922465208747516,
+     "fresh": 13,
+     "stumbles_per100": 3.9761431411530817,
+     "on_time_right": 0.18687872763419483,
+     "late_entry": 0.019880715705765408,
+     "notes": 1006,
+     "digest": "90e16c8e31727f98ba8892bbf5575adbac3a355ac5d1160398ab9c54160ce09e"
+    },
+    "phone_v11": {
+     "fresh_heard": 5,
+     "harsh_heard": 0.10707269155206287,
+     "digest": "0260654c28fee1ef21ef616449f2e88760d1ae954342e01dbfa72a0caa349499"
+    },
+    "clean_wired": {
+     "rt_nd_live": 0.6439321661937698,
+     "harsh": 0.04494621836398965,
+     "fresh_per100": 1.4910536779324055,
+     "fresh": 15,
+     "stumbles_per100": 2.3856858846918487,
+     "on_time_right": 0.19980119284294234,
+     "late_entry": 0.02186878727634195,
+     "notes": 1006,
+     "digest": "1d943eaffeef7dd25df532100e2de4770b5eac4cbb723dafb9b5e7561e3c2964"
+    },
+    "sung_bt": {
+     "rt_nd_live": 0.4217842905957028,
+     "harsh": 0.13149721698299088,
+     "fresh_per100": 5.7654075546719685,
+     "fresh": 58,
+     "stumbles_per100": 0.8946322067594433,
+     "on_time_right": 0.2504970178926441,
+     "late_entry": 0.0009940357852882703,
+     "notes": 1006,
+     "digest": "a0b7487233eb46013df20febfcbdd1a491382c9254891bbb1429df74e22c729d"
+    },
+    "phone_twinkle": {
+     "rt_nd_live": 0.7781818181818179,
+     "harsh": 0.016515151515151615,
+     "fresh": 0,
+     "stumbles_per100": 0.0,
+     "digest": "884f2621475a95b45079d264d6f1215f0cc7d91dc590d945d792311fb784ebaa"
+    }
+   }
+  },
+  "r3_X_regtrkstsafe_v1": {
+   "G1": true,
+   "G2": true,
+   "G3": true,
+   "failed": [],
+   "mean_live": 0.6207328130509184,
+   "live_fresh_count": 27,
+   "bench": {
+    "rt_nd": 0.6106894978693401,
+    "harsh": 0.03908620523996028,
+    "seed2": 0.615381002580639,
+    "fresh": 1.0528818834835134,
+    "us": 146.30130374383225,
+    "ds_rt_nd": {
+     "bach": 0.6581834532374055,
+     "folk": 0.6608518184617568,
+     "pop": 0.5515510700027124,
+     "pop909": 0.572171649775486
+    },
+    "ds_fresh": {
+     "bach": 1.5904572564612327,
+     "folk": 1.0767993068878026,
+     "pop": 0.7652662814305794,
+     "pop909": 0.7790046891544395
+    }
+   },
+   "live": {
+    "sung_wired": {
+     "rt_nd_live": 0.6043103142971548,
+     "harsh": 0.05450023568367276,
+     "fresh_per100": 1.7892644135188867,
+     "fresh": 18,
+     "stumbles_per100": 3.1809145129224654,
+     "on_time_right": 0.17693836978131214,
+     "late_entry": 0.0437375745526839,
+     "notes": 1006,
+     "digest": "667a2fe9de24a544d6fc27d39e3f97638000f96a7aebbe52f47b9e83a6f2c80f"
+    },
+    "sung_low_wired": {
+     "rt_nd_live": 0.637155311804682,
+     "harsh": 0.038762954894883385,
+     "fresh_per100": 0.8946322067594433,
+     "fresh": 9,
+     "stumbles_per100": 3.6779324055666005,
+     "on_time_right": 0.18389662027833,
+     "late_entry": 0.030815109343936383,
+     "notes": 1006,
+     "digest": "7a0ec2c633509a5c24afe1092bdf13b147ef54b8a9fb1736491bf6000351aacc"
+    },
+    "phone_v11": {
+     "fresh_heard": 2,
+     "harsh_heard": 0.08349705304518663,
+     "digest": "9151f5be0ae7025cf7e75d4e5258e226cf1a253c14c887c1a82fd0180d34bc27"
+    },
+    "clean_wired": {
+     "rt_nd_live": 0.6397815510056699,
+     "harsh": 0.04473986764326074,
+     "fresh_per100": 1.3916500994035785,
+     "fresh": 14,
+     "stumbles_per100": 2.286282306163022,
+     "on_time_right": 0.19980119284294234,
+     "late_entry": 0.0268389662027833,
+     "notes": 1006,
+     "digest": "b60dc4fc43de84d05cb848ca23b952cda5e629c7bfc71b3f08d44876046c0531"
+    },
+    "sung_bt": {
+     "rt_nd_live": 0.4120808454519948,
+     "harsh": 0.12198047446712086,
+     "fresh_per100": 4.970178926441352,
+     "fresh": 50,
+     "stumbles_per100": 0.6958250497017893,
+     "on_time_right": 0.24353876739562624,
+     "late_entry": 0.006958250497017893,
+     "notes": 1006,
+     "digest": "f273fb13dd9741710da40f759b8e7073482416e23ecb47143e518500651c6c8a"
+    },
+    "phone_twinkle": {
+     "rt_nd_live": 0.7781818181818179,
+     "harsh": 0.016515151515151615,
+     "fresh": 0,
+     "stumbles_per100": 0.0,
+     "digest": "b7ab9e402cf5f966326626be8a770b7aadb5a247db2c670681a50c82384745f0"
+    }
+   }
+  }
+ },
+ "n_pool": 23,
+ "n_pass": 14,
+ "top_mean": 0.6265546878901425,
+ "band": [
+  "r3_X_regtrkst_v1",
+  "r3_X_regtrkdk_v1"
+ ],
+ "winner": "r3_X_regtrkst_v1",
+ "note": "val only (17 Bach chorales live; bench_rt val sets); systems tuned on val; no test split"
+}

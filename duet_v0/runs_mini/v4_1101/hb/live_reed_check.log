@@ -1,0 +1,14 @@
+2026-11-01 21:05:36 START tl=600 cwd=$ABS .venv/bin/python -c 
+import sys; sys.argv=['x']; sys.path.insert(0,'futures/v4_selfiter')
+import numpy as np, soundfile as sf, live_bench3 as LB, live_panel as P, bench3
+sysm=LB.build('r2_mix_v2', bench3.train_sets())
+x,sr=sf.read('futures/live_test/phone/twinkle_C_80bpm_countin.wav',dtype='float32',always_2d=True); her=x.mean(1)
+sc=1/max(float(np.percentile(np.abs(her),99.95)),1e-3)
+eng=LB.Bench3
+2026-11-01 21:05:39 END rc=0 secs=3 .venv/bin/python -c 
+import sys; sys.argv=['x']; sys.path.insert(0,'futures/v4_selfiter')
+import numpy as np, soundfile as sf, live_bench3 as LB, live_panel as P, bench3
+sysm=LB.build('r2_mix_v2', bench3.train_sets())
+x,sr=sf.read('futures/live_test/phone/twinkle_C_80bpm_countin.wav',dtype='float32',always_2d=True); her=x.mean(1)
+sc=1/max(float(np.percentile(np.abs(her),99.95)),1e-3)
+eng=LB.Bench3

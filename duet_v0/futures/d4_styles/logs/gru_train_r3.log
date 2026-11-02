@@ -1,0 +1,5 @@
+train seqs 11946 device mps
+warm start from futures/d4_styles/models/bigru_r2.npz
+{"epoch": 1, "loss": 1.2868529558181763, "val": {"bach": 0.573728813559322, "folk": 0.7683152605130917, "pop": 0.4581911929376839, "pop909": 0.5112052232221634}, "val_mean": 0.5778601225580653, "t": 342.59744095802307}
+best val mean 0.5778601225580653
+Fri Oct 30 11:12:58 EDT 2026

@@ -1,0 +1,2 @@
+2026-11-01 22:26:30 START tl=600 cwd=$ABS $ABS/.venv/bin/python $ABS/runs_mini/v5rt_1101/r1/C/smoke_C_v1.py
+2026-11-01 22:26:34 END rc=0 secs=4 $ABS/.venv/bin/python $ABS/runs_mini/v5rt_1101/r1/C/smoke_C_v1.py

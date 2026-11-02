@@ -1,0 +1,888 @@
+{
+ "what": "offline selftest of live_panel_v3 (no sound device; tripwire)",
+ "root": "runs_mini/live/selftest_v3/072639",
+ "written": "2026-11-02 07:27:17",
+ "parts": {
+  "a": [
+   {
+    "run": [
+     "r3_X_regtrkst_v1",
+     "twinkle",
+     "rt"
+    ],
+    "v2": {
+     "run": "072642_r3_X_regtrkst_v1",
+     "system": "r3_X_regtrkst_v1",
+     "mode": "rt",
+     "engine": "RTDuet",
+     "label": "实时预判 第 3 轮（推荐：低嗓音自动换八度，按真实听音误差判断，少“先错后改”）",
+     "on_time": 20,
+     "switched": 21,
+     "answered": 42,
+     "sung": 42,
+     "cons": 40,
+     "rows": 42,
+     "acts": [
+      "enter",
+      "keep",
+      "switch"
+     ],
+     "events_sha": "6fa3b08d1255c4d572153b095384611cce052247f293a73940ffc8b82fd62270",
+     "decisions_sha": "80944e505dd8b99841ff78707656cb9c46b1723c93418418f3136a5665e00ca9",
+     "out_sha": "35edb9b4f5a5bab69a915b570b46684e80ffc4717f4c96cd8b75ee1efb36d0b9",
+     "Li": 0.0,
+     "Lo": 0.0,
+     "name": "r3_X_regtrkst_v1"
+    },
+    "v3": {
+     "run": "072643_r3_X_regtrkst_v1",
+     "system": "r3_X_regtrkst_v1",
+     "mode": "rt",
+     "engine": "RTDuet",
+     "label": "实时预判 第 3 轮（推荐：低嗓音自动换八度，按真实听音误差判断，少“先错后改”）",
+     "on_time": 20,
+     "switched": 21,
+     "answered": 42,
+     "sung": 42,
+     "cons": 40,
+     "rows": 42,
+     "acts": [
+      "enter",
+      "keep",
+      "switch"
+     ],
+     "events_sha": "6fa3b08d1255c4d572153b095384611cce052247f293a73940ffc8b82fd62270",
+     "decisions_sha": "80944e505dd8b99841ff78707656cb9c46b1723c93418418f3136a5665e00ca9",
+     "out_sha": "35edb9b4f5a5bab69a915b570b46684e80ffc4717f4c96cd8b75ee1efb36d0b9",
+     "Li": 0.0,
+     "Lo": 0.0,
+     "name": "r3_X_regtrkst_v1"
+    },
+    "diff": []
+   },
+   {
+    "run": [
+     "r3_X_regtrkstsafe_v1",
+     "twinkle",
+     "rt"
+    ],
+    "v2": {
+     "run": "072645_r3_X_regtrkstsafe_v1",
+     "system": "r3_X_regtrkstsafe_v1",
+     "mode": "rt",
+     "engine": "RTDuet",
+     "label": "实时预判 第 3 轮保守版（新起刺耳最少，稍晚一点）",
+     "on_time": 20,
+     "switched": 21,
+     "answered": 42,
+     "sung": 42,
+     "cons": 40,
+     "rows": 42,
+     "acts": [
+      "enter",
+      "keep",
+      "switch"
+     ],
+     "events_sha": "6fa3b08d1255c4d572153b095384611cce052247f293a73940ffc8b82fd62270",
+     "decisions_sha": "80944e505dd8b99841ff78707656cb9c46b1723c93418418f3136a5665e00ca9",
+     "out_sha": "35edb9b4f5a5bab69a915b570b46684e80ffc4717f4c96cd8b75ee1efb36d0b9",
+     "Li": 0.0,
+     "Lo": 0.0,
+     "name": "r3_X_regtrkstsafe_v1"
+    },
+    "v3": {
+     "run": "072646_r3_X_regtrkstsafe_v1",
+     "system": "r3_X_regtrkstsafe_v1",
+     "mode": "rt",
+     "engine": "RTDuet",
+     "label": "实时预判 第 3 轮保守版（新起刺耳最少，稍晚一点）",
+     "on_time": 20,
+     "switched": 21,
+     "answered": 42,
+     "sung": 42,
+     "cons": 40,
+     "rows": 42,
+     "acts": [
+      "enter",
+      "keep",
+      "switch"
+     ],
+     "events_sha": "6fa3b08d1255c4d572153b095384611cce052247f293a73940ffc8b82fd62270",
+     "decisions_sha": "80944e505dd8b99841ff78707656cb9c46b1723c93418418f3136a5665e00ca9",
+     "out_sha": "35edb9b4f5a5bab69a915b570b46684e80ffc4717f4c96cd8b75ee1efb36d0b9",
+     "Li": 0.0,
+     "Lo": 0.0,
+     "name": "r3_X_regtrkstsafe_v1"
+    },
+    "diff": []
+   },
+   {
+    "run": [
+     "r2_copyhm_v1",
+     "twinkle",
+     "rt"
+    ],
+    "v2": {
+     "run": "072648_r2_copyhm_v1",
+     "system": "r2_copyhm_v1",
+     "mode": "rt",
+     "engine": "RTDuet",
+     "label": "实时预判 第 2 轮（对照用：低嗓音和真人声音上较差，常“先错后改”）",
+     "on_time": 24,
+     "switched": 17,
+     "answered": 42,
+     "sung": 42,
+     "cons": 40,
+     "rows": 42,
+     "acts": [
+      "enter",
+      "keep",
+      "switch"
+     ],
+     "events_sha": "e20b67f7258bafb37b60be4c388dd4eea727b91c54e18096103034f5a5935924",
+     "decisions_sha": "4386a59499dea1ae0d4268ae570aac4136d1f64aefd47435f372056aebab0f56",
+     "out_sha": "394368c8bea684ada136da298d9dd93c8fa23a652d81fab4a25ce5b562a1fc80",
+     "Li": 0.0,
+     "Lo": 0.0,
+     "name": "r2_copyhm_v1"
+    },
+    "v3": {
+     "run": "072649_r2_copyhm_v1",
+     "system": "r2_copyhm_v1",
+     "mode": "rt",
+     "engine": "RTDuet",
+     "label": "实时预判 第 2 轮（对照用：低嗓音和真人声音上较差，常“先错后改”）",
+     "on_time": 24,
+     "switched": 17,
+     "answered": 42,
+     "sung": 42,
+     "cons": 40,
+     "rows": 42,
+     "acts": [
+      "enter",
+      "keep",
+      "switch"
+     ],
+     "events_sha": "e20b67f7258bafb37b60be4c388dd4eea727b91c54e18096103034f5a5935924",
+     "decisions_sha": "4386a59499dea1ae0d4268ae570aac4136d1f64aefd47435f372056aebab0f56",
+     "out_sha": "394368c8bea684ada136da298d9dd93c8fa23a652d81fab4a25ce5b562a1fc80",
+     "Li": 0.0,
+     "Lo": 0.0,
+     "name": "r2_copyhm_v1"
+    },
+    "diff": []
+   },
+   {
+    "run": [
+     "r3_X_regtrkst_v1",
+     "v11",
+     "rt"
+    ],
+    "v2": {
+     "run": "072651_r3_X_regtrkst_v1",
+     "system": "r3_X_regtrkst_v1",
+     "mode": "rt",
+     "engine": "RTDuet",
+     "label": "实时预判 第 3 轮（推荐：低嗓音自动换八度，按真实听音误差判断，少“先错后改”）",
+     "on_time": 23,
+     "switched": 19,
+     "answered": 44,
+     "sung": 44,
+     "cons": 36,
+     "rows": 44,
+     "acts": [
+      "enter",
+      "keep",
+      "reenter",
+      "switch"
+     ],
+     "events_sha": "c06edfbdf70618f83c55a0b95c7f19afbbc2e7fc43016cc48187de4624f9bd2f",
+     "decisions_sha": "0e5dea7b24d91f4a088ddb2550d9d45adf65c1ab6847c597968bcde8f1891dfd",
+     "out_sha": "e416d716b9a18eac79484e0fa0b41a43d23a9252d3bdb9840549949ef8684512",
+     "Li": 0.0,
+     "Lo": 0.0,
+     "name": "r3_X_regtrkst_v1"
+    },
+    "v3": {
+     "run": "072652_r3_X_regtrkst_v1",
+     "system": "r3_X_regtrkst_v1",
+     "mode": "rt",
+     "engine": "RTDuet",
+     "label": "实时预判 第 3 轮（推荐：低嗓音自动换八度，按真实听音误差判断，少“先错后改”）",
+     "on_time": 23,
+     "switched": 19,
+     "answered": 44,
+     "sung": 44,
+     "cons": 36,
+     "rows": 44,
+     "acts": [
+      "enter",
+      "keep",
+      "reenter",
+      "switch"
+     ],
+     "events_sha": "c06edfbdf70618f83c55a0b95c7f19afbbc2e7fc43016cc48187de4624f9bd2f",
+     "decisions_sha": "0e5dea7b24d91f4a088ddb2550d9d45adf65c1ab6847c597968bcde8f1891dfd",
+     "out_sha": "e416d716b9a18eac79484e0fa0b41a43d23a9252d3bdb9840549949ef8684512",
+     "Li": 0.0,
+     "Lo": 0.0,
+     "name": "r3_X_regtrkst_v1"
+    },
+    "diff": []
+   },
+   {
+    "run": [
+     "blind",
+     "twinkle",
+     "rt"
+    ],
+    "v2": {
+     "run": "072653_blind",
+     "system": "r3_X_regtrkst_v1",
+     "mode": "rt",
+     "engine": "RTDuet",
+     "label": "实时预判 第 3 轮（推荐：低嗓音自动换八度，按真实听音误差判断，少“先错后改”）",
+     "on_time": 20,
+     "switched": 21,
+     "answered": 42,
+     "sung": 42,
+     "cons": 40,
+     "rows": 42,
+     "acts": [
+      "enter",
+      "keep",
+      "switch"
+     ],
+     "events_sha": "6fa3b08d1255c4d572153b095384611cce052247f293a73940ffc8b82fd62270",
+     "decisions_sha": "80944e505dd8b99841ff78707656cb9c46b1723c93418418f3136a5665e00ca9",
+     "out_sha": "35edb9b4f5a5bab69a915b570b46684e80ffc4717f4c96cd8b75ee1efb36d0b9",
+     "Li": 0.0,
+     "Lo": 0.0,
+     "name": "r3_X_regtrkst_v1"
+    },
+    "v3": {
+     "run": "072655_blind",
+     "system": "r3_X_regtrkst_v1",
+     "mode": "rt",
+     "engine": "RTDuet",
+     "label": "实时预判 第 3 轮（推荐：低嗓音自动换八度，按真实听音误差判断，少“先错后改”）",
+     "on_time": 20,
+     "switched": 21,
+     "answered": 42,
+     "sung": 42,
+     "cons": 40,
+     "rows": 42,
+     "acts": [
+      "enter",
+      "keep",
+      "switch"
+     ],
+     "events_sha": "6fa3b08d1255c4d572153b095384611cce052247f293a73940ffc8b82fd62270",
+     "decisions_sha": "80944e505dd8b99841ff78707656cb9c46b1723c93418418f3136a5665e00ca9",
+     "out_sha": "35edb9b4f5a5bab69a915b570b46684e80ffc4717f4c96cd8b75ee1efb36d0b9",
+     "Li": 0.0,
+     "Lo": 0.0,
+     "name": "r3_X_regtrkst_v1"
+    },
+    "diff": []
+   },
+   {
+    "run": [
+     "r2_mix_v2",
+     "twinkle",
+     "reactive"
+    ],
+    "v2": {
+     "run": "072656_r2_mix_v2",
+     "system": "r2_mix_v2",
+     "mode": "reactive",
+     "engine": "Bench3Duet",
+     "label": "被动 · 新模型 r2_mix_v2",
+     "on_time": null,
+     "switched": null,
+     "answered": 42,
+     "sung": 42,
+     "cons": 40,
+     "rows": 42,
+     "acts": [],
+     "events_sha": "128e2f916892c95ab7e4c0a32b5ff8e284bdaeabc96da90e175b363985f5d216",
+     "decisions_sha": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+     "out_sha": "9a6695ee454af003dd97dfed1d863b541542a488dce4ae1047e58f9cdb717b3c",
+     "Li": 0.0,
+     "Lo": 0.0,
+     "name": "r2_mix_v2"
+    },
+    "v3": {
+     "run": "072658_r2_mix_v2",
+     "system": "r2_mix_v2",
+     "mode": "reactive",
+     "engine": "Bench3Duet",
+     "label": "被动 · 新模型 r2_mix_v2",
+     "on_time": null,
+     "switched": null,
+     "answered": 42,
+     "sung": 42,
+     "cons": 40,
+     "rows": 42,
+     "acts": [],
+     "events_sha": "128e2f916892c95ab7e4c0a32b5ff8e284bdaeabc96da90e175b363985f5d216",
+     "decisions_sha": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+     "out_sha": "9a6695ee454af003dd97dfed1d863b541542a488dce4ae1047e58f9cdb717b3c",
+     "Li": 0.0,
+     "Lo": 0.0,
+     "name": "r2_mix_v2"
+    },
+    "diff": []
+   }
+  ],
+  "b": {
+   "make_test": {
+    "rt_s": 0.16,
+    "seed": 11,
+    "level_dbfs": -33.3
+   },
+   "result": {
+    "time": "2026-11-02 07:27:00",
+    "in": "selftest mic A (AirPods)",
+    "out": "selftest phones (wired)",
+    "stream_latency_ms": [
+     63.0,
+     10.0
+    ],
+    "ok": true,
+    "why": "",
+    "rt_ms": 165.3,
+    "n_used": 8,
+    "spread_ms": 3.6,
+    "offsets_ms": [
+     167.5,
+     169.6,
+     148.3,
+     162.3,
+     165.4,
+     165.2,
+     153.9,
+     190.0
+    ],
+    "n_onsets": 8,
+    "floor_db": -78.4,
+    "bpm": 100.0,
+    "complete": true,
+    "stream_flag_blocks": 0,
+    "folder": "072659_latcal",
+    "page": "live_panel_v3",
+    "latcal": "latcal_v1",
+    "kept": true
+   },
+   "direct": {
+    "rt_s": 0.1653,
+    "n_used": 8,
+    "spread_s": 0.0036,
+    "ok": true,
+    "offsets_ms": [
+     167.5,
+     169.6,
+     148.3,
+     162.3,
+     165.4,
+     165.2,
+     153.9,
+     190.0
+    ]
+   },
+   "click_start_offsets": [
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1
+   ],
+   "failed_retry": {
+    "time": "2026-11-02 07:27:01",
+    "in": "selftest mic A (AirPods)",
+    "out": "selftest phones (wired)",
+    "stream_latency_ms": [
+     63.0,
+     10.0
+    ],
+    "ok": false,
+    "why": "没听到你唱：看电平条有没有动，跟着高的嘀声每下唱一个短“哒”，再测一次。",
+    "rt_ms": null,
+    "n_used": 0,
+    "spread_ms": null,
+    "offsets_ms": [
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null
+    ],
+    "n_onsets": 0,
+    "floor_db": -80.8,
+    "bpm": 100.0,
+    "complete": true,
+    "stream_flag_blocks": 0,
+    "folder": "072701_latcal",
+    "page": "live_panel_v3",
+    "latcal": "latcal_v1",
+    "kept": false
+   }
+  },
+  "c": {
+   "audio": {
+    "song": "twinkle (voice_v1 sung)",
+    "bpm": 90.0,
+    "true_Li": 0.15,
+    "true_Lo": 0.01,
+    "stream_reports": [
+     0.063,
+     0.01
+    ],
+    "cal_rt_ms": 165.3
+   },
+   "calibrated": {
+    "Li": 0.1553,
+    "Lo": 0.01,
+    "lat": {
+     "source": "calibrated",
+     "Li_ms": 155.3,
+     "Lo_ms": 10.0,
+     "rt_ms": 165.3,
+     "cal_when": "07:27",
+     "stream_Li_ms": 63.0,
+     "stream_Lo_ms": 10.0
+    },
+    "onsets": {
+     "heard": 49,
+     "on_score_onset": 41,
+     "mean_abs_raw_dev_beats": 0.08,
+     "median_detect_ms": 20.0
+    },
+    "run": {
+     "run": "072703_r3_X_regtrkst_v1",
+     "system": "r3_X_regtrkst_v1",
+     "mode": "rt",
+     "engine": "RTDuet",
+     "label": "实时预判 第 3 轮（推荐：低嗓音自动换八度，按真实听音误差判断，少“先错后改”）",
+     "on_time": 28,
+     "switched": 20,
+     "answered": 49,
+     "sung": 49,
+     "cons": 45,
+     "rows": 49,
+     "acts": [
+      "enter",
+      "keep",
+      "switch"
+     ],
+     "events_sha": "a93bba379356d819c7cbf7c35ca59f1bd8ed40b1dcf32c5b10c5ed9ea9f21c0c",
+     "decisions_sha": "3a20ef76765545dc7144cbce47d7359fdd8f693117fcef1e699e13c22a9c3cbe",
+     "out_sha": "43a3297520175e2101a8126b16cbdc8352e158cec981433e4d0fb156fadce031",
+     "Li": 0.1553,
+     "Lo": 0.01,
+     "name": "r3_X_regtrkst_v1"
+    }
+   },
+   "not_calibrated": {
+    "Li": 0.063,
+    "Lo": 0.01,
+    "onsets": {
+     "heard": 49,
+     "on_score_onset": 2,
+     "mean_abs_raw_dev_beats": 0.179,
+     "median_detect_ms": 20.0
+    },
+    "run": {
+     "run": "072704_r3_X_regtrkst_v1",
+     "system": "r3_X_regtrkst_v1",
+     "mode": "rt",
+     "engine": "RTDuet",
+     "label": "实时预判 第 3 轮（推荐：低嗓音自动换八度，按真实听音误差判断，少“先错后改”）",
+     "on_time": 18,
+     "switched": 29,
+     "answered": 49,
+     "sung": 48,
+     "cons": 47,
+     "rows": 49,
+     "acts": [
+      "enter",
+      "keep",
+      "silence",
+      "switch"
+     ],
+     "events_sha": "40ea1335c476e4c4bc6d49f2a2914b690f5d116a3861d0c180e0c527617bbdaf",
+     "decisions_sha": "754ec7c797ecf346a53a6b31d46af0d11ca6435c60e6df77df735e1bda42cedc",
+     "out_sha": "c5df0ce2888538a433fcd1b4c818b8c39e81a33fd485524e1bc9f2d808f93984",
+     "Li": 0.063,
+     "Lo": 0.01,
+     "name": "r3_X_regtrkst_v1"
+    }
+   }
+  },
+  "d": {
+   "test_list_by_latency": {
+    "threshold_ms": 120,
+    "system": "r3_X_regtrkstsafe_v1"
+   },
+   "cal_A_ms": 162.0,
+   "cal_B_ms": 63.0,
+   "auto_A": "r3_X_regtrkstsafe_v1",
+   "auto_B": "r3_X_regtrkst_v1",
+   "explicit_A": "r3_X_regtrkst_v1",
+   "blind_arms": [
+    [
+     "rt",
+     "r3_X_regtrkstsafe_v1"
+    ],
+    [
+     "reactive",
+     "r2_mix_v2"
+    ],
+    [
+     "reactive",
+     "r2_mix_v2"
+    ],
+    [
+     "reactive",
+     "r2_mix_v2"
+    ]
+   ],
+   "why_A": {
+    "auto": "r3_X_regtrkstsafe_v1",
+    "label": "实时预判 第 3 轮保守版（新起刺耳最少，稍晚一点）",
+    "why": "来回延迟 162 毫秒 ≥ 120：用大延迟版",
+    "used": true,
+    "calibrated": true
+   },
+   "why_B": {
+    "auto": "r3_X_regtrkst_v1",
+    "label": "实时预判 第 3 轮（推荐：低嗓音自动换八度，按真实听音误差判断，少“先错后改”）",
+    "why": "来回延迟 63 毫秒 < 120：用默认版",
+    "used": true,
+    "calibrated": true
+   }
+  }
+ },
+ "errors": [],
+ "checks": [
+  {
+   "part": "a",
+   "what": "v2 and v3 read the same rt list",
+   "ok": true,
+   "detail": "live_rt_systems_v2.json"
+  },
+  {
+   "part": "a",
+   "what": "r3_X_regtrkst_v1 twinkle rt: v3 == v2",
+   "ok": true,
+   "detail": "rt RTDuet r3_X_regtrkst_v1: on time 20 switched 21 answered 42 sung 42 consonant 40 rows 42"
+  },
+  {
+   "part": "a",
+   "what": "r3_X_regtrkstsafe_v1 twinkle rt: v3 == v2",
+   "ok": true,
+   "detail": "rt RTDuet r3_X_regtrkstsafe_v1: on time 20 switched 21 answered 42 sung 42 consonant 40 rows 42"
+  },
+  {
+   "part": "a",
+   "what": "r2_copyhm_v1 twinkle rt: v3 == v2",
+   "ok": true,
+   "detail": "rt RTDuet r2_copyhm_v1: on time 24 switched 17 answered 42 sung 42 consonant 40 rows 42"
+  },
+  {
+   "part": "a",
+   "what": "r3_X_regtrkst_v1 v11 rt: v3 == v2",
+   "ok": true,
+   "detail": "rt RTDuet r3_X_regtrkst_v1: on time 23 switched 19 answered 44 sung 44 consonant 36 rows 44"
+  },
+  {
+   "part": "a",
+   "what": "blind twinkle rt: v3 == v2",
+   "ok": true,
+   "detail": "rt RTDuet r3_X_regtrkst_v1: on time 20 switched 21 answered 42 sung 42 consonant 40 rows 42"
+  },
+  {
+   "part": "a",
+   "what": "r2_mix_v2 twinkle reactive: v3 == v2",
+   "ok": true,
+   "detail": "reactive Bench3Duet r2_mix_v2: on time None switched None answered 42 sung 42 consonant 40 rows 42"
+  },
+  {
+   "part": "b",
+   "what": "calibrate with input 'file' is refused",
+   "ok": true,
+   "detail": null
+  },
+  {
+   "part": "b",
+   "what": "the CalRun recording equals the fed input sample for sample",
+   "ok": true,
+   "detail": 201600
+  },
+  {
+   "part": "b",
+   "what": "calibration ok",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "part": "b",
+   "what": "round trip within 15 ms of the true 160 ms",
+   "ok": true,
+   "detail": "165.3 ms, used 8, spread 3.6 ms"
+  },
+  {
+   "part": "b",
+   "what": "page result == latcal_v1.estimate on the same samples",
+   "ok": true,
+   "detail": "direct 0.1653"
+  },
+  {
+   "part": "b",
+   "what": "each click starts in the output channel exactly 1 sample after its write sample (sin phase 0)",
+   "ok": true,
+   "detail": [
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1
+   ]
+  },
+  {
+   "part": "b",
+   "what": "the result is kept for device pair A",
+   "ok": true,
+   "detail": {
+    "in": "selftest mic A (AirPods)",
+    "out": "selftest phones (wired)",
+    "rt_s": 0.1653,
+    "rt_ms": 165.3,
+    "n_used": 8,
+    "spread_ms": 3.6,
+    "when": "07:27",
+    "stream_Li_ms": 63.0,
+    "stream_Lo_ms": 10.0
+   }
+  },
+  {
+   "part": "b",
+   "what": "cal folder has cal.wav and cal.json",
+   "ok": true,
+   "detail": "072659_latcal"
+  },
+  {
+   "part": "b",
+   "what": "a no-response recording is not ok and says why",
+   "ok": true,
+   "detail": "没听到你唱：看电平条有没有动，跟着高的嘀声每下唱一个短“哒”，再测一次。"
+  },
+  {
+   "part": "b",
+   "what": "the earlier calibration of pair A is kept after the failed retry",
+   "ok": true,
+   "detail": null
+  },
+  {
+   "part": "b",
+   "what": "latcal_log.jsonl has one line per attempt (append only)",
+   "ok": true,
+   "detail": [
+    [
+     true,
+     165.3,
+     "selftest mic A (AirPods)"
+    ],
+    [
+     false,
+     null,
+     "selftest mic A (AirPods)"
+    ]
+   ]
+  },
+  {
+   "part": "b",
+   "what": "status lists the calibration for the page",
+   "ok": true,
+   "detail": null
+  },
+  {
+   "part": "c",
+   "what": "calibrated run: RTDuet Li = RT - Lo",
+   "ok": true,
+   "detail": "Li 0.1553 = 0.1553"
+  },
+  {
+   "part": "c",
+   "what": "calibrated run: RTDuet Lo = the stream output latency",
+   "ok": true,
+   "detail": 0.01
+  },
+  {
+   "part": "c",
+   "what": "notes.json records Li, Lo and lat source 'calibrated'",
+   "ok": true,
+   "detail": {
+    "source": "calibrated",
+    "Li_ms": 155.3,
+    "Lo_ms": 10.0,
+    "rt_ms": 165.3,
+    "cal_when": "07:27",
+    "stream_Li_ms": 63.0,
+    "stream_Lo_ms": 10.0
+   }
+  },
+  {
+   "part": "c",
+   "what": "the run used the list default through 'auto' (no by_latency in the list)",
+   "ok": true,
+   "detail": "r3_X_regtrkst_v1"
+  },
+  {
+   "part": "c",
+   "what": "uncalibrated pair: PortAudio's Li 63 ms and Lo 10 ms, source 'portaudio'",
+   "ok": true,
+   "detail": [
+    0.063,
+    0.01
+   ]
+  },
+  {
+   "part": "d",
+   "what": "pick_rt: no calibration -> default",
+   "ok": true,
+   "detail": null
+  },
+  {
+   "part": "d",
+   "what": "pick_rt: 119.9 ms -> default",
+   "ok": true,
+   "detail": null
+  },
+  {
+   "part": "d",
+   "what": "pick_rt: 120 ms -> by_latency system",
+   "ok": true,
+   "detail": null
+  },
+  {
+   "part": "d",
+   "what": "pick_rt: list without by_latency -> default",
+   "ok": true,
+   "detail": null
+  },
+  {
+   "part": "d",
+   "what": "pairs calibrated through the page: A >= 120 ms, B < 120 ms",
+   "ok": true,
+   "detail": [
+    162.0,
+    63.0
+   ]
+  },
+  {
+   "part": "d",
+   "what": "'auto' (no system given) on pair A runs the by_latency system and says why",
+   "ok": true,
+   "detail": [
+    "r3_X_regtrkstsafe_v1",
+    "来回延迟 162 毫秒 ≥ 120：用大延迟版"
+   ]
+  },
+  {
+   "part": "d",
+   "what": "status shows the pick",
+   "ok": true,
+   "detail": null
+  },
+  {
+   "part": "d",
+   "what": "'auto' on pair B runs the default",
+   "ok": true,
+   "detail": [
+    "r3_X_regtrkst_v1",
+    "来回延迟 63 毫秒 < 120：用默认版"
+   ]
+  },
+  {
+   "part": "d",
+   "what": "an explicit system on pair A is honored",
+   "ok": true,
+   "detail": "r3_X_regtrkst_v1"
+  },
+  {
+   "part": "d",
+   "what": "the rt blind A/B on pair A plays only reactive r2_mix_v2 or the by_latency system",
+   "ok": true,
+   "detail": [
+    [
+     "rt",
+     "r3_X_regtrkstsafe_v1"
+    ],
+    [
+     "reactive",
+     "r2_mix_v2"
+    ],
+    [
+     "reactive",
+     "r2_mix_v2"
+    ],
+    [
+     "reactive",
+     "r2_mix_v2"
+    ]
+   ]
+  },
+  {
+   "part": "all",
+   "what": "no list file written or changed",
+   "ok": true,
+   "detail": [
+    "live_rt_systems_v1.json",
+    "live_rt_systems_v2.json"
+   ]
+  },
+  {
+   "part": "all",
+   "what": "live_panel_v2.py / .html unchanged",
+   "ok": true,
+   "detail": null
+  }
+ ],
+ "pass": {
+  "a": true,
+  "b": true,
+  "c": true,
+  "d": true,
+  "all": true
+ },
+ "all_pass": true,
+ "code": {
+  "live_panel_v3.py": "a10060e01181e3d3ba75073ac7ae77d97764caf9938aeddb5eb52eb074a45997",
+  "live_panel_v3.html": "07b81c675b96b06f2496ec943234a575f027020dab6bdd66deec7bc8aa88c0a7",
+  "latcal_v1.py": "0482fc8043b2d00312f0bbfc8b326f685e73725bb3446017039b3acc710f0a4e",
+  "panel_v3_selftest_v1.py": "743b21a6d73c70e0c8504cb252a0f12cb2836680c67279d0b0efb73f6032d44c",
+  "lists": {
+   "live_rt_systems_v2.json": "8ee3845ca8ef2901d3e63c199489034d3ebfc7f2b5ccc6488a802701e6753c3b",
+   "live_rt_systems_v1.json": "abbbad2bbb30a6e4e26a0a792a54f1c2c96b5df61137430f56bdbe4ac5dab817"
+  }
+ },
+ "seconds": 38.1
+}

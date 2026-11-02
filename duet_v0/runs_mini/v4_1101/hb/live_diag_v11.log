@@ -1,0 +1,18 @@
+2026-11-01 20:55:55 START tl=300 cwd=$ABS .venv/bin/python -c 
+import sys,numpy as np,soundfile as sf
+sys.path.insert(0,'.')
+from follow import FeatureTracker
+from dsp import HOP
+x,sr=sf.read('futures/live_test/phone/test_her_v11_countin.wav',dtype='float32',always_2d=True)
+ft=FeatureTracker()
+for b in range(len(x)//HOP): ft.step(x[b*HOP:(b+1)*HOP,0].astype(float))
+m=np.array(ft.m); v=np.array(ft.v); r=np.round(m[v]).astype(int); u,c=np.u
+2026-11-01 20:55:55 END rc=0 secs=0 .venv/bin/python -c 
+import sys,numpy as np,soundfile as sf
+sys.path.insert(0,'.')
+from follow import FeatureTracker
+from dsp import HOP
+x,sr=sf.read('futures/live_test/phone/test_her_v11_countin.wav',dtype='float32',always_2d=True)
+ft=FeatureTracker()
+for b in range(len(x)//HOP): ft.step(x[b*HOP:(b+1)*HOP,0].astype(float))
+m=np.array(ft.m); v=np.array(ft.v); r=np.round(m[v]).astype(int); u,c=np.u

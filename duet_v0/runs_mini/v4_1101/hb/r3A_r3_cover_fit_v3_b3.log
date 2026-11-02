@@ -1,0 +1,2 @@
+2026-11-01 15:41:19 START tl=600 cwd=$ABS/futures/v3_nolatency $ABS/.venv/bin/python $ABS/futures/v3_nolatency/bench3.py --system r3_cover_fit_v3 --note v4 r3 E4 expected chord-tone share over covered beats, champion belief forecast with m1 A, last 32 same on/off-beat lengths
+2026-11-01 15:41:30 END rc=0 secs=11 $ABS/.venv/bin/python $ABS/futures/v3_nolatency/bench3.py --system r3_cover_fit_v3 --note v4 r3 E4 expected chord-tone share over covered beats, champion belief forecast with m1 A, last 32 same on/off-beat lengths

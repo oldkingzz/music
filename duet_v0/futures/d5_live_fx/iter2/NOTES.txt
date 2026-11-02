@@ -1,0 +1,42 @@
+D5 iter2 (2026-10-30, 11:36-11:52): A5.4 clash time on real singing (vocadito)
+
+WHAT CHANGED (iter2/fx.py = copy of ../fx.py + 3 new Harmonizer params; defaults reproduce the builder exactly)
+  drop_db  (new, builder fixed 10): gate closes if the level falls >= drop_db within 50 ms. None disables.
+  onset_db (new, builder fixed 14): gate may open when the level is within onset_db of her singing level.
+  f0_tau   (new, builder 0 = none): one-pole smoothing of her pitch (s), restarted on a jump > 0.7 semitone.
+  DEFAULTS dict at the end of fx.py overrides every Harmonizer's kwargs (used by the eval/check scripts).
+  Chosen config "v2": {"drop_db":16, "onset_db":26, "f0_tau":0.015, "mode":"follow"}
+
+WHY (diag.py on 1-20, builder engine; % of her annotated note time)
+  silent 10.4%: gate open + she voiced + engine pitch right, but output judged unpitched by the scorer's YIN 4.4%;
+  gate closed while she is voiced 3.7% (mostly the 10 dB "drop" close and late reopen); she herself unvoiced 2.2%.
+  fourth/harsh: ~10% are frames where her own pitch is off the annotated note (glides; the ideal follower has these too).
+  -> smoothing her pitch makes the PSOLA output steadier (fewer "unpitched" frames and fewer wrong-degree frames);
+     relaxing drop-close / onset threshold removes gate dropouts mid-phrase.
+
+A5.4 (not-good share of her singing time; builder's clash.audio scorer, imported unmodified)
+                  builder   iter2 v2
+  vocadito 1-20    23.5%     20.3%   (tuning set)
+  vocadito 21-40   25.6%     23.1%   (held out, run once: harsh 5.8, fourth 5.8, silent 11.4)
+  all 40           24.5%     21.7%   (harsh 5.8, fourth 6.0, silent 9.9; builder 5.9/6.9/11.8)
+  ideal zero-latency follower: 14.4% (1-20), 14.1% (21-40). Still FAIL vs the 10% line.
+  Other variants tried on 1-20: no drop 22.5, +onset20 22.1, vib_clip 0 24.3, f0 smooth 10/25/50 ms 21.5/21.3/21.5,
+  +vib_clip 0.4 20.7, follow 20.6, hyst 0.5 21.1, ap_open .35 20.7, onset26 20.3 (drop off), v3 (onset20) 20.6.
+
+A5.1 / A5.2 / A5.3 (checks.py = builder's latency.py + sim5.py with iter2 fx; shorter set of runs)
+  A5.1 onset 0.7-1.9 ms, path 0.4-2.3 ms: unchanged. Pitch settle after a note step max 22 ms (builder 18 ms).
+  A5.2 guard on, RT60 0.3/0.6: 3 min at normal volume no howl; 60 s at +24 dB no howl (30 dB / no-guard not rerun).
+  A5.3 normal volume: release to -40 dBFS max 0.115 s (builder 0.065 s), still <= 0.2 s; pure silence between songs
+       0 gate opens, 0.00 s above -40 dBFS (same); opens in her phrase pauses 12 (builder 10), 0.00 s above -40 dBFS.
+       Stricter "sing level -30 dB": p95 0.363 s (builder 0.335), one 3.65 s faint tail (below -40 dBFS).
+       At +24 dB RT60 0.6: release max 0.355 s (builder 0.115 s) -> worse at the stability edge.
+
+COMMANDS (run from duet_v0)
+  .venv/bin/python futures/d5_live_fx/iter2/eval54.py --ids 1-20  --tag base
+  .venv/bin/python futures/d5_live_fx/iter2/eval54.py --ids 21-40 --kw '{"drop_db":16,"onset_db":26,"f0_tau":0.015,"mode":"follow"}' --tag v2
+  .venv/bin/python futures/d5_live_fx/iter2/checks.py --kw '{"drop_db":16,"onset_db":26,"f0_tau":0.015,"mode":"follow"}' --tag v2
+  .venv/bin/python futures/d5_live_fx/iter2/diag.py 1-20 '{}'
+  .venv/bin/python futures/d5_live_fx/iter2/demo_v2.py      -> demo/vocadito_{37,2}_harmony_v2.mp3
+  Outputs: iter2/runs/*.json, iter2/results/checks_*.json (all small).
+NEXT: the biggest remaining silent bucket is PSOLA output that is not periodic enough while the engine tracks her
+  correctly (~4%); try pitch-synchronous analysis marks or a longer YIN window for T0.

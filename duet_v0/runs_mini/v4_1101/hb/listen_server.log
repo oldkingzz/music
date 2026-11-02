@@ -1,0 +1,2 @@
+2026-11-01 21:03:38 START tl=3600 cwd=$ABS .venv/bin/python -m http.server 8767 --bind 127.0.0.1 --directory $ABS
+2026-11-01 22:03:38 END rc=124 secs=3600 .venv/bin/python -m http.server 8767 --bind 127.0.0.1 --directory $ABS

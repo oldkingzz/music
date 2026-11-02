@@ -1,0 +1,32 @@
+[
+ {
+  "file": "/Users/wangzesen/work/claude_sandbox/MEAM5160/project/duet_v0/futures/v3_nolatency/audio/twinkle_m1_filter_v5lo.mp3",
+  "song": "twinkle",
+  "system": "m1_filter_v5lo",
+  "music": 0.75,
+  "double": 0.045454545454545456,
+  "seconds": 29.8,
+  "beats": 48,
+  "bpm": 100
+ },
+ {
+  "file": "/Users/wangzesen/work/claude_sandbox/MEAM5160/project/duet_v0/futures/v3_nolatency/audio/bwv415_m1_filter_v5lo.mp3",
+  "song": "bwv415",
+  "system": "m1_filter_v5lo",
+  "music": 0.7272727272727273,
+  "double": 0.022727272727272728,
+  "seconds": 35.3,
+  "beats": 48,
+  "bpm": 84
+ },
+ {
+  "file": "/Users/wangzesen/work/claude_sandbox/MEAM5160/project/duet_v0/futures/v3_nolatency/audio/bwv308_m1_filter_v5lo.mp3",
+  "song": "bwv308",
+  "system": "m1_filter_v5lo",
+  "music": 0.7361111111111112,
+  "double": 0.013888888888888888,
+  "seconds": 31.0,
+  "beats": 40,
+  "bpm": 80
+ }
+]
