@@ -1,0 +1,79 @@
+{
+ "time": "2026-11-02 07:27:18",
+ "in": "VER4 AirPods mic",
+ "out": "VER4 AirPods out",
+ "stream_latency_ms": [
+  63.0,
+  10.0
+ ],
+ "ok": true,
+ "why": "",
+ "rt_ms": 327.1,
+ "n_used": 8,
+ "spread_ms": 15.9,
+ "offsets_ms": [
+  347.5,
+  308.8,
+  306.1,
+  350.5,
+  317.7,
+  326.7,
+  340.5,
+  327.5
+ ],
+ "n_onsets": 8,
+ "floor_db": -71.5,
+ "bpm": 100.0,
+ "complete": true,
+ "stream_flag_blocks": 0,
+ "folder": "072718_latcal",
+ "page": "live_panel_v3",
+ "latcal": "latcal_v1",
+ "kept": true,
+ "estimate": {
+  "rt_s": 0.3271,
+  "n_used": 8,
+  "spread_s": 0.0159,
+  "ok": true,
+  "why": "",
+  "n_clicks": 8,
+  "offsets_ms": [
+   347.5,
+   308.8,
+   306.1,
+   350.5,
+   317.7,
+   326.7,
+   340.5,
+   327.5
+  ],
+  "n_onsets": 8,
+  "floor_db": -71.5,
+  "candidates": 12,
+  "rejected": {
+   "unvoiced": 4
+  },
+  "rt_grid_s": 0.327
+ },
+ "schedule": {
+  "sr": 24000,
+  "bpm": 100.0,
+  "count_in": [
+   12000,
+   26400,
+   40800,
+   55200
+  ],
+  "clicks": [
+   69600,
+   84000,
+   98400,
+   112800,
+   127200,
+   141600,
+   156000,
+   170400
+  ],
+  "n_total": 201600
+ }
+}

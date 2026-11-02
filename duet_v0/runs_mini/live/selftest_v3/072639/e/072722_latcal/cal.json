@@ -1,0 +1,79 @@
+{
+ "time": "2026-11-02 07:27:23",
+ "in": "VER4 AirPods mic (wired out)",
+ "out": "VER4 wired phones",
+ "stream_latency_ms": [
+  63.0,
+  10.0
+ ],
+ "ok": true,
+ "why": "",
+ "rt_ms": 163.4,
+ "n_used": 8,
+ "spread_ms": 8.1,
+ "offsets_ms": [
+  141.3,
+  166.6,
+  215.8,
+  174.5,
+  159.4,
+  158.3,
+  160.2,
+  176.0
+ ],
+ "n_onsets": 8,
+ "floor_db": -80.2,
+ "bpm": 100.0,
+ "complete": true,
+ "stream_flag_blocks": 0,
+ "folder": "072722_latcal",
+ "page": "live_panel_v3",
+ "latcal": "latcal_v1",
+ "kept": true,
+ "estimate": {
+  "rt_s": 0.1634,
+  "n_used": 8,
+  "spread_s": 0.0081,
+  "ok": true,
+  "why": "",
+  "n_clicks": 8,
+  "offsets_ms": [
+   141.3,
+   166.6,
+   215.8,
+   174.5,
+   159.4,
+   158.3,
+   160.2,
+   176.0
+  ],
+  "n_onsets": 8,
+  "floor_db": -80.2,
+  "candidates": 11,
+  "rejected": {
+   "unvoiced": 3
+  },
+  "rt_grid_s": 0.161
+ },
+ "schedule": {
+  "sr": 24000,
+  "bpm": 100.0,
+  "count_in": [
+   12000,
+   26400,
+   40800,
+   55200
+  ],
+  "clicks": [
+   69600,
+   84000,
+   98400,
+   112800,
+   127200,
+   141600,
+   156000,
+   170400
+  ],
+  "n_total": 201600
+ }
+}

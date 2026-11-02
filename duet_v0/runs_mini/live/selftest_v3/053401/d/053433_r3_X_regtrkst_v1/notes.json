@@ -1,0 +1,862 @@
+{
+ "system": "r3_X_regtrkst_v1",
+ "tonic": 0,
+ "M": 4,
+ "K": 48,
+ "bpm": 80.0,
+ "t0": 3.9570000000000007,
+ "Li": 0.053,
+ "Lo": 0.01,
+ "monitor": 0.0,
+ "notes_answered": 13,
+ "sung": 13,
+ "detect_ms_median": 20.0,
+ "block_ms_median": 0.08154206443578005,
+ "block_ms_max": 1.111958990804851,
+ "events": [
+  {
+   "i": 0,
+   "onset_beats": 0.0,
+   "onset_raw": 0.0,
+   "her_heard": 60,
+   "duet": 52,
+   "before": -1,
+   "result": 52,
+   "action": "enter",
+   "prev_dur": null,
+   "detect_ms": 110.0,
+   "us": 385.1
+  },
+  {
+   "i": 1,
+   "onset_beats": 1.0,
+   "onset_raw": 1.053,
+   "her_heard": 60,
+   "duet": 52,
+   "before": 52,
+   "result": null,
+   "action": "keep",
+   "prev_dur": 1.0,
+   "detect_ms": 20.0,
+   "us": 291.8
+  },
+  {
+   "i": 2,
+   "onset_beats": 2.0,
+   "onset_raw": 2.013,
+   "her_heard": 67,
+   "duet": 52,
+   "before": 52,
+   "result": null,
+   "action": "keep",
+   "prev_dur": 1.0,
+   "detect_ms": 20.0,
+   "us": 277.6
+  },
+  {
+   "i": 3,
+   "onset_beats": 3.0,
+   "onset_raw": 3.04,
+   "her_heard": 67,
+   "duet": 64,
+   "before": 52,
+   "result": 64,
+   "action": "switch",
+   "prev_dur": 1.0,
+   "detect_ms": 20.0,
+   "us": 996.4
+  },
+  {
+   "i": 4,
+   "onset_beats": 4.0,
+   "onset_raw": 4.013,
+   "her_heard": 69,
+   "duet": 60,
+   "before": 64,
+   "result": 60,
+   "action": "switch",
+   "prev_dur": 1.0,
+   "detect_ms": 20.0,
+   "us": 263.3
+  },
+  {
+   "i": 5,
+   "onset_beats": 5.0,
+   "onset_raw": 5.04,
+   "her_heard": 69,
+   "duet": 65,
+   "before": 60,
+   "result": 65,
+   "action": "switch",
+   "prev_dur": 1.0,
+   "detect_ms": 20.0,
+   "us": 298.8
+  },
+  {
+   "i": 6,
+   "onset_beats": 6.0,
+   "onset_raw": 6.013,
+   "her_heard": 67,
+   "duet": 59,
+   "before": 65,
+   "result": 59,
+   "action": "switch",
+   "prev_dur": 1.0,
+   "detect_ms": 20.0,
+   "us": 262.4
+  },
+  {
+   "i": 7,
+   "onset_beats": 8.0,
+   "onset_raw": 8.027,
+   "her_heard": 65,
+   "duet": 57,
+   "before": 59,
+   "result": 57,
+   "action": "switch",
+   "prev_dur": 2.0,
+   "detect_ms": 20.0,
+   "us": 266.9
+  },
+  {
+   "i": 8,
+   "onset_beats": 9.0,
+   "onset_raw": 9.04,
+   "her_heard": 65,
+   "duet": 57,
+   "before": 57,
+   "result": null,
+   "action": "keep",
+   "prev_dur": 1.0,
+   "detect_ms": 20.0,
+   "us": 327.1
+  },
+  {
+   "i": 9,
+   "onset_beats": 10.0,
+   "onset_raw": 10.0,
+   "her_heard": 64,
+   "duet": 60,
+   "before": 57,
+   "result": 60,
+   "action": "switch",
+   "prev_dur": 1.0,
+   "detect_ms": 50.0,
+   "us": 284.8
+  },
+  {
+   "i": 10,
+   "onset_beats": 11.0,
+   "onset_raw": 11.04,
+   "her_heard": 64,
+   "duet": 60,
+   "before": 60,
+   "result": null,
+   "action": "keep",
+   "prev_dur": 1.0,
+   "detect_ms": 20.0,
+   "us": 271.3
+  },
+  {
+   "i": 11,
+   "onset_beats": 12.0,
+   "onset_raw": 12.013,
+   "her_heard": 62,
+   "duet": 55,
+   "before": 60,
+   "result": 55,
+   "action": "switch",
+   "prev_dur": 1.0,
+   "detect_ms": 20.0,
+   "us": 272.3
+  },
+  {
+   "i": 12,
+   "onset_beats": 13.0,
+   "onset_raw": 13.04,
+   "her_heard": 62,
+   "duet": 55,
+   "before": 55,
+   "result": null,
+   "action": "keep",
+   "prev_dur": 1.0,
+   "detect_ms": 20.0,
+   "us": 300.8
+  }
+ ],
+ "mode": "rt",
+ "count_in": 0,
+ "click_all": false,
+ "kept": 5,
+ "corrected": 7,
+ "late_start": 1,
+ "plans": [
+  {
+   "q": 0.5,
+   "result": null,
+   "action": "keep",
+   "duet": 52,
+   "heard": 1,
+   "late_ms": 0.0,
+   "us": 62.5
+  },
+  {
+   "q": 1.0,
+   "result": null,
+   "action": "keep",
+   "duet": 52,
+   "heard": 1,
+   "late_ms": 0.0,
+   "us": 62.5
+  },
+  {
+   "q": 1.5,
+   "result": null,
+   "action": "keep",
+   "duet": 52,
+   "heard": 2,
+   "late_ms": 0.0,
+   "us": 61.4
+  },
+  {
+   "q": 2.0,
+   "result": null,
+   "action": "keep",
+   "duet": 52,
+   "heard": 2,
+   "late_ms": 0.0,
+   "us": 65.2
+  },
+  {
+   "q": 2.5,
+   "result": null,
+   "action": "keep",
+   "duet": 52,
+   "heard": 3,
+   "late_ms": 0.0,
+   "us": 60.0
+  },
+  {
+   "q": 3.0,
+   "result": null,
+   "action": "keep",
+   "duet": 52,
+   "heard": 3,
+   "late_ms": 0.0,
+   "us": 65.5
+  },
+  {
+   "q": 3.5,
+   "result": null,
+   "action": "keep",
+   "duet": 64,
+   "heard": 4,
+   "late_ms": 0.0,
+   "us": 60.2
+  },
+  {
+   "q": 4.0,
+   "result": null,
+   "action": "keep",
+   "duet": 64,
+   "heard": 4,
+   "late_ms": 0.0,
+   "us": 64.9
+  },
+  {
+   "q": 4.5,
+   "result": null,
+   "action": "keep",
+   "duet": 60,
+   "heard": 5,
+   "late_ms": 0.0,
+   "us": 60.1
+  },
+  {
+   "q": 5.0,
+   "result": null,
+   "action": "keep",
+   "duet": 60,
+   "heard": 5,
+   "late_ms": 0.0,
+   "us": 64.1
+  },
+  {
+   "q": 5.5,
+   "result": null,
+   "action": "keep",
+   "duet": 65,
+   "heard": 6,
+   "late_ms": 0.0,
+   "us": 64.1
+  },
+  {
+   "q": 6.0,
+   "result": null,
+   "action": "keep",
+   "duet": 65,
+   "heard": 6,
+   "late_ms": 0.0,
+   "us": 67.5
+  },
+  {
+   "q": 6.5,
+   "result": null,
+   "action": "keep",
+   "duet": 59,
+   "heard": 7,
+   "late_ms": 0.0,
+   "us": 58.9
+  },
+  {
+   "q": 7.0,
+   "result": null,
+   "action": "keep",
+   "duet": 59,
+   "heard": 7,
+   "late_ms": 0.0,
+   "us": 63.0
+  },
+  {
+   "q": 7.5,
+   "result": null,
+   "action": "keep",
+   "duet": 59,
+   "heard": 7,
+   "late_ms": 0.0,
+   "us": 72.5
+  },
+  {
+   "q": 8.0,
+   "result": null,
+   "action": "keep",
+   "duet": 59,
+   "heard": 7,
+   "late_ms": 0.0,
+   "us": 70.7
+  },
+  {
+   "q": 8.5,
+   "result": null,
+   "action": "keep",
+   "duet": 57,
+   "heard": 8,
+   "late_ms": 0.0,
+   "us": 60.5
+  },
+  {
+   "q": 9.0,
+   "result": null,
+   "action": "keep",
+   "duet": 57,
+   "heard": 8,
+   "late_ms": 0.0,
+   "us": 81.0
+  },
+  {
+   "q": 9.5,
+   "result": null,
+   "action": "keep",
+   "duet": 57,
+   "heard": 9,
+   "late_ms": 0.0,
+   "us": 63.7
+  },
+  {
+   "q": 10.0,
+   "result": null,
+   "action": "keep",
+   "duet": 57,
+   "heard": 9,
+   "late_ms": 0.0,
+   "us": 66.5
+  },
+  {
+   "q": 10.5,
+   "result": null,
+   "action": "keep",
+   "duet": 60,
+   "heard": 10,
+   "late_ms": 0.0,
+   "us": 63.0
+  },
+  {
+   "q": 11.0,
+   "result": null,
+   "action": "keep",
+   "duet": 60,
+   "heard": 10,
+   "late_ms": 0.0,
+   "us": 65.6
+  },
+  {
+   "q": 11.5,
+   "result": null,
+   "action": "keep",
+   "duet": 60,
+   "heard": 11,
+   "late_ms": 0.0,
+   "us": 60.8
+  },
+  {
+   "q": 12.0,
+   "result": null,
+   "action": "keep",
+   "duet": 60,
+   "heard": 11,
+   "late_ms": 0.0,
+   "us": 65.1
+  },
+  {
+   "q": 12.5,
+   "result": null,
+   "action": "keep",
+   "duet": 55,
+   "heard": 12,
+   "late_ms": 0.0,
+   "us": 66.9
+  },
+  {
+   "q": 13.0,
+   "result": null,
+   "action": "keep",
+   "duet": 55,
+   "heard": 12,
+   "late_ms": 0.0,
+   "us": 65.0
+  }
+ ],
+ "decision_counts": {
+  "hear_enter": 1,
+  "hear_keep": 5,
+  "hear_switch": 7,
+  "plan_keep": 26
+ },
+ "decisions": [
+  {
+   "kind": "hear",
+   "t": 4.14,
+   "q": null,
+   "i": 0,
+   "result": 52,
+   "action": "enter",
+   "duet": 52,
+   "us": 385.1
+  },
+  {
+   "kind": "plan",
+   "t": 4.307,
+   "q": 0.5,
+   "i": null,
+   "result": null,
+   "action": "keep",
+   "duet": 52,
+   "us": 62.5
+  },
+  {
+   "kind": "plan",
+   "t": 4.682,
+   "q": 1.0,
+   "i": null,
+   "result": null,
+   "action": "keep",
+   "duet": 52,
+   "us": 62.5
+  },
+  {
+   "kind": "hear",
+   "t": 4.84,
+   "q": null,
+   "i": 1,
+   "result": null,
+   "action": "keep",
+   "duet": 52,
+   "us": 291.8
+  },
+  {
+   "kind": "plan",
+   "t": 5.057,
+   "q": 1.5,
+   "i": null,
+   "result": null,
+   "action": "keep",
+   "duet": 52,
+   "us": 61.4
+  },
+  {
+   "kind": "plan",
+   "t": 5.432,
+   "q": 2.0,
+   "i": null,
+   "result": null,
+   "action": "keep",
+   "duet": 52,
+   "us": 65.2
+  },
+  {
+   "kind": "hear",
+   "t": 5.56,
+   "q": null,
+   "i": 2,
+   "result": null,
+   "action": "keep",
+   "duet": 52,
+   "us": 277.6
+  },
+  {
+   "kind": "plan",
+   "t": 5.807,
+   "q": 2.5,
+   "i": null,
+   "result": null,
+   "action": "keep",
+   "duet": 52,
+   "us": 60.0
+  },
+  {
+   "kind": "plan",
+   "t": 6.182,
+   "q": 3.0,
+   "i": null,
+   "result": null,
+   "action": "keep",
+   "duet": 52,
+   "us": 65.5
+  },
+  {
+   "kind": "hear",
+   "t": 6.33,
+   "q": null,
+   "i": 3,
+   "result": 64,
+   "action": "switch",
+   "duet": 64,
+   "us": 996.4
+  },
+  {
+   "kind": "plan",
+   "t": 6.557,
+   "q": 3.5,
+   "i": null,
+   "result": null,
+   "action": "keep",
+   "duet": 64,
+   "us": 60.2
+  },
+  {
+   "kind": "plan",
+   "t": 6.932,
+   "q": 4.0,
+   "i": null,
+   "result": null,
+   "action": "keep",
+   "duet": 64,
+   "us": 64.9
+  },
+  {
+   "kind": "hear",
+   "t": 7.06,
+   "q": null,
+   "i": 4,
+   "result": 60,
+   "action": "switch",
+   "duet": 60,
+   "us": 263.3
+  },
+  {
+   "kind": "plan",
+   "t": 7.307,
+   "q": 4.5,
+   "i": null,
+   "result": null,
+   "action": "keep",
+   "duet": 60,
+   "us": 60.1
+  },
+  {
+   "kind": "plan",
+   "t": 7.682,
+   "q": 5.0,
+   "i": null,
+   "result": null,
+   "action": "keep",
+   "duet": 60,
+   "us": 64.1
+  },
+  {
+   "kind": "hear",
+   "t": 7.83,
+   "q": null,
+   "i": 5,
+   "result": 65,
+   "action": "switch",
+   "duet": 65,
+   "us": 298.8
+  },
+  {
+   "kind": "plan",
+   "t": 8.057,
+   "q": 5.5,
+   "i": null,
+   "result": null,
+   "action": "keep",
+   "duet": 65,
+   "us": 64.1
+  },
+  {
+   "kind": "plan",
+   "t": 8.432,
+   "q": 6.0,
+   "i": null,
+   "result": null,
+   "action": "keep",
+   "duet": 65,
+   "us": 67.5
+  },
+  {
+   "kind": "hear",
+   "t": 8.56,
+   "q": null,
+   "i": 6,
+   "result": 59,
+   "action": "switch",
+   "duet": 59,
+   "us": 262.4
+  },
+  {
+   "kind": "plan",
+   "t": 8.807,
+   "q": 6.5,
+   "i": null,
+   "result": null,
+   "action": "keep",
+   "duet": 59,
+   "us": 58.9
+  },
+  {
+   "kind": "plan",
+   "t": 9.182,
+   "q": 7.0,
+   "i": null,
+   "result": null,
+   "action": "keep",
+   "duet": 59,
+   "us": 63.0
+  },
+  {
+   "kind": "plan",
+   "t": 9.557,
+   "q": 7.5,
+   "i": null,
+   "result": null,
+   "action": "keep",
+   "duet": 59,
+   "us": 72.5
+  },
+  {
+   "kind": "plan",
+   "t": 9.932,
+   "q": 8.0,
+   "i": null,
+   "result": null,
+   "action": "keep",
+   "duet": 59,
+   "us": 70.7
+  },
+  {
+   "kind": "hear",
+   "t": 10.07,
+   "q": null,
+   "i": 7,
+   "result": 57,
+   "action": "switch",
+   "duet": 57,
+   "us": 266.9
+  },
+  {
+   "kind": "plan",
+   "t": 10.307,
+   "q": 8.5,
+   "i": null,
+   "result": null,
+   "action": "keep",
+   "duet": 57,
+   "us": 60.5
+  },
+  {
+   "kind": "plan",
+   "t": 10.682,
+   "q": 9.0,
+   "i": null,
+   "result": null,
+   "action": "keep",
+   "duet": 57,
+   "us": 81.0
+  },
+  {
+   "kind": "hear",
+   "t": 10.83,
+   "q": null,
+   "i": 8,
+   "result": null,
+   "action": "keep",
+   "duet": 57,
+   "us": 327.1
+  },
+  {
+   "kind": "plan",
+   "t": 11.057,
+   "q": 9.5,
+   "i": null,
+   "result": null,
+   "action": "keep",
+   "duet": 57,
+   "us": 63.7
+  },
+  {
+   "kind": "plan",
+   "t": 11.432,
+   "q": 10.0,
+   "i": null,
+   "result": null,
+   "action": "keep",
+   "duet": 57,
+   "us": 66.5
+  },
+  {
+   "kind": "hear",
+   "t": 11.58,
+   "q": null,
+   "i": 9,
+   "result": 60,
+   "action": "switch",
+   "duet": 60,
+   "us": 284.8
+  },
+  {
+   "kind": "plan",
+   "t": 11.807,
+   "q": 10.5,
+   "i": null,
+   "result": null,
+   "action": "keep",
+   "duet": 60,
+   "us": 63.0
+  },
+  {
+   "kind": "plan",
+   "t": 12.182,
+   "q": 11.0,
+   "i": null,
+   "result": null,
+   "action": "keep",
+   "duet": 60,
+   "us": 65.6
+  },
+  {
+   "kind": "hear",
+   "t": 12.33,
+   "q": null,
+   "i": 10,
+   "result": null,
+   "action": "keep",
+   "duet": 60,
+   "us": 271.3
+  },
+  {
+   "kind": "plan",
+   "t": 12.557,
+   "q": 11.5,
+   "i": null,
+   "result": null,
+   "action": "keep",
+   "duet": 60,
+   "us": 60.8
+  },
+  {
+   "kind": "plan",
+   "t": 12.932,
+   "q": 12.0,
+   "i": null,
+   "result": null,
+   "action": "keep",
+   "duet": 60,
+   "us": 65.1
+  },
+  {
+   "kind": "hear",
+   "t": 13.06,
+   "q": null,
+   "i": 11,
+   "result": 55,
+   "action": "switch",
+   "duet": 55,
+   "us": 272.3
+  },
+  {
+   "kind": "plan",
+   "t": 13.307,
+   "q": 12.5,
+   "i": null,
+   "result": null,
+   "action": "keep",
+   "duet": 55,
+   "us": 66.9
+  },
+  {
+   "kind": "plan",
+   "t": 13.682,
+   "q": 13.0,
+   "i": null,
+   "result": null,
+   "action": "keep",
+   "duet": 55,
+   "us": 65.0
+  },
+  {
+   "kind": "hear",
+   "t": 13.83,
+   "q": null,
+   "i": 12,
+   "result": null,
+   "action": "keep",
+   "duet": 55,
+   "us": 300.8
+  }
+ ],
+ "late_decisions": 0,
+ "us_plan_mean": 64.66332930498399,
+ "us_hear_mean": 346.0446963659846,
+ "us_mean": 158.4571183253175,
+ "us_max": 996.3749907910824,
+ "song": "twinkle",
+ "key": "C",
+ "phone_file": "futures/live_test/phone/twinkle_C_80bpm_countin.mp3",
+ "click": false,
+ "engine": "RTDuet",
+ "ab": false,
+ "rt_list": "test list in memory (panel_v3_selftest_v1; never written)",
+ "blind": false,
+ "in": "selftest mic B",
+ "out": "selftest phones (wired)",
+ "started": "2026-11-02 05:34:33",
+ "seconds": 0.1,
+ "lat": {
+  "source": "calibrated",
+  "Li_ms": 53.0,
+  "Lo_ms": 10.0,
+  "rt_ms": 63.0,
+  "cal_when": "05:34",
+  "stream_Li_ms": 63.0,
+  "stream_Lo_ms": 10.0
+ },
+ "auto_pick": {
+  "auto": "r3_X_regtrkst_v1",
+  "label": "实时预判 第 3 轮（推荐：低嗓音自动换八度，按真实听音误差判断，少“先错后改”）",
+  "why": "来回延迟 63 毫秒 < 120：用默认版",
+  "used": true,
+  "calibrated": true
+ },
+ "stream_flag_blocks": 0,
+ "page": "live_panel_v3"
+}
