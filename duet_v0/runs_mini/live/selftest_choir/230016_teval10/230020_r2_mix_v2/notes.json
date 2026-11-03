@@ -1,0 +1,188 @@
+{
+ "system": "choir:start",
+ "tonic": 0,
+ "M": 4,
+ "K": 400,
+ "bpm": 80.0,
+ "t0": 3.5,
+ "Li": 0.1319,
+ "Lo": 0.0421,
+ "monitor": 0.0,
+ "notes_answered": 2,
+ "sung": 1,
+ "detect_ms_median": 25.0,
+ "block_ms_median": 0.1396250445395708,
+ "block_ms_max": 0.46608306001871824,
+ "events": [
+  {
+   "i": 0,
+   "onset_beats": -0.856,
+   "onset_raw": -0.856,
+   "her_heard": 64,
+   "duet": -1,
+   "before": -1,
+   "result": null,
+   "action": "keep",
+   "prev_dur": null,
+   "detect_ms": 30.0,
+   "us": 0.5
+  },
+  {
+   "i": 1,
+   "onset_beats": 0.357,
+   "onset_raw": 0.357,
+   "her_heard": 67,
+   "duet": 59,
+   "before": -1,
+   "result": null,
+   "action": "keep",
+   "prev_dur": 1.25,
+   "detect_ms": 20.0,
+   "us": 0.2,
+   "song_beat": 1.2
+  }
+ ],
+ "mode": "choir",
+ "count_in": 4,
+ "click_all": false,
+ "kept": 2,
+ "corrected": 0,
+ "late_start": 0,
+ "plans": [
+  {
+   "q": 0.0,
+   "result": null,
+   "action": "idle",
+   "duet": -1,
+   "heard": 1,
+   "late_ms": 0.0,
+   "us": 0.3
+  },
+  {
+   "q": 0.5,
+   "result": null,
+   "action": "idle",
+   "duet": -1,
+   "heard": 1,
+   "late_ms": 0.0,
+   "us": 0.4
+  }
+ ],
+ "decision_counts": {
+  "hear_idle": 2,
+  "plan_idle": 2
+ },
+ "decisions": [
+  {
+   "kind": "hear",
+   "t": 3.0721,
+   "q": null,
+   "i": 0,
+   "result": null,
+   "action": "idle",
+   "duet": -1,
+   "us": 0.5
+  },
+  {
+   "kind": "plan",
+   "t": 3.475,
+   "q": 0.0,
+   "i": null,
+   "result": null,
+   "action": "idle",
+   "duet": -1,
+   "us": 0.3
+  },
+  {
+   "kind": "plan",
+   "t": 3.85,
+   "q": 0.5,
+   "i": null,
+   "result": null,
+   "action": "idle",
+   "duet": -1,
+   "us": 0.4
+  },
+  {
+   "kind": "hear",
+   "t": 3.9721,
+   "q": null,
+   "i": 1,
+   "result": null,
+   "action": "idle",
+   "duet": -1,
+   "us": 0.2
+  }
+ ],
+ "late_decisions": 0,
+ "us_plan_mean": 0.37456629797816277,
+ "us_hear_mean": 0.33352989703416824,
+ "us_mean": 0.3540480975061655,
+ "us_max": 0.500003807246685,
+ "choir_engine": "choir_v6",
+ "choir_song": "jingle",
+ "choir_shift": 0,
+ "tuning_st": 0.0,
+ "low_singer": false,
+ "tempo_bpm": 179.20000000000002,
+ "page_bpm": 80.0,
+ "her_notes": [
+  [
+   2.868,
+   64.0
+  ],
+  [
+   3.778,
+   67.0
+  ]
+ ],
+ "matched": 2,
+ "stopped": null,
+ "parts_written": 0,
+ "pred_err_ms_median_abs": null,
+ "diag": {
+  "pred_err_ms": [],
+  "relocations": 0,
+  "id_note": 2,
+  "id_cost": null,
+  "tune_track": [],
+  "switches": 0,
+  "onset_traced": 1,
+  "prov_time": 3.168,
+  "start_t": 2.868,
+  "id_time": 3.778,
+  "candidates_at_start": 4
+ },
+ "false_starts": 0,
+ "song": "auto",
+ "key": "C",
+ "phone_file": "",
+ "click": false,
+ "engine": "ChoirMany",
+ "ab": false,
+ "rt_list": "live_rt_systems_v3.json",
+ "blind": false,
+ "in": "m",
+ "out": "p",
+ "started": "2026-11-02 23:00:20",
+ "seconds": 0.1,
+ "lat": {
+  "source": "calibrated",
+  "Li_ms": 131.9,
+  "Lo_ms": 42.1,
+  "rt_ms": 174.0,
+  "cal_when": "t",
+  "stream_Li_ms": 62.7,
+  "stream_Lo_ms": 42.1,
+  "fixed": false
+ },
+ "auto_pick": {
+  "auto": "r3_X_regtrkst_v1",
+  "label": "实时预判 第 3 轮（默认：低嗓音自动换八度，少“先错后改”）",
+  "why": "来回延迟 174 毫秒 < 250：用默认版",
+  "used": false,
+  "calibrated": true
+ },
+ "stream_flag_blocks": 0,
+ "page": "live_panel_v3"
+}
