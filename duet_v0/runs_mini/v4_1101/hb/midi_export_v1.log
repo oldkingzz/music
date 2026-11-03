@@ -1,0 +1,2 @@
+2026-11-02 21:21:51 START tl=120 cwd=$ABS .venv/bin/python runs_mini/choir_1102/midi_export_v1.py
+2026-11-02 21:21:51 END rc=0 secs=0 .venv/bin/python runs_mini/choir_1102/midi_export_v1.py

@@ -1,0 +1,142 @@
+{
+ "ode | phone file (C, 96 bpm)": {
+  "song": "ode",
+  "want": "ode",
+  "shift": 0,
+  "chords": 41,
+  "chord_med_abs_from_target": 24,
+  "chord_p90_abs_from_target": 32,
+  "semitone_share": 0.021,
+  "frames": 3919
+ },
+ "ode | 5 down, 84 bpm": {
+  "song": "ode",
+  "want": "ode",
+  "shift": -5,
+  "chords": 41,
+  "chord_med_abs_from_target": 19,
+  "chord_p90_abs_from_target": 29,
+  "semitone_share": 0.019,
+  "frames": 4489
+ },
+ "ode | octave down, 104 bpm": {
+  "song": "ode",
+  "want": "ode",
+  "shift": 0,
+  "chords": 45,
+  "chord_med_abs_from_target": 24,
+  "chord_p90_abs_from_target": 31,
+  "semitone_share": 0.022,
+  "frames": 3613
+ },
+ "203926_r2_mix_v2": {
+  "song": "v11",
+  "want": "v11",
+  "shift": 0,
+  "chords": 20,
+  "chord_med_abs_from_target": 17,
+  "chord_p90_abs_from_target": 84,
+  "semitone_share": 0.145,
+  "frames": 972
+ },
+ "195940_r2_mix_v2": {
+  "song": "v11",
+  "want": "v11",
+  "shift": 0,
+  "chords": 20,
+  "chord_med_abs_from_target": 57,
+  "chord_p90_abs_from_target": 216,
+  "semitone_share": 0.135,
+  "frames": 1017
+ },
+ "113335_r2_mix_v2": {
+  "song": "v11",
+  "want": "v11",
+  "shift": 0,
+  "chords": 20,
+  "chord_med_abs_from_target": 78,
+  "chord_p90_abs_from_target": 182,
+  "semitone_share": 0.13,
+  "frames": 886
+ },
+ "114908_r2_mix_v2": {
+  "song": "v11",
+  "want": "v11",
+  "shift": 0,
+  "chords": 20,
+  "chord_med_abs_from_target": 48,
+  "chord_p90_abs_from_target": 95,
+  "semitone_share": 0.135,
+  "frames": 1086
+ },
+ "124132_r2_mix_v2": {
+  "song": "v11",
+  "want": "v11",
+  "shift": 0,
+  "chords": 20,
+  "chord_med_abs_from_target": 49,
+  "chord_p90_abs_from_target": 114,
+  "semitone_share": 0.151,
+  "frames": 939
+ },
+ "132458_r2_mix_v2": {
+  "song": "v11",
+  "want": "v11",
+  "shift": 0,
+  "chords": 20,
+  "chord_med_abs_from_target": 10,
+  "chord_p90_abs_from_target": 97,
+  "semitone_share": 0.162,
+  "frames": 1022
+ },
+ "195914_r2_mix_v2": {
+  "song": "twinkle",
+  "want": "twinkle",
+  "shift": 0,
+  "chords": 12,
+  "chord_med_abs_from_target": 24,
+  "chord_p90_abs_from_target": 48,
+  "semitone_share": 0.0,
+  "frames": 1092
+ },
+ "113217_r2_mix_v2": {
+  "song": "twinkle",
+  "want": "twinkle",
+  "shift": 0,
+  "chords": 25,
+  "chord_med_abs_from_target": 22,
+  "chord_p90_abs_from_target": 125,
+  "semitone_share": 0.001,
+  "frames": 2231
+ },
+ "114844_r2_mix_v2": {
+  "song": "twinkle",
+  "want": "twinkle",
+  "shift": 0,
+  "chords": 12,
+  "chord_med_abs_from_target": 30,
+  "chord_p90_abs_from_target": 105,
+  "semitone_share": 0.001,
+  "frames": 1122
+ },
+ "110255_r2_mix_v2": {
+  "song": "twinkle",
+  "want": "twinkle",
+  "shift": -5,
+  "chords": 11,
+  "chord_med_abs_from_target": 214,
+  "chord_p90_abs_from_target": 464,
+  "semitone_share": 0.445,
+  "frames": 2015
+ },
+ "095417_r2_mix_v2": {
+  "song": "twinkle",
+  "want": "twinkle",
+  "shift": -3,
+  "chords": 8,
+  "chord_med_abs_from_target": 1320,
+  "chord_p90_abs_from_target": 1396,
+  "semitone_share": 0.321,
+  "frames": 3076
+ }
+}

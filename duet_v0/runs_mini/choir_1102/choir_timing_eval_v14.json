@@ -1,0 +1,2390 @@
+{
+ "195940_r2_mix_v2 | S now (start notes only)": {
+  "pred_med": 89,
+  "pred_p90": 121,
+  "late_traced": 0,
+  "song": "v11",
+  "per_chord": [
+   [
+    5.25,
+    -51
+   ],
+   [
+    5.25,
+    -51
+   ],
+   [
+    7.25,
+    -351
+   ],
+   [
+    7.25,
+    -351
+   ],
+   [
+    9.25,
+    124
+   ],
+   [
+    9.25,
+    124
+   ],
+   [
+    10.5,
+    169
+   ],
+   [
+    10.5,
+    169
+   ],
+   [
+    10.5,
+    169
+   ],
+   [
+    13.25,
+    -14
+   ],
+   [
+    13.25,
+    -14
+   ],
+   [
+    13.25,
+    -14
+   ],
+   [
+    17.5,
+    84
+   ],
+   [
+    17.5,
+    84
+   ],
+   [
+    19.0,
+    -56
+   ],
+   [
+    19.0,
+    -56
+   ],
+   [
+    19.0,
+    -56
+   ],
+   [
+    22.25,
+    -92
+   ],
+   [
+    22.25,
+    -92
+   ],
+   [
+    22.25,
+    -92
+   ]
+  ],
+  "chords": 20,
+  "chord_median_ms": -33,
+  "chord_med_abs_from_target": 57,
+  "chord_p90_abs_from_target": 216,
+  "detect_median_ms": 40,
+  "detect_med_abs_ms": 30,
+  "n_detect": 19,
+  "tempo": 118.7,
+  "steps": 25,
+  "two_at_once": 0,
+  "two_at_once_max_ms": 0,
+  "clash_s": 0.0,
+  "holes": 1,
+  "hole_max_ms": 124
+ },
+ "195940_r2_mix_v2 | T60": {
+  "pred_med": 86,
+  "pred_p90": 166,
+  "late_traced": 6,
+  "song": "v11",
+  "per_chord": [
+   [
+    5.25,
+    -51
+   ],
+   [
+    5.25,
+    -51
+   ],
+   [
+    7.25,
+    -429
+   ],
+   [
+    7.25,
+    -429
+   ],
+   [
+    9.25,
+    -46
+   ],
+   [
+    9.25,
+    -46
+   ],
+   [
+    10.5,
+    52
+   ],
+   [
+    10.5,
+    52
+   ],
+   [
+    10.5,
+    52
+   ],
+   [
+    13.25,
+    -81
+   ],
+   [
+    13.25,
+    -81
+   ],
+   [
+    13.25,
+    -81
+   ],
+   [
+    17.5,
+    31
+   ],
+   [
+    17.5,
+    31
+   ],
+   [
+    19.0,
+    -207
+   ],
+   [
+    19.0,
+    -207
+   ],
+   [
+    19.0,
+    -207
+   ],
+   [
+    22.25,
+    -313
+   ],
+   [
+    22.25,
+    -313
+   ],
+   [
+    22.25,
+    -313
+   ]
+  ],
+  "chords": 20,
+  "chord_median_ms": -81,
+  "chord_med_abs_from_target": 87,
+  "chord_p90_abs_from_target": 289,
+  "detect_median_ms": 20,
+  "detect_med_abs_ms": 20,
+  "n_detect": 19,
+  "tempo": 118.8,
+  "steps": 25,
+  "two_at_once": 0,
+  "two_at_once_max_ms": 0,
+  "clash_s": 0.0,
+  "holes": 0,
+  "hole_max_ms": 0
+ },
+ "195940_r2_mix_v2 | T100": {
+  "pred_med": 86,
+  "pred_p90": 166,
+  "late_traced": 4,
+  "song": "v11",
+  "per_chord": [
+   [
+    5.25,
+    -51
+   ],
+   [
+    5.25,
+    -51
+   ],
+   [
+    7.25,
+    -429
+   ],
+   [
+    7.25,
+    -429
+   ],
+   [
+    9.25,
+    -46
+   ],
+   [
+    9.25,
+    -46
+   ],
+   [
+    10.5,
+    52
+   ],
+   [
+    10.5,
+    52
+   ],
+   [
+    10.5,
+    52
+   ],
+   [
+    13.25,
+    -81
+   ],
+   [
+    13.25,
+    -81
+   ],
+   [
+    13.25,
+    -81
+   ],
+   [
+    17.5,
+    31
+   ],
+   [
+    17.5,
+    31
+   ],
+   [
+    19.0,
+    -207
+   ],
+   [
+    19.0,
+    -207
+   ],
+   [
+    19.0,
+    -207
+   ],
+   [
+    22.25,
+    -257
+   ],
+   [
+    22.25,
+    -257
+   ],
+   [
+    22.25,
+    -257
+   ]
+  ],
+  "chords": 20,
+  "chord_median_ms": -81,
+  "chord_med_abs_from_target": 87,
+  "chord_p90_abs_from_target": 239,
+  "detect_median_ms": 20,
+  "detect_med_abs_ms": 20,
+  "n_detect": 19,
+  "tempo": 118.0,
+  "steps": 25,
+  "two_at_once": 0,
+  "two_at_once_max_ms": 0,
+  "clash_s": 0.0,
+  "holes": 0,
+  "hole_max_ms": 0
+ },
+ "113335_r2_mix_v2 | S now (start notes only)": {
+  "pred_med": 56,
+  "pred_p90": 107,
+  "late_traced": 0,
+  "song": "v11",
+  "per_chord": [
+   [
+    5.25,
+    16
+   ],
+   [
+    5.25,
+    16
+   ],
+   [
+    7.25,
+    -216
+   ],
+   [
+    7.25,
+    -216
+   ],
+   [
+    9.25,
+    -231
+   ],
+   [
+    9.25,
+    -231
+   ],
+   [
+    10.5,
+    -165
+   ],
+   [
+    10.5,
+    -165
+   ],
+   [
+    10.5,
+    -165
+   ],
+   [
+    13.25,
+    -118
+   ],
+   [
+    13.25,
+    -118
+   ],
+   [
+    13.25,
+    -118
+   ],
+   [
+    17.5,
+    38
+   ],
+   [
+    17.5,
+    38
+   ],
+   [
+    19.0,
+    -52
+   ],
+   [
+    19.0,
+    -52
+   ],
+   [
+    19.0,
+    -52
+   ],
+   [
+    22.25,
+    -68
+   ],
+   [
+    22.25,
+    -68
+   ],
+   [
+    22.25,
+    -68
+   ]
+  ],
+  "chords": 20,
+  "chord_median_ms": -93,
+  "chord_med_abs_from_target": 78,
+  "chord_p90_abs_from_target": 182,
+  "detect_median_ms": 40,
+  "detect_med_abs_ms": 10,
+  "n_detect": 17,
+  "tempo": 117.6,
+  "steps": 25,
+  "two_at_once": 0,
+  "two_at_once_max_ms": 0,
+  "clash_s": 0.0,
+  "holes": 0,
+  "hole_max_ms": 0
+ },
+ "113335_r2_mix_v2 | T60": {
+  "pred_med": 55,
+  "pred_p90": 116,
+  "late_traced": 1,
+  "song": "v11",
+  "per_chord": [
+   [
+    5.25,
+    -20
+   ],
+   [
+    5.25,
+    -20
+   ],
+   [
+    7.25,
+    -232
+   ],
+   [
+    7.25,
+    -232
+   ],
+   [
+    9.25,
+    -238
+   ],
+   [
+    9.25,
+    -238
+   ],
+   [
+    10.5,
+    -173
+   ],
+   [
+    10.5,
+    -173
+   ],
+   [
+    10.5,
+    -173
+   ],
+   [
+    13.25,
+    -117
+   ],
+   [
+    13.25,
+    -117
+   ],
+   [
+    13.25,
+    -117
+   ],
+   [
+    17.5,
+    43
+   ],
+   [
+    17.5,
+    43
+   ],
+   [
+    19.0,
+    -51
+   ],
+   [
+    19.0,
+    -51
+   ],
+   [
+    19.0,
+    -51
+   ],
+   [
+    22.25,
+    -68
+   ],
+   [
+    22.25,
+    -68
+   ],
+   [
+    22.25,
+    -68
+   ]
+  ],
+  "chords": 20,
+  "chord_median_ms": -92,
+  "chord_med_abs_from_target": 80,
+  "chord_p90_abs_from_target": 197,
+  "detect_median_ms": 40,
+  "detect_med_abs_ms": 20,
+  "n_detect": 17,
+  "tempo": 117.6,
+  "steps": 25,
+  "two_at_once": 0,
+  "two_at_once_max_ms": 0,
+  "clash_s": 0.0,
+  "holes": 0,
+  "hole_max_ms": 0
+ },
+ "113335_r2_mix_v2 | T100": {
+  "pred_med": 56,
+  "pred_p90": 107,
+  "late_traced": 0,
+  "song": "v11",
+  "per_chord": [
+   [
+    5.25,
+    16
+   ],
+   [
+    5.25,
+    16
+   ],
+   [
+    7.25,
+    -216
+   ],
+   [
+    7.25,
+    -216
+   ],
+   [
+    9.25,
+    -231
+   ],
+   [
+    9.25,
+    -231
+   ],
+   [
+    10.5,
+    -165
+   ],
+   [
+    10.5,
+    -165
+   ],
+   [
+    10.5,
+    -165
+   ],
+   [
+    13.25,
+    -118
+   ],
+   [
+    13.25,
+    -118
+   ],
+   [
+    13.25,
+    -118
+   ],
+   [
+    17.5,
+    38
+   ],
+   [
+    17.5,
+    38
+   ],
+   [
+    19.0,
+    -52
+   ],
+   [
+    19.0,
+    -52
+   ],
+   [
+    19.0,
+    -52
+   ],
+   [
+    22.25,
+    -68
+   ],
+   [
+    22.25,
+    -68
+   ],
+   [
+    22.25,
+    -68
+   ]
+  ],
+  "chords": 20,
+  "chord_median_ms": -93,
+  "chord_med_abs_from_target": 78,
+  "chord_p90_abs_from_target": 182,
+  "detect_median_ms": 40,
+  "detect_med_abs_ms": 10,
+  "n_detect": 17,
+  "tempo": 117.6,
+  "steps": 25,
+  "two_at_once": 0,
+  "two_at_once_max_ms": 0,
+  "clash_s": 0.0,
+  "holes": 0,
+  "hole_max_ms": 0
+ },
+ "114908_r2_mix_v2 | S now (start notes only)": {
+  "pred_med": 48,
+  "pred_p90": 146,
+  "late_traced": 0,
+  "song": "v11",
+  "per_chord": [
+   [
+    5.25,
+    -12
+   ],
+   [
+    5.25,
+    -12
+   ],
+   [
+    7.25,
+    -189
+   ],
+   [
+    7.25,
+    -189
+   ],
+   [
+    9.25,
+    -3
+   ],
+   [
+    9.25,
+    -3
+   ],
+   [
+    10.5,
+    54
+   ],
+   [
+    10.5,
+    54
+   ],
+   [
+    10.5,
+    54
+   ],
+   [
+    13.25,
+    -57
+   ],
+   [
+    13.25,
+    -57
+   ],
+   [
+    13.25,
+    -57
+   ],
+   [
+    17.5,
+    29
+   ],
+   [
+    17.5,
+    29
+   ],
+   [
+    19.0,
+    -34
+   ],
+   [
+    19.0,
+    -34
+   ],
+   [
+    19.0,
+    -34
+   ],
+   [
+    22.25,
+    -101
+   ],
+   [
+    22.25,
+    -101
+   ],
+   [
+    22.25,
+    -101
+   ]
+  ],
+  "chords": 20,
+  "chord_median_ms": -34,
+  "chord_med_abs_from_target": 48,
+  "chord_p90_abs_from_target": 95,
+  "detect_median_ms": 45,
+  "detect_med_abs_ms": 25,
+  "n_detect": 18,
+  "tempo": 115.2,
+  "steps": 25,
+  "two_at_once": 0,
+  "two_at_once_max_ms": 0,
+  "clash_s": 0.0,
+  "holes": 0,
+  "hole_max_ms": 0
+ },
+ "114908_r2_mix_v2 | T60": {
+  "pred_med": 87,
+  "pred_p90": 147,
+  "late_traced": 3,
+  "song": "v11",
+  "per_chord": [
+   [
+    5.25,
+    -12
+   ],
+   [
+    5.25,
+    -12
+   ],
+   [
+    7.25,
+    -189
+   ],
+   [
+    7.25,
+    -189
+   ],
+   [
+    9.25,
+    -42
+   ],
+   [
+    9.25,
+    -42
+   ],
+   [
+    10.5,
+    13
+   ],
+   [
+    10.5,
+    13
+   ],
+   [
+    10.5,
+    13
+   ],
+   [
+    13.25,
+    -61
+   ],
+   [
+    13.25,
+    -61
+   ],
+   [
+    13.25,
+    -61
+   ],
+   [
+    17.5,
+    31
+   ],
+   [
+    17.5,
+    31
+   ],
+   [
+    19.0,
+    -188
+   ],
+   [
+    19.0,
+    -188
+   ],
+   [
+    19.0,
+    -188
+   ],
+   [
+    22.25,
+    -215
+   ],
+   [
+    22.25,
+    -215
+   ],
+   [
+    22.25,
+    -215
+   ]
+  ],
+  "chords": 20,
+  "chord_median_ms": -61,
+  "chord_med_abs_from_target": 57,
+  "chord_p90_abs_from_target": 180,
+  "detect_median_ms": 30,
+  "detect_med_abs_ms": 20,
+  "n_detect": 18,
+  "tempo": 117.6,
+  "steps": 25,
+  "two_at_once": 0,
+  "two_at_once_max_ms": 0,
+  "clash_s": 0.0,
+  "holes": 0,
+  "hole_max_ms": 0
+ },
+ "114908_r2_mix_v2 | T100": {
+  "pred_med": 48,
+  "pred_p90": 126,
+  "late_traced": 1,
+  "song": "v11",
+  "per_chord": [
+   [
+    5.25,
+    -12
+   ],
+   [
+    5.25,
+    -12
+   ],
+   [
+    7.25,
+    -189
+   ],
+   [
+    7.25,
+    -189
+   ],
+   [
+    9.25,
+    -3
+   ],
+   [
+    9.25,
+    -3
+   ],
+   [
+    10.5,
+    54
+   ],
+   [
+    10.5,
+    54
+   ],
+   [
+    10.5,
+    54
+   ],
+   [
+    13.25,
+    -57
+   ],
+   [
+    13.25,
+    -57
+   ],
+   [
+    13.25,
+    -57
+   ],
+   [
+    17.5,
+    29
+   ],
+   [
+    17.5,
+    29
+   ],
+   [
+    19.0,
+    -34
+   ],
+   [
+    19.0,
+    -34
+   ],
+   [
+    19.0,
+    -34
+   ],
+   [
+    22.25,
+    -101
+   ],
+   [
+    22.25,
+    -101
+   ],
+   [
+    22.25,
+    -101
+   ]
+  ],
+  "chords": 20,
+  "chord_median_ms": -34,
+  "chord_med_abs_from_target": 48,
+  "chord_p90_abs_from_target": 95,
+  "detect_median_ms": 40,
+  "detect_med_abs_ms": 20,
+  "n_detect": 18,
+  "tempo": 121.7,
+  "steps": 25,
+  "two_at_once": 0,
+  "two_at_once_max_ms": 0,
+  "clash_s": 0.0,
+  "holes": 0,
+  "hole_max_ms": 0
+ },
+ "124132_r2_mix_v2 | S now (start notes only)": {
+  "pred_med": 32,
+  "pred_p90": 143,
+  "late_traced": 0,
+  "song": "v11",
+  "per_chord": [
+   [
+    5.25,
+    -27
+   ],
+   [
+    5.25,
+    -27
+   ],
+   [
+    7.25,
+    -204
+   ],
+   [
+    7.25,
+    -204
+   ],
+   [
+    9.25,
+    -71
+   ],
+   [
+    9.25,
+    -71
+   ],
+   [
+    10.5,
+    14
+   ],
+   [
+    10.5,
+    14
+   ],
+   [
+    10.5,
+    14
+   ],
+   [
+    13.25,
+    -128
+   ],
+   [
+    13.25,
+    -128
+   ],
+   [
+    13.25,
+    -128
+   ],
+   [
+    17.5,
+    15
+   ],
+   [
+    17.5,
+    15
+   ],
+   [
+    19.0,
+    -37
+   ],
+   [
+    19.0,
+    -37
+   ],
+   [
+    19.0,
+    -37
+   ],
+   [
+    22.25,
+    -143
+   ],
+   [
+    22.25,
+    -143
+   ],
+   [
+    22.25,
+    -143
+   ]
+  ],
+  "chords": 20,
+  "chord_median_ms": -54,
+  "chord_med_abs_from_target": 49,
+  "chord_p90_abs_from_target": 114,
+  "detect_median_ms": 40,
+  "detect_med_abs_ms": 10,
+  "n_detect": 17,
+  "tempo": 121.8,
+  "steps": 25,
+  "two_at_once": 0,
+  "two_at_once_max_ms": 0,
+  "clash_s": 0.0,
+  "holes": 0,
+  "hole_max_ms": 0
+ },
+ "124132_r2_mix_v2 | T60": {
+  "pred_med": 47,
+  "pred_p90": 140,
+  "late_traced": 1,
+  "song": "v11",
+  "per_chord": [
+   [
+    5.25,
+    -27
+   ],
+   [
+    5.25,
+    -27
+   ],
+   [
+    7.25,
+    -253
+   ],
+   [
+    7.25,
+    -253
+   ],
+   [
+    9.25,
+    -85
+   ],
+   [
+    9.25,
+    -85
+   ],
+   [
+    10.5,
+    -5
+   ],
+   [
+    10.5,
+    -5
+   ],
+   [
+    10.5,
+    -5
+   ],
+   [
+    13.25,
+    -75
+   ],
+   [
+    13.25,
+    -75
+   ],
+   [
+    13.25,
+    -75
+   ],
+   [
+    17.5,
+    21
+   ],
+   [
+    17.5,
+    21
+   ],
+   [
+    19.0,
+    -31
+   ],
+   [
+    19.0,
+    -31
+   ],
+   [
+    19.0,
+    -31
+   ],
+   [
+    22.25,
+    -141
+   ],
+   [
+    22.25,
+    -141
+   ],
+   [
+    22.25,
+    -141
+   ]
+  ],
+  "chords": 20,
+  "chord_median_ms": -53,
+  "chord_med_abs_from_target": 40,
+  "chord_p90_abs_from_target": 117,
+  "detect_median_ms": 40,
+  "detect_med_abs_ms": 10,
+  "n_detect": 17,
+  "tempo": 121.7,
+  "steps": 25,
+  "two_at_once": 0,
+  "two_at_once_max_ms": 0,
+  "clash_s": 0.0,
+  "holes": 0,
+  "hole_max_ms": 0
+ },
+ "124132_r2_mix_v2 | T100": {
+  "pred_med": 32,
+  "pred_p90": 143,
+  "late_traced": 0,
+  "song": "v11",
+  "per_chord": [
+   [
+    5.25,
+    -27
+   ],
+   [
+    5.25,
+    -27
+   ],
+   [
+    7.25,
+    -204
+   ],
+   [
+    7.25,
+    -204
+   ],
+   [
+    9.25,
+    -71
+   ],
+   [
+    9.25,
+    -71
+   ],
+   [
+    10.5,
+    14
+   ],
+   [
+    10.5,
+    14
+   ],
+   [
+    10.5,
+    14
+   ],
+   [
+    13.25,
+    -128
+   ],
+   [
+    13.25,
+    -128
+   ],
+   [
+    13.25,
+    -128
+   ],
+   [
+    17.5,
+    15
+   ],
+   [
+    17.5,
+    15
+   ],
+   [
+    19.0,
+    -37
+   ],
+   [
+    19.0,
+    -37
+   ],
+   [
+    19.0,
+    -37
+   ],
+   [
+    22.25,
+    -143
+   ],
+   [
+    22.25,
+    -143
+   ],
+   [
+    22.25,
+    -143
+   ]
+  ],
+  "chords": 20,
+  "chord_median_ms": -54,
+  "chord_med_abs_from_target": 49,
+  "chord_p90_abs_from_target": 114,
+  "detect_median_ms": 40,
+  "detect_med_abs_ms": 10,
+  "n_detect": 17,
+  "tempo": 121.8,
+  "steps": 25,
+  "two_at_once": 0,
+  "two_at_once_max_ms": 0,
+  "clash_s": 0.0,
+  "holes": 0,
+  "hole_max_ms": 0
+ },
+ "132458_r2_mix_v2 | S now (start notes only)": {
+  "pred_med": 59,
+  "pred_p90": 118,
+  "late_traced": 0,
+  "song": "v11",
+  "per_chord": [
+   [
+    5.25,
+    -25
+   ],
+   [
+    5.25,
+    -25
+   ],
+   [
+    7.25,
+    -197
+   ],
+   [
+    7.25,
+    -197
+   ],
+   [
+    9.25,
+    -109
+   ],
+   [
+    9.25,
+    -109
+   ],
+   [
+    10.5,
+    -26
+   ],
+   [
+    10.5,
+    -26
+   ],
+   [
+    10.5,
+    -26
+   ],
+   [
+    13.25,
+    -38
+   ],
+   [
+    13.25,
+    -38
+   ],
+   [
+    13.25,
+    -38
+   ],
+   [
+    17.5,
+    32
+   ],
+   [
+    17.5,
+    32
+   ],
+   [
+    19.0,
+    -31
+   ],
+   [
+    19.0,
+    -31
+   ],
+   [
+    19.0,
+    -31
+   ],
+   [
+    22.25,
+    54
+   ],
+   [
+    22.25,
+    54
+   ],
+   [
+    22.25,
+    54
+   ]
+  ],
+  "chords": 20,
+  "chord_median_ms": -29,
+  "chord_med_abs_from_target": 10,
+  "chord_p90_abs_from_target": 97,
+  "detect_median_ms": 40,
+  "detect_med_abs_ms": 20,
+  "n_detect": 21,
+  "tempo": 120.5,
+  "steps": 25,
+  "two_at_once": 0,
+  "two_at_once_max_ms": 0,
+  "clash_s": 0.0,
+  "holes": 0,
+  "hole_max_ms": 0
+ },
+ "132458_r2_mix_v2 | T60": {
+  "pred_med": 53,
+  "pred_p90": 123,
+  "late_traced": 1,
+  "song": "v11",
+  "per_chord": [
+   [
+    5.25,
+    -25
+   ],
+   [
+    5.25,
+    -25
+   ],
+   [
+    7.25,
+    -197
+   ],
+   [
+    7.25,
+    -197
+   ],
+   [
+    9.25,
+    -109
+   ],
+   [
+    9.25,
+    -109
+   ],
+   [
+    10.5,
+    -26
+   ],
+   [
+    10.5,
+    -26
+   ],
+   [
+    10.5,
+    -26
+   ],
+   [
+    13.25,
+    -38
+   ],
+   [
+    13.25,
+    -38
+   ],
+   [
+    13.25,
+    -38
+   ],
+   [
+    17.5,
+    32
+   ],
+   [
+    17.5,
+    32
+   ],
+   [
+    19.0,
+    -31
+   ],
+   [
+    19.0,
+    -31
+   ],
+   [
+    19.0,
+    -31
+   ],
+   [
+    22.25,
+    54
+   ],
+   [
+    22.25,
+    54
+   ],
+   [
+    22.25,
+    54
+   ]
+  ],
+  "chords": 20,
+  "chord_median_ms": -29,
+  "chord_med_abs_from_target": 10,
+  "chord_p90_abs_from_target": 97,
+  "detect_median_ms": 40,
+  "detect_med_abs_ms": 20,
+  "n_detect": 21,
+  "tempo": 121.5,
+  "steps": 25,
+  "two_at_once": 0,
+  "two_at_once_max_ms": 0,
+  "clash_s": 0.0,
+  "holes": 0,
+  "hole_max_ms": 0
+ },
+ "132458_r2_mix_v2 | T100": {
+  "pred_med": 53,
+  "pred_p90": 123,
+  "late_traced": 1,
+  "song": "v11",
+  "per_chord": [
+   [
+    5.25,
+    -25
+   ],
+   [
+    5.25,
+    -25
+   ],
+   [
+    7.25,
+    -197
+   ],
+   [
+    7.25,
+    -197
+   ],
+   [
+    9.25,
+    -109
+   ],
+   [
+    9.25,
+    -109
+   ],
+   [
+    10.5,
+    -26
+   ],
+   [
+    10.5,
+    -26
+   ],
+   [
+    10.5,
+    -26
+   ],
+   [
+    13.25,
+    -38
+   ],
+   [
+    13.25,
+    -38
+   ],
+   [
+    13.25,
+    -38
+   ],
+   [
+    17.5,
+    32
+   ],
+   [
+    17.5,
+    32
+   ],
+   [
+    19.0,
+    -31
+   ],
+   [
+    19.0,
+    -31
+   ],
+   [
+    19.0,
+    -31
+   ],
+   [
+    22.25,
+    54
+   ],
+   [
+    22.25,
+    54
+   ],
+   [
+    22.25,
+    54
+   ]
+  ],
+  "chords": 20,
+  "chord_median_ms": -29,
+  "chord_med_abs_from_target": 10,
+  "chord_p90_abs_from_target": 97,
+  "detect_median_ms": 40,
+  "detect_med_abs_ms": 20,
+  "n_detect": 21,
+  "tempo": 121.5,
+  "steps": 25,
+  "two_at_once": 0,
+  "two_at_once_max_ms": 0,
+  "clash_s": 0.0,
+  "holes": 0,
+  "hole_max_ms": 0
+ },
+ "195914_r2_mix_v2 | S now (start notes only)": {
+  "pred_med": 12,
+  "pred_p90": 25,
+  "late_traced": 0,
+  "song": "twinkle",
+  "per_chord": [
+   [
+    2.0,
+    -45
+   ],
+   [
+    4.0,
+    -15
+   ],
+   [
+    4.0,
+    -15
+   ],
+   [
+    6.0,
+    15
+   ],
+   [
+    6.0,
+    15
+   ],
+   [
+    8.0,
+    -16
+   ],
+   [
+    8.0,
+    -16
+   ],
+   [
+    12.0,
+    -11
+   ],
+   [
+    12.0,
+    -11
+   ],
+   [
+    14.0,
+    -6
+   ],
+   [
+    14.0,
+    -6
+   ],
+   [
+    14.0,
+    -6
+   ]
+  ],
+  "chords": 12,
+  "chord_median_ms": -11,
+  "chord_med_abs_from_target": 24,
+  "chord_p90_abs_from_target": 48,
+  "detect_median_ms": 10,
+  "detect_med_abs_ms": 10,
+  "n_detect": 7,
+  "tempo": 79.9,
+  "steps": 15,
+  "two_at_once": 0,
+  "two_at_once_max_ms": 0,
+  "clash_s": 0.0,
+  "holes": 0,
+  "hole_max_ms": 0
+ },
+ "195914_r2_mix_v2 | T60": {
+  "pred_med": 12,
+  "pred_p90": 25,
+  "late_traced": 0,
+  "song": "twinkle",
+  "per_chord": [
+   [
+    2.0,
+    -45
+   ],
+   [
+    4.0,
+    -15
+   ],
+   [
+    4.0,
+    -15
+   ],
+   [
+    6.0,
+    15
+   ],
+   [
+    6.0,
+    15
+   ],
+   [
+    8.0,
+    -16
+   ],
+   [
+    8.0,
+    -16
+   ],
+   [
+    12.0,
+    -11
+   ],
+   [
+    12.0,
+    -11
+   ],
+   [
+    14.0,
+    -6
+   ],
+   [
+    14.0,
+    -6
+   ],
+   [
+    14.0,
+    -6
+   ]
+  ],
+  "chords": 12,
+  "chord_median_ms": -11,
+  "chord_med_abs_from_target": 24,
+  "chord_p90_abs_from_target": 48,
+  "detect_median_ms": 10,
+  "detect_med_abs_ms": 10,
+  "n_detect": 7,
+  "tempo": 79.9,
+  "steps": 15,
+  "two_at_once": 0,
+  "two_at_once_max_ms": 0,
+  "clash_s": 0.0,
+  "holes": 0,
+  "hole_max_ms": 0
+ },
+ "195914_r2_mix_v2 | T100": {
+  "pred_med": 12,
+  "pred_p90": 25,
+  "late_traced": 0,
+  "song": "twinkle",
+  "per_chord": [
+   [
+    2.0,
+    -45
+   ],
+   [
+    4.0,
+    -15
+   ],
+   [
+    4.0,
+    -15
+   ],
+   [
+    6.0,
+    15
+   ],
+   [
+    6.0,
+    15
+   ],
+   [
+    8.0,
+    -16
+   ],
+   [
+    8.0,
+    -16
+   ],
+   [
+    12.0,
+    -11
+   ],
+   [
+    12.0,
+    -11
+   ],
+   [
+    14.0,
+    -6
+   ],
+   [
+    14.0,
+    -6
+   ],
+   [
+    14.0,
+    -6
+   ]
+  ],
+  "chords": 12,
+  "chord_median_ms": -11,
+  "chord_med_abs_from_target": 24,
+  "chord_p90_abs_from_target": 48,
+  "detect_median_ms": 10,
+  "detect_med_abs_ms": 10,
+  "n_detect": 7,
+  "tempo": 79.9,
+  "steps": 15,
+  "two_at_once": 0,
+  "two_at_once_max_ms": 0,
+  "clash_s": 0.0,
+  "holes": 0,
+  "hole_max_ms": 0
+ },
+ "113217_r2_mix_v2 | S now (start notes only)": {
+  "pred_med": 19,
+  "pred_p90": 98,
+  "late_traced": 0,
+  "song": "twinkle",
+  "per_chord": [
+   [
+    2.0,
+    -25
+   ],
+   [
+    4.0,
+    105
+   ],
+   [
+    4.0,
+    105
+   ],
+   [
+    6.0,
+    90
+   ],
+   [
+    6.0,
+    90
+   ],
+   [
+    8.0,
+    13
+   ],
+   [
+    8.0,
+    13
+   ],
+   [
+    12.0,
+    -28
+   ],
+   [
+    12.0,
+    -28
+   ],
+   [
+    14.0,
+    -49
+   ],
+   [
+    14.0,
+    -49
+   ],
+   [
+    14.0,
+    -49
+   ],
+   [
+    16.0,
+    -23
+   ],
+   [
+    18.0,
+    67
+   ],
+   [
+    18.0,
+    67
+   ],
+   [
+    20.0,
+    -20
+   ],
+   [
+    20.0,
+    -20
+   ],
+   [
+    22.0,
+    -13
+   ],
+   [
+    22.0,
+    -13
+   ],
+   [
+    24.0,
+    -5
+   ],
+   [
+    24.0,
+    -5
+   ],
+   [
+    26.0,
+    13
+   ],
+   [
+    26.0,
+    13
+   ],
+   [
+    30.0,
+    -53
+   ],
+   [
+    30.0,
+    -53
+   ]
+  ],
+  "chords": 25,
+  "chord_median_ms": -13,
+  "chord_med_abs_from_target": 22,
+  "chord_p90_abs_from_target": 125,
+  "detect_median_ms": 30,
+  "detect_med_abs_ms": 20,
+  "n_detect": 14,
+  "tempo": 80.1,
+  "steps": 29,
+  "two_at_once": 0,
+  "two_at_once_max_ms": 0,
+  "clash_s": 0.0,
+  "holes": 0,
+  "hole_max_ms": 0
+ },
+ "113217_r2_mix_v2 | T60": {
+  "pred_med": 19,
+  "pred_p90": 98,
+  "late_traced": 1,
+  "song": "twinkle",
+  "per_chord": [
+   [
+    2.0,
+    -25
+   ],
+   [
+    4.0,
+    105
+   ],
+   [
+    4.0,
+    105
+   ],
+   [
+    6.0,
+    90
+   ],
+   [
+    6.0,
+    90
+   ],
+   [
+    8.0,
+    13
+   ],
+   [
+    8.0,
+    13
+   ],
+   [
+    12.0,
+    -28
+   ],
+   [
+    12.0,
+    -28
+   ],
+   [
+    14.0,
+    -49
+   ],
+   [
+    14.0,
+    -49
+   ],
+   [
+    14.0,
+    -49
+   ],
+   [
+    16.0,
+    -23
+   ],
+   [
+    18.0,
+    67
+   ],
+   [
+    18.0,
+    67
+   ],
+   [
+    20.0,
+    -20
+   ],
+   [
+    20.0,
+    -20
+   ],
+   [
+    22.0,
+    -13
+   ],
+   [
+    22.0,
+    -13
+   ],
+   [
+    24.0,
+    -5
+   ],
+   [
+    24.0,
+    -5
+   ],
+   [
+    26.0,
+    13
+   ],
+   [
+    26.0,
+    13
+   ],
+   [
+    30.0,
+    -53
+   ],
+   [
+    30.0,
+    -53
+   ]
+  ],
+  "chords": 25,
+  "chord_median_ms": -13,
+  "chord_med_abs_from_target": 22,
+  "chord_p90_abs_from_target": 125,
+  "detect_median_ms": 30,
+  "detect_med_abs_ms": 20,
+  "n_detect": 14,
+  "tempo": 80.3,
+  "steps": 29,
+  "two_at_once": 0,
+  "two_at_once_max_ms": 0,
+  "clash_s": 0.0,
+  "holes": 0,
+  "hole_max_ms": 0
+ },
+ "113217_r2_mix_v2 | T100": {
+  "pred_med": 19,
+  "pred_p90": 98,
+  "late_traced": 1,
+  "song": "twinkle",
+  "per_chord": [
+   [
+    2.0,
+    -25
+   ],
+   [
+    4.0,
+    105
+   ],
+   [
+    4.0,
+    105
+   ],
+   [
+    6.0,
+    90
+   ],
+   [
+    6.0,
+    90
+   ],
+   [
+    8.0,
+    13
+   ],
+   [
+    8.0,
+    13
+   ],
+   [
+    12.0,
+    -28
+   ],
+   [
+    12.0,
+    -28
+   ],
+   [
+    14.0,
+    -49
+   ],
+   [
+    14.0,
+    -49
+   ],
+   [
+    14.0,
+    -49
+   ],
+   [
+    16.0,
+    -23
+   ],
+   [
+    18.0,
+    67
+   ],
+   [
+    18.0,
+    67
+   ],
+   [
+    20.0,
+    -20
+   ],
+   [
+    20.0,
+    -20
+   ],
+   [
+    22.0,
+    -13
+   ],
+   [
+    22.0,
+    -13
+   ],
+   [
+    24.0,
+    -5
+   ],
+   [
+    24.0,
+    -5
+   ],
+   [
+    26.0,
+    13
+   ],
+   [
+    26.0,
+    13
+   ],
+   [
+    30.0,
+    -53
+   ],
+   [
+    30.0,
+    -53
+   ]
+  ],
+  "chords": 25,
+  "chord_median_ms": -13,
+  "chord_med_abs_from_target": 22,
+  "chord_p90_abs_from_target": 125,
+  "detect_median_ms": 30,
+  "detect_med_abs_ms": 20,
+  "n_detect": 14,
+  "tempo": 80.3,
+  "steps": 29,
+  "two_at_once": 0,
+  "two_at_once_max_ms": 0,
+  "clash_s": 0.0,
+  "holes": 0,
+  "hole_max_ms": 0
+ },
+ "114844_r2_mix_v2 | S now (start notes only)": {
+  "pred_med": 34,
+  "pred_p90": 78,
+  "late_traced": 0,
+  "song": "twinkle",
+  "per_chord": [
+   [
+    2.0,
+    -75
+   ],
+   [
+    4.0,
+    -25
+   ],
+   [
+    4.0,
+    -25
+   ],
+   [
+    6.0,
+    72
+   ],
+   [
+    6.0,
+    72
+   ],
+   [
+    8.0,
+    44
+   ],
+   [
+    8.0,
+    44
+   ],
+   [
+    12.0,
+    -39
+   ],
+   [
+    12.0,
+    -39
+   ],
+   [
+    14.0,
+    -5
+   ],
+   [
+    14.0,
+    -5
+   ],
+   [
+    14.0,
+    -5
+   ]
+  ],
+  "chords": 12,
+  "chord_median_ms": -5,
+  "chord_med_abs_from_target": 30,
+  "chord_p90_abs_from_target": 105,
+  "detect_median_ms": 30,
+  "detect_med_abs_ms": 10,
+  "n_detect": 7,
+  "tempo": 80.2,
+  "steps": 17,
+  "two_at_once": 0,
+  "two_at_once_max_ms": 0,
+  "clash_s": 0.0,
+  "holes": 0,
+  "hole_max_ms": 0
+ },
+ "114844_r2_mix_v2 | T60": {
+  "pred_med": 34,
+  "pred_p90": 78,
+  "late_traced": 0,
+  "song": "twinkle",
+  "per_chord": [
+   [
+    2.0,
+    -75
+   ],
+   [
+    4.0,
+    -25
+   ],
+   [
+    4.0,
+    -25
+   ],
+   [
+    6.0,
+    72
+   ],
+   [
+    6.0,
+    72
+   ],
+   [
+    8.0,
+    44
+   ],
+   [
+    8.0,
+    44
+   ],
+   [
+    12.0,
+    -39
+   ],
+   [
+    12.0,
+    -39
+   ],
+   [
+    14.0,
+    -5
+   ],
+   [
+    14.0,
+    -5
+   ],
+   [
+    14.0,
+    -5
+   ]
+  ],
+  "chords": 12,
+  "chord_median_ms": -5,
+  "chord_med_abs_from_target": 30,
+  "chord_p90_abs_from_target": 105,
+  "detect_median_ms": 30,
+  "detect_med_abs_ms": 10,
+  "n_detect": 7,
+  "tempo": 80.2,
+  "steps": 17,
+  "two_at_once": 0,
+  "two_at_once_max_ms": 0,
+  "clash_s": 0.0,
+  "holes": 0,
+  "hole_max_ms": 0
+ },
+ "114844_r2_mix_v2 | T100": {
+  "pred_med": 34,
+  "pred_p90": 78,
+  "late_traced": 0,
+  "song": "twinkle",
+  "per_chord": [
+   [
+    2.0,
+    -75
+   ],
+   [
+    4.0,
+    -25
+   ],
+   [
+    4.0,
+    -25
+   ],
+   [
+    6.0,
+    72
+   ],
+   [
+    6.0,
+    72
+   ],
+   [
+    8.0,
+    44
+   ],
+   [
+    8.0,
+    44
+   ],
+   [
+    12.0,
+    -39
+   ],
+   [
+    12.0,
+    -39
+   ],
+   [
+    14.0,
+    -5
+   ],
+   [
+    14.0,
+    -5
+   ],
+   [
+    14.0,
+    -5
+   ]
+  ],
+  "chords": 12,
+  "chord_median_ms": -5,
+  "chord_med_abs_from_target": 30,
+  "chord_p90_abs_from_target": 105,
+  "detect_median_ms": 30,
+  "detect_med_abs_ms": 10,
+  "n_detect": 7,
+  "tempo": 80.2,
+  "steps": 17,
+  "two_at_once": 0,
+  "two_at_once_max_ms": 0,
+  "clash_s": 0.0,
+  "holes": 0,
+  "hole_max_ms": 0
+ },
+ "110255_r2_mix_v2 | S now (start notes only)": {
+  "pred_med": 89,
+  "pred_p90": 220,
+  "late_traced": 0,
+  "song": "twinkle",
+  "steps": 32,
+  "two_at_once": 0,
+  "two_at_once_max_ms": 0,
+  "clash_s": 0.0,
+  "holes": 0,
+  "hole_max_ms": 0
+ },
+ "110255_r2_mix_v2 | T60": {
+  "pred_med": 90,
+  "pred_p90": 194,
+  "late_traced": 1,
+  "song": "twinkle",
+  "steps": 32,
+  "two_at_once": 0,
+  "two_at_once_max_ms": 0,
+  "clash_s": 0.0,
+  "holes": 0,
+  "hole_max_ms": 0
+ },
+ "110255_r2_mix_v2 | T100": {
+  "pred_med": 90,
+  "pred_p90": 194,
+  "late_traced": 1,
+  "song": "twinkle",
+  "steps": 32,
+  "two_at_once": 0,
+  "two_at_once_max_ms": 0,
+  "clash_s": 0.0,
+  "holes": 0,
+  "hole_max_ms": 0
+ },
+ "095417_r2_mix_v2 | S now (start notes only)": {
+  "pred_med": 72,
+  "pred_p90": 462,
+  "late_traced": 0,
+  "song": "twinkle",
+  "steps": 46,
+  "two_at_once": 0,
+  "two_at_once_max_ms": 0,
+  "clash_s": 0.0,
+  "holes": 3,
+  "hole_max_ms": 307
+ },
+ "095417_r2_mix_v2 | T60": {
+  "pred_med": 88,
+  "pred_p90": 455,
+  "late_traced": 3,
+  "song": "twinkle",
+  "steps": 46,
+  "two_at_once": 0,
+  "two_at_once_max_ms": 0,
+  "clash_s": 0.0,
+  "holes": 3,
+  "hole_max_ms": 307
+ },
+ "095417_r2_mix_v2 | T100": {
+  "pred_med": 84,
+  "pred_p90": 459,
+  "late_traced": 1,
+  "song": "twinkle",
+  "steps": 46,
+  "two_at_once": 0,
+  "two_at_once_max_ms": 0,
+  "clash_s": 0.0,
+  "holes": 3,
+  "hole_max_ms": 307
+ }
+}

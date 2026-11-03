@@ -86,6 +86,10 @@ class ChoirStart(C5.ChoirFollow):
     ONSET_BACK, AP_LOOSE = 0.3, 0.5                     # trace a note's onset back this far, through frames this
     #                                                     periodic (0: off; see _trace_onset)
     TRACE_ALL = False                                   # trace every note, not only the ones that start the song
+    TRACE_MIN = 0.0                                     # after the start, keep a note's traced onset only if it moves
+    #                                                     the note at least this far (s): an attack heard clearly late
+    # (tried, off: choir_timing_eval_v14, 0.06 / 0.1 s: tonight's v11 run fixed at 9.25 and 10.5 but 0.15-0.22 s early
+    # at 19.0 and 22.25; the five v11 runs' mean from target 48 -> 55 / 54 ms; Twinkle unchanged)
 
     def __init__(self, songs, bpm, click_all=False, log=lambda s: None):
         super().__init__(songs, bpm, click_all=click_all, log=log)
@@ -143,6 +147,8 @@ class ChoirStart(C5.ChoirFollow):
     def _on_note(self, note):
         if self.TRACE_ALL or self.arr is None or self.provisional:
             self._trace_onset(note)                    # the opening interval alone sets the starting tempo
+        elif self.TRACE_MIN:
+            self._trace_onset(note, self.TRACE_MIN)    # later on: only a soft attack the tracker heard late
         self._gap_onset(note)
         if self.arr is None:
             self._try_start()
@@ -151,7 +157,7 @@ class ChoirStart(C5.ChoirFollow):
         else:
             self._follow(note)
 
-    def _trace_onset(self, note):
+    def _trace_onset(self, note, keep_min=0.0):
         """Her onset is where her attack starts, not where the tracker first calls the note voiced. Walking back from
         the note's first frame, a frame still belongs to its attack while its YIN pitch is within 2.5 semitones of the
         note (a scoop) or 1 semitone of an octave or two away (an octave slip), with aperiodicity < AP_LOOSE and level
@@ -159,7 +165,10 @@ class ChoirStart(C5.ChoirFollow):
         within 1 semitone of its pitch: so a re-sung note keeps its onset). Still in the attack after ONSET_BACK s: a
         held note, not an attack, so nothing changes. On Vincent's four v11 phone runs the tracker heard the soft low
         E3 up to 0.21 s late and the A3 attack an octave high for 0.12 s; the opening interval then started the beat
-        map at 113 or 150 bpm for a 122-143 bpm singer, and the next chords came up to 0.37 s early or 0.22 s late."""
+        map at 113 or 150 bpm for a 122-143 bpm singer, and the next chords came up to 0.37 s early or 0.22 s late.
+        keep_min > 0: the onset moves only if the trace moves it at least that far. Over ten runs a move of 0.1 s or
+        more took the onset from 130-215 ms after the true one to 35-45 ms; moves under 60 ms gained only 15 ms, and
+        keeping those too had pulled the beat map early (runs_mini/choir_1102/trace_moves_v1.py)."""
         if not self.ONSET_BACK:
             return
         ft, p, t = self.ft, note['pitch'], note['t']
@@ -192,9 +201,10 @@ class ChoirStart(C5.ChoirFollow):
         else:
             if j >= 0 and miss == 0:
                 return                                     # still "attack" at the limit: a held note
-        if best < k:
+        if best < k and t - self.ft_t[best] >= keep_min - 1e-9:
             note['t_heard'], note['t'] = t, self.ft_t[best]
-            self.diag['onset_traced'] = self.diag.get('onset_traced', 0) + 1
+            key = 'onset_traced_late' if keep_min else 'onset_traced'
+            self.diag[key] = self.diag.get(key, 0) + 1
 
     def _gap_onset(self, note):
         """A new pitch right after a short unvoiced gap (<= GAP_ONSET s) that followed a held note started when the

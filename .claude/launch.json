@@ -132,6 +132,66 @@
         "/Users/san/claude_sandbox/music/duet_v0/futures/v4_selfiter/live_panel_v13.py"
       ],
       "port": 8766
+    },
+    {
+      "name": "duet-live-test-v13-3h",
+      "runtimeExecutable": "/Users/san/claude_sandbox/music/duet_v0/.venv/bin/python",
+      "runtimeArgs": [
+        "/Users/san/claude_sandbox/music/duet_v0/runs_mini/v4_1101/tools/hbrun.py",
+        "live_panel_v13",
+        "10800",
+        "/Users/san/claude_sandbox/music/duet_v0/.venv/bin/python",
+        "/Users/san/claude_sandbox/music/duet_v0/futures/v4_selfiter/live_panel_v13.py"
+      ],
+      "port": 8766
+    },
+    {
+      "name": "duet-live-test-v14",
+      "runtimeExecutable": "/Users/san/claude_sandbox/music/duet_v0/.venv/bin/python",
+      "runtimeArgs": [
+        "/Users/san/claude_sandbox/music/duet_v0/runs_mini/v4_1101/tools/hbrun.py",
+        "live_panel_v14",
+        "10800",
+        "/Users/san/claude_sandbox/music/duet_v0/.venv/bin/python",
+        "/Users/san/claude_sandbox/music/duet_v0/futures/v4_selfiter/live_panel_v14.py"
+      ],
+      "port": 8766
+    },
+    {
+      "name": "duet-live-test-v15",
+      "runtimeExecutable": "/Users/san/claude_sandbox/music/duet_v0/.venv/bin/python",
+      "runtimeArgs": [
+        "/Users/san/claude_sandbox/music/duet_v0/runs_mini/v4_1101/tools/hbrun.py",
+        "live_panel_v15",
+        "10800",
+        "/Users/san/claude_sandbox/music/duet_v0/.venv/bin/python",
+        "/Users/san/claude_sandbox/music/duet_v0/futures/v4_selfiter/live_panel_v15.py"
+      ],
+      "port": 8766
+    },
+    {
+      "name": "duet-live-test-v17",
+      "runtimeExecutable": "/Users/san/claude_sandbox/music/duet_v0/.venv/bin/python",
+      "runtimeArgs": [
+        "/Users/san/claude_sandbox/music/duet_v0/runs_mini/v4_1101/tools/hbrun.py",
+        "live_panel_v17",
+        "43200",
+        "/Users/san/claude_sandbox/music/duet_v0/.venv/bin/python",
+        "/Users/san/claude_sandbox/music/duet_v0/futures/v4_selfiter/live_panel_v17.py"
+      ],
+      "port": 8766
+    },
+    {
+      "name": "duet-live-test-v18",
+      "runtimeExecutable": "/Users/san/claude_sandbox/music/duet_v0/.venv/bin/python",
+      "runtimeArgs": [
+        "/Users/san/claude_sandbox/music/duet_v0/runs_mini/v4_1101/tools/hbrun.py",
+        "live_panel_v18",
+        "43200",
+        "/Users/san/claude_sandbox/music/duet_v0/.venv/bin/python",
+        "/Users/san/claude_sandbox/music/duet_v0/futures/v4_selfiter/live_panel_v18.py"
+      ],
+      "port": 8766
     }
   ]
 }

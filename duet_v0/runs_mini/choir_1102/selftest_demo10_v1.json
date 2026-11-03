@@ -1,0 +1,354 @@
+{
+ "phone twinkle": {
+  "want": "twinkle",
+  "got": "twinkle",
+  "id_after_s": 1.37,
+  "wall_s": 2.1,
+  "block_ms_max": 4.23,
+  "chords": 46,
+  "chord_med_abs_from_target": 35,
+  "chord_p90_abs_from_target": 42
+ },
+ "-3st x0.95 twinkle": {
+  "want": "twinkle",
+  "got": "twinkle",
+  "id_after_s": 1.45,
+  "wall_s": 2.3,
+  "block_ms_max": 0.85,
+  "chords": 46,
+  "chord_med_abs_from_target": 28,
+  "chord_p90_abs_from_target": 40
+ },
+ "+2st x1.06 twinkle": {
+  "want": "twinkle",
+  "got": "twinkle",
+  "id_after_s": 1.29,
+  "wall_s": 2.0,
+  "block_ms_max": 0.69,
+  "chords": 46,
+  "chord_med_abs_from_target": 31,
+  "chord_p90_abs_from_target": 38
+ },
+ "phone ode": {
+  "want": "ode",
+  "got": "ode",
+  "id_after_s": 1.12,
+  "wall_s": 2.2,
+  "block_ms_max": 0.7,
+  "chords": 38,
+  "chord_med_abs_from_target": 30,
+  "chord_p90_abs_from_target": 37
+ },
+ "-3st x0.95 ode": {
+  "want": "ode",
+  "got": "ode",
+  "id_after_s": 1.19,
+  "wall_s": 2.2,
+  "block_ms_max": 0.69,
+  "chords": 49,
+  "chord_med_abs_from_target": 32,
+  "chord_p90_abs_from_target": 39
+ },
+ "+2st x1.06 ode": {
+  "want": "ode",
+  "got": "ode",
+  "id_after_s": 1.05,
+  "wall_s": 2.1,
+  "block_ms_max": 0.6,
+  "chords": 45,
+  "chord_med_abs_from_target": 30,
+  "chord_p90_abs_from_target": 36
+ },
+ "phone frere": {
+  "want": "frere",
+  "got": "frere",
+  "id_after_s": 0.47,
+  "wall_s": 1.7,
+  "block_ms_max": 0.57,
+  "chords": 16,
+  "chord_med_abs_from_target": 29,
+  "chord_p90_abs_from_target": 44
+ },
+ "-3st x0.95 frere": {
+  "want": "frere",
+  "got": "frere",
+  "id_after_s": 0.49,
+  "wall_s": 1.7,
+  "block_ms_max": 0.47,
+  "chords": 16,
+  "chord_med_abs_from_target": 21,
+  "chord_p90_abs_from_target": 37
+ },
+ "+2st x1.06 frere": {
+  "want": "frere",
+  "got": "frere",
+  "id_after_s": 0.44,
+  "wall_s": 1.6,
+  "block_ms_max": 0.54,
+  "chords": 18,
+  "chord_med_abs_from_target": 30,
+  "chord_p90_abs_from_target": 190
+ },
+ "phone mary": {
+  "want": "mary",
+  "got": "mary",
+  "id_after_s": 0.47,
+  "wall_s": 1.7,
+  "block_ms_max": 0.76,
+  "chords": 25,
+  "chord_med_abs_from_target": 33,
+  "chord_p90_abs_from_target": 42
+ },
+ "-3st x0.95 mary": {
+  "want": "mary",
+  "got": "mary",
+  "id_after_s": 0.49,
+  "wall_s": 1.7,
+  "block_ms_max": 0.66,
+  "chords": 25,
+  "chord_med_abs_from_target": 31,
+  "chord_p90_abs_from_target": 38
+ },
+ "+2st x1.06 mary": {
+  "want": "mary",
+  "got": "mary",
+  "id_after_s": 0.44,
+  "wall_s": 1.7,
+  "block_ms_max": 0.69,
+  "chords": 25,
+  "chord_med_abs_from_target": 33,
+  "chord_p90_abs_from_target": 40
+ },
+ "phone jingle": {
+  "want": "jingle",
+  "got": "jingle",
+  "id_after_s": 4.69,
+  "wall_s": 2.0,
+  "block_ms_max": 0.63,
+  "chords": 20,
+  "chord_med_abs_from_target": 19,
+  "chord_p90_abs_from_target": 29
+ },
+ "-3st x0.95 jingle": {
+  "want": "jingle",
+  "got": "jingle",
+  "id_after_s": 4.95,
+  "wall_s": 2.2,
+  "block_ms_max": 0.61,
+  "chords": 20,
+  "chord_med_abs_from_target": 19,
+  "chord_p90_abs_from_target": 29
+ },
+ "+2st x1.06 jingle": {
+  "want": "jingle",
+  "got": "jingle",
+  "id_after_s": 4.42,
+  "wall_s": 2.1,
+  "block_ms_max": 0.68,
+  "chords": 20,
+  "chord_med_abs_from_target": 22,
+  "chord_p90_abs_from_target": 33
+ },
+ "phone saints": {
+  "want": "saints",
+  "got": "saints",
+  "id_after_s": 0.41,
+  "wall_s": 2.0,
+  "block_ms_max": 0.54,
+  "chords": 19,
+  "chord_med_abs_from_target": 32,
+  "chord_p90_abs_from_target": 41
+ },
+ "-3st x0.95 saints": {
+  "want": "saints",
+  "got": "saints",
+  "id_after_s": 0.44,
+  "wall_s": 2.1,
+  "block_ms_max": 0.67,
+  "chords": 17,
+  "chord_med_abs_from_target": 33,
+  "chord_p90_abs_from_target": 36
+ },
+ "+2st x1.06 saints": {
+  "want": "saints",
+  "got": "saints",
+  "id_after_s": 0.38,
+  "wall_s": 2.0,
+  "block_ms_max": 0.82,
+  "chords": 2,
+  "chord_med_abs_from_target": 11079,
+  "chord_p90_abs_from_target": 11079
+ },
+ "phone macdonald": {
+  "want": "macdonald",
+  "got": "v11",
+  "id_after_s": 1.61,
+  "wall_s": 1.7,
+  "block_ms_max": 0.79
+ },
+ "-3st x0.95 macdonald": {
+  "want": "macdonald",
+  "got": "v11",
+  "id_after_s": 1.7,
+  "wall_s": 1.7,
+  "block_ms_max": 0.92
+ },
+ "+2st x1.06 macdonald": {
+  "want": "macdonald",
+  "got": "v11",
+  "id_after_s": 1.51,
+  "wall_s": 1.6,
+  "block_ms_max": 0.5
+ },
+ "phone auld": {
+  "want": "auld",
+  "got": "auld",
+  "id_after_s": 0.61,
+  "wall_s": 1.8,
+  "block_ms_max": 0.58,
+  "chords": 12,
+  "chord_med_abs_from_target": 27,
+  "chord_p90_abs_from_target": 39
+ },
+ "-3st x0.95 auld": {
+  "want": "auld",
+  "got": "auld",
+  "id_after_s": 0.67,
+  "wall_s": 1.8,
+  "block_ms_max": 0.54,
+  "chords": 12,
+  "chord_med_abs_from_target": 30,
+  "chord_p90_abs_from_target": 37
+ },
+ "+2st x1.06 auld": {
+  "want": "auld",
+  "got": "auld",
+  "id_after_s": 0.58,
+  "wall_s": 1.7,
+  "block_ms_max": 0.52,
+  "chords": 12,
+  "chord_med_abs_from_target": 27,
+  "chord_p90_abs_from_target": 40
+ },
+ "phone goinghome": {
+  "want": "goinghome",
+  "got": "jingle",
+  "id_after_s": 0.78,
+  "wall_s": 1.7,
+  "block_ms_max": 0.68
+ },
+ "-3st x0.95 goinghome": {
+  "want": "goinghome",
+  "got": "jingle",
+  "id_after_s": 0.83,
+  "wall_s": 1.7,
+  "block_ms_max": 0.69
+ },
+ "+2st x1.06 goinghome": {
+  "want": "goinghome",
+  "got": "jingle",
+  "id_after_s": 0.73,
+  "wall_s": 1.5,
+  "block_ms_max": 0.57
+ },
+ "phone v11": {
+  "want": "v11",
+  "got": "v11",
+  "id_after_s": 2.35,
+  "wall_s": 1.5,
+  "block_ms_max": 0.83,
+  "chords": 0,
+  "chord_med_abs_from_target": null,
+  "chord_p90_abs_from_target": null
+ },
+ "211440_r2_mix_v2": {
+  "want": "ode",
+  "got": "ode",
+  "id_after_s": 4.32,
+  "wall_s": 1.7,
+  "block_ms_max": 0.41,
+  "chords": 21,
+  "chord_med_abs_from_target": 35,
+  "chord_p90_abs_from_target": 49
+ },
+ "211515_r2_mix_v2": {
+  "want": "v11",
+  "got": "v11",
+  "id_after_s": 5.49,
+  "wall_s": 1.5,
+  "block_ms_max": 0.48,
+  "chords": 22,
+  "chord_med_abs_from_target": 55,
+  "chord_p90_abs_from_target": 137
+ },
+ "203926_r2_mix_v2": {
+  "want": "v11",
+  "got": "v11",
+  "id_after_s": 2.86,
+  "wall_s": 1.5,
+  "block_ms_max": 0.42,
+  "chords": 20,
+  "chord_med_abs_from_target": 17,
+  "chord_p90_abs_from_target": 84
+ },
+ "195940_r2_mix_v2": {
+  "want": "v11",
+  "got": "v11",
+  "id_after_s": 2.86,
+  "wall_s": 1.5,
+  "block_ms_max": 0.43,
+  "chords": 20,
+  "chord_med_abs_from_target": 57,
+  "chord_p90_abs_from_target": 216
+ },
+ "132458_r2_mix_v2": {
+  "want": "v11",
+  "got": "v11",
+  "id_after_s": 2.43,
+  "wall_s": 1.5,
+  "block_ms_max": 0.49,
+  "chords": 20,
+  "chord_med_abs_from_target": 10,
+  "chord_p90_abs_from_target": 97
+ },
+ "124132_r2_mix_v2": {
+  "want": "v11",
+  "got": "v11",
+  "id_after_s": 2.93,
+  "wall_s": 1.5,
+  "block_ms_max": 0.55,
+  "chords": 20,
+  "chord_med_abs_from_target": 49,
+  "chord_p90_abs_from_target": 114
+ },
+ "195914_r2_mix_v2": {
+  "want": "twinkle",
+  "got": "twinkle",
+  "id_after_s": 4.43,
+  "wall_s": 1.5,
+  "block_ms_max": 0.47,
+  "chords": 12,
+  "chord_med_abs_from_target": 24,
+  "chord_p90_abs_from_target": 48
+ },
+ "113217_r2_mix_v2": {
+  "want": "twinkle",
+  "got": "twinkle",
+  "id_after_s": 4.56,
+  "wall_s": 1.8,
+  "block_ms_max": 0.44,
+  "chords": 25,
+  "chord_med_abs_from_target": 22,
+  "chord_p90_abs_from_target": 125
+ },
+ "114844_r2_mix_v2": {
+  "want": "twinkle",
+  "got": "twinkle",
+  "id_after_s": 4.47,
+  "wall_s": 1.5,
+  "block_ms_max": 0.47,
+  "chords": 12,
+  "chord_med_abs_from_target": 30,
+  "chord_p90_abs_from_target": 105
+ }
+}

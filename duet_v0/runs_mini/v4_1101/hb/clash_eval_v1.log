@@ -1,0 +1,2 @@
+2026-11-02 20:42:42 START tl=900 cwd=$ABS .venv/bin/python runs_mini/choir_1102/clash_eval_v1.py
+2026-11-02 20:43:20 END rc=0 secs=37 .venv/bin/python runs_mini/choir_1102/clash_eval_v1.py
