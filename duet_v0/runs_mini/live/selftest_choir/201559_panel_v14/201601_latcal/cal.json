@@ -1,0 +1,80 @@
+{
+ "time": "2026-11-02 20:16:01",
+ "in": "m",
+ "out": "p",
+ "stream_latency_ms": [
+  62.7,
+  42.1
+ ],
+ "ok": true,
+ "why": "",
+ "rt_ms": 214.0,
+ "n_used": 8,
+ "spread_ms": 24.2,
+ "offsets_ms": [
+  240.4,
+  212.2,
+  178.0,
+  192.1,
+  158.7,
+  215.7,
+  255.6,
+  220.7
+ ],
+ "n_onsets": 8,
+ "floor_db": -94.6,
+ "bpm": 100.0,
+ "complete": true,
+ "stream_flag_blocks": 0,
+ "folder": "201601_latcal",
+ "page": "live_panel_v3",
+ "latcal": "latcal_v1",
+ "kept": true,
+ "estimate": {
+  "rt_s": 0.214,
+  "n_used": 8,
+  "spread_s": 0.0242,
+  "ok": true,
+  "why": "",
+  "n_clicks": 8,
+  "offsets_ms": [
+   240.4,
+   212.2,
+   178.0,
+   192.1,
+   158.7,
+   215.7,
+   255.6,
+   220.7
+  ],
+  "n_onsets": 8,
+  "floor_db": -94.6,
+  "candidates": 30,
+  "rejected": {
+   "quiet": 8,
+   "unvoiced": 14
+  },
+  "rt_grid_s": 0.213
+ },
+ "schedule": {
+  "sr": 24000,
+  "bpm": 100.0,
+  "count_in": [
+   12000,
+   26400,
+   40800,
+   55200
+  ],
+  "clicks": [
+   69600,
+   84000,
+   98400,
+   112800,
+   127200,
+   141600,
+   156000,
+   170400
+  ],
+  "n_total": 201600
+ }
+}
