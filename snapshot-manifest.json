@@ -1,0 +1,255 @@
+{
+  "snapshot_date": "2026-11-17",
+  "files": [
+    {
+      "path": ".gitattributes",
+      "bytes": 215,
+      "sha256": "0e890cb46a8cd70b31279ecce22a33d62c183aebb317fbf295d8997e2cebe63b"
+    },
+    {
+      "path": ".gitignore",
+      "bytes": 164,
+      "sha256": "2737840ff2415cd47f764b0e6964330d37bb4a6be1cbbd46b353e634112e9689"
+    },
+    {
+      "path": "artifacts/README.md",
+      "bytes": 222,
+      "sha256": "496cfd10b4b189ef3fb286a55f319f1af0c366ff51dac49e262c98053f5699a6"
+    },
+    {
+      "path": "docs/API.md",
+      "bytes": 3954,
+      "sha256": "2bd458698b77aa84db83d7a726af83f98971f02e10dee99f8cafcda08562413f"
+    },
+    {
+      "path": "docs/ARCHITECTURE.md",
+      "bytes": 5377,
+      "sha256": "085ccad35c2cf0f195f651b150d21c68cf0415a5015b83f72534bcef30e0e911"
+    },
+    {
+      "path": "docs/PROJECT_STATUS.md",
+      "bytes": 3339,
+      "sha256": "64e00c9fd96276ada86b728b31101bf543a71475536ab7681f0cd0df9624ab37"
+    },
+    {
+      "path": "docs/SNAPSHOT_VERIFICATION.json",
+      "bytes": 652,
+      "sha256": "da1ffe40db0c49d7cfbc68c4795d570554720a242872ee888a8873b96af70a88"
+    },
+    {
+      "path": "docs/TESTING.md",
+      "bytes": 3940,
+      "sha256": "3e9addc5f7c9fc430764b5d3d931bb97a00cbacd986283a714bdd30c1b8d5a8d"
+    },
+    {
+      "path": "examples/reference/esp-midi-events.json",
+      "bytes": 40068,
+      "sha256": "68c48b11354befc76d446c1ab760c6c82833f9ed1f783f2a4c7936299fac59e9"
+    },
+    {
+      "path": "examples/reference/esp-midi-notes.csv",
+      "bytes": 3168,
+      "sha256": "dee686ee42fcf5f6d9ade2c17903813fbabf257927a4d16c268cb24aaf4ec2ef"
+    },
+    {
+      "path": "examples/reference/README.md",
+      "bytes": 579,
+      "sha256": "e22e129f9111cd18a774e666725e6977ce45a4c44d5de50d3273b9859a836a43"
+    },
+    {
+      "path": "examples/reference/test-detected.mid",
+      "bytes": 990,
+      "sha256": "ba68069c65cae3ac0d010c09d4dc5beb0a27299370224153942183b9fecdf36f"
+    },
+    {
+      "path": "include/audio_buffer.h",
+      "bytes": 294,
+      "sha256": "e0535d79b418af7b33d0a2d9bbc711bab9684bf981b888d86e75c1a3dadd8010"
+    },
+    {
+      "path": "include/audio_input.h",
+      "bytes": 1245,
+      "sha256": "7bba3f2de0d118869d42e47eb409b8c27d324a3a0f87b92c94c5090502fc140b"
+    },
+    {
+      "path": "include/audio_simulation.h",
+      "bytes": 246,
+      "sha256": "08b7c8f031bb4f3fe618c53a324a8b7ba15d63f781859fc8474a6a8706ebb19b"
+    },
+    {
+      "path": "include/board_config.h",
+      "bytes": 463,
+      "sha256": "927643eff6ccadf9fc7d414499f7b2a91d5655424d77ceaa6c99e869a74d54d8"
+    },
+    {
+      "path": "include/http_audio_server.h",
+      "bytes": 131,
+      "sha256": "430ce3483a94898086f36f7fc47984b1a88ba7d878f1f9dd242d328b01d3e727"
+    },
+    {
+      "path": "include/http_self_test.h",
+      "bytes": 190,
+      "sha256": "1a569907af261be93640d18e1f4e6849446cc331e55bf80286c1d01da399bacf"
+    },
+    {
+      "path": "include/midi_analysis.h",
+      "bytes": 406,
+      "sha256": "4d427e7ed72820990d25f689616a79128ebd35abe38511a2d5d88e5c4be83073"
+    },
+    {
+      "path": "include/midi_event_stream.h",
+      "bytes": 70,
+      "sha256": "eb43e93685f1e179f8b94d4cee039f56e8e15a1e194ad517835e34c49d836895"
+    },
+    {
+      "path": "include/network_config.h",
+      "bytes": 283,
+      "sha256": "0b30a1e61fa9bcba1ef1c4140dbff1f7dcdc226ed63962389a62fabd3763ea9c"
+    },
+    {
+      "path": "include/pitch_detector.h",
+      "bytes": 633,
+      "sha256": "a7bbd4631c209d91801c4fd0314d03e2aebff2e268007116193483190ec47bf3"
+    },
+    {
+      "path": "include/sd_card.h",
+      "bytes": 1239,
+      "sha256": "66954a2f3087f2e4c12c907f00a2cd7f1a332be4c0a17d25300e62f7110eb6d7"
+    },
+    {
+      "path": "include/simulated_audio_input.h",
+      "bytes": 1565,
+      "sha256": "3d56b65d842b7df09d3b826f4efb22279b9cce578819757e1adbf21a492173cb"
+    },
+    {
+      "path": "include/wifi_manager.h",
+      "bytes": 87,
+      "sha256": "0f36fa786dfd86933465fb46e9e4c824cbf5c39ce308826168e7e44b0a5ae71e"
+    },
+    {
+      "path": "logs/README.md",
+      "bytes": 260,
+      "sha256": "f94d6729e33315069a72e7d9d585adb495da795dd4fb3177ca6ffc024fd72c8d"
+    },
+    {
+      "path": "platformio.ini",
+      "bytes": 1007,
+      "sha256": "4a7ce2bac069d6a11ace32f8dde88075b6dad942ebca234c544e50b974506400"
+    },
+    {
+      "path": "README.md",
+      "bytes": 8851,
+      "sha256": "2ae3d48f8900b0a0ee8bb2928cd0a55316635d5d018b7185ece57707ec09e5f7"
+    },
+    {
+      "path": "requirements-tools.txt",
+      "bytes": 139,
+      "sha256": "900026f84767ecb9246e5629e1bb572c7c463fd59647f4c423568ad3178b5927"
+    },
+    {
+      "path": "sd_card/README.md",
+      "bytes": 844,
+      "sha256": "988da0a8401936808b1073b27443ed33e717695829def79443d34a3eaa328d90"
+    },
+    {
+      "path": "sd_card/test.wav",
+      "bytes": 1000142,
+      "sha256": "7d68cab94a37e13c2d1d2bb0f7afe69422e21264b52d5d7f494c59cd0d88390e"
+    },
+    {
+      "path": "src/audio_buffer.cpp",
+      "bytes": 141,
+      "sha256": "c588883e309b4cce292ea32b8d6c5251c780faf91d0e0149291c507813fd172c"
+    },
+    {
+      "path": "src/audio_simulation.cpp",
+      "bytes": 7742,
+      "sha256": "17c7072fb882fb133b765bb409d8bfde067f51913dfa346c3ad2da1786b43324"
+    },
+    {
+      "path": "src/http_audio_server.cpp",
+      "bytes": 15867,
+      "sha256": "d6a22bfe0e4760dc21f2eeb2d5419f797649e0d93ec99cb2aa356545bd3e517d"
+    },
+    {
+      "path": "src/http_self_test.cpp",
+      "bytes": 7038,
+      "sha256": "153d1e646994fe59e7eca752cfa26cc2123103ff7dc3ea0a624a7959d6f63112"
+    },
+    {
+      "path": "src/main.cpp",
+      "bytes": 3940,
+      "sha256": "4192df58c60474d7575fd9aff352d8b622d31e7c5b714a2d050d51aafc4c5292"
+    },
+    {
+      "path": "src/midi_analysis.cpp",
+      "bytes": 14822,
+      "sha256": "4f3570f3ecd37970290912ce727cc94217be4d448ce07689074b82235665eb3a"
+    },
+    {
+      "path": "src/midi_event_stream.cpp",
+      "bytes": 4144,
+      "sha256": "d07c04cc8376a6b2fc2f91c1c7a517fff161bdb4b4819bcd79c3102d49dd24c7"
+    },
+    {
+      "path": "src/pitch_detector.cpp",
+      "bytes": 3526,
+      "sha256": "ee11d35e39045549ebcb6fca571442b3a8f6d50aa1f89c040e68be5eff835b5f"
+    },
+    {
+      "path": "src/sd_card.cpp",
+      "bytes": 12233,
+      "sha256": "afe363e2f5153a12ad5cdb554ad057727d5d33b82460bead59427b470a51fdc9"
+    },
+    {
+      "path": "src/simulated_audio_input.cpp",
+      "bytes": 5916,
+      "sha256": "a6f0eb9b817f03409e0061c4ed64c1ff57ec8167fd4db18ff893ed96e8c261fa"
+    },
+    {
+      "path": "src/wifi_manager.cpp",
+      "bytes": 1629,
+      "sha256": "d040a1997bf315f65aa3470d814301bf804f0f9e7d3193ec69adac448f37ac50"
+    },
+    {
+      "path": "tools/capture_serial.py",
+      "bytes": 1192,
+      "sha256": "1577f2254a6d4615235e4a711fb3707f46daa9e5c20e12d7b77156d55454f197"
+    },
+    {
+      "path": "tools/check_simulation_log.py",
+      "bytes": 2657,
+      "sha256": "f04dab10e205c52fe17c9298cfe643da7a7920f4c4e9493e7aa58719585bb685"
+    },
+    {
+      "path": "tools/piano_preview.py",
+      "bytes": 4160,
+      "sha256": "85eb423921f8f8e1736300e07612f8e8787be51e19005d06f87ffcb6a28d7b8c"
+    },
+    {
+      "path": "tools/verify_http.py",
+      "bytes": 6519,
+      "sha256": "c1b9e8afcf1011c2ef9bc777cf7eddb6e3cbde5fcaea393da47648a9190efedc"
+    },
+    {
+      "path": "tools/verify_midi_log.py",
+      "bytes": 5000,
+      "sha256": "2d00fd3e13c8bebdb2e8b45a83d58b007bb7714a6dd77ac47883c15e80c2cffe"
+    },
+    {
+      "path": "web/piano.css",
+      "bytes": 1814,
+      "sha256": "156e602bd6b918201c070039d2d31d6d94b4ba357b341f9401579be82a683ad8"
+    },
+    {
+      "path": "web/piano.html",
+      "bytes": 1624,
+      "sha256": "97d00cdd266a5769af2d02417873d8881e294d5e6bffead982d34b7497fc6238"
+    },
+    {
+      "path": "web/piano.js",
+      "bytes": 10127,
+      "sha256": "eb0c527e5fc0d2f188d27b21c438914482fd816cf7b79585b7c06942fcac5898"
+    }
+  ]
+}
