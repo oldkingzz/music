@@ -1,0 +1,10 @@
+# Recordings stay on our machines (project rule): clips made or recorded through the panel are never committed.
+runs/clips/
+runs/jobs.jsonl
+# Working notes with private remarks: local only until the owner decides otherwise (the repository is public).
+ALL_INFO_v*.md
+# Generated on each machine.
+firmware/host_tests/build/
+__pycache__/
+*.pyc
+.DS_Store

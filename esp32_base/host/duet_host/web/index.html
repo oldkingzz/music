@@ -1,0 +1,730 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Duet 底座面板</title>
+<style>
+:root {
+  --paper: #F6F3EC;
+  --ink: #1E1C19;
+  --muted: #6B665D;
+  --line: #D6D0C3;
+  --card: #FBF9F4;
+  --err: #A8261B;
+  --ok: #1E1C19;
+  --now: #2456C9;      /* 马上：只用于这一组 */
+  --phrase: #D9600F;   /* 等一句：只用于这一组 */
+  --song: #1C6F5A;     /* 等一首：只用于这一组 */
+  color-scheme: light dark;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --paper: #1B1A17;
+    --ink: #ECE7DC;
+    --muted: #A39D91;
+    --line: #3D3A34;
+    --card: #232220;
+    --err: #F08A7E;
+    --ok: #ECE7DC;
+    --now: #7C9DF2;
+    --phrase: #F29552;
+    --song: #4DBA98;
+  }
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font: 15px/1.55 -apple-system, "PingFang SC", "Hiragino Sans GB", "Helvetica Neue", sans-serif;
+  overflow-x: hidden;
+}
+main { max-width: 980px; margin: 0 auto; padding: 16px 16px 48px; }
+h1 { font-size: 22px; margin: 4px 0 2px; }
+h2 { font-size: 17px; margin: 0 0 6px; }
+h3 { font-size: 15px; margin: 10px 0 4px; }
+section {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 14px 14px 12px;
+  margin: 14px 0;
+  min-width: 0;
+}
+.hint { color: var(--muted); font-size: 13px; margin: 0 0 10px; }
+.small { font-size: 12px; color: var(--muted); }
+.row { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 10px; margin: 8px 0; }
+.ctl { display: inline-flex; flex-wrap: wrap; align-items: center; gap: 4px 6px; }
+button {
+  font: inherit;
+  color: var(--ink);
+  background: var(--paper);
+  border: 1px solid var(--ink);
+  border-radius: 6px;
+  padding: 5px 12px;
+  cursor: pointer;
+}
+button:hover:not(:disabled) { background: var(--line); }
+button:disabled { opacity: .45; cursor: not-allowed; }
+.reason { font-size: 12px; color: var(--muted); overflow-wrap: anywhere; min-width: 0; }
+select, input[type=number] {
+  font: inherit;
+  color: var(--ink);
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 5px;
+  padding: 3px 6px;
+  max-width: 100%;
+}
+input[type=number] { width: 7em; }
+input[type=file] { max-width: 100%; font-size: 13px; }
+.msg { font-size: 13px; min-height: 0; margin: 4px 0; overflow-wrap: anywhere; }
+.msg:empty { display: none; }
+.msg.err { color: var(--err); }
+.state-line { font-weight: 600; overflow-wrap: anywhere; }
+.err-text { color: var(--err); }
+.scroll { overflow-x: auto; max-width: 100%; -webkit-overflow-scrolling: touch; }
+table { border-collapse: collapse; font-size: 13px; min-width: 100%; }
+th, td { text-align: left; padding: 4px 8px; border-bottom: 1px solid var(--line); vertical-align: top; }
+th { font-weight: 600; white-space: nowrap; }
+td.num { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+td.bad { color: var(--err); font-weight: 600; }
+audio { width: 300px; max-width: 100%; height: 32px; display: block; }
+
+/* the three wait groups: one colour each, nowhere else */
+.chip {
+  display: inline-block; font-size: 12px; line-height: 1.4; padding: 1px 8px; border-radius: 10px;
+  color: #fff; white-space: nowrap; vertical-align: middle;
+}
+@media (prefers-color-scheme: dark) { .chip { color: #111; } }
+.lane-now { background: var(--now); }
+.lane-phrase { background: var(--phrase); }
+.lane-song { background: var(--song); }
+.route.lane-now-edge { border-left: 4px solid var(--now); }
+.route.lane-phrase-edge { border-left: 4px solid var(--phrase); }
+.route.lane-song-edge { border-left: 4px solid var(--song); }
+
+/* where a block computes: border style */
+.blk { border-color: var(--ink); border-radius: 6px; padding: 6px 9px; min-width: 0; flex: 0 1 220px; background: var(--paper); }
+.place-board { border-width: 3px; border-style: solid; }
+.place-mac { border-width: 1px; border-style: solid; }
+.place-cloud { border-width: 1px; border-style: dashed; }
+.blk .t { font-weight: 600; }
+.blk .p { font-size: 11px; color: var(--muted); margin-left: 4px; }
+.blk .n { font-size: 12px; color: var(--muted); margin-top: 2px; overflow-wrap: anywhere; }
+.chain { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin: 8px 0; }
+.arrow { color: var(--muted); }
+.legend { display: flex; flex-wrap: wrap; gap: 6px 14px; font-size: 12px; color: var(--muted); margin-bottom: 10px; align-items: center; }
+.legend .blk { flex: none; padding: 1px 8px; font-size: 12px; color: var(--ink); }
+
+.route { border: 1px solid var(--line); border-radius: 8px; padding: 10px 12px; margin: 10px 0; background: var(--card); }
+.route-head { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 10px; }
+.route-head h3 { margin: 0; }
+.params { display: grid; grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)); gap: 6px 12px; margin: 4px 0 6px; }
+.params label { display: flex; flex-direction: column; font-size: 12px; color: var(--muted); gap: 2px; min-width: 0; }
+.params label > * { color: var(--ink); }
+
+.clips { list-style: none; margin: 8px 0 0; padding: 0; }
+.clips li { border-top: 1px solid var(--line); padding: 8px 0; min-width: 0; }
+.clips .name { font-weight: 600; overflow-wrap: anywhere; }
+.clips .meta { font-size: 12px; color: var(--muted); }
+.clips .sum { font-size: 13px; overflow-wrap: anywhere; margin: 2px 0 4px; }
+
+.log { list-style: none; margin: 0; padding: 0; font-size: 13px; max-height: 260px; overflow-y: auto; }
+.log li { padding: 2px 0; border-bottom: 1px dotted var(--line); overflow-wrap: anywhere; }
+.log .tm { color: var(--muted); font-variant-numeric: tabular-nums; margin-right: 8px; }
+.mono { font-family: ui-monospace, Menlo, monospace; font-size: 12px; }
+</style>
+</head>
+<body>
+<main>
+
+<header>
+  <h1>Duet 底座面板</h1>
+  <div class="small" id="disk">磁盘剩余：读取中 · 只在这台 Mac 上能打开</div>
+  <div class="msg err" id="server-msg"></div>
+</header>
+
+<section id="sec-link">
+  <h2>连接</h2>
+  <p class="hint">板子和模拟器跑的是同一份 C++ 核心。没插板子时，先用模拟器把通路测一遍。</p>
+  <div class="state-line" id="link-state">未连接</div>
+  <div class="msg err" id="link-error"></div>
+  <div class="row">
+    <span class="ctl"><button id="btn-board">连板子</button><span class="reason" id="why-board"></span></span>
+    <span class="ctl"><button id="btn-sim">连模拟器</button><span class="reason" id="why-sim"></span></span>
+    <span class="ctl"><button id="btn-off">断开</button><span class="reason" id="why-off"></span></span>
+  </div>
+  <div class="row">
+    <span class="ctl"><button id="btn-ping">测 20 次 ping</button><span class="reason" id="why-ping"></span></span>
+    <span id="ping-out" class="small"></span>
+  </div>
+  <div class="msg err" id="link-msg"></div>
+</section>
+
+<section id="sec-notes">
+  <h2>音符通道</h2>
+  <p class="hint">把《小星星》的 14 个音一个一个发过去，每个音等对面回一个和声音，再和 Mac 上 Python 算的结果比。</p>
+  <div class="row">
+    <label class="ctl">和声模型 <select id="np-plugin"></select></label>
+    <label class="ctl">调（大调） <select id="np-key"></select></label>
+    <span class="ctl"><button id="btn-notes">发《小星星》</button><span class="reason" id="why-notes"></span></span>
+  </div>
+  <div class="msg err" id="notes-msg"></div>
+  <div id="notes-summary" class="small"></div>
+  <div class="scroll" id="notes-table-wrap"></div>
+</section>
+
+<section id="sec-clips">
+  <h2>片段</h2>
+  <p class="hint">片段是一段录好的声音，存在这台 Mac 上，进来时统一转成 24 kHz 单声道。积木的输出也是片段。</p>
+  <div class="row">
+    <label class="ctl">上传音频文件 <input type="file" id="up-file" accept="audio/*"></label>
+  </div>
+  <div class="msg" id="up-msg"></div>
+  <div class="row">
+    <label class="ctl">录几秒 <input type="number" id="rec-sec" min="1" max="120" step="1" value="5"></label>
+    <span class="ctl"><button id="btn-rec">用 Mac 麦克风录音</button><span class="reason" id="why-rec"></span></span>
+  </div>
+  <div class="msg" id="rec-msg"></div>
+  <ul class="clips" id="clip-list"></ul>
+  <div class="small" id="clip-empty">还没有片段。上传一个文件或录一段。</div>
+</section>
+
+<section id="sec-routes">
+  <h2>路线</h2>
+  <p class="hint">一条路线是几个积木按顺序接起来，前一块的输出就是后一块的输入。颜色说能等多久，边框说在哪里算。</p>
+  <div class="legend">
+    <span><span class="chip lane-now">马上</span> 边唱边出声</span>
+    <span><span class="chip lane-phrase">等一句</span> 晚几秒</span>
+    <span><span class="chip lane-song">等一首</span> 唱完再出</span>
+    <span class="blk place-board">板子</span>
+    <span class="blk place-mac">Mac</span>
+    <span class="blk place-cloud">云端</span>
+  </div>
+  <div id="route-list"></div>
+</section>
+
+<section id="sec-jobs">
+  <h2>任务</h2>
+  <p class="hint">路线按一次就排一个任务，一个做完再做下一个。做出来的片段也会出现在上面的片段列表里。</p>
+  <div class="scroll">
+    <table>
+      <thead><tr><th>编号</th><th>做什么</th><th>状态</th><th>用时（秒）</th><th>结果</th><th>听</th></tr></thead>
+      <tbody id="job-body"></tbody>
+    </table>
+  </div>
+  <div class="small" id="job-empty">还没有任务。</div>
+</section>
+
+<section id="sec-log">
+  <h2>记录</h2>
+  <ul class="log" id="event-list"></ul>
+  <div id="devlog-wrap" hidden>
+    <h3>设备发来的日志（LOG）</h3>
+    <ul class="log mono" id="devlog-list"></ul>
+  </div>
+</section>
+
+</main>
+
+<script>
+(function () {
+  "use strict";
+
+  var KEYS = ["C", "C#", "D", "Eb", "E", "F", "F#", "G", "Ab", "A", "Bb", "B"];
+  var LANE = { now: "马上", phrase: "等一句", song: "等一首" };
+  var PLACE = { board: "板子", mac: "Mac", cloud: "云端" };
+  var SOURCE = { upload: "上传", mac_mic: "麦克风", block: "积木做的", test: "测试" };
+  var JOB_STATE = { queued: "排队", running: "在做", done: "做完", failed: "没做成" };
+
+  var S = null;            // last state from the server
+  var seen = {};           // section -> JSON string of the data it was last drawn from
+  var busy = {};           // button id -> true while its request is out
+  var recordPending = false;
+
+  // ------------------------------------------------------------ small helpers
+  function $(id) { return document.getElementById(id); }
+
+  function el(tag, cls, text) {
+    var e = document.createElement(tag);
+    if (cls) e.className = cls;
+    if (text !== undefined && text !== null) e.textContent = String(text);
+    return e;
+  }
+
+  function changed(key, data) {
+    var j = JSON.stringify(data);
+    if (seen[key] === j) return false;
+    seen[key] = j;
+    return true;
+  }
+
+  function setMsg(id, text, isErr) {
+    var m = $(id);
+    m.textContent = text || "";
+    m.className = "msg" + (isErr ? " err" : "");
+  }
+
+  function clipUrl(id) { return "/api/clip/" + encodeURIComponent(id) + ".wav"; }
+
+  function audioFor(id) {
+    var a = document.createElement("audio");
+    a.controls = true;
+    a.preload = "none";
+    a.src = clipUrl(id);
+    return a;
+  }
+
+  // Every request goes through here. Resolves to {ok, data}; an API error carries data.error.
+  function api(method, path, body, raw) {
+    var opt = { method: method, headers: {} };
+    if (raw !== undefined) {
+      opt.body = raw;
+      opt.headers["Content-Type"] = "application/octet-stream";
+    } else if (body !== undefined) {
+      opt.body = JSON.stringify(body);
+      opt.headers["Content-Type"] = "application/json";
+    }
+    return fetch(path, opt).then(function (r) {
+      return r.text().then(function (t) {
+        var d = null;
+        try { d = t ? JSON.parse(t) : {}; } catch (e) { d = { error: "服务器回的不是 JSON（HTTP " + r.status + "）" }; }
+        if (!r.ok && !(d && d.error)) d = { error: "HTTP " + r.status };
+        return { ok: r.ok, data: d };
+      });
+    }, function () {
+      return { ok: false, data: { error: "面板服务没有回应。它是不是已经关掉了？" } };
+    });
+  }
+
+  // Run one button's request: disable it while it is out, put an error on its message line.
+  function act(btnId, msgId, method, path, body, onOk) {
+    busy[btnId] = true;
+    setMsg(msgId, "");
+    updateButtons();
+    return api(method, path, body).then(function (r) {
+      busy[btnId] = false;
+      if (r.ok) {
+        if (onOk) onOk(r.data);
+      } else {
+        setMsg(msgId, r.data.error, true);
+      }
+      updateButtons();
+      pollSoon();
+      return r;
+    });
+  }
+
+  function setButton(btnId, whyId, reason) {
+    var b = $(btnId);
+    if (busy[btnId] && !reason) reason = "在做…";
+    b.disabled = !!reason;
+    $(whyId).textContent = reason || "";
+  }
+
+  // ------------------------------------------------------------ polling
+  var pollTimer = null, polling = false, again = false;
+
+  function poll() {
+    if (polling) { again = true; return; }
+    polling = true;
+    clearTimeout(pollTimer);
+    api("GET", "/api/state").then(function (r) {
+      polling = false;
+      if (r.ok) {
+        setMsg("server-msg", "");
+        S = r.data;
+        try { render(S); } catch (e) { setMsg("server-msg", "页面画不出来：" + e.message, true); }
+      } else {
+        setMsg("server-msg", r.data.error, true);
+      }
+      if (again) { again = false; poll(); return; }
+      pollTimer = setTimeout(poll, 1500);
+    });
+  }
+
+  function pollSoon() { clearTimeout(pollTimer); pollTimer = setTimeout(poll, 50); }
+
+  // ------------------------------------------------------------ drawing
+  function render(s) {
+    $("disk").textContent = "磁盘剩余 " + Number(s.disk_free_gb).toFixed(1) + " GB · 只在这台 Mac 上能打开";
+    renderLink(s);
+    renderPlugins(s);
+    renderClips(s);
+    renderRoutes(s);
+    renderClipSelects(s);
+    renderJobs(s);
+    renderLog(s);
+    updateButtons();
+  }
+
+  function renderLink(s) {
+    var lk = s.link;
+    var data = lk ? { kind: lk.kind, port: lk.port, info: lk.info, error: lk.error } : null;
+    if (!changed("link", data)) return;
+    var line;
+    if (!lk) {
+      line = "未连接";
+    } else {
+      var i = lk.info || {};
+      line = (lk.kind === "board" ? "连着板子" : "连着模拟器") + "（" + lk.port + "）";
+      var parts = [];
+      if (i.fw) parts.push("固件 " + i.fw);
+      if (i.ver) parts.push("版本 " + i.ver);
+      if (i.proto) parts.push("协议 " + i.proto);
+      if (i.psram !== undefined) parts.push("PSRAM " + bytesText(i.psram));
+      if (i.flash !== undefined) parts.push("flash " + bytesText(i.flash));
+      if (parts.length) line += "：" + parts.join("，");
+    }
+    $("link-state").textContent = line;
+    setMsg("link-error", lk && lk.error ? "连接出了问题：" + lk.error : "", true);
+  }
+
+  function bytesText(v) {
+    var n = Number(v);
+    if (!isFinite(n) || String(v) === "") return String(v);
+    if (n >= 1048576) return (n / 1048576).toFixed(n % 1048576 ? 1 : 0) + " MB";
+    if (n >= 1024) return (n / 1024).toFixed(0) + " KB";
+    return n + " 字节";
+  }
+
+  function renderPlugins(s) {
+    if (!changed("plugins", s.plugins)) return;
+    var sel = $("np-plugin"), cur = sel.value;
+    sel.replaceChildren();
+    (s.plugins || []).forEach(function (p) {
+      var o = el("option", null, p);
+      o.value = p;
+      sel.appendChild(o);
+    });
+    if ((s.plugins || []).indexOf(cur) >= 0) sel.value = cur;
+    else if ((s.plugins || []).indexOf("third_below") >= 0) sel.value = "third_below";
+  }
+
+  // Keyed list: add new nodes in place, drop gone ones, never move a node that stays (moving an <audio>
+  // would stop it).
+  function keyedList(container, items, keyOf, build, memo) {
+    var want = {};
+    items.forEach(function (it) { want[keyOf(it)] = true; });
+    Object.keys(memo).forEach(function (k) {
+      if (!want[k]) { memo[k].node.remove(); delete memo[k]; }
+    });
+    var prev = null;
+    items.forEach(function (it) {
+      var k = keyOf(it), j = JSON.stringify(it), m = memo[k];
+      if (m && m.json !== j) {
+        var fresh = build(it);
+        container.replaceChild(fresh, m.node);
+        m.node = fresh;
+        m.json = j;
+      } else if (!m) {
+        m = memo[k] = { node: build(it), json: j };
+        var at = prev ? prev.nextSibling : container.firstChild;
+        container.insertBefore(m.node, at);
+      }
+      prev = m.node;
+    });
+  }
+
+  var clipMemo = {};
+  function renderClips(s) {
+    var clips = s.clips || [];
+    if (!changed("clips", clips)) return;
+    keyedList($("clip-list"), clips, function (c) { return c.id; }, buildClip, clipMemo);
+    $("clip-empty").hidden = clips.length > 0;
+  }
+
+  function buildClip(c) {
+    var li = el("li");
+    li.appendChild(el("div", "name", c.name));
+    var meta = Number(c.seconds).toFixed(1) + " 秒 · " + (SOURCE[c.source] || c.source) + " · " + c.created;
+    li.appendChild(el("div", "meta", meta));
+    if (c.summary) li.appendChild(el("div", "sum", c.summary));
+    li.appendChild(audioFor(c.id));
+    return li;
+  }
+
+  // Route panels are built once; afterwards only their clip selects are refreshed.
+  var routeUi = [];
+  function renderRoutes(s) {
+    if (!changed("routes", { r: s.routes, b: s.blocks })) return;
+    var box = $("route-list");
+    box.replaceChildren();
+    routeUi = [];
+    seen.clipSel = undefined;
+    (s.routes || []).forEach(function (r) { box.appendChild(buildRoute(r, s.blocks || {})); });
+  }
+
+  function buildRoute(r, blocks) {
+    var lane = LANE[r.lane] ? r.lane : "song";
+    var p = el("div", "route lane-" + lane + "-edge");
+    var head = el("div", "route-head");
+    head.appendChild(el("h3", null, r.title));
+    head.appendChild(el("span", "chip lane-" + lane, LANE[lane]));
+    p.appendChild(head);
+    if (r.about) p.appendChild(el("p", "hint", r.about));
+
+    var chain = el("div", "chain");
+    r.chain.forEach(function (name, k) {
+      if (k) chain.appendChild(el("span", "arrow", "→"));
+      var b = blocks[name] || { title: name, place: "mac", note: "", status: "ready" };
+      var box = el("div", "blk place-" + (PLACE[b.place] ? b.place : "mac"));
+      var t = el("div");
+      t.appendChild(el("span", "t", b.title));
+      t.appendChild(el("span", "p", "在" + (PLACE[b.place] || b.place) + "上算" + (b.status !== "ready" ? " · 还不能用" : "")));
+      box.appendChild(t);
+      if (b.note) box.appendChild(el("div", "n", b.note));
+      chain.appendChild(box);
+    });
+    p.appendChild(chain);
+
+    var inputs = [];        // [block, param, element, spec]
+    var done = {};
+    r.chain.forEach(function (name) {
+      var b = blocks[name];
+      if (!b || done[name]) return;
+      done[name] = true;
+      var keys = Object.keys(b.params || {});
+      if (!keys.length) return;
+      if (r.chain.length > 1) p.appendChild(el("div", "small", b.title + " 的参数"));
+      var grid = el("div", "params");
+      keys.forEach(function (k) {
+        var spec = b.params[k];
+        var lab = el("label");
+        lab.appendChild(el("span", null, spec.label || k));
+        var inp;
+        if (spec.type === "choice") {
+          inp = el("select");
+          (spec.choices || []).forEach(function (c) {
+            var o = el("option", null, c[1]);
+            o.value = c[0];
+            inp.appendChild(o);
+          });
+          inp.value = String(spec.default);
+        } else {
+          inp = el("input");
+          inp.type = "number";
+          inp.min = spec.min;
+          inp.max = spec.max;
+          inp.step = spec.type === "int" ? "1" : "any";
+          inp.value = spec.default;
+        }
+        lab.appendChild(inp);
+        grid.appendChild(lab);
+        inputs.push([name, k, inp]);
+      });
+      p.appendChild(grid);
+    });
+    if (!inputs.length) p.appendChild(el("div", "small", "这条路线没有可以调的参数。"));
+
+    var row = el("div", "row");
+    var lab = el("label", "ctl", "用哪个片段 ");
+    var sel = el("select");
+    lab.appendChild(sel);
+    row.appendChild(lab);
+    var ctl = el("span", "ctl");
+    var btn = el("button", null, "跑这条路线");
+    btn.id = "btn-run-" + r.name;
+    var why = el("span", "reason");
+    why.id = "why-run-" + r.name;
+    ctl.appendChild(btn);
+    ctl.appendChild(why);
+    row.appendChild(ctl);
+    p.appendChild(row);
+    var msg = el("div", "msg");
+    msg.id = "msg-run-" + r.name;
+    p.appendChild(msg);
+
+    btn.addEventListener("click", function () {
+      var params = {};
+      inputs.forEach(function (x) {
+        params[x[0]] = params[x[0]] || {};
+        params[x[0]][x[1]] = x[2].value;
+      });
+      act(btn.id, msg.id, "POST", "/api/run", { route: r.name, clip: sel.value, params: params }, function (j) {
+        setMsg(msg.id, "排上了：任务 " + j.id + "。进度看下面的任务表。");
+      });
+    });
+    routeUi.push({ route: r, sel: sel, btnId: btn.id, whyId: why.id });
+    return p;
+  }
+
+  function renderClipSelects(s) {
+    var clips = (s.clips || []).map(function (c) { return [c.id, c.name, c.seconds]; });
+    if (!changed("clipSel", clips)) return;
+    routeUi.forEach(function (u) {
+      var cur = u.sel.value;
+      u.sel.replaceChildren();
+      clips.forEach(function (c) {
+        var o = el("option", null, c[1] + "（" + Number(c[2]).toFixed(1) + " 秒）");
+        o.value = c[0];
+        u.sel.appendChild(o);
+      });
+      if (clips.some(function (c) { return c[0] === cur; })) u.sel.value = cur;
+    });
+  }
+
+  var jobMemo = {};
+  function renderJobs(s) {
+    var jobs = (s.jobs || []).map(function (j) {
+      var last = j.steps && j.steps.length ? j.steps[j.steps.length - 1].summary : "";
+      return { id: j.id, title: j.title, state: j.state, seconds: j.seconds, result: j.state === "failed" ? (j.error || "") : last,
+               clip_out: j.clip_out || null };
+    });
+    if (!changed("jobs", jobs)) return;
+    keyedList($("job-body"), jobs, function (j) { return String(j.id); }, buildJob, jobMemo);
+    $("job-empty").hidden = jobs.length > 0;
+  }
+
+  function buildJob(j) {
+    var tr = el("tr");
+    tr.appendChild(el("td", "num", j.id));
+    tr.appendChild(el("td", null, j.title));
+    tr.appendChild(el("td", j.state === "failed" ? "bad" : null, JOB_STATE[j.state] || j.state));
+    tr.appendChild(el("td", "num", j.seconds === undefined || j.seconds === null ? "—" : Number(j.seconds).toFixed(1)));
+    tr.appendChild(el("td", j.state === "failed" ? "err-text" : null, j.result));
+    var td = el("td");
+    if (j.clip_out) td.appendChild(audioFor(j.clip_out));
+    tr.appendChild(td);
+    return tr;
+  }
+
+  function renderLog(s) {
+    if (changed("events", s.events)) {
+      var ul = $("event-list");
+      ul.replaceChildren();
+      (s.events || []).forEach(function (e) {
+        var li = el("li");
+        li.appendChild(el("span", "tm", e.time));
+        li.appendChild(document.createTextNode(e.text));
+        ul.appendChild(li);
+      });
+    }
+    var logs = s.link ? (s.link.logs || []) : null;
+    if (changed("devlog", logs)) {
+      $("devlog-wrap").hidden = !logs;
+      var dl = $("devlog-list");
+      dl.replaceChildren();
+      if (logs && !logs.length) dl.appendChild(el("li", "small", "设备还没有发过日志。"));
+      (logs || []).slice().reverse().forEach(function (e) {
+        var li = el("li");
+        li.appendChild(el("span", "tm", e.time));
+        li.appendChild(document.createTextNode(e.text));
+        dl.appendChild(li);
+      });
+    }
+  }
+
+  function updateButtons() {
+    var s = S;
+    var linked = !!(s && s.link);
+    var noLink = linked ? (s.link.error ? "连接断了，重新连一次" : "") : "先连板子或模拟器";
+    if (!s) {
+      ["board", "sim", "off", "ping", "notes", "rec"].forEach(function (k) { setButton("btn-" + k, "why-" + k, "等面板读到状态"); });
+      return;
+    }
+    setButton("btn-board", "why-board", (s.board_ports || []).length ? "" : "没有看到板子（USB 303A:1001）");
+    setButton("btn-sim", "why-sim", s.sim_built ? "" : "模拟器还没编译（firmware/host_tests/build_and_test.sh）");
+    setButton("btn-off", "why-off", linked ? "" : "现在没有连接");
+    setButton("btn-ping", "why-ping", noLink);
+    setButton("btn-notes", "why-notes", noLink || ((s.plugins || []).length ? "" : "对面没有和声模型"));
+    setButton("btn-rec", "why-rec", (s.recording || recordPending) ? "正在录音…" : "");
+    var hasClips = (s.clips || []).length > 0;
+    routeUi.forEach(function (u) {
+      var reason = !u.route.ready ? (u.route.why_not || "这条路线现在跑不了") : hasClips ? "" : "先上传或录一段";
+      setButton(u.btnId, u.whyId, reason);
+    });
+  }
+
+  // ------------------------------------------------------------ controls
+  KEYS.forEach(function (k, i) {
+    var o = el("option", null, k);
+    o.value = String(i);
+    $("np-key").appendChild(o);
+  });
+
+  function link(target, btnId) {
+    act(btnId, "link-msg", "POST", "/api/link", { target: target }, function () { seen.link = undefined; });
+  }
+  $("btn-board").addEventListener("click", function () { link("auto", "btn-board"); });
+  $("btn-sim").addEventListener("click", function () { link("sim", "btn-sim"); });
+  $("btn-off").addEventListener("click", function () { link("none", "btn-off"); });
+
+  $("btn-ping").addEventListener("click", function () {
+    $("ping-out").textContent = "";
+    act("btn-ping", "link-msg", "POST", "/api/ping", { n: 20 }, function (d) {
+      $("ping-out").textContent = d.n + " 次一来一回：中位数 " + d.median_us + " 微秒，最慢 " + d.max_us + " 微秒";
+    });
+  });
+
+  $("btn-notes").addEventListener("click", function () {
+    var body = { plugin: $("np-plugin").value, tonic: Number($("np-key").value) };
+    act("btn-notes", "notes-msg", "POST", "/api/notes_demo", body, drawNotes);
+  });
+
+  function drawNotes(d) {
+    var where = d.kind === "board" ? "板子" : "模拟器";
+    $("notes-summary").textContent = "和 Python 一致 " + d.same + "/" + d.n + "，在" + where + "上算的。";
+    var t = el("table");
+    var hr = el("tr");
+    ["第几个音", "你唱的", "Duet 唱的", "和 Python 一致", "板子算了多久（微秒）", "一来一回（微秒）"].forEach(function (h) {
+      hr.appendChild(el("th", null, h));
+    });
+    var th = el("thead");
+    th.appendChild(hr);
+    t.appendChild(th);
+    var tb = el("tbody");
+    (d.rows || []).forEach(function (r) {
+      var tr = el("tr");
+      tr.appendChild(el("td", "num", r.i + 1));
+      tr.appendChild(el("td", null, r.her_name));
+      tr.appendChild(el("td", null, r.duet_name));
+      tr.appendChild(el("td", r.same ? null : "bad", r.same ? "是" : "否"));
+      tr.appendChild(el("td", "num", r.compute_us));
+      tr.appendChild(el("td", "num", r.rtt_us));
+      tb.appendChild(tr);
+    });
+    t.appendChild(tb);
+    $("notes-table-wrap").replaceChildren(t);
+  }
+
+  $("up-file").addEventListener("change", function () {
+    var inp = $("up-file"), f = inp.files && inp.files[0];
+    if (!f) return;
+    if (f.size > 100 * 1024 * 1024) {
+      setMsg("up-msg", "文件太大，上限 100 MB。", true);
+      inp.value = "";
+      return;
+    }
+    inp.disabled = true;
+    setMsg("up-msg", "正在上传 " + f.name + " …");
+    api("POST", "/api/upload?name=" + encodeURIComponent(f.name), undefined, f).then(function (r) {
+      inp.disabled = false;
+      inp.value = "";
+      if (r.ok) setMsg("up-msg", "收到了：" + r.data.name + "，" + Number(r.data.seconds).toFixed(1) + " 秒。");
+      else setMsg("up-msg", r.data.error, true);
+      pollSoon();
+    });
+  });
+
+  $("btn-rec").addEventListener("click", function () {
+    var n = Number($("rec-sec").value);
+    if (!(n >= 1 && n <= 120)) {
+      setMsg("rec-msg", "录音长度要在 1 到 120 秒之间。", true);
+      return;
+    }
+    recordPending = true;
+    act("btn-rec", "rec-msg", "POST", "/api/record", { seconds: n }, function (m) {
+      setMsg("rec-msg", "录好了：" + m.name + "，峰值 " + Number(m.peak).toFixed(2) + (m.peak < 0.02 ? "（几乎没声音，看看麦克风权限）" : ""));
+    }).then(function () { recordPending = false; updateButtons(); });
+    setMsg("rec-msg", "正在录音… " + n + " 秒，录完自己停。");   // after act(), which clears the line
+  });
+
+  updateButtons();
+  poll();
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,10 @@
+[
+  {"name": "harmony", "title": "和声（唱完再配）", "lane": "song", "chain": ["harmony"],
+   "about": "音符这条通道的整条路线：Mac 听出音符，板子出和声音，Mac 唱出来。"},
+  {"name": "canon", "title": "轮唱", "lane": "phrase", "chain": ["canon"],
+   "about": "片段这条通道最简单的路线：同一句晚几拍再来一遍。"},
+  {"name": "transpose", "title": "移调", "lane": "song", "chain": ["transpose"],
+   "about": "整段升高或降低几个半音。"},
+  {"name": "voice_change", "title": "换人唱，加移调", "lane": "song", "chain": ["voice_convert", "transpose"],
+   "about": "你举的例子。第一块（换嗓音）还没装工具，所以这条路线现在跑不了；装好后不用改别的。"}
+]
