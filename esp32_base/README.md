@@ -9,25 +9,36 @@ out of the repository for now.
 
 State on 2026-11-21: all checks pass against the Mac simulator. Nothing has run on a real board yet.
 
+**Sketch 2 builds with stand-in audio by default.** The microphone ADC and the amplifier are not wired to this
+board yet, so the default build pretends they are: a stand-in microphone sends a known melody ("Twinkle
+Twinkle", 8 s loop) at the real pace, and a stand-in speaker takes frames at the real pace and counts them. In
+that build no I2S driver starts and no pin from `config.h` is driven. **If you have the real PCM1808 +
+MAX98357A hardware, build the `i2s` variant** (second command below); the ten audio files copied from
+`duet_v0/firmware/duet_io/` are unchanged. The firmware says which one it is in its INFO reply
+(`audio=standin` or `audio=i2s`).
+
 ```sh
 PY=../duet_v0/.venv/bin/python          # Python 3.11 with numpy, scipy, soundfile, pyserial, librosa
                                         # (the tools/ scripts use this one too; set DUET_PY to change it)
 
-sh tools/run_all_checks.sh sim          # C++ tests, Python tests, link check, note check (no board needed)
-sh tools/build_firmware.sh duet_base    # compile only
+sh tools/run_all_checks.sh sim          # C++ tests, Python tests, link, note and audio checks (no board needed)
+sh tools/build_firmware.sh duet_base            # sketch 1, compile only
+sh tools/build_firmware.sh duet_base_audio      # sketch 2 with STAND-IN audio (no hardware, drives no pin)
+sh tools/build_firmware.sh duet_base_audio i2s  # sketch 2 for the real audio hardware
 sh tools/run_panel.sh                   # local panel at http://127.0.0.1:8765 (opens nothing by itself)
 
 # With the board, and only after the owner says so:
 sh tools/upload_firmware.sh duet_base --yes-upload    # replaces the program on the board
 $PY host/checks/check_link.py --target auto
 $PY host/checks/check_notes.py --target auto
+$PY host/checks/check_audio.py --target auto          # needs sketch 2; skips itself on sketch 1
 ```
 
 | Folder | What |
 |---|---|
 | `firmware/libraries/DuetCore/` | portable C++ core: protocol, engine, plug-in slot (board, simulator and tests compile the same files) |
 | `firmware/duet_base/` | sketch 1: link + note path |
-| `firmware/duet_base_audio/` | sketch 2: adds audio, servo, LED; audio stays off until the Mac turns it on |
+| `firmware/duet_base_audio/` | sketch 2: adds audio, servo, LED; audio stays off until the Mac turns it on. Stand-in audio by default, `i2s` variant for the real hardware |
 | `firmware/host_tests/` | unit tests and the Mac simulator of the board |
 | `host/duet_host/` | Mac side: link, blocks, routes, clips, jobs, web panel |
 | `host/checks/`, `host/tests/` | checks that run against the simulator or the board; unit tests |
