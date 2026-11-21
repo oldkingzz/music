@@ -1,0 +1,334 @@
+/*
+ * Singing voice -> MIDI note quantizer with OLED display
+ * Target: ESP32-S3, Arduino-ESP32 core 3.x (needed for <ESP_I2S.h>)
+ *
+ * Libraries (Library Manager): "Adafruit SSD1306", "Adafruit GFX Library"
+ *
+ * Wiring assumed (read from your schematic):
+ *   MEMS mic (I2S, e.g. INMP441, L/R tied to GND = left slot)
+ *       SCK -> GPIO11 (BCLK)   WS -> GPIO12   SD -> GPIO13
+ *   OLED (I2C SSD1306 128x64, addr 0x3C)
+ *       SDA -> GPIO8 (!! your schematic label says GPIO6, which is already
+ *                     used by the speaker amp DIN - see note in chat)
+ *       SCL -> GPIO9
+ *   Button -> GPIO21 to GND (internal pull-up)
+ *
+ * Pitch algorithm: YIN (de Cheveigne & Kawahara, 2002)
+ *   - confidence = 1 - CMNDF value at the chosen lag (0..1)
+ *
+ * MIDI output:
+ *   - Always printed to Serial as text.
+ *   - Real USB MIDI: set USE_USB_MIDI to 1 AND in Arduino IDE choose
+ *     Tools > USB Mode > "USB-OTG (TinyUSB)" and plug into the USB (OTG) port.
+ *     (Serial then goes out the UART0 / TX-RX pins instead.)
+ *
+ * Button (GPIO21): toggles MIDI output on/off (display shows ON/OFF).
+ */
+
+#include <Arduino.h>
+#include <Wire.h>
+#include <ESP_I2S.h>
+#include <Adafruit_GFX.h>
+#include <Adafruit_SSD1306.h>
+#include <math.h>
+
+#define USE_USB_MIDI 0
+
+#if USE_USB_MIDI
+  #include "USB.h"
+  #include "USBMIDI.h"
+  USBMIDI MIDI;
+#endif
+
+// ---------------- Pins ----------------
+constexpr int PIN_MIC_BCLK = 11;
+constexpr int PIN_MIC_WS   = 12;
+constexpr int PIN_MIC_DIN  = 13;
+constexpr int PIN_OLED_SDA = 8;    // verify! schematic label says 6, which conflicts
+constexpr int PIN_OLED_SCL = 9;
+constexpr int PIN_BUTTON   = 21;
+
+// ---------------- Audio / pitch settings ----------------
+constexpr uint32_t SAMPLE_RATE = 16000;
+constexpr int   FRAME   = 768;                       // analysis window (48 ms)
+constexpr int   HOP     = 256;                       // new samples per analysis (16 ms)
+constexpr float F_MIN   = 75.0f;                     // lowest voice pitch we look for (~D2)
+constexpr float F_MAX   = 1100.0f;                   // highest (~C#6)
+constexpr int   TAU_MIN = (int)(SAMPLE_RATE / F_MAX);
+constexpr int   TAU_MAX = (int)(SAMPLE_RATE / F_MIN);
+constexpr int   W       = FRAME - TAU_MAX;           // YIN integration window
+
+constexpr float YIN_THRESHOLD  = 0.15f;  // lower = stricter
+constexpr float MIN_CONFIDENCE = 0.60f;  // below this we call the frame "unvoiced"
+constexpr float RMS_GATE       = 0.004f; // ignore anything quieter (tune to your room/mic!)
+constexpr float HYSTERESIS     = 0.65f;  // semitones; stops flicker at note boundaries
+constexpr int   STABLE_FRAMES  = 3;      // frames a new note must persist before switching
+constexpr int   RELEASE_FRAMES = 4;      // frames of silence before note-off
+constexpr int   MIDI_CHANNEL   = 1;
+
+// ---------------- Globals ----------------
+I2SClass i2s;
+Adafruit_SSD1306 display(128, 64, &Wire, -1);
+
+struct UiState {
+  int   note;       // active MIDI note, -1 if none
+  float freq;       // Hz
+  float cents;      // deviation from the quantized note, -50..+50
+  float conf;       // 0..1
+};
+UiState ui = {-1, 0, 0, 0};
+portMUX_TYPE uiMux = portMUX_INITIALIZER_UNLOCKED;
+
+volatile bool midiEnabled = true;
+bool midiSounding = false;
+int  midiSoundingNote = -1;
+
+const char* NOTE_NAMES[12] = {"C","C#","D","D#","E","F","F#","G","G#","A","A#","B"};
+
+void noteName(int n, char* out, size_t len) {
+  snprintf(out, len, "%s%d", NOTE_NAMES[n % 12], n / 12 - 1);   // MIDI 60 = C4
+}
+
+// ---------------- MIDI helpers ----------------
+void midiNoteOn(int n, int vel) {
+  if (!midiEnabled) return;
+#if USE_USB_MIDI
+  MIDI.noteOn(n, vel, MIDI_CHANNEL);
+#endif
+  char nm[8]; noteName(n, nm, sizeof nm);
+  Serial.printf("NOTE ON  %3d (%s) vel %d\n", n, nm, vel);
+  midiSounding = true;
+  midiSoundingNote = n;
+}
+
+void midiNoteOff() {
+  if (!midiSounding) return;
+#if USE_USB_MIDI
+  MIDI.noteOff(midiSoundingNote, 0, MIDI_CHANNEL);
+#endif
+  Serial.printf("NOTE OFF %3d\n", midiSoundingNote);
+  midiSounding = false;
+  midiSoundingNote = -1;
+}
+
+// ---------------- YIN pitch detector ----------------
+// Returns frequency in Hz (0 if nothing found). confidence in 0..1.
+float yinPitch(const float* x, float& confidence) {
+  static float d[TAU_MAX + 2];
+  d[0] = 1.0f;
+  float running = 0.0f;
+
+  for (int tau = 1; tau <= TAU_MAX; tau++) {
+    float sum = 0.0f;
+    for (int j = 0; j < W; j++) {
+      float diff = x[j] - x[j + tau];
+      sum += diff * diff;
+    }
+    running += sum;
+    d[tau] = (running > 0.0f) ? (sum * tau / running) : 1.0f;   // cumulative mean normalised
+  }
+
+  int tauEst = -1;
+  for (int tau = TAU_MIN; tau <= TAU_MAX; tau++) {
+    if (d[tau] < YIN_THRESHOLD) {
+      while (tau + 1 <= TAU_MAX && d[tau + 1] < d[tau]) tau++;   // walk to the local minimum
+      tauEst = tau;
+      break;
+    }
+  }
+  if (tauEst < 0) {                                               // fallback: global minimum
+    float best = 1e9f;
+    for (int tau = TAU_MIN; tau <= TAU_MAX; tau++) {
+      if (d[tau] < best) { best = d[tau]; tauEst = tau; }
+    }
+  }
+  if (tauEst < 1) { confidence = 0; return 0; }
+
+  confidence = constrain(1.0f - d[tauEst], 0.0f, 1.0f);
+
+  float tauF = (float)tauEst;                                     // parabolic interpolation
+  if (tauEst > 1 && tauEst < TAU_MAX) {
+    float s0 = d[tauEst - 1], s1 = d[tauEst], s2 = d[tauEst + 1];
+    float denom = 2.0f * (2.0f * s1 - s2 - s0);
+    if (fabsf(denom) > 1e-9f) tauF += (s2 - s0) / denom;
+  }
+  return (float)SAMPLE_RATE / tauF;
+}
+
+// ---------------- Audio task (core 1) ----------------
+void audioTask(void*) {
+  static float   frame[FRAME];
+  static int32_t raw[HOP];
+  memset(frame, 0, sizeof frame);
+
+  float dc = 0.0f;
+  int activeNote = -1;
+  int pendingNote = -2;      // -2 = nothing pending yet
+  int pendingCount = 0;
+  int activeVel = 80;
+
+  for (;;) {
+    size_t got = i2s.readBytes((char*)raw, sizeof raw);
+    if (got < sizeof raw) continue;
+
+    // shift window, append new samples (24-bit data sits in the top of each 32-bit word)
+    memmove(frame, frame + HOP, (FRAME - HOP) * sizeof(float));
+    for (int i = 0; i < HOP; i++) {
+      float s = (float)(raw[i] >> 8) / 8388608.0f;
+      dc += 0.001f * (s - dc);                 // slow DC blocker
+      frame[FRAME - HOP + i] = s - dc;
+    }
+
+    // loudness
+    float e = 0;
+    for (int i = 0; i < FRAME; i++) e += frame[i] * frame[i];
+    float rms = sqrtf(e / FRAME);
+
+    // pitch
+    float conf = 0, freq = 0, midiF = 0;
+    int candidate = -1;
+    if (rms >= RMS_GATE) {
+      float f = yinPitch(frame, conf);
+      if (f > 0 && conf >= MIN_CONFIDENCE) {
+        freq  = f;
+        midiF = 69.0f + 12.0f * log2f(f / 440.0f);
+        if (activeNote >= 0 && fabsf(midiF - activeNote) < HYSTERESIS) candidate = activeNote;
+        else candidate = (int)lroundf(midiF);
+        if (candidate < 0 || candidate > 127) candidate = -1;
+      }
+    } else {
+      conf = 0;
+    }
+
+    // note state machine (debounce on / off / changes)
+    if (candidate == pendingNote) pendingCount++;
+    else { pendingNote = candidate; pendingCount = 1; }
+
+    int need = (pendingNote < 0) ? RELEASE_FRAMES : STABLE_FRAMES;
+    if (pendingCount >= need && pendingNote != activeNote) {
+      midiNoteOff();
+      if (pendingNote >= 0) {
+        float db = 20.0f * log10f(rms + 1e-9f);
+        activeVel = constrain((int)lroundf(20.0f + (db + 48.0f) * (107.0f / 30.0f)), 20, 127);
+        midiNoteOn(pendingNote, activeVel);
+      }
+      activeNote = pendingNote;
+    }
+
+    // honour the mute button
+    if (!midiEnabled && midiSounding) midiNoteOff();
+
+    // publish for the display
+    UiState s;
+    s.note  = activeNote;
+    s.freq  = (candidate >= 0) ? freq : 0;
+    s.cents = (activeNote >= 0 && candidate >= 0) ? constrain((midiF - activeNote) * 100.0f, -50.0f, 50.0f) : 0;
+    s.conf  = conf;
+    portENTER_CRITICAL(&uiMux);
+    ui = s;
+    portEXIT_CRITICAL(&uiMux);
+  }
+}
+
+// ---------------- UI ----------------
+void drawUi(const UiState& s) {
+  char buf[24];
+  display.clearDisplay();
+  display.setTextColor(SSD1306_WHITE);
+
+  // top line: MIDI number | frequency | MIDI on/off
+  display.setTextSize(1);
+  display.setCursor(0, 0);
+  if (s.note >= 0) display.printf("MIDI %d", s.note); else display.print("MIDI --");
+  if (s.note >= 0 && s.freq > 0) { display.setCursor(50, 0); display.printf("%.1fHz", s.freq); }
+  display.setCursor(104, 0);
+  display.print(midiEnabled ? "ON" : "OFF");
+
+  // big note name + cents
+  display.setTextSize(3);
+  display.setCursor(0, 12);
+  if (s.note >= 0) { noteName(s.note, buf, sizeof buf); display.print(buf); }
+  else display.print("--");
+
+  if (s.note >= 0) {
+    display.setTextSize(2);
+    display.setCursor(78, 14);
+    display.printf("%+d", (int)lroundf(s.cents));
+    display.setTextSize(1);
+    display.setCursor(78, 32);
+    display.print("cents");
+  }
+
+  // tuning meter (-50 .. +50 cents)
+  display.setTextSize(1);
+  display.setCursor(2, 42);   display.print("-");
+  display.setCursor(120, 42); display.print("+");
+  display.drawFastHLine(14, 46, 101, SSD1306_WHITE);
+  display.drawFastVLine(14, 42, 9, SSD1306_WHITE);
+  display.drawFastVLine(64, 42, 9, SSD1306_WHITE);
+  display.drawFastVLine(114, 42, 9, SSD1306_WHITE);
+  if (s.note >= 0) {
+    int x = 64 + (int)lroundf(s.cents);
+    display.fillRect(x - 2, 41, 5, 11, SSD1306_WHITE);
+  }
+
+  // confidence bar
+  display.setCursor(0, 55);
+  display.print("CONF");
+  display.drawRect(30, 54, 70, 9, SSD1306_WHITE);
+  int w = (int)lroundf(s.conf * 66.0f);
+  if (w > 0) display.fillRect(32, 56, w, 5, SSD1306_WHITE);
+  display.setCursor(104, 55);
+  display.printf("%3d%%", (int)lroundf(s.conf * 100.0f));
+
+  display.display();
+}
+
+void uiTask(void*) {
+  bool lastBtn = HIGH;
+  for (;;) {
+    bool b = digitalRead(PIN_BUTTON);
+    if (lastBtn == HIGH && b == LOW) midiEnabled = !midiEnabled;
+    lastBtn = b;
+
+    UiState s;
+    portENTER_CRITICAL(&uiMux);
+    s = ui;
+    portEXIT_CRITICAL(&uiMux);
+    drawUi(s);
+    vTaskDelay(pdMS_TO_TICKS(30));
+  }
+}
+
+// ---------------- Arduino entry points ----------------
+void setup() {
+  Serial.begin(115200);
+  pinMode(PIN_BUTTON, INPUT_PULLUP);
+
+#if USE_USB_MIDI
+  MIDI.begin();
+  USB.begin();
+#endif
+
+  Wire.begin(PIN_OLED_SDA, PIN_OLED_SCL);
+  Wire.setClock(400000);
+  if (!display.begin(SSD1306_SWITCHCAPVCC, 0x3C)) {
+    Serial.println("OLED not found - check wiring / address / SDA pin");
+  }
+  display.clearDisplay();
+  display.display();
+
+  i2s.setPins(PIN_MIC_BCLK, PIN_MIC_WS, -1, PIN_MIC_DIN);
+  if (!i2s.begin(I2S_MODE_STD, SAMPLE_RATE, I2S_DATA_BIT_WIDTH_32BIT,
+                 I2S_SLOT_MODE_MONO, I2S_STD_SLOT_LEFT)) {
+    Serial.println("I2S init failed");
+    while (true) delay(1000);
+  }
+
+  xTaskCreatePinnedToCore(audioTask, "audio", 8192, nullptr, 3, nullptr, 1);
+  xTaskCreatePinnedToCore(uiTask,    "ui",    4096, nullptr, 1, nullptr, 0);
+}
+
+void loop() {
+  vTaskDelete(nullptr);   // everything runs in the two tasks
+}
