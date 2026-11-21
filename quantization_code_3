@@ -1,0 +1,700 @@
+/*
+ * Singing voice -> MIDI note quantizer with OLED display + MIDI file recording
+ * Target: ESP32-S3, Arduino-ESP32 core 3.x (needed for <ESP_I2S.h>)
+ *
+ * Libraries (Library Manager): "Adafruit SSD1306", "Adafruit GFX Library"
+ * (SD and SPI come with the ESP32 core.)
+ *
+ * Wiring assumed (read from your schematic):
+ *   MEMS mic (I2S, left slot):  SCK -> GPIO11, WS -> GPIO12, SD -> GPIO13
+ *   OLED (I2C SSD1306 128x64):  SDA -> GPIO8 (verify!), SCL -> GPIO9
+ *   SD card (SPI):              CLK 17, MISO 18, MOSI 16, CS 15   (FAT32 card)
+ *   Button -> GPIO21 to GND (internal pull-up)
+ *
+ * BUTTON
+ *   Idle:        long press  -> 3-2-1 countdown, then recording starts
+ *                short press -> toggle live MIDI output on/off (as before)
+ *   Countdown:   short press -> cancel
+ *   Recording:   short press -> stop and save take###.mid to the SD card
+ *                (a dot + elapsed time is shown while recording)
+ *
+ * MIDI FILE
+ *   Standard MIDI File, format 0, 1 track, 480 ticks per quarter note,
+ *   fixed tempo 120 BPM (so 1 second of real time = 2 beats = 960 ticks).
+ *   Note timing is real elapsed time; no grid quantizing, no pitch bend.
+ *
+ * Live USB MIDI: set USE_USB_MIDI to 1 and choose Tools > USB Mode >
+ * "USB-OTG (TinyUSB)". Serial then goes out the UART0 (TX/RX) pins.
+ */
+
+#include <Arduino.h>
+#include <Wire.h>
+#include <SPI.h>
+#include <SD.h>
+#include <ESP_I2S.h>
+#include <Adafruit_GFX.h>
+#include <Adafruit_SSD1306.h>
+#include <math.h>
+
+#define USE_USB_MIDI 0
+
+#if USE_USB_MIDI
+  #include "USB.h"
+  #include "USBMIDI.h"
+  USBMIDI MIDI;
+#endif
+
+// ---------------- Pins ----------------
+constexpr int PIN_MIC_BCLK = 11;
+constexpr int PIN_MIC_WS   = 12;
+constexpr int PIN_MIC_DIN  = 13;
+constexpr int PIN_OLED_SDA = 8;    // verify! schematic label said 6, which conflicts
+constexpr int PIN_OLED_SCL = 9;
+constexpr int PIN_BUTTON   = 21;
+constexpr int PIN_SD_CLK   = 17;
+constexpr int PIN_SD_MISO  = 18;
+constexpr int PIN_SD_MOSI  = 16;
+constexpr int PIN_SD_CS    = 15;
+
+// ---------------- Audio / pitch settings ----------------
+constexpr uint32_t SAMPLE_RATE = 16000;
+constexpr int   FRAME   = 768;
+constexpr int   HOP     = 256;
+constexpr float F_MIN   = 75.0f;
+constexpr float F_MAX   = 1100.0f;
+constexpr int   TAU_MIN = (int)(SAMPLE_RATE / F_MAX);
+constexpr int   TAU_MAX = (int)(SAMPLE_RATE / F_MIN);
+constexpr int   W       = FRAME - TAU_MAX;
+
+constexpr float YIN_THRESHOLD  = 0.15f;
+constexpr float MIN_CONFIDENCE = 0.60f;
+constexpr float RMS_GATE       = 0.004f;
+constexpr float HYSTERESIS     = 0.65f;
+constexpr int   MIDI_CHANNEL   = 1;
+
+// Note stability (this is what fixes the "waver" at note changes):
+// a new note is only started once the last SETTLE_FRAMES pitch readings are all
+// voiced AND lie within SETTLE_SPREAD semitones of each other (i.e. the voice has
+// stopped sliding). The note chosen is the MEDIAN of those readings.
+// Each frame is 16 ms, so 5 frames = 80 ms. Higher = steadier but more latency.
+constexpr int   SETTLE_FRAMES  = 5;
+constexpr float SETTLE_SPREAD  = 0.6f;   // semitones
+constexpr int   RELEASE_FRAMES = 6;      // unvoiced frames (~100 ms) before note-off
+
+// Clean-up applied to the recording when you stop it (the live MIDI can't be un-played):
+constexpr uint32_t MIN_NOTE_MS  = 100;   // notes shorter than this are treated as blips and dropped
+constexpr uint32_t MERGE_GAP_MS = 120;   // same pitch re-triggered within this gap -> one note
+
+// ---------------- Recording settings ----------------
+constexpr uint32_t LONG_PRESS_MS  = 800;
+constexpr uint32_t COUNTDOWN_MS   = 3000;
+constexpr uint32_t MESSAGE_MS     = 2500;
+constexpr int      MAX_EVENTS     = 4000;     // ~2000 notes; recording auto-stops when full
+constexpr uint16_t MIDI_PPQ       = 480;
+constexpr uint32_t TICKS_PER_SEC  = 960;      // 480 ppq at 120 BPM
+
+// ---------------- Globals ----------------
+I2SClass i2s;
+Adafruit_SSD1306 display(128, 64, &Wire, -1);
+
+struct UiState {
+  int   note;
+  float freq;
+  float cents;
+  float conf;
+};
+UiState ui = {-1, 0, 0, 0};
+portMUX_TYPE uiMux = portMUX_INITIALIZER_UNLOCKED;
+
+volatile bool midiEnabled = true;
+bool midiSounding = false;
+int  midiSoundingNote = -1;
+
+// recording state
+enum SaveResult { SAVE_OK, SAVE_EMPTY, SAVE_NO_SD, SAVE_FAIL };   // must stay above all functions (Arduino auto-prototypes)
+enum RecState : uint8_t { REC_IDLE, REC_COUNTDOWN, REC_RECORDING, REC_SAVING };
+volatile RecState recState = REC_IDLE;
+
+struct MidiEvt { uint32_t ms; uint8_t note, vel, on, pad; };
+static MidiEvt  evts[MAX_EVENTS];
+static int      evtCount = 0;
+static uint32_t recStartMs = 0;
+static bool     recNoteOpen = false;
+static uint8_t  recNote = 0;
+portMUX_TYPE    recMux = portMUX_INITIALIZER_UNLOCKED;
+
+static uint8_t fbuf[MAX_EVENTS * 8 + 64];
+bool sdReady = false;
+
+const char* NOTE_NAMES[12] = {"C","C#","D","D#","E","F","F#","G","G#","A","A#","B"};
+
+void noteName(int n, char* out, size_t len) {
+  snprintf(out, len, "%s%d", NOTE_NAMES[n % 12], n / 12 - 1);   // MIDI 60 = C4
+}
+
+// ---------------- Recording helpers ----------------
+void recordEvent(bool on, int note, int vel) {
+  portENTER_CRITICAL(&recMux);
+  if (recState == REC_RECORDING) {
+    uint32_t t = millis() - recStartMs;
+    if (on) {
+      if (evtCount < MAX_EVENTS - 1) {            // keep one slot free for the matching note-off
+        evts[evtCount++] = MidiEvt{t, (uint8_t)note, (uint8_t)vel, 1, 0};
+        recNoteOpen = true;
+        recNote = (uint8_t)note;
+      }
+    } else if (recNoteOpen) {
+      evts[evtCount++] = MidiEvt{t, recNote, 0, 0, 0};
+      recNoteOpen = false;
+    }
+  }
+  portEXIT_CRITICAL(&recMux);
+}
+
+void startRecording() {
+  portENTER_CRITICAL(&recMux);
+  evtCount = 0;
+  recNoteOpen = false;
+  recStartMs = millis();
+  recState = REC_RECORDING;
+  portEXIT_CRITICAL(&recMux);
+}
+
+void stopRecording() {
+  portENTER_CRITICAL(&recMux);
+  if (recNoteOpen && evtCount < MAX_EVENTS) {     // close a note that is still held
+    evts[evtCount++] = MidiEvt{millis() - recStartMs, recNote, 0, 0, 0};
+  }
+  recNoteOpen = false;
+  recState = REC_SAVING;                          // audio task stops appending from here on
+  portEXIT_CRITICAL(&recMux);
+}
+
+bool mountSD() {
+  SPI.begin(PIN_SD_CLK, PIN_SD_MISO, PIN_SD_MOSI, PIN_SD_CS);
+  const uint32_t speeds[] = {10000000, 4000000, 1000000};   // fall back to slower clocks
+  for (uint32_t hz : speeds) {
+    if (SD.begin(PIN_SD_CS, SPI, hz)) {
+      Serial.printf("SD mounted at %u Hz, card type %d, size %llu MB\n",
+                    (unsigned)hz, (int)SD.cardType(),
+                    (unsigned long long)(SD.cardSize() / (1024ULL * 1024ULL)));
+      return true;
+    }
+    Serial.printf("SD mount failed at %u Hz\n", (unsigned)hz);
+    SD.end();
+  }
+  return false;
+}
+
+// Tidy the recorded notes: drop blips, then merge re-triggered repeats of the same pitch.
+// Events are strictly on/off pairs (the voice is monophonic), so pair i = events 2i, 2i+1.
+void cleanRecording() {
+  int n = evtCount / 2;
+
+  // pass 1: drop notes shorter than MIN_NOTE_MS
+  int w = 0;
+  for (int i = 0; i < n; i++) {
+    MidiEvt on  = evts[2 * i];
+    MidiEvt off = evts[2 * i + 1];
+    if (off.ms - on.ms < MIN_NOTE_MS) continue;
+    evts[2 * w]     = on;
+    evts[2 * w + 1] = off;
+    w++;
+  }
+  n = w;
+
+  // pass 2: merge same-pitch notes separated by a tiny gap
+  w = 0;
+  for (int i = 0; i < n; i++) {
+    MidiEvt on  = evts[2 * i];
+    MidiEvt off = evts[2 * i + 1];
+    if (w > 0 && evts[2 * (w - 1)].note == on.note &&
+        on.ms - evts[2 * (w - 1) + 1].ms <= MERGE_GAP_MS) {
+      evts[2 * (w - 1) + 1].ms = off.ms;           // extend the previous note
+    } else {
+      evts[2 * w]     = on;
+      evts[2 * w + 1] = off;
+      w++;
+    }
+  }
+  evtCount = 2 * w;
+}
+
+// MIDI variable-length quantity
+static size_t putVlq(uint8_t* p, uint32_t v) {
+  uint8_t tmp[5];
+  int n = 0;
+  tmp[n++] = v & 0x7F;
+  while ((v >>= 7)) tmp[n++] = (v & 0x7F) | 0x80;
+  size_t k = 0;
+  while (n--) p[k++] = tmp[n];
+  return k;
+}
+
+SaveResult saveMidi(char* fname, size_t fnameLen, int& nNotes, uint32_t& durMs) {
+  nNotes = 0; durMs = 0;
+  int before = evtCount / 2;
+  cleanRecording();
+  Serial.printf("Clean-up: %d raw notes -> %d notes\n", before, evtCount / 2);
+  int n = evtCount;
+  for (int i = 0; i < n; i++) if (evts[i].on) nNotes++;
+  if (nNotes == 0) return SAVE_EMPTY;
+  durMs = evts[n - 1].ms;
+
+  if (!sdReady) sdReady = mountSD();
+  if (!sdReady) return SAVE_NO_SD;
+
+  char path[32];
+  int idx = 1;
+  for (; idx < 1000; idx++) {
+    snprintf(fname, fnameLen, "take%03d.mid", idx);
+    snprintf(path, sizeof path, "/%s", fname);
+    if (!SD.exists(path)) break;
+  }
+  if (idx >= 1000) return SAVE_FAIL;
+
+  size_t p = 0;
+  auto put8  = [&](uint8_t v)  { fbuf[p++] = v; };
+  auto put16 = [&](uint16_t v) { put8(v >> 8); put8(v & 0xFF); };
+  auto put32 = [&](uint32_t v) { put8(v >> 24); put8(v >> 16); put8(v >> 8); put8(v); };
+
+  memcpy(fbuf + p, "MThd", 4); p += 4;
+  put32(6); put16(0); put16(1); put16(MIDI_PPQ);          // format 0, 1 track
+
+  memcpy(fbuf + p, "MTrk", 4); p += 4;
+  size_t lenPos = p; put32(0);                            // length patched below
+  size_t trackStart = p;
+
+  put8(0x00); put8(0xFF); put8(0x51); put8(0x03);         // tempo 500000 us/qn = 120 BPM
+  put8(0x07); put8(0xA1); put8(0x20);
+
+  uint32_t prevTick = 0;
+  for (int i = 0; i < n; i++) {
+    uint32_t tick = (uint32_t)((uint64_t)evts[i].ms * TICKS_PER_SEC / 1000);
+    p += putVlq(fbuf + p, tick - prevTick);
+    prevTick = tick;
+    if (evts[i].on) { put8(0x90 | (MIDI_CHANNEL - 1)); put8(evts[i].note); put8(evts[i].vel); }
+    else            { put8(0x80 | (MIDI_CHANNEL - 1)); put8(evts[i].note); put8(0); }
+  }
+  put8(0x00); put8(0xFF); put8(0x2F); put8(0x00);         // end of track
+
+  uint32_t trackLen = p - trackStart;
+  fbuf[lenPos + 0] = trackLen >> 24; fbuf[lenPos + 1] = trackLen >> 16;
+  fbuf[lenPos + 2] = trackLen >> 8;  fbuf[lenPos + 3] = trackLen;
+
+  File f = SD.open(path, FILE_WRITE);
+  if (!f) { sdReady = false; return SAVE_FAIL; }
+  size_t w = f.write(fbuf, p);
+  f.close();
+  if (w != p) return SAVE_FAIL;
+  Serial.printf("Saved %s (%u bytes, %d notes)\n", path, (unsigned)p, nNotes);
+  return SAVE_OK;
+}
+
+// ---------------- Live MIDI helpers ----------------
+void midiSendOff() {
+  if (!midiSounding) return;
+#if USE_USB_MIDI
+  MIDI.noteOff(midiSoundingNote, 0, MIDI_CHANNEL);
+#endif
+  Serial.printf("NOTE OFF %3d\n", midiSoundingNote);
+  midiSounding = false;
+  midiSoundingNote = -1;
+}
+
+void midiNoteOff() {
+  recordEvent(false, 0, 0);       // recorded even when live output is muted
+  midiSendOff();
+}
+
+void midiNoteOn(int n, int vel) {
+  recordEvent(true, n, vel);
+  if (!midiEnabled) return;
+#if USE_USB_MIDI
+  MIDI.noteOn(n, vel, MIDI_CHANNEL);
+#endif
+  char nm[8]; noteName(n, nm, sizeof nm);
+  Serial.printf("NOTE ON  %3d (%s) vel %d\n", n, nm, vel);
+  midiSounding = true;
+  midiSoundingNote = n;
+}
+
+// ---------------- YIN pitch detector ----------------
+float yinPitch(const float* x, float& confidence) {
+  static float d[TAU_MAX + 2];
+  d[0] = 1.0f;
+  float running = 0.0f;
+
+  for (int tau = 1; tau <= TAU_MAX; tau++) {
+    float sum = 0.0f;
+    for (int j = 0; j < W; j++) {
+      float diff = x[j] - x[j + tau];
+      sum += diff * diff;
+    }
+    running += sum;
+    d[tau] = (running > 0.0f) ? (sum * tau / running) : 1.0f;
+  }
+
+  int tauEst = -1;
+  for (int tau = TAU_MIN; tau <= TAU_MAX; tau++) {
+    if (d[tau] < YIN_THRESHOLD) {
+      while (tau + 1 <= TAU_MAX && d[tau + 1] < d[tau]) tau++;
+      tauEst = tau;
+      break;
+    }
+  }
+  if (tauEst < 0) {
+    float best = 1e9f;
+    for (int tau = TAU_MIN; tau <= TAU_MAX; tau++) {
+      if (d[tau] < best) { best = d[tau]; tauEst = tau; }
+    }
+  }
+  if (tauEst < 1) { confidence = 0; return 0; }
+
+  confidence = constrain(1.0f - d[tauEst], 0.0f, 1.0f);
+
+  float tauF = (float)tauEst;
+  if (tauEst > 1 && tauEst < TAU_MAX) {
+    float s0 = d[tauEst - 1], s1 = d[tauEst], s2 = d[tauEst + 1];
+    float denom = 2.0f * (2.0f * s1 - s2 - s0);
+    if (fabsf(denom) > 1e-9f) tauF += (s2 - s0) / denom;
+  }
+  return (float)SAMPLE_RATE / tauF;
+}
+
+// ---------------- Audio task (core 1) ----------------
+void audioTask(void*) {
+  static float   frame[FRAME];
+  static int32_t raw[HOP];
+  memset(frame, 0, sizeof frame);
+
+  float dc = 0.0f;
+  int activeNote = -1;
+  int histCount = 0;                       // consecutive voiced frames collected so far
+  int unvoicedRun = 0;                     // consecutive unvoiced frames
+  float pitchHist[SETTLE_FRAMES] = {0};    // recent pitch readings in fractional MIDI notes
+  float rmsHist[SETTLE_FRAMES]   = {0};    // matching loudness readings
+
+  for (;;) {
+    size_t got = i2s.readBytes((char*)raw, sizeof raw);
+    if (got < sizeof raw) continue;
+
+    memmove(frame, frame + HOP, (FRAME - HOP) * sizeof(float));
+    for (int i = 0; i < HOP; i++) {
+      float s = (float)(raw[i] >> 8) / 8388608.0f;
+      dc += 0.001f * (s - dc);
+      frame[FRAME - HOP + i] = s - dc;
+    }
+
+    float e = 0;
+    for (int i = 0; i < FRAME; i++) e += frame[i] * frame[i];
+    float rms = sqrtf(e / FRAME);
+
+    // 1) pitch for this frame
+    float conf = 0, freq = 0, midiF = 0;
+    bool voiced = false;
+    if (rms >= RMS_GATE) {
+      float f = yinPitch(frame, conf);
+      if (f > 0 && conf >= MIN_CONFIDENCE) {
+        float m = 69.0f + 12.0f * log2f(f / 440.0f);
+        if (m >= 0.0f && m <= 127.0f) { voiced = true; freq = f; midiF = m; }
+      }
+    } else {
+      conf = 0;
+    }
+
+    // 2) note decision
+    if (voiced) {
+      unvoicedRun = 0;
+
+      // push this reading into the history (newest at the end)
+      if (histCount < SETTLE_FRAMES) histCount++;
+      for (int i = 0; i < SETTLE_FRAMES - 1; i++) {
+        pitchHist[i] = pitchHist[i + 1];
+        rmsHist[i]   = rmsHist[i + 1];
+      }
+      pitchHist[SETTLE_FRAMES - 1] = midiF;
+      rmsHist[SETTLE_FRAMES - 1]   = rms;
+
+      if (histCount >= SETTLE_FRAMES) {
+        float tmp[SETTLE_FRAMES];
+        float lo = 1e9f, hi = -1e9f, peak = 0.0f;
+        for (int i = 0; i < SETTLE_FRAMES; i++) {
+          tmp[i] = pitchHist[i];
+          if (tmp[i] < lo) lo = tmp[i];
+          if (tmp[i] > hi) hi = tmp[i];
+          if (rmsHist[i] > peak) peak = rmsHist[i];
+        }
+
+        // only act once the pitch has stopped sliding
+        if (hi - lo <= SETTLE_SPREAD) {
+          for (int i = 1; i < SETTLE_FRAMES; i++) {           // insertion sort for the median
+            float v = tmp[i];
+            int j = i - 1;
+            while (j >= 0 && tmp[j] > v) { tmp[j + 1] = tmp[j]; j--; }
+            tmp[j + 1] = v;
+          }
+          float med = tmp[SETTLE_FRAMES / 2];
+
+          int target = (activeNote >= 0 && fabsf(med - activeNote) < HYSTERESIS)
+                         ? activeNote : (int)lroundf(med);
+
+          if (target != activeNote) {
+            midiNoteOff();
+            float db = 20.0f * log10f(peak + 1e-9f);
+            int vel = constrain((int)lroundf(20.0f + (db + 48.0f) * (107.0f / 30.0f)), 20, 127);
+            midiNoteOn(target, vel);
+            activeNote = target;
+          }
+        }
+      }
+    } else {
+      histCount = 0;
+      if (unvoicedRun < 1000) unvoicedRun++;
+      if (activeNote >= 0 && unvoicedRun >= RELEASE_FRAMES) {
+        midiNoteOff();
+        activeNote = -1;
+      }
+    }
+
+    // muting live output mid-note must not cut the recorded note
+    if (!midiEnabled && midiSounding) midiSendOff();
+
+    UiState s;
+    s.note  = activeNote;
+    s.freq  = voiced ? freq : 0;
+    s.cents = (activeNote >= 0 && voiced) ? constrain((midiF - activeNote) * 100.0f, -50.0f, 50.0f) : 0;
+    s.conf  = conf;
+    portENTER_CRITICAL(&uiMux);
+    ui = s;
+    portEXIT_CRITICAL(&uiMux);
+  }
+}
+
+// ---------------- UI drawing ----------------
+void drawUi(const UiState& s, bool recording) {
+  char buf[24];
+  display.clearDisplay();
+  display.setTextColor(SSD1306_WHITE);
+  display.setTextSize(1);
+
+  // top line
+  if (recording) {
+    display.fillCircle(4, 3, 3, SSD1306_WHITE);                   // recording dot
+    uint32_t sec = (millis() - recStartMs) / 1000;
+    display.setCursor(11, 0);
+    display.printf("%u:%02u", (unsigned)(sec / 60), (unsigned)(sec % 60));
+  } else {
+    display.setCursor(0, 0);
+    if (s.note >= 0) display.printf("MIDI %d", s.note); else display.print("MIDI --");
+  }
+  if (s.note >= 0 && s.freq > 0) { display.setCursor(50, 0); display.printf("%.1fHz", s.freq); }
+  display.setCursor(104, 0);
+  display.print(midiEnabled ? "ON" : "OFF");
+
+  // big note name + cents
+  display.setTextSize(3);
+  display.setCursor(0, 12);
+  if (s.note >= 0) { noteName(s.note, buf, sizeof buf); display.print(buf); }
+  else display.print("--");
+
+  if (s.note >= 0) {
+    display.setTextSize(2);
+    display.setCursor(78, 14);
+    display.printf("%+d", (int)lroundf(s.cents));
+    display.setTextSize(1);
+    display.setCursor(78, 32);
+    if (recording) display.printf("MIDI %d", s.note); else display.print("cents");
+  }
+
+  // tuning meter
+  display.setTextSize(1);
+  display.setCursor(2, 42);   display.print("-");
+  display.setCursor(120, 42); display.print("+");
+  display.drawFastHLine(14, 46, 101, SSD1306_WHITE);
+  display.drawFastVLine(14, 42, 9, SSD1306_WHITE);
+  display.drawFastVLine(64, 42, 9, SSD1306_WHITE);
+  display.drawFastVLine(114, 42, 9, SSD1306_WHITE);
+  if (s.note >= 0) {
+    int x = 64 + (int)lroundf(s.cents);
+    display.fillRect(x - 2, 41, 5, 11, SSD1306_WHITE);
+  }
+
+  // confidence bar
+  display.setCursor(0, 55);
+  display.print("CONF");
+  display.drawRect(30, 54, 70, 9, SSD1306_WHITE);
+  int w = (int)lroundf(s.conf * 66.0f);
+  if (w > 0) display.fillRect(32, 56, w, 5, SSD1306_WHITE);
+  display.setCursor(104, 55);
+  display.printf("%3d%%", (int)lroundf(s.conf * 100.0f));
+
+  display.display();
+}
+
+void drawCountdown(int secs) {
+  display.clearDisplay();
+  display.setTextColor(SSD1306_WHITE);
+  display.setTextSize(1);
+  display.setCursor(7, 0);
+  display.print("Recording starts in");
+  display.setTextSize(6);
+  display.setCursor(46, 14);
+  display.print(secs);
+  display.display();
+}
+
+void drawMessage(const char* l1, const char* l2, const char* l3) {
+  display.clearDisplay();
+  display.setTextColor(SSD1306_WHITE);
+  display.setTextSize(2);
+  display.setCursor(0, 4);
+  display.print(l1);
+  display.setTextSize(1);
+  display.setCursor(0, 32);
+  display.print(l2);
+  display.setCursor(0, 46);
+  display.print(l3);
+  display.display();
+}
+
+// ---------------- UI task (core 0): button, recording state machine, display ----------------
+void uiTask(void*) {
+  bool lastBtn = digitalRead(PIN_BUTTON);
+  uint32_t pressStart = 0;
+  bool longHandled = lastBtn == LOW;       // ignore a button already held at boot
+  uint32_t countdownStart = 0;
+  uint32_t msgUntil = 0;
+  char m1[16] = "", m2[32] = "", m3[32] = "";
+
+  for (;;) {
+    uint32_t now = millis();
+    bool b = digitalRead(PIN_BUTTON);
+    bool shortPress = false, longPress = false;
+
+    if (lastBtn == HIGH && b == LOW) { pressStart = now; longHandled = false; }
+    if (b == LOW && !longHandled && now - pressStart >= LONG_PRESS_MS) { longHandled = true; longPress = true; }
+    if (lastBtn == LOW && b == HIGH && !longHandled) shortPress = true;
+    lastBtn = b;
+
+    switch (recState) {
+      case REC_IDLE:
+        if (longPress) {
+          if (!sdReady) sdReady = mountSD();
+          if (!sdReady) {
+            snprintf(m1, sizeof m1, "NO SD CARD");
+            snprintf(m2, sizeof m2, "Insert a FAT32 card");
+            snprintf(m3, sizeof m3, "and try again");
+            msgUntil = now + MESSAGE_MS;
+          } else {
+            msgUntil = 0;
+            countdownStart = now;
+            recState = REC_COUNTDOWN;
+          }
+        } else if (shortPress) {
+          midiEnabled = !midiEnabled;
+        }
+        break;
+
+      case REC_COUNTDOWN:
+        if (shortPress) {
+          recState = REC_IDLE;                                   // cancel
+        } else if (now - countdownStart >= COUNTDOWN_MS) {
+          startRecording();
+        }
+        break;
+
+      case REC_RECORDING:
+        if (shortPress || evtCount >= MAX_EVENTS - 2) {
+          stopRecording();
+          drawMessage("SAVING...", "", "");
+          char fname[16] = "";
+          int nNotes = 0;
+          uint32_t durMs = 0;
+          SaveResult r = saveMidi(fname, sizeof fname, nNotes, durMs);
+          switch (r) {
+            case SAVE_OK: {
+              uint32_t sec = durMs / 1000;
+              snprintf(m1, sizeof m1, "SAVED!");
+              snprintf(m2, sizeof m2, "%s", fname);
+              snprintf(m3, sizeof m3, "%d notes  %u:%02u", nNotes, (unsigned)(sec / 60), (unsigned)(sec % 60));
+              break;
+            }
+            case SAVE_EMPTY:
+              snprintf(m1, sizeof m1, "NO NOTES");
+              snprintf(m2, sizeof m2, "Nothing was sung,");
+              snprintf(m3, sizeof m3, "no file written");
+              break;
+            case SAVE_NO_SD:
+              snprintf(m1, sizeof m1, "NO SD CARD");
+              snprintf(m2, sizeof m2, "Take was LOST");
+              snprintf(m3, sizeof m3, "");
+              break;
+            default:
+              snprintf(m1, sizeof m1, "SAVE FAILED");
+              snprintf(m2, sizeof m2, "Check the SD card");
+              snprintf(m3, sizeof m3, "");
+              break;
+          }
+          msgUntil = millis() + MESSAGE_MS;
+          recState = REC_IDLE;
+        }
+        break;
+
+      default:
+        break;
+    }
+
+    // draw
+    if (recState == REC_COUNTDOWN) {
+      int secs = 3 - (int)((now - countdownStart) / 1000);
+      if (secs < 1) secs = 1;
+      drawCountdown(secs);
+    } else if (recState == REC_IDLE && millis() < msgUntil) {
+      drawMessage(m1, m2, m3);
+    } else {
+      UiState s;
+      portENTER_CRITICAL(&uiMux);
+      s = ui;
+      portEXIT_CRITICAL(&uiMux);
+      drawUi(s, recState == REC_RECORDING);
+    }
+    vTaskDelay(pdMS_TO_TICKS(10));
+  }
+}
+
+// ---------------- Arduino entry points ----------------
+void setup() {
+  Serial.begin(115200);
+  pinMode(PIN_BUTTON, INPUT_PULLUP);
+
+#if USE_USB_MIDI
+  MIDI.begin();
+  USB.begin();
+#endif
+
+  Wire.begin(PIN_OLED_SDA, PIN_OLED_SCL);
+  Wire.setClock(400000);
+  if (!display.begin(SSD1306_SWITCHCAPVCC, 0x3C)) {
+    Serial.println("OLED not found - check wiring / address / SDA pin");
+  }
+  display.clearDisplay();
+  display.display();
+
+  sdReady = mountSD();
+  Serial.println(sdReady ? "SD card ready" : "SD card NOT found (will retry when recording)");
+
+  i2s.setPins(PIN_MIC_BCLK, PIN_MIC_WS, -1, PIN_MIC_DIN);
+  if (!i2s.begin(I2S_MODE_STD, SAMPLE_RATE, I2S_DATA_BIT_WIDTH_32BIT,
+                 I2S_SLOT_MODE_MONO, I2S_STD_SLOT_LEFT)) {
+    Serial.println("I2S init failed");
+    while (true) delay(1000);
+  }
+
+  xTaskCreatePinnedToCore(audioTask, "audio", 8192, nullptr, 3, nullptr, 1);
+  xTaskCreatePinnedToCore(uiTask,    "ui",    6144, nullptr, 1, nullptr, 0);
+}
+
+void loop() {
+  vTaskDelete(nullptr);
+}
