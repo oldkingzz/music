@@ -26,7 +26,21 @@
 // servo_ramp, power_policy, config) are unchanged; the pin map is in config.h. To move a pin, edit config.h:
 // audio_io.cpp is compiled on its own and reads the pins from there.
 //
-// Build (no upload):   sh tools/build_firmware.sh duet_base_audio
+// STAND-IN AUDIO (DUET_AUDIO_STANDIN, default 1 until the audio hardware is wired). The firmware behaves as if a
+// microphone and a speaker were attached, and drives no pin outside the chip:
+//   * no I2S driver is installed and no GPIO from config.h is configured or driven (I2S pins, AMP_SD, PWR_EN,
+//     servo, GPIO14 LED); only the board's own RGB LED is used, as in sketch 1;
+//   * the audio task, once the host turns audio on, runs every 10 ms on an absolute FreeRTOS tick schedule
+//     (vTaskDelayUntil): it pops one frame from the same jitter buffer into the stand-in speaker (counts frames,
+//     keeps a CRC-32 and the peak) and, while the mic gate is open, queues one frame of the stand-in microphone
+//     (a known melody, DuetCore duet_standin.h; host/duet_host/fake_audio.py makes the same numbers). The
+//     generator and the MIC_AUDIO seq restart at 0 each time the mic gate opens;
+//   * SERVO commands are accepted and the speed ramp runs in software, with no output.
+// DUET_AUDIO_STANDIN=0 is the real hardware build: everything as described above this paragraph.
+// INFO says audio=standin or audio=i2s; AUDIO_QUERY answers AUDIO_STATS (counters) in both builds.
+//
+// Build (no upload):   sh tools/build_firmware.sh duet_base_audio          (stand-in, the default)
+//                      sh tools/build_firmware.sh duet_base_audio i2s      (DUET_AUDIO_STANDIN=0, real audio)
 // =====================================================================================
 #include <Arduino.h>
 
@@ -50,7 +64,13 @@
 #endif
 
 #define FW_NAME "duet_base_audio"
-#define FW_VERSION "0.1.0"
+#define FW_VERSION "0.2.0"
+
+// 1 = stand-in microphone and speaker, no audio pin driven (see the top of this file). 0 = real I2S audio.
+// Override from the build:  --build-property "compiler.cpp.extra_flags=-DDUET_AUDIO_STANDIN=0"
+#ifndef DUET_AUDIO_STANDIN
+#define DUET_AUDIO_STANDIN 1
+#endif
 
 // On-board RGB LED, as in sketch 1. GPIO48 on the generic ESP32-S3 dev module; -1 = no LED.
 #ifndef DUET_RGB_GPIO
@@ -77,9 +97,14 @@ static const size_t MIC_FRAME_BYTES = HEADER_LEN + FRAME_SAMPLES * 2 + 1;  // 48
 
 // ------------------------------------------------------------------ shared state
 static Engine g_engine;  // used by the USB RX task only
-static AudioIO g_audio;  // filled by audio_begin on core 0, then used by the mic and speaker tasks
 static JitterBuffer g_jb;  // single producer (USB RX task) / single consumer (speaker task)
+#if DUET_AUDIO_STANDIN
+static StandinSpeaker g_spk;  // audio task only (written); its counters are read by the USB RX task
+static_assert(STANDIN_FRAME == FRAME_SAMPLES, "DuetCore stand-in frame must equal FRAME_SAMPLES");
+#else
+static AudioIO g_audio;  // filled by audio_begin on core 0, then used by the mic and speaker tasks
 static Upsampler2x g_up;   // speaker task only
+#endif
 
 struct MicItem {  // mic task -> USB TX task
   uint8_t seq;
@@ -111,6 +136,10 @@ static std::atomic<uint32_t> g_host_frames{0};   // valid host frames so far (dr
 static std::atomic<uint32_t> g_last_spk_ms{0};   // last accepted SPK_AUDIO frame
 static std::atomic<bool> g_host_seen{false};
 static std::atomic<bool> g_spk_seen{false};
+static std::atomic<uint32_t> g_mic_sent{0};     // MIC_AUDIO frames written to USB (USB TX task)
+static std::atomic<uint32_t> g_spk_rx{0};       // SPK_AUDIO frames pushed into the jitter buffer (USB RX task)
+static std::atomic<uint32_t> g_spk_refused{0};  // SPK_AUDIO frames that arrived with the gate off or audio not up
+static std::atomic<uint32_t> g_mic_epoch{0};    // +1 each time the mic gate opens (USB RX task)
 // Audio state. g_mic_on / g_spk_on are written by the USB RX task only (AUDIO_CTRL).
 // g_audio_ready / g_audio_err are written by the audio task only.
 static std::atomic<bool> g_mic_on{false};
@@ -135,6 +164,50 @@ static void post_frame(uint8_t type, uint8_t seq, const uint8_t* p, uint16_t len
 }
 
 // ------------------------------------------------------------------ core 0: audio
+#if DUET_AUDIO_STANDIN
+#if (configTICK_RATE_HZ % 100) != 0
+#error "the stand-in audio needs 10 ms to be a whole number of FreeRTOS ticks"
+#endif
+// Stand-in audio task (core 0). Sleeps until the first AUDIO_CTRL that asks for audio, as the real one does, but
+// installs nothing. Then every 10 ms on an absolute tick schedule (vTaskDelayUntil never drifts; if it is ever
+// late it runs the missed periods back to back): the speaker takes one frame out of the jitter buffer (audio or
+// silence), and, while the mic gate is open, the microphone makes one frame for the host. The FreeRTOS tick
+// comes from the chip's system timer, i.e. the crystal.
+static void audio_task(void*) {
+  ulTaskNotifyTake(pdTRUE, portMAX_DELAY);
+  g_audio_ready.store(true);
+
+  static MicItem item;
+  static int16_t frame[FRAME_SAMPLES];
+  uint8_t seq = 0;
+  uint32_t pos = 0;  // next stand-in sample index
+  uint32_t epoch = g_mic_epoch.load();
+  TickType_t wake = xTaskGetTickCount();
+  for (;;) {
+    vTaskDelayUntil(&wake, pdMS_TO_TICKS(10));
+    if (g_jb.pop(frame)) {
+      g_spk.play(frame);
+    } else {
+      g_spk.silence();
+    }
+    // Read the gate before the epoch: the RX task bumps the epoch before it opens the gate, so an open gate
+    // always comes with its new epoch.
+    const bool mic_on = g_mic_on.load();
+    const uint32_t ep = g_mic_epoch.load();
+    if (ep != epoch) {  // the mic gate opened again: the melody and the seq start over
+      epoch = ep;
+      pos = 0;
+      seq = 0;
+    }
+    if (!mic_on) continue;
+    standin_mic_fill(pos, item.pcm, FRAME_SAMPLES);
+    pos += FRAME_SAMPLES;
+    item.seq = seq++;
+    if (xQueueSend(g_mic_q, &item, 0) != pdTRUE) g_mic_q_drop++;
+    kick_tx();
+  }
+}
+#else
 // Speaker task (core 0, created by the audio task after I2S is up): pops one 10 ms frame (audio or faded
 // silence), upsamples x2 and writes it to I2S1. The blocking write is what paces it at exactly 48 kHz.
 static void spk_task(void*) {
@@ -177,6 +250,7 @@ static void audio_task(void*) {
     kick_tx();
   }
 }
+#endif  // DUET_AUDIO_STANDIN
 
 // ------------------------------------------------------------------ core 1: USB
 // The engine's writer. Runs in the USB RX task (the engine runs there): copies the finished frame into the
@@ -208,12 +282,13 @@ static size_t append(char* buf, size_t cap, size_t n, const char* text) {
 
 static size_t chip_info(char* buf, size_t cap, void*) {
   if (cap == 0) return 0;
-  char tmp[48];
+  char tmp[64];
   buf[0] = 0;
   size_t n = 0;
   snprintf(tmp, sizeof(tmp), "flash=%u;psram=%u", (unsigned)ESP.getFlashChipSize(), (unsigned)ESP.getPsramSize());
   n = append(buf, cap, n, tmp);
-  snprintf(tmp, sizeof(tmp), ";audio=%d;audio_err=%d;mic=%d;spk=%d", g_audio_ready.load() ? 1 : 0,
+  n = append(buf, cap, n, DUET_AUDIO_STANDIN ? ";audio=standin" : ";audio=i2s");  // which audio the host talks to
+  snprintf(tmp, sizeof(tmp), ";audio_ready=%d;audio_err=%d;mic=%d;spk=%d", g_audio_ready.load() ? 1 : 0,
            g_audio_err.load(), g_mic_on.load() ? 1 : 0, g_spk_on.load() ? 1 : 0);
   n = append(buf, cap, n, tmp);
   snprintf(tmp, sizeof(tmp), ";chip=%s;rev=%u;cpu_mhz=%u", ESP.getChipModel(), (unsigned)ESP.getChipRevision(),
@@ -235,17 +310,49 @@ static bool s_have_spk_seq = false;  // USB RX task only
 static uint8_t s_last_spk_seq = 0;   // USB RX task only
 static bool s_audio_started = false; // USB RX task only: one-shot latch, never retried
 
+// AUDIO_STATS reply (layout in duet_protocol.h). Runs in the USB RX task, like every engine reply.
+static void send_audio_stats(uint8_t seq) {
+  AudioStats s;
+  memset(&s, 0, sizeof(s));
+  s.mode = DUET_AUDIO_STANDIN ? AUDIO_MODE_STANDIN : AUDIO_MODE_I2S;
+  s.flags = (uint8_t)((g_mic_on.load() ? AS_MIC_ON : 0) | (g_spk_on.load() ? AS_SPK_ON : 0) |
+                      (g_audio_ready.load() ? AS_RUNNING : 0) | (DUET_AUDIO_STANDIN ? AS_SPK_SUMS : 0));
+  s.spk_level = g_jb.level();
+  s.spk_state = (uint8_t)g_jb.state();  // a one-byte read of the speaker side's state: informational
+  s.mic_sent = g_mic_sent.load();
+  s.mic_dropped = mic_overruns();
+#if DUET_AUDIO_STANDIN
+  s.spk_played = g_spk.frames.load(std::memory_order_acquire);  // first: the CRC read after it is at least as new
+  s.spk_silent = g_spk.silent.load();
+  s.spk_crc = g_spk.crc.load();
+  s.spk_peak = (uint16_t)g_spk.peak.load();
+#else
+  s.spk_played = g_jb.frames_played.load();  // the real speaker keeps no checksum (AS_SPK_SUMS clear)
+#endif
+  s.spk_rx = g_spk_rx.load();
+  s.spk_underruns = g_jb.underruns.load();
+  s.spk_dropped = g_jb.overflows.load() + g_jb.trims.load() + g_spk_refused.load();
+  s.spk_seq_gaps = g_spk_seq_gaps.load();
+  s.dev_us = (uint32_t)micros();
+  uint8_t p[AUDIO_STATS_LEN];
+  pack_audio_stats(s, p);
+  g_engine.send(T_AUDIO_STATS, seq, p, AUDIO_STATS_LEN);
+}
+
 static void on_other_frame(const Frame& f, void*) {
   switch (f.type) {
     case T_SPK_AUDIO: {
-      // Accepted only while the speaker gate is on and I2S is running; otherwise dropped.
-      if (!g_spk_on.load() || !g_audio_ready.load()) break;
+      // Accepted only while the speaker gate is on and audio is running; otherwise dropped (and counted).
+      if (!g_spk_on.load() || !g_audio_ready.load()) {
+        g_spk_refused++;
+        break;
+      }
       if (s_have_spk_seq && (uint8_t)(s_last_spk_seq + 1) != f.seq) g_spk_seq_gaps++;
       s_have_spk_seq = true;
       s_last_spk_seq = f.seq;
       int16_t pcm[FRAME_SAMPLES];
       memcpy(pcm, f.payload, sizeof(pcm));  // little-endian on both ends
-      g_jb.push(pcm);
+      if (g_jb.push(pcm)) g_spk_rx++;
       g_last_spk_ms.store(millis());
       g_spk_seen.store(true);
       break;
@@ -260,6 +367,7 @@ static void on_other_frame(const Frame& f, void*) {
       const uint8_t flags = f.payload[0];
       const bool spk = (flags & AC_SPK) != 0;
       if (spk && !g_spk_on.load()) s_have_spk_seq = false;  // new stream: do not count the pause as a gap
+      if ((flags & AC_MIC) && !g_mic_on.load()) g_mic_epoch++;  // before the gate opens (see audio_task)
       g_mic_on.store((flags & AC_MIC) != 0);
       g_spk_on.store(spk);
       if ((flags & (AC_MIC | AC_SPK)) && !s_audio_started) {
@@ -268,6 +376,9 @@ static void on_other_frame(const Frame& f, void*) {
       }
       break;
     }
+    case T_AUDIO_QUERY:
+      send_audio_stats(f.seq);
+      break;
     default:
       break;  // dev->host types arriving here are ignored
   }
@@ -324,7 +435,8 @@ static void usb_tx_task(void*) {
     while (xQueueReceive(g_mic_q, &item, 0) == pdTRUE) {
       if (g_mic_on.load()) {  // frames queued just before the gate closed are discarded
         const size_t n = encode(T_MIC_AUDIO, item.seq, (const uint8_t*)item.pcm, FRAME_SAMPLES * 2, out);
-        if (!write_frame(out, n)) g_mic_usb_drop++;
+        if (write_frame(out, n)) g_mic_sent++;
+        else g_mic_usb_drop++;
       }
       send_replies();
     }
@@ -350,15 +462,18 @@ static void led_rgb(uint8_t r, uint8_t g, uint8_t b) {
 
 // Control task (core 1, every 10 ms): servo ramp, power rail, GPIO14 LED, on-board RGB LED, amplifier enable,
 // STATUS. The only task that touches these pins, so none of them needs a lock.
+// Stand-in build: only the on-board RGB LED and STATUS; the servo ramp runs without output.
 static void control_task(void*) {
   ServoRamp servo;
+#if !DUET_AUDIO_STANDIN
   RailPolicy rail;
   bool rail_pin = false;
   bool servo_attached = false;
   uint32_t last_duty = 0xFFFFFFFF;
+  bool amp_on = false;
+#endif
   uint8_t led_state = 0;
   bool led_cmd_seen = false;
-  bool amp_on = false;
   uint8_t seq_status = 0, seq_diag = 0;
   uint32_t tick = 0;
   TickType_t wake = xTaskGetTickCount();
@@ -378,6 +493,10 @@ static void control_task(void*) {
       }
     }
 
+#if DUET_AUDIO_STANDIN
+    // ---- stand-in: no rail, no servo pulses, no amplifier pin. The ramp still moves, in software only.
+    if (servo.active()) (void)servo.tick();
+#else
     // ---- servo + amp rail (PWR_EN, PCB only): off until the host has spoken, see power_policy.h
     rail.tick(now, usb_bus_active(), g_host_frames.load());
     if (rail.rail_on() != rail_pin) {
@@ -403,6 +522,7 @@ static void control_task(void*) {
       digitalWrite(PIN_SERVO, LOW);
       servo_attached = false;
     }
+#endif  // DUET_AUDIO_STANDIN
 
     // ---- LEDs. GPIO14 as in duet_io; the on-board RGB LED as in sketch 1, plus red for an audio error.
     const bool host_alive = g_host_seen.load() && (now - g_last_host_ms.load() < HOST_TIMEOUT_MS);
@@ -419,6 +539,9 @@ static void control_task(void*) {
       if (host_alive) led_rgb(0, 0, 12);  // steady dim blue: host is talking
       else led_rgb(0, 0, led ? 12 : 0);   // blue blip each second: alive, no host
     }
+#if DUET_AUDIO_STANDIN
+    (void)led;  // GPIO14 is not driven in the stand-in build
+#else
     digitalWrite(PIN_LED, led ? HIGH : LOW);
 
     // ---- amplifier enable: on while accepted speaker frames are arriving, off after 2 s idle or at once
@@ -430,6 +553,7 @@ static void control_task(void*) {
       digitalWrite(PIN_AMP_SD, want_amp ? HIGH : LOW);
       amp_on = want_amp;
     }
+#endif  // DUET_AUDIO_STANDIN
 
     // ---- STATUS every 100 ms, only while the host has a stream on
     const bool streaming = g_mic_on.load() || g_spk_on.load();
@@ -463,12 +587,14 @@ static void control_task(void*) {
 
 // ------------------------------------------------------------------ Arduino entry points
 void setup() {
+#if !DUET_AUDIO_STANDIN
   pinMode(PIN_PWR_EN, OUTPUT);
   digitalWrite(PIN_PWR_EN, LOW);  // servo + amp rail off until the host has spoken (power_policy.h)
   pinMode(PIN_AMP_SD, OUTPUT);
   digitalWrite(PIN_AMP_SD, LOW);  // amp off until the host turns the speaker on and audio arrives
   pinMode(PIN_LED, OUTPUT);
   digitalWrite(PIN_LED, LOW);
+#endif  // stand-in: no pin from config.h is configured or driven
 
   esp_log_level_set("*", ESP_LOG_NONE);  // keep the USB stream binary-only
   Serial.setRxBufferSize(USB_RX_BUF_BYTES);

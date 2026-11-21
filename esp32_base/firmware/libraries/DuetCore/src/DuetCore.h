@@ -4,3 +4,4 @@
 #include "duet_harmonizer.h"
 #include "duet_notes.h"
 #include "duet_protocol.h"
+#include "duet_standin.h"

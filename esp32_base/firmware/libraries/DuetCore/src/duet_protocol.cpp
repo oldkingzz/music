@@ -23,6 +23,8 @@ bool len_range(uint8_t type, uint16_t* min_len, uint16_t* max_len) {
     case T_NOTE_OUT: lo = hi = NOTE_OUT_LEN; break;
     case T_LOG: lo = 1; hi = MAX_TEXT; break;
     case T_CONFIG_ACK: lo = hi = CONFIG_ACK_LEN; break;
+    case T_AUDIO_QUERY: lo = hi = 0; break;
+    case T_AUDIO_STATS: lo = hi = AUDIO_STATS_LEN; break;
     default: return false;
   }
   if (min_len) *min_len = lo;
@@ -34,6 +36,45 @@ uint8_t checksum(uint8_t type, uint8_t seq, uint16_t len, const uint8_t* payload
   uint32_t s = (uint32_t)type + seq + (len & 0xFF) + (len >> 8);
   for (uint16_t i = 0; i < len; ++i) s += payload[i];
   return (uint8_t)s;
+}
+
+void pack_audio_stats(const AudioStats& s, uint8_t* out) {
+  out[0] = s.mode;
+  out[1] = s.flags;
+  out[2] = s.spk_level;
+  out[3] = s.spk_state;
+  put_u32(out + 4, s.mic_sent);
+  put_u32(out + 8, s.mic_dropped);
+  put_u32(out + 12, s.spk_rx);
+  put_u32(out + 16, s.spk_played);
+  put_u32(out + 20, s.spk_silent);
+  put_u32(out + 24, s.spk_underruns);
+  put_u32(out + 28, s.spk_dropped);
+  put_u32(out + 32, s.spk_seq_gaps);
+  put_u32(out + 36, s.spk_crc);
+  put_u16(out + 40, s.spk_peak);
+  put_u16(out + 42, 0);
+  put_u32(out + 44, s.dev_us);
+}
+
+bool parse_audio_stats(const uint8_t* p, uint16_t len, AudioStats* s) {
+  if (len != AUDIO_STATS_LEN || !s) return false;
+  s->mode = p[0];
+  s->flags = p[1];
+  s->spk_level = p[2];
+  s->spk_state = p[3];
+  s->mic_sent = get_u32(p + 4);
+  s->mic_dropped = get_u32(p + 8);
+  s->spk_rx = get_u32(p + 12);
+  s->spk_played = get_u32(p + 16);
+  s->spk_silent = get_u32(p + 20);
+  s->spk_underruns = get_u32(p + 24);
+  s->spk_dropped = get_u32(p + 28);
+  s->spk_seq_gaps = get_u32(p + 32);
+  s->spk_crc = get_u32(p + 36);
+  s->spk_peak = get_u16(p + 40);
+  s->dev_us = get_u32(p + 44);
+  return true;
 }
 
 size_t encode(uint8_t type, uint8_t seq, const uint8_t* payload, uint16_t len, uint8_t* out) {

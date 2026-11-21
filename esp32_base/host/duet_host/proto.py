@@ -7,7 +7,8 @@ This file mirrors firmware/libraries/DuetCore/src/duet_protocol.{h,cpp} and duet
 host/tests/test_host.py checks that by talking to the C++ core compiled for the Mac (board_sim).
 
 Version 1 (duet_v0/docs/PLAN.md): audio, servo, LED, ping, status. Version 2 keeps those codes and lengths
-and adds HELLO/INFO, CONFIG/CONFIG_ACK, NOTE_IN/NOTE_OUT, LOG and AUDIO_CTRL.
+and adds HELLO/INFO, CONFIG/CONFIG_ACK, NOTE_IN/NOTE_OUT, LOG and AUDIO_CTRL, and (2026-11-21)
+AUDIO_QUERY/AUDIO_STATS, the device's audio counters.
 """
 from __future__ import annotations
 
@@ -37,6 +38,7 @@ class T(enum.IntEnum):
     CONFIG = 0x14       # host->dev plugin u8, tonic u8, M u8, flags u8, K u16, n_pos u16, pos[n_pos] u8
     NOTE_IN = 0x15      # host->dev i u16, midi u8, flags u8 (bit0: prev_dur valid), onset f32, prev_dur f32
     AUDIO_CTRL = 0x16   # host->dev flags u8 (bit0: send MIC_AUDIO, bit1: play SPK_AUDIO)
+    AUDIO_QUERY = 0x17  # host->dev empty; the audio firmware answers AUDIO_STATS (same seq)
     STATUS = 0x20       # dev->host spk_buffer_frames u8, mic_overruns u16, spk_underruns u16
     DIAG = 0x21         # dev->host 8 x u16 (optional)
     PONG = 0x22         # dev->host u32 echoed host us, u32 device micros()
@@ -44,6 +46,7 @@ class T(enum.IntEnum):
     NOTE_OUT = 0x24     # dev->host i u16, midi i8 (-1 = silent), status u8, compute_us u32
     LOG = 0x25          # dev->host ASCII text
     CONFIG_ACK = 0x26   # dev->host status u8 (0 = ok), plugin u8, n_pos u16
+    AUDIO_STATS = 0x27  # dev->host 48 bytes of audio counters (layout: AUDIO_STATS_FIELDS)
 
 
 # (min, max) payload length per type; mirrors duet::len_range().
@@ -52,12 +55,21 @@ LEN_RANGE = {
     T.STATUS: (5, 5), T.DIAG: (16, 16), T.PONG: (8, 8),
     T.HELLO: (0, 0), T.CONFIG: (CONFIG_HEADER_LEN, CONFIG_HEADER_LEN + MAX_POS), T.NOTE_IN: (12, 12),
     T.AUDIO_CTRL: (1, 1), T.INFO: (1, MAX_TEXT), T.NOTE_OUT: (8, 8), T.LOG: (1, MAX_TEXT),
-    T.CONFIG_ACK: (4, 4),
+    T.CONFIG_ACK: (4, 4), T.AUDIO_QUERY: (0, 0), T.AUDIO_STATS: (48, 48),
 }
 _RANGE_BY_CODE = {int(k): v for k, v in LEN_RANGE.items()}
 
 ACK_OK, ACK_UNKNOWN_PLUGIN, ACK_BAD_CONFIG = 0, 1, 2
 NOTE_OK, NOTE_NOT_CONFIGURED = 0, 1
+
+# AUDIO_STATS (mirrors duet::AudioStats in duet_protocol.h). Counters are u32 since boot and wrap.
+AUDIO_STATS_FORMAT = "<BBBBIIIIIIIIIHHI"
+AUDIO_STATS_FIELDS = ("mode", "flags", "spk_level", "spk_state", "mic_sent", "mic_dropped", "spk_rx", "spk_played",
+                      "spk_silent", "spk_underruns", "spk_dropped", "spk_seq_gaps", "spk_crc", "spk_peak",
+                      "reserved", "dev_us")
+AUDIO_MODE_NONE, AUDIO_MODE_I2S, AUDIO_MODE_STANDIN = 0, 1, 2
+AUDIO_MODE_NAMES = {AUDIO_MODE_NONE: "none", AUDIO_MODE_I2S: "i2s", AUDIO_MODE_STANDIN: "standin"}
+AS_MIC_ON, AS_SPK_ON, AS_RUNNING, AS_SPK_SUMS = 0x01, 0x02, 0x04, 0x08
 
 
 def checksum(type_: int, seq: int, payload: bytes) -> int:
@@ -204,6 +216,20 @@ def spk_audio(seq: int, pcm_bytes: bytes) -> bytes:
     return encode(T.SPK_AUDIO, seq, pcm_bytes)
 
 
+def audio_query(seq: int) -> bytes:
+    return encode(T.AUDIO_QUERY, seq)
+
+
+def decode_audio_stats(p: bytes) -> dict:
+    d = dict(zip(AUDIO_STATS_FIELDS, struct.unpack(AUDIO_STATS_FORMAT, p)))
+    d.pop("reserved")
+    f = d["flags"]
+    d["mode_name"] = AUDIO_MODE_NAMES.get(d["mode"], str(d["mode"]))
+    d["mic_on"], d["spk_on"] = bool(f & AS_MIC_ON), bool(f & AS_SPK_ON)
+    d["running"], d["spk_sums"] = bool(f & AS_RUNNING), bool(f & AS_SPK_SUMS)
+    return d
+
+
 # ------------------------------------------------------------------ decoding (device -> host)
 
 def decode_payload(fr: Frame):
@@ -235,6 +261,8 @@ def decode_payload(fr: Frame):
         keys = ("bad_checksum", "bad_header", "spk_overflows", "spk_seq_gaps", "spk_trims",
                 "mic_dma_overflows", "mic_queue_usb_drops", "audio_init_err")
         return dict(zip(keys, struct.unpack("<8H", p)))
+    if t == T.AUDIO_STATS:
+        return decode_audio_stats(p)
     return p
 
 

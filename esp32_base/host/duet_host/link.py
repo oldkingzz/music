@@ -101,10 +101,11 @@ class SerialTransport:
 class SimTransport:
     kind = "sim"
 
-    def __init__(self, exe: Path = SIM_EXE):
+    def __init__(self, exe: Path = SIM_EXE, args: Sequence[str] = ()):
+        """args: simulator options, e.g. ["--no-audio"] to behave like sketch 1 (no audio at all)."""
         if not Path(exe).exists():
             raise LinkError(f"the simulator is not built: run  sh firmware/host_tests/build_and_test.sh  ({exe})")
-        self.p = subprocess.Popen([str(exe)], stdin=subprocess.PIPE, stdout=subprocess.PIPE, bufsize=0)
+        self.p = subprocess.Popen([str(exe), *args], stdin=subprocess.PIPE, stdout=subprocess.PIPE, bufsize=0)
         self.name = "sim"
 
     def read(self, timeout: float) -> bytes:
@@ -295,6 +296,18 @@ class Link:
 
     def led(self, state: int) -> None:
         self.send(proto.led(self._next_seq(T.LED), state))
+
+    def audio_ctrl(self, mic: bool, spk: bool) -> None:
+        """Open or close the mic gate (MIC_AUDIO frames come) and the speaker gate (SPK_AUDIO frames are played)."""
+        self.send(proto.audio_ctrl(self._next_seq(T.AUDIO_CTRL), mic, spk))
+
+    def audio_stats(self, timeout: float = 1.0) -> dict:
+        """The device's audio counters (AUDIO_QUERY -> AUDIO_STATS). A firmware without audio never answers:
+        then this raises LinkError after timeout."""
+        fr, dt = self._request(T.AUDIO_QUERY, proto.audio_query, T.AUDIO_STATS, timeout)
+        d = proto.decode_audio_stats(fr.payload)
+        d["rtt_us"] = dt * 1e6
+        return d
 
     def stats(self) -> dict:
         s = self.parser.stats

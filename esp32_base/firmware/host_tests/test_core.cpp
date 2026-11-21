@@ -10,6 +10,7 @@
 #include <vector>
 
 #include "DuetCore.h"
+#include "jitter_buffer.h"  // the sketch's own file (firmware/duet_base_audio), compiled unchanged
 
 using namespace duet;
 
@@ -42,7 +43,8 @@ static std::vector<uint8_t> frame(uint8_t type, uint8_t seq, const std::vector<u
 static void test_protocol() {
   // Every type round-trips at its minimum and maximum length, fed whole and byte by byte.
   const uint8_t types[] = {T_MIC_AUDIO, T_SPK_AUDIO, T_SERVO, T_LED, T_PING, T_STATUS, T_DIAG, T_PONG,
-                           T_HELLO, T_CONFIG, T_NOTE_IN, T_AUDIO_CTRL, T_INFO, T_NOTE_OUT, T_LOG, T_CONFIG_ACK};
+                           T_HELLO, T_CONFIG, T_NOTE_IN, T_AUDIO_CTRL, T_INFO, T_NOTE_OUT, T_LOG, T_CONFIG_ACK,
+                           T_AUDIO_QUERY, T_AUDIO_STATS};
   for (uint8_t t : types) {
     uint16_t lo = 0, hi = 0;
     CHECK(len_range(t, &lo, &hi));
@@ -293,6 +295,9 @@ static void test_engine() {
     e.set_passthrough(collect, &passed);
     auto g = talk(e, frame(T_LED, 1, {2}));
     CHECK(g.empty() && passed.size() == 1 && passed[0].type == T_LED && passed[0].payload[0] == 2);
+    // AUDIO_QUERY is not the engine's: it goes to the passthrough (sketch 1 ignores it there: no reply).
+    g = talk(e, frame(T_AUDIO_QUERY, 9, {}));
+    CHECK(g.empty() && passed.size() == 2 && passed[1].type == T_AUDIO_QUERY && passed[1].seq == 9);
     e.set_passthrough(nullptr, nullptr);
   }
   // LOG is truncated to MAX_TEXT.
@@ -318,6 +323,115 @@ static void test_engine() {
     CHECK(g.size() == 1 && g[0].type == T_PONG && g[0].seq == 77);
   }
   CHECK(e.stats().pings == 2 && e.stats().hellos == 1 && e.stats().notes_unconfigured == 1);
+}
+
+// ------------------------------------------------------------------ stand-in audio
+// Golden values come from host/duet_host/fake_audio.py (the Python mirror); host/tests/test_audio.py asserts the
+// same numbers, so both sides agree on every sample of the 8 s loop without any link in between.
+static const uint32_t LOOP_CRC = 0x1f16e13du;  // CRC-32 of samples 0..191999 (int16 LE bytes)
+
+static void test_standin() {
+  // CRC-32 is zlib's: the samples 0x3231 0x3433 0x3635 0x3837 are the bytes "12345678" (little-endian), and
+  // Python's zlib.crc32(b"12345678") is 0x9ae0daaf.
+  {
+    const int16_t s[4] = {0x3231, 0x3433, 0x3635, 0x3837};
+    CHECK(crc32_samples(0, s, 4) == 0x9ae0daafu);
+    CHECK(crc32_samples(crc32_samples(0, s, 2), s + 2, 2) == crc32_samples(0, s, 4));  // it continues
+    CHECK(crc32_samples(0, s, 0) == 0);
+  }
+  // Known samples, the whole loop, the wrap.
+  {
+    std::vector<int16_t> x(STANDIN_LOOP);
+    standin_mic_fill(0, x.data(), x.size());
+    const int16_t first[8] = {0, 16, 63, 136, 230, 340, 463, 593};
+    CHECK(memcmp(x.data(), first, sizeof(first)) == 0);
+    CHECK(x[100] == 9219 && x[1000] == -11476 && x[5000] == -333 && x[12345] == -6028 && x[191999] == 0);
+    int64_t sum = 0;
+    int peak = 0;
+    for (int16_t v : x) {
+      sum += v;
+      peak = abs(v) > peak ? abs(v) : peak;
+    }
+    CHECK(sum == 15116 && peak == 11999);
+    const uint32_t crc = crc32_samples(0, x.data(), x.size());
+    CHECK(crc == LOOP_CRC);
+    if (crc != LOOP_CRC) printf("  stand-in loop CRC 0x%08x, Python says 0x%08x\n", (unsigned)crc, (unsigned)LOOP_CRC);
+    bool wrap = true;
+    for (uint32_t k = 0; k < 1000; ++k) wrap = wrap && standin_mic_sample(STANDIN_LOOP + k) == x[k];
+    CHECK(wrap);
+    // The gap: the last 50 ms of every slot are exactly 0; the sound starts at 0 and is non-zero soon after.
+    uint32_t start = 0;
+    bool gaps = true;
+    for (size_t k = 0; k < STANDIN_NOTES; ++k) {
+      const uint32_t end = start + STANDIN_MELODY[k].slot;
+      for (uint32_t n = end - STANDIN_GAP; n < end; ++n) gaps = gaps && x[n] == 0;
+      gaps = gaps && x[start] == 0 && x[start + 1] != 0;
+      start = end;
+    }
+    CHECK(gaps && start == STANDIN_LOOP);
+  }
+  // Speaker counters.
+  {
+    StandinSpeaker spk;
+    int16_t f[STANDIN_FRAME];
+    standin_mic_fill(240 * 10, f, STANDIN_FRAME);
+    spk.play(f);
+    spk.silence();
+    spk.play(f);
+    uint32_t want = crc32_samples(crc32_samples(0, f, STANDIN_FRAME), f, STANDIN_FRAME);
+    int pk = 0;
+    for (int16_t v : f) pk = abs(v) > pk ? abs(v) : pk;
+    CHECK(spk.frames.load() == 2 && spk.silent.load() == 1 && spk.crc.load() == want && (int)spk.peak.load() == pk);
+    spk.reset();
+    CHECK(spk.frames.load() == 0 && spk.crc.load() == 0 && spk.peak.load() == 0);
+  }
+  // Jitter buffer (the sketch's) -> stand-in speaker, as the board and the simulator run them: one silent frame
+  // first (the fade-in after priming then acts on zeros), nine melody frames; 15 pops.
+  {
+    static JitterBuffer jb;
+    jb.reset();
+    StandinSpeaker spk;
+    std::vector<int16_t> sent(10 * STANDIN_FRAME, 0);
+    standin_mic_fill(0, sent.data() + STANDIN_FRAME, 9 * STANDIN_FRAME);
+    for (int k = 0; k < 10; ++k) CHECK(jb.push(sent.data() + k * STANDIN_FRAME));
+    int16_t out[STANDIN_FRAME];
+    for (int k = 0; k < 15; ++k) {
+      if (jb.pop(out)) spk.play(out);
+      else spk.silence();
+    }
+    CHECK(spk.frames.load() == 10 && spk.silent.load() == 5 && jb.underruns.load() == 1 && jb.trims.load() == 0);
+    CHECK(spk.crc.load() == crc32_samples(0, sent.data(), sent.size()));
+  }
+  // AUDIO_STATS layout.
+  {
+    AudioStats s;
+    s.mode = AUDIO_MODE_STANDIN;
+    s.flags = AS_MIC_ON | AS_RUNNING;
+    s.spk_level = 3;
+    s.spk_state = 1;
+    s.mic_sent = 0x01020304;
+    s.mic_dropped = 5;
+    s.spk_rx = 6;
+    s.spk_played = 7;
+    s.spk_silent = 8;
+    s.spk_underruns = 9;
+    s.spk_dropped = 10;
+    s.spk_seq_gaps = 11;
+    s.spk_crc = 0xDEADBEEF;
+    s.spk_peak = 11999;
+    s.dev_us = 0xA0B0C0D0;
+    uint8_t p[AUDIO_STATS_LEN];
+    memset(p, 0xEE, sizeof(p));
+    pack_audio_stats(s, p);
+    CHECK(p[0] == 2 && p[1] == 5 && p[2] == 3 && p[3] == 1 && get_u32(p + 4) == 0x01020304);
+    CHECK(get_u32(p + 36) == 0xDEADBEEF && get_u16(p + 40) == 11999 && get_u16(p + 42) == 0 &&
+          get_u32(p + 44) == 0xA0B0C0D0);
+    AudioStats r;
+    CHECK(parse_audio_stats(p, AUDIO_STATS_LEN, &r));
+    CHECK(r.mic_sent == s.mic_sent && r.spk_seq_gaps == 11 && r.spk_crc == s.spk_crc && r.dev_us == s.dev_us &&
+          r.spk_peak == 11999 && r.spk_underruns == 9);
+    CHECK(!parse_audio_stats(p, AUDIO_STATS_LEN - 1, &r));
+  }
 }
 
 // ------------------------------------------------------------------ vectors from Python
@@ -378,6 +492,7 @@ static int replay_vectors(const char* path) {
 int main(int argc, char** argv) {
   test_protocol();
   test_engine();
+  test_standin();
   printf("unit tests: %d checks, %d failed\n", g_checks, g_fail);
   int rc = g_fail ? 1 : 0;
   for (int k = 1; k < argc; ++k) rc |= replay_vectors(argv[k]);

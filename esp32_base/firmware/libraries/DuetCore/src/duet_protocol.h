@@ -7,6 +7,8 @@
 // Version 1 is the table in duet_v0/docs/PLAN.md (audio, servo, LED, ping, status). Version 2 keeps every
 // version-1 type code and length, and adds the note path (HELLO/INFO, CONFIG/CONFIG_ACK, NOTE_IN/NOTE_OUT),
 // text logs and AUDIO_CTRL. Types with a variable length are new in version 2.
+// Added within version 2 (2026-11-21): AUDIO_QUERY / AUDIO_STATS, the audio counters. A firmware without audio
+// (sketch 1) parses AUDIO_QUERY and ignores it, so the host sees no reply.
 #pragma once
 #include <stddef.h>
 #include <stdint.h>
@@ -30,10 +32,12 @@ enum : uint8_t {
   T_CONFIG = 0x14,      // host->dev plugin u8, tonic u8, M u8, flags u8, K u16, n_pos u16, pos[n_pos] u8
   T_NOTE_IN = 0x15,     // host->dev i u16, midi u8, flags u8 (bit0: prev_dur valid), onset f32, prev_dur f32
   T_AUDIO_CTRL = 0x16,  // host->dev flags u8 (bit0: send MIC_AUDIO, bit1: play SPK_AUDIO). Audio sketch only.
+  T_AUDIO_QUERY = 0x17, // host->dev empty. The audio sketch (and the simulator) answer AUDIO_STATS, same seq.
   T_INFO = 0x23,        // dev->host ASCII "key=value;key=value", 1..240 bytes
   T_NOTE_OUT = 0x24,    // dev->host i u16, midi i8 (-1 = silent), status u8, compute_us u32
   T_LOG = 0x25,         // dev->host ASCII text, 1..240 bytes
   T_CONFIG_ACK = 0x26,  // dev->host status u8 (0 = ok), plugin u8, n_pos u16 (accepted)
+  T_AUDIO_STATS = 0x27, // dev->host AUDIO_STATS_LEN bytes, layout below. Answers AUDIO_QUERY (same seq).
 };
 
 static const uint8_t PROTO_VERSION = 2;
@@ -47,6 +51,38 @@ static const size_t MAX_FRAME = HEADER_LEN + MAX_PAYLOAD + 1;
 static const uint16_t NOTE_IN_LEN = 12;
 static const uint16_t NOTE_OUT_LEN = 8;
 static const uint16_t CONFIG_ACK_LEN = 4;
+static const uint16_t AUDIO_STATS_LEN = 48;
+
+// AUDIO_STATS payload (little-endian). Counters are u32 since boot and wrap.
+//   0  mode u8          AUDIO_MODE_*: 1 = real I2S hardware, 2 = stand-in (no audio hardware driven)
+//   1  flags u8         AS_MIC_ON | AS_SPK_ON (the AUDIO_CTRL gates) | AS_RUNNING (audio started) |
+//                       AS_SPK_SUMS (spk_silent, spk_crc, spk_peak are kept; the stand-in speaker keeps them)
+//   2  spk_level u8     frames waiting in the speaker jitter buffer
+//   3  spk_state u8     jitter buffer: 0 = priming, 1 = playing
+//   4  mic_sent u32     MIC_AUDIO frames written to the host
+//   8  mic_dropped u32  mic frames lost on the device (queue full, USB buffer full, read errors, DMA overflows)
+//  12  spk_rx u32       SPK_AUDIO frames put into the jitter buffer
+//  16  spk_played u32   audio frames taken out of the jitter buffer and played
+//  20  spk_silent u32   silent frames played (jitter buffer priming or empty)
+//  24  spk_underruns u32  jitter buffer underruns
+//  28  spk_dropped u32  SPK_AUDIO frames not played: ring full, latency trim, or arrived with the gate off
+//  32  spk_seq_gaps u32 SPK_AUDIO seq discontinuities
+//  36  spk_crc u32      CRC-32 (zlib) of the int16 LE bytes of every sample of every played audio frame
+//  40  spk_peak u16     max |sample| of the played audio frames
+//  42  reserved u16     0
+//  44  dev_us u32       device clock when the reply was made
+enum : uint8_t { AUDIO_MODE_NONE = 0, AUDIO_MODE_I2S = 1, AUDIO_MODE_STANDIN = 2 };
+enum : uint8_t { AS_MIC_ON = 0x01, AS_SPK_ON = 0x02, AS_RUNNING = 0x04, AS_SPK_SUMS = 0x08 };
+
+struct AudioStats {
+  uint8_t mode, flags, spk_level, spk_state;
+  uint32_t mic_sent, mic_dropped, spk_rx, spk_played, spk_silent, spk_underruns, spk_dropped, spk_seq_gaps;
+  uint32_t spk_crc;
+  uint16_t spk_peak;
+  uint32_t dev_us;
+};
+void pack_audio_stats(const AudioStats& s, uint8_t* out);  // out has AUDIO_STATS_LEN bytes
+bool parse_audio_stats(const uint8_t* p, uint16_t len, AudioStats* s);
 
 // Allowed payload length range of a type. Returns false if the type is unknown.
 bool len_range(uint8_t type, uint16_t* min_len, uint16_t* max_len);

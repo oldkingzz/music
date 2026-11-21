@@ -135,6 +135,9 @@ audio { width: 300px; max-width: 100%; height: 32px; display: block; }
 .log li { padding: 2px 0; border-bottom: 1px dotted var(--line); overflow-wrap: anywhere; }
 .log .tm { color: var(--muted); font-variant-numeric: tabular-nums; margin-right: 8px; }
 .mono { font-family: ui-monospace, Menlo, monospace; font-size: 12px; }
+/* the board's audio is a stand-in: dashed like "not the real thing" */
+.standin { border: 2px dashed var(--ink); border-radius: 6px; padding: 8px 10px; margin: 6px 0 8px; font-weight: 600; overflow-wrap: anywhere; }
+.standin .small { font-weight: normal; }
 </style>
 </head>
 <body>
@@ -174,6 +177,26 @@ audio { width: 300px; max-width: 100%; height: 32px; display: block; }
   <div class="msg err" id="notes-msg"></div>
   <div id="notes-summary" class="small"></div>
   <div class="scroll" id="notes-table-wrap"></div>
+</section>
+
+<section id="sec-board-audio">
+  <h2>板子的声音</h2>
+  <p class="hint">从板子的麦克风录一段，存成片段；或者把一个片段放给板子的喇叭。两样都是实时的：录 8 秒就要等 8 秒。</p>
+  <div class="standin" id="ba-standin" hidden>
+    现在板子的声音是替身（stand-in）：板子上还没接麦克风和喇叭。
+    <div class="small">“麦克风”发来的是固件里算好的《小星星》，和 Mac 上算的一个采样都不差；“喇叭”不出声，只数收到几帧、算校验和（checksum），用来证明放的就是发过去的。</div>
+  </div>
+  <div class="state-line" id="ba-state">未连接</div>
+  <div class="row">
+    <label class="ctl">录几秒 <input type="number" id="ba-sec" min="1" max="60" step="1" value="8"></label>
+    <span class="ctl"><button id="btn-ba-rec">从板子录音</button><span class="reason" id="why-ba-rec"></span></span>
+  </div>
+  <div class="row">
+    <label class="ctl">放哪个片段 <select id="ba-clip"></select></label>
+    <span class="ctl"><button id="btn-ba-play">放给板子</button><span class="reason" id="why-ba-play"></span></span>
+  </div>
+  <div class="msg" id="ba-msg"></div>
+  <div class="small" id="ba-out"></div>
 </section>
 
 <section id="sec-clips">
@@ -236,7 +259,13 @@ audio { width: 300px; max-width: 100%; height: 32px; display: block; }
   var KEYS = ["C", "C#", "D", "Eb", "E", "F", "F#", "G", "Ab", "A", "Bb", "B"];
   var LANE = { now: "马上", phrase: "等一句", song: "等一首" };
   var PLACE = { board: "板子", mac: "Mac", cloud: "云端" };
-  var SOURCE = { upload: "上传", mac_mic: "麦克风", block: "积木做的", test: "测试" };
+  var SOURCE = { upload: "上传", mac_mic: "麦克风", board_mic: "板子麦克风", block: "积木做的", test: "测试" };
+  var BOARD_AUDIO = {
+    standin: "板子的声音：替身（没接硬件，不出声）",
+    i2s: "板子的声音：真的麦克风和喇叭（I2S），放音会真的出声",
+    none: "这个固件没有声音（第一版固件 duet_base）",
+    old: "旧版的声音固件：读不到计数，先更新 duet_base_audio"
+  };
   var JOB_STATE = { queued: "排队", running: "在做", done: "做完", failed: "没做成" };
 
   var S = null;            // last state from the server
@@ -352,6 +381,7 @@ audio { width: 300px; max-width: 100%; height: 32px; display: block; }
     $("disk").textContent = "磁盘剩余 " + Number(s.disk_free_gb).toFixed(1) + " GB · 只在这台 Mac 上能打开";
     renderLink(s);
     renderPlugins(s);
+    renderBoardAudio(s);
     renderClips(s);
     renderRoutes(s);
     renderClipSelects(s);
@@ -388,6 +418,36 @@ audio { width: 300px; max-width: 100%; height: 32px; display: block; }
     if (n >= 1048576) return (n / 1048576).toFixed(n % 1048576 ? 1 : 0) + " MB";
     if (n >= 1024) return (n / 1024).toFixed(0) + " KB";
     return n + " 字节";
+  }
+
+  // What the board's audio is (INFO audio=...), as the state line and the stand-in notice of its section.
+  function boardAudioKind(s) {
+    if (!s.link) return null;
+    var a = s.board_audio;
+    if (a === null || a === undefined) return "none";
+    if (a === "0" || a === "1") return "old";
+    return a;
+  }
+
+  function renderBoardAudio(s) {
+    var kind = boardAudioKind(s);
+    var clips = (s.clips || []).map(function (c) { return [c.id, c.name, c.seconds]; });
+    if (changed("boardAudio", { k: kind, busy: s.board_audio_busy })) {
+      $("ba-standin").hidden = kind !== "standin";
+      var line = kind === null ? "未连接" : (BOARD_AUDIO[kind] || ("板子的声音：" + kind));
+      if (s.board_audio_busy) line += "（正在" + s.board_audio_busy + "…）";
+      $("ba-state").textContent = line;
+    }
+    if (changed("baClips", clips)) {
+      var sel = $("ba-clip"), cur = sel.value;
+      sel.replaceChildren();
+      clips.forEach(function (c) {
+        var o = el("option", null, c[1] + "（" + Number(c[2]).toFixed(1) + " 秒）");
+        o.value = c[0];
+        sel.appendChild(o);
+      });
+      if (clips.some(function (c) { return c[0] === cur; })) sel.value = cur;
+    }
   }
 
   function renderPlugins(s) {
@@ -622,7 +682,7 @@ audio { width: 300px; max-width: 100%; height: 32px; display: block; }
     var linked = !!(s && s.link);
     var noLink = linked ? (s.link.error ? "连接断了，重新连一次" : "") : "先连板子或模拟器";
     if (!s) {
-      ["board", "sim", "off", "ping", "notes", "rec"].forEach(function (k) { setButton("btn-" + k, "why-" + k, "等面板读到状态"); });
+      ["board", "sim", "off", "ping", "notes", "rec", "ba-rec", "ba-play"].forEach(function (k) { setButton("btn-" + k, "why-" + k, "等面板读到状态"); });
       return;
     }
     setButton("btn-board", "why-board", (s.board_ports || []).length ? "" : "没有看到板子（USB 303A:1001）");
@@ -631,6 +691,11 @@ audio { width: 300px; max-width: 100%; height: 32px; display: block; }
     setButton("btn-ping", "why-ping", noLink);
     setButton("btn-notes", "why-notes", noLink || ((s.plugins || []).length ? "" : "对面没有和声模型"));
     setButton("btn-rec", "why-rec", (s.recording || recordPending) ? "正在录音…" : "");
+    var kind = boardAudioKind(s);
+    var noAudio = noLink || (kind === "none" ? "这个固件没有声音" : kind === "old" ? "先更新声音固件" : "") ||
+                  (s.board_audio_busy ? "板子正在" + s.board_audio_busy : "");
+    setButton("btn-ba-rec", "why-ba-rec", noAudio);
+    setButton("btn-ba-play", "why-ba-play", noAudio || ((s.clips || []).length ? "" : "先上传或录一段"));
     var hasClips = (s.clips || []).length > 0;
     routeUi.forEach(function (u) {
       var reason = !u.route.ready ? (u.route.why_not || "这条路线现在跑不了") : hasClips ? "" : "先上传或录一段";
@@ -689,6 +754,31 @@ audio { width: 300px; max-width: 100%; height: 32px; display: block; }
     t.appendChild(tb);
     $("notes-table-wrap").replaceChildren(t);
   }
+
+  $("btn-ba-rec").addEventListener("click", function () {
+    var n = Number($("ba-sec").value);
+    if (!(n >= 1 && n <= 60)) {
+      setMsg("ba-msg", "从板子录音的长度要在 1 到 60 秒之间。", true);
+      return;
+    }
+    $("ba-out").textContent = "";
+    act("btn-ba-rec", "ba-msg", "POST", "/api/board_record", { seconds: n }, function (m) {
+      setMsg("ba-msg", "");
+      $("ba-out").textContent = "录好了：" + m.name + "。" + (m.summary || "");
+    });
+    setMsg("ba-msg", "正在从板子录 " + n + " 秒，录完自己停。");
+  });
+
+  $("btn-ba-play").addEventListener("click", function () {
+    var cid = $("ba-clip").value;
+    if (!cid) return;
+    $("ba-out").textContent = "";
+    act("btn-ba-play", "ba-msg", "POST", "/api/board_play", { clip: cid }, function (r) {
+      setMsg("ba-msg", "");
+      $("ba-out").textContent = (r.ok ? "放完了：" : "放完了，但有问题：") + r.summary;
+    });
+    setMsg("ba-msg", "正在放给板子，放完自己停。");
+  });
 
   $("up-file").addEventListener("change", function () {
     var inp = $("up-file"), f = inp.files && inp.files[0];

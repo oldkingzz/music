@@ -7,6 +7,10 @@ Starting it opens nothing: no serial port, no microphone, no browser. The board 
 "连板子", the microphone only while you press "录音". It listens on 127.0.0.1 only, so other machines cannot
 reach it. Stop it with Ctrl-C.
 
+"板子的声音": record from the board's microphone into a clip (/api/board_record) and play a clip to the board's
+speaker (/api/board_play), both in real time through duet_host.audio_stream. Until the audio hardware is wired the
+board (and the simulator) report audio=standin, and the page says so.
+
 Standard library only (http.server); no web framework to install.
 """
 from __future__ import annotations
@@ -22,7 +26,9 @@ from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 from typing import Optional
 
-from . import audio_notes, harmonizers, link as linkmod, runlog
+import numpy as np
+
+from . import audio_notes, audio_stream, fake_audio, harmonizers, link as linkmod, runlog
 from .blocks import BLOCKS, Context
 from .clips import SR, ClipError, ClipStore
 from .jobs import JobQueue
@@ -31,6 +37,7 @@ from .routes import load_routes, run_route
 
 WEB = Path(__file__).resolve().parent / "web"
 MAX_UPLOAD = 100 * 1024 * 1024
+MAX_BOARD_SECONDS = 60          # longest recording from / playback to the board in one request (it runs in real time)
 
 # "Twinkle, twinkle" as scale degrees above the tonic (semitones), with lengths in beats.
 TWINKLE = [(0, 1), (0, 1), (7, 1), (7, 1), (9, 1), (9, 1), (7, 2), (5, 1), (5, 1), (4, 1), (4, 1), (2, 1), (2, 1), (0, 2)]
@@ -50,6 +57,8 @@ class App:
         self.jobs = JobQueue(self._run_job)
         self.events = collections.deque(maxlen=80)
         self.recording = False
+        self.board_audio_busy = ""      # "" or what the board's audio is doing now (录音 / 放音)
+        self.board_audio_lock = threading.Lock()   # one board recording or playback at a time; others are refused
         self.say("面板启动。还没有连接板子，也没有打开麦克风。")
 
     def say(self, text: str) -> None:
@@ -126,6 +135,81 @@ class App:
                  f"和 Python 一致 {same}/{len(rows)}")
         return {"rows": rows, "same": same, "n": len(rows), "kind": lk.kind}
 
+    # ------------------------------------------------------------ the board's microphone and speaker
+    def _board_audio(self) -> str:
+        """The board's audio kind from INFO: "standin", "i2s"; raises if this firmware cannot stream audio."""
+        self.need_link()
+        mode = self.link_info.get("audio")
+        if mode is None:
+            raise ApiError("这个固件没有声音（第一版固件 duet_base）。要录音或放音，先换成 duet_base_audio。")
+        if mode in ("0", "1"):
+            raise ApiError("这是旧版的声音固件，读不到板子的声音计数。先把 duet_base_audio 更新到新版。")
+        return mode
+
+    def _board_audio_begin(self, what: str) -> None:
+        """Refuse (do not queue) a second board recording/playback while one runs."""
+        if not self.board_audio_lock.acquire(blocking=False):
+            raise ApiError(f"板子正在{self.board_audio_busy or '忙'}，等它做完")
+        self.board_audio_busy = what
+
+    def _board_audio_end(self) -> None:
+        self.board_audio_busy = ""
+        self.board_audio_lock.release()
+
+    def board_record(self, seconds: float) -> dict:
+        """Record from the board's microphone (the stand-in melody until the hardware is wired) into a clip."""
+        seconds = float(seconds)
+        if not 1 <= seconds <= MAX_BOARD_SECONDS:
+            raise ApiError(f"从板子录音的长度要在 1 到 {MAX_BOARD_SECONDS} 秒之间")
+        self._board_audio_begin("录音")
+        try:
+            with self.link_lock:
+                mode = self._board_audio()
+                what = "替身麦克风" if mode == "standin" else "麦克风"
+                self.say(f"开始从板子的{what}录 {seconds:g} 秒……")
+                r = audio_stream.record_from_board(self.link, seconds)
+        finally:
+            self._board_audio_end()
+        if r.frames == 0:
+            raise ApiError("板子一帧声音都没有发过来")
+        exact = None
+        if mode == "standin":
+            exact = bool(r.first_seq == 0 and np.array_equal(r.samples, fake_audio.samples(0, len(r.samples))))
+        name = f"板子{'替身' if mode == 'standin' else ''}麦克风 {seconds:g} 秒"
+        extra = {"board_audio": mode, "frames": r.frames, "seq_gaps": r.seq_gaps, "missing": r.missing,
+                 "frames_per_second": round(r.frames_per_second, 2), "bit_exact": exact}
+        summary = f"{r.frames} 帧，每秒 {r.frames_per_second:.1f} 帧，丢了 {r.missing} 帧"
+        if exact is not None:
+            summary += "；每个采样都和 Mac 算的替身旋律一样" if exact else "；和 Mac 算的替身旋律对不上"
+        extra["summary"] = summary
+        meta = self.store.add_array(r.samples.astype(np.float32) / 32768.0, name=name, source="board_mic", extra=extra)
+        self.say(f"从板子录好了：{meta['id']}，{summary}")
+        return meta
+
+    def board_play(self, clip_id: str) -> dict:
+        """Play a clip to the board's speaker in real time and read back what the board counted."""
+        x, meta = self.store.load(clip_id)
+        if len(x) > MAX_BOARD_SECONDS * SR:
+            raise ApiError(f"这个片段有 {len(x) / SR:.0f} 秒，放给板子最多 {MAX_BOARD_SECONDS} 秒")
+        self._board_audio_begin("放音")
+        try:
+            with self.link_lock:
+                mode = self._board_audio()
+                self.say(f"开始把《{meta['name']}》放给板子（{len(x) / SR:.1f} 秒）……")
+                p = audio_stream.play_to_board(self.link, x)
+        finally:
+            self._board_audio_end()
+        out = {k: v for k, v in p.items() if k not in ("before", "after")}
+        out.update(clip=clip_id, name=meta["name"], board_audio=mode)
+        ok = p["frames_played"] == p["frames_sent"] and p["underruns_while_sending"] == 0
+        text = f"发了 {p['frames_sent']} 帧，板子放了 {p['frames_played']} 帧，中途断档 {p['underruns_while_sending']} 次"
+        if mode == "standin":
+            text += "；校验和一致" if p["crc_match"] else "；校验和不一致"
+        out["ok"] = ok and (p["crc_match"] if mode == "standin" else True)
+        out["summary"] = text
+        self.say(f"放完了：{text}")
+        return out
+
     # ------------------------------------------------------------ clips and jobs
     def record(self, seconds: float) -> dict:
         """Record from the Mac's default microphone. Only ever called from the panel's record button."""
@@ -183,6 +267,8 @@ class App:
             "jobs": self.jobs.list()[:30],
             "events": list(self.events),
             "recording": self.recording,
+            "board_audio": (self.link_info.get("audio") if self.link is not None else None),
+            "board_audio_busy": self.board_audio_busy,
             "disk_free_gb": round(shutil.disk_usage(self.store.root).free / 1e9, 2),
         }
 
@@ -273,6 +359,10 @@ class Handler(BaseHTTPRequestHandler):
                 self._json(app.notes_demo(body.get("plugin", "third_below"), body.get("tonic", 0)))
             elif url.path == "/api/record":
                 self._json(app.record(body.get("seconds", 5)))
+            elif url.path == "/api/board_record":
+                self._json(app.board_record(body.get("seconds", 8)))
+            elif url.path == "/api/board_play":
+                self._json(app.board_play(body.get("clip", "")))
             elif url.path == "/api/run":
                 self._json(app.submit(body.get("route", ""), body.get("clip", ""), body.get("params", {})))
             else:
