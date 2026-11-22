@@ -52,6 +52,12 @@ class Engine {
   const ParserStats& parser_stats() const { return parser_.stats(); }
   const Harmonizer* plugin() const { return h_; }
 
+  // For the live chain (duet_live.h): call the configured plug-in's step() directly, outside any frame.
+  // Returns Duet's note 0..127, or -1 if the plug-in stays silent or no plug-in is configured. Same caller rules
+  // as feed(): on a board with several tasks, feed(), idle() and this must be serialised by the caller (one lock),
+  // because CONFIG (inside feed) replaces the plug-in and calls its start().
+  int plugin_step(int i, float onset, int midi, float prev_dur);
+
   static const uint32_t STALE_US = 100000;  // 100 ms
 
  private:
@@ -76,7 +82,7 @@ class Engine {
   uint32_t last_rx_us_;
   uint8_t seq_log_;
   EngineStats st_;
-  uint8_t tx_[HEADER_LEN + 480 + 1];  // the largest frame a device sends (MIC_AUDIO)
+  uint8_t tx_[HEADER_LEN + MAX_DEVICE_PAYLOAD + 1];  // the largest frame a device sends (MIC_HOP, 512 bytes)
 };
 
 }  // namespace duet

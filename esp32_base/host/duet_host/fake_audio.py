@@ -121,3 +121,87 @@ def crc32(x, prev: int = 0) -> int:
 def peak(x) -> int:
     a = np.asarray(x, dtype=np.int32)
     return int(np.max(np.abs(a))) if len(a) else 0
+
+
+# ====================================================================== the 16 kHz fake microphone (live chain)
+# Mirror of firmware/libraries/DuetCore/src/duet_fake16.{h,cpp}: the fake microphone of sketch duet_live, at the
+# pitch tracker's rate. The same method as above (parabolic sine, harmonics 6 : 3 : 2, peak 11999, 5 ms attack,
+# 10 ms release), its own tables, and a 160 ms silent gap: the team's tracker needs 6 unvoiced hops (96 ms) plus
+# its 48 ms analysis frame to release a note, so with the 50 ms gap repeated notes merge.
+#     sample16(n)            one sample, scalar integer code (line for line as in C++)
+#     samples16(n0, count)   the same with numpy
+#     hop16(k)               hop k (256 samples) after LISTEN went on: what MIC_HOP k carries
+# The functions above (24 kHz) are unchanged.
+
+RATE16 = 16000
+HOP16 = 256                      # one hop = 16 ms
+INC16 = {60: 70229578, 62: 78830036, 64: 88483724, 65: 93745240, 67: 105225474, 69: 118111601}
+SHORT16, LONG16 = 8000, 16000    # 0.5 s and 1.0 s slots
+MELODY16 = [(60, SHORT16), (60, SHORT16), (67, SHORT16), (67, SHORT16), (69, SHORT16), (69, SHORT16),
+            (67, LONG16), (65, SHORT16), (65, SHORT16), (64, SHORT16), (64, SHORT16), (62, SHORT16),
+            (62, SHORT16), (60, LONG16)]
+GAP16 = 2560                     # 160 ms of silence at the end of every slot
+GAP16_50MS = 800                 # the old stand-in's 50 ms (tests: repeated notes merge)
+ATTACK16 = 80                    # 5 ms
+RELEASE16 = 160                  # 10 ms
+
+STARTS16 = []
+_t = 0
+for _m, _len in MELODY16:
+    STARTS16.append(_t)
+    _t += _len
+LOOP16 = _t                      # 128000 samples = 8.0 s
+
+
+def sample16(n: int, gap: int = GAP16) -> int:
+    pos = n % LOOP16             # n >= 0
+    k = 0
+    while k + 1 < len(MELODY16) and STARTS16[k + 1] <= pos:
+        k += 1
+    midi, slot = MELODY16[k]
+    t = pos - STARTS16[k]
+    sound = slot - gap
+    if t >= sound:
+        return 0
+    if t < ATTACK16:
+        env = (t * 32768) // ATTACK16
+    elif t >= sound - RELEASE16:
+        env = ((sound - t) * 32768) // RELEASE16
+    else:
+        env = 32768
+    ph = (t * INC16[midi]) & 0xFFFFFFFF
+    mix = W1 * psin(ph) + W2 * psin((ph * 2) & 0xFFFFFFFF) + W3 * psin((ph * 3) & 0xFFFFFFFF)
+    v = abs(mix) * env * GAIN_MUL
+    out = v >> GAIN_SHIFT
+    return -out if mix < 0 else out
+
+
+def note_table16(gap: int = GAP16):
+    """[(start_sample, sound_samples, midi)] of one 16 kHz loop."""
+    return [(s, ln - gap, m) for s, (m, ln) in zip(STARTS16, MELODY16)]
+
+
+def samples16(n0: int, count: int, gap: int = GAP16) -> np.ndarray:
+    """int16 samples n0 .. n0+count-1 of the 16 kHz fake microphone."""
+    n = np.arange(int(n0), int(n0) + int(count), dtype=np.int64)
+    pos = n % LOOP16
+    starts = np.array(STARTS16, dtype=np.int64)
+    k = np.searchsorted(starts, pos, side="right") - 1
+    slot = np.array([ln for _, ln in MELODY16], dtype=np.int64)[k]
+    inc = np.array([INC16[m] for m, _ in MELODY16], dtype=np.int64)[k]
+    t = pos - starts[k]
+    sound = slot - gap
+    env = np.full(len(n), 32768, dtype=np.int64)
+    att = t < ATTACK16
+    env[att] = (t[att] * 32768) // ATTACK16
+    rel = (t >= sound - RELEASE16) & ~att
+    env[rel] = ((sound[rel] - t[rel]) * 32768) // RELEASE16
+    ph = (t * inc) & 0xFFFFFFFF          # t < 2^14, inc < 2^27: the product fits in int64
+    mix = W1 * _psin_np(ph) + W2 * _psin_np((ph * 2) & 0xFFFFFFFF) + W3 * _psin_np((ph * 3) & 0xFFFFFFFF)
+    v = (np.abs(mix) * np.where(t < sound, env, 0) * GAIN_MUL) >> GAIN_SHIFT
+    return np.where(mix < 0, -v, v).astype(np.int16)
+
+
+def hop16(k: int) -> np.ndarray:
+    """Hop k after LISTEN went on (the generator restarts at sample 0 at every restart of the source)."""
+    return samples16(k * HOP16, HOP16)

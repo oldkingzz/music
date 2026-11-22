@@ -5,3 +5,8 @@
 #include "duet_notes.h"
 #include "duet_protocol.h"
 #include "duet_standin.h"
+// the live chain (sketch duet_live)
+#include "duet_fake16.h"
+#include "duet_live.h"
+#include "duet_pitch.h"
+#include "duet_synth.h"

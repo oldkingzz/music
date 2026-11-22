@@ -3,12 +3,19 @@
     from duet_host.link import Link
     link = Link.open("auto")          # the board if it is plugged in, else an error
     link = Link.open("sim")           # firmware/host_tests/build/board_sim (the same C++ core as the board)
+    link = Link.open("sim-live")      # the simulator as sketch duet_live (board_sim --live): the live chain
     link = Link.open("/dev/cu.usbmodem101")
     link.hello()                      # {'fw': 'duet_base', 'psram': '8388608', ...}
     link.ping()                       # {'rtt_us': ..., 'dev_us': ...}
     link.configure("third_below", tonic=0, M=4)
     link.note(0, midi=64, onset=0.0, prev_dur=None)   # {'midi': 60, 'compute_us': ..., 'rtt_us': ...}
     link.close()
+
+The live chain (sketch duet_live, INFO live=1): the board listens, finds her notes, runs the plug-in and sings.
+    st = link.live_ctrl(listen=True, sing=False, fake=True)   # the fake melody, speaker off: LIVE_STATE dict
+    link.live_notes / link.live_states / link.mic_hops        # collected as they arrive (see live_ctrl)
+    link.live_drain()                                         # take everything collected so far
+    link.synth_note(69, 100)                                  # play a note on the board's synth (SING must be on)
 
 Rules that come from the hardware:
   * The port is opened once and DTR/RTS are never driven: on the ESP32-S3 USB-Serial/JTAG port those lines
@@ -106,7 +113,7 @@ class SimTransport:
         if not Path(exe).exists():
             raise LinkError(f"the simulator is not built: run  sh firmware/host_tests/build_and_test.sh  ({exe})")
         self.p = subprocess.Popen([str(exe), *args], stdin=subprocess.PIPE, stdout=subprocess.PIPE, bufsize=0)
-        self.name = "sim"
+        self.name = "sim-live" if "--live" in args else "sim"
 
     def read(self, timeout: float) -> bytes:
         fd = self.p.stdout.fileno()
@@ -145,6 +152,11 @@ class Link:
         self.parser = proto.Parser()
         self.logs = collections.deque(maxlen=200)       # (time, text) of LOG frames
         self.last_status: Optional[dict] = None
+        # Live chain (sketch duet_live). Filled by the reader thread; each item is a dict (see live_ctrl).
+        self.live_notes = collections.deque(maxlen=4096)    # LIVE_NOTE frames
+        self.live_states = collections.deque(maxlen=2048)   # periodic LIVE_STATE frames (not the LIVE_CTRL replies)
+        self.mic_hops = collections.deque(maxlen=4096)      # MIC_HOP frames (about 65 s at 62.5 per second)
+        self.last_live_state: Optional[dict] = None         # the newest LIVE_STATE, periodic or reply
         self.on_frame: Optional[Callable[[proto.Frame], None]] = None   # every frame, for audio and monitors
         self.rx_frames = 0
         self.tx_frames = 0
@@ -163,6 +175,8 @@ class Link:
     def open(cls, target: str = "auto") -> "Link":
         if target == "sim":
             return cls(SimTransport())
+        if target == "sim-live":
+            return cls(SimTransport(args=["--live"]))
         if target == "auto":
             ports = find_board_ports()
             if not ports:
@@ -215,11 +229,17 @@ class Link:
             self.logs.append((time.time(), proto.decode_payload(fr)))
         elif fr.type == T.STATUS:
             self.last_status = proto.decode_payload(fr)
+        elif fr.type in (T.LIVE_NOTE, T.LIVE_STATE, T.MIC_HOP):
+            if not self._collect_live(fr):
+                return self._call_on_frame(fr)   # a periodic LIVE_STATE never answers a LIVE_CTRL (its seq is its own)
         with self._lock:
             slot = self._waiting.pop((fr.type, fr.seq), None)
         if slot is not None:
             slot[1] = (fr, time.perf_counter())
             slot[0].set()
+        self._call_on_frame(fr)
+
+    def _call_on_frame(self, fr: proto.Frame) -> None:
         cb = self.on_frame
         if cb is not None:
             try:
@@ -308,6 +328,92 @@ class Link:
         d = proto.decode_audio_stats(fr.payload)
         d["rtt_us"] = dt * 1e6
         return d
+
+    # ------------------------------------------------------------ the live chain (sketch duet_live)
+    def _collect_live(self, fr: proto.Frame) -> bool:
+        """Store a live frame. Returns True if it may answer a waiting request (a LIVE_STATE with LS_REPLY)."""
+        t = time.monotonic()
+        if fr.type == T.LIVE_NOTE:
+            d = proto.decode_live_note(fr.payload)
+            d["seq"], d["rx_time"] = fr.seq, t
+            self.live_notes.append(d)
+            return False
+        if fr.type == T.MIC_HOP:
+            self.mic_hops.append({"seq": fr.seq, "pcm": fr.payload, "rx_time": t})
+            return False
+        d = proto.decode_live_state(fr.payload)
+        d["seq"], d["rx_time"] = fr.seq, t
+        self.last_live_state = d
+        if d["reply"]:
+            return True
+        self.live_states.append(d)
+        return False
+
+    def live_ctrl(self, listen: bool = False, sing: bool = False, fake: bool = True, monitor: bool = False,
+                  volume: int = 100, bpm: int = 120, wait_hw: bool = True, hw_timeout: float = 1.0,
+                  timeout: float = 1.0) -> dict:
+        """Set the live chain's gates (LIVE_CTRL) and return the device's LIVE_STATE answer as a dict.
+
+        listen   run the microphone source through the pitch tracker and the plug-in (LIVE_NOTE events come)
+        sing     speaker on: the board's synth plays Duet's notes (starts the speaker I2S on a board)
+        fake     source = the built-in fake melody (no microphone I2S); False = the real microphone
+        monitor  also send every hop the tracker hears (MIC_HOP frames, collected in link.mic_hops)
+        volume   0..100 % of the synth's cap 0.35;  bpm  tempo for the plug-in's beats (0 = 120)
+        A rising edge of listen, or a change of fake while listening, restarts the source, the tracker, t_ms and
+        the LIVE_NOTE / MIC_HOP seq counters at 0. listen off ends the sounding notes first (OFF events).
+
+        The device answers at once with the gates in force; the I2S drivers start in their own tasks a moment
+        later. With wait_hw, the identical LIVE_CTRL is sent again (no edge, so nothing restarts) every 50 ms until
+        mic_up / spk_up match what was asked or error is set, for at most hw_timeout seconds.
+
+        Returned dict (proto.decode_live_state): flags, volume, heard (-1 = none), sung (-1 = none), freq (Hz),
+        conf (0..100), level (dB, -100..0), cents (-50..50), hops, heard_n, sung_n, spk_blocks, the flag bits
+        listen, sing, fake, monitor, mic_up, spk_up, error, reply, and seq, rx_time, rtt_us.
+
+        Collected while the chain runs (each a collections.deque, newest last; link.live_drain() empties them):
+          link.live_notes   {seq, kind (1 heard_on, 2 heard_off, 3 sung_on, 4 sung_off), kind_name, midi, vel,
+                             flags, fake, from_host, t_ms, rx_time}
+          link.live_states  periodic LIVE_STATE dicts as above (every 6 hops = 96 ms while listening)
+          link.mic_hops     {seq, pcm (512 bytes, 256 int16 little-endian), rx_time}
+        """
+        def once():
+            fr, dt = self._request(T.LIVE_CTRL, lambda s: proto.live_ctrl(s, listen, sing, fake, monitor, volume, bpm),
+                                   T.LIVE_STATE, timeout)
+            d = proto.decode_live_state(fr.payload)
+            d["seq"], d["rtt_us"] = fr.seq, dt * 1e6
+            return d
+
+        d = once()
+        if wait_hw:
+            want_mic, want_spk = bool(listen and not fake), bool(sing)
+            t_end = time.monotonic() + hw_timeout
+            while (d["mic_up"] != want_mic or d["spk_up"] != want_spk) and not d["error"] \
+                    and time.monotonic() < t_end:
+                time.sleep(0.05)
+                d = once()
+        return d
+
+    def synth_note(self, midi: int, vel: int) -> None:
+        """Play (vel 1..127) or stop (vel 0) a note on the board's synth directly. Ignored unless SING is on.
+        No reply: the device reports it as a LIVE_NOTE sung_on / sung_off with from_host = True."""
+        self.send(proto.synth_note(self._next_seq(T.SYNTH_NOTE), midi, vel))
+
+    def live_clear(self) -> None:
+        """Forget the collected live frames."""
+        self.live_notes.clear()
+        self.live_states.clear()
+        self.mic_hops.clear()
+
+    def live_drain(self) -> dict:
+        """Take (and remove) everything collected so far: {'notes': [...], 'states': [...], 'hops': [...]}."""
+        out = {"notes": [], "states": [], "hops": []}
+        for key, dq in (("notes", self.live_notes), ("states", self.live_states), ("hops", self.mic_hops)):
+            while True:
+                try:
+                    out[key].append(dq.popleft())
+                except IndexError:
+                    break
+        return out
 
     def stats(self) -> dict:
         s = self.parser.stats

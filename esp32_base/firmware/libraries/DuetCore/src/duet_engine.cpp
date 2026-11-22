@@ -130,6 +130,17 @@ void Engine::on_config(const Frame& f) {
   send(T_CONFIG_ACK, f.seq, ack, CONFIG_ACK_LEN);
 }
 
+static_assert(MAX_DEVICE_PAYLOAD >= 480 && MAX_DEVICE_PAYLOAD >= MIC_HOP_LEN && MAX_DEVICE_PAYLOAD >= MAX_TEXT &&
+                  MAX_DEVICE_PAYLOAD >= LIVE_STATE_LEN,
+              "Engine::send must fit every frame a device sends");
+
+int Engine::plugin_step(int i, float onset, int midi, float prev_dur) {
+  if (!h_) return -1;
+  int m = h_->step(i, onset, midi, prev_dur);
+  if (m < 0 || m > 127) m = -1;
+  return m;
+}
+
 void Engine::on_note(const Frame& f) {
   NoteIn in;
   if (!parse_note_in(f.payload, f.len, &in)) {

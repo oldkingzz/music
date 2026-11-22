@@ -11,6 +11,12 @@ reach it. Stop it with Ctrl-C.
 speaker (/api/board_play), both in real time through duet_host.audio_stream. Until the audio hardware is wired the
 board (and the simulator) report audio=standin, and the page says so.
 
+"现场" (sketch duet_live, INFO live=1, or the simulator as duet_live: target "sim-live"): the board listens, finds
+her notes, runs the harmony plug-in and sings. /api/live/start, /set, /stop, /scale (speaker test), /record
+(the microphone's 16 kHz hops into a clip) and the fast poll /api/live/poll?since=N. Safe defaults everywhere:
+the fake microphone, the speaker off, volume 30. Disconnecting, connecting elsewhere and shutting the server down
+first tell the board LISTEN off and SING off (best effort).
+
 Standard library only (http.server); no web framework to install.
 """
 from __future__ import annotations
@@ -18,7 +24,9 @@ from __future__ import annotations
 import argparse
 import collections
 import json
+import math
 import shutil
+import signal
 import threading
 import time
 import urllib.parse
@@ -28,7 +36,7 @@ from typing import Optional
 
 import numpy as np
 
-from . import audio_notes, audio_stream, fake_audio, harmonizers, link as linkmod, runlog
+from . import audio_notes, audio_stream, fake_audio, harmonizers, link as linkmod, proto, runlog
 from .blocks import BLOCKS, Context
 from .clips import SR, ClipError, ClipStore
 from .jobs import JobQueue
@@ -42,9 +50,42 @@ MAX_BOARD_SECONDS = 60          # longest recording from / playback to the board
 # "Twinkle, twinkle" as scale degrees above the tonic (semitones), with lengths in beats.
 TWINKLE = [(0, 1), (0, 1), (7, 1), (7, 1), (9, 1), (9, 1), (7, 2), (5, 1), (5, 1), (4, 1), (4, 1), (2, 1), (2, 1), (0, 2)]
 
+# ---- the live chain (sketch duet_live)
+LIVE_DEFAULTS = {"fake": True, "sing": False, "volume": 30, "plugin": "third_below", "tonic": 0, "bpm": 120}
+LIVE_HISTORY = 2000                     # events kept for /api/live/poll
+LIVE_POLL_MAX = 500                     # events in one poll reply at most
+LIVE_STATE_KEYS = ("heard", "sung", "freq", "conf", "level", "cents", "hops", "heard_n", "sung_n", "spk_blocks",
+                   "volume", "listen", "sing", "fake", "monitor", "mic_up", "spk_up", "error")
+SCALE_NOTES = [60, 62, 64, 65, 67, 69, 71, 72]     # C4 D4 E4 F4 G4 A4 B4 C5
+SCALE_NOTE_S, SCALE_GAP_S, SCALE_VEL = 0.30, 0.06, 100
+MAX_LIVE_RECORD = 30                    # seconds
+LINK_WAIT_S = 3.0                       # how long a live request waits for another conversation with the board
+NO_LINK_LIVE = "还没有连接。先按“连板子”（板子要刷 duet_live），或者按“连模拟器（现场版）”。"
+
 
 class ApiError(RuntimeError):
     pass
+
+
+def _int(v, lo: int, hi: int, what: str) -> int:
+    try:
+        if isinstance(v, bool):
+            raise ValueError
+        f = float(v)
+        n = int(f)
+        if n != f:
+            raise ValueError
+    except (TypeError, ValueError):
+        raise ApiError(f"{what}要是 {lo} 到 {hi} 之间的整数（收到 {v!r}）")
+    if not lo <= n <= hi:
+        raise ApiError(f"{what}要在 {lo} 到 {hi} 之间（收到 {n}）")
+    return n
+
+
+def _bool(v) -> bool:
+    if isinstance(v, str):
+        return v.strip().lower() not in ("", "0", "false", "no", "off")
+    return bool(v)
 
 
 class App:
@@ -59,7 +100,29 @@ class App:
         self.recording = False
         self.board_audio_busy = ""      # "" or what the board's audio is doing now (录音 / 放音)
         self.board_audio_lock = threading.Lock()   # one board recording or playback at a time; others are refused
+        # The live session. Link conversations (start / set / record's monitor gate) hold link_lock, like every
+        # other conversation with the board; live_lock only guards the session's data (history, counters) and is
+        # never held across a link call, so the fast poll never waits for the board.
+        self.live_lock = threading.Lock()
+        self.live_n = 0                                  # the server's own event number, never reset
+        self.live_session = 0                            # +1 at every start
+        self.live_events = collections.deque(maxlen=LIVE_HISTORY)
+        self.live_rec_busy = False
+        self.scale_thread: Optional[threading.Thread] = None
+        self.scale_stop = threading.Event()
+        self._live_reset()
         self.say("面板启动。还没有连接板子，也没有打开麦克风。")
+
+    def _live_reset(self) -> None:
+        """Back to the safe defaults: listening off, fake microphone, speaker off, volume 30."""
+        with self.live_lock:
+            self.live = dict(LIVE_DEFAULTS, listen=False, monitor=False)
+            self.live_state: dict = {}
+            self.live_now = {"her": -1, "duet": -1}
+            self.live_last_seq: Optional[int] = None     # None: no start yet, do not count lost events
+            self.live_lost = 0
+            self.live_seconds = 0.0
+            self.live_events.clear()
 
     def say(self, text: str) -> None:
         self.events.appendleft({"time": time.strftime("%H:%M:%S"), "text": text})
@@ -75,13 +138,21 @@ class App:
                 lk.close()
                 raise
             self.link, self.link_info = lk, {k: v for k, v in info.items() if not k.startswith("_")}
-            what = "板子" if lk.kind == "board" else "模拟器"
+            self._live_reset()
+            if self.live_available():
+                # Opening the port does not reset a board: an earlier session may have left it listening or
+                # singing. Say "everything off" once, so the board matches the panel's safe defaults.
+                self._live_off_quiet(lk)
+                lk.live_clear()
+            what = "板子" if lk.kind == "board" else ("模拟器（现场版）" if lk.port == "sim-live" else "模拟器")
             self.say(f"连上{what}（{lk.port}）：固件 {info.get('fw')} {info.get('ver')}，协议版本 {info.get('proto')}")
             return self.link_state()
 
     def disconnect(self, quiet: bool = False) -> None:
         with self.link_lock:
             if self.link is not None:
+                self._live_off_quiet(self.link)          # never leave a speaker on
+                self._live_reset()
                 self.link.close()
                 self.link = None
                 self.link_info = {}
@@ -140,6 +211,9 @@ class App:
         """The board's audio kind from INFO: "standin", "i2s"; raises if this firmware cannot stream audio."""
         self.need_link()
         mode = self.link_info.get("audio")
+        if mode is None and self.link_info.get("live") == "1":
+            raise ApiError("这个固件（duet_live）的声音在上面的“现场”那一节：在那里听麦克风、让喇叭出声。"
+                           "这里的 24 kHz 录音和放音只给 duet_base_audio 用。")
         if mode is None:
             raise ApiError("这个固件没有声音（第一版固件 duet_base）。要录音或放音，先换成 duet_base_audio。")
         if mode in ("0", "1"):
@@ -210,6 +284,325 @@ class App:
         self.say(f"放完了：{text}")
         return out
 
+    # ------------------------------------------------------------ the live chain (sketch duet_live)
+    def live_available(self) -> bool:
+        return self.link is not None and self.link_info.get("live") == "1"
+
+    def _need_live(self) -> Link:
+        if self.link is None:
+            raise ApiError(NO_LINK_LIVE)
+        if self.link.error:
+            raise ApiError(f"连接断了（{self.link.error}）。重新连接一次。")
+        if not self.live_available():
+            fw = self.link_info.get("fw") or "?"
+            raise ApiError(f"连着的固件（{fw}）没有现场部分（live）。要用这一节：把板子刷成 duet_live，"
+                           f"或者先按“断开”，再按“连模拟器（现场版）”。")
+        return self.link
+
+    def _hold_link(self):
+        """link_lock, but give up after LINK_WAIT_S with a Chinese error instead of hanging the page."""
+        app = self
+
+        class _Held:
+            def __enter__(self):
+                if not app.link_lock.acquire(timeout=LINK_WAIT_S):
+                    raise ApiError("板子正在做别的事（发《小星星》、录音、放音或者跑任务），等它做完再试。")
+
+            def __exit__(self, *exc):
+                app.link_lock.release()
+        return _Held()
+
+    def _live_apply(self, lk: Link, wait_hw: bool = True, timeout: float = 1.0) -> dict:
+        """Send the whole wanted gate state (never a partial one: live_ctrl's own defaults are listen off and
+        volume 100). Returns the LIVE_STATE reply."""
+        w = self.live
+        try:
+            st = lk.live_ctrl(listen=w["listen"], sing=w["sing"], fake=w["fake"], monitor=w["monitor"],
+                              volume=w["volume"], bpm=w["bpm"], wait_hw=wait_hw, timeout=timeout)
+        except LinkError as e:
+            raise ApiError(f"板子没有回应现场的指令（{e}）。看看 USB 线，或者断开再连一次。")
+        with self.live_lock:
+            # The stream is in order: every periodic LIVE_STATE already queued arrived before this reply and is
+            # older than it. Drop those, so the next _live_pump cannot put an older state over the reply.
+            # (A periodic frame arriving after this is newer and replaces the reply as usual.)
+            while True:
+                try:
+                    lk.live_states.popleft()
+                except IndexError:
+                    break
+            self.live_state = st
+        return st
+
+    def _live_off_quiet(self, lk: Optional[Link]) -> None:
+        """LISTEN off, SING off, MONITOR off; best effort, never raises. Volume and source are kept."""
+        self._scale_cancel()
+        self.live.update(listen=False, sing=False, monitor=False)
+        if lk is None or lk.error or self.link_info.get("live") != "1":
+            return
+        try:
+            self._live_apply(lk, wait_hw=False, timeout=0.5)
+        except Exception:
+            pass
+
+    def _scale_cancel(self) -> None:
+        self.scale_stop.set()
+        th = self.scale_thread
+        if th is not None and th is not threading.current_thread():
+            th.join(timeout=1.0)
+
+    def _live_pump(self) -> None:
+        """Move what the link collected into the session: numbered events, lost count, current notes, state."""
+        lk = self.link
+        if lk is None or self.link_info.get("live") != "1":
+            return
+        with self.live_lock:
+            while True:
+                try:
+                    d = lk.live_notes.popleft()
+                except IndexError:
+                    break
+                seq = int(d["seq"])
+                if self.live_last_seq is not None:
+                    self.live_lost += (seq - ((self.live_last_seq + 1) & 0xFF)) & 0xFF
+                self.live_last_seq = seq
+                self.live_n += 1
+                kind, midi = int(d["kind"]), int(d["midi"])
+                self.live_events.append({"n": self.live_n, "kind": kind, "kind_name": d.get("kind_name"), "midi": midi,
+                                         "name": audio_notes.midi_name(midi), "vel": d.get("vel"),
+                                         "t_ms": d.get("t_ms"), "fake": bool(d.get("fake")),
+                                         "from_host": bool(d.get("from_host")), "session": self.live_session})
+                if kind == proto.LN_HEARD_ON:
+                    self.live_now["her"] = midi
+                elif kind == proto.LN_HEARD_OFF and self.live_now["her"] == midi:
+                    self.live_now["her"] = -1
+                elif kind == proto.LN_SUNG_ON:
+                    self.live_now["duet"] = midi
+                elif kind == proto.LN_SUNG_OFF and self.live_now["duet"] == midi:
+                    self.live_now["duet"] = -1
+            last = None
+            while True:
+                try:
+                    last = lk.live_states.popleft()
+                except IndexError:
+                    break
+            if last is not None:
+                self.live_state = last
+            if self.live["listen"] and "hops" in self.live_state:
+                self.live_seconds = round(int(self.live_state["hops"]) * proto.LIVE_HOP_MS / 1000.0, 2)
+
+    def live_summary(self) -> dict:
+        """The small live object of /api/state."""
+        self._live_pump()
+        lk, w = self.link, self.live
+        avail = self.live_available()
+        th = self.scale_thread
+        return {"available": avail, "running": bool(avail and w["listen"] and not lk.error),
+                "firmware": self.link_info.get("fw") if lk is not None else None,
+                "source": "fake" if w["fake"] else "mic", "sing": bool(w["sing"]), "volume": w["volume"],
+                "plugin": w["plugin"], "tonic": w["tonic"],
+                "scale_busy": bool(th is not None and th.is_alive()), "recording": self.live_rec_busy}
+
+    def live_poll(self, since: int = 0) -> dict:
+        out = self.live_summary()
+        lk, w = self.link, self.live
+        with self.live_lock:
+            st = {k: self.live_state[k] for k in LIVE_STATE_KEYS if k in self.live_state}
+            if "heard" in st:
+                st["heard_name"] = audio_notes.midi_name(int(st["heard"]))
+            if "sung" in st:
+                st["sung_name"] = audio_notes.midi_name(int(st["sung"]))
+            events = [e for e in self.live_events if e["n"] > since][-LIVE_POLL_MAX:]
+            now = dict(self.live_now)
+            out.update(next=self.live_n, lost=self.live_lost, seconds=self.live_seconds, session=self.live_session)
+        now["her_name"] = audio_notes.midi_name(now["her"])
+        now["duet_name"] = audio_notes.midi_name(now["duet"])
+        info = self.link_info if lk is not None else {}
+        out.update(kind=lk.kind if lk is not None else None, plugin=w["plugin"], tonic=w["tonic"],
+                   key=audio_notes.PC_NAMES[w["tonic"] % 12], bpm=w["bpm"], state=st, now=now, events=events,
+                   mic_pins=info.get("mic_pins"), spk_pins=info.get("spk_pins"),
+                   link_error=lk.error if lk is not None else None)
+        return out
+
+    def live_start(self, body: dict) -> dict:
+        fake = _bool(body.get("fake", LIVE_DEFAULTS["fake"]))
+        sing = _bool(body.get("sing", LIVE_DEFAULTS["sing"]))
+        volume = _int(body.get("volume", LIVE_DEFAULTS["volume"]), 0, 100, "音量")
+        plugin = str(body.get("plugin", LIVE_DEFAULTS["plugin"]))
+        if plugin not in harmonizers.ID_BY_NAME:
+            raise ApiError(f"没有叫 {plugin} 的和声模型")
+        tonic = _int(body.get("tonic", LIVE_DEFAULTS["tonic"]), 0, 11, "调")
+        bpm = _int(body.get("bpm", LIVE_DEFAULTS["bpm"]), 30, 255, "速度（每分钟拍数）")
+        self._scale_cancel()                      # its notes would mix into the new session's numbering
+        with self._hold_link():
+            lk = self._need_live()
+            # 1. listen off first: a start while listening has no rising edge otherwise, and the board's
+            #    reply to this comes after every event of the old session (the stream is in order).
+            self.live.update(listen=False, monitor=False, fake=fake, sing=sing, volume=volume, plugin=plugin,
+                             tonic=tonic, bpm=bpm)
+            self._live_apply(lk, wait_hw=False)
+            # 2. forget the old session before anything new can arrive
+            lk.live_clear()
+            with self.live_lock:
+                self.live_events.clear()
+                self.live_session += 1
+                self.live_last_seq = 0xFF        # the first event of a start carries seq 0
+                self.live_lost = 0
+                self.live_seconds = 0.0
+                self.live_state = {}
+                self.live_now = {"her": -1, "duet": -1}
+            try:
+                lk.configure(plugin, tonic, 4)
+            except LinkError as e:
+                raise ApiError(f"板子没有接受和声模型 {plugin}（{e}）")
+            # 3. listen on
+            self.live["listen"] = True
+            try:
+                st = self._live_apply(lk)
+            except ApiError:
+                self._live_off_quiet(lk)
+                raise
+        src = "假麦克风《小星星》" if fake else "真麦克风"
+        spk = f"喇叭开着（音量 {volume}）" if sing else "喇叭关着"
+        self.say(f"现场开始听：{src}，{spk}，和声模型 {plugin}，{audio_notes.PC_NAMES[tonic]} 大调")
+        if st.get("error"):
+            self.say("板子说声音硬件没起来（LIVE_STATE error）。看设备日志。")
+        return self.live_poll(self.live_n)
+
+    def live_set(self, body: dict) -> dict:
+        with self._hold_link():
+            lk = self._need_live()
+            changed = []
+            if "sing" in body:
+                self.live["sing"] = _bool(body["sing"])
+                changed.append("喇叭" + ("打开" if self.live["sing"] else "关上"))
+            if "volume" in body:
+                self.live["volume"] = _int(body["volume"], 0, 100, "音量")
+                changed.append(f"音量 {self.live['volume']}")
+            if not self.live["sing"]:
+                self.scale_stop.set()
+            self._live_apply(lk)
+        if changed:
+            self.say("现场：" + "，".join(changed))
+        return self.live_poll(self.live_n)
+
+    def live_stop(self) -> dict:
+        """Everything off. Safety first: if another conversation holds the board for a while, send anyway
+        (link calls themselves are thread safe; only their order with that conversation is not kept)."""
+        got = self.link_lock.acquire(timeout=LINK_WAIT_S)
+        try:
+            lk = self.link
+            if lk is None:
+                self._live_reset()
+                return self.live_poll(self.live_n)
+            self._live_off_quiet(lk)
+        finally:
+            if got:
+                self.link_lock.release()
+        self._live_pump()
+        self.say("现场：停了（不听，喇叭关）。")
+        return self.live_poll(self.live_n)
+
+    def live_scale(self) -> dict:
+        with self._hold_link():
+            lk = self._need_live()
+            if not self.live["sing"]:
+                raise ApiError("先勾上“板子的喇叭出声”，再放音阶。喇叭关着时板子不出声。")
+            th = self.scale_thread
+            if th is not None and th.is_alive():
+                raise ApiError("音阶还在放，等它放完。")
+            stop = threading.Event()
+            self.scale_stop = stop
+            self.scale_thread = threading.Thread(target=self._scale_run, args=(lk, stop), name="duet-scale",
+                                                 daemon=True)
+            self.scale_thread.start()
+        self.say(f"喇叭测试：放音阶 C4 到 C5（8 个音，每个 {SCALE_NOTE_S * 1000:.0f} 毫秒），音量 {self.live['volume']}")
+        return {"started": True, "notes": [audio_notes.midi_name(m) for m in SCALE_NOTES],
+                "seconds": round(len(SCALE_NOTES) * (SCALE_NOTE_S + SCALE_GAP_S), 2)}
+
+    def _scale_run(self, lk: Link, stop: threading.Event) -> None:
+        try:
+            for m in SCALE_NOTES:
+                if stop.is_set():
+                    break
+                lk.synth_note(m, SCALE_VEL)
+                stop.wait(SCALE_NOTE_S)
+                lk.synth_note(m, 0)                  # always end the note, also when stopped
+                if stop.wait(SCALE_GAP_S):
+                    break
+        except Exception as e:
+            self.say(f"音阶没放完：{e}")
+
+    def live_record(self, seconds) -> dict:
+        """While listening: the monitor on for that many seconds, the hops (16 kHz int16) into a clip."""
+        try:
+            seconds = float(seconds)
+        except (TypeError, ValueError):
+            raise ApiError(f"录音长度要在 1 到 {MAX_LIVE_RECORD} 秒之间")
+        if not 1 <= seconds <= MAX_LIVE_RECORD:
+            raise ApiError(f"录音长度要在 1 到 {MAX_LIVE_RECORD} 秒之间")
+        with self.live_lock:                         # check and set in one step
+            if self.live_rec_busy:
+                raise ApiError("正在录麦克风听到的声音，等这一段录完")
+            self.live_rec_busy = True
+        lk, hops, first_hop = None, [], 0
+        need = int(math.ceil(seconds * proto.LIVE_RATE / proto.LIVE_HOP_SAMPLES))
+        try:
+            with self._hold_link():
+                lk = self._need_live()
+                if not self.live["listen"]:
+                    raise ApiError("先按“开始听”，再录。录的是板子正在听的声音。")
+                session, fake = self.live_session, self.live["fake"]
+                lk.mic_hops.clear()
+                self.live["monitor"] = True
+                first_hop = int(self._live_apply(lk, wait_hw=False)["hops"])   # the first monitored hop's index
+            self.say(f"开始录板子{'假' if fake else ''}麦克风听到的 {seconds:g} 秒……")
+            t_end = time.monotonic() + seconds + 3.0
+            while len(hops) < need and time.monotonic() < t_end:
+                if self.live_session != session or not self.live["listen"] or self.link is not lk:
+                    raise ApiError("录到一半，现场停了或重新开始了。没有存片段。")
+                try:
+                    hops.append(lk.mic_hops.popleft())
+                except IndexError:
+                    time.sleep(0.02)
+        finally:
+            if lk is not None and self.live.get("monitor"):
+                self.live["monitor"] = False
+                if self.link is lk:
+                    try:
+                        with self._hold_link():
+                            self._live_apply(lk, wait_hw=False)
+                    except Exception:
+                        pass
+                lk.mic_hops.clear()
+            self.live_rec_busy = False
+        if not hops:
+            raise ApiError("板子一帧麦克风的声音都没有发过来")
+        parts, lost = [], 0
+        for k, h in enumerate(hops):
+            if k:
+                gap = ((h["seq"] - hops[k - 1]["seq"]) & 0xFF) - 1
+                if gap:
+                    lost += gap
+                    parts.append(np.zeros(gap * proto.LIVE_HOP_SAMPLES, dtype=np.int16))
+            parts.append(np.frombuffer(h["pcm"], dtype="<i2"))
+        short = max(0, need - len(hops) - lost)
+        x = np.concatenate(parts)[: int(round(seconds * proto.LIVE_RATE))]
+        exact = None
+        if fake:
+            exact = bool(lost == 0 and np.array_equal(x, fake_audio.samples16(first_hop * proto.LIVE_HOP_SAMPLES, len(x))))
+        summary = f"{len(hops)} 帧（每帧 16 毫秒），丢了 {lost} 帧"
+        if short:
+            summary += f"，少收到 {short} 帧"
+        if exact is not None:
+            summary += "；每个采样都和 Mac 算的《小星星》一样" if exact else "；和 Mac 算的《小星星》对不上"
+        extra = {"live": True, "rate_in": proto.LIVE_RATE, "mic_source": "fake" if fake else "mic", "hops": len(hops),
+                 "lost": lost, "short": short, "first_hop": first_hop, "bit_exact": exact, "summary": summary}
+        name = f"板子{'假' if fake else ''}麦克风（现场）{seconds:g} 秒"
+        meta = self.store.add_array(x.astype(np.float32) / 32768.0, proto.LIVE_RATE, name=name, source="board_mic",
+                                    extra=extra)
+        self.say(f"录好了：{meta['id']}，{summary}")
+        return meta
+
     # ------------------------------------------------------------ clips and jobs
     def record(self, seconds: float) -> dict:
         """Record from the Mac's default microphone. Only ever called from the panel's record button."""
@@ -269,6 +662,7 @@ class App:
             "recording": self.recording,
             "board_audio": (self.link_info.get("audio") if self.link is not None else None),
             "board_audio_busy": self.board_audio_busy,
+            "live": self.live_summary(),       # available = this firmware's sound is the live section (duet_live)
             "disk_free_gb": round(shutil.disk_usage(self.store.root).free / 1e9, 2),
         }
 
@@ -324,6 +718,13 @@ class Handler(BaseHTTPRequestHandler):
                 self._send(200, (WEB / "index.html").read_bytes(), "text/html; charset=utf-8")
             elif path == "/api/state":
                 self._json(self.app.state())
+            elif path == "/api/live/poll":
+                q = urllib.parse.parse_qs(urllib.parse.urlparse(self.path).query)
+                try:
+                    since = int((q.get("since") or ["0"])[0])
+                except ValueError:
+                    since = 0
+                self._json(self.app.live_poll(since))
             elif path.startswith("/api/clip/") and path.endswith(".wav"):
                 self._wav(path[len("/api/clip/"):-4])
             else:
@@ -332,6 +733,8 @@ class Handler(BaseHTTPRequestHandler):
             self._json({"error": str(e)}, 400)
         except (BrokenPipeError, ConnectionResetError):
             pass
+        except Exception as e:      # never leave the page without an answer
+            self._json({"error": f"服务器出错：{type(e).__name__}: {e}"}, 500)
 
     do_HEAD = do_GET
 
@@ -363,6 +766,16 @@ class Handler(BaseHTTPRequestHandler):
                 self._json(app.board_record(body.get("seconds", 8)))
             elif url.path == "/api/board_play":
                 self._json(app.board_play(body.get("clip", "")))
+            elif url.path == "/api/live/start":
+                self._json(app.live_start(body if isinstance(body, dict) else {}))
+            elif url.path == "/api/live/set":
+                self._json(app.live_set(body if isinstance(body, dict) else {}))
+            elif url.path == "/api/live/stop":
+                self._json(app.live_stop())
+            elif url.path == "/api/live/scale":
+                self._json(app.live_scale())
+            elif url.path == "/api/live/record":
+                self._json(app.live_record(body.get("seconds", 5) if isinstance(body, dict) else 5))
             elif url.path == "/api/run":
                 self._json(app.submit(body.get("route", ""), body.get("clip", ""), body.get("params", {})))
             else:
@@ -388,6 +801,10 @@ def main():
     a = ap.parse_args()
     srv = serve(a.port)
     print(f"Duet panel: http://127.0.0.1:{a.port}   (Ctrl-C stops it; nothing is connected until you press a button)")
+
+    def _term(*_):                  # a plain kill also ends through the finally below (speaker off, link closed)
+        raise KeyboardInterrupt
+    signal.signal(signal.SIGTERM, _term)
     try:
         srv.serve_forever()
     except KeyboardInterrupt:

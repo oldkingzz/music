@@ -9,6 +9,15 @@
 // of the Mac's steady clock. Audio is off until AUDIO_CTRL, as on the board.
 //   board_sim               sketch 2, stand-in audio
 //   board_sim --no-audio    sketch 1: no audio; AUDIO_CTRL, SPK_AUDIO, SERVO, AUDIO_QUERY are ignored
+//   board_sim --live        sketch duet_live: the same Engine and LiveChain (DuetCore duet_live.h) as the board.
+//                           The microphone task becomes a 16 ms steady-clock schedule: with LC_FAKE it runs the
+//                           fake melody, without it a "real microphone" that is not wired (silence). The speaker
+//                           task becomes a counting sink paced at 256 frames / 22050 Hz: it renders the same
+//                           LiveVoice synth blocks and keeps their count, peak |sample| and CRC-32, reported in
+//                           INFO as sink_blocks, sink_peak, sink_crc. Differences from the board: one thread, so no
+//                           lock is needed; the sink starts and stops at once (no I2S begin time); its stop fade
+//                           runs at once instead of at the speaker's pace. AUDIO_CTRL, SPK_AUDIO, SERVO, LED and
+//                           AUDIO_QUERY are ignored, as in the duet_live sketch.
 #include <errno.h>
 #include <poll.h>
 #include <stdio.h>
@@ -42,6 +51,7 @@ static void write_all(const uint8_t* d, size_t n, void*) {
 
 // ------------------------------------------------------------------ the simulated audio side of sketch 2
 static bool g_audio = true;     // false with --no-audio
+static bool g_live = false;     // --live: sketch duet_live
 static Engine g_engine;
 static JitterBuffer g_jb;
 static StandinSpeaker g_spk;
@@ -146,15 +156,137 @@ static void tick() {
   }
 }
 
+// ------------------------------------------------------------------ the simulated side of sketch duet_live
+// The same constants as the top of firmware/duet_live/duet_live.ino (the team's wiring).
+static const int MIC_PIN_BCLK = 11, MIC_PIN_WS = 12, MIC_PIN_SD = 13;
+static const int SPK_PIN_BCLK = 4, SPK_PIN_LRC = 5, SPK_PIN_DIN = 6;
+static const uint32_t MIC_RATE = PT_SAMPLE_RATE, SPK_RATE = SY_PLAY_RATE;
+
+static LiveChain g_chain;
+static LiveVoice g_voice;
+static bool g_hops_running = false, g_sink_up = false;
+static uint32_t g_epoch_seen = 0;
+static uint64_t g_hop_n = 0, g_blk_n = 0;
+static Clock::time_point g_hop_origin, g_blk_origin;
+static uint32_t g_sink_crc = 0, g_sink_peak = 0;
+
+static Clock::time_point hop_due(uint64_t n) { return g_hop_origin + std::chrono::milliseconds(LIVE_HOP_MS * n); }
+static Clock::time_point blk_due(uint64_t n) {
+  return g_blk_origin + std::chrono::nanoseconds(n * (uint64_t)SY_PLAY_BLOCK * 1000000000ull / SPK_RATE);
+}
+
+static size_t live_info_sim(char* buf, size_t cap, void*) {
+  LiveInfoFacts f{"sim", 0, 0, 0, 0, 0, 0, -1, 0, 0, MIC_RATE, SPK_RATE,
+                  {MIC_PIN_BCLK, MIC_PIN_WS, MIC_PIN_SD}, {SPK_PIN_BCLK, SPK_PIN_LRC, SPK_PIN_DIN}};
+  size_t n = live_info_head(buf, cap, f);
+  char tmp[96];
+  snprintf(tmp, sizeof(tmp), ";chip=sim;sim=1;sink_blocks=%u;sink_peak=%u;sink_crc=%08x",
+           (unsigned)g_voice.blocks.load(), (unsigned)g_sink_peak, (unsigned)g_sink_crc);
+  return info_append(buf, cap, n, tmp);
+}
+
+static void live_hw(LiveHw* hw, void*) {
+  hw->mic_up = g_chain.want_mic();  // the unwired "real microphone" is up as soon as it is asked for
+  hw->spk_up = g_chain.singing();   // the sink starts at once
+  hw->error = false;
+}
+
+static void live_frame(const Frame& f, void*) { g_chain.on_frame(f); }  // LIVE_CTRL, SYNTH_NOTE; the rest is ignored
+
+static void sink_play(const int16_t* lr) {
+  for (int i = 0; i < 2 * SY_PLAY_BLOCK; ++i) {
+    const uint32_t a = (uint32_t)(lr[i] < 0 ? -(int32_t)lr[i] : lr[i]);
+    if (a > g_sink_peak) g_sink_peak = a;
+  }
+  g_sink_crc = crc32_samples(g_sink_crc, lr, 2 * SY_PLAY_BLOCK);
+}
+
+// What the board's microphone and speaker tasks do, on the steady clock. Call every pass.
+static void live_tick() {
+  const auto now = Clock::now();
+  // microphone: one hop per 16 ms from the moment the source (re)started
+  if (g_chain.listening()) {
+    if (!g_hops_running || g_chain.epoch() != g_epoch_seen) {
+      g_hops_running = true;
+      g_epoch_seen = g_chain.epoch();
+      g_hop_origin = now;
+      g_hop_n = 0;
+    }
+    static int32_t silence[PT_HOP];  // a real microphone that is not wired
+    while (g_chain.listening() && g_chain.epoch() == g_epoch_seen && Clock::now() >= hop_due(g_hop_n + 1)) {
+      if (g_chain.fake()) g_chain.hop_fake();
+      else g_chain.hop_raw(silence);
+      ++g_hop_n;
+    }
+  } else {
+    g_hops_running = false;
+  }
+  // speaker: the counting sink
+  static int16_t lr[2 * SY_PLAY_BLOCK];
+  const bool want = g_chain.singing();
+  if (want && !g_sink_up) {
+    g_sink_up = true;
+    g_voice.start();
+    g_blk_origin = now;
+    g_blk_n = 0;
+  }
+  if (g_sink_up && want) {
+    while (Clock::now() >= blk_due(g_blk_n + 1)) {
+      g_voice.block(lr, g_chain.gain());
+      sink_play(lr);
+      ++g_blk_n;
+    }
+  } else if (g_sink_up && !want) {
+    g_voice.begin_stop();
+    while (g_voice.stop_block(lr, g_chain.gain())) sink_play(lr);
+    g_sink_up = false;
+  } else {
+    g_voice.drop_pending();
+  }
+}
+
+static int live_timeout_ms() {
+  auto next = Clock::now() + std::chrono::milliseconds(20);
+  if (g_chain.listening() && g_hops_running && hop_due(g_hop_n + 1) < next) next = hop_due(g_hop_n + 1);
+  if (g_sink_up && blk_due(g_blk_n + 1) < next) next = blk_due(g_blk_n + 1);
+  if (g_chain.listening() && !g_hops_running) return 0;
+  const auto wait = std::chrono::duration_cast<std::chrono::microseconds>(next - Clock::now()).count();
+  return wait <= 0 ? 0 : (int)((wait + 999) / 1000);
+}
+
+static int live_main() {
+  g_engine.begin(write_all, now_us, live_info_sim, nullptr, "duet_live", "0.3.0");
+  g_engine.set_passthrough(live_frame, nullptr);
+  g_chain.begin(&g_engine, &g_voice, live_hw, nullptr);
+  static uint8_t buf[4096];
+  struct pollfd pfd = {0, POLLIN, 0};
+  for (;;) {
+    int r = poll(&pfd, 1, live_timeout_ms());
+    if (r < 0 && errno != EINTR) return 1;
+    if (r > 0) {
+      ssize_t n = ::read(0, buf, sizeof(buf));
+      if (n < 0 && errno != EINTR) return 1;
+      if (n == 0) return 0;  // stdin closed: the host is done
+      if (n > 0) g_engine.feed(buf, (size_t)n);
+    } else {
+      g_engine.idle();
+    }
+    live_tick();  // every pass, so a steady stream of host frames cannot starve the audio clock
+  }
+}
+
 int main(int argc, char** argv) {
   for (int k = 1; k < argc; ++k) {
     if (strcmp(argv[k], "--no-audio") == 0) {
       g_audio = false;
+    } else if (strcmp(argv[k], "--live") == 0) {
+      g_live = true;
     } else {
-      fprintf(stderr, "usage: board_sim [--no-audio]\n");
+      fprintf(stderr, "usage: board_sim [--no-audio | --live]\n");
       return 2;
     }
   }
+  if (g_live) return live_main();
   g_engine.begin(write_all, now_us, info, nullptr, g_audio ? "board_sim" : "board_sim_noaudio", "0.2.0");
   g_engine.set_passthrough(on_other_frame, nullptr);
   static uint8_t buf[4096];

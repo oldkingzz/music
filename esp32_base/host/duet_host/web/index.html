@@ -138,6 +138,42 @@ audio { width: 300px; max-width: 100%; height: 32px; display: block; }
 /* the board's audio is a stand-in: dashed like "not the real thing" */
 .standin { border: 2px dashed var(--ink); border-radius: 6px; padding: 8px 10px; margin: 6px 0 8px; font-weight: 600; overflow-wrap: anywhere; }
 .standin .small { font-weight: normal; }
+/* hidden must win over .row / .ctl (display: flex) */
+[hidden] { display: none !important; }
+
+/* 现场: her note in ink, Duet's note in var(--now) (this section is the "马上" lane) */
+.sec-head { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 10px; margin-bottom: 6px; }
+.sec-head h2 { margin: 0; }
+input[type=range] { width: 160px; max-width: 50vw; accent-color: var(--ink); }
+.sw { display: inline-block; width: 12px; height: 12px; border-radius: 2px; vertical-align: -1px; margin-right: 4px; }
+.sw.her { background: var(--ink); }
+.sw.duet { background: var(--now); }
+.readouts { display: flex; flex-wrap: wrap; gap: 10px; margin: 8px 0; }
+.readout { flex: 1 1 140px; min-width: 0; border: 1px solid var(--line); border-radius: 8px; padding: 6px 12px; background: var(--paper); }
+.readout .lab { font-size: 13px; color: var(--muted); }
+.readout .big { font-size: 44px; font-weight: 700; line-height: 1.15; font-variant-numeric: tabular-nums; }
+.readout.her .big { color: var(--ink); }
+.readout.duet { border-color: var(--now); }
+.readout.duet .big { color: var(--now); }
+.kb { position: relative; height: 66px; margin: 10px 0 4px; }
+.kb .k { position: absolute; top: 0; box-sizing: border-box; border-radius: 0 0 3px 3px; }
+.kb .w { bottom: 0; border: 1px solid var(--muted); background: var(--paper); }
+.kb .b { height: 60%; border: 1px solid var(--muted); background: var(--line); z-index: 1; }
+.kb .k.her { background: var(--ink); }
+.kb .k.duet { background: var(--now); }
+.kb .k.her.duet { background: linear-gradient(90deg, var(--ink) 50%, var(--now) 50%); }
+.kb .lbl { position: absolute; bottom: 2px; left: 0; right: 0; text-align: center; font-size: 10px; color: var(--muted); }
+.meters { display: grid; grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)); gap: 6px 14px; margin: 6px 0; }
+.meter { min-width: 0; font-size: 13px; }
+.meter .bar { position: relative; height: 8px; border-radius: 4px; background: var(--line); overflow: hidden; margin-top: 2px; }
+.meter .fill { position: absolute; top: 0; bottom: 0; left: 0; width: 0; background: var(--ink); }
+.meter .mid { position: absolute; top: 0; bottom: 0; left: 50%; width: 1px; background: var(--muted); }
+td.duet { color: var(--now); font-weight: 600; }
+td.her { font-weight: 600; }
+.steps { margin: 4px 0 8px; padding-left: 22px; }
+.steps li { margin: 3px 0; }
+.caution { border-left: 3px solid var(--ink); padding: 4px 10px; margin: 8px 0; font-size: 14px; }
+code { font-family: ui-monospace, Menlo, monospace; font-size: 12px; overflow-wrap: anywhere; }
 </style>
 </head>
 <body>
@@ -152,11 +188,13 @@ audio { width: 300px; max-width: 100%; height: 32px; display: block; }
 <section id="sec-link">
   <h2>连接</h2>
   <p class="hint">板子和模拟器跑的是同一份 C++ 核心。没插板子时，先用模拟器把通路测一遍。</p>
+  <p class="hint">“连模拟器”扮的是前两版固件（duet_base、duet_base_audio）；“连模拟器（现场版）”扮的是 duet_live，用来试下面的“现场”。</p>
   <div class="state-line" id="link-state">未连接</div>
   <div class="msg err" id="link-error"></div>
   <div class="row">
     <span class="ctl"><button id="btn-board">连板子</button><span class="reason" id="why-board"></span></span>
     <span class="ctl"><button id="btn-sim">连模拟器</button><span class="reason" id="why-sim"></span></span>
+    <span class="ctl"><button id="btn-sim-live">连模拟器（现场版）</button><span class="reason" id="why-sim-live"></span></span>
     <span class="ctl"><button id="btn-off">断开</button><span class="reason" id="why-off"></span></span>
   </div>
   <div class="row">
@@ -164,6 +202,99 @@ audio { width: 300px; max-width: 100%; height: 32px; display: block; }
     <span id="ping-out" class="small"></span>
   </div>
   <div class="msg err" id="link-msg"></div>
+</section>
+
+<section id="sec-live">
+  <div class="sec-head"><h2>现场：你唱，Duet 配和声</h2><span class="chip lane-now">马上</span></div>
+  <p class="hint">板子自己听麦克风，找出你唱的音，用和声模型配一个音，再从它的喇叭唱出来。Mac 只发指令、看结果。要用这一节，板子上要刷 duet_live，或者连“模拟器（现场版）”。</p>
+  <div class="state-line" id="live-state">未连接</div>
+  <div class="standin" id="live-standin" hidden>
+    <div id="live-standin-fake">现在用的是假麦克风(fake microphone)：它“听到”的是固件里做出来的一段《小星星》旋律，不是麦克风收到的声音。</div>
+    <div class="small" id="live-standin-sim" hidden>这是模拟器：它没有喇叭。“出声”在这里只数送出了多少块声音(block)，哪里都不会响。</div>
+  </div>
+
+  <div class="row">
+    <label class="ctl"><input type="radio" name="live-src" id="live-src-fake" value="fake" checked> 假麦克风：固件里的《小星星》，不用接线</label>
+    <label class="ctl"><input type="radio" name="live-src" id="live-src-mic" value="mic"> 真麦克风（GPIO 11/12/13）</label>
+  </div>
+  <div class="row">
+    <label class="ctl"><input type="checkbox" id="live-sing"> 板子的喇叭出声（GPIO 4/5/6）</label>
+    <label class="ctl">音量 <input type="range" id="live-vol" min="0" max="100" step="1" value="30"> <span id="live-vol-num">30</span></label>
+  </div>
+  <div class="row">
+    <label class="ctl">和声模型 <select id="live-plugin"></select></label>
+    <label class="ctl">调（大调） <select id="live-key"></select></label>
+  </div>
+  <div class="row">
+    <span class="ctl"><button id="btn-live-start">开始听</button><span class="reason" id="why-live-start"></span></span>
+    <span class="ctl"><button id="btn-live-stop">停</button><span class="reason" id="why-live-stop"></span></span>
+    <span class="ctl"><button id="btn-live-scale">喇叭测试：放一个音阶</button><span class="reason" id="why-live-scale"></span></span>
+  </div>
+  <div class="row">
+    <label class="ctl"><input type="checkbox" id="live-mac-sound"> 这台电脑也出声</label>
+    <span class="small">勾上后，你的音和 Duet 的音在这台电脑上各响一个简单的音。不勾就不响。</span>
+  </div>
+  <p class="small">在听的时候改喇叭或音量，马上生效；换麦克风、和声模型或调，会从头重新开始听。</p>
+  <div class="msg" id="live-msg"></div>
+
+  <div class="legend"><span><span class="sw her"></span>你：板子听出来的你的音</span><span><span class="sw duet"></span>Duet：它配的音</span></div>
+  <div class="readouts">
+    <div class="readout her"><div class="lab">你</div><div class="big" id="live-her">—</div></div>
+    <div class="readout duet"><div class="lab">Duet</div><div class="big" id="live-duet">—</div></div>
+  </div>
+  <div class="kb" id="live-kb"></div>
+  <div class="meters">
+    <div class="meter"><div>电平(level)：<span id="live-level">—</span></div><div class="bar"><div class="fill" id="live-level-bar"></div></div></div>
+    <div class="meter"><div>把握(confidence)：<span id="live-conf">—</span></div><div class="bar"><div class="fill" id="live-conf-bar"></div></div></div>
+    <div class="meter"><div>偏差(cents，音分)：<span id="live-cents">—</span></div><div class="bar"><div class="mid"></div><div class="fill" id="live-cents-bar"></div></div></div>
+  </div>
+  <div class="small" id="live-counts">听到 — 个音 · 唱了 — 个音 · 丢了 — 个事件 · 听了 — 秒</div>
+
+  <h3>最近 16 个音（新的在上面）</h3>
+  <div class="scroll">
+    <table>
+      <thead><tr><th>时间（秒）</th><th>你</th><th>Duet</th><th>备注</th></tr></thead>
+      <tbody id="live-rows"></tbody>
+    </table>
+  </div>
+  <div class="small" id="live-rows-empty">还没有音。按“开始听”。</div>
+
+  <div class="row">
+    <label class="ctl">录下麦克风听到的 <input type="number" id="live-rec-sec" min="1" max="30" step="1" value="5"> 秒</label>
+    <span class="ctl"><button id="btn-live-rec">录成片段</button><span class="reason" id="why-live-rec"></span></span>
+  </div>
+  <div class="msg" id="live-rec-msg"></div>
+
+  <h3>第一次这样试</h3>
+  <ol class="steps">
+    <li>先用假麦克风，喇叭关着。这一步不用接任何线。如果《小星星》的 14 个音一个个出现，每个旁边都有 Duet 配的音，说明板子和整条通路都是好的。</li>
+    <li>接好线以后，换成真麦克风，喇叭还是关着。对着麦克风唱或者哼，看“你”那一格跟不跟着变。</li>
+    <li>最后再勾上喇叭，音量先从 30 开始。</li>
+  </ol>
+  <p class="caution">注意：麦克风也听得见板子自己的喇叭。队友自己的程序在放声音的时候会停下来不听，现场合唱做不到这一点。喇叭太响的话，板子可能把自己的声音当成你的。所以喇叭要离麦克风远一点，音量一开始要小。</p>
+
+  <h3>接线（只列这个固件用到的线）</h3>
+  <div class="scroll">
+    <table>
+      <thead><tr><th>器件</th><th>器件上的脚</th><th>接到板子</th></tr></thead>
+      <tbody>
+        <tr><td>麦克风（I2S MEMS）</td><td>SCK</td><td>GPIO 11</td></tr>
+        <tr><td></td><td>WS</td><td>GPIO 12</td></tr>
+        <tr><td></td><td>SD</td><td>GPIO 13</td></tr>
+        <tr><td></td><td>L/R</td><td>GND</td></tr>
+        <tr><td></td><td>VDD</td><td>3V3</td></tr>
+        <tr><td></td><td>GND</td><td>GND</td></tr>
+        <tr><td>功放(amplifier，I2S)</td><td>BCLK</td><td>GPIO 4</td></tr>
+        <tr><td></td><td>LRC</td><td>GPIO 5</td></tr>
+        <tr><td></td><td>DIN</td><td>GPIO 6</td></tr>
+        <tr><td></td><td>电源</td><td>3V3（电路图上是这样画的）</td></tr>
+        <tr><td></td><td>GND</td><td>GND</td></tr>
+        <tr><td>喇叭（8 欧）</td><td>两根线</td><td>功放的 + 和 −</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="small">来源：Akshaya 的电路图和队友的三个程序，这几根线它们写的都一样。这个固件不碰 OLED 屏（GPIO 8/9）、SD 卡（GPIO 15–18）和按钮（GPIO 21）；要用这些，刷队友自己的程序。</p>
+  <p class="small">刷固件：第一次上传会把板子出厂的程序换掉，所以先请 Claude 把它备份下来。命令是 <code>sh tools/upload_firmware.sh duet_live --yes-upload</code>。上传前按住 BOOT，点一下 RESET，再松开 BOOT。</p>
 </section>
 
 <section id="sec-notes">
@@ -264,7 +395,8 @@ audio { width: 300px; max-width: 100%; height: 32px; display: block; }
     standin: "板子的声音：替身（没接硬件，不出声）",
     i2s: "板子的声音：真的麦克风和喇叭（I2S），放音会真的出声",
     none: "这个固件没有声音（第一版固件 duet_base）",
-    old: "旧版的声音固件：读不到计数，先更新 duet_base_audio"
+    old: "旧版的声音固件：读不到计数，先更新 duet_base_audio",
+    live: "这个固件（duet_live）的声音在上面的“现场”那一节。这里的 24 kHz 录音和放音只给 duet_base_audio 用。"
   };
   var JOB_STATE = { queued: "排队", running: "在做", done: "做完", failed: "没做成" };
 
@@ -382,6 +514,7 @@ audio { width: 300px; max-width: 100%; height: 32px; display: block; }
     renderLink(s);
     renderPlugins(s);
     renderBoardAudio(s);
+    try { renderLiveSlow(s); } catch (e) { setMsg("live-msg", "现场这一节画不出来：" + e.message, true); }
     renderClips(s);
     renderRoutes(s);
     renderClipSelects(s);
@@ -423,6 +556,7 @@ audio { width: 300px; max-width: 100%; height: 32px; display: block; }
   // What the board's audio is (INFO audio=...), as the state line and the stand-in notice of its section.
   function boardAudioKind(s) {
     if (!s.link) return null;
+    if (s.live && s.live.available) return "live";
     var a = s.board_audio;
     if (a === null || a === undefined) return "none";
     if (a === "0" || a === "1") return "old";
@@ -682,17 +816,20 @@ audio { width: 300px; max-width: 100%; height: 32px; display: block; }
     var linked = !!(s && s.link);
     var noLink = linked ? (s.link.error ? "连接断了，重新连一次" : "") : "先连板子或模拟器";
     if (!s) {
-      ["board", "sim", "off", "ping", "notes", "rec", "ba-rec", "ba-play"].forEach(function (k) { setButton("btn-" + k, "why-" + k, "等面板读到状态"); });
+      ["board", "sim", "sim-live", "off", "ping", "notes", "rec", "ba-rec", "ba-play",
+       "live-start", "live-stop", "live-scale", "live-rec"].forEach(function (k) { setButton("btn-" + k, "why-" + k, "等面板读到状态"); });
       return;
     }
     setButton("btn-board", "why-board", (s.board_ports || []).length ? "" : "没有看到板子（USB 303A:1001）");
     setButton("btn-sim", "why-sim", s.sim_built ? "" : "模拟器还没编译（firmware/host_tests/build_and_test.sh）");
+    setButton("btn-sim-live", "why-sim-live", s.sim_built ? "" : "模拟器还没编译（firmware/host_tests/build_and_test.sh）");
     setButton("btn-off", "why-off", linked ? "" : "现在没有连接");
     setButton("btn-ping", "why-ping", noLink);
     setButton("btn-notes", "why-notes", noLink || ((s.plugins || []).length ? "" : "对面没有和声模型"));
     setButton("btn-rec", "why-rec", (s.recording || recordPending) ? "正在录音…" : "");
     var kind = boardAudioKind(s);
-    var noAudio = noLink || (kind === "none" ? "这个固件没有声音" : kind === "old" ? "先更新声音固件" : "") ||
+    var noAudio = noLink || (kind === "none" ? "这个固件没有声音" : kind === "old" ? "先更新声音固件" :
+                  kind === "live" ? "这个固件的声音在上面的“现场”那一节" : "") ||
                   (s.board_audio_busy ? "板子正在" + s.board_audio_busy : "");
     setButton("btn-ba-rec", "why-ba-rec", noAudio);
     setButton("btn-ba-play", "why-ba-play", noAudio || ((s.clips || []).length ? "" : "先上传或录一段"));
@@ -701,6 +838,7 @@ audio { width: 300px; max-width: 100%; height: 32px; display: block; }
       var reason = !u.route.ready ? (u.route.why_not || "这条路线现在跑不了") : hasClips ? "" : "先上传或录一段";
       setButton(u.btnId, u.whyId, reason);
     });
+    liveButtons(s);
   }
 
   // ------------------------------------------------------------ controls
@@ -715,6 +853,7 @@ audio { width: 300px; max-width: 100%; height: 32px; display: block; }
   }
   $("btn-board").addEventListener("click", function () { link("auto", "btn-board"); });
   $("btn-sim").addEventListener("click", function () { link("sim", "btn-sim"); });
+  $("btn-sim-live").addEventListener("click", function () { link("sim-live", "btn-sim-live"); });
   $("btn-off").addEventListener("click", function () { link("none", "btn-off"); });
 
   $("btn-ping").addEventListener("click", function () {
@@ -812,6 +951,477 @@ audio { width: 300px; max-width: 100%; height: 32px; display: block; }
     setMsg("rec-msg", "正在录音… " + n + " 秒，录完自己停。");   // after act(), which clears the line
   });
 
+  // ------------------------------------------------------------ 现场 (sketch duet_live)
+  // Two sources: the slow poll (S.live, every 1.5 s) and, while listening or playing the scale, the fast poll
+  // /api/live/poll (one request at a time, about every 120 ms). liveView() takes whichever arrived last.
+  var KB_LO = 48, KB_HI = 84;          // the keyboard strip: C3 .. C6
+  var LIVE = { data: null, dataAt: 0, sAt: 0, clock: 0, since: 0, session: null, events: [], timer: null,
+               inflight: false, kickUntil: 0, pollErr: false, keys: {} };
+  var mac = null;                      // Web Audio; made only when the user ticks 这台电脑也出声
+
+  function noteName(m) {
+    var n = Number(m);
+    if (m === null || m === undefined || m === "" || !isFinite(n) || n < 0) return "—";
+    return KEYS[n % 12] + (Math.floor(n / 12) - 1);
+  }
+
+  function num(v) {
+    var n = Number(v);
+    return (v === null || v === undefined || v === "" || !isFinite(n)) ? null : n;
+  }
+
+  function liveView() {
+    var s = S || {};
+    var sl = s.live || {};
+    var d = LIVE.data;
+    var src = (d && LIVE.dataAt >= LIVE.sAt) ? d : sl;
+    var lk = s.link || null;
+    var info = (lk && lk.info) || {};
+    return {
+      linked: !!lk, linkError: lk ? lk.error : null, kind: lk ? lk.kind : null,
+      fw: info.fw || sl.firmware || "",
+      available: !!lk && !!src.available,
+      running: !!lk && !!src.running,
+      sing: !!src.sing, volume: num(src.volume), source: src.source === "mic" ? "mic" : "fake",
+      scale_busy: !!src.scale_busy, recording: !!src.recording,
+      plugin: src.plugin, tonic: num(src.tonic),
+      state: (d && d.state) || {}, now: (d && d.now) || {},
+      lost: d ? num(d.lost) : null, seconds: d ? num(d.seconds) : null
+    };
+  }
+
+  function liveStateText(v) {
+    if (!v.linked) return "未连接。先在上面按“连板子”（板子要刷好 duet_live），或者按“连模拟器（现场版）”。";
+    if (v.linkError) return "连接断了（" + v.linkError + "）。在上面重新连一次。";
+    if (!v.available) {
+      return "连着的固件（" + (v.fw || "不知道名字") + "）没有现场部分。要用这一节：把板子刷成 duet_live（见本节最后一行），" +
+             "或者先按“断开”，再按“连模拟器（现场版）”。";
+    }
+    var where = v.kind === "board" ? "板子" : "模拟器（现场版）";
+    var spk = v.sing ? "板子的喇叭开着，音量 " + (v.volume === null ? "?" : v.volume) : "板子的喇叭关着";
+    var extra = (v.scale_busy ? "正在放音阶。" : "") + (v.recording ? "正在录麦克风听到的声音。" : "");
+    if (v.running) {
+      var src = v.source === "mic" ? "真麦克风" : "假麦克风（固件里的《小星星》）";
+      var sec = v.seconds === null ? 0 : v.seconds;
+      var t = "正在听：" + where + "，" + src + "，" + spk + "，已经听了 " + sec.toFixed(1) + " 秒。";
+      if (v.state.error) t += "板子说声音硬件没起来，看最下面“记录”里设备发来的日志。";
+      return t + extra;
+    }
+    return "准备好了：" + where + "，固件 duet_live，" + spk + "。选好麦克风，按“开始听”。" + extra;
+  }
+
+  // ---- the keyboard strip, built once; afterwards only class names change
+  function isWhite(m) { return [0, 2, 4, 5, 7, 9, 11].indexOf(m % 12) >= 0; }
+
+  function buildKeyboard() {
+    var kb = $("live-kb"), whites = 0, m;
+    for (m = KB_LO; m <= KB_HI; m++) if (isWhite(m)) whites++;
+    var w = 100 / whites, wi = 0;
+    for (m = KB_LO; m <= KB_HI; m++) {
+      var k = el("div");
+      if (isWhite(m)) {
+        k.className = "k w";
+        k.style.left = (wi * w) + "%";
+        k.style.width = w + "%";
+        if (m % 12 === 0) k.appendChild(el("span", "lbl", noteName(m)));
+        wi++;
+      } else {
+        k.className = "k b";
+        k.style.left = (wi * w - w * 0.3) + "%";
+        k.style.width = (w * 0.6) + "%";
+      }
+      k.title = noteName(m);
+      kb.appendChild(k);
+      LIVE.keys[m] = { node: k, base: k.className };
+    }
+  }
+
+  function setKeys(her, duet) {
+    if (!changed("kb", [her, duet])) return;
+    Object.keys(LIVE.keys).forEach(function (m) {
+      var o = LIVE.keys[m], c = o.base;
+      if (Number(m) === her) c += " her";
+      if (Number(m) === duet) c += " duet";
+      o.node.className = c;
+    });
+  }
+
+  function setMeter(id, text, left, width) {
+    $(id).textContent = text;
+    var b = $(id + "-bar");
+    b.style.left = left + "%";
+    b.style.width = width + "%";
+  }
+
+  // ---- the table of the latest 16 notes, rebuilt from the events kept here
+  function liveRows() {
+    var rows = [];
+    LIVE.events.forEach(function (e) {
+      if (!e) return;
+      var name = e.name || noteName(e.midi);
+      if (e.kind === 1) {
+        rows.push({ t: e.t_ms, her: name, duet: null, test: false });
+      } else if (e.kind === 3 && e.from_host) {
+        rows.push({ t: e.t_ms, her: null, duet: name, test: true });
+      } else if (e.kind === 3) {
+        var last = rows[rows.length - 1];
+        if (last && !last.test && last.duet === null && last.t === e.t_ms) last.duet = name;
+        else rows.push({ t: e.t_ms, her: null, duet: name, test: false });
+      }
+    });
+    return rows.slice(-16).reverse();
+  }
+
+  function drawRows() {
+    var rows = liveRows();
+    if (!changed("liveRows", rows)) return;
+    var tb = $("live-rows");
+    tb.replaceChildren();
+    rows.forEach(function (r) {
+      var tr = el("tr");
+      var t = num(r.t);
+      tr.appendChild(el("td", "num", t === null ? "—" : (t / 1000).toFixed(2)));
+      tr.appendChild(el("td", "her", r.her || "—"));
+      tr.appendChild(el("td", "duet", r.duet || "—"));
+      tr.appendChild(el("td", null, r.test ? "喇叭测试（Mac 发的音）" : (r.her && !r.duet ? "Duet 没有配音" : "")));
+      tb.appendChild(tr);
+    });
+    $("live-rows-empty").hidden = rows.length > 0;
+  }
+
+  // ---- the controls follow the server once it has a live firmware (only when the server's values change,
+  //      so a choice being made on the page is not overwritten)
+  function syncControls(v) {
+    if (!v.available) return;
+    if (!changed("liveCtl", [v.source, v.sing, v.volume, v.plugin, v.tonic])) return;
+    $("live-src-fake").checked = v.source !== "mic";
+    $("live-src-mic").checked = v.source === "mic";
+    $("live-sing").checked = v.sing;
+    if (v.volume !== null) {
+      $("live-vol").value = String(v.volume);
+      $("live-vol-num").textContent = String(v.volume);
+    }
+    if (v.plugin) $("live-plugin").value = v.plugin;
+    if (v.tonic !== null) $("live-key").value = String(v.tonic);
+  }
+
+  function drawLive() {
+    var v = liveView();
+    syncControls(v);
+    var line = liveStateText(v);
+    if (changed("liveState", line)) $("live-state").textContent = line;
+
+    var showFake = v.available ? v.source !== "mic" : !$("live-src-mic").checked;
+    var showSim = v.available && v.kind === "sim";
+    if (changed("liveStandin", [showFake, showSim])) {
+      $("live-standin").hidden = !(showFake || showSim);
+      $("live-standin-fake").hidden = !showFake;
+      $("live-standin-sim").hidden = !showSim;
+    }
+
+    var n = v.available ? v.now : {};
+    var her = num(n.her), duet = num(n.duet);
+    if (her !== null && her < 0) her = null;
+    if (duet !== null && duet < 0) duet = null;
+    $("live-her").textContent = her === null ? "—" : noteName(her);
+    $("live-duet").textContent = duet === null ? "—" : noteName(duet);
+    setKeys(her, duet);
+
+    var st = v.running ? v.state : {};
+    var lv = num(st.level), cf = num(st.conf), ct = num(st.cents);
+    if (lv === null) setMeter("live-level", "—", 0, 0);
+    else setMeter("live-level", lv + " dB", 0, Math.max(0, Math.min(100, lv + 100)));
+    if (cf === null) setMeter("live-conf", "—", 0, 0);
+    else setMeter("live-conf", cf + "%", 0, Math.max(0, Math.min(100, cf)));
+    if (ct === null) setMeter("live-cents", "—", 50, 0);
+    else {
+      var c = Math.max(-50, Math.min(50, ct));
+      setMeter("live-cents", (ct > 0 ? "+" : "") + ct + " 音分", c < 0 ? 50 + c : 50, Math.abs(c));
+    }
+    var vs = v.state || {};
+    function show(x) { return x === null ? "—" : String(x); }
+    $("live-counts").textContent = "听到 " + show(num(vs.heard_n)) + " 个音 · 唱了 " + show(num(vs.sung_n)) + " 个音 · 丢了 " +
+      show(v.lost) + " 个事件 · 听了 " + (v.seconds === null ? "—" : v.seconds.toFixed(1)) + " 秒";
+    drawRows();
+  }
+
+  function liveButtons() {
+    var v = liveView();
+    var noLive = !v.linked ? "先连板子，或者连模拟器（现场版）" : v.linkError ? "连接断了，重新连一次" :
+                 !v.available ? "这个固件没有现场部分" : "";
+    setButton("btn-live-start", "why-live-start", noLive);
+    setButton("btn-live-stop", "why-live-stop", noLive);
+    setButton("btn-live-scale", "why-live-scale", noLive || (!$("live-sing").checked ? "先勾上“板子的喇叭出声”" :
+              v.scale_busy ? "音阶正在放" : ""));
+    setButton("btn-live-rec", "why-live-rec", noLive || (v.recording ? "正在录…" : !v.running ? "先按“开始听”" : ""));
+  }
+
+  // ---- fast polling
+  function wantFast() {
+    var d = LIVE.data;
+    return Date.now() < LIVE.kickUntil || !!(d && (d.running || d.scale_busy || d.recording));
+  }
+
+  function kick(ms) {
+    LIVE.kickUntil = Math.max(LIVE.kickUntil, Date.now() + ms);
+    if (LIVE.timer === null && !LIVE.inflight) LIVE.timer = setTimeout(livePoll, 0);
+  }
+
+  function stopFast() {
+    if (LIVE.timer !== null) clearTimeout(LIVE.timer);
+    LIVE.timer = null;
+    LIVE.kickUntil = 0;
+  }
+
+  function livePoll() {
+    LIVE.timer = null;
+    if (LIVE.inflight) return;
+    LIVE.inflight = true;
+    api("GET", "/api/live/poll?since=" + LIVE.since).then(function (r) {
+      LIVE.inflight = false;
+      var delay = 120;
+      if (r.ok && r.data) {
+        if (LIVE.pollErr) { LIVE.pollErr = false; setMsg("live-msg", ""); }
+        try { acceptPoll(r.data); } catch (e) { setMsg("live-msg", "现场这一节画不出来：" + e.message, true); }
+      } else {
+        LIVE.pollErr = true;
+        setMsg("live-msg", "读现场状态没成功：" + ((r.data && r.data.error) || "不知道为什么") + "。还在接着试。", true);
+        macSilence();
+        delay = 500;
+      }
+      if (LIVE.timer === null && wantFast()) LIVE.timer = setTimeout(livePoll, delay);
+      else if (!wantFast()) macSilence();
+    });
+  }
+
+  function acceptPoll(d) {
+    var next = num(d.next);
+    if (next !== null && next < LIVE.since) { LIVE.since = 0; LIVE.events = []; }   // the server was restarted
+    if (d.session !== undefined && d.session !== LIVE.session) { LIVE.session = d.session; LIVE.events = []; }
+    var evs = Array.isArray(d.events) ? d.events : [];
+    var top = LIVE.since, fresh = [];
+    evs.forEach(function (e) {
+      if (e && typeof e.n === "number" && e.n > LIVE.since) {
+        fresh.push(e);
+        LIVE.events.push(e);
+        if (e.n > top) top = e.n;
+      }
+    });
+    if (LIVE.events.length > 400) LIVE.events = LIVE.events.slice(-400);
+    LIVE.since = Math.max(top, next === null ? 0 : next);
+    macEvents(fresh);                          // only events not seen before start or stop a tone
+    acceptData(d);
+  }
+
+  // A reply of start / set / stop carries the state too (its events are never taken: since stays as it is).
+  function acceptData(d) {
+    if (!d || typeof d !== "object") return;
+    LIVE.data = d;
+    LIVE.dataAt = ++LIVE.clock;
+    drawLive();
+    if (S) liveButtons();
+  }
+
+  function renderLiveSlow(s) {
+    LIVE.sAt = ++LIVE.clock;
+    if (changed("livePlugins", s.plugins)) {
+      var sel = $("live-plugin"), cur = sel.value;
+      sel.replaceChildren();
+      (s.plugins || []).forEach(function (p) {
+        var o = el("option", null, p);
+        o.value = p;
+        sel.appendChild(o);
+      });
+      if ((s.plugins || []).indexOf(cur) >= 0) sel.value = cur;
+      else if ((s.plugins || []).indexOf("third_below") >= 0) sel.value = "third_below";
+      seen.liveCtl = undefined;
+    }
+    var l = s.live || {};
+    if (!s.link || !l.available) {
+      LIVE.data = null;
+      LIVE.events = [];                        // no stale rows from an earlier link
+      seen.liveCtl = undefined;                // after a reconnect the controls follow the server again
+      stopFast();
+      macSilence();
+    } else if (l.running || l.scale_busy || l.recording) {
+      kick(600);
+    }
+    drawLive();
+  }
+
+  // ---- this computer's own sound (Web Audio): her note and Duet's note as two simple tones
+  function macTone(which, midi) {
+    if (!mac) return;
+    var cur = mac[which];
+    var m = num(midi);
+    if (m !== null && m < 0) m = null;
+    if (cur && cur.midi === m) return;
+    var ctx = mac.ctx;
+    if (cur) {
+      try {
+        var t = ctx.currentTime;
+        cur.gain.gain.cancelScheduledValues(t);
+        cur.gain.gain.setValueAtTime(cur.gain.gain.value, t);
+        cur.gain.gain.linearRampToValueAtTime(0, t + 0.03);
+        cur.osc.stop(t + 0.05);
+      } catch (e) { /* already stopped */ }
+      mac[which] = null;
+    }
+    if (m === null || !$("live-mac-sound").checked) return;
+    try {
+      var o = ctx.createOscillator(), g = ctx.createGain(), t0 = ctx.currentTime;
+      o.type = which === "her" ? "sine" : "triangle";
+      o.frequency.value = 440 * Math.pow(2, (m - 69) / 12);
+      g.gain.setValueAtTime(0, t0);
+      g.gain.linearRampToValueAtTime(which === "her" ? 0.12 : 0.1, t0 + 0.02);
+      o.connect(g);
+      g.connect(ctx.destination);
+      o.start();
+      mac[which] = { osc: o, gain: g, midi: m };
+    } catch (e) {
+      setMsg("live-msg", "这台电脑出声没成功：" + e.message, true);
+    }
+  }
+
+  function macEvents(evs) {
+    if (!mac || !$("live-mac-sound").checked) return;
+    evs.forEach(function (e) {
+      if (!e) return;
+      if (e.kind === 1) macTone("her", e.midi);
+      else if (e.kind === 2) { if (mac.her && mac.her.midi === e.midi) macTone("her", -1); }
+      else if (e.kind === 3) macTone("duet", e.midi);
+      else if (e.kind === 4) { if (mac.duet && mac.duet.midi === e.midi) macTone("duet", -1); }
+    });
+  }
+
+  function macSilence() {
+    if (!mac) return;
+    macTone("her", -1);
+    macTone("duet", -1);
+  }
+
+  $("live-mac-sound").addEventListener("change", function () {
+    var box = $("live-mac-sound");
+    if (!box.checked) { macSilence(); return; }
+    var AC = window.AudioContext || window.webkitAudioContext;
+    if (!AC) {
+      box.checked = false;
+      setMsg("live-msg", "这个浏览器不能在网页里出声（没有 Web Audio）。", true);
+      return;
+    }
+    try {
+      if (!mac) mac = { ctx: new AC(), her: null, duet: null };     // inside the click: browsers need that
+      if (mac.ctx.state === "suspended" && mac.ctx.resume) {
+        var p = mac.ctx.resume();
+        if (p && p.catch) p.catch(function () {});
+      }
+    } catch (e) {
+      box.checked = false;
+      setMsg("live-msg", "这台电脑出声没成功：" + e.message, true);
+      return;
+    }
+    var v = liveView();
+    if (v.available) { macTone("her", v.now.her); macTone("duet", v.now.duet); }
+  });
+
+  // ---- the controls
+  KEYS.forEach(function (k, i) {
+    var o = el("option", null, k);
+    o.value = String(i);
+    $("live-key").appendChild(o);
+  });
+  buildKeyboard();
+
+  function liveBody() {
+    var vol = Number($("live-vol").value);
+    if (!isFinite(vol)) vol = 30;
+    return { fake: !$("live-src-mic").checked, sing: !!$("live-sing").checked,
+             volume: Math.max(0, Math.min(100, Math.round(vol))),
+             plugin: $("live-plugin").value || "third_below", tonic: Number($("live-key").value) || 0 };
+  }
+
+  function liveStart() {
+    act("btn-live-start", "live-msg", "POST", "/api/live/start", liveBody(), function (d) {
+      LIVE.events = [];
+      LIVE.session = d.session;
+      if (num(d.next) !== null) LIVE.since = num(d.next);
+      seen.liveRows = undefined;
+      acceptData(d);
+      kick(1500);
+    }).then(function (r) {
+      if (r && !r.ok) {                        // the board keeps what it had: show that again
+        seen.liveCtl = undefined;
+        drawLive();
+      }
+    });
+  }
+
+  function liveSet(body) {
+    api("POST", "/api/live/set", body).then(function (r) {
+      if (r.ok) {
+        acceptData(r.data);
+      } else {
+        setMsg("live-msg", r.data.error, true);
+        seen.liveCtl = undefined;              // put the controls back to what the board really does
+        drawLive();
+      }
+      updateButtons();
+      pollSoon();
+    });
+  }
+
+  $("btn-live-start").addEventListener("click", liveStart);
+
+  $("btn-live-stop").addEventListener("click", function () {
+    macSilence();
+    act("btn-live-stop", "live-msg", "POST", "/api/live/stop", {}, function (d) {
+      acceptData(d);
+      kick(400);                               // the last OFF events
+    });
+  });
+
+  $("btn-live-scale").addEventListener("click", function () {
+    act("btn-live-scale", "live-msg", "POST", "/api/live/scale", {}, function () {
+      setMsg("live-msg", "正在放音阶：C4 到 C5，8 个音，大约 3 秒。");
+      kick(600);                               // then the reply's scale_busy keeps the poll going
+    });
+  });
+
+  $("btn-live-rec").addEventListener("click", function () {
+    var n = Number($("live-rec-sec").value);
+    if (!(n >= 1 && n <= 30)) {
+      setMsg("live-rec-msg", "录音长度要在 1 到 30 秒之间。", true);
+      return;
+    }
+    act("btn-live-rec", "live-rec-msg", "POST", "/api/live/record", { seconds: n }, function (m) {
+      setMsg("live-rec-msg", "录好了：" + m.name + "。" + (m.summary || "") + "。它在下面的“片段”里。");
+    });
+    setMsg("live-rec-msg", "正在录 " + n + " 秒，录完自己停。");   // the poll keeps running: it is listening
+  });
+
+  function onSourceChange() {
+    drawLive();
+    if (liveView().running) liveStart();       // a new source starts listening again
+  }
+  $("live-src-fake").addEventListener("change", onSourceChange);
+  $("live-src-mic").addEventListener("change", onSourceChange);
+
+  $("live-sing").addEventListener("change", function () {
+    updateButtons();
+    if (liveView().available) liveSet({ sing: !!$("live-sing").checked });
+  });
+
+  $("live-vol").addEventListener("input", function () { $("live-vol-num").textContent = String($("live-vol").value); });
+  $("live-vol").addEventListener("change", function () {
+    $("live-vol-num").textContent = String($("live-vol").value);
+    if (liveView().available) liveSet({ volume: liveBody().volume });
+  });
+
+  function onModelChange() { if (liveView().running) liveStart(); }
+  $("live-plugin").addEventListener("change", onModelChange);
+  $("live-key").addEventListener("change", onModelChange);
+
+  drawLive();
   updateButtons();
   poll();
 })();

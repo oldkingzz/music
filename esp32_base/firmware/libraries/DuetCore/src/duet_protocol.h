@@ -9,6 +9,8 @@
 // text logs and AUDIO_CTRL. Types with a variable length are new in version 2.
 // Added within version 2 (2026-11-21): AUDIO_QUERY / AUDIO_STATS, the audio counters. A firmware without audio
 // (sketch 1) parses AUDIO_QUERY and ignores it, so the host sees no reply.
+// Added within version 2 (2026-11-22): the live chain of sketch duet_live (LIVE_CTRL, SYNTH_NOTE, LIVE_NOTE,
+// LIVE_STATE, MIC_HOP). Purely additive; a firmware without the live chain parses them and ignores them.
 #pragma once
 #include <stddef.h>
 #include <stdint.h>
@@ -38,6 +40,12 @@ enum : uint8_t {
   T_LOG = 0x25,         // dev->host ASCII text, 1..240 bytes
   T_CONFIG_ACK = 0x26,  // dev->host status u8 (0 = ok), plugin u8, n_pos u16 (accepted)
   T_AUDIO_STATS = 0x27, // dev->host AUDIO_STATS_LEN bytes, layout below. Answers AUDIO_QUERY (same seq).
+  // ---- version 2, live chain (2026-11-22, sketch duet_live; layouts below)
+  T_LIVE_CTRL = 0x18,   // host->dev flags u8, volume u8, bpm u8, reserved u8. Answered by LIVE_STATE (same seq, LS_REPLY)
+  T_SYNTH_NOTE = 0x19,  // host->dev midi u8, vel u8 (0 = note off). No reply.
+  T_LIVE_NOTE = 0x28,   // dev->host LIVE_NOTE_LEN bytes: one heard / sung note event
+  T_LIVE_STATE = 0x29,  // dev->host LIVE_STATE_LEN bytes: state of the live chain
+  T_MIC_HOP = 0x2A,     // dev->host 256 x int16: one hop of what the pitch tracker got (LC_MONITOR only)
 };
 
 static const uint8_t PROTO_VERSION = 2;
@@ -83,6 +91,65 @@ struct AudioStats {
 };
 void pack_audio_stats(const AudioStats& s, uint8_t* out);  // out has AUDIO_STATS_LEN bytes
 bool parse_audio_stats(const uint8_t* p, uint16_t len, AudioStats* s);
+
+// ------------------------------------------------------------------ live chain (sketch duet_live)
+// LIVE_CTRL  host->dev, 4 bytes: flags u8 (LC_*), volume u8 (0..100 % of the synth's 0.35 cap; > 100 = 100),
+//            bpm u8 (only to turn seconds into beats for the plug-in; 0 = 120), reserved u8 (0).
+//            The device answers LIVE_STATE with the same seq and LS_REPLY set.
+// SYNTH_NOTE host->dev, 2 bytes: midi u8, vel u8 (0 = off). Ignored unless SING is on. Reported as a SUNG event
+//            with LN_FROM_HOST.
+// LIVE_NOTE  dev->host, 8 bytes: kind u8 (LN_*), midi u8, vel u8, flags u8 (LN_FAKE | LN_FROM_HOST),
+//            t_ms u32 (hops since LISTEN went on x 16; 0 when LISTEN is off). seq: own counter, 0 at each
+//            rising edge of LISTEN.
+// LIVE_STATE dev->host, 24 bytes:
+//    0 flags u8 (LS_*)   1 volume u8   2 heard i8 (-1 none)   3 sung i8 (-1 none)   4 freq f32 (Hz, 0 unvoiced)
+//    8 conf u8 (0..100)  9 level i8 (dB, -100..0)  10 cents i8 (-50..50)  11 reserved u8
+//   12 hops u32  16 heard_n u16  18 sung_n u16  20 spk_blocks u32
+//   Sent every LIVE_STATE_EVERY hops while LISTEN is on (own seq, LS_REPLY clear) and as the LIVE_CTRL answer.
+// MIC_HOP    dev->host, 512 bytes: 256 int16 LE, the hop as the tracker got it before its DC filter.
+//            seq +1 per hop, 0 at each rising edge of LISTEN. LC_MONITOR only.
+static const uint16_t LIVE_CTRL_LEN = 4;
+static const uint16_t SYNTH_NOTE_LEN = 2;
+static const uint16_t LIVE_NOTE_LEN = 8;
+static const uint16_t LIVE_STATE_LEN = 24;
+static const uint16_t MIC_HOP_SAMPLES = 256;
+static const uint16_t MIC_HOP_LEN = 2 * MIC_HOP_SAMPLES;  // 512
+static const uint32_t LIVE_STATE_EVERY = 6;                // hops (96 ms)
+static const uint32_t LIVE_HOP_MS = 16;                    // 256 samples at 16 kHz
+// The largest payload a device sends (MIC_HOP). Engine's transmit buffer is sized for it.
+static const uint16_t MAX_DEVICE_PAYLOAD = MIC_HOP_LEN;
+
+enum : uint8_t { LC_LISTEN = 0x01, LC_SING = 0x02, LC_FAKE = 0x04, LC_MONITOR = 0x08, LC_KNOWN = 0x0F };
+enum : uint8_t { LN_HEARD_ON = 1, LN_HEARD_OFF = 2, LN_SUNG_ON = 3, LN_SUNG_OFF = 4 };
+enum : uint8_t { LN_FAKE = 0x01, LN_FROM_HOST = 0x02 };
+enum : uint8_t {
+  LS_LISTEN = 0x01, LS_SING = 0x02, LS_FAKE = 0x04, LS_MONITOR = 0x08,
+  LS_MIC_UP = 0x10, LS_SPK_UP = 0x20, LS_ERROR = 0x40, LS_REPLY = 0x80,
+};
+
+struct LiveCtrl {
+  uint8_t flags, volume, bpm;
+};
+struct LiveNote {
+  uint8_t kind, midi, vel, flags;
+  uint32_t t_ms;
+};
+struct LiveState {
+  uint8_t flags, volume;
+  int8_t heard, sung;
+  float freq;
+  uint8_t conf;
+  int8_t level, cents;
+  uint32_t hops;
+  uint16_t heard_n, sung_n;
+  uint32_t spk_blocks;
+};
+void pack_live_ctrl(const LiveCtrl& c, uint8_t* out);  // LIVE_CTRL_LEN bytes
+bool parse_live_ctrl(const uint8_t* p, uint16_t len, LiveCtrl* c);
+void pack_live_note(const LiveNote& n, uint8_t* out);  // LIVE_NOTE_LEN bytes
+bool parse_live_note(const uint8_t* p, uint16_t len, LiveNote* n);
+void pack_live_state(const LiveState& s, uint8_t* out);  // LIVE_STATE_LEN bytes
+bool parse_live_state(const uint8_t* p, uint16_t len, LiveState* s);
 
 // Allowed payload length range of a type. Returns false if the type is unknown.
 bool len_range(uint8_t type, uint16_t* min_len, uint16_t* max_len);

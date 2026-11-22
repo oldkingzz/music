@@ -25,6 +25,11 @@ bool len_range(uint8_t type, uint16_t* min_len, uint16_t* max_len) {
     case T_CONFIG_ACK: lo = hi = CONFIG_ACK_LEN; break;
     case T_AUDIO_QUERY: lo = hi = 0; break;
     case T_AUDIO_STATS: lo = hi = AUDIO_STATS_LEN; break;
+    case T_LIVE_CTRL: lo = hi = LIVE_CTRL_LEN; break;
+    case T_SYNTH_NOTE: lo = hi = SYNTH_NOTE_LEN; break;
+    case T_LIVE_NOTE: lo = hi = LIVE_NOTE_LEN; break;
+    case T_LIVE_STATE: lo = hi = LIVE_STATE_LEN; break;
+    case T_MIC_HOP: lo = hi = MIC_HOP_LEN; break;
     default: return false;
   }
   if (min_len) *min_len = lo;
@@ -74,6 +79,72 @@ bool parse_audio_stats(const uint8_t* p, uint16_t len, AudioStats* s) {
   s->spk_crc = get_u32(p + 36);
   s->spk_peak = get_u16(p + 40);
   s->dev_us = get_u32(p + 44);
+  return true;
+}
+
+void pack_live_ctrl(const LiveCtrl& c, uint8_t* out) {
+  out[0] = c.flags;
+  out[1] = c.volume;
+  out[2] = c.bpm;
+  out[3] = 0;
+}
+
+bool parse_live_ctrl(const uint8_t* p, uint16_t len, LiveCtrl* c) {
+  if (len != LIVE_CTRL_LEN || !c) return false;
+  c->flags = p[0];
+  c->volume = p[1];
+  c->bpm = p[2];
+  return true;
+}
+
+void pack_live_note(const LiveNote& n, uint8_t* out) {
+  out[0] = n.kind;
+  out[1] = n.midi;
+  out[2] = n.vel;
+  out[3] = n.flags;
+  put_u32(out + 4, n.t_ms);
+}
+
+bool parse_live_note(const uint8_t* p, uint16_t len, LiveNote* n) {
+  if (len != LIVE_NOTE_LEN || !n) return false;
+  n->kind = p[0];
+  n->midi = p[1];
+  n->vel = p[2];
+  n->flags = p[3];
+  n->t_ms = get_u32(p + 4);
+  return true;
+}
+
+void pack_live_state(const LiveState& s, uint8_t* out) {
+  out[0] = s.flags;
+  out[1] = s.volume;
+  out[2] = (uint8_t)s.heard;
+  out[3] = (uint8_t)s.sung;
+  memcpy(out + 4, &s.freq, 4);  // IEEE-754 little-endian on both ends
+  out[8] = s.conf;
+  out[9] = (uint8_t)s.level;
+  out[10] = (uint8_t)s.cents;
+  out[11] = 0;
+  put_u32(out + 12, s.hops);
+  put_u16(out + 16, s.heard_n);
+  put_u16(out + 18, s.sung_n);
+  put_u32(out + 20, s.spk_blocks);
+}
+
+bool parse_live_state(const uint8_t* p, uint16_t len, LiveState* s) {
+  if (len != LIVE_STATE_LEN || !s) return false;
+  s->flags = p[0];
+  s->volume = p[1];
+  s->heard = (int8_t)p[2];
+  s->sung = (int8_t)p[3];
+  memcpy(&s->freq, p + 4, 4);
+  s->conf = p[8];
+  s->level = (int8_t)p[9];
+  s->cents = (int8_t)p[10];
+  s->hops = get_u32(p + 12);
+  s->heard_n = get_u16(p + 16);
+  s->sung_n = get_u16(p + 18);
+  s->spk_blocks = get_u32(p + 20);
   return true;
 }
 

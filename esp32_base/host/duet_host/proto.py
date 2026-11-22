@@ -8,7 +8,8 @@ host/tests/test_host.py checks that by talking to the C++ core compiled for the 
 
 Version 1 (duet_v0/docs/PLAN.md): audio, servo, LED, ping, status. Version 2 keeps those codes and lengths
 and adds HELLO/INFO, CONFIG/CONFIG_ACK, NOTE_IN/NOTE_OUT, LOG and AUDIO_CTRL, and (2026-11-21)
-AUDIO_QUERY/AUDIO_STATS, the device's audio counters.
+AUDIO_QUERY/AUDIO_STATS, the device's audio counters, and (2026-11-22) the live chain of sketch duet_live:
+LIVE_CTRL, SYNTH_NOTE (host->dev), LIVE_NOTE, LIVE_STATE, MIC_HOP (dev->host). Layouts: see LIVE_* below.
 """
 from __future__ import annotations
 
@@ -47,6 +48,11 @@ class T(enum.IntEnum):
     LOG = 0x25          # dev->host ASCII text
     CONFIG_ACK = 0x26   # dev->host status u8 (0 = ok), plugin u8, n_pos u16
     AUDIO_STATS = 0x27  # dev->host 48 bytes of audio counters (layout: AUDIO_STATS_FIELDS)
+    LIVE_CTRL = 0x18    # host->dev flags u8 (LC_*), volume u8 (0..100), bpm u8 (0 = 120), reserved u8
+    SYNTH_NOTE = 0x19   # host->dev midi u8, vel u8 (0 = off); no reply
+    LIVE_NOTE = 0x28    # dev->host kind u8, midi u8, vel u8, flags u8, t_ms u32
+    LIVE_STATE = 0x29   # dev->host 24 bytes (LIVE_STATE_FIELDS)
+    MIC_HOP = 0x2A      # dev->host 256 x int16, one hop as the pitch tracker got it
 
 
 # (min, max) payload length per type; mirrors duet::len_range().
@@ -56,6 +62,7 @@ LEN_RANGE = {
     T.HELLO: (0, 0), T.CONFIG: (CONFIG_HEADER_LEN, CONFIG_HEADER_LEN + MAX_POS), T.NOTE_IN: (12, 12),
     T.AUDIO_CTRL: (1, 1), T.INFO: (1, MAX_TEXT), T.NOTE_OUT: (8, 8), T.LOG: (1, MAX_TEXT),
     T.CONFIG_ACK: (4, 4), T.AUDIO_QUERY: (0, 0), T.AUDIO_STATS: (48, 48),
+    T.LIVE_CTRL: (4, 4), T.SYNTH_NOTE: (2, 2), T.LIVE_NOTE: (8, 8), T.LIVE_STATE: (24, 24), T.MIC_HOP: (512, 512),
 }
 _RANGE_BY_CODE = {int(k): v for k, v in LEN_RANGE.items()}
 
@@ -70,6 +77,23 @@ AUDIO_STATS_FIELDS = ("mode", "flags", "spk_level", "spk_state", "mic_sent", "mi
 AUDIO_MODE_NONE, AUDIO_MODE_I2S, AUDIO_MODE_STANDIN = 0, 1, 2
 AUDIO_MODE_NAMES = {AUDIO_MODE_NONE: "none", AUDIO_MODE_I2S: "i2s", AUDIO_MODE_STANDIN: "standin"}
 AS_MIC_ON, AS_SPK_ON, AS_RUNNING, AS_SPK_SUMS = 0x01, 0x02, 0x04, 0x08
+
+# ---- live chain (mirrors duet_protocol.h, section "live chain")
+LIVE_HOP_SAMPLES = 256          # one hop = 256 samples at 16 kHz = 16 ms
+LIVE_HOP_MS = 16
+LIVE_RATE = 16000
+LIVE_STATE_EVERY = 6            # hops between two periodic LIVE_STATE frames (96 ms)
+LC_LISTEN, LC_SING, LC_FAKE, LC_MONITOR = 0x01, 0x02, 0x04, 0x08
+LN_HEARD_ON, LN_HEARD_OFF, LN_SUNG_ON, LN_SUNG_OFF = 1, 2, 3, 4
+LN_KIND_NAMES = {1: "heard_on", 2: "heard_off", 3: "sung_on", 4: "sung_off"}
+LN_FAKE, LN_FROM_HOST = 0x01, 0x02
+LS_LISTEN, LS_SING, LS_FAKE, LS_MONITOR = 0x01, 0x02, 0x04, 0x08
+LS_MIC_UP, LS_SPK_UP, LS_ERROR, LS_REPLY = 0x10, 0x20, 0x40, 0x80
+LIVE_NOTE_FORMAT = "<BBBBI"
+LIVE_NOTE_FIELDS = ("kind", "midi", "vel", "flags", "t_ms")
+LIVE_STATE_FORMAT = "<BBbbfBbbBIHHI"
+LIVE_STATE_FIELDS = ("flags", "volume", "heard", "sung", "freq", "conf", "level", "cents", "reserved", "hops",
+                     "heard_n", "sung_n", "spk_blocks")
 
 
 def checksum(type_: int, seq: int, payload: bytes) -> int:
@@ -220,6 +244,42 @@ def audio_query(seq: int) -> bytes:
     return encode(T.AUDIO_QUERY, seq)
 
 
+def live_ctrl(seq: int, listen: bool, sing: bool, fake: bool, monitor: bool, volume: int = 100,
+              bpm: int = 120) -> bytes:
+    flags = (LC_LISTEN if listen else 0) | (LC_SING if sing else 0) | (LC_FAKE if fake else 0) | \
+        (LC_MONITOR if monitor else 0)
+    return encode(T.LIVE_CTRL, seq, bytes([flags, max(0, min(255, int(volume))), max(0, min(255, int(bpm))), 0]))
+
+
+def synth_note(seq: int, midi: int, vel: int) -> bytes:
+    return encode(T.SYNTH_NOTE, seq, bytes([int(midi) & 0x7F, max(0, min(127, int(vel)))]))
+
+
+def decode_live_note(p: bytes) -> dict:
+    """LIVE_NOTE payload -> {kind, kind_name, midi, vel, flags, fake, from_host, t_ms}."""
+    d = dict(zip(LIVE_NOTE_FIELDS, struct.unpack(LIVE_NOTE_FORMAT, p)))
+    d["kind_name"] = LN_KIND_NAMES.get(d["kind"], str(d["kind"]))
+    d["fake"], d["from_host"] = bool(d["flags"] & LN_FAKE), bool(d["flags"] & LN_FROM_HOST)
+    return d
+
+
+def decode_live_state(p: bytes) -> dict:
+    """LIVE_STATE payload -> the LIVE_STATE_FIELDS (minus reserved) plus the flag bits as booleans:
+    listen, sing, fake, monitor, mic_up, spk_up, error, reply."""
+    d = dict(zip(LIVE_STATE_FIELDS, struct.unpack(LIVE_STATE_FORMAT, p)))
+    d.pop("reserved")
+    f = d["flags"]
+    for name, bit in (("listen", LS_LISTEN), ("sing", LS_SING), ("fake", LS_FAKE), ("monitor", LS_MONITOR),
+                      ("mic_up", LS_MIC_UP), ("spk_up", LS_SPK_UP), ("error", LS_ERROR), ("reply", LS_REPLY)):
+        d[name] = bool(f & bit)
+    return d
+
+
+def decode_mic_hop(p: bytes) -> tuple:
+    """MIC_HOP payload -> 256 int16 samples."""
+    return struct.unpack(f"<{LIVE_HOP_SAMPLES}h", p)
+
+
 def decode_audio_stats(p: bytes) -> dict:
     d = dict(zip(AUDIO_STATS_FIELDS, struct.unpack(AUDIO_STATS_FORMAT, p)))
     d.pop("reserved")
@@ -263,6 +323,12 @@ def decode_payload(fr: Frame):
         return dict(zip(keys, struct.unpack("<8H", p)))
     if t == T.AUDIO_STATS:
         return decode_audio_stats(p)
+    if t == T.LIVE_NOTE:
+        return decode_live_note(p)
+    if t == T.LIVE_STATE:
+        return decode_live_state(p)
+    if t == T.MIC_HOP:
+        return decode_mic_hop(p)
     return p
 
 
